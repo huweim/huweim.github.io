@@ -53,10 +53,3 @@ weight = 3
 name = "Tags"
 url = "/tags"
 weight = 4
-
-[module]
-  noProxy = "none"
-  noVendor = ""
-  private = "*.*"
-  proxy = "direct"
-  replacements = ""
