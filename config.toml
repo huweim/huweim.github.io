@@ -1,6 +1,6 @@
 baseURL = "https://huweim.cn/"
 languageCode = "en-us"
-title = "Archie"
+title = "Cory Code"
 theme="archie"
 copyright = "© Athul"
 # Code Highlight
@@ -20,7 +20,7 @@ paginate=3 # articles per page
 [[params.social]]
 name = "GitHub"
 icon = "github"
-url = "https://github.com/athul/archie"
+url = "https://github.com/huweim"
 
 [[params.social]]
 name = "Twitter"
@@ -53,3 +53,10 @@ weight = 3
 name = "Tags"
 url = "/tags"
 weight = 4
+
+[module]
+  noProxy = "none"
+  noVendor = ""
+  private = "*.*"
+  proxy = "direct"
+  replacements = ""
