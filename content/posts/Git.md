@@ -229,4 +229,4 @@ push -u origin master -f
 
 ### 6. Git常用命令速查表
 
-<img src="D:\STU\2021-Spring\Core Course\Git\Git常用命令大全.jpg" alt="Git常用命令大全" style="zoom:50%;" />
+![git常用命令大全](../Image/Git_Common.jpg)
