@@ -63,7 +63,7 @@ cd mpich-3.4.1
 
 + 然后出现两个坑
   + error: no ch4 netmod selected
-  + ![error_1](./Image/error_1.png)
+  + ![error_1](../Image/error_1.png)
   + 根据提示加上 `--with-device=ch4:ofi` 即可
   + 加上后再次报错`No Fortran compiler found. If you don't need to build any Fortran programs, you can disable Fortran support using --disable-fortran. If you do want to build Fortran programs, you need to install a Fortran compiler such as gfortran or ifort before you can proceed.`
   + 这是因为没有安装Fortran compiler
@@ -74,7 +74,8 @@ cd mpich-3.4.1
 ```
 
 + 成功配置
-+ ![Config completed](D:\STU\2021-Spring\Core Course\Parallel  Computing\MPI\Image\Config completed.png).
+
+  ![Config completed](../Image/Config.png)
 
 接下来 ->
 
@@ -106,7 +107,7 @@ source ~/.bashrc
 + which mpicc 查看位置信息
 + mpichversion 查看版本信息，出现版本号说明安装成功
 
-<img src="D:\STU\2021-Spring\Core Course\Parallel  Computing\MPI\Image\Version Info.png" alt="Version Info" style="zoom: 80%;" />
+![Version Info](../Image/Version.png).
 
 ### 运行程序
 
@@ -140,4 +141,4 @@ mpicc hellow.c -o hellow
 mpirun -n 2 ./hellow
 ```
 
-![Compile and Execute](D:\STU\2021-Spring\Core Course\Parallel  Computing\MPI\Image\Compile and Execute.png).
+![Compile and Execute](../Image/Compile.png).
