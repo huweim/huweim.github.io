@@ -3,7 +3,7 @@ title: "Git中常用的操作"
 date: 2021-03-08T19:12:40+08:00
 draft: false
 tags: ["技巧"]
-categories: ["Git"]
+categories: ["git"]
 ---
 
 # Git中常用的操作
