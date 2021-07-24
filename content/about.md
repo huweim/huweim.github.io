@@ -1,5 +1,5 @@
 ---
-title: "about"
+title: "About"
 date: 2021-07-08T17:46:31+08:00
 menu: "main"
 weight: 60
