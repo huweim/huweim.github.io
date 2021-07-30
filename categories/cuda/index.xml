@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>CUDA on Cory Code</title><link>https://huweim.github.io/categories/cuda/</link><description>Recent content in CUDA on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Athul</copyright><lastBuildDate>Sun, 25 Jul 2021 11:00:17 +0800</lastBuildDate><atom:link href="https://huweim.github.io/categories/cuda/index.xml" rel="self" type="application/rss+xml"/><item><title>CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析</title><link>https://huweim.github.io/posts/cuda_basic/</link><pubDate>Sun, 25 Jul 2021 11:00:17 +0800</pubDate><guid>https://huweim.github.io/posts/cuda_basic/</guid><description>前言 文章转载自知乎答主 marsggbo，当做笔记记录一下这些 CUDA 中经常接触的内容。
+0 在使用深度学习框架的过程中一定会经常碰到这些东西，虽然anaconda有时会帮助我们自动地解决这些设置，但是有些特殊的库却还是需要我们手动配置环境，但是我对标题上的这些名词其实并不十分清楚，所以老是被网上的教程绕得云里雾里，所以觉得有必要写下一篇文章当做笔记供之后参考。
+0. GPU型号含义 参考【GPU编程系列之一】从深度学习选择什么样的gpu来谈谈gpu的硬件架构
+显卡： 简单理解这个就是我们前面说的GPU，尤其指NVIDIA公司生产的GPU系列，因为后面介绍的cuda,cudnn都是NVIDIA公司针对自身的GPU独家设计的。 显卡驱动：很明显就是字面意思，通常指NVIDIA Driver，其实它就是一个驱动软件，而前面的显卡就是硬件。 gpu架构：Tesla、Fermi、Kepler、Maxwell、Pascal 芯片型号：GT200、GK210、GM104、GF104等 显卡系列：GeForce、Quadro、Tesla GeForce显卡型号：G/GS、GT、GTS、GTX gpu架构指的是硬件的设计方式，例如流处理器簇中有多少个core、是否有L1 or L2缓存、是否有双精度计算单元等等。每一代的架构是一种思想，如何去更好完成并行的思想
+芯片就是对上述gpu架构思想的实现，例如芯片型号GT200中第二个字母代表是哪一代架构，有时会有100和200代的芯片，它们基本设计思路是跟这一代的架构一致，只是在细节上做了一些改变，例如GK210比GK110的寄存器就多一倍。有时候一张显卡里面可能有两张芯片，Tesla k80用了两块GK210芯片。这里第一代的gpu架构的命名也是Tesla，但现在基本已经没有这种设计的卡了，下文如果提到了会用Tesla架构和Tesla系列来进行区分。
+而显卡系列在本质上并没有什么区别，只是NVIDIA希望区分成三种选择，
+GeFore用于家庭娱乐 Quadro用于工作站 Tesla系列用于服务器。 Tesla的k型号卡为了高性能科学计算而设计，比较突出的优点是双精度浮点运算能力高并且支持ECC内存，但是双精度能力好在深度学习训练上并没有什么卵用，所以Tesla系列又推出了M型号来做专门的训练深度学习网络的显卡。需要注意的是Tesla系列没有显示输出接口，它专注于数据计算而不是图形显示。
+最后一个GeForce的显卡型号是不同的硬件定制，越往后性能越好，时钟频率越高显存越大，即G/GS&amp;lt;GT&amp;lt;GTS&amp;lt;GTX。
+1. CUDA名称含义 1.1 CUDA 看了很多答案，有人说CUDA就是一门编程语言，像C,C++,python 一样，也有人说CUDA是API。CUDA英文全称是Compute Unified Device Architecture，是显卡厂商NVIDIA推出的运算平台。 CUDA™是一种由NVIDIA推出的通用并行计算架构，该架构使GPU能够解决复杂的计算问题。按照官方的说法是，CUDA是一个并行计算平台和编程模型，能够使得使用GPU进行通用计算变得简单和优雅。
+1.2 cudnn 这个其实就是一个专门为深度学习计算设计的软件库，里面提供了很多专门的计算函数，如卷积等。从上图也可以看到，还有很多其他的软件库和中间件，包括实现c++ STL的thrust、实现gpu版本blas的cublas、实现快速傅里叶变换的cuFFT、实现稀疏矩阵运算操作的cuSparse以及实现深度学习网络加速的cuDNN等等，具体细节可参阅GPU-Accelerated Libraries
+1.2 CUDA Toolkit 参考CUDA Toolkit
+CUDA Toolkit由以下组件组成：
+1.2.1 Compiler CUDA-C和CUDA-C++编译器NVCC位于bin/目录中。它建立在NVVM优化器之上，而NVVM优化器本身构建在LLVM编译器基础结构之上。因此开发人员可以使用nvm/目录下的Compiler SDK来直接针对NVVM进行开发。
+1.2.2 Tools 提供一些像profiler,debuggers等工具，这些工具可以从bin/目录中获取
+1.2.3 Libraries 下面列出的部分科学库和实用程序库可以在lib/目录中使用(Windows上的DLL位于bin/中)，它们的接口在include/目录中可获取。
+cudart: CUDA Runtime cudadevrt: CUDA device runtime cupti: CUDA profiling tools interface nvml: NVIDIA management library nvrtc: CUDA runtime compilation cublas: BLAS (Basic Linear Algebra Subprograms，基础线性代数程序集) cublas_device: BLAS kernel interface &amp;hellip; 1.</description></item></channel></rss>

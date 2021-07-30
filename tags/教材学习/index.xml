@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>教材学习 on Cory Code</title><link>https://huweim.github.io/tags/%E6%95%99%E6%9D%90%E5%AD%A6%E4%B9%A0/</link><description>Recent content in 教材学习 on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Athul</copyright><lastBuildDate>Sat, 24 Jul 2021 16:35:27 +0800</lastBuildDate><atom:link href="https://huweim.github.io/tags/%E6%95%99%E6%9D%90%E5%AD%A6%E4%B9%A0/index.xml" rel="self" type="application/rss+xml"/><item><title>GPGPU_Arch</title><link>https://huweim.github.io/posts/gpgpu_arch/</link><pubDate>Sat, 24 Jul 2021 16:35:27 +0800</pubDate><guid>https://huweim.github.io/posts/gpgpu_arch/</guid><description>GPGPU Architecture 从有缩进的那一段开始成为第一段
+1. Introduction 1.1 The Landspace Of Computation Accelerators 1 提升性能不能光依赖于摩尔定律了，需要从 Computer Arch 中去寻找提升
+2 GPU 的性能优势, vector HW
+3 专用的硬件对应用的性能提升帮助很大，如谷歌 TPU
+4 modern GPUs support a Turing Complete programming model, 这是人们对 GPU 感兴趣的一大原因
+By Turing Complete, we mean that any computation can be run given enough time and memory.
+1.2 GPU Hardware Basic 1 API for GPUs,
+These APIs function by providing convenient interfaces that hide the complexity of managing communication between the CPU and GPU rather than eliminating the need for a CPU entirely.</description></item></channel></rss>
