@@ -2,7 +2,7 @@
 title: "Ubuntu 20.04 下安装运行 GPGPU-Sim"
 date: 2021-05-10T15:17:51+08:00
 draft: false
-tags: ["gpgpu-sim", "gpgpu", "环境搭建"]
+tags: ["gpgpu-sim", "环境搭建"]
 categories: ["gpgpu"]
 ---
 

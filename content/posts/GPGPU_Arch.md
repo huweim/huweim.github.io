@@ -2,7 +2,7 @@
 title: "GPGPU_Arch"
 date: 2021-07-24T16:35:27+08:00
 draft: false
-tags: ["GPGPU", "教材学习", "research"]
+tags: ["教材学习", "research"]
 categories: ["GPGPU"]
 ---
 

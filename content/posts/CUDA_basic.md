@@ -2,7 +2,7 @@
 title: "CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析"
 date: 2021-07-25T11:00:17+08:00
 draft: false
-tags: ["CUDA", "浅尝辄止", "nvcc"]
+tags: ["浅尝辄止", "nvcc"]
 categories: ["CUDA"]
 ---
 
