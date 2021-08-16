@@ -5,9 +5,9 @@
 4 modern GPUs support a Turing Complete programming model, 这是人们对 GPU 感兴趣的一大原因
 By Turing Complete, we mean that any computation can be run given enough time and memory.
 1.2 GPU Hardware Basic 1 API for GPUs,
-These APIs function by providing convenient interfaces that hide the complexity of managing communication between the CPU and GPU rather than eliminating the need for a CPU entirely.</description></item><item><title>Ubuntu 20.04 下安装运行 GPGPU-Sim</title><link>https://huweim.github.io/posts/setup_gpgpusim/</link><pubDate>Mon, 10 May 2021 15:17:51 +0800</pubDate><guid>https://huweim.github.io/posts/setup_gpgpusim/</guid><description>0. 前言 最近因为课程 Project 需要使用 GPGPU-Sim 复现一篇 paper，在之后的课题研究中可能也会用到这个模拟器。所以收集了相关资料以搭建 GPGPU-Sim 的环境并运行 Demo。GPGPU-Sim 的参考资料实在是不多，主要参考了官方文档、Github 中 README 文件，还有一些相关的 Blog。官方的 README 文件写的比较清晰，跟着走一遍是可以成功配置的。
-本次只跑了一个非常简单的 Demo，关于 CUDA 实例可以参考 Textbook 《CUDA by Example》。里面提供了一些 CUDA 编程的源码介绍。有人在 Github 上提供了 Textbook 的源代码。
-**不过自己搭建 GPGPU-Sim 的环境坑比较多，一定要注意 gcc/g++ 版本问题以及链接库。所以我个人还是建议如果不是长期使用，可以直接下载官方提供的 fully setup virtual machine **。在 http://gpgpu-sim.org/ 下载，然后导入 Virtual Box 使用。他们提供的虚拟机已经配置好了环境，可以直接使用 GPGPU-Sim 编译 .cu 文件然后在模拟器上运行。具体步骤可以参考 UCR 给的流程。
+These APIs function by providing convenient interfaces that hide the complexity of managing communication between the CPU and GPU rather than eliminating the need for a CPU entirely.</description></item><item><title>Ubuntu 20.04 下安装运行 GPGPU-Sim</title><link>https://huweim.github.io/posts/setup_gpgpusim/</link><pubDate>Mon, 10 May 2021 15:17:51 +0800</pubDate><guid>https://huweim.github.io/posts/setup_gpgpusim/</guid><description>0. 前言 最近因为课程 Project 需要使用 GPGPU-Sim 复现一篇 paper，在之后的课题中可能也会用到这个模拟器。所以收集了相关资料以搭建 GPGPU-Sim 的环境并运行 Demo。GPGPU-Sim 的参考资料实在是不多，主要参考了官方文档、Github 中 README 文件，还有一些相关的 Blog。
+本次只跑了一个非常简单的 Demo，关于 CUDA 实例可以参考 Textbook 《CUDA by Example》。里面提供了一些 CUDA 编程的源码介绍。有人在 Github 上提供了《CUDA by Example》的源代码。
+不过自己搭建 GPGPU-Sim 的环境坑比较多，一定要注意 gcc/g++ 版本问题以及链接库。所以我个人还是建议如果不是长期使用，可以直接下载官方提供的 fully setup virtual machine 。在 http://gpgpu-sim.org/ 下载，然后导入 Virtual Box 使用。他们提供的虚拟机已经配置好了环境，可以直接使用 GPGPU-Sim 编译 .cu 文件然后在模拟器上运行。具体步骤可以参考 UCR 给的流程。
 1. 介绍 GPGPU-sim能够在Linux系统下，提供对GPU的功能模拟和性能仿真，让你在没有装NVIDIA显卡的情况下可以编译并运行CUDA程序。当然它更重要的意义是，可以通过修改仿真参数，让开发者修改GPU内部架构，并进行性能仿真，以针对自己的项目需求进行更好的代码设计，获得更好的性能表现。
 我使用的环境是
-Ubuntu 20.04 CUDA Toolkit 11.1 gcc/g++ 5 :warning: 注意：在 Build GPGPU-Sim 之前最好就确保 gcc/g++ 5 版本 当时 GPGPU-Sim 作者测试时使用的是 CUDA 4.</description></item></channel></rss>
+Ubuntu 20.04 CUDA Toolkit 11.1 gcc/g++ 5 ⚠️ 注意：在 Build GPGPU-Sim 之前最好就确保使用 gcc/g++ 5 版本 当时 GPGPU-Sim 作者测试时使用的是 CUDA 4.</description></item></channel></rss>
