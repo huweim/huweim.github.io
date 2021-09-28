@@ -2,7 +2,7 @@
 title: "CUDA_set_gridDim"
 date: 2021-08-17T14:12:38+08:00
 draft: false
-tags: ["编程", "浅尝辄止"]
+tags: ["浅尝辄止"]
 categories: ["编程"]
 ---
 
