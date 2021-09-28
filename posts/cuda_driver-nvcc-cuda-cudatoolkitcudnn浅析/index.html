@@ -1,0 +1,348 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge"><title>CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析 - Cory Code</title><meta name=viewport content="width=device-width,initial-scale=1">
+<meta itemprop=name content="CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析">
+<meta itemprop=description content="前言 文章转载自知乎答主 marsggbo，当做笔记记录一下这些 CUDA 中经常接触的内容。
+0 在使用深度学习框架的过程中一定会经常碰到这些东西，虽然anaconda有时会帮助我们自动地解决这些设置，但是有些特殊的库却还是需要我们手动配置环境，但是我对标题上的这些名词其实并不十分清楚，所以老是被网上的教程绕得云里雾里，所以觉得有必要写下一篇文章当做笔记供之后参考。
+0. GPU型号含义  参考【GPU编程系列之一】从深度学习选择什么样的gpu来谈谈gpu的硬件架构
+  显卡： 简单理解这个就是我们前面说的GPU，尤其指NVIDIA公司生产的GPU系列，因为后面介绍的cuda,cudnn都是NVIDIA公司针对自身的GPU独家设计的。 显卡驱动：很明显就是字面意思，通常指NVIDIA Driver，其实它就是一个驱动软件，而前面的显卡就是硬件。 gpu架构：Tesla、Fermi、Kepler、Maxwell、Pascal 芯片型号：GT200、GK210、GM104、GF104等 显卡系列：GeForce、Quadro、Tesla GeForce显卡型号：G/GS、GT、GTS、GTX  gpu架构指的是硬件的设计方式，例如流处理器簇中有多少个core、是否有L1 or L2缓存、是否有双精度计算单元等等。每一代的架构是一种思想，如何去更好完成并行的思想
+芯片就是对上述gpu架构思想的实现，例如芯片型号GT200中第二个字母代表是哪一代架构，有时会有100和200代的芯片，它们基本设计思路是跟这一代的架构一致，只是在细节上做了一些改变，例如GK210比GK110的寄存器就多一倍。有时候一张显卡里面可能有两张芯片，Tesla k80用了两块GK210芯片。这里第一代的gpu架构的命名也是Tesla，但现在基本已经没有这种设计的卡了，下文如果提到了会用Tesla架构和Tesla系列来进行区分。
+而显卡系列在本质上并没有什么区别，只是NVIDIA希望区分成三种选择，
+ GeFore用于家庭娱乐 Quadro用于工作站 Tesla系列用于服务器。  Tesla的k型号卡为了高性能科学计算而设计，比较突出的优点是双精度浮点运算能力高并且支持ECC内存，但是双精度能力好在深度学习训练上并没有什么卵用，所以Tesla系列又推出了M型号来做专门的训练深度学习网络的显卡。需要注意的是Tesla系列没有显示输出接口，它专注于数据计算而不是图形显示。
+最后一个GeForce的显卡型号是不同的硬件定制，越往后性能越好，时钟频率越高显存越大，即G/GS<GT<GTS<GTX。
+1. CUDA名称含义 1.1 CUDA 看了很多答案，有人说CUDA就是一门编程语言，像C,C++,python 一样，也有人说CUDA是API。CUDA英文全称是Compute Unified Device Architecture，是显卡厂商NVIDIA推出的运算平台。 CUDA™是一种由NVIDIA推出的通用并行计算架构，该架构使GPU能够解决复杂的计算问题。按照官方的说法是，CUDA是一个并行计算平台和编程模型，能够使得使用GPU进行通用计算变得简单和优雅。
+1.2 cudnn 这个其实就是一个专门为深度学习计算设计的软件库，里面提供了很多专门的计算函数，如卷积等。从上图也可以看到，还有很多其他的软件库和中间件，包括实现c++ STL的thrust、实现gpu版本blas的cublas、实现快速傅里叶变换的cuFFT、实现稀疏矩阵运算操作的cuSparse以及实现深度学习网络加速的cuDNN等等，具体细节可参阅GPU-Accelerated Libraries
+1.2 CUDA Toolkit  参考CUDA Toolkit
+ CUDA Toolkit由以下组件组成：
+1.2.1 Compiler CUDA-C和CUDA-C++编译器NVCC位于bin/目录中。它建立在NVVM优化器之上，而NVVM优化器本身构建在LLVM编译器基础结构之上。因此开发人员可以使用nvm/目录下的Compiler SDK来直接针对NVVM进行开发。
+1.2.2 Tools 提供一些像profiler,debuggers等工具，这些工具可以从bin/目录中获取
+1.2.3 Libraries 下面列出的部分科学库和实用程序库可以在lib/目录中使用(Windows上的DLL位于bin/中)，它们的接口在include/目录中可获取。
+ cudart: CUDA Runtime cudadevrt: CUDA device runtime cupti: CUDA profiling tools interface nvml: NVIDIA management library nvrtc: CUDA runtime compilation cublas: BLAS (Basic Linear Algebra Subprograms，基础线性代数程序集) cublas_device: BLAS kernel interface &mldr;  1."><meta itemprop=datePublished content="2021-07-25T11:00:17+08:00">
+<meta itemprop=dateModified content="2021-07-25T11:00:17+08:00">
+<meta itemprop=wordCount content="739">
+<meta itemprop=keywords content="浅尝辄止,CUDA,"><meta property="og:title" content="CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析">
+<meta property="og:description" content="前言 文章转载自知乎答主 marsggbo，当做笔记记录一下这些 CUDA 中经常接触的内容。
+0 在使用深度学习框架的过程中一定会经常碰到这些东西，虽然anaconda有时会帮助我们自动地解决这些设置，但是有些特殊的库却还是需要我们手动配置环境，但是我对标题上的这些名词其实并不十分清楚，所以老是被网上的教程绕得云里雾里，所以觉得有必要写下一篇文章当做笔记供之后参考。
+0. GPU型号含义  参考【GPU编程系列之一】从深度学习选择什么样的gpu来谈谈gpu的硬件架构
+  显卡： 简单理解这个就是我们前面说的GPU，尤其指NVIDIA公司生产的GPU系列，因为后面介绍的cuda,cudnn都是NVIDIA公司针对自身的GPU独家设计的。 显卡驱动：很明显就是字面意思，通常指NVIDIA Driver，其实它就是一个驱动软件，而前面的显卡就是硬件。 gpu架构：Tesla、Fermi、Kepler、Maxwell、Pascal 芯片型号：GT200、GK210、GM104、GF104等 显卡系列：GeForce、Quadro、Tesla GeForce显卡型号：G/GS、GT、GTS、GTX  gpu架构指的是硬件的设计方式，例如流处理器簇中有多少个core、是否有L1 or L2缓存、是否有双精度计算单元等等。每一代的架构是一种思想，如何去更好完成并行的思想
+芯片就是对上述gpu架构思想的实现，例如芯片型号GT200中第二个字母代表是哪一代架构，有时会有100和200代的芯片，它们基本设计思路是跟这一代的架构一致，只是在细节上做了一些改变，例如GK210比GK110的寄存器就多一倍。有时候一张显卡里面可能有两张芯片，Tesla k80用了两块GK210芯片。这里第一代的gpu架构的命名也是Tesla，但现在基本已经没有这种设计的卡了，下文如果提到了会用Tesla架构和Tesla系列来进行区分。
+而显卡系列在本质上并没有什么区别，只是NVIDIA希望区分成三种选择，
+ GeFore用于家庭娱乐 Quadro用于工作站 Tesla系列用于服务器。  Tesla的k型号卡为了高性能科学计算而设计，比较突出的优点是双精度浮点运算能力高并且支持ECC内存，但是双精度能力好在深度学习训练上并没有什么卵用，所以Tesla系列又推出了M型号来做专门的训练深度学习网络的显卡。需要注意的是Tesla系列没有显示输出接口，它专注于数据计算而不是图形显示。
+最后一个GeForce的显卡型号是不同的硬件定制，越往后性能越好，时钟频率越高显存越大，即G/GS<GT<GTS<GTX。
+1. CUDA名称含义 1.1 CUDA 看了很多答案，有人说CUDA就是一门编程语言，像C,C++,python 一样，也有人说CUDA是API。CUDA英文全称是Compute Unified Device Architecture，是显卡厂商NVIDIA推出的运算平台。 CUDA™是一种由NVIDIA推出的通用并行计算架构，该架构使GPU能够解决复杂的计算问题。按照官方的说法是，CUDA是一个并行计算平台和编程模型，能够使得使用GPU进行通用计算变得简单和优雅。
+1.2 cudnn 这个其实就是一个专门为深度学习计算设计的软件库，里面提供了很多专门的计算函数，如卷积等。从上图也可以看到，还有很多其他的软件库和中间件，包括实现c++ STL的thrust、实现gpu版本blas的cublas、实现快速傅里叶变换的cuFFT、实现稀疏矩阵运算操作的cuSparse以及实现深度学习网络加速的cuDNN等等，具体细节可参阅GPU-Accelerated Libraries
+1.2 CUDA Toolkit  参考CUDA Toolkit
+ CUDA Toolkit由以下组件组成：
+1.2.1 Compiler CUDA-C和CUDA-C++编译器NVCC位于bin/目录中。它建立在NVVM优化器之上，而NVVM优化器本身构建在LLVM编译器基础结构之上。因此开发人员可以使用nvm/目录下的Compiler SDK来直接针对NVVM进行开发。
+1.2.2 Tools 提供一些像profiler,debuggers等工具，这些工具可以从bin/目录中获取
+1.2.3 Libraries 下面列出的部分科学库和实用程序库可以在lib/目录中使用(Windows上的DLL位于bin/中)，它们的接口在include/目录中可获取。
+ cudart: CUDA Runtime cudadevrt: CUDA device runtime cupti: CUDA profiling tools interface nvml: NVIDIA management library nvrtc: CUDA runtime compilation cublas: BLAS (Basic Linear Algebra Subprograms，基础线性代数程序集) cublas_device: BLAS kernel interface &mldr;  1.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://huweim.github.io/posts/cuda_driver-nvcc-cuda-cudatoolkitcudnn%E6%B5%85%E6%9E%90/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-07-25T11:00:17+08:00">
+<meta property="article:modified_time" content="2021-07-25T11:00:17+08:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析">
+<meta name=twitter:description content="前言 文章转载自知乎答主 marsggbo，当做笔记记录一下这些 CUDA 中经常接触的内容。
+0 在使用深度学习框架的过程中一定会经常碰到这些东西，虽然anaconda有时会帮助我们自动地解决这些设置，但是有些特殊的库却还是需要我们手动配置环境，但是我对标题上的这些名词其实并不十分清楚，所以老是被网上的教程绕得云里雾里，所以觉得有必要写下一篇文章当做笔记供之后参考。
+0. GPU型号含义  参考【GPU编程系列之一】从深度学习选择什么样的gpu来谈谈gpu的硬件架构
+  显卡： 简单理解这个就是我们前面说的GPU，尤其指NVIDIA公司生产的GPU系列，因为后面介绍的cuda,cudnn都是NVIDIA公司针对自身的GPU独家设计的。 显卡驱动：很明显就是字面意思，通常指NVIDIA Driver，其实它就是一个驱动软件，而前面的显卡就是硬件。 gpu架构：Tesla、Fermi、Kepler、Maxwell、Pascal 芯片型号：GT200、GK210、GM104、GF104等 显卡系列：GeForce、Quadro、Tesla GeForce显卡型号：G/GS、GT、GTS、GTX  gpu架构指的是硬件的设计方式，例如流处理器簇中有多少个core、是否有L1 or L2缓存、是否有双精度计算单元等等。每一代的架构是一种思想，如何去更好完成并行的思想
+芯片就是对上述gpu架构思想的实现，例如芯片型号GT200中第二个字母代表是哪一代架构，有时会有100和200代的芯片，它们基本设计思路是跟这一代的架构一致，只是在细节上做了一些改变，例如GK210比GK110的寄存器就多一倍。有时候一张显卡里面可能有两张芯片，Tesla k80用了两块GK210芯片。这里第一代的gpu架构的命名也是Tesla，但现在基本已经没有这种设计的卡了，下文如果提到了会用Tesla架构和Tesla系列来进行区分。
+而显卡系列在本质上并没有什么区别，只是NVIDIA希望区分成三种选择，
+ GeFore用于家庭娱乐 Quadro用于工作站 Tesla系列用于服务器。  Tesla的k型号卡为了高性能科学计算而设计，比较突出的优点是双精度浮点运算能力高并且支持ECC内存，但是双精度能力好在深度学习训练上并没有什么卵用，所以Tesla系列又推出了M型号来做专门的训练深度学习网络的显卡。需要注意的是Tesla系列没有显示输出接口，它专注于数据计算而不是图形显示。
+最后一个GeForce的显卡型号是不同的硬件定制，越往后性能越好，时钟频率越高显存越大，即G/GS<GT<GTS<GTX。
+1. CUDA名称含义 1.1 CUDA 看了很多答案，有人说CUDA就是一门编程语言，像C,C++,python 一样，也有人说CUDA是API。CUDA英文全称是Compute Unified Device Architecture，是显卡厂商NVIDIA推出的运算平台。 CUDA™是一种由NVIDIA推出的通用并行计算架构，该架构使GPU能够解决复杂的计算问题。按照官方的说法是，CUDA是一个并行计算平台和编程模型，能够使得使用GPU进行通用计算变得简单和优雅。
+1.2 cudnn 这个其实就是一个专门为深度学习计算设计的软件库，里面提供了很多专门的计算函数，如卷积等。从上图也可以看到，还有很多其他的软件库和中间件，包括实现c++ STL的thrust、实现gpu版本blas的cublas、实现快速傅里叶变换的cuFFT、实现稀疏矩阵运算操作的cuSparse以及实现深度学习网络加速的cuDNN等等，具体细节可参阅GPU-Accelerated Libraries
+1.2 CUDA Toolkit  参考CUDA Toolkit
+ CUDA Toolkit由以下组件组成：
+1.2.1 Compiler CUDA-C和CUDA-C++编译器NVCC位于bin/目录中。它建立在NVVM优化器之上，而NVVM优化器本身构建在LLVM编译器基础结构之上。因此开发人员可以使用nvm/目录下的Compiler SDK来直接针对NVVM进行开发。
+1.2.2 Tools 提供一些像profiler,debuggers等工具，这些工具可以从bin/目录中获取
+1.2.3 Libraries 下面列出的部分科学库和实用程序库可以在lib/目录中使用(Windows上的DLL位于bin/中)，它们的接口在include/目录中可获取。
+ cudart: CUDA Runtime cudadevrt: CUDA device runtime cupti: CUDA profiling tools interface nvml: NVIDIA management library nvrtc: CUDA runtime compilation cublas: BLAS (Basic Linear Algebra Subprograms，基础线性代数程序集) cublas_device: BLAS kernel interface &mldr;  1.">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700" rel=stylesheet type=text/css>
+<link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/normalize.css>
+<link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/main.css>
+<link id=dark-scheme rel=stylesheet type=text/css href=https://huweim.github.io/css/dark.css>
+<script src=https://huweim.github.io/js/feather.min.js></script>
+<script src=https://huweim.github.io/js/main.js></script>
+</head>
+<body>
+<div class="container wrapper">
+<div class=header>
+<h1 class=site-title><a href=https://huweim.github.io/>Cory Code</a></h1>
+<div class=site-description><p>Minimal and Clean <a href=https://github.com/athul/hugo-ink>blog theme for Hugo</a></p><nav class="nav social">
+<ul class=flat><li><a href=https://github.com/huweim title=GitHub><i data-feather=github></i></a></li><li><a href=https://twitter.com/athulcajay/ title=Twitter><i data-feather=twitter></i></a></li><li><a href=https://gitlab.com/athul/ title=GitLab><i data-feather=gitlab></i></a></li><li><a href=# class=scheme-toggle id=scheme-toggle></a></li></ul>
+</nav>
+</div>
+<nav class=nav>
+<ul class=flat>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/posts>All posts</a>
+</li>
+<li>
+<a href=/categories/>Categories</a>
+</li>
+<li>
+<a href=/archives>Archives</a>
+</li>
+<li>
+<a href=/tags>Tags</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+</ul>
+</nav>
+</div>
+<div class=post>
+<div class=post-header>
+<div class=meta>
+<div class=date>
+<span class=day>25</span>
+<span class=rest>Jul 2021</span>
+</div>
+</div>
+<div class=matter>
+<h1 class=title>CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析</h1>
+</div>
+</div>
+<div class=markdown>
+<h1 id=前言>前言</h1>
+<p>文章转载自知乎答主 <a href=https://www.zhihu.com/people/hexin_marsggbo>marsggbo</a>，当做笔记记录一下这些 CUDA 中经常接触的内容。</p>
+<h1 id=0>0</h1>
+<p>在使用深度学习框架的过程中一定会经常碰到这些东西，虽然anaconda有时会帮助我们自动地解决这些设置，但是有些特殊的库却还是需要我们手动配置环境，但是我对标题上的这些名词其实并不十分清楚，所以老是被网上的教程绕得云里雾里，所以觉得有必要写下一篇文章当做笔记供之后参考。</p>
+<h1 id=0-gpu型号含义>0. GPU型号含义</h1>
+<blockquote>
+<p>参考<a href="https://link.zhihu.com/?target=https%3A//chenrudan.github.io/blog/2015/12/20/introductionofgpuhardware.html">【GPU编程系列之一】从深度学习选择什么样的gpu来谈谈gpu的硬件架构</a></p>
+</blockquote>
+<ul>
+<li><strong>显卡</strong>： 简单理解这个就是我们前面说的<strong>GPU</strong>，尤其指NVIDIA公司生产的GPU系列，因为后面介绍的cuda,cudnn都是NVIDIA公司针对自身的GPU独家设计的。</li>
+<li><strong>显卡驱动</strong>：很明显就是字面意思，通常指<strong>NVIDIA Driver</strong>，其实它就是一个驱动软件，而前面的<strong>显卡</strong>就是硬件。</li>
+<li>gpu架构：Tesla、Fermi、Kepler、Maxwell、Pascal</li>
+<li>芯片型号：GT200、GK210、GM104、GF104等</li>
+<li>显卡系列：GeForce、Quadro、Tesla</li>
+<li>GeForce显卡型号：G/GS、GT、GTS、GTX</li>
+</ul>
+<p>gpu架构指的是硬件的设计方式，例如流处理器簇中有多少个core、是否有L1 or L2缓存、是否有双精度计算单元等等。每一代的架构是一种思想，如何去更好完成并行的思想</p>
+<p>芯片就是对上述gpu架构思想的实现，例如芯片型号GT200中第二个字母代表是哪一代架构，有时会有100和200代的芯片，它们基本设计思路是跟这一代的架构一致，只是在细节上做了一些改变，例如GK210比GK110的寄存器就多一倍。有时候一张显卡里面可能有两张芯片，Tesla k80用了两块GK210芯片。这里第一代的gpu架构的命名也是Tesla，但现在基本已经没有这种设计的卡了，下文如果提到了会用Tesla架构和Tesla系列来进行区分。</p>
+<p>而显卡系列在本质上并没有什么区别，只是NVIDIA希望区分成三种选择，</p>
+<ul>
+<li>GeFore用于家庭娱乐</li>
+<li>Quadro用于工作站</li>
+<li>Tesla系列用于服务器。</li>
+</ul>
+<p>Tesla的k型号卡为了高性能科学计算而设计，比较突出的优点是双精度浮点运算能力高并且支持ECC内存，但是双精度能力好在深度学习训练上并没有什么卵用，所以Tesla系列又推出了M型号来做专门的训练深度学习网络的显卡。需要注意的是Tesla系列没有显示输出接口，它专注于数据计算而不是图形显示。</p>
+<p>最后一个GeForce的显卡型号是不同的硬件定制，越往后性能越好，时钟频率越高显存越大，即G/GS&lt;GT&lt;GTS&lt;GTX。</p>
+<h1 id=1-cuda名称含义>1. CUDA名称含义</h1>
+<h2 id=11-cuda>1.1 CUDA</h2>
+<p>看了很多答案，有人说CUDA就是一门编程语言，像C,C++,python 一样，也有人说CUDA是API。CUDA英文全称是Compute Unified Device Architecture，是显卡厂商NVIDIA推出的运算平台。 CUDA™是一种由NVIDIA推出的通用并行计算架构，该架构使GPU能够解决复杂的计算问题。按照<a href="https://link.zhihu.com/?target=https%3A//blogs.nvidia.com/blog/2012/09/10/what-is-cuda-2/">官方</a>的说法是，<strong>CUDA是一个并行计算平台和编程模型，能够使得使用GPU进行通用计算变得简单和优雅</strong>。</p>
+<p><img src=https://pic3.zhimg.com/80/v2-1181b6863ba6fe9c8b12ddb33c280fd6_1440w.jpg alt=img></p>
+<h2 id=12-cudnn>1.2 cudnn</h2>
+<p>这个其实就是一个专门为深度学习计算设计的软件库，里面提供了很多专门的计算函数，如卷积等。从上图也可以看到，还有很多其他的软件库和中间件，包括实现c++ STL的thrust、实现gpu版本blas的cublas、实现快速傅里叶变换的cuFFT、实现稀疏矩阵运算操作的cuSparse以及实现深度学习网络加速的cuDNN等等，具体细节可参阅<a href="https://link.zhihu.com/?target=https%3A//developer.nvidia.com/gpu-accelerated-libraries">GPU-Accelerated Libraries</a></p>
+<h2 id=12-cuda-toolkit>1.2 CUDA Toolkit</h2>
+<blockquote>
+<p>参考<a href="https://link.zhihu.com/?target=https%3A//docs.nvidia.com/cuda/cuda-toolkit-release-notes/index.html%23major-components">CUDA Toolkit</a></p>
+</blockquote>
+<p>CUDA Toolkit由以下组件组成：</p>
+<h3 id=121-compiler>1.2.1 Compiler</h3>
+<p>CUDA-C和CUDA-C++编译器<code>NVCC</code>位于<code>bin/</code>目录中。它建立在<code>NVVM</code>优化器之上，而<code>NVVM</code>优化器本身构建在<code>LLVM</code>编译器基础结构之上。因此开发人员可以使用<code>nvm/</code>目录下的Compiler SDK来直接针对NVVM进行开发。</p>
+<h3 id=122-tools>1.2.2 Tools</h3>
+<p>提供一些像<code>profiler</code>,<code>debuggers</code>等工具，这些工具可以从<code>bin/</code>目录中获取</p>
+<h3 id=123-libraries>1.2.3 Libraries</h3>
+<p>下面列出的部分科学库和实用程序库可以在<code>lib/</code>目录中使用(Windows上的DLL位于<code>bin/</code>中)，它们的接口在<code>include/</code>目录中可获取。</p>
+<ul>
+<li><strong>cudart</strong>: CUDA Runtime</li>
+<li><strong>cudadevrt</strong>: CUDA device runtime</li>
+<li><strong>cupti</strong>: CUDA profiling tools interface</li>
+<li><strong>nvml</strong>: NVIDIA management library</li>
+<li><strong>nvrtc</strong>: CUDA runtime compilation</li>
+<li><strong>cublas</strong>: BLAS (Basic Linear Algebra Subprograms，基础线性代数程序集)</li>
+<li><strong>cublas_device</strong>: BLAS kernel interface</li>
+<li>&mldr;</li>
+</ul>
+<h3 id=124-cuda-samples>1.2.4 CUDA Samples</h3>
+<p>演示如何使用各种CUDA和library API的代码示例。可在Linux和Mac上的<code>samples/</code>目录中获得，Windows上的路径是<code>C：\ProgramData\NVIDIA Corporation\CUDA Samples</code>中。在Linux和Mac上，<code>samples/</code>目录是只读的，如果要对它们进行修改，则必须将这些示例复制到另一个位置。</p>
+<h3 id=125-cuda-driver>1.2.5 CUDA Driver</h3>
+<p>运行CUDA应用程序需要系统至少有一个<strong>具有CUDA功能的GPU</strong>和<strong>与CUDA工具包兼容的驱动程序</strong>。每个版本的CUDA工具包都对应一个最低版本的CUDA Driver，也就是说如果你安装的CUDA Driver版本比官方推荐的还低，那么很可能会无法正常运行。CUDA Driver是向后兼容的，这意味着根据CUDA的特定版本编译的应用程序将继续在后续发布的Driver上也能继续工作。通常为了方便，在安装CUDA Toolkit的时候会默认安装CUDA Driver。在开发阶段可以选择默认安装Driver，但是对于像Tesla GPU这样的商用情况时，建议在<a href="https://link.zhihu.com/?target=http%3A//www.nvidia.com/drivers">官方</a>安装最新版本的Driver。 目前(2019年10月)的CUDA Toolkit和CUDA Driver版本的对应情况如下：</p>
+<p><img src=https://pic1.zhimg.com/80/v2-fc8c720a858b6c2583b09f0228c4b3e0_1440w.jpg alt=img></p>
+<h1 id=2-nvccnvidia-smi>2. <code>nvcc</code>&<code>nvidia-smi</code></h1>
+<h2 id=21-nvcc>2.1 <code>nvcc</code></h2>
+<p>这个在前面已经介绍了，<code>nvcc</code>其实就是CUDA的编译器,可以从CUDA Toolkit的<code>/bin</code>目录中获取,类似于<code>gcc</code>就是c语言的编译器。由于程序是要经过编译器编程成可执行的二进制文件，而cuda程序有两种代码，一种是运行在cpu上的host代码，一种是运行在gpu上的device代码，所以<code>nvcc</code>编译器要保证两部分代码能够编译成二进制文件在不同的机器上执行。nvcc涉及到的文件后缀及相关意义如下表</p>
+<p><img src=https://pic3.zhimg.com/80/v2-82d456f1cce3cdb72793a9588544d97a_1440w.jpg alt=img></p>
+<h2 id=22-nvidia-smi>2.2 <code>nvidia-smi</code></h2>
+<p><code>nvidia-smi</code>全程是NVIDIA System Management Interface ，它是一个基于前面介绍过的<code>NVIDIA Management Library(NVML)</code>构建的命令行实用工具，旨在帮助管理和监控NVIDIA GPU设备。</p>
+<h2 id=23-nvcc和nvidia-smi显示的cuda版本不同>2.3 <code>nvcc</code>和<code>nvidia-smi</code>显示的CUDA版本不同？</h2>
+<p>在我们实验室的服务器上<code>nvcc --version</code>显示的结果如下：</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=n>nvcc</span><span class=p>:</span> <span class=n>NVIDIA</span> <span class=p>(</span><span class=n>R</span><span class=p>)</span> <span class=n>Cuda</span> <span class=n>compiler</span> <span class=n>driver</span>
+<span class=n>Copyright</span> <span class=p>(</span><span class=n>c</span><span class=p>)</span> <span class=mi>2005</span><span class=o>-</span><span class=mi>2018</span> <span class=n>NVIDIA</span> <span class=n>Corporation</span>
+<span class=n>Built</span> <span class=n>on</span> <span class=n>Tue_Jun_12_23</span><span class=p>:</span><span class=mi>07</span><span class=p>:</span><span class=mi>04</span><span class=n>_CDT_2018</span>
+<span class=n>Cuda</span> <span class=n>compilation</span> <span class=n>tools</span><span class=p>,</span> <span class=n>release</span> <span class=mf>9.2</span><span class=p>,</span> <span class=n>V9</span><span class=mf>.2.148</span>
+</code></pre></div><p>而<code>nvidia-smi</code>显示结果如下：</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-python data-lang=python><span class=o>+-----------------------------------------------------------------------------+</span>
+<span class=o>|</span> <span class=n>NVIDIA</span><span class=o>-</span><span class=n>SMI</span> <span class=mf>410.104</span>      <span class=n>Driver</span> <span class=n>Version</span><span class=p>:</span> <span class=mf>410.104</span>      <span class=n>CUDA</span> <span class=n>Version</span><span class=p>:</span> <span class=mf>10.0</span>     <span class=o>|</span>
+<span class=o>|-------------------------------+----------------------+----------------------+</span>
+<span class=o>|</span> <span class=n>GPU</span>  <span class=n>Name</span>        <span class=n>Persistence</span><span class=o>-</span><span class=n>M</span><span class=o>|</span> <span class=n>Bus</span><span class=o>-</span><span class=n>Id</span>        <span class=n>Disp</span><span class=o>.</span><span class=n>A</span> <span class=o>|</span> <span class=n>Volatile</span> <span class=n>Uncorr</span><span class=o>.</span> <span class=n>ECC</span> <span class=o>|</span>
+<span class=o>|</span> <span class=n>Fan</span>  <span class=n>Temp</span>  <span class=n>Perf</span>  <span class=n>Pwr</span><span class=p>:</span><span class=n>Usage</span><span class=o>/</span><span class=n>Cap</span><span class=o>|</span>         <span class=n>Memory</span><span class=o>-</span><span class=n>Usage</span> <span class=o>|</span> <span class=n>GPU</span><span class=o>-</span><span class=n>Util</span>  <span class=n>Compute</span> <span class=n>M</span><span class=o>.</span> <span class=o>|</span>
+<span class=o>|===============================+======================+======================|</span>
+<span class=o>|</span>   <span class=mi>0</span>  <span class=n>Tesla</span> <span class=n>V100</span><span class=o>-</span><span class=n>PCIE</span><span class=o>...</span>  <span class=n>On</span>   <span class=o>|</span> <span class=mi>00000000</span><span class=p>:</span><span class=mi>01</span><span class=p>:</span><span class=mf>00.0</span> <span class=n>Off</span> <span class=o>|</span>                  <span class=n>Off</span> <span class=o>|</span>
+<span class=o>|</span> <span class=n>N</span><span class=o>/</span><span class=n>A</span>   <span class=mi>28</span><span class=n>C</span>    <span class=n>P0</span>    <span class=mi>26</span><span class=n>W</span> <span class=o>/</span> <span class=mi>250</span><span class=n>W</span> <span class=o>|</span>      <span class=mi>0</span><span class=n>MiB</span> <span class=o>/</span> <span class=mi>16130</span><span class=n>MiB</span> <span class=o>|</span>      <span class=mi>0</span><span class=o>%</span>      <span class=n>Default</span> <span class=o>|</span>
+<span class=o>+-------------------------------+----------------------+----------------------+</span>
+<span class=o>|</span>   <span class=mi>1</span>  <span class=n>Tesla</span> <span class=n>P100</span><span class=o>-</span><span class=n>PCIE</span><span class=o>...</span>  <span class=n>On</span>   <span class=o>|</span> <span class=mi>00000000</span><span class=p>:</span><span class=mi>02</span><span class=p>:</span><span class=mf>00.0</span> <span class=n>Off</span> <span class=o>|</span>                  <span class=n>Off</span> <span class=o>|</span>
+<span class=o>|</span> <span class=n>N</span><span class=o>/</span><span class=n>A</span>   <span class=mi>24</span><span class=n>C</span>    <span class=n>P0</span>    <span class=mi>30</span><span class=n>W</span> <span class=o>/</span> <span class=mi>250</span><span class=n>W</span> <span class=o>|</span>      <span class=mi>0</span><span class=n>MiB</span> <span class=o>/</span> <span class=mi>16280</span><span class=n>MiB</span> <span class=o>|</span>      <span class=mi>0</span><span class=o>%</span>      <span class=n>Default</span> <span class=o>|</span>
+<span class=o>+-------------------------------+----------------------+----------------------+</span>
+
+<span class=o>+-----------------------------------------------------------------------------+</span>
+<span class=o>|</span> <span class=n>Processes</span><span class=p>:</span>                                                       <span class=n>GPU</span> <span class=n>Memory</span> <span class=o>|</span>
+<span class=o>|</span>  <span class=n>GPU</span>       <span class=n>PID</span>   <span class=n>Type</span>   <span class=n>Process</span> <span class=n>name</span>                             <span class=n>Usage</span>      <span class=o>|</span>
+<span class=o>|=============================================================================|</span>
+<span class=o>|</span>  <span class=n>No</span> <span class=n>running</span> <span class=n>processes</span> <span class=n>found</span>                                                 <span class=o>|</span>
+<span class=o>+-----------------------------------------------------------------------------+</span>
+</code></pre></div><p>可以看到<code>nvcc</code>的CUDA 版本是9.2，而<code>nvidia-smi</code>的CUDA版本是10.0。很奇怪的是有时候绝大多数情况代码也能整成跑起来，<a href="https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/53422407/different-cuda-versions-shown-by-nvcc-and-nvidia-smi">stackoverflow</a>上的一个解释如下：</p>
+<p>CUDA有两个主要的API：<strong>runtime(运行时) API</strong>和<strong>driver API</strong>。这两个API都有对应的CUDA版本（如9.2和10.0等）。</p>
+<ul>
+<li>用于支持<strong>driver API</strong>的必要文件(如<code>libcuda.so</code>)是由<strong>GPU driver installer</strong>安装的。<code>nvidia-smi</code>就属于这一类API。</li>
+<li>用于支持<strong>runtime API</strong>的必要文件(如<code>libcudart.so</code>以及<code>nvcc</code>)是由<strong>CUDA Toolkit installer</strong>安装的。（CUDA Toolkit Installer有时可能会集成了GPU driver Installer）。<code>nvcc</code>是与CUDA Toolkit一起安装的CUDA compiler-driver tool，它只知道它自身构建时的CUDA runtime版本。它不知道安装了什么版本的GPU driver，甚至不知道是否安装了GPU driver。</li>
+</ul>
+<p>综上，如果driver API和runtime API的CUDA版本不一致可能是因为你使用的是单独的GPU driver installer，而不是CUDA Toolkit installer里的GPU driver installer。</p>
+<h1 id=3-runtime和driver-api区别>3. runtime和driver API区别</h1>
+<p>下图很清楚的展示前面提到的各种概念之间的关系，其中runtime和driver API在很多情况非常相似，也就是说用起来的效果是等价的，但是你不能混合使用这两个API，因为二者是互斥的。也就是说在开发过程中，你只能选择其中一种API。</p>
+<p>简单理解二者的区别就是：runtime是更高级的封装，开发人员用起来更方便，而driver API更接近底层，速度可能会更快。</p>
+<p>两种API详细的<a href="https://link.zhihu.com/?target=https%3A//docs.nvidia.com/cuda/cuda-runtime-api/driver-vs-runtime-api.html">区别</a>如下：</p>
+<h2 id=31-复杂性>3.1 复杂性</h2>
+<ul>
+<li>runtime API通过提供隐式初始化、上下文管理和模块管理来简化设备代码管理。这使得代码更简单，但也缺乏驱动程序API所具有的控制级别。</li>
+<li>相比之下，driver API提供了更细粒度的控制，特别是在上下文和模块加载方面。实现内核启动要复杂得多，因为执行配置和内核参数必须用显式函数调用指定。</li>
+</ul>
+<h2 id=32-控制>3.2 控制</h2>
+<ul>
+<li>对于runtime API，其在运行时，所有内核都在初始化期间自动加载，并在程序运行期间保持加载状态。</li>
+<li>而使用driver API，可以只加载当前需要的模块，甚至动态地重新加载模块。driver API也是语言独立的，因为它只处理<code>cubin</code>对象。</li>
+</ul>
+<h2 id=33-上下文管理>3.3 上下文管理</h2>
+<p>上下文管理可以通过driver API完成，但是在runtime API中不公开。相反，runtime API自己决定为线程使用哪个上下文:</p>
+<ul>
+<li>如果一个上下文通过driver API成为调用线程的当前上下文，runtime将使用它</li>
+<li>如果没有这样的上下文，它将使用“主上下文(primary context)”。</li>
+</ul>
+<p>主上下文会根据需要创建，每个设备每个进程一个上下文，并进行引用计数，然后在没有更多的引用时销毁它们。在一个进程中，所有runtime API的用户都将共享主上下文，除非上下文已成为每个线程的当前上下文。runtime使用的上下文，即当前上下文或主上下文，可以用<code>cudaDeviceSynchronize()</code>同步，也可以用<code>cudaDeviceReset()</code>销毁。 但是，将runtime API与主上下文一起使用会有tradeoff。例如，对于那些需要给较大的软件包写插件的开发者来说者会带来不少麻烦，因为如果所有的插件都在同一个进程中运行，它们将共享一个上下文，但可能无法相互通信。也就是说，如果其中一个在完成所有CUDA工作后调用<code>cudaDeviceReset()</code>，其他插件将失败，因为它们使用的上下文在它们不知情的情况下被破坏。为了避免这个问题，CUDA clients可以使用driver API来创建和设置当前上下文，然后使用runtime API来处理它。但是，上下文可能会消耗大量的资源，比如设备内存、额外的主机线程和设备上上下文切换的性能成本。当将driver API与基于runtime API(如cuBLAS或cuFFT)构建的库一起使用时，这种runtime-driver上下文共享非常重要。</p>
+<p><img src=https://pic3.zhimg.com/80/v2-a1f1d9f699697a8e05979abf749fbeae_1440w.jpg alt=img></p>
+<h1 id=4-linux中path-library_path-ld_library_path的区别>4. Linux中PATH、 LIBRARY_PATH、 LD_LIBRARY_PATH的区别</h1>
+<blockquote>
+<p>参考<a href="https://link.zhihu.com/?target=https%3A//www.imooc.com/article/43747">Linux中PATH、 LIBRARY_PATH、 LD_LIBRARY_PATH的区别</a></p>
+</blockquote>
+<h2 id=41-path>4.1 PATH</h2>
+<p>PATH是可执行文件路径，是三个中我们最常接触到的，因为我们命令行中的每句能运行的命令，如ls、top、ps等，都是系统通过PATH找到了这个命令执行文件的所在位置，再run这个命令（可执行文件）。 比如说，在用户的目录<code>~/mycode/</code>下有一个bin文件夹，里面放了有可执行的二进制文件、shell脚本等。如果想要在任意目录下都能运行上述bin文件夹的可执行文件，那么只需要把这个bin的路径添加到PATH即可，方法如下：</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1># vim ~/.bashrc</span>
+<span class=nv>PATH</span><span class=o>=</span><span class=nv>$PATH</span>:~/mycode/bin
+</code></pre></div><h2 id=42-library_path和ld_library_path>4.2 LIBRARY_PATH和LD_LIBRARY_PATH</h2>
+<p>这两个路径可以放在一起讨论，</p>
+<ul>
+<li><code>LIBRARY_PATH</code>是<strong>程序编译期间</strong>查找动态链接库时指定查找共享库的路径</li>
+<li><code>LD_LIBRARY_PATH</code>是<strong>程序加载运行期间</strong>查找动态链接库时指定除了系统默认路径之外的其他路径</li>
+</ul>
+<p>两者的共同点是库，库是这两个路径和PATH路径的区别，PATH是可执行文件。</p>
+<p>两者的差异点是使用时间不一样。一个是编译期，对应的是开发阶段，如gcc编译；一个是加载运行期，对应的是程序已交付的使用阶段。</p>
+<p>配置方法也是类似：</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>export</span>  <span class=nv>LD_LIBRARY_PATH</span><span class=o>=</span>LD_LIBRARY_PATH:XXXX
+</code></pre></div><h1 id=5-多版本cuda切换>5 多版本CUDA切换</h1>
+<blockquote>
+<p>参考<a href="https://link.zhihu.com/?target=https%3A//blog.csdn.net/Maple2014/article/details/78574275">安装多版本cuda，多版本之间切换</a></p>
+</blockquote>
+<p>基于前面几个小节的介绍，现在再来介绍如何管理多版本CUDA就会好懂很多了。</p>
+<p>PS：自己在安装使用 GPGPU-Sim 中也记录了 CUDA 的安装过程</p>
+<h2 id=51-cuda-的下载与安装方法选择>5.1 cuda 的下载与安装方法选择</h2>
+<p>到 <a href="https://link.zhihu.com/?target=https%3A//developer.nvidia.com/cuda-downloads">CUDA Toolkit Download</a> 下载所需版本，以 cuda_9.0.176_384.81_linux.run为例：</p>
+<p><img src=https://pic2.zhimg.com/80/v2-73e1c14194b431054b3f567035bba4b5_1440w.jpg alt=img></p>
+<p>建议选择使用 <code>.run</code> 文件安装，因为使用 <code>.deb</code>可能会将已经安装的较新的显卡驱动替换。</p>
+<h2 id=52-cuda-安装>5.2 cuda 安装</h2>
+<p>进入到放置 <code>cuda_9.0.176_384.81_linux.run</code> 的目录：</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo chmod +x cuda_9.0.176_384.81_linux.run <span class=c1># 为 cuda_9.0.176_384.81_linux.run 添加可执行权限</span>
+./cuda_9.0.176_384.81_linux.run <span class=c1># 安装 cuda_9.0.176_384.81_linux.run</span>
+</code></pre></div><p>在安装过程中截取其中比较重要的几个选择：</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>Do you accept the previously <span class=nb>read</span> EULA?
+accept/decline/quit: accept
+
+Install NVIDIA Accelerated Graphics Driver <span class=k>for</span> Linux-x86_64 384.81?
+<span class=o>(</span>y<span class=o>)</span>es/<span class=o>(</span>n<span class=o>)</span>o/<span class=o>(</span>q<span class=o>)</span>uit: n <span class=c1># 如果在这之前已经安装好更高版本的显卡驱动就不需要再重复安装，如果需要重复安装就选择 yes,此外还需要关闭图形界面。</span>
+
+Install the CUDA 9.0 Toolkit?
+<span class=o>(</span>y<span class=o>)</span>es/<span class=o>(</span>n<span class=o>)</span>o/<span class=o>(</span>q<span class=o>)</span>uit: y
+
+Enter Toolkit Location
+ <span class=o>[</span> default is /usr/local/cuda-9.0 <span class=o>]</span>: <span class=c1># 一般选择默认即可，也可以选择安装在其他目录，在需要用的时候指向该目录或者使用软连接 link 到 /usr/local/cuda。</span>
+
+/usr/local/cuda-9.0 is not writable.
+Do you wish to run the installation with <span class=s1>&#39;sudo&#39;</span>?
+<span class=o>(</span>y<span class=o>)</span>es/<span class=o>(</span>n<span class=o>)</span>o: y
+
+Please enter your password: 
+Do you want to install a symbolic link at /usr/local/cuda? <span class=c1># 是否将安装目录通过软连接的方式 link 到 /usr/local/cuda，yes or no 都可以，取决于你是否使用 /usr/local/cuda 为默认的 cuda 目录。</span>
+<span class=o>(</span>y<span class=o>)</span>es/<span class=o>(</span>n<span class=o>)</span>o/<span class=o>(</span>q<span class=o>)</span>uit: n
+
+Install the CUDA 9.0 Samples?
+<span class=o>(</span>y<span class=o>)</span>es/<span class=o>(</span>n<span class=o>)</span>o/<span class=o>(</span>q<span class=o>)</span>uit: n
+</code></pre></div><p>前面选择的一些汇总：</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>Driver:   Not Selected
+Toolkit:  Installed in /usr/local/cuda-9.0
+Samples:  Not Selected
+
+Please make sure that
+ -   PATH includes /usr/local/cuda-9.0/bin
+ -   LD_LIBRARY_PATH includes /usr/local/cuda-9.0/lib64, or, add /usr/local/cuda-9.0/lib64 to /etc/ld.so.conf and run ldconfig as root
+
+To uninstall the CUDA Toolkit, run the uninstall script in /usr/local/cuda-9.0/bin
+
+Please see CUDA_Installation_Guide_Linux.pdf in /usr/local/cuda-9.0/doc/pdf <span class=k>for</span> detailed information on setting up CUDA.
+
+***WARNING: Incomplete installation! This installation did not install the CUDA Driver. A driver of version at least 384.00 is required <span class=k>for</span> CUDA 9.0 functionality to work.
+To install the driver using this installer, run the following command, replacing &lt;CudaInstaller&gt; with the name of this run file:
+    sudo &lt;CudaInstaller&gt;.run -silent -driver
+</code></pre></div><p>安装完成后可以在 /usr/local 目录下看到：</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>cuda-8.0 <span class=c1># 笔者之前安装的cuda-8.0</span>
+cuda-9.0 <span class=c1># 刚刚安装的cuda-9.0</span>
+cuda <span class=c1># cuda-8.0 的软连接</span>
+</code></pre></div><h2 id=53-多个-cuda-版本之间进行切换>5.3 多个 cuda 版本之间进行切换</h2>
+<p>将<code>~/.bashrc</code> 或　<code>~/.zshrc</code> 下与cuda相关的路径都改为　<code>/usr/local/cuda/</code>　而不使用　<code>/usr/local/cuda-8.0/</code> 或<code>/usr/local/cuda-9.0/</code>。</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=c1>#在切换cuda版本时</span>
+rm -rf /usr/local/cuda#删除之前创建的软链接
+sudo ln -s /usr/local/cuda-8.0/ /usr/local/cuda/
+nvcc --version <span class=c1>#查看当前 cuda 版本</span>
+
+nvcc: NVIDIA <span class=o>(</span>R<span class=o>)</span> Cuda compiler driver
+Copyright <span class=o>(</span>c<span class=o>)</span> 2005-2016 NVIDIA Corporation
+Built on Mon_Jan_23_12:24:11_CST_2017
+Cuda compilation tools, release 8.0, V8.0.62
+
+<span class=c1>#cuda8.0 切换到 cuda9.0 </span>
+rm -rf /usr/local/cuda
+sudo ln -s /usr/local/cuda-9.0/ /usr/local/cuda/
+nvcc --version
+</code></pre></div><h1 id=6-conda安装的cuda-toolkit和nvidia的cuda-toolkit到底什么区别>6. Conda安装的CUDA Toolkit和NVIDIA的CUDA Toolkit到底什么区别？</h1>
+<p>上面说了那么多可能看得云里雾里，下面做一个小的总结（参考下文）。</p>
+<p><a href="https://link.zhihu.com/?target=https%3A//www.cnblogs.com/yhjoker/p/10972795.html">Pytorch 使用不同版本的 cudawww.cnblogs.com<img src=https://pic2.zhimg.com/v2-0b8ae563079a01e227a42426433ce9b5_180x120.jpg alt=图标></a></p>
+<p><strong>Nvidia</strong> 官方提供的 CUDA Toolkit 是一个<strong>完整</strong>的工具安装包，其中提供了 Nvidia <strong>驱动程序</strong>、<strong>开发 CUDA 程序</strong>相关的开发工具包等可供安装的选项。使用 Nvidia 官网提供的 CUDA Toolkit 可以安装开发 CUDA 程序所需的工具，包括 CUDA 程序的编译器、IDE、调试器等，CUDA 程序所对应的各式库文件以及它们的头文件。</p>
+<p>但对于 Pytorch 之类的深度学习框架而言，其在大多数需要使用 GPU 的情况中只需要使用 CUDA 的动态链接库支持程序的运行( <strong>Pytorch 本身与 CUDA 相关的部分是提前编译好的</strong> )，就像常见的可执行程序一样，不需要重新进行编译过程，只需要其所依赖的动态链接库存在即可正常运行。</p>
+<p><strong>Anaconda</strong> 在安装 Pytorch 等会使用到 CUDA 的框架时，会自动为用户安装 cudatoolkit，其主要包含应用程序在使用 CUDA 相关的功能时所依赖的<strong>动态链接库，不会安装驱动程序</strong>。在安装了 cudatoolkit 后，只要系统上存在与当前的 cudatoolkit 所兼容的 Nvidia 驱动，则已经编译好的 CUDA 相关的程序就可以直接运行，而不需要安装完整的 Nvidia 官方提供的 CUDA Toolkit .</p>
+<p>总的来说，你可以把Anaconda安装的 Toolkit 看成是一个组装好的汽车，型号是10.0，恰巧你又安装了10.0版本的NVIDIA的CUDA驱动程序，那么你就有了10.0的钥匙，那么你就可以直接开豪车了。 反之，如果你只有9.0的钥匙，那你此时有两个解决办法，一是用Anaconda安装9.0版本的Pytorch，另一个是另外配一把10.0的钥匙。如何切换不同钥匙的方法在上文已经介绍了。</p>
+<h1 id=reference>Reference</h1>
+<p><a href=https://zhuanlan.zhihu.com/p/91334380>https://zhuanlan.zhihu.com/p/91334380</a></p>
+</div>
+<div class=tags>
+<ul class=flat>
+<li><a href=/tags/%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2>浅尝辄止</a></li>
+<li><a href=/tags/cuda>CUDA</a></li>
+</ul>
+</div></div>
+</div>
+<div class="footer wrapper">
+<nav class=nav>
+<div>2021 © Athul | <a href=https://github.com/knadh/hugo-ink>Ink</a> theme on <a href=https://gohugo.io>Hugo</a></div>
+</nav>
+</div>
+<script>feather.replace()</script>
+</body>
+</html>
