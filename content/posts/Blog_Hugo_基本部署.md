@@ -48,6 +48,8 @@ categories: ["Hugo"]
 
 为文章添加 tags, categories 以便分类
 
+:star: tags and categories 最好不要使用一模一样的名字，否则会出现 ambiguous 错误
+
 ## 预览
 
 在根目录下打开 Git，输入命令

@@ -2,8 +2,8 @@
 title: "搭建GPGPU-Sim实验环境"
 date: 2021-09-27T22:54:06+08:00
 draft: false
-tags: ["gpgpu-sim", "环境搭建"]
-categories: ["gpgpu"]
+tags: ["GPGPU-Sim", "环境搭建"]
+categories: ["GPGPU"]
 ---
 
 # 0. 前言
