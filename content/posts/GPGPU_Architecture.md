@@ -1,5 +1,5 @@
 ---
-title: "GPGPU_Arch"
+title: "GPGPU_Architecture"
 date: 2021-07-24T16:35:27+08:00
 draft: false
 tags: ["教材学习", "research"]

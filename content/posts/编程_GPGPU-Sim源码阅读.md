@@ -1,7 +1,7 @@
 ---
 title: "GPGPU-Sim源码阅读"
 date: 2021-09-28T15:51:46+08:00
-lastmod: 
+lastmod: 2021-10-23T10:02:46+08:00
 draft: false
 author: "Cory"
 keywords: [""]
@@ -52,6 +52,38 @@ tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值
 ### issue_warp 函数
 
 free 掉相应的 I-Buffer
+
+### scheduler_unit::cycle()
+
+In function `scheduler_unit::cycle()` , call `order_warps()` to sort warps according to their priority. 
+
+排序后的 warp 放在 vector `m_next_cycle_prioritized_warps` 中，对其进行遍历来处理这个 vector 中的 warp。
+
+:exclamation: 值得注意的是在 order_warp() 后，for 循环会遍历  vector `m_next_cycle_prioritized_warps` 中的所有 warp。而不是发射一个 warp 就重新排序一次。
+
+> 这一点和自己的理解与猜想不太一样
+
+---
+
+进入 for 循环，拿到 warp id，判断
+
++ I-Buffer 是否为空；是否处于 waiting 状态。如果都通过，进入一个 while 循环
+  + 如果指令是有效的 `if(pI)`
+    + 如果出现分支 `if(pc != pI->pc)`，刷掉 I-Buffer
+    + 如果没有分支，此时 `valid=true`，指令是有效的。如果通过 scoreboard 检测，终于可以执行了。先读取 active mask 确定要执行哪些线程，然后判断 `pI->op` 是 内存操作 还是 运算操作。如果相应的寄存器可以使用 `has_free()`，则 call `issue_warp()` 将寄存器、指令、active mask、warp id、scheduler id 发送并执行。
+    + `warp_inst_issued = true; issued++; issued_inst = true`
+  + else if 下一条指令是有效的
+    + ...
+  + 如果指令成功发射 `if (warp_inst_issued)`，执行了 issue_warp() 后会进入这个 if 语句，做一些 warp 发射后的统计信息等等
+    + call `do_on_warp_issued(warp_id, issued, iter);`
+  + checked++
++ 从 while 循环出来，如果至少有一个 warp 被发射 `if(issued)`，遍历 `m_supervised_warps`，找到那个被发射的 warp，然后将其赋值给 `m_last_supervised_issued`
+
+---
+
+##### scheduler_size()
+
+scheduler.size 就是2，代表一个 core 中 warp scheduler 的数量
 
 ## 关于类
 
@@ -114,7 +146,10 @@ ldst_unit::cycle() 负责各个 memory 的时钟建模，包括 shared memory, L
 shader_core_ctx::cycle()
 |--	writeback();
 |--	execute();
-	|-- scheduler_unit::cycle();
+	|-- m_fu[n]->cycle(); //m_fu[] contains ldst_unit, sfu_unit, sp_unit
+		|-- ldst_unit::cycle();
+			|-- writeback();
+			|-- m_operand_collector->step();
 	|-- issue(register_set &source_reg)
 |--	read_operands();
 |--	issue();
@@ -158,7 +193,7 @@ if(pI){
        		|-- m_shader->get_active_mask(warp_id, pI);
         	// need to check which pipieline to send, MEM, SP, SFU... 
         	// the only different is the first parameter, register_set *m_XX_out
-        	|-- m_shader->shader_core_ctx::issue_warp(*m_mem_out, pI, active_mask, 					warp_id, m_id);
+        	|-- m_shader->shader_core_ctx::issue_warp(*m_mem_out, pI, active_mask, warp_id, m_id);
     	}
 	}
 }

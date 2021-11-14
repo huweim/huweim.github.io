@@ -32,6 +32,34 @@ origin  git@github.com:huweim/huweim.github.io.git (push)
 $ git remote rm origin
 ```
 
+#### 1.3 Pull Origin Master to Local
+
+:x:似乎 push 之前如果有东西需要先 pull
+
++ 是因为远端已经创建了 README.md，local 也有README.md。有冲突，所以需要先 pull 过来同步。
+
+**git pull** 命令用于从远程获取代码并合并本地的版本。
+
+**git pull** 其实就是 **git fetch** 和 **git merge FETCH_HEAD** 的简写。 命令格式如下：
+
+```bash
+git pull <远程主机名> <远程分支名>:<本地分支名>
+```
+
+将远程主机 origin 的 master 分支拉取过来，与本地的 brantest 分支合并。
+
+```bash
+git pull origin master:brantest
+```
+
+如果远程分支是与当前分支合并，则冒号后面的部分可以省略。
+
+```bash
+git pull origin master
+```
+
+上面命令表示，取回 origin/master 分支，再与本地的 brantest 分支合并。
+
 ### 2. Clone from Remote Repo
 
 ```bash
@@ -59,8 +87,7 @@ git commit -m "remove file1.txt"
 But if you want to remove the file only from the Git repository and not remove it from the filesystem, use:
 
 ```sh
-git rm --cached file1.txt
-git commit -m "remove file1.txt"
+git rm --cached file1.txtgit commit -m "remove file1.txt"
 ```
 
 And to push changes to remote repo
@@ -92,25 +119,13 @@ git push origin branch_name
 + commit_id（版本号） 964ab89b23c2.......
 
 + ```bash
-  $ git reset --hard commit_id
-  $ git reset --hard 964ab89
+  $ git reset --hard commit_id$ git reset --hard 964ab89
   ```
 
 + 知道commit_id可以回到过去的版本
 
 ```bash
-$ git log
-commit 964ab89b23c2aa367c89ee2e9578e1398819d523 (HEAD -> master, origin/master)
-Author: huweim <506834968@qq.com>
-Date:   Mon Mar 8 15:43:24 2021 +0800
-
-    add first post
-
-commit bd6582181e070822896bbb8cfb2b3a3e80cf3163
-Author: huweim <506834968@qq.com>
-Date:   Mon Mar 8 15:30:25 2021 +0800
-
-    Full themes of archie
+$ git logcommit 964ab89b23c2aa367c89ee2e9578e1398819d523 (HEAD -> master, origin/master)Author: huweim <506834968@qq.com>Date:   Mon Mar 8 15:43:24 2021 +0800    add first postcommit bd6582181e070822896bbb8cfb2b3a3e80cf3163Author: huweim <506834968@qq.com>Date:   Mon Mar 8 15:30:25 2021 +0800    Full themes of archie
 ```
 
 ##### 4.1.2 寻找未来
@@ -119,16 +134,7 @@ Date:   Mon Mar 8 15:30:25 2021 +0800
 + 根据commit_id寻找当前版本的“未来”
 
 ```bash
-$ git reflog
-964ab89 (HEAD -> master, origin/master) HEAD@{0}: commit: add first post
-bd65821 HEAD@{1}: commit: Full themes of archie
-23ca6d2 HEAD@{2}: commit: modify the hugo themes
-a6ad376 HEAD@{3}: reset: moving to HEAD^
-4eaa987 HEAD@{4}: reset: moving to HEAD^
-d7770ba HEAD@{5}: commit: Publish fitst 1
-4eaa987 HEAD@{6}: commit: Publish fitst
-a6ad376 HEAD@{7}: pull: Fast-forward
-6db58f9 HEAD@{8}: commit (initial): Initial Commit
+$ git reflog964ab89 (HEAD -> master, origin/master) HEAD@{0}: commit: add first postbd65821 HEAD@{1}: commit: Full themes of archie23ca6d2 HEAD@{2}: commit: modify the hugo themesa6ad376 HEAD@{3}: reset: moving to HEAD^4eaa987 HEAD@{4}: reset: moving to HEAD^d7770ba HEAD@{5}: commit: Publish fitst 14eaa987 HEAD@{6}: commit: Publish fitsta6ad376 HEAD@{7}: pull: Fast-forward6db58f9 HEAD@{8}: commit (initial): Initial Commit
 ```
 
 #### 4.2 撤销修改操作
@@ -152,40 +158,31 @@ git checkout -- README.md
 ##### Case 2 -> 修改了file，且已经add
 
 ```bash
-git reset HEAD <file>    #撤销对暂存区的修改  回到case 1的状态
-git checkout -- file     #情况来到case1, 撤销工作区修改
+git reset HEAD <file>    #撤销对暂存区的修改  回到case 1的状态git checkout -- file     #情况来到case1, 撤销工作区修改
 ```
 
 e.g
 
 ```bash
-git reset HEAD README.md
-git checkout -- README.md
+git reset HEAD README.mdgit checkout -- README.md
 ```
 
 ##### case 3 -> 修改了file，且已经add，并commit
 
 ```bash
-git reset --hard HEAD^    #回到上一个版本，回到case 2的状态
-git reset HEAD <file>     #撤销对暂存区的修改  回到case 1的状态
-git checkout -- file      #情况来到case1, 撤销工作区修改
+git reset --hard HEAD^    #回到上一个版本，回到case 2的状态git reset HEAD <file>     #撤销对暂存区的修改  回到case 1的状态git checkout -- file      #情况来到case1, 撤销工作区修改
 ```
 
 e.g
 
 ```bash
-git reset --hard HEAD^
-git reset HEAD README.md
-git checkout -- README.md
+git reset --hard HEAD^git reset HEAD README.mdgit checkout -- README.md
 ```
 
 #### 4.3. 版本回退
 
 ```bash
-git reset --hard HEAD^    #回到上一个版本
-git reset --hard HEAD^^   #回到上上一个版本
-git reset --hard 1084a    #回到commit_id以1084a开头的版本
-git reset --hard HEAD~100 #回到上100个版本
+git reset --hard HEAD^    #回到上一个版本git reset --hard HEAD^^   #回到上上一个版本git reset --hard 1084a    #回到commit_id以1084a开头的版本git reset --hard HEAD~100 #回到上100个版本
 ```
 
 #### 4.4 回滚后在提交（坑）
@@ -193,9 +190,7 @@ git reset --hard HEAD~100 #回到上100个版本
 ##### I. 基本操作
 
 ```bash
-git add -A   
-git commit -m '说明'
-push -u origin master   
+git add -A   git commit -m '说明'push -u origin master   
 ```
 
 ##### II. 报错
@@ -203,11 +198,7 @@ push -u origin master
 在执行`push -u origin master` 命令后报错
 
 ```bash
-error: failed to push some refs to 'github.com:huweim/huweim.github.io.git'
-hint: Updates were rejected because the tip of your current branch is behind
-hint: its remote counterpart. Integrate the remote changes (e.g.
-hint: 'git pull ...') before pushing again.
-hint: See the 'Note about fast-forwards' in 'git push --help' for details.
+error: failed to push some refs to 'github.com:huweim/huweim.github.io.git'hint: Updates were rejected because the tip of your current branch is behindhint: its remote counterpart. Integrate the remote changes (e.g.hint: 'git pull ...') before pushing again.hint: See the 'Note about fast-forwards' in 'git push --help' for details.
 ```
 
 > 报错原因-> `当前提交版本低于git主版本`
@@ -231,4 +222,4 @@ push -u origin master -f
 
 ### 6. Git常用命令速查表
 
-![git常用命令大全](../Image/Git_Common.jpg)
+<img src="D:\STU\2021-Spring\Core Course\Git\Git常用命令大全.jpg" alt="Git常用命令大全" style="zoom:50%;" />
