@@ -81,10 +81,7 @@ I. Fetch Fetch 单元是一个调度器，作用
 <h1 id=0-前言>0. 前言</h1>
 <p>搞懂 SIMT Core 对于理解 GPGPU 的指令 fetch、指令发射、内存访问、数据传输等步骤非常重要，按照 GPGPU-Sim 的官方文档进行一个简单的梳理</p>
 <p>SIMT Core 的微架构模型中有几个比较重要的硬件单元，接下来会一一介绍他们的作用，</p>
-<p></p>
-<p></p>
 <h1 id=000-放一个硬件概念对应表>000 放一个硬件概念对应表</h1>
-<p></p>
 <h1 id=1-front-end>1. Front End</h1>
 <ul>
 <li>Instruction cache access</li>
@@ -169,7 +166,6 @@ I. Fetch Fetch 单元是一个调度器，作用
 <p>之前提到，一个 warp 的解码指令在 Scoreboard 判断其没有 WAW 和 RAW 危害后才可以被调度发射。而 Scoreboard 追踪寄存器，这些寄存器会被一条已经发射的指令写，但是还未将结果写回寄存器文件，以此来检测 WAW 和 RAW 危害。</p>
 <h1 id=2-register-access-and-the-operand-collector>2. Register Access and the Operand Collector</h1>
 <p>许多 NVIDIA 的专利描述了一种称为 Operand Collector 的结构。Operand Collector 是一个缓冲区的集合，其仲裁逻辑用于提供寄存器文件的外观 (appearance?)，寄存器文件使用多 bank 但端口 RAMs. 这个设计能够节省能量和面积，对于吞吐量的提升很重要。AMD 也使用 banked 寄存器文件，但是是由编译器来保证访问没有 bank conflict.</p>
-<p></p>
 <p>指令解码后，一种称为 Collector Unit 的硬件单元被分配用于缓冲指令的源操作数 (source poerands)</p>
 <p>Collector Unit 并非通过 寄存器重命名 来消除依赖，而是在时间上分隔寄存器操作数访问，使得在单个 cycle 中对 bank 的访问不超过一次。在图示中，每个 Collector Unit 有3个操作数 entry. 每个 entry 有4个域, a valid bit, a register identifier, a ready bit, and operand data. operand data 域有128B，可以容纳32个4B元素 (warp 中每个线程4B，总共32个线程)。另外，Collector Unit 还存有指令属于哪个 warp 的信息。对于每个 bank, 仲裁器包含一个读请求队列来保证访问操作不冲突。</p>
 <p>当一条指令从解码阶段传过来，会为这条指令分配一个 Collector Unit, 并设置 operand, warp, register identifier, valid bit. 仲裁器会将源操作数的读请求入队。为了简化设计，执行单元的写回请求总是优先于读请求。仲裁器选择最多4个 (图中硬件是4个 bank, 实际可能有32个或是更多) 不冲突的访问请求发送到寄存器文件。为了减少 crossbar 和 Collector Unit 的面积，每个 Collector Unit 每周期只接受一个操作数。</p>
@@ -185,7 +181,6 @@ I. Fetch Fetch 单元是一个调度器，作用
 <blockquote>
 <p>可以看到 Fermi 架构中，一个 SM 有32个 SP, 也就是图中的 CUDA Core, 有4个 SFU, 16个 LDST Unit 用于处理内存指令。这个数量是按实际使用中不同类型指令的大概比例决定的。</p>
 </blockquote>
-<p></p>
 <p>每个 SIMT Core 都有 SP 和 SFU 单元。每个单元都有来自 operand collector 的独立发射端口。这两个单元 (SP, SFU) 共享同一个连接到公共回写阶段的输出管道寄存器。在 operand collector 的输出处有一个结果总线分配器，以确保单元永远不会因为共享回写而停滞。每条指令在发出到任何一个单元之前，都需要在结果总线中分配一个 cycle slot。注意内存流水线有它自己的写回阶段，不由这个结果总线分配器管理。</p>
 <blockquote>
 <p>也就是 memory pipeline 和 execution pipeline 从不同的地方写回，下一节会介绍 memory pipeline</p>
@@ -248,7 +243,6 @@ I. Fetch Fetch 单元是一个调度器，作用
 <blockquote>
 <p>In Figure 8, 32 consecutive threads access 32 consecutive words. The memory access is sequential and aligned, and is therefore coalesced.</p>
 </blockquote>
-<p></p>
 <p>内存访问连续且对齐，只需一次访存操作，取到32个线程需要的数据，就是 coalesced</p>
 <table>
 <thead>
@@ -296,7 +290,6 @@ I. Fetch Fetch 单元是一个调度器，作用
 <h2 id=43-constant-read-only-cache>4.3 Constant (Read only) Cache</h2>
 <p>对常量和参数内存的访问通过 L1 constant cache 运行。这个 cache 是用一个 tag array 实现的，就像 L1 data cache ，只是它不能被写入。</p>
 <h1 id=5-thread-block--cta--work-group-scheduling>5. Thread Block / CTA / Work Group Scheduling</h1>
-<p></p>
 <p>Thread Block, CTA 是 CUDA 中的术语，Work Group 是 OpenCl 中的术语，一次会发射一个 block 到 SIMT core。每个 SIMT clock cycle, block 发射机制会以轮询机制挑选 block 发射到 SIMT Core Clusters. 对于每个被选择的 SIMT Core Clusters, 如果 SIMT core 上有足够的空闲资源，那么将从选定的 kernel 向该 SIMT core 发出单个 block。</p>
 <blockquote>
 <p>对 CUDA 编程有了解应该很熟悉 grid, block, thread 的概念</p>

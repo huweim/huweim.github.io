@@ -11,8 +11,8 @@ shader_core_ctx::decode 函数 检查 fetch buffer 中的指令是否有效，�
 指令用变量 pI1 存储，调用函数 ibuffer_fill, 将 pI 装进对应 warp id 的 I-Buffer, 并将 valid bit 置为1
 随后会取下一条指令，用变量 pI2 存储，注意下一条指令的 pc = pc + pI1 -> isize。也就是我们常说的 pc = pc + 1, 这里的1实际上是一条指令的长度
 每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1"><meta itemprop=datePublished content="2021-09-28T15:51:46+08:00">
-<meta itemprop=dateModified content="2021-09-28T15:51:46+08:00">
-<meta itemprop=wordCount content="848">
+<meta itemprop=dateModified content="2021-10-23T10:02:46+08:00">
+<meta itemprop=wordCount content="974">
 <meta itemprop=keywords content="GPGPU-Sim,"><meta property="og:title" content="GPGPU-Sim源码阅读">
 <meta property="og:description" content="Shader.cc shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等
 m_stats 也就是 shader_core_stats 类型的变量
@@ -25,7 +25,7 @@ shader_core_ctx::decode 函数 检查 fetch buffer 中的指令是否有效，�
 <meta property="og:type" content="article">
 <meta property="og:url" content="https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-09-28T15:51:46+08:00">
-<meta property="article:modified_time" content="2021-09-28T15:51:46+08:00">
+<meta property="article:modified_time" content="2021-10-23T10:02:46+08:00">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="GPGPU-Sim源码阅读">
 <meta name=twitter:description content="Shader.cc shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等
@@ -111,6 +111,43 @@ shader_core_ctx::decode 函数 检查 fetch buffer 中的指令是否有效，�
 </blockquote>
 <h3 id=issue_warp-函数>issue_warp 函数</h3>
 <p>free 掉相应的 I-Buffer</p>
+<h3 id=scheduler_unitcycle>scheduler_unit::cycle()</h3>
+<p>In function <code>scheduler_unit::cycle()</code> , call <code>order_warps()</code> to sort warps according to their priority.</p>
+<p>排序后的 warp 放在 vector <code>m_next_cycle_prioritized_warps</code> 中，对其进行遍历来处理这个 vector 中的 warp。</p>
+<p>:exclamation: 值得注意的是在 order_warp() 后，for 循环会遍历 vector <code>m_next_cycle_prioritized_warps</code> 中的所有 warp。而不是发射一个 warp 就重新排序一次。</p>
+<blockquote>
+<p>这一点和自己的理解与猜想不太一样</p>
+</blockquote>
+<hr>
+<p>进入 for 循环，拿到 warp id，判断</p>
+<ul>
+<li>I-Buffer 是否为空；是否处于 waiting 状态。如果都通过，进入一个 while 循环
+<ul>
+<li>如果指令是有效的 <code>if(pI)</code>
+<ul>
+<li>如果出现分支 <code>if(pc != pI->pc)</code>，刷掉 I-Buffer</li>
+<li>如果没有分支，此时 <code>valid=true</code>，指令是有效的。如果通过 scoreboard 检测，终于可以执行了。先读取 active mask 确定要执行哪些线程，然后判断 <code>pI->op</code> 是 内存操作 还是 运算操作。如果相应的寄存器可以使用 <code>has_free()</code>，则 call <code>issue_warp()</code> 将寄存器、指令、active mask、warp id、scheduler id 发送并执行。</li>
+<li><code>warp_inst_issued = true; issued++; issued_inst = true</code></li>
+</ul>
+</li>
+<li>else if 下一条指令是有效的
+<ul>
+<li>&mldr;</li>
+</ul>
+</li>
+<li>如果指令成功发射 <code>if (warp_inst_issued)</code>，执行了 issue_warp() 后会进入这个 if 语句，做一些 warp 发射后的统计信息等等
+<ul>
+<li>call <code>do_on_warp_issued(warp_id, issued, iter);</code></li>
+</ul>
+</li>
+<li>checked++</li>
+</ul>
+</li>
+<li>从 while 循环出来，如果至少有一个 warp 被发射 <code>if(issued)</code>，遍历 <code>m_supervised_warps</code>，找到那个被发射的 warp，然后将其赋值给 <code>m_last_supervised_issued</code></li>
+</ul>
+<hr>
+<h5 id=scheduler_size>scheduler_size()</h5>
+<p>scheduler.size 就是2，代表一个 core 中 warp scheduler 的数量</p>
 <h2 id=关于类>关于类</h2>
 <p>阅读一个类，应该先观察他还包含哪些子类，继承自哪个类，从全局上把握他的作用</p>
 <p>class opndcoll_rfu_t</p>
@@ -163,7 +200,10 @@ shader_core_ctx::decode 函数 检查 fetch buffer 中的指令是否有效，�
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=n>shader_core_ctx</span><span class=o>::</span><span class=n>cycle</span><span class=p>()</span>
 <span class=o>|--</span>	<span class=n>writeback</span><span class=p>();</span>
 <span class=o>|--</span>	<span class=n>execute</span><span class=p>();</span>
-	<span class=o>|--</span> <span class=n>scheduler_unit</span><span class=o>::</span><span class=n>cycle</span><span class=p>();</span>
+	<span class=o>|--</span> <span class=n>m_fu</span><span class=p>[</span><span class=n>n</span><span class=p>]</span><span class=o>-&gt;</span><span class=n>cycle</span><span class=p>();</span> <span class=c1>//m_fu[] contains ldst_unit, sfu_unit, sp_unit
+</span><span class=c1></span>		<span class=o>|--</span> <span class=n>ldst_unit</span><span class=o>::</span><span class=n>cycle</span><span class=p>();</span>
+			<span class=o>|--</span> <span class=n>writeback</span><span class=p>();</span>
+			<span class=o>|--</span> <span class=n>m_operand_collector</span><span class=o>-&gt;</span><span class=n>step</span><span class=p>();</span>
 	<span class=o>|--</span> <span class=n>issue</span><span class=p>(</span><span class=n>register_set</span> <span class=o>&amp;</span><span class=n>source_reg</span><span class=p>)</span>
 <span class=o>|--</span>	<span class=n>read_operands</span><span class=p>();</span>
 <span class=o>|--</span>	<span class=n>issue</span><span class=p>();</span>
@@ -184,7 +224,7 @@ shader_core_ctx::decode 函数 检查 fetch buffer 中的指令是否有效，�
     <span class=o>|--</span> <span class=n>ibuffer_fill</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>pI1</span><span class=p>);</span>
     <span class=o>|--</span> <span class=n>inc_inst_in_pipeline</span><span class=p>();</span>
 <span class=o>|--</span> <span class=n>fetch</span><span class=p>();</span>
-</code></pre></div><h5 id=scheduler_unitcycle>scheduler_unit::cycle()</h5>
+</code></pre></div><h5 id=scheduler_unitcycle-1>scheduler_unit::cycle()</h5>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=o>|--</span> <span class=n>order_warps</span><span class=p>();</span>
 <span class=c1>//if warp is valid and not waiting
 </span><span class=c1></span><span class=o>|--</span> <span class=k>const</span> <span class=n>warp_inst_t</span> <span class=o>*</span><span class=n>pI</span> <span class=o>=</span> <span class=n>warp</span><span class=p>(</span><span class=n>warp_id</span><span class=p>).</span><span class=n>ibuffer_next_inst</span><span class=p>();</span>
@@ -203,7 +243,7 @@ shader_core_ctx::decode 函数 检查 fetch buffer 中的指令是否有效，�
        		<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>get_active_mask</span><span class=p>(</span><span class=n>warp_id</span><span class=p>,</span> <span class=n>pI</span><span class=p>);</span>
         	<span class=c1>// need to check which pipieline to send, MEM, SP, SFU... 
 </span><span class=c1></span>        	<span class=c1>// the only different is the first parameter, register_set *m_XX_out
-</span><span class=c1></span>        	<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>shader_core_ctx</span><span class=o>::</span><span class=n>issue_warp</span><span class=p>(</span><span class=o>*</span><span class=n>m_mem_out</span><span class=p>,</span> <span class=n>pI</span><span class=p>,</span> <span class=n>active_mask</span><span class=p>,</span> 					<span class=n>warp_id</span><span class=p>,</span> <span class=n>m_id</span><span class=p>);</span>
+</span><span class=c1></span>        	<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>shader_core_ctx</span><span class=o>::</span><span class=n>issue_warp</span><span class=p>(</span><span class=o>*</span><span class=n>m_mem_out</span><span class=p>,</span> <span class=n>pI</span><span class=p>,</span> <span class=n>active_mask</span><span class=p>,</span> <span class=n>warp_id</span><span class=p>,</span> <span class=n>m_id</span><span class=p>);</span>
     	<span class=p>}</span>
 	<span class=p>}</span>
 <span class=p>}</span>
@@ -258,7 +298,7 @@ shader_core_ctx::decode 函数 检查 fetch buffer 中的指令是否有效，�
 <li>每个 core cycle, 调用 <code>shader_core_ctx::cycle()</code> 来模拟 SIMT Core 的一个 cycle。</li>
 <li>operand collector 被建模为主流水线中的一个 stage, 通过函数 <code>shader_core_ctx::cycle()</code> 执行</li>
 </ul>
-<h5 id=scheduler_unitcycle-1>scheduler_unit::cycle()</h5>
+<h5 id=scheduler_unitcycle-2>scheduler_unit::cycle()</h5>
 <ul>
 <li>在 <code>scheduler_unit::cycle()</code> 中，函数 <code>shader_core_ctx::issue_warp()</code> 将指令发送到执行单元</li>
 <li>调用 <code>func_exec_inst()</code> 执行指令</li>

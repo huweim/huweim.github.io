@@ -83,7 +83,6 @@ GPGPU-Sim_vs_Real_Machine
 <h1 id=1-gpgpu-sim-运行机制>1. GPGPU-Sim 运行机制</h1>
 <p>首先要理解 application 是如何运行在 real machine 以及 GPGPU-Sim 上的，他们的区别在哪里？这里以 CUDA 代码为例。</p>
 <p>GPGPU-Sim_vs_Real_Machine</p>
-<p></p>
 <h2 id=11-real-machine>1.1 Real Machine</h2>
 <p>CUDA application 分为 host code and device code, 使用 nvcc 编译 .cu 代码时, 会将 host code 和 device code 分开。device code 被编译为 .ptx 文件，再通过 ptxas 编译为 cubin.bin 文件。host code, libcuda.a, cubin.bin 文件由 C/C++编译器编译了解生成可执行文件。</p>
 <p>如何运行 CUDA application? 调用 libcuda 内的<strong>接口</strong>以在 GPU 上运行 device code.</p>

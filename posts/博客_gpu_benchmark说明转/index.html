@@ -1,0 +1,1471 @@
+<!doctype html><html>
+<head>
+<meta charset=utf-8>
+<meta http-equiv=x-ua-compatible content="IE=edge"><title>GPU_benchmark说明（转） - Cory Code</title><meta name=viewport content="width=device-width,initial-scale=1">
+<meta itemprop=name content="GPU_benchmark说明（转）">
+<meta itemprop=description content="Introduction 本文内容主要系摘录翻译自Ang Li的博士毕业论文。
+1.Perfect Power Efficiency Revolution for Embedded Computing
+http://hpc.pnl.gov/PERFECT/
+   Application Domains Kernels     PERFECT Application 1 Discrete Wavelet Transform    2D Convolution    Histogram Equalization   Space Time Adaptive Processing System Solver    Inner Product    Outer Product   Synthetic Aperture Radar Interpolation 1    Interpolation 2    Back Projection (Non-Fourier SAR)   Wide Area Motion Imaging Debayer    Image Registration    Change Detection   Required Kernels Sort    FFT 1D    FFT 2D    2."><meta itemprop=datePublished content="2021-11-14T20:34:48+08:00">
+<meta itemprop=dateModified content="2021-11-14T20:34:48+08:00">
+<meta itemprop=wordCount content="1736">
+<meta itemprop=keywords content="gpgpu-sim,"><meta property="og:title" content="GPU_benchmark说明（转）">
+<meta property="og:description" content="Introduction 本文内容主要系摘录翻译自Ang Li的博士毕业论文。
+1.Perfect Power Efficiency Revolution for Embedded Computing
+http://hpc.pnl.gov/PERFECT/
+   Application Domains Kernels     PERFECT Application 1 Discrete Wavelet Transform    2D Convolution    Histogram Equalization   Space Time Adaptive Processing System Solver    Inner Product    Outer Product   Synthetic Aperture Radar Interpolation 1    Interpolation 2    Back Projection (Non-Fourier SAR)   Wide Area Motion Imaging Debayer    Image Registration    Change Detection   Required Kernels Sort    FFT 1D    FFT 2D    2.">
+<meta property="og:type" content="article">
+<meta property="og:url" content="https://huweim.github.io/posts/%E5%8D%9A%E5%AE%A2_gpu_benchmark%E8%AF%B4%E6%98%8E%E8%BD%AC/"><meta property="article:section" content="posts">
+<meta property="article:published_time" content="2021-11-14T20:34:48+08:00">
+<meta property="article:modified_time" content="2021-11-14T20:34:48+08:00">
+<meta name=twitter:card content="summary">
+<meta name=twitter:title content="GPU_benchmark说明（转）">
+<meta name=twitter:description content="Introduction 本文内容主要系摘录翻译自Ang Li的博士毕业论文。
+1.Perfect Power Efficiency Revolution for Embedded Computing
+http://hpc.pnl.gov/PERFECT/
+   Application Domains Kernels     PERFECT Application 1 Discrete Wavelet Transform    2D Convolution    Histogram Equalization   Space Time Adaptive Processing System Solver    Inner Product    Outer Product   Synthetic Aperture Radar Interpolation 1    Interpolation 2    Back Projection (Non-Fourier SAR)   Wide Area Motion Imaging Debayer    Image Registration    Change Detection   Required Kernels Sort    FFT 1D    FFT 2D    2.">
+<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700" rel=stylesheet type=text/css>
+<link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/normalize.css>
+<link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/main.css>
+<link id=dark-scheme rel=stylesheet type=text/css href=https://huweim.github.io/css/dark.css>
+<script src=https://huweim.github.io/js/feather.min.js></script>
+<script src=https://huweim.github.io/js/main.js></script>
+</head>
+<body>
+<div class="container wrapper">
+<div class=header>
+<h1 class=site-title><a href=https://huweim.github.io/>Cory Code</a></h1>
+<div class=site-description><p>Minimal and Clean <a href=https://github.com/athul/hugo-ink>blog theme for Hugo</a></p><nav class="nav social">
+<ul class=flat><li><a href=https://github.com/huweim title=GitHub><i data-feather=github></i></a></li><li><a href=https://twitter.com/athulcajay/ title=Twitter><i data-feather=twitter></i></a></li><li><a href=https://gitlab.com/athul/ title=GitLab><i data-feather=gitlab></i></a></li><li><a href=# class=scheme-toggle id=scheme-toggle></a></li></ul>
+</nav>
+</div>
+<nav class=nav>
+<ul class=flat>
+<li>
+<a href=/>Home</a>
+</li>
+<li>
+<a href=/posts>All posts</a>
+</li>
+<li>
+<a href=/categories/>Categories</a>
+</li>
+<li>
+<a href=/archives>Archives</a>
+</li>
+<li>
+<a href=/tags>Tags</a>
+</li>
+<li>
+<a href=/about/>About</a>
+</li>
+</ul>
+</nav>
+</div>
+<div class=post>
+<div class=post-header>
+<div class=meta>
+<div class=date>
+<span class=day>14</span>
+<span class=rest>Nov 2021</span>
+</div>
+</div>
+<div class=matter>
+<h1 class=title>GPU_benchmark说明（转）</h1>
+</div>
+</div>
+<div class=markdown>
+<h1 id=introduction>Introduction</h1>
+<p>本文内容主要系摘录翻译自<a href=http://parse.ele.tue.nl/ali>Ang Li</a>的博士毕业论文。</p>
+<h1 id=1perfect>1.Perfect</h1>
+<p>Power Efficiency Revolution for Embedded Computing</p>
+<p><a href=http://hpc.pnl.gov/PERFECT/>http://hpc.pnl.gov/PERFECT/</a></p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left><strong>Application Domains</strong></th>
+<th style=text-align:left><strong>Kernels</strong></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>PERFECT Application 1</td>
+<td style=text-align:left>Discrete Wavelet Transform</td>
+</tr>
+<tr>
+<td style=text-align:left></td>
+<td style=text-align:left>2D Convolution</td>
+</tr>
+<tr>
+<td style=text-align:left></td>
+<td style=text-align:left>Histogram Equalization</td>
+</tr>
+<tr>
+<td style=text-align:left>Space Time Adaptive Processing</td>
+<td style=text-align:left>System Solver</td>
+</tr>
+<tr>
+<td style=text-align:left></td>
+<td style=text-align:left>Inner Product</td>
+</tr>
+<tr>
+<td style=text-align:left></td>
+<td style=text-align:left>Outer Product</td>
+</tr>
+<tr>
+<td style=text-align:left>Synthetic Aperture Radar</td>
+<td style=text-align:left>Interpolation 1</td>
+</tr>
+<tr>
+<td style=text-align:left></td>
+<td style=text-align:left>Interpolation 2</td>
+</tr>
+<tr>
+<td style=text-align:left></td>
+<td style=text-align:left>Back Projection (Non-Fourier SAR)</td>
+</tr>
+<tr>
+<td style=text-align:left>Wide Area Motion Imaging</td>
+<td style=text-align:left>Debayer</td>
+</tr>
+<tr>
+<td style=text-align:left></td>
+<td style=text-align:left>Image Registration</td>
+</tr>
+<tr>
+<td style=text-align:left></td>
+<td style=text-align:left>Change Detection</td>
+</tr>
+<tr>
+<td style=text-align:left>Required Kernels</td>
+<td style=text-align:left>Sort</td>
+</tr>
+<tr>
+<td style=text-align:left></td>
+<td style=text-align:left>FFT 1D</td>
+</tr>
+<tr>
+<td style=text-align:left></td>
+<td style=text-align:left>FFT 2D</td>
+</tr>
+</tbody>
+</table>
+<h1 id=2-axbench>2. AxBench</h1>
+<p>A Multiplatform Benchmark Suite for Approximate Computing</p>
+<p>One of the goals of AxBench is to provide a diverse set of applications to further facilitate research and development in approximate computing.</p>
+<p><a href=http://ieeexplore.ieee.org/abstract/document/7755728/>http://ieeexplore.ieee.org/abstract/document/7755728/</a></p>
+<p>下载地址</p>
+<p><a href=http://axbench.org/>http://axbench.org/</a></p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>benchmark</th>
+<th style=text-align:left>platform</th>
+<th style=text-align:left>domain</th>
+<th style=text-align:left>Quality Metric</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>binarization</td>
+<td style=text-align:left>GPU</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Image Diff</td>
+</tr>
+<tr>
+<td style=text-align:left>blackscholes</td>
+<td style=text-align:left>CPU, GPU</td>
+<td style=text-align:left>Finance</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+<tr>
+<td style=text-align:left>brent-kung</td>
+<td style=text-align:left>ASIC</td>
+<td style=text-align:left>Arithmetic Computation</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+<tr>
+<td style=text-align:left>canneal</td>
+<td style=text-align:left>CPU</td>
+<td style=text-align:left>Optimization</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+<tr>
+<td style=text-align:left>convolution</td>
+<td style=text-align:left>GPU</td>
+<td style=text-align:left>Machine Learning</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+<tr>
+<td style=text-align:left>fastwalsh</td>
+<td style=text-align:left>GPU</td>
+<td style=text-align:left>Signal Processing</td>
+<td style=text-align:left>Image Diff</td>
+</tr>
+<tr>
+<td style=text-align:left>fft</td>
+<td style=text-align:left>CPU</td>
+<td style=text-align:left>Signal Processing</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+<tr>
+<td style=text-align:left>fir</td>
+<td style=text-align:left>ASIC</td>
+<td style=text-align:left>Signal Processing</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+<tr>
+<td style=text-align:left>forwardk2j</td>
+<td style=text-align:left>CPU, ASIC</td>
+<td style=text-align:left>Robotics</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+<tr>
+<td style=text-align:left>inversek2j</td>
+<td style=text-align:left>CPU, GPU, ASIC</td>
+<td style=text-align:left>Robotics</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+<tr>
+<td style=text-align:left>jmeint</td>
+<td style=text-align:left>CPU, GPU</td>
+<td style=text-align:left>3D Gaming</td>
+<td style=text-align:left>Miss Rate</td>
+</tr>
+<tr>
+<td style=text-align:left>jpeg</td>
+<td style=text-align:left>CPU</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Image Diff</td>
+</tr>
+<tr>
+<td style=text-align:left>kmeans</td>
+<td style=text-align:left>CPU, ASIC</td>
+<td style=text-align:left>Machine Learning</td>
+<td style=text-align:left>Image Diff</td>
+</tr>
+<tr>
+<td style=text-align:left>kogge-stone</td>
+<td style=text-align:left>ASIC</td>
+<td style=text-align:left>Arithmetic Computation</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+<tr>
+<td style=text-align:left>laplacian</td>
+<td style=text-align:left>GPU</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Image Diff</td>
+</tr>
+<tr>
+<td style=text-align:left>meanfilter</td>
+<td style=text-align:left>GPU</td>
+<td style=text-align:left>Machine Vision</td>
+<td style=text-align:left>Image Diff</td>
+</tr>
+<tr>
+<td style=text-align:left>neural network</td>
+<td style=text-align:left>ASIC</td>
+<td style=text-align:left>Machine Learning</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+<tr>
+<td style=text-align:left>newton-raph</td>
+<td style=text-align:left>GPU</td>
+<td style=text-align:left>Numerical Analysis</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+<tr>
+<td style=text-align:left>sobel</td>
+<td style=text-align:left>CPU, GPU, ASIC</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Image Diff</td>
+</tr>
+<tr>
+<td style=text-align:left>srad</td>
+<td style=text-align:left>GPU</td>
+<td style=text-align:left>Medical Imaging</td>
+<td style=text-align:left>Image Diff</td>
+</tr>
+<tr>
+<td style=text-align:left>wallace-tree</td>
+<td style=text-align:left>ASIC</td>
+<td style=text-align:left>Arithmetic Computation</td>
+<td style=text-align:left>Avg. Relative Error</td>
+</tr>
+</tbody>
+</table>
+<h1 id=3-rodinia>3. Rodinia</h1>
+<p><a href=http://rodinia.cs.virginia.edu/>http://rodinia.cs.virginia.edu/</a></p>
+<p>下载页面：</p>
+<p><a href=http://lava.cs.virginia.edu/Rodinia/download_links.htm>http://lava.cs.virginia.edu/Rodinia/download_links.htm</a></p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left></th>
+<th style=text-align:left></th>
+<th style=text-align:left></th>
+<th style=text-align:left></th>
+<th style=text-align:left></th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>Applications</td>
+<td style=text-align:left>Dwarves</td>
+<td style=text-align:left>Domains</td>
+<td style=text-align:left>Parallel Model</td>
+<td style=text-align:left>Incre. Ver.</td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Leukocyte>Leukocyte</a></td>
+<td style=text-align:left>Structured Grid</td>
+<td style=text-align:left>Medical Imaging</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left>√</td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Heart_Wall>Heart Wall</a></td>
+<td style=text-align:left>Structured Grid</td>
+<td style=text-align:left>Medical Imaging</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/MUMmerGPU>MUMmerGPU</a></td>
+<td style=text-align:left>Graph Traversal</td>
+<td style=text-align:left>Bioinformatics</td>
+<td style=text-align:left>CUDA, OMP</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/CFD_Solver>CFD Solver1</a></td>
+<td style=text-align:left>Unstructured Grid</td>
+<td style=text-align:left>Fluid Dynamics</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/LU_Decomposition>LU Decomposition</a></td>
+<td style=text-align:left>Dense Linear Algebra</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left>√</td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/HotSpot>HotSpot</a></td>
+<td style=text-align:left>Structured Grid</td>
+<td style=text-align:left>Physics Simulation</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Back_Propagation>Back Propagation</a></td>
+<td style=text-align:left>Unstructured Grid</td>
+<td style=text-align:left>Pattern Recognition</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Needleman-Wunsch>Needleman-Wunsch</a></td>
+<td style=text-align:left>Dynamic Programming</td>
+<td style=text-align:left>Bioinformatics</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left>√</td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/K-Means>Kmeans</a></td>
+<td style=text-align:left>Dense Linear Algebra</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Graph_traversal>Breadth-First Search1</a></td>
+<td style=text-align:left>Graph Traversal</td>
+<td style=text-align:left>Graph Algorithms</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/SRAD>SRAD</a></td>
+<td style=text-align:left>Structured Grid</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left>√</td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Streamcluster>Streamcluster1</a></td>
+<td style=text-align:left>Dense Linear Algebra</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Particle_Filter>Particle Filter</a></td>
+<td style=text-align:left>Structured Grid</td>
+<td style=text-align:left>Medical Imaging</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Shortest_Path>PathFinder</a></td>
+<td style=text-align:left>Dynamic Programming</td>
+<td style=text-align:left>Grid Traversal</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Gaussian_Elimination>Gaussian Elimination</a></td>
+<td style=text-align:left>Dense Linear Algebra</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>CUDA, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Nearest_Neighbor>k-Nearest Neighbors</a></td>
+<td style=text-align:left>Dense Linear Algebra</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/LavaMD>LavaMD2</a></td>
+<td style=text-align:left>N-Body</td>
+<td style=text-align:left>Molecular Dynamics</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Myocyte>Myocyte</a></td>
+<td style=text-align:left>Structured Grid</td>
+<td style=text-align:left>Biological Simulation</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/B%2B_Tree>B+ Tree</a></td>
+<td style=text-align:left>Graph Traversal</td>
+<td style=text-align:left>Search</td>
+<td style=text-align:left>CUDA, OMP, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/GPUDWT>GPUDWT</a></td>
+<td style=text-align:left>Spectral Method</td>
+<td style=text-align:left>Image/Video Compression</td>
+<td style=text-align:left>CUDA, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href=https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Hybrid_Sort>Hybrid Sort</a></td>
+<td style=text-align:left>Sorting</td>
+<td style=text-align:left>Sorting Algorithms</td>
+<td style=text-align:left>CUDA, OCL</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left><a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php?title=Hotspot3D&action=edit&redlink=1">Hotspot3D</a></td>
+<td style=text-align:left>Structured Grid</td>
+<td style=text-align:left>Physics Simulation</td>
+<td style=text-align:left>CUDA, OCL, OMP</td>
+<td style=text-align:left>Hotspot for 3D IC</td>
+</tr>
+<tr>
+<td style=text-align:left><a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php?title=Huffman&action=edit&redlink=1">Huffman</a></td>
+<td style=text-align:left>Finite State Machine</td>
+<td style=text-align:left>Lossless data compression</td>
+<td style=text-align:left>CUDA, OCL</td>
+<td style=text-align:left></td>
+</tr>
+</tbody>
+</table>
+<p>Ang Li的分类：</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Application</th>
+<th style=text-align:left>Description</th>
+<th style=text-align:left>Domain</th>
+<th style=text-align:left>CUDA</th>
+<th style=text-align:left>OpenCL</th>
+<th style=text-align:left>OpenMP</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>backprop</td>
+<td style=text-align:left>Perceptron back propagation</td>
+<td style=text-align:left>Neural Network</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>bfs</td>
+<td style=text-align:left>Breadth first search</td>
+<td style=text-align:left>Graph Algorithm</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>b+tree</td>
+<td style=text-align:left>B+tree Operation</td>
+<td style=text-align:left>Searching Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left></td>
+</tr>
+<tr>
+<td style=text-align:left>leukocyte</td>
+<td style=text-align:left>Detect leukocytes in blood vessel video</td>
+<td style=text-align:left>Medical Imaging</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>heartwall</td>
+<td style=text-align:left>Tracks the mouse heart movement by stimulus</td>
+<td style=text-align:left>Medical Imaging</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>cfd</td>
+<td style=text-align:left>Finite volume solver for 3D Euler equations for flow</td>
+<td style=text-align:left>Fluid Dynamics</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>lud</td>
+<td style=text-align:left>Calculate the solutions of a set of linear equations</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>hotspot</td>
+<td style=text-align:left>Estimate processor temperature</td>
+<td style=text-align:left>Physical Simulation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>nw</td>
+<td style=text-align:left>Optimization method for DNA sequence alignments</td>
+<td style=text-align:left>Bioinformatics</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>kmeans</td>
+<td style=text-align:left>Clustering algorithm</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>srad</td>
+<td style=text-align:left>Speckle reducing anisotropic diffusion</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>streamcluster</td>
+<td style=text-align:left>Finds medians to assign points to nearest centers</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>particlefilter</td>
+<td style=text-align:left>Locate object location based on Noise and path</td>
+<td style=text-align:left>Medical Imaging</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>pathfinder</td>
+<td style=text-align:left>Dynamic programming to find a path on a 2D grid Grid</td>
+<td style=text-align:left>Traversal</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>gaussian</td>
+<td style=text-align:left>Solving variables in a linear system</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>nn</td>
+<td style=text-align:left>Find k-nearest neighbors from an unstructured data set</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>lavaMD</td>
+<td style=text-align:left>Calculate particle potential and relocation in 3D</td>
+<td style=text-align:left>Molecular Dynamics</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>myocyte</td>
+<td style=text-align:left>Simulate the behavior of cardiac hear muscle cell</td>
+<td style=text-align:left>Biological Simulation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+</tbody>
+</table>
+<h1 id=4-parboil>4. Parboil</h1>
+<p>Parboil强调面向吞吐量的流媒体应用。其中的每个应用都有原生的CUDA应用和优化过的应用。</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Application</th>
+<th style=text-align:left>Description</th>
+<th style=text-align:left>Domain</th>
+<th style=text-align:left>CUDA</th>
+<th style=text-align:left>OpenCL</th>
+<th style=text-align:left>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>bfs</td>
+<td style=text-align:left>Breadth-first-search</td>
+<td style=text-align:left>Graph Algorithm</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>cutcp</td>
+<td style=text-align:left>Compute Coulombic potential for a 3D grid</td>
+<td style=text-align:left>Molecular Dynamics</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>histogram</td>
+<td style=text-align:left>Compute 2D saturating histogram with maximum 256 bins</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>lbm</td>
+<td style=text-align:left>Fluid dynamics simulation using Lattice-Bolzmann Method</td>
+<td style=text-align:left>Fluid Dynamics</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>mm</td>
+<td style=text-align:left>Dense matrix-matrix multiply</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>mri-gridding</td>
+<td style=text-align:left>Compute regular data grid via weighted interpolation</td>
+<td style=text-align:left>Medical Imaging</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>mir-q</td>
+<td style=text-align:left>Compute scanner configuration for calibration in 3D MRI</td>
+<td style=text-align:left>Medical Imaging</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>sad</td>
+<td style=text-align:left>Sum of absolute differences kernel in MPEG video encoders</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>spmv</td>
+<td style=text-align:left>Compute the product of a sparse matrix with a dense vector</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>stencil</td>
+<td style=text-align:left>An iterative Jacobi stencil operation on a regular 3D grid</td>
+<td style=text-align:left>Cellular Automation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>tpacf</td>
+<td style=text-align:left>Analyze the spatial distribution of astronomical bodies</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+</tbody>
+</table>
+<h1 id=5-shoc>5. Shoc</h1>
+<p>测量协处理的稳定性和性能，such as GPUs, Xeon-Phi, etc。</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Application</th>
+<th style=text-align:left>Description</th>
+<th style=text-align:left>Domain</th>
+<th style=text-align:left>CUDA</th>
+<th style=text-align:left>OpenCL</th>
+<th style=text-align:left>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>qtclustering</td>
+<td style=text-align:left>Group genes into high quality clusters</td>
+<td style=text-align:left>Bioinformatics</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>s3d</td>
+<td style=text-align:left>Compute chemical reaction rate across a 3D grid</td>
+<td style=text-align:left>Simulation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>scan</td>
+<td style=text-align:left>Parallel prefix sum of floating point numbers</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>reduction</td>
+<td style=text-align:left>Sum reduction operation of floating point numbers</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>md</td>
+<td style=text-align:left>Lennard-Jones potential computations</td>
+<td style=text-align:left>Molecular Dynamics</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>fft</td>
+<td style=text-align:left>Fast Fourier transform</td>
+<td style=text-align:left>Signal Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>sgemm</td>
+<td style=text-align:left>Single precision general matrix multiply</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>sort</td>
+<td style=text-align:left>Fast radix sort program</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>stencil2d</td>
+<td style=text-align:left>Standard 2d 9 points stencil calculation</td>
+<td style=text-align:left>Cellular Automation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>bfs</td>
+<td style=text-align:left>Breadth-first-search</td>
+<td style=text-align:left>Graph Algorithm</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>spmv</td>
+<td style=text-align:left>Sparse matrix vector multiplication</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+</tbody>
+</table>
+<h1 id=6-polybench>6. Polybench</h1>
+<p>包含从[非]结构循环嵌套转换的Kernel。这些循环以前用于评估基于多面体模型的优化工具。</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Application</th>
+<th style=text-align:left>Description</th>
+<th style=text-align:left>Domain</th>
+<th style=text-align:left>CUDA</th>
+<th style=text-align:left>OpenCL</th>
+<th style=text-align:left>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>2dconv</td>
+<td style=text-align:left>2D convolution</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>2mm</td>
+<td style=text-align:left>2 matrix multiply</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>3dconv</td>
+<td style=text-align:left>3D convolution</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>3mm</td>
+<td style=text-align:left>3 matrix multiply</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>atax</td>
+<td style=text-align:left>Matrix transpose and vector multiplication</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>bicg</td>
+<td style=text-align:left>Bicg kernel for BiCGStab linear solver</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>corr</td>
+<td style=text-align:left>Correlation computation</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>covar</td>
+<td style=text-align:left>Covariance computation</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>fdtd2d</td>
+<td style=text-align:left>2D finite difference time domain kernel</td>
+<td style=text-align:left>Simulation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>gemm</td>
+<td style=text-align:left>matrix multiply</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>gesummv</td>
+<td style=text-align:left>Scalar vector and matrix multiplication</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>gramschm</td>
+<td style=text-align:left>Gram-schmidt process</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>mvt</td>
+<td style=text-align:left>Matrix vector product and transpose</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>syr2k</td>
+<td style=text-align:left>Symmetric rank-2k operations</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>syrk</td>
+<td style=text-align:left>Symmetric rank-k operations</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+</tbody>
+</table>
+<h1 id=7-mars>7. Mars</h1>
+<p>用map reduce实现的data-mining的benchmark。</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Application</th>
+<th style=text-align:left>Description</th>
+<th style=text-align:left>Domain</th>
+<th style=text-align:left>CUDA</th>
+<th style=text-align:left>OpenCL</th>
+<th style=text-align:left>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>sm</td>
+<td style=text-align:left>Find the position of a string in a file</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>ii</td>
+<td style=text-align:left>Build inverted index for links in HTML files</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>ss</td>
+<td style=text-align:left>Compute pair-wise similarity score for docs</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>mm</td>
+<td style=text-align:left>Multiply two matrices</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>pvc</td>
+<td style=text-align:left>Count distinct page views from web logs</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>pvr</td>
+<td style=text-align:left>Find the top ten hottest pages in the web log</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+</tbody>
+</table>
+<h1 id=8-longstar>8. Longstar</h1>
+<p>关注于不规则的应用，主要是数据依赖和拓扑依赖。</p>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Application</th>
+<th style=text-align:left>Description</th>
+<th style=text-align:left>Domain</th>
+<th style=text-align:left>CUDA</th>
+<th style=text-align:left>OpenCL</th>
+<th style=text-align:left>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>bfs</td>
+<td style=text-align:left>Breadth first search</td>
+<td style=text-align:left>Graph Algorithm</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>bh</td>
+<td style=text-align:left>Simulate the gravitational forces in Barnes-Hut</td>
+<td style=text-align:left>algorithm Simulation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>dc</td>
+<td style=text-align:left>Lossless compression upon double-precision FP data</td>
+<td style=text-align:left>Signal Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>dmr</td>
+<td style=text-align:left>Meshrefinement algorithm from computational geometry</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>pta</td>
+<td style=text-align:left>Andersen’s flow/context-insensitive points-to analysis</td>
+<td style=text-align:left>Graph Algorithm</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>sp</td>
+<td style=text-align:left>Heuristic SAT-solver based on BaYesian inference</td>
+<td style=text-align:left>Graph Algorithm</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>sssp</td>
+<td style=text-align:left>Shortest path in a directed graph with weighted edges</td>
+<td style=text-align:left>Graph Algorithm</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>tsp</td>
+<td style=text-align:left>Traveling salesman problem</td>
+<td style=text-align:left>Graph Algorithm</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+</tbody>
+</table>
+<h1 id=9-cuda-sdk>9. CUDA SDK</h1>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Application</th>
+<th style=text-align:left>Description</th>
+<th style=text-align:left>Domain</th>
+<th style=text-align:left>CUDA</th>
+<th style=text-align:left>OpenCL</th>
+<th style=text-align:left>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>bilateralFilter</td>
+<td style=text-align:left>Edge-preserving non-linear smoothing filter</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>binomialOption</td>
+<td style=text-align:left>Evaluate option call price using binomial model</td>
+<td style=text-align:left>Computational Finance</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>BlackScholes</td>
+<td style=text-align:left>Evaluate option call price using Black-Scholes model</td>
+<td style=text-align:left>Computational Finance</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>convolutionFFT2D</td>
+<td style=text-align:left>2D convolutions using FFT</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>dct8x8</td>
+<td style=text-align:left>Discrete cosine transform for blocks of 8 by 8 pixels</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>dxtc</td>
+<td style=text-align:left>High quality DXT compression</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>dwtHaar1D</td>
+<td style=text-align:left>1D discrete Haar wavelet decomposition</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>eigenvalues</td>
+<td style=text-align:left>Eigenvalues of a tridiagonal symmetric matrix</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>fastWalshTransform</td>
+<td style=text-align:left>Hadamard-ordered Fast Walsh transform</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>FDTD3d</td>
+<td style=text-align:left>Finite differences</td>
+<td style=text-align:left>time domain progression stencil</td>
+<td style=text-align:left>Cellular Automation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>grabcutNPP</td>
+<td style=text-align:left>GrabCut approach using the 8 neighborhood</td>
+<td style=text-align:left>Graph Algorithm</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>histogram</td>
+<td style=text-align:left>64/256 bin histogram</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>imageDenoising</td>
+<td style=text-align:left>Using KNN and NLM for image denoising</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>lineOfSight</td>
+<td style=text-align:left>A simple line-of-sight algorithm</td>
+<td style=text-align:left>Graphic Application</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>Mandelbrot</td>
+<td style=text-align:left>Mandelbrot or Julia sets interactively</td>
+<td style=text-align:left>Graphic Application</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>matrixMul</td>
+<td style=text-align:left>Matrix multiplication</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>mergeSortv</td>
+<td style=text-align:left>Merge Sort algorithm</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>MersenneTwister</td>
+<td style=text-align:left>The Mersenne Twister random number generator</td>
+<td style=text-align:left>Signal Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>MonteCarlo</td>
+<td style=text-align:left>Evaluate option call price using Monte Carlo approach</td>
+<td style=text-align:left>Computational Finance</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>nbody</td>
+<td style=text-align:left>All-pairs gravitational n-body simulation</td>
+<td style=text-align:left>Simulation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>oceanFFT</td>
+<td style=text-align:left>Simulate an Ocean height field</td>
+<td style=text-align:left>Simulation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>reduction</td>
+<td style=text-align:left>Compute the sum of a large arrays of values</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>scalarProd</td>
+<td style=text-align:left>Calculate scalar products of input vector pairs</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>scan</td>
+<td style=text-align:left>Parallel prefix sum</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>SobelFilter</td>
+<td style=text-align:left>Sobel edge detection filter for 8-bit monochrome images</td>
+<td style=text-align:left>Image Processing</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>SobolQRNG</td>
+<td style=text-align:left>Sobol Quasirandom Sequence Generator</td>
+<td style=text-align:left>Computational Finance</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+<tr>
+<td style=text-align:left>transpose</td>
+<td style=text-align:left>Matrix transpose</td>
+<td style=text-align:left>Linear Algebra</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>Yes</td>
+</tr>
+</tbody>
+</table>
+<h1 id=10-gpgpu-sim>10. GPGPU-Sim</h1>
+<table>
+<thead>
+<tr>
+<th style=text-align:left>Application</th>
+<th style=text-align:left>Description</th>
+<th style=text-align:left>Domain</th>
+<th style=text-align:left>CUDA</th>
+<th style=text-align:left>OpenCL</th>
+<th style=text-align:left>C</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td style=text-align:left>aes</td>
+<td style=text-align:left>AES algorithm in CUDA to encrypt and decrypt files</td>
+<td style=text-align:left>Cryptography</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>dc</td>
+<td style=text-align:left>A discontinuous Galerkin time-domain solver</td>
+<td style=text-align:left>Simulation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>lps</td>
+<td style=text-align:left>3D Laplace Solver</td>
+<td style=text-align:left>Computational Finance</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>lib</td>
+<td style=text-align:left>Monte Carlo simulation in London-interbank-offered-rate Model</td>
+<td style=text-align:left>Computational Finance</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>mum</td>
+<td style=text-align:left>Pairwise local sequence alignment for DNA string</td>
+<td style=text-align:left>Bioinformatics</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>nn</td>
+<td style=text-align:left>Convolutional neural network to recognize handwritten digits</td>
+<td style=text-align:left>Machine Learning</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>nqu</td>
+<td style=text-align:left>The N-Queen solver</td>
+<td style=text-align:left>Simulation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>ray</td>
+<td style=text-align:left>Ray-tracing (rendering graphics with near photo-realism)</td>
+<td style=text-align:left>Graphic Application</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>sto</td>
+<td style=text-align:left>Sliding-window implementation of the MD5 algorithm</td>
+<td style=text-align:left>Data Mining</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+<tr>
+<td style=text-align:left>wp</td>
+<td style=text-align:left>Accelerate part of the Weather Research and Forecast Model (WRF)</td>
+<td style=text-align:left>Simulation</td>
+<td style=text-align:left>Yes</td>
+<td style=text-align:left>No</td>
+<td style=text-align:left>No</td>
+</tr>
+</tbody>
+</table>
+<h1 id=reference>Reference</h1>
+<p><a href=https://www.findhao.net/easycoding/2304.html>https://www.findhao.net/easycoding/2304.html</a></p>
+</div>
+<div class=tags>
+<ul class=flat>
+<li><a href=/tags/gpgpu-sim>gpgpu-sim</a></li>
+</ul>
+</div></div>
+</div>
+<div class="footer wrapper">
+<nav class=nav>
+<div>2021 © Athul | <a href=https://github.com/knadh/hugo-ink>Ink</a> theme on <a href=https://gohugo.io>Hugo</a></div>
+</nav>
+</div>
+<script>feather.replace()</script>
+</body>
+</html>

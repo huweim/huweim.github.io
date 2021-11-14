@@ -1,8 +1,8 @@
 <!doctype html><html>
 <head>
 <meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge"><title>GPGPU_Arch - Cory Code</title><meta name=viewport content="width=device-width,initial-scale=1">
-<meta itemprop=name content="GPGPU_Arch">
+<meta http-equiv=x-ua-compatible content="IE=edge"><title>GPGPU_Architecture - Cory Code</title><meta name=viewport content="width=device-width,initial-scale=1">
+<meta itemprop=name content="GPGPU_Architecture">
 <meta itemprop=description content="GPGPU Architecture 从有缩进的那一段开始成为第一段
 1. Introduction 1.1 The Landspace Of Computation Accelerators 1 提升性能不能光依赖于摩尔定律了，需要从 Computer Arch 中去寻找提升
 2 GPU 的性能优势, vector HW
@@ -13,7 +13,7 @@ By Turing Complete, we mean that any computation can be run given enough time an
  These APIs function by providing convenient interfaces that hide the complexity of managing communication between the CPU and GPU rather than eliminating the need for a CPU entirely."><meta itemprop=datePublished content="2021-07-24T16:35:27+08:00">
 <meta itemprop=dateModified content="2021-07-24T16:35:27+08:00">
 <meta itemprop=wordCount content="3927">
-<meta itemprop=keywords content="教材学习,research,"><meta property="og:title" content="GPGPU_Arch">
+<meta itemprop=keywords content="教材学习,research,"><meta property="og:title" content="GPGPU_Architecture">
 <meta property="og:description" content="GPGPU Architecture 从有缩进的那一段开始成为第一段
 1. Introduction 1.1 The Landspace Of Computation Accelerators 1 提升性能不能光依赖于摩尔定律了，需要从 Computer Arch 中去寻找提升
 2 GPU 的性能优势, vector HW
@@ -23,11 +23,11 @@ By Turing Complete, we mean that any computation can be run given enough time an
 1.2 GPU Hardware Basic 1 API for GPUs,
  These APIs function by providing convenient interfaces that hide the complexity of managing communication between the CPU and GPU rather than eliminating the need for a CPU entirely.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://huweim.github.io/posts/gpgpu_arch/"><meta property="article:section" content="posts">
+<meta property="og:url" content="https://huweim.github.io/posts/gpgpu_architecture/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-07-24T16:35:27+08:00">
 <meta property="article:modified_time" content="2021-07-24T16:35:27+08:00">
 <meta name=twitter:card content="summary">
-<meta name=twitter:title content="GPGPU_Arch">
+<meta name=twitter:title content="GPGPU_Architecture">
 <meta name=twitter:description content="GPGPU Architecture 从有缩进的那一段开始成为第一段
 1. Introduction 1.1 The Landspace Of Computation Accelerators 1 提升性能不能光依赖于摩尔定律了，需要从 Computer Arch 中去寻找提升
 2 GPU 的性能优势, vector HW
@@ -83,7 +83,7 @@ By Turing Complete, we mean that any computation can be run given enough time an
 </div>
 </div>
 <div class=matter>
-<h1 class=title>GPGPU_Arch</h1>
+<h1 class=title>GPGPU_Architecture</h1>
 </div>
 </div>
 <div class=markdown>
@@ -106,7 +106,6 @@ By Turing Complete, we mean that any computation can be run given enough time an
 <p>The CPU DRAM is typically optimized for low latency access whereas the GPU DRAM is optimized for high throughput.</p>
 </blockquote>
 <p>集成GPU和独立GPU</p>
-<p></p>
 <p>3 Nv Pascal 架构有软硬件支持，可以自动将 CPU memory 的 data 转移到 GPU memory</p>
 <p>unified memory 的概念，在 CPU 和 GPU 中都有的一个虚拟内存支持</p>
 <blockquote>
@@ -115,7 +114,6 @@ By Turing Complete, we mean that any computation can be run given enough time an
 <p>在集成的 CPU GPU 架构中，二者使用同样的 内存结构，无需考虑上述问题，但是要注意二者共用 cache 带来的 cache coherence 问题</p>
 <p>4 CPU, GPU, kernel, how to run</p>
 <p>5 描述 SIMT 架构，不过很好奇这里的 SMIT Core 在不同的物理架构中对应的是什么单元</p>
-<p></p>
 <blockquote>
 <p>Each core also typically contains first-level instruction and data caches.</p>
 <p>The large number of threads running on a core are used to hide the latency to access memory when data is not found in the first-level caches.</p>
@@ -138,7 +136,6 @@ By Turing Complete, we mean that any computation can be run given enough time an
 <p>Parallel Thread Execution ISA, or <strong>PTX</strong></p>
 <p><strong>SASS</strong>: short for “Streaming ASSembler”</p>
 <h1 id=3-the-simt-core-instruction-and-register-data-flow>3. The SIMT Core: Instruction and Register Data Flow</h1>
-<p></p>
 <ul>
 <li>Fetch: 负责读取内存中的指令。</li>
 <li>I-Cache: 即instruction cache，为L1 缓存，从内存中读取的指令放入到L1缓存中以便下次能够快速获取到指令。</li>
@@ -263,7 +260,6 @@ off-chip bandwidths.</p>
 <p>为了解决上述分支情况，SIMT stack模块使用 mask 来进行标记，其中置为 1 表示该线程需要执行，置0表示该线程不需要执行，每一个bit位代表了一个线程。</p>
 <p>假设一个GPU，warp大小为4 即同时支持4个线程并行运行，当上述kernel代码运行到A处时，所有的线程都运行，则标记位”A/1111“，其中mask bit位从低位到高位分别表示四个线程从第一个到第四个线程。当代码运行到if(t3 != t4) 时出现分支造成线程分化，其中第四个线程运行F分支，第一到三个线程运行B分支，则可分别表示"F/0001"和”B/1110"。处于B线程继续执行又遇到if( t5 != t4 )分支，其中第一个线程执行C，第二和三个线程执行D，mask可分别表示位"C/1000"和"D/0110"，当C和D执行完毕之后到E线程有重新聚合，即"E/1110"。而在G出 又出现了线程聚合，即"G/1111"。整个上述kernel执行控制流图（control flow graph)CFG，如下图所示</p>
 </blockquote>
-<p></p>
 <blockquote>
 <p>GPU上述执行遇到上述分支时，只能采取顺序执行，即先执行其中一个分支然后再执行另外一个分支，当执行其中一个分支时，根据提前标记好的mask决定线程是否运行，如果在该分支有些线程mask 被置0，则只能进行等待状态。</p>
 <p>这时因为SIMT执行模式在同一个warp内只有一个PC执行即在warp内所有线程都只能执行这一条命令，因此只能选择执行或者不执行，而不能在不执行时选择其他指令进行执行。</p>
@@ -273,9 +269,7 @@ off-chip bandwidths.</p>
 <p>即遇到分支时，warp只能按照顺序串行化进行执行，直到所有线程都执行完毕。上述kernel 执行时，在SIMT stack其他预测的执行顺序如下</p>
 </blockquote>
 <p>实心代表线程执行，空心代表线程不执行，被屏蔽</p>
-<p></p>
 <p>这个时候可以体会 SIMT Stack 的作用了，在SIMT stack中为了指明整个序列号执行路径，按照一条条entry记录，使用类似如下图所示内容</p>
-<p></p>
 <blockquote>
 <p>上述SIMT stack中在初始化c图部分，TOS指向下一个Next PC为B，即下一个要执行的指令为B出现分支，执行B指令的mask为1110。</p>
 <p>而B 指令的entry指向 d图的TOS，即指向完B之后 开始执行C 执行而B执行聚合点指令为E，即执行完C之后之后还要执行聚合点同样为E的指令 即D指令，只有聚合点都是E的指令执行完毕之后，才能进行往下执行，而 执行的指令则为E指令。此时同样E指令的聚合点指令为G，需要把所有聚合点位G的指令执行完毕之后 才能执行G 指令。</p>
@@ -428,18 +422,15 @@ off-chip bandwidths.</p>
 <p>针对的是数据依赖，记住是处理 <code>Bank Conflict</code> 的解决方法</p>
 <p><code>Collector Unit</code>的功能不是通过 寄存器重命名 的方式来消除寄存器的数据依赖，而是将 寄存器文件 分成多个Bank，并且尽量保证让一条指令中的寄存器访问的是不同的 Bank</p>
 <h5 id=iii-原理>III. 原理</h5>
-<p></p>
 <blockquote>
 <p>上图为operand collector原型图，该图中拥有4个bank 通过crossbar链接链接到 Pipleline Register，pipleline Register 为stage register，用于临时存储从regiester file读取过来的指令/数据，stage register最后将得到的数据/指令发送到SIMD执行单元中。</p>
 </blockquote>
 <p>Bank 理解为复用单个寄存器资源，让 warp 中的线程“看起来”独享了一个寄存器，而实际是通过调度实现这一过程</p>
-<p></p>
 <blockquote>
 <p>上图一个寄存器一个为 4 个 bank 的布局，其中 r0 表示的是 r0 寄存器， w0 代表warp 0，那么 w0:r0 代表来自于 w0 的 r0 寄存器分布在 bank0 中，来自于 w0 的 r1 寄存器分布在 bank1 中，依次进行排布，当寄存器的数量大于 bank 时，那边将轮转重新排布，即 w0:r4 排布到bank 0寄存器中。依次 w1:r0 重新从 bank0 开始排布。</p>
 <p>如果在一个warp0和wapr1中如果warp 0读取的是r0寄存器 warp1读取的是r1寄存器，分布到两个不同的bank内，即可以同时进去读取。</p>
 <p>如果是warp0和warp读取 r0寄存器那么将会产生一个bank冲突，造成无法并行，<strong>bank冲突会严重影响性能</strong>。下面有个例子将会说明bank冲突将会怎样影响性能调度</p>
 </blockquote>
-<p></p>
 <p>注意图中有 4 个 bank</p>
 <blockquote>
 <p>假设有两条指令，其中i1为mad 指令（乘加指令）以及i2 为add(加指令）。i1指令使用到源寄存器位r5、r4、r6分别使用bank1、bank0、bank2，目的寄存器位r2，使用的是bank2。i2 指令使用到的源寄存器为r5和r1，都是用到的bank1，目的寄存器为r5。</p>
@@ -468,19 +459,15 @@ off-chip bandwidths.</p>
 <li>一个 Bank 被一个 thread 独享</li>
 </ul>
 <p>映射关系如下所图</p>
-<p></p>
 <p>如上图共享内存映射为bank采用列映射方式，例如warp size = 32, banks = 16,（计算能力1.x的设备）数据映射关系如下</p>
-<p></p>
 <p>例如对于一个 32*32大小的float数组</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>__shared__ float sData[32][32];
 </code></pre></div><p>在一个warp size = 32,bank=32的GPU中 中bank的映射关系为</p>
-<p></p>
 <h5 id=ii-bank-conflicts>II. Bank Conflicts</h5>
 <p>如果在block内多个线程访问的地址落入到同一个bank内，那么就会访问同一个bank就会产生bank conflict，这些访问将是变成串行，在实际开发调式中重视bank conflict.</p>
 <blockquote>
 <p>However, if two addresses of a memory request fall in the same memory bank, there is a bank conflict and the access has to be serialized. The hardware splits a memory request with bank conflicts into as many separate conflict-free requests as necessary, decreasing throughput by a factor equal to the number of separate memory requests. If the number of separate memory requests is n, the initial memory request is said to cause n-way bank conflicts.</p>
 </blockquote>
-<p></p>
 <p>part1, 2, 3 访问同一个 bank 会造成 bank conflicts，造成程序串行而影响性能</p>
 <blockquote>
 <p>在上述数组例子中，如果有多个线程同时访问一个列中的不同数组将会产生bank conflict</p>
