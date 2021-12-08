@@ -15,7 +15,7 @@
  实现 Cache Replacement Policy 中的 OPT 算法，也就是假设已经得知了对 cache line 的访问序列，每次都 evict 最久之后访问的那个 cache line 将 Sniper 中的 inclusive policy 改为 non-inclusive policy  通过这个 lab 更深刻地理解了一些 cache replacement, 模拟器中访问 cache 和内存的 flow, cache 的地址映射方式等等
 2. 思路和 Report Optimal算法  首先，每一条指令的access操作都会经过函数 AccessSingleLine，在这个地方执行文件 IO 操作。  第一遍执行程序的时候进行文件写入（假设两次执行程序的指令序列是完全一样的），将指令的 set_index 和 tag 写入future_list.txt文件（预先将指令序列写入文件） 第二遍指令的时候，相当于我们是已知未来序列的，在第一次调用 AccessSingleLine 的时候，将文件读入一个二维数组future_list，存放所有指令的 set_index 和 tag。后续调用 AccessSingleLine 的时候不再进行文件 IO 操作（写一个条件判断，只执行一次文件 IO 操作）。 二维数组 future_list 中存放了指令 access 序列，将其在 class Cache 中定义，定义为 long long int 型的静态变量，并且有足够大的空间。   根据对 sniper 代码的阅读，此模拟器执行的是 LRU 替换算法，为了不大量修改一些函数接口和逻辑（比如当 cache 为空时的替换和替换算法的选择），我选择直接在 cache_set_lru.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://huweim.github.io/posts/ca2_lab1/"><meta property="article:section" content="posts">
+<meta property="og:url" content="https://huweim.github.io/posts/%E8%AF%BE%E7%A8%8B_ca2_lab1/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-07-28T16:09:45+08:00">
 <meta property="article:modified_time" content="2021-07-28T16:09:45+08:00">
 <meta name=twitter:card content="summary">

@@ -6,16 +6,16 @@
 <meta itemprop=description content="0. 前言 最近需要使用到 Docker, 记一下笔记和常用的操作。主要是参考菜鸟教程和阮一峰老师的教程。
 1. 启动Docker服务 # service 命令的用法 $ sudo service docker start # systemctl 命令的用法 $ sudo systemctl start docker 2. Image文件 **Docker 把应用程序及其依赖，打包在 image 文件里面。**只有通过这个文件，才能生成 Docker 容器。 image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例。
 # 列出本机的所有 image 文件。 $ docker image ls $ docler images REPOSITORY TAG IMAGE ID CREATED SIZE ubuntu latest fb52e22af1b0 2 weeks ago 72.8MB hello-world latest d1165f221234 6 months ago 13.3kB ubuntu 15."><meta itemprop=datePublished content="2021-09-17T16:25:25+08:00">
-<meta itemprop=dateModified content="2021-09-17T16:25:25+08:00">
-<meta itemprop=wordCount content="744">
+<meta itemprop=dateModified content="2021-12-08T09:00:58+00:00">
+<meta itemprop=wordCount content="834">
 <meta itemprop=keywords content="Docker,技巧,"><meta property="og:title" content="Docker Image and Container">
 <meta property="og:description" content="0. 前言 最近需要使用到 Docker, 记一下笔记和常用的操作。主要是参考菜鸟教程和阮一峰老师的教程。
 1. 启动Docker服务 # service 命令的用法 $ sudo service docker start # systemctl 命令的用法 $ sudo systemctl start docker 2. Image文件 **Docker 把应用程序及其依赖，打包在 image 文件里面。**只有通过这个文件，才能生成 Docker 容器。 image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例。
 # 列出本机的所有 image 文件。 $ docker image ls $ docler images REPOSITORY TAG IMAGE ID CREATED SIZE ubuntu latest fb52e22af1b0 2 weeks ago 72.8MB hello-world latest d1165f221234 6 months ago 13.3kB ubuntu 15.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://huweim.github.io/posts/docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/"><meta property="article:section" content="posts">
+<meta property="og:url" content="https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-09-17T16:25:25+08:00">
-<meta property="article:modified_time" content="2021-09-17T16:25:25+08:00">
+<meta property="article:modified_time" content="2021-12-08T09:00:58+00:00">
 <meta name=twitter:card content="summary">
 <meta name=twitter:title content="Docker Image and Container">
 <meta name=twitter:description content="0. 前言 最近需要使用到 Docker, 记一下笔记和常用的操作。主要是参考菜鸟教程和阮一峰老师的教程。
@@ -119,9 +119,11 @@ sis013/injesim4                     gpgpusim-4.0 with jonghyun                  
 </code></pre></div><h2 id=23-pull镜像>2.3 pull镜像</h2>
 <p>使用命令 docker pull 来下载镜像</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ docker pull findhao/gpgpusim_runtime
+$ docker pull ubuntu:20.04
 </code></pre></div><p>没想到 UCR 那个还挺大的，下了一会儿失败了，换成了 findhao/gpgpusim_runtime</p>
 <h2 id=24-运行镜像>2.4 运行镜像</h2>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ docker run -it findhao/gpgpusim_runtime
+$ docker run -it ubuntu:20.04 /bin/bash
 </code></pre></div><h2 id=24-创建镜像>2.4 创建镜像</h2>
 <p>两种方法</p>
 <ul>
@@ -250,6 +252,7 @@ $ docker container prune <span class=c1>#清理所有处于终止状态的容器
 <p>在大部分的场景下，我们希望 docker 的服务是在后台运行的，我们可以过 <strong>-d</strong> 指定容器的运行模式。</p>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ docker container run -itd --name ubuntu-test ubuntu /bin/bash
 </code></pre></div><p>**注：**加了 <strong>-d</strong> 参数默认不会进入容器，想要进入容器需要使用指令 <strong>docker exec</strong>（下面会介绍到）</p>
+<p>NOTE: If you want to detach (push it to background) from the container without shutting it down, use <em>ctrl+p+q</em> Remember that <em>$ exit</em> would shutdown the container.</p>
 <h3 id=441-进入容器>4.4.1 进入容器</h3>
 <p>在使用 <strong>-d</strong> 参数时，容器启动后会进入后台。此时想要进入容器，可以通过以下指令进入：</p>
 <ul>
@@ -270,6 +273,21 @@ $ docker container prune <span class=c1>#清理所有处于终止状态的容器
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ docker import http://example.com/exampleimag	e.tgz example/imagerepo
 </code></pre></div><h2 id=46-拷贝容器文件到本机>4.6 拷贝容器文件到本机</h2>
 <div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ docker container cp <span class=o>[</span>containID<span class=o>]</span>:<span class=o>[</span>/path/to/file<span class=o>]</span> .
+</code></pre></div><h1 id=5-制作镜像文件>5. 制作镜像文件</h1>
+<h2 id=51-保存迁移镜像>5.1 保存/迁移镜像</h2>
+<p>把镜像保存为压缩包</p>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ docker save -o gpgpusim.tar huweim/gpgpu-sim:v2
+</code></pre></div><h2 id=52-移动镜像文件>5.2 移动镜像文件</h2>
+<p>现在镜像放在了 <code>gpgpusim.tar</code> 压缩包中，可以迁移到你打算使用的机器上</p>
+<h2 id=53-导入镜像>5.3 导入镜像</h2>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ docker load -i gpgpusim.tar
+</code></pre></div><h2 id=54-总结-importsave-之间的差别>5.4 总结 import/save 之间的差别</h2>
+<ul>
+<li>import: Container -> .tar, export: .tar -> Image</li>
+<li>save: Image -> .tar, load: .tar -> Image</li>
+</ul>
+<h1 id=6-文件夹挂载>6. 文件夹挂载</h1>
+<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>$ docker run -it -v /home/vsp/huweim/gpgpusim:/root/share ubuntu:20.04 /bin/bash
 </code></pre></div><h1 id=reference>Reference</h1>
 <p><a href=https://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html>https://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html</a> Docker 入门教程</p>
 <p><a href=https://www.runoob.com/docker/docker-container-connection.html>https://www.runoob.com/docker/docker-container-connection.html</a> <strong>Docker 教程</strong></p>

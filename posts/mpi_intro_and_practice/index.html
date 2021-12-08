@@ -1,89 +1,70 @@
-<!doctype html><html>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge"><title>MPI Intro and Practice - Cory Code</title><meta name=viewport content="width=device-width,initial-scale=1">
-<meta itemprop=name content="MPI Intro and Practice">
-<meta itemprop=description content="MPI Intro and Practice Intro Definition wiki:
- Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.  Feature  an interface, not a programming language Main model of HPC a cross-language communication protocol  Functions  Communication  Point-to-point communication  Send Recv   Collective communication  Broadcast, scatter/ gather, all to all, reduce, scan, barrier     Almost all parallel programs can be described using the message passing model."><meta itemprop=datePublished content="2021-03-09T22:36:19+08:00">
-<meta itemprop=dateModified content="2021-03-09T22:36:19+08:00">
-<meta itemprop=wordCount content="301">
-<meta itemprop=keywords content><meta property="og:title" content="MPI Intro and Practice">
+<!DOCTYPE html>
+<html><head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>MPI Intro and Practice - Cory Code</title><meta name="viewport" content="width=device-width, initial-scale=1">
+
+	<meta property="og:image" content=""/>
+	<meta property="og:title" content="MPI Intro and Practice" />
 <meta property="og:description" content="MPI Intro and Practice Intro Definition wiki:
- Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.  Feature  an interface, not a programming language Main model of HPC a cross-language communication protocol  Functions  Communication  Point-to-point communication  Send Recv   Collective communication  Broadcast, scatter/ gather, all to all, reduce, scan, barrier     Almost all parallel programs can be described using the message passing model.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://huweim.github.io/posts/mpi_intro_and_practice/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2021-03-09T22:36:19+08:00">
-<meta property="article:modified_time" content="2021-03-09T22:36:19+08:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="MPI Intro and Practice">
-<meta name=twitter:description content="MPI Intro and Practice Intro Definition wiki:
- Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.  Feature  an interface, not a programming language Main model of HPC a cross-language communication protocol  Functions  Communication  Point-to-point communication  Send Recv   Collective communication  Broadcast, scatter/ gather, all to all, reduce, scan, barrier     Almost all parallel programs can be described using the message passing model.">
-<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700" rel=stylesheet type=text/css>
-<link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/normalize.css>
-<link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/main.css>
-<link id=dark-scheme rel=stylesheet type=text/css href=https://huweim.github.io/css/dark.css>
-<script src=https://huweim.github.io/js/feather.min.js></script>
-<script src=https://huweim.github.io/js/main.js></script>
+ Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.  Feature  an interface, not a programming language Main model of HPC a cross-language communication protocol  Functions  Communication  Point-to-point communication  Send Recv   Collective communication  Broadcast, scatter/ gather, all to all, reduce, scan, barrier     Almost all parallel programs can be described using the message passing model." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huweim.cn/posts/mpi_intro_and_practice/" />
+<meta property="article:published_time" content="2021-03-09T22:36:19+08:00" />
+<meta property="article:modified_time" content="2021-03-09T22:36:19+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="MPI Intro and Practice"/>
+<meta name="twitter:description" content="MPI Intro and Practice Intro Definition wiki:
+ Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.  Feature  an interface, not a programming language Main model of HPC a cross-language communication protocol  Functions  Communication  Point-to-point communication  Send Recv   Collective communication  Broadcast, scatter/ gather, all to all, reduce, scan, barrier     Almost all parallel programs can be described using the message passing model."/>
+<script src="https://huweim.cn/js/feather.min.js"></script>
+	
+	<link href="https://huweim.cn/css/fonts.css" rel="stylesheet">
+	
+	<link rel="stylesheet" type="text/css" media="screen" href="https://huweim.cn/css/main.css" /><link rel="stylesheet" type="text/css" href="https://huweim.cn/css/dark.css" media="(prefers-color-scheme: dark)" />
+	
+	
 </head>
 <body>
-<div class="container wrapper">
-<div class=header>
-<h1 class=site-title><a href=https://huweim.github.io/>Cory Code</a></h1>
-<div class=site-description><p>Minimal and Clean <a href=https://github.com/athul/hugo-ink>blog theme for Hugo</a></p><nav class="nav social">
-<ul class=flat><li><a href=https://github.com/huweim title=GitHub><i data-feather=github></i></a></li><li><a href=https://twitter.com/athulcajay/ title=Twitter><i data-feather=twitter></i></a></li><li><a href=https://gitlab.com/athul/ title=GitLab><i data-feather=gitlab></i></a></li><li><a href=# class=scheme-toggle id=scheme-toggle></a></li></ul>
-</nav>
-</div>
-<nav class=nav>
-<ul class=flat>
-<li>
-<a href=/>Home</a>
-</li>
-<li>
-<a href=/posts>All posts</a>
-</li>
-<li>
-<a href=/categories/>Categories</a>
-</li>
-<li>
-<a href=/archives>Archives</a>
-</li>
-<li>
-<a href=/tags>Tags</a>
-</li>
-<li>
-<a href=/about/>About</a>
-</li>
-</ul>
-</nav>
-</div>
-<div class=post>
-<div class=post-header>
-<div class=meta>
-<div class=date>
-<span class=day>09</span>
-<span class=rest>Mar 2021</span>
-</div>
-</div>
-<div class=matter>
-<h1 class=title>MPI Intro and Practice</h1>
-</div>
-</div>
-<div class=markdown>
-<h1 id=mpi-intro-and-practice>MPI Intro and Practice</h1>
-<h3 id=intro>Intro</h3>
-<h5 id=definition>Definition</h5>
+        <div class="content"><header>
+	<div class="main">
+		<a href="https://huweim.cn/">Cory Code</a>
+	</div>
+	<nav>
+		
+		<a href="/">Home</a>
+		
+		<a href="/posts">All posts</a>
+		
+		<a href="/about">About</a>
+		
+		<a href="/tags">Tags</a>
+		
+	</nav>
+</header>
+
+<main>
+	<article>
+		<div class="title">
+			<h1 class="title">MPI Intro and Practice</h1>
+			<div class="meta">Posted on Mar 9, 2021</div>
+		</div>
+		
+
+		<section class="body">
+			<h1 id="mpi-intro-and-practice">MPI Intro and Practice</h1>
+<h3 id="intro">Intro</h3>
+<h5 id="definition">Definition</h5>
 <p>wiki:</p>
 <ul>
 <li><strong>Message Passing Interface</strong> (<strong>MPI</strong>) is a standardized and portable message-passing standard</li>
 <li>designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.</li>
 </ul>
-<h5 id=feature>Feature</h5>
+<h5 id="feature">Feature</h5>
 <ul>
 <li>an interface, not a programming language</li>
 <li>Main model of HPC</li>
 <li>a cross-language communication protocol</li>
 </ul>
-<h5 id=functions>Functions</h5>
+<h5 id="functions">Functions</h5>
 <ul>
 <li>Communication
 <ul>
@@ -102,7 +83,7 @@
 </li>
 <li>Almost all parallel programs can be described using the message passing model.</li>
 </ul>
-<h5 id=concept>Concept</h5>
+<h5 id="concept">Concept</h5>
 <ul>
 <li>Communicator:
 <ul>
@@ -111,18 +92,18 @@
 </ul>
 </li>
 </ul>
-<h3 id=set-up-in-ubuntu-2004>Set up in Ubuntu 20.04</h3>
+<h3 id="set-up-in-ubuntu-2004">Set up in Ubuntu 20.04</h3>
 <p>在这个阶段，简单地通过网络的教程进行 library or software 的安装是不现实的，还是得从根本上学会去解决问题，去看源文档(doc)的说明。</p>
-<h5 id=i-download>I. Download</h5>
+<h5 id="i-download">I. Download</h5>
 <ul>
 <li>Download <code>mpich-3.4.1.tar.gz</code> at <code>https://www.mpich.org/downloads/</code></li>
 <li>版本会更新，地址应该不会变</li>
 </ul>
-<h5 id=ii-解压后进入目录>II. 解压后进入目录</h5>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>tar -xzvf mpich-3.4.1.tar.gz
-<span class=nb>cd</span> mpich-3.4.1
-</code></pre></div><h5 id=iii-配置>III. 配置</h5>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>./configure --prefix<span class=o>=</span>/home/Desktop/HPC/mpich-3.4.1/mpich-install 2&gt;<span class=p>&amp;</span><span class=m>1</span> <span class=p>|</span> tee c.txt
+<h5 id="ii-解压后进入目录">II. 解压后进入目录</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">tar -xzvf mpich-3.4.1.tar.gz
+cd mpich-3.4.1
+</code></pre></div><h5 id="iii-配置">III. 配置</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./configure --prefix<span style="color:#f92672">=</span>/home/Desktop/HPC/mpich-3.4.1/mpich-install 2&gt;&amp;<span style="color:#ae81ff">1</span> | tee c.txt
 </code></pre></div><ul>
 <li>
 <p>这个地方根据自己的安装路径，我就配置在当前的<code>/home/Desktop/HPC/mpich-3.4.1</code>文件夹下</p>
@@ -131,7 +112,7 @@
 <p>然后出现两个坑</p>
 <ul>
 <li>error: no ch4 netmod selected</li>
-<li><img src=../Image/error_1.png alt=error_1></li>
+<li><img src="../Image/error_1.png" alt="error_1"></li>
 <li>根据提示加上 <code>--with-device=ch4:ofi</code> 即可</li>
 <li>加上后再次报错<code>No Fortran compiler found. If you don't need to build any Fortran programs, you can disable Fortran support using --disable-fortran. If you do want to build Fortran programs, you need to install a Fortran compiler such as gfortran or ifort before you can proceed.</code></li>
 <li>这是因为没有安装Fortran compiler</li>
@@ -139,62 +120,71 @@
 </ul>
 </li>
 </ul>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>./configure --disable-fortran  --with-device<span class=o>=</span>ch4:ofi  --prefix<span class=o>=</span>/home/Desktop/HPC/mpich-3.4.1/mpich-install 2&gt;<span class=p>&amp;</span><span class=m>1</span> <span class=p>|</span> tee c.txt
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">./configure --disable-fortran  --with-device<span style="color:#f92672">=</span>ch4:ofi  --prefix<span style="color:#f92672">=</span>/home/Desktop/HPC/mpich-3.4.1/mpich-install 2&gt;&amp;<span style="color:#ae81ff">1</span> | tee c.txt
 </code></pre></div><ul>
 <li>
 <p>成功配置</p>
-<p><img src=../Image/Config.png alt="Config completed"></p>
+<p><img src="../Image/Config.png" alt="Config completed"></p>
 </li>
 </ul>
-<p>接下来 -></p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>make    		<span class=c1>#等待一段漫长的时间</span>
-make install    <span class=c1>#权限不够加 sudo</span>
-</code></pre></div><h5 id=iv-添加环境变量>IV. 添加环境变量</h5>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>sudo gedit ~/.bashrc
+<p>接下来 -&gt;</p>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">make    		<span style="color:#75715e">#等待一段漫长的时间</span>
+make install    <span style="color:#75715e">#权限不够加 sudo</span>
+</code></pre></div><h5 id="iv-添加环境变量">IV. 添加环境变量</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">sudo gedit ~/.bashrc
 </code></pre></div><ul>
 <li>打开<code>.bashrc</code> 文件后在末尾添加</li>
 </ul>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>export</span> <span class=nv>MPI_ROOT</span><span class=o>=</span>/home/Desktop/HPC/mpich-3.4.1/mpich-install <span class=c1>#这一步对应你自己的安装地址</span>
-<span class=nb>export</span> <span class=nv>PATH</span><span class=o>=</span><span class=nv>$MPI_ROOT</span>/bin:<span class=nv>$PATH</span>
-<span class=nb>export</span> <span class=nv>MANPATH</span><span class=o>=</span><span class=nv>$MPI_ROOT</span>/man:<span class=nv>$MANPATH</span>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">export MPI_ROOT<span style="color:#f92672">=</span>/home/Desktop/HPC/mpich-3.4.1/mpich-install <span style="color:#75715e">#这一步对应你自己的安装地址</span>
+export PATH<span style="color:#f92672">=</span>$MPI_ROOT/bin:$PATH
+export MANPATH<span style="color:#f92672">=</span>$MPI_ROOT/man:$MANPATH
 </code></pre></div><ul>
 <li>然后激活</li>
 </ul>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash><span class=nb>source</span> ~/.bashrc
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">source ~/.bashrc
 </code></pre></div><ul>
 <li>which mpicc 查看位置信息</li>
 <li>mpichversion 查看版本信息，出现版本号说明安装成功</li>
 </ul>
-<p><img src=../Image/Version.png alt="Version Info">.</p>
-<h3 id=运行程序>运行程序</h3>
-<h5 id=i-创建文件helloc>I. 创建文件hello.c</h5>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=cp>#include</span> <span class=cpf>&#34;mpi.h&#34;</span><span class=cp>
-</span><span class=cp>#include</span> <span class=cpf>&lt;stdio.h&gt;</span><span class=cp>
-</span><span class=cp></span>
-<span class=kt>int</span> <span class=nf>main</span><span class=p>(</span> <span class=kt>int</span> <span class=n>argc</span><span class=p>,</span> <span class=kt>char</span> <span class=o>*</span><span class=n>argv</span><span class=p>[]</span> <span class=p>)</span>
-<span class=p>{</span>
-    <span class=kt>int</span> <span class=n>rank</span><span class=p>,</span> <span class=n>size</span><span class=p>;</span>
-    <span class=n>MPI_Init</span><span class=p>(</span> <span class=o>&amp;</span><span class=n>argc</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>argv</span> <span class=p>);</span>
-    <span class=n>MPI_Comm_rank</span><span class=p>(</span> <span class=n>MPI_COMM_WORLD</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>rank</span> <span class=p>);</span>
-    <span class=n>MPI_Comm_size</span><span class=p>(</span> <span class=n>MPI_COMM_WORLD</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>size</span> <span class=p>);</span>
-    <span class=n>printf</span><span class=p>(</span> <span class=s>&#34;I am %d of %d</span><span class=se>\n</span><span class=s>&#34;</span><span class=p>,</span> <span class=n>rank</span><span class=p>,</span> <span class=n>size</span> <span class=p>);</span>
-    <span class=n>MPI_Finalize</span><span class=p>();</span>
-    <span class=k>return</span> <span class=mi>0</span><span class=p>;</span>
-<span class=p>}</span>
-</code></pre></div><h5 id=ii-编译>II. 编译</h5>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>mpicc hellow.c -o hellow
-</code></pre></div><h5 id=iii-运行>III. 运行</h5>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-bash data-lang=bash>mpirun -n <span class=m>2</span> ./hellow
-</code></pre></div><p><img src=../Image/Compile.png alt="Compile and Execute">.</p>
-</div>
-<div class=tags>
-</div></div>
-</div>
-<div class="footer wrapper">
-<nav class=nav>
-<div>2021 © Athul | <a href=https://github.com/knadh/hugo-ink>Ink</a> theme on <a href=https://gohugo.io>Hugo</a></div>
-</nav>
-</div>
-<script>feather.replace()</script>
-</body>
+<p><img src="../Image/Version.png" alt="Version Info">.</p>
+<h3 id="运行程序">运行程序</h3>
+<h5 id="i-创建文件helloc">I. 创建文件hello.c</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-c++" data-lang="c++"><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&#34;mpi.h&#34;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span><span style="color:#75715e">#</span><span style="color:#75715e">include</span> <span style="color:#75715e">&lt;stdio.h&gt;</span><span style="color:#75715e">
+</span><span style="color:#75715e"></span>
+<span style="color:#66d9ef">int</span> <span style="color:#a6e22e">main</span>( <span style="color:#66d9ef">int</span> argc, <span style="color:#66d9ef">char</span> <span style="color:#f92672">*</span>argv[] )
+{
+    <span style="color:#66d9ef">int</span> rank, size;
+    MPI_Init( <span style="color:#f92672">&amp;</span>argc, <span style="color:#f92672">&amp;</span>argv );
+    MPI_Comm_rank( MPI_COMM_WORLD, <span style="color:#f92672">&amp;</span>rank );
+    MPI_Comm_size( MPI_COMM_WORLD, <span style="color:#f92672">&amp;</span>size );
+    printf( <span style="color:#e6db74"></span><span style="color:#e6db74">&#34;</span><span style="color:#e6db74">I am %d of %d</span><span style="color:#ae81ff">\n</span><span style="color:#e6db74">&#34;</span>, rank, size );
+    MPI_Finalize();
+    <span style="color:#66d9ef">return</span> <span style="color:#ae81ff">0</span>;
+}
+</code></pre></div><h5 id="ii-编译">II. 编译</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mpicc hellow.c -o hellow
+</code></pre></div><h5 id="iii-运行">III. 运行</h5>
+<div class="highlight"><pre style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4"><code class="language-bash" data-lang="bash">mpirun -n <span style="color:#ae81ff">2</span> ./hellow
+</code></pre></div><p><img src="../Image/Compile.png" alt="Compile and Execute">.</p>
+
+		</section>
+
+		<div class="post-tags">
+			
+			
+			
+		</div>
+	</article>
+</main>
+<footer>
+<hr><a class="soc" href="https://github.com/huweim" title="GitHub"><i data-feather="github"></i></a>|<a class="soc" href="https://twitter.com/athulcajay/" title="Twitter"><i data-feather="twitter"></i></a>|<a class="soc" href="https://gitlab.com/athul/" title="GitLab"><i data-feather="gitlab"></i></a>|⚡️
+	2021  © Athul |  <a href="https://github.com/athul/archie">Archie Theme</a> | Built with <a href="https://gohugo.io">Hugo</a>
+</footer>
+
+
+<script>
+      feather.replace()
+</script></div>
+    </body>
 </html>

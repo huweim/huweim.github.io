@@ -19,7 +19,7 @@
 1.1 问题 接下来问题出现了，到底应该怎么设置 gridDim 呢？也就是 BlockNums. 在测试代码中数据量 N=10000000, 自己的理解是我一个 block 用1024个 threads，使用 256 个block，这样的话总共有 256*1024 个 threads 可以并行工作，那么我用 for 循环加上步长 stride = blockDim.x * gridDim.x 来实现 N 个数据的计算，也就是
 #define N 10000000 #define THREADS_PER_BLOCK 1024 #define BLOCK_NUMS 256 //#define BLOCK_NUMS ((N + THREADS_PER_BLOCK - 1) / THREADS_PER_BLOCK)  __global__ void gpu_histogram(int *input, int count, int *output) { int index = blockIdx.">
 <meta property="og:type" content="article">
-<meta property="og:url" content="https://huweim.github.io/posts/cuda_set_griddim/"><meta property="article:section" content="posts">
+<meta property="og:url" content="https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_cuda_set_griddim/"><meta property="article:section" content="posts">
 <meta property="article:published_time" content="2021-08-17T14:12:38+08:00">
 <meta property="article:modified_time" content="2021-08-17T14:12:38+08:00">
 <meta name=twitter:card content="summary">
