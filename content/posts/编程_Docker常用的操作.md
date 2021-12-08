@@ -1,6 +1,7 @@
 ---
 title: "Docker Image and Container"
 date: 2021-09-17T16:25:25+08:00
+lastmod: 2021-12-08 09:00:58
 draft: false
 tags: ["Docker", "技巧"]
 categories: ["编程"]
@@ -73,6 +74,7 @@ sis013/injesim4                     gpgpusim-4.0 with jonghyun                  
 
 ```bash
 $ docker pull findhao/gpgpusim_runtime
+$ docker pull ubuntu:20.04
 ```
 
 没想到 UCR 那个还挺大的，下了一会儿失败了，换成了 findhao/gpgpusim_runtime
@@ -81,6 +83,7 @@ $ docker pull findhao/gpgpusim_runtime
 
 ```bash
 $ docker run -it findhao/gpgpusim_runtime
+$ docker run -it ubuntu:20.04 /bin/bash
 ```
 
 ## 2.4 创建镜像
@@ -309,6 +312,8 @@ $ docker container run -itd --name ubuntu-test ubuntu /bin/bash
 
 **注：**加了 **-d** 参数默认不会进入容器，想要进入容器需要使用指令 **docker exec**（下面会介绍到）
 
+NOTE: If you want to detach (push it to background) from the container without shutting it down, use *ctrl+p+q* Remember that *$ exit* would shutdown the container.
+
 ### 4.4.1 进入容器
 
 在使用 **-d** 参数时，容器启动后会进入后台。此时想要进入容器，可以通过以下指令进入：
@@ -353,6 +358,39 @@ $ docker import http://example.com/exampleimag	e.tgz example/imagerepo
 ```bash
 $ docker container cp [containID]:[/path/to/file] .
 ```
+
+# 5. 制作镜像文件
+
+## 5.1 保存/迁移镜像
+
+把镜像保存为压缩包
+
+```bash
+$ docker save -o gpgpusim.tar huweim/gpgpu-sim:v2
+```
+
+## 5.2 移动镜像文件
+
+现在镜像放在了 `gpgpusim.tar` 压缩包中，可以迁移到你打算使用的机器上
+
+## 5.3 导入镜像
+
+```bash
+$ docker load -i gpgpusim.tar
+```
+
+## 5.4 总结 import/save 之间的差别
+
++ import: Container -> .tar, export: .tar -> Image
++ save: Image -> .tar, load: .tar -> Image
+
+# 6. 文件夹挂载
+
+```bash
+$ docker run -it -v /home/vsp/huweim/gpgpusim:/root/share ubuntu:20.04 /bin/bash
+```
+
+
 
 # Reference
 
