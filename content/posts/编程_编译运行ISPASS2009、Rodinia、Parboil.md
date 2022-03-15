@@ -241,7 +241,7 @@ Ubuntu20.04 下使用 GPGPU-Sim 编译运行 Parboil
 
 ## 3.2. Data Set
 
-download from http://impact.crhc.illinois.edu/parboil/parboil_download_page.aspx，在 1.1 的步骤中应该已经下载了，但是在 Github 中不带 data set，而且 data set 不全，使用他的脚本编译可能会报错，所以建议在官网下载。
+download from http://impact.crhc.illinois.edu/parboil/parboil_download_page.aspx，在 1.1 的步骤中应该已经下载了，但是在 Github 中不带 data set，如果 data set 不全，使用他的脚本编译可能会报错，所以建议在官网下载。
 
 包含 11 个 benchmark data set
 
