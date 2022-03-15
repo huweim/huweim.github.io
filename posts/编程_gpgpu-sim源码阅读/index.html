@@ -1,351 +1,123 @@
-<!doctype html><html>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge"><title>GPGPU-Sim源码阅读 - Cory Code</title><meta name=viewport content="width=device-width,initial-scale=1">
-<meta itemprop=name content="GPGPU-Sim源码阅读">
-<meta itemprop=description content="Shader.cc shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>GPGPU-Sim源码阅读 - Cory Code</title><meta name=viewport content="width=device-width,initial-scale=1"><meta itemprop=name content="GPGPU-Sim源码阅读"><meta itemprop=description content="Shader.cc shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等
 m_stats 也就是 shader_core_stats 类型的变量
 num_shaer 就是 n_simt_clusters*n_simt_cores_per_cluster，也就是 SIMT Core 的数量
 tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值
 shader_core_ctx::decode 函数 检查 fetch buffer 中的指令是否有效，如有效则进入循环。获得当前指令的 pc，并取指令。
 指令用变量 pI1 存储，调用函数 ibuffer_fill, 将 pI 装进对应 warp id 的 I-Buffer, 并将 valid bit 置为1
 随后会取下一条指令，用变量 pI2 存储，注意下一条指令的 pc = pc + pI1 -> isize。也就是我们常说的 pc = pc + 1, 这里的1实际上是一条指令的长度
-每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1"><meta itemprop=datePublished content="2021-09-28T15:51:46+08:00">
-<meta itemprop=dateModified content="2021-10-23T10:02:46+08:00">
-<meta itemprop=wordCount content="974">
-<meta itemprop=keywords content="GPGPU-Sim,"><meta property="og:title" content="GPGPU-Sim源码阅读">
-<meta property="og:description" content="Shader.cc shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等
+每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1"><meta itemprop=datePublished content="2021-09-28T15:51:46+08:00"><meta itemprop=dateModified content="2021-10-23T10:02:46+08:00"><meta itemprop=wordCount content="974"><meta itemprop=keywords content="GPGPU-Sim,"><meta property="og:title" content="GPGPU-Sim源码阅读"><meta property="og:description" content="Shader.cc shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等
 m_stats 也就是 shader_core_stats 类型的变量
 num_shaer 就是 n_simt_clusters*n_simt_cores_per_cluster，也就是 SIMT Core 的数量
 tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值
 shader_core_ctx::decode 函数 检查 fetch buffer 中的指令是否有效，如有效则进入循环。获得当前指令的 pc，并取指令。
 指令用变量 pI1 存储，调用函数 ibuffer_fill, 将 pI 装进对应 warp id 的 I-Buffer, 并将 valid bit 置为1
 随后会取下一条指令，用变量 pI2 存储，注意下一条指令的 pc = pc + pI1 -> isize。也就是我们常说的 pc = pc + 1, 这里的1实际上是一条指令的长度
-每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2021-09-28T15:51:46+08:00">
-<meta property="article:modified_time" content="2021-10-23T10:02:46+08:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="GPGPU-Sim源码阅读">
-<meta name=twitter:description content="Shader.cc shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等
+每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1"><meta property="og:type" content="article"><meta property="og:url" content="https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-09-28T15:51:46+08:00"><meta property="article:modified_time" content="2021-10-23T10:02:46+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="GPGPU-Sim源码阅读"><meta name=twitter:description content="Shader.cc shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等
 m_stats 也就是 shader_core_stats 类型的变量
 num_shaer 就是 n_simt_clusters*n_simt_cores_per_cluster，也就是 SIMT Core 的数量
 tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值
 shader_core_ctx::decode 函数 检查 fetch buffer 中的指令是否有效，如有效则进入循环。获得当前指令的 pc，并取指令。
 指令用变量 pI1 存储，调用函数 ibuffer_fill, 将 pI 装进对应 warp id 的 I-Buffer, 并将 valid bit 置为1
 随后会取下一条指令，用变量 pI2 存储，注意下一条指令的 pc = pc + pI1 -> isize。也就是我们常说的 pc = pc + 1, 这里的1实际上是一条指令的长度
-每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1">
-<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700" rel=stylesheet type=text/css>
-<link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/normalize.css>
-<link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/main.css>
-<link id=dark-scheme rel=stylesheet type=text/css href=https://huweim.github.io/css/dark.css>
-<script src=https://huweim.github.io/js/feather.min.js></script>
-<script src=https://huweim.github.io/js/main.js></script>
-</head>
-<body>
-<div class="container wrapper">
-<div class=header>
-<h1 class=site-title><a href=https://huweim.github.io/>Cory Code</a></h1>
-<div class=site-description><p>Minimal and Clean <a href=https://github.com/athul/hugo-ink>blog theme for Hugo</a></p><nav class="nav social">
-<ul class=flat><li><a href=https://github.com/huweim title=GitHub><i data-feather=github></i></a></li><li><a href=https://twitter.com/athulcajay/ title=Twitter><i data-feather=twitter></i></a></li><li><a href=https://gitlab.com/athul/ title=GitLab><i data-feather=gitlab></i></a></li><li><a href=# class=scheme-toggle id=scheme-toggle></a></li></ul>
-</nav>
-</div>
-<nav class=nav>
-<ul class=flat>
-<li>
-<a href=/>Home</a>
-</li>
-<li>
-<a href=/posts>All posts</a>
-</li>
-<li>
-<a href=/categories/>Categories</a>
-</li>
-<li>
-<a href=/archives>Archives</a>
-</li>
-<li>
-<a href=/tags>Tags</a>
-</li>
-<li>
-<a href=/about/>About</a>
-</li>
-</ul>
-</nav>
-</div>
-<div class=post>
-<div class=post-header>
-<div class=meta>
-<div class=date>
-<span class=day>28</span>
-<span class=rest>Sep 2021</span>
-</div>
-</div>
-<div class=matter>
-<h1 class=title>GPGPU-Sim源码阅读</h1>
-</div>
-</div>
-<div class=markdown>
-<h1 id=shadercc>Shader.cc</h1>
-<p>shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等</p>
-<p>m_stats 也就是 shader_core_stats 类型的变量</p>
-<p>num_shaer 就是 n_simt_clusters*n_simt_cores_per_cluster，也就是 SIMT Core 的数量</p>
-<p>tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值</p>
-<h3 id=shader_core_ctxdecode-函数>shader_core_ctx::decode 函数</h3>
-<p>检查 fetch buffer 中的指令是否有效，如有效则进入循环。获得当前指令的 pc，并取指令。</p>
-<p>指令用变量 pI1 存储，调用函数 ibuffer_fill, 将 pI 装进对应 warp id 的 I-Buffer, 并将 valid bit 置为1</p>
-<p>随后会取下一条指令，用变量 pI2 存储，注意下一条指令的 <code>pc = pc + pI1 -> isize</code>。也就是我们常说的 pc = pc + 1, 这里的1实际上是一条指令的长度</p>
-<p>每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1</p>
-<h5 id=ifetch_buffer_taddress_type-pc-unsigned-nbytes-unsigned-warp_id>ifetch_buffer_t(address_type pc, unsigned nbytes, unsigned warp_id)</h5>
-<p>是一个结构体，包含 m_valid, m_pc, m_nbytes, m_warp_id</p>
-<p>构造时 valid 直接置为1</p>
-<p>其变量作为 fetch 和 decode stage 之间的 pipeline register</p>
-<p>理解为用于使得 fetch and decode 可以流水线执行的一个结构体</p>
-<h3 id=shader_core_ctxfetch-函数>shader_core_ctx::fetch 函数</h3>
-<p>访问内存 (L1 Cache or memory)，获取指令的 pc, size, warp_id</p>
-<p>如果 L1 Cache 的 access ready, 也就是已经可以内存访问（之前 Miss 的时候需要的 data 已经从内存中取到了）</p>
-<p>如果没有 access ready, 就去找一个 active, 并且在 I-Buffer 中还有空间, 没有在等待 cache miss 的 warp，取其 next instruction from i-cache</p>
-<blockquote>
-<p>第3层中的第1个 if 语句检查 warp 是否已经完成执行，第3层中的第2个 if 语句检查当前 warp 对应的 entry 是否已经存储了有效的指令</p>
-</blockquote>
-<h3 id=issue_warp-函数>issue_warp 函数</h3>
-<p>free 掉相应的 I-Buffer</p>
-<h3 id=scheduler_unitcycle>scheduler_unit::cycle()</h3>
-<p>In function <code>scheduler_unit::cycle()</code> , call <code>order_warps()</code> to sort warps according to their priority.</p>
-<p>排序后的 warp 放在 vector <code>m_next_cycle_prioritized_warps</code> 中，对其进行遍历来处理这个 vector 中的 warp。</p>
-<p>:exclamation: 值得注意的是在 order_warp() 后，for 循环会遍历 vector <code>m_next_cycle_prioritized_warps</code> 中的所有 warp。而不是发射一个 warp 就重新排序一次。</p>
-<blockquote>
-<p>这一点和自己的理解与猜想不太一样</p>
-</blockquote>
-<hr>
-<p>进入 for 循环，拿到 warp id，判断</p>
-<ul>
-<li>I-Buffer 是否为空；是否处于 waiting 状态。如果都通过，进入一个 while 循环
-<ul>
-<li>如果指令是有效的 <code>if(pI)</code>
-<ul>
-<li>如果出现分支 <code>if(pc != pI->pc)</code>，刷掉 I-Buffer</li>
-<li>如果没有分支，此时 <code>valid=true</code>，指令是有效的。如果通过 scoreboard 检测，终于可以执行了。先读取 active mask 确定要执行哪些线程，然后判断 <code>pI->op</code> 是 内存操作 还是 运算操作。如果相应的寄存器可以使用 <code>has_free()</code>，则 call <code>issue_warp()</code> 将寄存器、指令、active mask、warp id、scheduler id 发送并执行。</li>
-<li><code>warp_inst_issued = true; issued++; issued_inst = true</code></li>
-</ul>
-</li>
-<li>else if 下一条指令是有效的
-<ul>
-<li>&mldr;</li>
-</ul>
-</li>
-<li>如果指令成功发射 <code>if (warp_inst_issued)</code>，执行了 issue_warp() 后会进入这个 if 语句，做一些 warp 发射后的统计信息等等
-<ul>
-<li>call <code>do_on_warp_issued(warp_id, issued, iter);</code></li>
-</ul>
-</li>
-<li>checked++</li>
-</ul>
-</li>
-<li>从 while 循环出来，如果至少有一个 warp 被发射 <code>if(issued)</code>，遍历 <code>m_supervised_warps</code>，找到那个被发射的 warp，然后将其赋值给 <code>m_last_supervised_issued</code></li>
-</ul>
-<hr>
-<h5 id=scheduler_size>scheduler_size()</h5>
-<p>scheduler.size 就是2，代表一个 core 中 warp scheduler 的数量</p>
-<h2 id=关于类>关于类</h2>
-<p>阅读一个类，应该先观察他还包含哪些子类，继承自哪个类，从全局上把握他的作用</p>
-<p>class opndcoll_rfu_t</p>
-<ul>
-<li>class op_t</li>
-<li>class allocation_t</li>
-<li>class arbiter_t</li>
-<li>class input_port_t</li>
-<li>class collector_unit_t</li>
-<li>dispatch_unit_t</li>
-</ul>
-<h2 id=地址信息>地址信息</h2>
-<p>src/abstract_hardware_model.h</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++>  <span class=k>struct</span> <span class=nc>per_thread_info</span> <span class=p>{</span>
-    <span class=n>per_thread_info</span><span class=p>()</span> <span class=p>{</span>
-      <span class=k>for</span> <span class=p>(</span><span class=kt>unsigned</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>MAX_ACCESSES_PER_INSN_PER_THREAD</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
-        <span class=n>memreqaddr</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
-    <span class=p>}</span>
-    <span class=n>dram_callback_t</span> <span class=n>callback</span><span class=p>;</span>
-    <span class=n>new_addr_type</span>
-        <span class=n>memreqaddr</span><span class=p>[</span><span class=n>MAX_ACCESSES_PER_INSN_PER_THREAD</span><span class=p>];</span>  <span class=c1>// effective address,
-</span><span class=c1></span>                                                       <span class=c1>// upto 8 different
-</span><span class=c1></span>                                                       <span class=c1>// requests (to support
-</span><span class=c1></span>                                                       <span class=c1>// 32B access in 8 chunks
-</span><span class=c1></span>                                                       <span class=c1>// of 4B each)
-</span><span class=c1></span>  <span class=p>};</span>
-<span class=p>...</span>
-<span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>per_thread_info</span><span class=o>&gt;</span> <span class=n>m_per_scalar_thread</span><span class=p>;</span>
-</code></pre></div><p>现在我们关注每个 kernel_launch_uid 中的访存信息和打印出来的访存次数是否匹配</p>
-<ul>
-<li>:heavy_check_mark: 匹配。前两个 kernel (都是 create matrix) <code>gpgpu_n_param_mem_insn + gpgpu_n_store_insn = number of memaddr</code></li>
-<li>不过要注意 Memory Access Statistics 的信息应该是总和而非单一 kernel</li>
-</ul>
-<h1 id=tracing>Tracing</h1>
-<h2 id=4个-cycle-函数调用关系>4个 Cycle() 函数调用关系</h2>
-<p>4个 cycle() 函数</p>
-<p>shader_core_ctx::cycle() 在 issue 中调用 scheduler_unit::cycle(), 这两个应该是负责 SIMT Front 部分，从指令 fetch, decode, 到准备好后的调度发射 (sheduling and issue).</p>
-<p>ldst_unit::cycle() 负责各个 memory 的时钟建模，包括 shared memory, L1 latebcy queue, constant menory, texture memory</p>
-<h5 id=shader_core_ctxcycle>shader_core_ctx::cycle()</h5>
-<ul>
-<li>SIMT Core Cluster clock domain = frequency of the pipeline stages in a core clock (i.e. the rate at which <code>simt_core_cluster::core_cycle()</code> is called)
-<ul>
-<li><code>simt_core_cluster::core_cycle()</code> will call <code>shader_core_ctx::cycle()</code></li>
-</ul>
-</li>
-</ul>
-<ul>
-<li>:star: <code>m_thread[tid]->ptx_exec_inst(inst, t);</code> 用于执行 ptx 指令的执行</li>
-</ul>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=n>shader_core_ctx</span><span class=o>::</span><span class=n>cycle</span><span class=p>()</span>
-<span class=o>|--</span>	<span class=n>writeback</span><span class=p>();</span>
-<span class=o>|--</span>	<span class=n>execute</span><span class=p>();</span>
-	<span class=o>|--</span> <span class=n>m_fu</span><span class=p>[</span><span class=n>n</span><span class=p>]</span><span class=o>-&gt;</span><span class=n>cycle</span><span class=p>();</span> <span class=c1>//m_fu[] contains ldst_unit, sfu_unit, sp_unit
-</span><span class=c1></span>		<span class=o>|--</span> <span class=n>ldst_unit</span><span class=o>::</span><span class=n>cycle</span><span class=p>();</span>
-			<span class=o>|--</span> <span class=n>writeback</span><span class=p>();</span>
-			<span class=o>|--</span> <span class=n>m_operand_collector</span><span class=o>-&gt;</span><span class=n>step</span><span class=p>();</span>
-	<span class=o>|--</span> <span class=n>issue</span><span class=p>(</span><span class=n>register_set</span> <span class=o>&amp;</span><span class=n>source_reg</span><span class=p>)</span>
-<span class=o>|--</span>	<span class=n>read_operands</span><span class=p>();</span>
-<span class=o>|--</span>	<span class=n>issue</span><span class=p>();</span>
-	<span class=o>|--</span> <span class=n>scheduler_unit</span><span class=o>::</span><span class=n>cycle</span><span class=p>();</span>
-        <span class=o>|--</span> <span class=n>order_warps</span><span class=p>();</span>
-		<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>get_pdom_stack_top_info</span><span class=p>(</span><span class=n>warp_id</span><span class=p>,</span> <span class=n>pI</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>pc</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>rpc</span><span class=p>);</span>
-		<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>issue_warp</span><span class=p>();</span>
-			<span class=o>|--</span> <span class=p>(</span><span class=o>*</span><span class=n>pipe_reg</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>warp_inst_t</span><span class=o>::</span><span class=n>issue</span><span class=p>();</span>
-			<span class=o>|--</span> <span class=n>func_exec_inst</span><span class=p>(</span><span class=o>**</span><span class=n>pipe_reg</span><span class=p>);</span>
-				<span class=o>|--</span> <span class=n>execute_warp_inst_t</span><span class=p>(</span><span class=n>inst</span><span class=p>);</span>
-					<span class=o>|--</span> <span class=n>m_thread</span><span class=p>[</span><span class=n>tid</span><span class=p>]</span><span class=o>-&gt;</span><span class=n>ptx_exec_inst</span><span class=p>(</span><span class=n>inst</span><span class=p>,</span> <span class=n>t</span><span class=p>);</span>
-						<span class=o>|--</span> <span class=n>insn_memaddr</span> <span class=o>=</span> <span class=n>last_eaddr</span><span class=p>();</span>
-						<span class=o>|--</span> <span class=n>inst</span><span class=p>.</span><span class=n>set_addr</span><span class=p>(</span><span class=n>lane_id</span><span class=p>,</span> <span class=n>insn_memaddr</span><span class=p>);</span> <span class=c1>//util this, we have 											//the address in the class warp_inst_t
-</span><span class=c1></span>			<span class=o>|--</span> <span class=n>updateSIMTStack</span><span class=p>(</span><span class=n>warp_id</span><span class=p>,</span> <span class=o>*</span><span class=n>pipe_reg</span><span class=p>);</span>
-			<span class=o>|--</span> <span class=n>reserveRegisters</span><span class=p>(</span><span class=o>*</span><span class=n>pipe_reg</span><span class=p>);</span>
-  			<span class=o>|--</span> <span class=n>set_next_pc</span><span class=p>(</span><span class=n>next_inst</span><span class=o>-&gt;</span><span class=n>pc</span> <span class=o>+</span> <span class=n>next_inst</span><span class=o>-&gt;</span><span class=n>isize</span><span class=p>);</span>
-<span class=o>|--</span> <span class=n>decode</span><span class=p>();</span>
-    <span class=o>|--</span> <span class=n>ibuffer_fill</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>pI1</span><span class=p>);</span>
-    <span class=o>|--</span> <span class=n>inc_inst_in_pipeline</span><span class=p>();</span>
-<span class=o>|--</span> <span class=n>fetch</span><span class=p>();</span>
-</code></pre></div><h5 id=scheduler_unitcycle-1>scheduler_unit::cycle()</h5>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=o>|--</span> <span class=n>order_warps</span><span class=p>();</span>
-<span class=c1>//if warp is valid and not waiting
-</span><span class=c1></span><span class=o>|--</span> <span class=k>const</span> <span class=n>warp_inst_t</span> <span class=o>*</span><span class=n>pI</span> <span class=o>=</span> <span class=n>warp</span><span class=p>(</span><span class=n>warp_id</span><span class=p>).</span><span class=n>ibuffer_next_inst</span><span class=p>();</span>
-<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>get_pdom_stack_top_info</span><span class=p>(</span><span class=n>warp_id</span><span class=p>,</span> <span class=n>pI</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>pc</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>rpc</span><span class=p>);</span>
-<span class=c1>//deal with the control hazard
-</span><span class=c1>//pc is the PC in the top of SIMT stack, pI-&gt;pc is the PC in the I-Buffer
-</span><span class=c1>//not equal means jump or ohter control hazard
-</span><span class=c1></span><span class=k>while</span><span class=p>{</span>
-<span class=k>if</span><span class=p>(</span><span class=n>pI</span><span class=p>){</span>
-    <span class=k>if</span> <span class=p>(</span><span class=n>pc</span> <span class=o>!=</span> <span class=n>pI</span><span class=o>-&gt;</span><span class=n>pc</span><span class=p>)</span> <span class=p>{</span>
-		<span class=o>|--</span> <span class=n>warp</span><span class=p>(</span><span class=n>warp_id</span><span class=p>).</span><span class=n>set_next_pc</span><span class=p>(</span><span class=n>pc</span><span class=p>);</span>
-		<span class=o>|--</span> <span class=n>warp</span><span class=p>(</span><span class=n>warp_id</span><span class=p>).</span><span class=n>ibuffer_flush</span><span class=p>();</span> <span class=c1>//need to flush
-</span><span class=c1></span>	<span class=p>}</span>
-	<span class=k>else</span><span class=p>{</span>
-    	<span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=n>m_scoreboard</span><span class=o>-&gt;</span><span class=n>checkCollision</span><span class=p>(</span><span class=n>warp_id</span><span class=p>,</span> <span class=n>pI</span><span class=p>)){</span>
-       		<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>get_active_mask</span><span class=p>(</span><span class=n>warp_id</span><span class=p>,</span> <span class=n>pI</span><span class=p>);</span>
-        	<span class=c1>// need to check which pipieline to send, MEM, SP, SFU... 
-</span><span class=c1></span>        	<span class=c1>// the only different is the first parameter, register_set *m_XX_out
-</span><span class=c1></span>        	<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>shader_core_ctx</span><span class=o>::</span><span class=n>issue_warp</span><span class=p>(</span><span class=o>*</span><span class=n>m_mem_out</span><span class=p>,</span> <span class=n>pI</span><span class=p>,</span> <span class=n>active_mask</span><span class=p>,</span> <span class=n>warp_id</span><span class=p>,</span> <span class=n>m_id</span><span class=p>);</span>
-    	<span class=p>}</span>
-	<span class=p>}</span>
-<span class=p>}</span>
-<span class=k>else</span> <span class=nf>if</span><span class=p>(</span><span class=n>valid</span><span class=p>){</span>
-    <span class=c1>// this case can happen after a return instruction in diverged warp
-</span><span class=c1></span>    <span class=o>|--</span> <span class=n>warp</span><span class=p>(</span><span class=n>warp_id</span><span class=p>).</span><span class=n>set_next_pc</span><span class=p>(</span><span class=n>pc</span><span class=p>);</span>
-	<span class=o>|--</span> <span class=n>warp</span><span class=p>(</span><span class=n>warp_id</span><span class=p>).</span><span class=n>ibuffer_flush</span><span class=p>();</span> <span class=c1>//need to flush
-</span><span class=c1></span><span class=p>}</span>
-<span class=p>}</span><span class=c1>//while
-</span><span class=c1></span><span class=p>...</span>
-</code></pre></div><p>执行这个 issue_warp 的时候需要的源操作数的寄存器已经拿到了 (判断 has_free()才会进入这个条件语句)</p>
-<h5 id=ldst_unitcycle>ldst_unit::cycle()</h5>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=n>ldst_unit</span><span class=o>::</span><span class=n>cycle</span><span class=p>()</span>
-<span class=o>|--</span> <span class=n>writeback</span><span class=p>();</span>
-	<span class=o>|--</span> <span class=n>Scoreboard</span><span class=o>::</span><span class=n>releaseRegister</span><span class=p>();</span>
-	<span class=o>|--</span> <span class=n>warp_inst_complete</span><span class=p>(</span><span class=n>m_next_wb</span><span class=p>);</span>
-	<span class=o>|--</span> <span class=n>clear</span><span class=p>();</span>
-<span class=o>|--</span> <span class=n>m_operand_collector</span><span class=o>-&gt;</span><span class=n>step</span><span class=p>();</span>
-	<span class=o>|--</span> <span class=n>dispatch_ready_cu</span><span class=p>();</span> <span class=c1>//把 ready_cu 发射到执行单元
-</span><span class=c1></span>		<span class=o>|--</span> <span class=n>cu</span><span class=o>-&gt;</span><span class=n>dispatch</span><span class=p>();</span> 
-	<span class=o>|--</span> <span class=n>allocate_reads</span><span class=p>();</span> <span class=c1>// process read requests that do not have conflicts. Map bank 
-</span><span class=c1></span>						  <span class=c1>// and collector unit, 连接了 bank 和 cu, 准确到 cu 的哪个操作数
-</span><span class=c1></span>	<span class=k>for</span><span class=p>()</span><span class=o>|--</span> <span class=n>allocate_cu</span><span class=p>(</span><span class=n>p</span><span class=p>);</span>
-			<span class=o>|--</span> <span class=n>allocated</span> <span class=o>=</span> <span class=n>cu</span><span class=o>-&gt;</span><span class=n>allocate</span><span class=p>(</span><span class=n>inp</span><span class=p>.</span><span class=n>m_in</span><span class=p>[</span><span class=n>i</span><span class=p>],</span> <span class=n>inp</span><span class=p>.</span><span class=n>m_out</span><span class=p>[</span><span class=n>i</span><span class=p>]);</span><span class=c1>//终于找到了
-</span><span class=c1></span>			<span class=o>|--</span> <span class=n>m_arbiter</span><span class=p>.</span><span class=n>add_read_requests</span><span class=p>(</span><span class=n>cu</span><span class=p>);</span> <span class=c1>//把 cu 对特定 bank 的读请求入队 
-</span><span class=c1></span>												<span class=c1>//m_queue[bank].push_back(op);
-</span><span class=c1></span>	<span class=o>|--</span> <span class=n>process_banks</span><span class=p>();</span> <span class=c1>//reset allocation, free cu
-</span><span class=c1></span><span class=o>|--</span> <span class=n>move_warp</span><span class=p>(</span><span class=n>warp_inst_t</span> <span class=o>*&amp;</span><span class=n>dst</span><span class=p>,</span> <span class=n>warp_inst_t</span> <span class=o>*&amp;</span><span class=n>src</span><span class=p>);</span> <span class=c1>// move src to dst
-</span><span class=c1></span><span class=o>|--</span> <span class=n>m_L1T</span><span class=o>/</span><span class=n>m_L1C</span><span class=o>/</span><span class=n>m_L1D</span><span class=o>-&gt;</span><span class=n>fill</span><span class=p>();</span> <span class=c1>//deal with fill request
-</span><span class=c1></span><span class=o>|--</span> <span class=n>m_L1T</span><span class=o>/</span><span class=n>m_L1C</span><span class=o>/</span><span class=n>m_L1D</span><span class=o>-&gt;</span><span class=n>cycle</span><span class=p>();</span> <span class=c1>//send next request to lower level of memory
-</span></code></pre></div><p>在上述的 <code>allocated = cu->allocate(inp.m_in[i], inp.m_out[i])</code> 函数中<del>为寄存器赋值</del> 确定读哪个bank的哪个寄存器</p>
-<p>m_src_op 中装的就是32个 源操作数寄存器，去哪个位置找 寄存器 的详细信息</p>
-<p>dispatch() 后会 reset m_src_op,</p>
-<h5 id=pipelined_simd_unitcycle>pipelined_simd_unit::cycle()</h5>
-<p>用于模拟流水线，移动寄存器的 value..</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=n>m_pipeline_reg</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>-&gt;</span><span class=n>empty</span><span class=p>())</span> <span class=p>{</span>
-	<span class=o>|--</span> <span class=n>m_result_port</span><span class=o>-&gt;</span><span class=n>move_in</span><span class=p>(</span><span class=n>m_pipeline_reg</span><span class=p>[</span><span class=mi>0</span><span class=p>]);</span> <span class=c1>//move src to m_pipeline_reg[0]
-</span><span class=c1></span>    	<span class=o>|--</span> <span class=n>warp_inst_t</span> <span class=o>**</span><span class=n>free</span> <span class=o>=</span> <span class=n>get_free</span><span class=p>();</span> <span class=c1>//return a free register to variable **free
-</span><span class=c1></span>    	<span class=o>|--</span> <span class=n>move_warp</span><span class=p>(</span><span class=o>*</span><span class=n>free</span><span class=p>,</span> <span class=n>src</span><span class=p>);</span> <span class=c1>//move src to *free
-</span><span class=c1></span>    <span class=n>active_insts_in_pipeline</span><span class=o>--</span><span class=p>;</span>
-<span class=p>}</span>
-<span class=k>if</span> <span class=p>(</span><span class=n>active_insts_in_pipeline</span><span class=p>)</span> <span class=p>{</span>
-    <span class=k>for</span> <span class=p>(</span><span class=kt>unsigned</span> <span class=n>stage</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=p>(</span><span class=n>stage</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)</span> <span class=o>&lt;</span> <span class=n>m_pipeline_depth</span><span class=p>;</span> <span class=n>stage</span><span class=o>++</span><span class=p>)</span>
-        <span class=o>|--</span> <span class=n>move_warp</span><span class=p>(</span><span class=n>m_pipeline_reg</span><span class=p>[</span><span class=n>stage</span><span class=p>],</span> <span class=n>m_pipeline_reg</span><span class=p>[</span><span class=n>stage</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]);</span>
-<span class=p>}</span>
-</code></pre></div><h2 id=文档中-cycle-的介绍>文档中 Cycle() 的介绍</h2>
-<h5 id=simt_core_clustercore_cycle>simt_core_cluster::core_cycle()</h5>
-<p><code>simt_core_cluster::core_cycle()</code> 方法只是按顺序 循环调用 (cycles) 每个 SIMT core.</p>
-<p><code>simt_core_cluster::icnt_cycle()</code> 方法将内存请求从 interconnection network push 到 SIMT Core Cluster&rsquo;s response FIFO. 它也将 FIFO 中的请求出队，送到合适的 core&rsquo;s instruction cache or LDST unit. 这些与前面描述的硬件块密切对应。</p>
-<h5 id=shader_core_ctxcycle-1>shader_core_ctx::cycle()</h5>
-<ul>
-<li>每个 core cycle, 调用 <code>shader_core_ctx::cycle()</code> 来模拟 SIMT Core 的一个 cycle。</li>
-<li>operand collector 被建模为主流水线中的一个 stage, 通过函数 <code>shader_core_ctx::cycle()</code> 执行</li>
-</ul>
-<h5 id=scheduler_unitcycle-2>scheduler_unit::cycle()</h5>
-<ul>
-<li>在 <code>scheduler_unit::cycle()</code> 中，函数 <code>shader_core_ctx::issue_warp()</code> 将指令发送到执行单元</li>
-<li>调用 <code>func_exec_inst()</code> 执行指令</li>
-<li>调用 <code>simt_stack::update()</code> 更新 SIMT Stack</li>
-</ul>
-<h5 id=ldst_unitcycle-1>ldst_unit::cycle()</h5>
-<ul>
-<li>·ldst_unit::cycle()· 处理来自 interconnect 的内存响应（存储在 m_response_fifo 中），填充 cache (<code>m_L1D->fill()</code>) 并将存储标记为完成。</li>
-<li>该函数还 cycle caches，以便它们可以将 missed data 的请求发送到 interconnect</li>
-<li>对每种类型的 L1 内存的 cache accesses 分别在 <code>shared cycle()</code>、<code>constant cycle()</code>、<code>texture cycle() </code>和 <code>memory cycle()</code> 中完成 (在 <code>ldst_unit::cycle()</code> 函数中调用)</li>
-</ul>
-<h5 id=gpgpu_simcycle>gpgpu_sim::cycle()</h5>
-<ul>
-<li><code>gpgpu sim::cycle()</code> 方法为 gpgpu - sim 中的所有架构组件的时钟，包括 Memory Partition 的队列，DRAM channel 和 L2 cache bank.</li>
-<li>对 <code>memory_partition_unit::dram_cycle()</code> 的调用将内存请求从 L2->dram queue 移动到 dram channele，从 dram channel 移动到 dram->L2 queue，并 cycles 片外 GDDR3 dram 内存。</li>
-<li>在这个函数中，调用
-<ul>
-<li>icnt_cycle()</li>
-<li>dram_cycle()</li>
-<li>cache_cycle()</li>
-<li>core_cycle()</li>
-</ul>
-</li>
-</ul>
-<p>所以可以看到，这个函数应该是调用了每个组件的 cycle(), 以此来建模整个 GPGPU-Sim cycle</p>
-<h5 id=memory_partition_unitcache_cycle>memory_partition_unit::cache_cycle()</h5>
-<ul>
-<li>在 <code>memory_partition_unit::cache_cycle()</code> 中，调用 <code>mem_fetch *mf = m_L2cache->next_access();</code> 为在 filled MSHR entry 中等待的内存请求产生 replies.</li>
-<li>L2 产生的由于 read miss 的 fill 请求将从 L2&rsquo;s miss queu 中弹出，并通过调用 <code>m_L2cache->cycle();</code> 将其push into L2->dram queue</li>
-</ul>
-<h5 id=dram_tcycle>dram_t::cycle()</h5>
-<ul>
-<li>The function <code>dram_t::cycle()</code> represents a DRAM cycle</li>
-<li>每个周期，DRAM从请求队列中弹出一个请求，然后调用调度器函数，让调度器根据调度策略选择一个需要服务的请求。</li>
-</ul>
-</div>
-<div class=tags>
-<ul class=flat>
-<li><a href=/tags/gpgpu-sim>GPGPU-Sim</a></li>
-</ul>
-</div></div>
-</div>
-<div class="footer wrapper">
-<nav class=nav>
-<div>2021 © Athul | <a href=https://github.com/knadh/hugo-ink>Ink</a> theme on <a href=https://gohugo.io>Hugo</a></div>
-</nav>
-</div>
-<script>feather.replace()</script>
-</body>
-</html>
+每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1"><link href="https://fonts.googleapis.com/css?family=Playfair+Display:700" rel=stylesheet type=text/css><link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/normalize.css><link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/main.css><link id=dark-scheme rel=stylesheet type=text/css href=https://huweim.github.io/css/dark.css><script src=https://huweim.github.io/js/feather.min.js></script>
+<script src=https://huweim.github.io/js/main.js></script></head><body><div class="container wrapper"><div class=header><h1 class=site-title><a href=https://huweim.github.io/>Cory Code</a></h1><div class=site-description><p>Minimal and Clean <a href=https://github.com/athul/hugo-ink>blog theme for Hugo</a></p><nav class="nav social"><ul class=flat><li><a href=https://github.com/huweim title=GitHub><i data-feather=github></i></a></li><li><a href=https://twitter.com/athulcajay/ title=Twitter><i data-feather=twitter></i></a></li><li><a href=https://gitlab.com/athul/ title=GitLab><i data-feather=gitlab></i></a></li><li><a href=# class=scheme-toggle id=scheme-toggle></a></li></ul></nav></div><nav class=nav><ul class=flat><li><a href=/>Home</a></li><li><a href=/posts>All posts</a></li><li><a href=/categories/>Categories</a></li><li><a href=/archives>Archives</a></li><li><a href=/tags>Tags</a></li><li><a href=/about/>About</a></li></ul></nav></div><div class=post><div class=post-header><div class=meta><div class=date><span class=day>28</span>
+<span class=rest>Sep 2021</span></div></div><div class=matter><h1 class=title>GPGPU-Sim源码阅读</h1></div></div><div class=markdown><h1 id=shadercc>Shader.cc</h1><p>shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等</p><p>m_stats 也就是 shader_core_stats 类型的变量</p><p>num_shaer 就是 n_simt_clusters*n_simt_cores_per_cluster，也就是 SIMT Core 的数量</p><p>tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值</p><h3 id=shader_core_ctxdecode-函数>shader_core_ctx::decode 函数</h3><p>检查 fetch buffer 中的指令是否有效，如有效则进入循环。获得当前指令的 pc，并取指令。</p><p>指令用变量 pI1 存储，调用函数 ibuffer_fill, 将 pI 装进对应 warp id 的 I-Buffer, 并将 valid bit 置为1</p><p>随后会取下一条指令，用变量 pI2 存储，注意下一条指令的 <code>pc = pc + pI1 -> isize</code>。也就是我们常说的 pc = pc + 1, 这里的1实际上是一条指令的长度</p><p>每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1</p><h5 id=ifetch_buffer_taddress_type-pc-unsigned-nbytes-unsigned-warp_id>ifetch_buffer_t(address_type pc, unsigned nbytes, unsigned warp_id)</h5><p>是一个结构体，包含 m_valid, m_pc, m_nbytes, m_warp_id</p><p>构造时 valid 直接置为1</p><p>其变量作为 fetch 和 decode stage 之间的 pipeline register</p><p>理解为用于使得 fetch and decode 可以流水线执行的一个结构体</p><h3 id=shader_core_ctxfetch-函数>shader_core_ctx::fetch 函数</h3><p>访问内存 (L1 Cache or memory)，获取指令的 pc, size, warp_id</p><p>如果 L1 Cache 的 access ready, 也就是已经可以内存访问（之前 Miss 的时候需要的 data 已经从内存中取到了）</p><p>如果没有 access ready, 就去找一个 active, 并且在 I-Buffer 中还有空间, 没有在等待 cache miss 的 warp，取其 next instruction from i-cache</p><blockquote><p>第3层中的第1个 if 语句检查 warp 是否已经完成执行，第3层中的第2个 if 语句检查当前 warp 对应的 entry 是否已经存储了有效的指令</p></blockquote><h3 id=issue_warp-函数>issue_warp 函数</h3><p>free 掉相应的 I-Buffer</p><h3 id=scheduler_unitcycle>scheduler_unit::cycle()</h3><p>In function <code>scheduler_unit::cycle()</code> , call <code>order_warps()</code> to sort warps according to their priority.</p><p>排序后的 warp 放在 vector <code>m_next_cycle_prioritized_warps</code> 中，对其进行遍历来处理这个 vector 中的 warp。</p><p>:exclamation: 值得注意的是在 order_warp() 后，for 循环会遍历 vector <code>m_next_cycle_prioritized_warps</code> 中的所有 warp。而不是发射一个 warp 就重新排序一次。</p><blockquote><p>这一点和自己的理解与猜想不太一样</p></blockquote><hr><p>进入 for 循环，拿到 warp id，判断</p><ul><li>I-Buffer 是否为空；是否处于 waiting 状态。如果都通过，进入一个 while 循环<ul><li>如果指令是有效的 <code>if(pI)</code><ul><li>如果出现分支 <code>if(pc != pI->pc)</code>，刷掉 I-Buffer</li><li>如果没有分支，此时 <code>valid=true</code>，指令是有效的。如果通过 scoreboard 检测，终于可以执行了。先读取 active mask 确定要执行哪些线程，然后判断 <code>pI->op</code> 是 内存操作 还是 运算操作。如果相应的寄存器可以使用 <code>has_free()</code>，则 call <code>issue_warp()</code> 将寄存器、指令、active mask、warp id、scheduler id 发送并执行。</li><li><code>warp_inst_issued = true; issued++; issued_inst = true</code></li></ul></li><li>else if 下一条指令是有效的<ul><li>&mldr;</li></ul></li><li>如果指令成功发射 <code>if (warp_inst_issued)</code>，执行了 issue_warp() 后会进入这个 if 语句，做一些 warp 发射后的统计信息等等<ul><li>call <code>do_on_warp_issued(warp_id, issued, iter);</code></li></ul></li><li>checked++</li></ul></li><li>从 while 循环出来，如果至少有一个 warp 被发射 <code>if(issued)</code>，遍历 <code>m_supervised_warps</code>，找到那个被发射的 warp，然后将其赋值给 <code>m_last_supervised_issued</code></li></ul><hr><h5 id=scheduler_size>scheduler_size()</h5><p>scheduler.size 就是2，代表一个 core 中 warp scheduler 的数量</p><h2 id=关于类>关于类</h2><p>阅读一个类，应该先观察他还包含哪些子类，继承自哪个类，从全局上把握他的作用</p><p>class opndcoll_rfu_t</p><ul><li>class op_t</li><li>class allocation_t</li><li>class arbiter_t</li><li>class input_port_t</li><li>class collector_unit_t</li><li>dispatch_unit_t</li></ul><h2 id=地址信息>地址信息</h2><p>src/abstract_hardware_model.h</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl>  <span class=k>struct</span> <span class=nc>per_thread_info</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=n>per_thread_info</span><span class=p>()</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>      <span class=k>for</span> <span class=p>(</span><span class=kt>unsigned</span> <span class=n>i</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=n>i</span> <span class=o>&lt;</span> <span class=n>MAX_ACCESSES_PER_INSN_PER_THREAD</span><span class=p>;</span> <span class=n>i</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=n>memreqaddr</span><span class=p>[</span><span class=n>i</span><span class=p>]</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=p>}</span>
+</span></span><span class=line><span class=cl>    <span class=n>dram_callback_t</span> <span class=n>callback</span><span class=p>;</span>
+</span></span><span class=line><span class=cl>    <span class=n>new_addr_type</span>
+</span></span><span class=line><span class=cl>        <span class=n>memreqaddr</span><span class=p>[</span><span class=n>MAX_ACCESSES_PER_INSN_PER_THREAD</span><span class=p>];</span>  <span class=c1>// effective address,
+</span></span></span><span class=line><span class=cl><span class=c1></span>                                                       <span class=c1>// upto 8 different
+</span></span></span><span class=line><span class=cl><span class=c1></span>                                                       <span class=c1>// requests (to support
+</span></span></span><span class=line><span class=cl><span class=c1></span>                                                       <span class=c1>// 32B access in 8 chunks
+</span></span></span><span class=line><span class=cl><span class=c1></span>                                                       <span class=c1>// of 4B each)
+</span></span></span><span class=line><span class=cl><span class=c1></span>  <span class=p>};</span>
+</span></span><span class=line><span class=cl><span class=p>...</span>
+</span></span><span class=line><span class=cl><span class=n>std</span><span class=o>::</span><span class=n>vector</span><span class=o>&lt;</span><span class=n>per_thread_info</span><span class=o>&gt;</span> <span class=n>m_per_scalar_thread</span><span class=p>;</span>
+</span></span></code></pre></div><p>现在我们关注每个 kernel_launch_uid 中的访存信息和打印出来的访存次数是否匹配</p><ul><li>:heavy_check_mark: 匹配。前两个 kernel (都是 create matrix) <code>gpgpu_n_param_mem_insn + gpgpu_n_store_insn = number of memaddr</code></li><li>不过要注意 Memory Access Statistics 的信息应该是总和而非单一 kernel</li></ul><h1 id=tracing>Tracing</h1><h2 id=4个-cycle-函数调用关系>4个 Cycle() 函数调用关系</h2><p>4个 cycle() 函数</p><p>shader_core_ctx::cycle() 在 issue 中调用 scheduler_unit::cycle(), 这两个应该是负责 SIMT Front 部分，从指令 fetch, decode, 到准备好后的调度发射 (sheduling and issue).</p><p>ldst_unit::cycle() 负责各个 memory 的时钟建模，包括 shared memory, L1 latebcy queue, constant menory, texture memory</p><h5 id=shader_core_ctxcycle>shader_core_ctx::cycle()</h5><ul><li>SIMT Core Cluster clock domain = frequency of the pipeline stages in a core clock (i.e. the rate at which <code>simt_core_cluster::core_cycle()</code> is called)<ul><li><code>simt_core_cluster::core_cycle()</code> will call <code>shader_core_ctx::cycle()</code></li></ul></li></ul><ul><li>:star: <code>m_thread[tid]->ptx_exec_inst(inst, t);</code> 用于执行 ptx 指令的执行</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=n>shader_core_ctx</span><span class=o>::</span><span class=n>cycle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=o>|--</span>	<span class=n>writeback</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=o>|--</span>	<span class=n>execute</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=o>|--</span> <span class=n>m_fu</span><span class=p>[</span><span class=n>n</span><span class=p>]</span><span class=o>-&gt;</span><span class=n>cycle</span><span class=p>();</span> <span class=c1>//m_fu[] contains ldst_unit, sfu_unit, sp_unit
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=o>|--</span> <span class=n>ldst_unit</span><span class=o>::</span><span class=n>cycle</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>			<span class=o>|--</span> <span class=n>writeback</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>			<span class=o>|--</span> <span class=n>m_operand_collector</span><span class=o>-&gt;</span><span class=n>step</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=o>|--</span> <span class=n>issue</span><span class=p>(</span><span class=n>register_set</span> <span class=o>&amp;</span><span class=n>source_reg</span><span class=p>)</span>
+</span></span><span class=line><span class=cl><span class=o>|--</span>	<span class=n>read_operands</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=o>|--</span>	<span class=n>issue</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=o>|--</span> <span class=n>scheduler_unit</span><span class=o>::</span><span class=n>cycle</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>        <span class=o>|--</span> <span class=n>order_warps</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>		<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>get_pdom_stack_top_info</span><span class=p>(</span><span class=n>warp_id</span><span class=p>,</span> <span class=n>pI</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>pc</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>rpc</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>		<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>issue_warp</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>			<span class=o>|--</span> <span class=p>(</span><span class=o>*</span><span class=n>pipe_reg</span><span class=p>)</span><span class=o>-&gt;</span><span class=n>warp_inst_t</span><span class=o>::</span><span class=n>issue</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>			<span class=o>|--</span> <span class=n>func_exec_inst</span><span class=p>(</span><span class=o>**</span><span class=n>pipe_reg</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>				<span class=o>|--</span> <span class=n>execute_warp_inst_t</span><span class=p>(</span><span class=n>inst</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>					<span class=o>|--</span> <span class=n>m_thread</span><span class=p>[</span><span class=n>tid</span><span class=p>]</span><span class=o>-&gt;</span><span class=n>ptx_exec_inst</span><span class=p>(</span><span class=n>inst</span><span class=p>,</span> <span class=n>t</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>						<span class=o>|--</span> <span class=n>insn_memaddr</span> <span class=o>=</span> <span class=n>last_eaddr</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>						<span class=o>|--</span> <span class=n>inst</span><span class=p>.</span><span class=n>set_addr</span><span class=p>(</span><span class=n>lane_id</span><span class=p>,</span> <span class=n>insn_memaddr</span><span class=p>);</span> <span class=c1>//util this, we have 											//the address in the class warp_inst_t
+</span></span></span><span class=line><span class=cl><span class=c1></span>			<span class=o>|--</span> <span class=n>updateSIMTStack</span><span class=p>(</span><span class=n>warp_id</span><span class=p>,</span> <span class=o>*</span><span class=n>pipe_reg</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>			<span class=o>|--</span> <span class=n>reserveRegisters</span><span class=p>(</span><span class=o>*</span><span class=n>pipe_reg</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>  			<span class=o>|--</span> <span class=n>set_next_pc</span><span class=p>(</span><span class=n>next_inst</span><span class=o>-&gt;</span><span class=n>pc</span> <span class=o>+</span> <span class=n>next_inst</span><span class=o>-&gt;</span><span class=n>isize</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=o>|--</span> <span class=n>decode</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>    <span class=o>|--</span> <span class=n>ibuffer_fill</span><span class=p>(</span><span class=mi>0</span><span class=p>,</span> <span class=n>pI1</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    <span class=o>|--</span> <span class=n>inc_inst_in_pipeline</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=o>|--</span> <span class=n>fetch</span><span class=p>();</span>
+</span></span></code></pre></div><h5 id=scheduler_unitcycle-1>scheduler_unit::cycle()</h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=o>|--</span> <span class=n>order_warps</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=c1>//if warp is valid and not waiting
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>|--</span> <span class=k>const</span> <span class=n>warp_inst_t</span> <span class=o>*</span><span class=n>pI</span> <span class=o>=</span> <span class=n>warp</span><span class=p>(</span><span class=n>warp_id</span><span class=p>).</span><span class=n>ibuffer_next_inst</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>get_pdom_stack_top_info</span><span class=p>(</span><span class=n>warp_id</span><span class=p>,</span> <span class=n>pI</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>pc</span><span class=p>,</span> <span class=o>&amp;</span><span class=n>rpc</span><span class=p>);</span>
+</span></span><span class=line><span class=cl><span class=c1>//deal with the control hazard
+</span></span></span><span class=line><span class=cl><span class=c1>//pc is the PC in the top of SIMT stack, pI-&gt;pc is the PC in the I-Buffer
+</span></span></span><span class=line><span class=cl><span class=c1>//not equal means jump or ohter control hazard
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=k>while</span><span class=p>{</span>
+</span></span><span class=line><span class=cl><span class=k>if</span><span class=p>(</span><span class=n>pI</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=k>if</span> <span class=p>(</span><span class=n>pc</span> <span class=o>!=</span> <span class=n>pI</span><span class=o>-&gt;</span><span class=n>pc</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>		<span class=o>|--</span> <span class=n>warp</span><span class=p>(</span><span class=n>warp_id</span><span class=p>).</span><span class=n>set_next_pc</span><span class=p>(</span><span class=n>pc</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>		<span class=o>|--</span> <span class=n>warp</span><span class=p>(</span><span class=n>warp_id</span><span class=p>).</span><span class=n>ibuffer_flush</span><span class=p>();</span> <span class=c1>//need to flush
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=k>else</span><span class=p>{</span>
+</span></span><span class=line><span class=cl>    	<span class=k>if</span><span class=p>(</span><span class=o>!</span><span class=n>m_scoreboard</span><span class=o>-&gt;</span><span class=n>checkCollision</span><span class=p>(</span><span class=n>warp_id</span><span class=p>,</span> <span class=n>pI</span><span class=p>)){</span>
+</span></span><span class=line><span class=cl>       		<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>get_active_mask</span><span class=p>(</span><span class=n>warp_id</span><span class=p>,</span> <span class=n>pI</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>        	<span class=c1>// need to check which pipieline to send, MEM, SP, SFU... 
+</span></span></span><span class=line><span class=cl><span class=c1></span>        	<span class=c1>// the only different is the first parameter, register_set *m_XX_out
+</span></span></span><span class=line><span class=cl><span class=c1></span>        	<span class=o>|--</span> <span class=n>m_shader</span><span class=o>-&gt;</span><span class=n>shader_core_ctx</span><span class=o>::</span><span class=n>issue_warp</span><span class=p>(</span><span class=o>*</span><span class=n>m_mem_out</span><span class=p>,</span> <span class=n>pI</span><span class=p>,</span> <span class=n>active_mask</span><span class=p>,</span> <span class=n>warp_id</span><span class=p>,</span> <span class=n>m_id</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>    	<span class=p>}</span>
+</span></span><span class=line><span class=cl>	<span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>else</span> <span class=nf>if</span><span class=p>(</span><span class=n>valid</span><span class=p>){</span>
+</span></span><span class=line><span class=cl>    <span class=c1>// this case can happen after a return instruction in diverged warp
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=o>|--</span> <span class=n>warp</span><span class=p>(</span><span class=n>warp_id</span><span class=p>).</span><span class=n>set_next_pc</span><span class=p>(</span><span class=n>pc</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>	<span class=o>|--</span> <span class=n>warp</span><span class=p>(</span><span class=n>warp_id</span><span class=p>).</span><span class=n>ibuffer_flush</span><span class=p>();</span> <span class=c1>//need to flush
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=p>}</span><span class=c1>//while
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=p>...</span>
+</span></span></code></pre></div><p>执行这个 issue_warp 的时候需要的源操作数的寄存器已经拿到了 (判断 has_free()才会进入这个条件语句)</p><h5 id=ldst_unitcycle>ldst_unit::cycle()</h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=n>ldst_unit</span><span class=o>::</span><span class=n>cycle</span><span class=p>()</span>
+</span></span><span class=line><span class=cl><span class=o>|--</span> <span class=n>writeback</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=o>|--</span> <span class=n>Scoreboard</span><span class=o>::</span><span class=n>releaseRegister</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=o>|--</span> <span class=n>warp_inst_complete</span><span class=p>(</span><span class=n>m_next_wb</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>	<span class=o>|--</span> <span class=n>clear</span><span class=p>();</span>
+</span></span><span class=line><span class=cl><span class=o>|--</span> <span class=n>m_operand_collector</span><span class=o>-&gt;</span><span class=n>step</span><span class=p>();</span>
+</span></span><span class=line><span class=cl>	<span class=o>|--</span> <span class=n>dispatch_ready_cu</span><span class=p>();</span> <span class=c1>//把 ready_cu 发射到执行单元
+</span></span></span><span class=line><span class=cl><span class=c1></span>		<span class=o>|--</span> <span class=n>cu</span><span class=o>-&gt;</span><span class=n>dispatch</span><span class=p>();</span> 
+</span></span><span class=line><span class=cl>	<span class=o>|--</span> <span class=n>allocate_reads</span><span class=p>();</span> <span class=c1>// process read requests that do not have conflicts. Map bank 
+</span></span></span><span class=line><span class=cl><span class=c1></span>						  <span class=c1>// and collector unit, 连接了 bank 和 cu, 准确到 cu 的哪个操作数
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=k>for</span><span class=p>()</span><span class=o>|--</span> <span class=n>allocate_cu</span><span class=p>(</span><span class=n>p</span><span class=p>);</span>
+</span></span><span class=line><span class=cl>			<span class=o>|--</span> <span class=n>allocated</span> <span class=o>=</span> <span class=n>cu</span><span class=o>-&gt;</span><span class=n>allocate</span><span class=p>(</span><span class=n>inp</span><span class=p>.</span><span class=n>m_in</span><span class=p>[</span><span class=n>i</span><span class=p>],</span> <span class=n>inp</span><span class=p>.</span><span class=n>m_out</span><span class=p>[</span><span class=n>i</span><span class=p>]);</span><span class=c1>//终于找到了
+</span></span></span><span class=line><span class=cl><span class=c1></span>			<span class=o>|--</span> <span class=n>m_arbiter</span><span class=p>.</span><span class=n>add_read_requests</span><span class=p>(</span><span class=n>cu</span><span class=p>);</span> <span class=c1>//把 cu 对特定 bank 的读请求入队 
+</span></span></span><span class=line><span class=cl><span class=c1></span>												<span class=c1>//m_queue[bank].push_back(op);
+</span></span></span><span class=line><span class=cl><span class=c1></span>	<span class=o>|--</span> <span class=n>process_banks</span><span class=p>();</span> <span class=c1>//reset allocation, free cu
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>|--</span> <span class=n>move_warp</span><span class=p>(</span><span class=n>warp_inst_t</span> <span class=o>*&amp;</span><span class=n>dst</span><span class=p>,</span> <span class=n>warp_inst_t</span> <span class=o>*&amp;</span><span class=n>src</span><span class=p>);</span> <span class=c1>// move src to dst
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>|--</span> <span class=n>m_L1T</span><span class=o>/</span><span class=n>m_L1C</span><span class=o>/</span><span class=n>m_L1D</span><span class=o>-&gt;</span><span class=n>fill</span><span class=p>();</span> <span class=c1>//deal with fill request
+</span></span></span><span class=line><span class=cl><span class=c1></span><span class=o>|--</span> <span class=n>m_L1T</span><span class=o>/</span><span class=n>m_L1C</span><span class=o>/</span><span class=n>m_L1D</span><span class=o>-&gt;</span><span class=n>cycle</span><span class=p>();</span> <span class=c1>//send next request to lower level of memory
+</span></span></span></code></pre></div><p>在上述的 <code>allocated = cu->allocate(inp.m_in[i], inp.m_out[i])</code> 函数中<del>为寄存器赋值</del> 确定读哪个bank的哪个寄存器</p><p>m_src_op 中装的就是32个 源操作数寄存器，去哪个位置找 寄存器 的详细信息</p><p>dispatch() 后会 reset m_src_op,</p><h5 id=pipelined_simd_unitcycle>pipelined_simd_unit::cycle()</h5><p>用于模拟流水线，移动寄存器的 value..</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-c++ data-lang=c++><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=o>!</span><span class=n>m_pipeline_reg</span><span class=p>[</span><span class=mi>0</span><span class=p>]</span><span class=o>-&gt;</span><span class=n>empty</span><span class=p>())</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>	<span class=o>|--</span> <span class=n>m_result_port</span><span class=o>-&gt;</span><span class=n>move_in</span><span class=p>(</span><span class=n>m_pipeline_reg</span><span class=p>[</span><span class=mi>0</span><span class=p>]);</span> <span class=c1>//move src to m_pipeline_reg[0]
+</span></span></span><span class=line><span class=cl><span class=c1></span>    	<span class=o>|--</span> <span class=n>warp_inst_t</span> <span class=o>**</span><span class=n>free</span> <span class=o>=</span> <span class=n>get_free</span><span class=p>();</span> <span class=c1>//return a free register to variable **free
+</span></span></span><span class=line><span class=cl><span class=c1></span>    	<span class=o>|--</span> <span class=n>move_warp</span><span class=p>(</span><span class=o>*</span><span class=n>free</span><span class=p>,</span> <span class=n>src</span><span class=p>);</span> <span class=c1>//move src to *free
+</span></span></span><span class=line><span class=cl><span class=c1></span>    <span class=n>active_insts_in_pipeline</span><span class=o>--</span><span class=p>;</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span><span class=line><span class=cl><span class=k>if</span> <span class=p>(</span><span class=n>active_insts_in_pipeline</span><span class=p>)</span> <span class=p>{</span>
+</span></span><span class=line><span class=cl>    <span class=k>for</span> <span class=p>(</span><span class=kt>unsigned</span> <span class=n>stage</span> <span class=o>=</span> <span class=mi>0</span><span class=p>;</span> <span class=p>(</span><span class=n>stage</span> <span class=o>+</span> <span class=mi>1</span><span class=p>)</span> <span class=o>&lt;</span> <span class=n>m_pipeline_depth</span><span class=p>;</span> <span class=n>stage</span><span class=o>++</span><span class=p>)</span>
+</span></span><span class=line><span class=cl>        <span class=o>|--</span> <span class=n>move_warp</span><span class=p>(</span><span class=n>m_pipeline_reg</span><span class=p>[</span><span class=n>stage</span><span class=p>],</span> <span class=n>m_pipeline_reg</span><span class=p>[</span><span class=n>stage</span> <span class=o>+</span> <span class=mi>1</span><span class=p>]);</span>
+</span></span><span class=line><span class=cl><span class=p>}</span>
+</span></span></code></pre></div><h2 id=文档中-cycle-的介绍>文档中 Cycle() 的介绍</h2><h5 id=simt_core_clustercore_cycle>simt_core_cluster::core_cycle()</h5><p><code>simt_core_cluster::core_cycle()</code> 方法只是按顺序 循环调用 (cycles) 每个 SIMT core.</p><p><code>simt_core_cluster::icnt_cycle()</code> 方法将内存请求从 interconnection network push 到 SIMT Core Cluster&rsquo;s response FIFO. 它也将 FIFO 中的请求出队，送到合适的 core&rsquo;s instruction cache or LDST unit. 这些与前面描述的硬件块密切对应。</p><h5 id=shader_core_ctxcycle-1>shader_core_ctx::cycle()</h5><ul><li>每个 core cycle, 调用 <code>shader_core_ctx::cycle()</code> 来模拟 SIMT Core 的一个 cycle。</li><li>operand collector 被建模为主流水线中的一个 stage, 通过函数 <code>shader_core_ctx::cycle()</code> 执行</li></ul><h5 id=scheduler_unitcycle-2>scheduler_unit::cycle()</h5><ul><li>在 <code>scheduler_unit::cycle()</code> 中，函数 <code>shader_core_ctx::issue_warp()</code> 将指令发送到执行单元</li><li>调用 <code>func_exec_inst()</code> 执行指令</li><li>调用 <code>simt_stack::update()</code> 更新 SIMT Stack</li></ul><h5 id=ldst_unitcycle-1>ldst_unit::cycle()</h5><ul><li>·ldst_unit::cycle()· 处理来自 interconnect 的内存响应（存储在 m_response_fifo 中），填充 cache (<code>m_L1D->fill()</code>) 并将存储标记为完成。</li><li>该函数还 cycle caches，以便它们可以将 missed data 的请求发送到 interconnect</li><li>对每种类型的 L1 内存的 cache accesses 分别在 <code>shared cycle()</code>、<code>constant cycle()</code>、<code>texture cycle() </code>和 <code>memory cycle()</code> 中完成 (在 <code>ldst_unit::cycle()</code> 函数中调用)</li></ul><h5 id=gpgpu_simcycle>gpgpu_sim::cycle()</h5><ul><li><code>gpgpu sim::cycle()</code> 方法为 gpgpu - sim 中的所有架构组件的时钟，包括 Memory Partition 的队列，DRAM channel 和 L2 cache bank.</li><li>对 <code>memory_partition_unit::dram_cycle()</code> 的调用将内存请求从 L2->dram queue 移动到 dram channele，从 dram channel 移动到 dram->L2 queue，并 cycles 片外 GDDR3 dram 内存。</li><li>在这个函数中，调用<ul><li>icnt_cycle()</li><li>dram_cycle()</li><li>cache_cycle()</li><li>core_cycle()</li></ul></li></ul><p>所以可以看到，这个函数应该是调用了每个组件的 cycle(), 以此来建模整个 GPGPU-Sim cycle</p><h5 id=memory_partition_unitcache_cycle>memory_partition_unit::cache_cycle()</h5><ul><li>在 <code>memory_partition_unit::cache_cycle()</code> 中，调用 <code>mem_fetch *mf = m_L2cache->next_access();</code> 为在 filled MSHR entry 中等待的内存请求产生 replies.</li><li>L2 产生的由于 read miss 的 fill 请求将从 L2&rsquo;s miss queu 中弹出，并通过调用 <code>m_L2cache->cycle();</code> 将其push into L2->dram queue</li></ul><h5 id=dram_tcycle>dram_t::cycle()</h5><ul><li>The function <code>dram_t::cycle()</code> represents a DRAM cycle</li><li>每个周期，DRAM从请求队列中弹出一个请求，然后调用调度器函数，让调度器根据调度策略选择一个需要服务的请求。</li></ul></div><div class=tags><ul class=flat><li><a href=/tags/gpgpu-sim>GPGPU-Sim</a></li></ul></div></div></div><div class="footer wrapper"><nav class=nav><div>2022 © Athul | <a href=https://github.com/knadh/hugo-ink>Ink</a> theme on <a href=https://gohugo.io>Hugo</a></div></nav></div><script>feather.replace()</script></body></html>

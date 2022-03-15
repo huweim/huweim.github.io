@@ -1,254 +1,44 @@
-<!doctype html><html>
-<head>
-<meta charset=utf-8>
-<meta http-equiv=x-ua-compatible content="IE=edge"><title>Linux任务调度 - Cory Code</title><meta name=viewport content="width=device-width,initial-scale=1">
-<meta itemprop=name content="Linux任务调度">
-<meta itemprop=description content="0. 前言 记录一下 Linux 中 fg、bg、jobs、&、ctrl + z 等相关指令对任务进程的操作。
+<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Linux任务调度 - Cory Code</title><meta name=viewport content="width=device-width,initial-scale=1"><meta itemprop=name content="Linux任务调度"><meta itemprop=description content="0. 前言 记录一下 Linux 中 fg、bg、jobs、&、ctrl + z 等相关指令对任务进程的操作。
 也正好借此机会学习一下进程（process）的概念
 1. Process 1.0 进程类型  前台进程（交互式进程）  这些进程由终端会话初始化和控制。换句话说，需要有一个连接到系统中的用户来启动这样的进程；它们不是作为系统功能/服务的一部分自动启动。   后台进程  1.1 并发执行 To run commands concurrently you can use the & command separator
 ~$ command1 & command2 & command3 This will start command1, then runs it in the background. The same with command2. Then it starts command3 normally.
  这样的话 command3 是在前台运行
- The output of all commands will be garbled together, but if that is not a problem for you, that would be the solution."><meta itemprop=datePublished content="2021-11-29T23:00:09+08:00">
-<meta itemprop=dateModified content="2021-12-08T08:54:57+00:00">
-<meta itemprop=wordCount content="630">
-<meta itemprop=keywords content="进程,"><meta property="og:title" content="Linux任务调度">
-<meta property="og:description" content="0. 前言 记录一下 Linux 中 fg、bg、jobs、&、ctrl + z 等相关指令对任务进程的操作。
+ The output of all commands will be garbled together, but if that is not a problem for you, that would be the solution."><meta itemprop=datePublished content="2021-11-29T23:00:09+08:00"><meta itemprop=dateModified content="2021-12-08T08:54:57+00:00"><meta itemprop=wordCount content="630"><meta itemprop=keywords content="进程,"><meta property="og:title" content="Linux任务调度"><meta property="og:description" content="0. 前言 记录一下 Linux 中 fg、bg、jobs、&、ctrl + z 等相关指令对任务进程的操作。
 也正好借此机会学习一下进程（process）的概念
 1. Process 1.0 进程类型  前台进程（交互式进程）  这些进程由终端会话初始化和控制。换句话说，需要有一个连接到系统中的用户来启动这样的进程；它们不是作为系统功能/服务的一部分自动启动。   后台进程  1.1 并发执行 To run commands concurrently you can use the & command separator
 ~$ command1 & command2 & command3 This will start command1, then runs it in the background. The same with command2. Then it starts command3 normally.
  这样的话 command3 是在前台运行
- The output of all commands will be garbled together, but if that is not a problem for you, that would be the solution.">
-<meta property="og:type" content="article">
-<meta property="og:url" content="https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/"><meta property="article:section" content="posts">
-<meta property="article:published_time" content="2021-11-29T23:00:09+08:00">
-<meta property="article:modified_time" content="2021-12-08T08:54:57+00:00">
-<meta name=twitter:card content="summary">
-<meta name=twitter:title content="Linux任务调度">
-<meta name=twitter:description content="0. 前言 记录一下 Linux 中 fg、bg、jobs、&、ctrl + z 等相关指令对任务进程的操作。
+ The output of all commands will be garbled together, but if that is not a problem for you, that would be the solution."><meta property="og:type" content="article"><meta property="og:url" content="https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-11-29T23:00:09+08:00"><meta property="article:modified_time" content="2021-12-08T08:54:57+00:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Linux任务调度"><meta name=twitter:description content="0. 前言 记录一下 Linux 中 fg、bg、jobs、&、ctrl + z 等相关指令对任务进程的操作。
 也正好借此机会学习一下进程（process）的概念
 1. Process 1.0 进程类型  前台进程（交互式进程）  这些进程由终端会话初始化和控制。换句话说，需要有一个连接到系统中的用户来启动这样的进程；它们不是作为系统功能/服务的一部分自动启动。   后台进程  1.1 并发执行 To run commands concurrently you can use the & command separator
 ~$ command1 & command2 & command3 This will start command1, then runs it in the background. The same with command2. Then it starts command3 normally.
  这样的话 command3 是在前台运行
- The output of all commands will be garbled together, but if that is not a problem for you, that would be the solution.">
-<link href="https://fonts.googleapis.com/css?family=Playfair+Display:700" rel=stylesheet type=text/css>
-<link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/normalize.css>
-<link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/main.css>
-<link id=dark-scheme rel=stylesheet type=text/css href=https://huweim.github.io/css/dark.css>
-<script src=https://huweim.github.io/js/feather.min.js></script>
-<script src=https://huweim.github.io/js/main.js></script>
-</head>
-<body>
-<div class="container wrapper">
-<div class=header>
-<h1 class=site-title><a href=https://huweim.github.io/>Cory Code</a></h1>
-<div class=site-description><p>Minimal and Clean <a href=https://github.com/athul/hugo-ink>blog theme for Hugo</a></p><nav class="nav social">
-<ul class=flat><li><a href=https://github.com/huweim title=GitHub><i data-feather=github></i></a></li><li><a href=https://twitter.com/athulcajay/ title=Twitter><i data-feather=twitter></i></a></li><li><a href=https://gitlab.com/athul/ title=GitLab><i data-feather=gitlab></i></a></li><li><a href=# class=scheme-toggle id=scheme-toggle></a></li></ul>
-</nav>
-</div>
-<nav class=nav>
-<ul class=flat>
-<li>
-<a href=/>Home</a>
-</li>
-<li>
-<a href=/posts>All posts</a>
-</li>
-<li>
-<a href=/categories/>Categories</a>
-</li>
-<li>
-<a href=/archives>Archives</a>
-</li>
-<li>
-<a href=/tags>Tags</a>
-</li>
-<li>
-<a href=/about/>About</a>
-</li>
-</ul>
-</nav>
-</div>
-<div class=post>
-<div class=post-header>
-<div class=meta>
-<div class=date>
-<span class=day>29</span>
-<span class=rest>Nov 2021</span>
-</div>
-</div>
-<div class=matter>
-<h1 class=title>Linux任务调度</h1>
-</div>
-</div>
-<div class=markdown>
-<h1 id=0-前言>0. 前言</h1>
-<p>记录一下 <code>Linux</code> 中 <code>fg</code>、<code>bg</code>、<code>jobs</code>、<code>&</code>、<code>ctrl + z</code> 等相关指令对任务进程的操作。</p>
-<p>也正好借此机会学习一下进程（process）的概念</p>
-<h1 id=1-process>1. Process</h1>
-<h2 id=10-进程类型>1.0 进程类型</h2>
-<ul>
-<li>前台进程（交互式进程）
-<ul>
-<li>这些进程由终端会话初始化和控制。换句话说，需要有一个连接到系统中的用户来启动这样的进程；它们不是作为系统功能/服务的一部分自动启动。</li>
-</ul>
-</li>
-<li>后台进程</li>
-</ul>
-<h2 id=11-并发执行>1.1 并发执行</h2>
-<p>To run commands concurrently you can use the <code>&</code> command separator</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>~$ command1 <span class=p>&amp;</span> command2 <span class=p>&amp;</span> command3
-</code></pre></div><p>This will start <code>command1</code>, then runs it in the background. The same with <code>command2</code>. Then it starts <code>command3</code> normally.</p>
-<blockquote>
-<p>这样的话 command3 是在前台运行</p>
-</blockquote>
-<p>The output of all commands will be garbled together, but if that is not a problem for you, that would be the solution.</p>
-<p>If you want to have a separate look at the output later, you can pipe the output of each command into <code>tee</code>, which lets you specify a file to mirror the output to.</p>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback>~$ command1 | tee 1.log &amp; command2 | tee 2.log &amp; command3 | tee 3.log
-</code></pre></div><blockquote>
-<p>这样可以分别在对应的 log 中查看不同 command output，我也是这么做的</p>
-<p>加&的作用其实就是将命令放到后台执行</p>
-</blockquote>
-<h3 id=111-终止并发执行的后台进程>1.1.1 终止并发执行的后台进程</h3>
-<ul>
-<li>方法一： 通过 <code>jobs</code> 命令查看任务号（假设为 <code>num</code>），然后执行：<code>kill %num</code></li>
-<li>方法二： 通过 <code>ps</code> 命令查看任务的进程号（<code>PID</code>，假设为 <code>pid</code>），然后执行：<code>kill pid</code></li>
-</ul>
-<h2 id=12-进程及性能分析>1.2 进程及性能分析</h2>
-<h3 id=121-进程状态>1.2.1 进程状态</h3>
-<ul>
-<li>R： <strong>RUNNING & RUNNABLE</strong>，正在运行或在运行队列中等待</li>
-<li>S：<strong>INTERRRUPTABLE_SLEEP</strong>，休眠中, 受阻, 在等待某个条件的形成或接受到 signal</li>
-<li>D：<strong>UNINTERRUPTABLE_SLEEP</strong>，不可中断（usually IO）</li>
-<li>T：<strong>STOPPED</strong>，ctrl + z 进入这个状态</li>
-<li>Z：<strong>ZOMBIE</strong>，进程已终止, 但进程描述符存在, 直到父进程调用wait4()系统调用后释放</li>
-</ul>
-<h3 id=122-查看进程状态-ps>1.2.2 查看进程状态 ps</h3>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>$ ps -aux <span class=c1>#显示所有包含其他使用者的行程 </span>
-</code></pre></div><p><strong>%CPU</strong>：该 process 使用掉的 CPU 资源百分比</p>
-<p><strong>%MEM</strong>：该 process 所占用的物理内存百分比</p>
-<p><strong>TTY</strong> ：该 process 是在那个终端机上面运作，若与终端机无关，则显示 ?，另外， tty1-tty6 是本机上面的登入者程序，若为 pts/0 等等的，则表示为由网络连接进主机的程序。</p>
-<p><strong>STAT</strong>：该程序目前的状态，主要的状态参考 <strong>1.2进程状态</strong></p>
-<p><strong>START</strong>：该 process 被触发启动的时间</p>
-<p><strong>TIME</strong> ：该 process 实际使用 CPU 运作的时间</p>
-<h3 id=123-性能分析-top>1.2.3 性能分析 top</h3>
-<h5 id=信息查看实例>信息查看实例</h5>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>top - 19:39:49 up <span class=m>77</span> days,  8:54,  <span class=m>0</span> users,  load average: 5.00, 5.00, 5.00
-<span class=c1># 系统当前时间；开机到现在77days 8h 54 mins；0 users 在线；系统1分钟、5分钟、15分钟的CPU负载信息</span>
-Tasks:  <span class=m>13</span> total,   <span class=m>1</span> running,  <span class=m>12</span> sleeping,   <span class=m>0</span> stopped,   <span class=m>0</span> zombie
-%Cpu<span class=o>(</span>s<span class=o>)</span>: 20.9 us,  0.0 sy,  0.0 ni, 79.1 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
-<span class=c1># %us：用户态进程占用CPU时间百分比，不包含renice值为负的任务占用的CPU的时间。</span>
-<span class=c1># %sy：内核占用CPU时间百分比</span>
-<span class=c1># %ni：改变过优先级的进程占用CPU的百分比</span>
-<span class=c1># %id：空闲CPU时间百分比</span>
-<span class=c1># %wa：等待I/O的CPU时间百分比</span>
-<span class=c1># %hi：CPU硬中断时间百分比</span>
-<span class=c1># %si：CPU软中断时间百分比</span>
-<span class=c1># 这里显示数据是所有cpu的平均值，如果想看每一个cpu的处理情况，按1即可；折叠，再次按1</span>
-MiB Mem :  48192.1 total,  25777.1 free,   2605.3 used,  19809.7 buff/cache
-MiB Swap:  19530.0 total,  19491.7 free,     38.2 used.  45002.0 avail Mem
-
-</code></pre></div><h5 id=查看单个进程使用cpu情况>查看单个进程使用CPU情况</h5>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>$ top -p pid
-$ ps -aux <span class=c1>#这个好像更加方便一点</span>
-</code></pre></div><h2 id=13-为什么top查看只有1-running其他sleeping>1.3 为什么top查看只有1 running，其他sleeping?</h2>
-<h5 id=stackoverflow回答>Stackoverflow回答</h5>
-<p>There is no correlation between CPU usage as reported by <code>top</code> and process state. The <a href=http://linux.die.net/man/1/top>man page</a> says (<em>emphasis</em> mine):</p>
-<blockquote>
-<p><strong>%CPU</strong> &ndash; CPU usage</p>
-<p>The task&rsquo;s share of the elapsed CPU time <em>since the last screen update</em>, expressed as a percentage of total CPU time.</p>
-</blockquote>
-<p>So, your process indeed used a huge amount of processor time since the last screen update. It is sleeping, yes, but that&rsquo;s because the currently running process is <code>top</code> itself (which makes sense, since it&rsquo;s currently updating the screen).</p>
-<h5 id=理解>理解</h5>
-<p>这个1 running 就是 top process 本身，其他的 process 其实也是在运行的。每次 top 面板更新时活跃 process 正好是 top，所以 only 1 running。但是查看详细信息可以看到其实是在运行的。</p>
-<h1 id=2-进程调度>2. 进程调度</h1>
-<h2 id=21-基本用法>2.1. 基本用法</h2>
-<h3 id=211--和-jobs-指令>2.1.1 <code>&</code> 和 <code>jobs</code> 指令</h3>
-<p><code>&</code> 用在一个命令的最后，可以把这个命令转换为<strong>后台运行</strong>的任务进程。</p>
-<p><code>jobs</code> 查看当前终端有多少在后台运行的进程。</p>
-<ul>
-<li><code>jobs</code> 命令执行的结果，<code>＋</code> 表示是一个当前的作业，<code>-</code> 减号表示是一个当前作业之后的一个作业。</li>
-<li><code>jobs -l</code> 选项可显示所有任务的进程号 <code>pid</code></li>
-<li><code>jobs</code> 的状态可以是 <code>running</code>，<code>stopped</code>，<code>terminated</code>。但是如果任务进程被终止了（<code>kill</code>），当前的终端环境中也就删除了任务的进程标识；也就是说 <strong>jobs 命令显示的是当前 shell 环境中后台正在运行或者被挂起的任务进程信息</strong></li>
-</ul>
-<h3 id=213-fg-和-bg-指令>2.1.3 <code>fg</code> 和 <code>bg</code> 指令</h3>
-<p><code>fg</code> 将后台任务进程调至<strong>前台</strong>继续运行，如果后台中有多个任务进程，可以用 <code>fg %num</code> 将选中的任务进程调至前台。</p>
-<p><code>bg</code> 将挂起的任务进程重新启动运行，如果有多个暂停的任务进程，可以用 <code>bg %num</code> 将选中的任务进程启动运行。</p>
-<blockquote>
-<p><code>%num</code> 是通过 <code>jobs</code> 命令查到的后台正在执行的任务的序号（不是 <code>pid</code>）</p>
-</blockquote>
-<p>:exclamation: 使用 ispass_run.sh 的时候最好使用 <code>fg</code>，如果使用 <code>bg</code> 则无法再次挂起，<del>猜测是因为</del>，原因是 <code>ctrl + z</code> 是用于挂起前台进程，使用 <code>stop</code> 将其挂起即可</p>
-<blockquote>
-<p>使用 stop 2，好像也无法将其挂起？</p>
-</blockquote>
-<h2 id=22-进程的挂起>2.2. 进程的挂起</h2>
-<h3 id=221-后台进程的挂起>2.2.1 后台进程的挂起</h3>
-<ul>
-<li>在 <code>solaris</code> 中通过 <code>stop</code> 命令执行，通过 <code>jobs</code> 命令查看任务号（假设为 <code>num</code>），然后执行：<code>stop %num</code></li>
-<li>在 <code>redhat</code> 中，不存在 <code>stop</code> 命令，可通过执行命令 <code>kill -stop PID</code>，将进程挂起</li>
-</ul>
-<h3 id=222-前台进程的挂起-ctrlz>2.2.2 前台进程的挂起 ctrl+z</h3>
-<p><code>ctrl + z</code>：可以将一个正在s前台执行的任务放到后台运行，并且挂起</p>
-<h2 id=23-挂起进程重新运行-bg-fg>2.3. 挂起进程重新运行 bg, fg</h2>
-<ul>
-<li>通过 <code>bg %num</code> 即可将挂起的任务进程的状态由 <code>stopped</code> 改为 <code>running</code>，仍在后台运行</li>
-<li>通过 <code>fg %num</code> 即可将挂起的任务进程转为前台执行</li>
-</ul>
-<h2 id=24-进程的终止>2.4. 进程的终止</h2>
-<h3 id=241-后台进程的终止-kill-killall>2.4.1 后台进程的终止 kill, killall</h3>
-<ul>
-<li>方法一： 通过 <code>jobs</code> 命令查看任务号（假设为 <code>num</code>），然后执行：<code>kill %num</code></li>
-<li>方法二： 通过 <code>ps</code> 命令查看任务的进程号（<code>PID</code>，假设为 <code>pid</code>），然后执行：<code>kill pid</code></li>
-<li><code>killall CMD</code>：通过进程名 kill 感觉比根据 pid 方便很多</li>
-</ul>
-<h3 id=242-前台进程的终止-ctrlc>2.4.2 前台进程的终止 ctrl+c</h3>
-<p>执行 <code>ctrl+c</code> 即可终止前台执行任务进程</p>
-<blockquote>
-<p>假设要后台运行 <code>xmms</code>，可通过命令：<code>xmms &</code>。但万一你运行程序时忘记使用 <code>&</code> 了，又不想重新执行，你可以先使用 <code>ctrl+z</code> 挂起任务进程，然后敲入<code>bg</code> 命令，这样任务进程就在后台继续运行了。</p>
-</blockquote>
-<h1 id=3-查看cpu信息>3. 查看CPU信息</h1>
-<ul>
-<li>查看物理CPU个数</li>
-</ul>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>cat /proc/cpuinfo<span class=p>|</span> grep <span class=s2>&#34;physical id&#34;</span><span class=p>|</span> sort<span class=p>|</span> uniq<span class=p>|</span> wc -l
-</code></pre></div><ul>
-<li>查看每个物理CPU中core的个数(即核数)</li>
-</ul>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>cat /proc/cpuinfo<span class=p>|</span> grep <span class=s2>&#34;cpu cores&#34;</span><span class=p>|</span> uniq
-</code></pre></div><ul>
-<li>查看逻辑CPU的个数</li>
-</ul>
-<div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell>cat /proc/cpuinfo<span class=p>|</span> grep <span class=s2>&#34;processor&#34;</span><span class=p>|</span> wc -l
-</code></pre></div><h1 id=4-why-jobs-看不到后台-process>4. Why <code>jobs</code> 看不到后台 process</h1>
-<h2 id=41-关闭终端造成孤儿进程>4.1 关闭终端造成孤儿进程</h2>
-<blockquote>
-<p>jobs是查看当前后台作业（进程），是获取本次bash下的后台作业。
+ The output of all commands will be garbled together, but if that is not a problem for you, that would be the solution."><link href="https://fonts.googleapis.com/css?family=Playfair+Display:700" rel=stylesheet type=text/css><link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/normalize.css><link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/main.css><link id=dark-scheme rel=stylesheet type=text/css href=https://huweim.github.io/css/dark.css><script src=https://huweim.github.io/js/feather.min.js></script>
+<script src=https://huweim.github.io/js/main.js></script></head><body><div class="container wrapper"><div class=header><h1 class=site-title><a href=https://huweim.github.io/>Cory Code</a></h1><div class=site-description><p>Minimal and Clean <a href=https://github.com/athul/hugo-ink>blog theme for Hugo</a></p><nav class="nav social"><ul class=flat><li><a href=https://github.com/huweim title=GitHub><i data-feather=github></i></a></li><li><a href=https://twitter.com/athulcajay/ title=Twitter><i data-feather=twitter></i></a></li><li><a href=https://gitlab.com/athul/ title=GitLab><i data-feather=gitlab></i></a></li><li><a href=# class=scheme-toggle id=scheme-toggle></a></li></ul></nav></div><nav class=nav><ul class=flat><li><a href=/>Home</a></li><li><a href=/posts>All posts</a></li><li><a href=/categories/>Categories</a></li><li><a href=/archives>Archives</a></li><li><a href=/tags>Tags</a></li><li><a href=/about/>About</a></li></ul></nav></div><div class=post><div class=post-header><div class=meta><div class=date><span class=day>29</span>
+<span class=rest>Nov 2021</span></div></div><div class=matter><h1 class=title>Linux任务调度</h1></div></div><div class=markdown><h1 id=0-前言>0. 前言</h1><p>记录一下 <code>Linux</code> 中 <code>fg</code>、<code>bg</code>、<code>jobs</code>、<code>&</code>、<code>ctrl + z</code> 等相关指令对任务进程的操作。</p><p>也正好借此机会学习一下进程（process）的概念</p><h1 id=1-process>1. Process</h1><h2 id=10-进程类型>1.0 进程类型</h2><ul><li>前台进程（交互式进程）<ul><li>这些进程由终端会话初始化和控制。换句话说，需要有一个连接到系统中的用户来启动这样的进程；它们不是作为系统功能/服务的一部分自动启动。</li></ul></li><li>后台进程</li></ul><h2 id=11-并发执行>1.1 并发执行</h2><p>To run commands concurrently you can use the <code>&</code> command separator</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>~$ command1 <span class=p>&amp;</span> command2 <span class=p>&amp;</span> command3
+</span></span></code></pre></div><p>This will start <code>command1</code>, then runs it in the background. The same with <code>command2</code>. Then it starts <code>command3</code> normally.</p><blockquote><p>这样的话 command3 是在前台运行</p></blockquote><p>The output of all commands will be garbled together, but if that is not a problem for you, that would be the solution.</p><p>If you want to have a separate look at the output later, you can pipe the output of each command into <code>tee</code>, which lets you specify a file to mirror the output to.</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>~$ command1 | tee 1.log &amp; command2 | tee 2.log &amp; command3 | tee 3.log
+</span></span></code></pre></div><blockquote><p>这样可以分别在对应的 log 中查看不同 command output，我也是这么做的</p><p>加&的作用其实就是将命令放到后台执行</p></blockquote><h3 id=111-终止并发执行的后台进程>1.1.1 终止并发执行的后台进程</h3><ul><li>方法一： 通过 <code>jobs</code> 命令查看任务号（假设为 <code>num</code>），然后执行：<code>kill %num</code></li><li>方法二： 通过 <code>ps</code> 命令查看任务的进程号（<code>PID</code>，假设为 <code>pid</code>），然后执行：<code>kill pid</code></li></ul><h2 id=12-进程及性能分析>1.2 进程及性能分析</h2><h3 id=121-进程状态>1.2.1 进程状态</h3><ul><li>R： <strong>RUNNING & RUNNABLE</strong>，正在运行或在运行队列中等待</li><li>S：<strong>INTERRRUPTABLE_SLEEP</strong>，休眠中, 受阻, 在等待某个条件的形成或接受到 signal</li><li>D：<strong>UNINTERRUPTABLE_SLEEP</strong>，不可中断（usually IO）</li><li>T：<strong>STOPPED</strong>，ctrl + z 进入这个状态</li><li>Z：<strong>ZOMBIE</strong>，进程已终止, 但进程描述符存在, 直到父进程调用wait4()系统调用后释放</li></ul><h3 id=122-查看进程状态-ps>1.2.2 查看进程状态 ps</h3><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>$ ps -aux <span class=c1>#显示所有包含其他使用者的行程 </span>
+</span></span></code></pre></div><p><strong>%CPU</strong>：该 process 使用掉的 CPU 资源百分比</p><p><strong>%MEM</strong>：该 process 所占用的物理内存百分比</p><p><strong>TTY</strong> ：该 process 是在那个终端机上面运作，若与终端机无关，则显示 ?，另外， tty1-tty6 是本机上面的登入者程序，若为 pts/0 等等的，则表示为由网络连接进主机的程序。</p><p><strong>STAT</strong>：该程序目前的状态，主要的状态参考 <strong>1.2进程状态</strong></p><p><strong>START</strong>：该 process 被触发启动的时间</p><p><strong>TIME</strong> ：该 process 实际使用 CPU 运作的时间</p><h3 id=123-性能分析-top>1.2.3 性能分析 top</h3><h5 id=信息查看实例>信息查看实例</h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>top - 19:39:49 up <span class=m>77</span> days,  8:54,  <span class=m>0</span> users,  load average: 5.00, 5.00, 5.00
+</span></span><span class=line><span class=cl><span class=c1># 系统当前时间；开机到现在77days 8h 54 mins；0 users 在线；系统1分钟、5分钟、15分钟的CPU负载信息</span>
+</span></span><span class=line><span class=cl>Tasks:  <span class=m>13</span> total,   <span class=m>1</span> running,  <span class=m>12</span> sleeping,   <span class=m>0</span> stopped,   <span class=m>0</span> zombie
+</span></span><span class=line><span class=cl>%Cpu<span class=o>(</span>s<span class=o>)</span>: 20.9 us,  0.0 sy,  0.0 ni, 79.1 id,  0.0 wa,  0.0 hi,  0.0 si,  0.0 st
+</span></span><span class=line><span class=cl><span class=c1># %us：用户态进程占用CPU时间百分比，不包含renice值为负的任务占用的CPU的时间。</span>
+</span></span><span class=line><span class=cl><span class=c1># %sy：内核占用CPU时间百分比</span>
+</span></span><span class=line><span class=cl><span class=c1># %ni：改变过优先级的进程占用CPU的百分比</span>
+</span></span><span class=line><span class=cl><span class=c1># %id：空闲CPU时间百分比</span>
+</span></span><span class=line><span class=cl><span class=c1># %wa：等待I/O的CPU时间百分比</span>
+</span></span><span class=line><span class=cl><span class=c1># %hi：CPU硬中断时间百分比</span>
+</span></span><span class=line><span class=cl><span class=c1># %si：CPU软中断时间百分比</span>
+</span></span><span class=line><span class=cl><span class=c1># 这里显示数据是所有cpu的平均值，如果想看每一个cpu的处理情况，按1即可；折叠，再次按1</span>
+</span></span><span class=line><span class=cl>MiB Mem :  48192.1 total,  25777.1 free,   2605.3 used,  19809.7 buff/cache
+</span></span><span class=line><span class=cl>MiB Swap:  19530.0 total,  19491.7 free,     38.2 used.  45002.0 avail Mem
+</span></span></code></pre></div><h5 id=查看单个进程使用cpu情况>查看单个进程使用CPU情况</h5><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>$ top -p pid
+</span></span><span class=line><span class=cl>$ ps -aux <span class=c1>#这个好像更加方便一点</span>
+</span></span></code></pre></div><h2 id=13-为什么top查看只有1-running其他sleeping>1.3 为什么top查看只有1 running，其他sleeping?</h2><h5 id=stackoverflow回答>Stackoverflow回答</h5><p>There is no correlation between CPU usage as reported by <code>top</code> and process state. The <a href=http://linux.die.net/man/1/top>man page</a> says (<em>emphasis</em> mine):</p><blockquote><p><strong>%CPU</strong> &ndash; CPU usage</p><p>The task&rsquo;s share of the elapsed CPU time <em>since the last screen update</em>, expressed as a percentage of total CPU time.</p></blockquote><p>So, your process indeed used a huge amount of processor time since the last screen update. It is sleeping, yes, but that&rsquo;s because the currently running process is <code>top</code> itself (which makes sense, since it&rsquo;s currently updating the screen).</p><h5 id=理解>理解</h5><p>这个1 running 就是 top process 本身，其他的 process 其实也是在运行的。每次 top 面板更新时活跃 process 正好是 top，所以 only 1 running。但是查看详细信息可以看到其实是在运行的。</p><h1 id=2-进程调度>2. 进程调度</h1><h2 id=21-基本用法>2.1. 基本用法</h2><h3 id=211--和-jobs-指令>2.1.1 <code>&</code> 和 <code>jobs</code> 指令</h3><p><code>&</code> 用在一个命令的最后，可以把这个命令转换为<strong>后台运行</strong>的任务进程。</p><p><code>jobs</code> 查看当前终端有多少在后台运行的进程。</p><ul><li><code>jobs</code> 命令执行的结果，<code>＋</code> 表示是一个当前的作业，<code>-</code> 减号表示是一个当前作业之后的一个作业。</li><li><code>jobs -l</code> 选项可显示所有任务的进程号 <code>pid</code></li><li><code>jobs</code> 的状态可以是 <code>running</code>，<code>stopped</code>，<code>terminated</code>。但是如果任务进程被终止了（<code>kill</code>），当前的终端环境中也就删除了任务的进程标识；也就是说 <strong>jobs 命令显示的是当前 shell 环境中后台正在运行或者被挂起的任务进程信息</strong></li></ul><h3 id=213-fg-和-bg-指令>2.1.3 <code>fg</code> 和 <code>bg</code> 指令</h3><p><code>fg</code> 将后台任务进程调至<strong>前台</strong>继续运行，如果后台中有多个任务进程，可以用 <code>fg %num</code> 将选中的任务进程调至前台。</p><p><code>bg</code> 将挂起的任务进程重新启动运行，如果有多个暂停的任务进程，可以用 <code>bg %num</code> 将选中的任务进程启动运行。</p><blockquote><p><code>%num</code> 是通过 <code>jobs</code> 命令查到的后台正在执行的任务的序号（不是 <code>pid</code>）</p></blockquote><p>:exclamation: 使用 ispass_run.sh 的时候最好使用 <code>fg</code>，如果使用 <code>bg</code> 则无法再次挂起，<del>猜测是因为</del>，原因是 <code>ctrl + z</code> 是用于挂起前台进程，使用 <code>stop</code> 将其挂起即可</p><blockquote><p>使用 stop 2，好像也无法将其挂起？</p></blockquote><h2 id=22-进程的挂起>2.2. 进程的挂起</h2><h3 id=221-后台进程的挂起>2.2.1 后台进程的挂起</h3><ul><li>在 <code>solaris</code> 中通过 <code>stop</code> 命令执行，通过 <code>jobs</code> 命令查看任务号（假设为 <code>num</code>），然后执行：<code>stop %num</code></li><li>在 <code>redhat</code> 中，不存在 <code>stop</code> 命令，可通过执行命令 <code>kill -stop PID</code>，将进程挂起</li></ul><h3 id=222-前台进程的挂起-ctrlz>2.2.2 前台进程的挂起 ctrl+z</h3><p><code>ctrl + z</code>：可以将一个正在s前台执行的任务放到后台运行，并且挂起</p><h2 id=23-挂起进程重新运行-bg-fg>2.3. 挂起进程重新运行 bg, fg</h2><ul><li>通过 <code>bg %num</code> 即可将挂起的任务进程的状态由 <code>stopped</code> 改为 <code>running</code>，仍在后台运行</li><li>通过 <code>fg %num</code> 即可将挂起的任务进程转为前台执行</li></ul><h2 id=24-进程的终止>2.4. 进程的终止</h2><h3 id=241-后台进程的终止-kill-killall>2.4.1 后台进程的终止 kill, killall</h3><ul><li>方法一： 通过 <code>jobs</code> 命令查看任务号（假设为 <code>num</code>），然后执行：<code>kill %num</code></li><li>方法二： 通过 <code>ps</code> 命令查看任务的进程号（<code>PID</code>，假设为 <code>pid</code>），然后执行：<code>kill pid</code></li><li><code>killall CMD</code>：通过进程名 kill 感觉比根据 pid 方便很多</li></ul><h3 id=242-前台进程的终止-ctrlc>2.4.2 前台进程的终止 ctrl+c</h3><p>执行 <code>ctrl+c</code> 即可终止前台执行任务进程</p><blockquote><p>假设要后台运行 <code>xmms</code>，可通过命令：<code>xmms &</code>。但万一你运行程序时忘记使用 <code>&</code> 了，又不想重新执行，你可以先使用 <code>ctrl+z</code> 挂起任务进程，然后敲入<code>bg</code> 命令，这样任务进程就在后台继续运行了。</p></blockquote><h1 id=3-查看cpu信息>3. 查看CPU信息</h1><ul><li>查看物理CPU个数</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>cat /proc/cpuinfo<span class=p>|</span> grep <span class=s2>&#34;physical id&#34;</span><span class=p>|</span> sort<span class=p>|</span> uniq<span class=p>|</span> wc -l
+</span></span></code></pre></div><ul><li>查看每个物理CPU中core的个数(即核数)</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>cat /proc/cpuinfo<span class=p>|</span> grep <span class=s2>&#34;cpu cores&#34;</span><span class=p>|</span> uniq
+</span></span></code></pre></div><ul><li>查看逻辑CPU的个数</li></ul><div class=highlight><pre tabindex=0 class=chroma><code class=language-shell data-lang=shell><span class=line><span class=cl>cat /proc/cpuinfo<span class=p>|</span> grep <span class=s2>&#34;processor&#34;</span><span class=p>|</span> wc -l
+</span></span></code></pre></div><h1 id=4-why-jobs-看不到后台-process>4. Why <code>jobs</code> 看不到后台 process</h1><h2 id=41-关闭终端造成孤儿进程>4.1 关闭终端造成孤儿进程</h2><blockquote><p>jobs是查看当前后台作业（进程），是获取本次bash下的后台作业。
 当本次终端退出后，后台作业变成<strong>孤儿进程</strong>，孤儿进程有系统父进程接管。
 当再次连接终端时，<strong>原作业</strong>与<strong>当前终端</strong>，不存在关系父子关系，故看不到进程。
 但是原作业，会在系统中一致运行，直到完成或被停止。
-这就是为什么终端退出后，jobs看不到的原因了</p>
-</blockquote>
-<h2 id=42-nohup>4.2 nohup</h2>
-<h3 id=421->4.2.1 &</h3>
-<p>守护进程貌似跟nohup + &方式启动的进程差不多。都可以实现与终端的无关联。</p>
-<p>& 可以让进程在后台运行，ctrl + C 无法终端，对 SIGINT 信号免疫，但是直接关闭 shell 后进程会消失。& 后台没有那么硬 :)，对 SIGHUP 信号不免疫</p>
-<h3 id=422-nohup--作用>4.2.2 nohup 作用</h3>
-<p>nohup 的作用是忽略 SIGHUP 信号，也就是不挂断地运行</p>
-<p>&和nohup没有半毛钱的关系， 要让进程真正不受shell中Ctrl C和shell关闭的影响， 那该怎么办呢？ 那就用nohup ./start.sh &吧， 两全其美。</p>
-<h1 id=reference>Reference</h1>
-<p><a href=https://ehlxr.me/2017/01/18/Linux-%E4%B8%AD-fg%E3%80%81bg%E3%80%81jobs%E3%80%81-%E6%8C%87%E4%BB%A4/>https://ehlxr.me/2017/01/18/Linux-%E4%B8%AD-fg%E3%80%81bg%E3%80%81jobs%E3%80%81-%E6%8C%87%E4%BB%A4/</a></p>
-<p><a href=https://www.cnblogs.com/machangwei-8/p/10391440.html>https://www.cnblogs.com/machangwei-8/p/10391440.html</a></p>
-</div>
-<div class=tags>
-<ul class=flat>
-<li><a href=/tags/%E8%BF%9B%E7%A8%8B>进程</a></li>
-</ul>
-</div></div>
-</div>
-<div class="footer wrapper">
-<nav class=nav>
-<div>2021 © Athul | <a href=https://github.com/knadh/hugo-ink>Ink</a> theme on <a href=https://gohugo.io>Hugo</a></div>
-</nav>
-</div>
-<script>feather.replace()</script>
-</body>
-</html>
+这就是为什么终端退出后，jobs看不到的原因了</p></blockquote><h2 id=42-nohup>4.2 nohup</h2><h3 id=421->4.2.1 &</h3><p>守护进程貌似跟nohup + &方式启动的进程差不多。都可以实现与终端的无关联。</p><p>& 可以让进程在后台运行，ctrl + C 无法终端，对 SIGINT 信号免疫，但是直接关闭 shell 后进程会消失。& 后台没有那么硬 :)，对 SIGHUP 信号不免疫</p><h3 id=422-nohup--作用>4.2.2 nohup 作用</h3><p>nohup 的作用是忽略 SIGHUP 信号，也就是不挂断地运行</p><p>&和nohup没有半毛钱的关系， 要让进程真正不受shell中Ctrl C和shell关闭的影响， 那该怎么办呢？ 那就用nohup ./start.sh &吧， 两全其美。</p><h1 id=reference>Reference</h1><p><a href=https://ehlxr.me/2017/01/18/Linux-%E4%B8%AD-fg%E3%80%81bg%E3%80%81jobs%E3%80%81-%E6%8C%87%E4%BB%A4/>https://ehlxr.me/2017/01/18/Linux-%E4%B8%AD-fg%E3%80%81bg%E3%80%81jobs%E3%80%81-%E6%8C%87%E4%BB%A4/</a></p><p><a href=https://www.cnblogs.com/machangwei-8/p/10391440.html>https://www.cnblogs.com/machangwei-8/p/10391440.html</a></p></div><div class=tags><ul class=flat><li><a href=/tags/%E8%BF%9B%E7%A8%8B>进程</a></li></ul></div></div></div><div class="footer wrapper"><nav class=nav><div>2022 © Athul | <a href=https://github.com/knadh/hugo-ink>Ink</a> theme on <a href=https://gohugo.io>Hugo</a></div></nav></div><script>feather.replace()</script></body></html>
