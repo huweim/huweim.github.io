@@ -1,11 +1,11 @@
 ---
 title: "Linux任务调度"
 date: 2021-11-29T23:00:09+08:00
-lastmod: 2021-12-08 08:54:57
+lastmod: 2022-03-16 08:44:28
 draft: false
 author: "Cory"
-tags: ["进程"]
-categories: ["Linux"]
+tags: ["Linux"]
+categories: ["工具"]
 ---
 
 # 0. 前言

@@ -5,8 +5,8 @@ lastmod:
 draft: false
 author: "Cory"
 keywords: ["文章写作规范"]
-tags: ["博客", "技巧"]
-categories: ["Hugo"]
+tags: ["Hugo"]
+categories: ["博客搭建"]
 ---
 
 # 0. 前言

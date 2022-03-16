@@ -2,8 +2,8 @@
 title: "Blog_Hugo_About页面制作"
 date: 2021-07-24T19:19:09+08:00
 draft: false
-tags: ["博客", "技巧"]
-categories: ["Hugo"]
+tags: ["Hugo"]
+categories: ["博客搭建"]
 ---
 
 # 前言

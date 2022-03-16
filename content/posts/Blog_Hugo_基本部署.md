@@ -2,8 +2,8 @@
 title: "Blog_Hugo_基本部署"
 date: 2021-07-24T16:28:22+08:00
 draft: false
-tags: ["博客", "技巧"]
-categories: ["Hugo"]
+tags: ["Hugo"]
+categories: ["博客搭建"]
 ---
 
 # 前言

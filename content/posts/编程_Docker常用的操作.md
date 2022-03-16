@@ -1,10 +1,10 @@
 ---
-title: "Docker Image and Container"
+title: "Docker 常用的命令"
 date: 2021-09-17T16:25:25+08:00
 lastmod: 2021-12-08 09:00:58
 draft: false
-tags: ["Docker", "技巧"]
-categories: ["编程"]
+tags: ["Docker"]
+categories: ["工具"]
 ---
 
 # 0. 前言

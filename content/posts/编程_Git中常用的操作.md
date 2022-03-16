@@ -1,9 +1,10 @@
 ---
 title: "Git中常用的操作"
 date: 2021-03-08T19:12:40+08:00
+lastmod: 2022-03-16 08:44:28
 draft: false
-tags: ["技巧"]
-categories: ["git"]
+tags: ["Git"]
+categories: ["工具"]
 ---
 
 # Git中常用的操作

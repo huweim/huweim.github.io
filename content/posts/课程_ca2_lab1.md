@@ -3,7 +3,7 @@ title: "Ca2_lab1"
 date: 2021-07-28T16:09:45+08:00
 draft: false
 tags: ["CA2", "lab"]
-categories: ["course"]
+categories: ["Course"]
 ---
 
 # 0. 前言

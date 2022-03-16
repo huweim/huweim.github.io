@@ -4,9 +4,8 @@ date: 2021-10-08T12:09:11+08:00
 lastmod: 2021-10-08 12:10:44
 draft: false
 author: "Cory"
-keywords: [""]
-tags: ["博客", "技巧"]
-categories: ["Hugo"]
+tags: ["Hugo"]
+categories: ["博客搭建"]
 ---
 
 # 0. 前言

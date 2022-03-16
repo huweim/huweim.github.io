@@ -5,7 +5,7 @@ lastmod: 2021-12-08 09:06:13
 draft: false
 author: "Cory"
 tags: ["Python", "可视化"]
-categories: ["编程"]
+categories: ["工具"]
 ---
 
 # 0. 前言

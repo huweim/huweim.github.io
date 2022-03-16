@@ -4,8 +4,8 @@ date: 2021-11-14T22:07:35+08:00
 lastmod: 
 draft: false
 author: "Cory"
-tags: ["环境搭建"]
-categories: ["编程"]
+tags: ["cuda", "gcc"]
+categories: ["工具"]
 ---
 
 # Ubuntu多版本CUDA,GCC切换
