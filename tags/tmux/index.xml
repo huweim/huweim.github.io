@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>tmux on Cory Code</title><link>https://huweim.github.io/tags/tmux/</link><description>Recent content in tmux on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Athul</copyright><lastBuildDate>Wed, 16 Mar 2022 08:56:32 +0800</lastBuildDate><atom:link href="https://huweim.github.io/tags/tmux/index.xml" rel="self" type="application/rss+xml"/><item><title>tmux: Linux 下终端复用</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</link><pubDate>Wed, 16 Mar 2022 08:56:32 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</guid><description>0. 前言 个人理解：最重要的思想感觉是将 session 和终端分离，这样的话退出终端时不会中断 session 以及里面的任务，session 还是在后台运行。最重要的是，下次进入终端时可以连接 session，使得可以还原上一次退出时的状态，且后台任务不会中断。
+前缀键：Ctrl + B，用&amp;lt;prefix&amp;gt;表示。比如&amp;lt;prefix&amp;gt; %表示先按Ctrl，再按B键，再%键，其完成的功能就是竖直分屏。
+0.1 安装、启动、退出 $ sudo apt-get install tmux $ tmux #进入 Tmux 窗口，底部状态栏左侧是窗口信息（编号和名称），右侧是系统信息 $exit #或者 ctrl + d，退出 1. 基本概念 1.1 Session 会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话
+Session 一大特点：打开窗口，会话开始；关闭窗口，会话结束，会话内部的进程也随之结束
+基于这个 Motivation，为了解决这种关闭窗口工作丢失的问题，会话和窗口可以解绑。窗口关闭时，会话并不会终止，而是继续运行，有需要的时候（理解为需要交互的时候）再让会话绑定其他窗口。
+窗口(window): 容纳多个窗格
+窗格(pane): 可以在窗口中分成多个窗格
+1.2 Tmux Tmux 就是让会话与窗口解绑的工具
+可以在单个窗口中同时访问多个会话。对于同时运行多个命令行程序很有用 可以让新窗口 接入 已存在的会话 允许每个会话有多个连接窗口，可以多人实时共享会话 支持窗口任意的垂直和水平拆分 1. Session 1.1 new 第一个启动的 Tmux 窗口，编号是0，第二个窗口的编号是1，以此类推。这些窗口对应的会话，就是 0 号会话、1 号会话。</description></item></channel></rss>

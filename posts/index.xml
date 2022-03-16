@@ -1,4 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Cory Code</title><link>https://huweim.github.io/posts/</link><description>Recent content in Posts on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Athul</copyright><lastBuildDate>Wed, 08 Dec 2021 09:45:02 +0800</lastBuildDate><atom:link href="https://huweim.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>编译运行ISPASS2009、Rodinia、Parboil</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cispass2009rodiniaparboil/</link><pubDate>Wed, 08 Dec 2021 09:45:02 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cispass2009rodiniaparboil/</guid><description>1. ISPASS'09 Ubuntu20.04 下使用 GPGPU-Sim 运行 ISPASS2009 benchmark
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Cory Code</title><link>https://huweim.github.io/posts/</link><description>Recent content in Posts on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Athul</copyright><lastBuildDate>Wed, 16 Mar 2022 08:59:50 +0800</lastBuildDate><atom:link href="https://huweim.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>LeetCode刷题记录</title><link>https://huweim.github.io/posts/%E6%80%BB%E7%BB%93_leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link><pubDate>Wed, 16 Mar 2022 08:59:50 +0800</pubDate><guid>https://huweim.github.io/posts/%E6%80%BB%E7%BB%93_leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid><description>关键字检索 查缺补漏：做题时比较生疏的知识点，后面复习的时候最好也check一下熟练程度。 知识点：题目所涉及到的大概知识点。 分类：根据题库现有的tag，可以大概分为 DP，贪心，数学技巧，滑动窗口，hash，二分算法，单调栈（队列），DFS/BFS，位运算，字符串，数组，二叉树，并查集，双指针 第一遍顺序过剑指Offer，第二遍根据类型和短板刷。 总结 短板：二叉树，矩阵，DFS，BFS 3.11 查缺补漏 二叉树建树 二叉树后序遍历 3.11 JZ.03 3钟方法，Hash 遍历，时间空间均为O(n)，用的这一种秒了；
+第二种排序后，check 相邻是否重复，时间 O(nlogn)，空间O(1)
+第三种原地Hash，鸽巢原理。源于一个条件 element value &amp;lt; nums.size()，元素值归位时如果该索引处已经存在该元素，则为重复。t.O(n), s.O(1)
+知识点
+vector 可以用下标索引 标签：hash，排序，数组 JZ.04 二维数组中的查找 :x: 感觉是 DP or 一些奇淫技巧；这个题感觉算法考试里面有考过:)
+并非 DP，没有秒这题；主要是思路上的解法而非常规算法
+从右上角开始比较，比它大就往下数一行，比它小就往左数一列
+二分查找也是解法之一
+知识点
+二维 vector 能否用下标索引？ 可以 标签：数组，二分查找，分治，矩阵 JZ.05 替换空格 简单的字符串替换，被 string 和 char，&amp;quot;&amp;quot; 和 &amp;rsquo;&amp;rsquo; 的一些知识卡了一会儿。</description></item><item><title>tmux: Linux 下终端复用</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</link><pubDate>Wed, 16 Mar 2022 08:56:32 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</guid><description>0. 前言 个人理解：最重要的思想感觉是将 session 和终端分离，这样的话退出终端时不会中断 session 以及里面的任务，session 还是在后台运行。最重要的是，下次进入终端时可以连接 session，使得可以还原上一次退出时的状态，且后台任务不会中断。
+前缀键：Ctrl + B，用&amp;lt;prefix&amp;gt;表示。比如&amp;lt;prefix&amp;gt; %表示先按Ctrl，再按B键，再%键，其完成的功能就是竖直分屏。
+0.1 安装、启动、退出 $ sudo apt-get install tmux $ tmux #进入 Tmux 窗口，底部状态栏左侧是窗口信息（编号和名称），右侧是系统信息 $exit #或者 ctrl + d，退出 1. 基本概念 1.1 Session 会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话
+Session 一大特点：打开窗口，会话开始；关闭窗口，会话结束，会话内部的进程也随之结束
+基于这个 Motivation，为了解决这种关闭窗口工作丢失的问题，会话和窗口可以解绑。窗口关闭时，会话并不会终止，而是继续运行，有需要的时候（理解为需要交互的时候）再让会话绑定其他窗口。
+窗口(window): 容纳多个窗格
+窗格(pane): 可以在窗口中分成多个窗格
+1.2 Tmux Tmux 就是让会话与窗口解绑的工具
+可以在单个窗口中同时访问多个会话。对于同时运行多个命令行程序很有用 可以让新窗口 接入 已存在的会话 允许每个会话有多个连接窗口，可以多人实时共享会话 支持窗口任意的垂直和水平拆分 1. Session 1.1 new 第一个启动的 Tmux 窗口，编号是0，第二个窗口的编号是1，以此类推。这些窗口对应的会话，就是 0 号会话、1 号会话。</description></item><item><title>Vim 中常用的操作</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_vim%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Wed, 16 Mar 2022 08:54:13 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_vim%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>Vim 中常用的操作
+复制、删除中，定位的逻辑都是对应的，找最后一行 G，找第一行 1G，找行首 0，找行尾 $
+复制/粘贴 复制当前行之后的内容，yG
+复制第一行到当前行，y1G
+复制当前行，dd；向下复制 10 行，10dd
+复制游标到行首/行尾，y0/y$
+粘贴在光标下/上一行，p/P
+删除 删除当前行之后的内容
+光标定位到某行，:,$d，dG 删除第一行到当前行
+1,.d，d1G 删除当前行，dd；向下删除 10 行，10dd
+向后/向前删除 10 个字符，10x/10X
+删除游标到行首/行尾，d0/d$
+恢复上一个动作（类似 Ctrl + Z）,u
+重做上一个动作（往前恢复），ctrl + r
+重复上一个动作（再做一次），.
+跳转/移动 跳转到指定第x行，:x
+跳转到文件最后一行，shift + g、G、:$
+跳转到文件第一行，gg
+跳转到下一页，ctrl + f (forward)
+跳转到上一页，ctrl + b (back)
+向下移动 30 行，30j，30 &amp;lt;Enter&amp;gt;
+向右移动 20 个字符，20 &amp;lt;space&amp;gt;，为空格
+:star: 移动到当前行首/尾，0 or [home]/$ or [End]
+搜索 查找 /</description></item><item><title>编译运行ISPASS2009、Rodinia、Parboil</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cispass2009rodiniaparboil/</link><pubDate>Wed, 08 Dec 2021 09:45:02 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cispass2009rodiniaparboil/</guid><description>1. ISPASS'09 Ubuntu20.04 下使用 GPGPU-Sim 运行 ISPASS2009 benchmark
 1.0. 前言 之前介绍了安装，现在就尝试跑一下 ISPASS'09 的那篇经典 paper，Analyzing CUDA workloads using a detailed GPU simulator 上的几个 benchamrk. 这篇文章现在已经870次引用了，很多工作都使用了其中的 benchmark
 1.1. 安装 CUDA Toolkit and CUDA SDK CUDA 5之后，SDK 和 Toolkit 都在一个包里面，ISPASS'09 benchmark 会用到 build CUDA SDK 时创建的库，所以需要 CUDA SDK。
 之前安装的是 cuda 11.1 版本，现在切换到 cuda 4.2 版本，在 GPGPU-Sim 官方提供的虚拟机中可以找到 cuda 目录，里面有 cuda 4.2 版本的 Toolkit and SDK，复制过来，给读写权限，设置好环境变量就可以直接使用了
@@ -60,7 +100,7 @@ benchmark: 一般是一些 .cu/.cl 代码编译后生成的可执行文件
 编译成功gpgpusim以后，实际上主要是生成了一个libcudart.so。
 那么就需要这个 libcudart.so
 所以理论上来说如果我使用一台固定的服务器，好像不需要一直更新Docker?无需安装 gcc4.5.1, cuda4.2。每次把这几个文件拷贝过去即可。
-0.1 测试 在 gpgpu-sim_distribution 目录下只放置 lib 文件夹 也是可以 Run 的，说明程序运行时只会 call libcudart.so 这个文件</description></item><item><title>Docker Image and Container</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Fri, 17 Sep 2021 16:25:25 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>0. 前言 最近需要使用到 Docker, 记一下笔记和常用的操作。主要是参考菜鸟教程和阮一峰老师的教程。
+0.1 测试 在 gpgpu-sim_distribution 目录下只放置 lib 文件夹 也是可以 Run 的，说明程序运行时只会 call libcudart.so 这个文件</description></item><item><title>Docker 常用的命令</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Fri, 17 Sep 2021 16:25:25 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>0. 前言 最近需要使用到 Docker, 记一下笔记和常用的操作。主要是参考菜鸟教程和阮一峰老师的教程。
 1. 启动Docker服务 # service 命令的用法 $ sudo service docker start # systemctl 命令的用法 $ sudo systemctl start docker 2. Image文件 **Docker 把应用程序及其依赖，打包在 image 文件里面。**只有通过这个文件，才能生成 Docker 容器。 image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例。
 # 列出本机的所有 image 文件。 $ docker image ls $ docler images REPOSITORY TAG IMAGE ID CREATED SIZE ubuntu latest fb52e22af1b0 2 weeks ago 72.8MB hello-world latest d1165f221234 6 months ago 13.3kB ubuntu 15.</description></item><item><title>SIMT_Core</title><link>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_simt_core/</link><pubDate>Sat, 04 Sep 2021 19:04:57 +0800</pubDate><guid>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_simt_core/</guid><description>0. 前言 搞懂 SIMT Core 对于理解 GPGPU 的指令 fetch、指令发射、内存访问、数据传输等步骤非常重要，按照 GPGPU-Sim 的官方文档进行一个简单的梳理
 SIMT Core 的微架构模型中有几个比较重要的硬件单元，接下来会一一介绍他们的作用，
