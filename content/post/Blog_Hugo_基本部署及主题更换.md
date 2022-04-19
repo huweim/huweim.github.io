@@ -68,4 +68,5 @@ hugo -D server
 + 第一个是 `config.toml` 文件的位置，是在 `jane/exampleSite` 目录里面，把它粘贴到自己的 博客 主目录之后修改一些配置。
 + 注意 Jane 这个主题的文章目录名称为 `post`，要把之前的 `posts` 改为 `post`，可以看看 `exampleSite` 目录下是什么情况
 + 修改归档页面时，也要注意把之前的 `posts` 改为 `post`
++ \+ 注意在 `.gitmodules` 中添加  submodule 
 
