@@ -1,19 +1,180 @@
-<!doctype html><html><head><meta charset=utf-8><meta http-equiv=x-ua-compatible content="IE=edge"><title>Blog_Hugo_Windows下安装 - Cory Code</title><meta name=viewport content="width=device-width,initial-scale=1"><meta itemprop=name content="Blog_Hugo_Windows下安装"><meta itemprop=description content="Installing on Windows 假设  你知道如何打开一个命令提示窗口。 你运行的是一个现代64位的 Windows。 你的网站地址是 example.com。 你将使用 D:\Hugo\Sites 作为网站的起点。 你将使用 D:\Hugo\bin 存储可执行文件。  设置你的文件夹 你将需要一个存储 Hugo 可执行文件、博客内容（你创建的的那些文件），以及生成文件（Hugo 为你创建的 HTML）的地方。
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Blog_Hugo_windows_install - Cory Code</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta itemprop="name" content="Blog_Hugo_windows_install">
+<meta itemprop="description" content="Installing on Windows 假设  你知道如何打开一个命令提示窗口。 你运行的是一个现代64位的 Windows。 你的网站地址是 example.com。 你将使用 D:\Hugo\Sites 作为网站的起点。 你将使用 D:\Hugo\bin 存储可执行文件。  设置你的文件夹 你将需要一个存储 Hugo 可执行文件、博客内容（你创建的的那些文件），以及生成文件（Hugo 为你创建的 HTML）的地方。
  打开 Windows Explorer。 创建一个新的文件夹，D:\Hugo。 创建一个新的文件夹，D:\Hugo\bin。 创建一个新的文件夹，D:\Hugo\Sites。  下载预先编译好的 Windows 版本的 Hugo 可执行文件  2021-07-07 11:25:22 为什么找不到 hugo 的命令了，可能是因为把文件夹 STU 改名改成了 ShanghaiTech，而 windows 需要配置环境变量。重新配置环境变量中的路径应该就可以了
 :heavy_check_mark: 就是这个原因，不过注意是系统变量中
 环境变量，简单来说就是在系统层面给这个程序的安装路径进行登记，使得我们通过CMD或Git直接输入程序名就能全局调用。
   使用 go 编译 Hugo 的一个优势就是仅有一个二进制文件。你不需要运行安装程序来使用它。相反，你需要把这个二进制文件复制到你的硬盘上。我假设你将把它放在 D:\Hugo\bin 文件夹内。如果你选择放在其它的位置，你需要在下面的命令中替换为那些路径。
- 在浏览器中打开 https://github.com/spf13/hugo/releases。 当前的版本是 hugo_0.13_windows_amd64.zip。 下载那个 ZIP 文件，并保存到 D:\Hugo\bin 文件夹中。 在 Windows Explorer 中找到那个 ZIP 文件，并从中提取所有的文件。 你应该可以看到一个 hugo_0."><meta itemprop=datePublished content="2021-07-24T16:33:34+08:00"><meta itemprop=dateModified content="2021-07-24T16:33:34+08:00"><meta itemprop=wordCount content="105"><meta itemprop=keywords content="Hugo,"><meta property="og:title" content="Blog_Hugo_Windows下安装"><meta property="og:description" content="Installing on Windows 假设  你知道如何打开一个命令提示窗口。 你运行的是一个现代64位的 Windows。 你的网站地址是 example.com。 你将使用 D:\Hugo\Sites 作为网站的起点。 你将使用 D:\Hugo\bin 存储可执行文件。  设置你的文件夹 你将需要一个存储 Hugo 可执行文件、博客内容（你创建的的那些文件），以及生成文件（Hugo 为你创建的 HTML）的地方。
+ 在浏览器中打开 https://github.com/spf13/hugo/releases。 当前的版本是 hugo_0.13_windows_amd64.zip。 下载那个 ZIP 文件，并保存到 D:\Hugo\bin 文件夹中。 在 Windows Explorer 中找到那个 ZIP 文件，并从中提取所有的文件。 你应该可以看到一个 hugo_0.">
+<meta itemprop="datePublished" content="2021-07-24T16:33:34&#43;08:00" />
+<meta itemprop="dateModified" content="2021-07-24T16:33:34&#43;08:00" />
+<meta itemprop="wordCount" content="105">
+
+
+
+<meta itemprop="keywords" content="博客,技巧," /><meta property="og:title" content="Blog_Hugo_windows_install" />
+<meta property="og:description" content="Installing on Windows 假设  你知道如何打开一个命令提示窗口。 你运行的是一个现代64位的 Windows。 你的网站地址是 example.com。 你将使用 D:\Hugo\Sites 作为网站的起点。 你将使用 D:\Hugo\bin 存储可执行文件。  设置你的文件夹 你将需要一个存储 Hugo 可执行文件、博客内容（你创建的的那些文件），以及生成文件（Hugo 为你创建的 HTML）的地方。
  打开 Windows Explorer。 创建一个新的文件夹，D:\Hugo。 创建一个新的文件夹，D:\Hugo\bin。 创建一个新的文件夹，D:\Hugo\Sites。  下载预先编译好的 Windows 版本的 Hugo 可执行文件  2021-07-07 11:25:22 为什么找不到 hugo 的命令了，可能是因为把文件夹 STU 改名改成了 ShanghaiTech，而 windows 需要配置环境变量。重新配置环境变量中的路径应该就可以了
 :heavy_check_mark: 就是这个原因，不过注意是系统变量中
 环境变量，简单来说就是在系统层面给这个程序的安装路径进行登记，使得我们通过CMD或Git直接输入程序名就能全局调用。
   使用 go 编译 Hugo 的一个优势就是仅有一个二进制文件。你不需要运行安装程序来使用它。相反，你需要把这个二进制文件复制到你的硬盘上。我假设你将把它放在 D:\Hugo\bin 文件夹内。如果你选择放在其它的位置，你需要在下面的命令中替换为那些路径。
- 在浏览器中打开 https://github.com/spf13/hugo/releases。 当前的版本是 hugo_0.13_windows_amd64.zip。 下载那个 ZIP 文件，并保存到 D:\Hugo\bin 文件夹中。 在 Windows Explorer 中找到那个 ZIP 文件，并从中提取所有的文件。 你应该可以看到一个 hugo_0."><meta property="og:type" content="article"><meta property="og:url" content="https://huweim.github.io/posts/blog_hugo_win_install/"><meta property="article:section" content="posts"><meta property="article:published_time" content="2021-07-24T16:33:34+08:00"><meta property="article:modified_time" content="2021-07-24T16:33:34+08:00"><meta name=twitter:card content="summary"><meta name=twitter:title content="Blog_Hugo_Windows下安装"><meta name=twitter:description content="Installing on Windows 假设  你知道如何打开一个命令提示窗口。 你运行的是一个现代64位的 Windows。 你的网站地址是 example.com。 你将使用 D:\Hugo\Sites 作为网站的起点。 你将使用 D:\Hugo\bin 存储可执行文件。  设置你的文件夹 你将需要一个存储 Hugo 可执行文件、博客内容（你创建的的那些文件），以及生成文件（Hugo 为你创建的 HTML）的地方。
+ 在浏览器中打开 https://github.com/spf13/hugo/releases。 当前的版本是 hugo_0.13_windows_amd64.zip。 下载那个 ZIP 文件，并保存到 D:\Hugo\bin 文件夹中。 在 Windows Explorer 中找到那个 ZIP 文件，并从中提取所有的文件。 你应该可以看到一个 hugo_0." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huweim.github.io/posts/blog_hugo_win_install/" />
+<meta property="article:published_time" content="2021-07-24T16:33:34+08:00" />
+<meta property="article:modified_time" content="2021-07-24T16:33:34+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Blog_Hugo_windows_install"/>
+<meta name="twitter:description" content="Installing on Windows 假设  你知道如何打开一个命令提示窗口。 你运行的是一个现代64位的 Windows。 你的网站地址是 example.com。 你将使用 D:\Hugo\Sites 作为网站的起点。 你将使用 D:\Hugo\bin 存储可执行文件。  设置你的文件夹 你将需要一个存储 Hugo 可执行文件、博客内容（你创建的的那些文件），以及生成文件（Hugo 为你创建的 HTML）的地方。
  打开 Windows Explorer。 创建一个新的文件夹，D:\Hugo。 创建一个新的文件夹，D:\Hugo\bin。 创建一个新的文件夹，D:\Hugo\Sites。  下载预先编译好的 Windows 版本的 Hugo 可执行文件  2021-07-07 11:25:22 为什么找不到 hugo 的命令了，可能是因为把文件夹 STU 改名改成了 ShanghaiTech，而 windows 需要配置环境变量。重新配置环境变量中的路径应该就可以了
 :heavy_check_mark: 就是这个原因，不过注意是系统变量中
 环境变量，简单来说就是在系统层面给这个程序的安装路径进行登记，使得我们通过CMD或Git直接输入程序名就能全局调用。
   使用 go 编译 Hugo 的一个优势就是仅有一个二进制文件。你不需要运行安装程序来使用它。相反，你需要把这个二进制文件复制到你的硬盘上。我假设你将把它放在 D:\Hugo\bin 文件夹内。如果你选择放在其它的位置，你需要在下面的命令中替换为那些路径。
- 在浏览器中打开 https://github.com/spf13/hugo/releases。 当前的版本是 hugo_0.13_windows_amd64.zip。 下载那个 ZIP 文件，并保存到 D:\Hugo\bin 文件夹中。 在 Windows Explorer 中找到那个 ZIP 文件，并从中提取所有的文件。 你应该可以看到一个 hugo_0."><link href="https://fonts.googleapis.com/css?family=Playfair+Display:700" rel=stylesheet type=text/css><link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/normalize.css><link rel=stylesheet type=text/css media=screen href=https://huweim.github.io/css/main.css><link id=dark-scheme rel=stylesheet type=text/css href=https://huweim.github.io/css/dark.css><script src=https://huweim.github.io/js/feather.min.js></script>
-<script src=https://huweim.github.io/js/main.js></script></head><body><div class="container wrapper"><div class=header><h1 class=site-title><a href=https://huweim.github.io/>Cory Code</a></h1><div class=site-description><p>Minimal and Clean <a href=https://github.com/athul/hugo-ink>blog theme for Hugo</a></p><nav class="nav social"><ul class=flat><li><a href=https://github.com/huweim title=GitHub><i data-feather=github></i></a></li><li><a href=https://twitter.com/athulcajay/ title=Twitter><i data-feather=twitter></i></a></li><li><a href=https://gitlab.com/athul/ title=GitLab><i data-feather=gitlab></i></a></li><li><a href=# class=scheme-toggle id=scheme-toggle></a></li></ul></nav></div><nav class=nav><ul class=flat><li><a href=/>Home</a></li><li><a href=/posts>All posts</a></li><li><a href=/categories/>Categories</a></li><li><a href=/archives>Archives</a></li><li><a href=/tags>Tags</a></li><li><a href=/about/>About</a></li></ul></nav></div><div class=post><div class=post-header><div class=meta><div class=date><span class=day>24</span>
-<span class=rest>Jul 2021</span></div></div><div class=matter><h1 class=title>Blog_Hugo_Windows下安装</h1></div></div><div class=markdown><h1 id=installing-on-windows>Installing on Windows</h1><h2 id=假设>假设</h2><ol><li>你知道如何打开一个命令提示窗口。</li><li>你运行的是一个现代64位的 Windows。</li><li>你的网站地址是 <code>example.com</code>。</li><li>你将使用 <code>D:\Hugo\Sites</code> 作为网站的起点。</li><li>你将使用 <code>D:\Hugo\bin</code> 存储可执行文件。</li></ol><h2 id=设置你的文件夹>设置你的文件夹</h2><p>你将需要一个存储 Hugo 可执行文件、博客内容（你创建的的那些文件），以及生成文件（Hugo 为你创建的 HTML）的地方。</p><ol><li>打开 Windows Explorer。</li><li>创建一个新的文件夹，<code>D:\Hugo</code>。</li><li>创建一个新的文件夹，<code>D:\Hugo\bin</code>。</li><li>创建一个新的文件夹，<code>D:\Hugo\Sites</code>。</li></ol><h2 id=下载预先编译好的-windows-版本的-hugo-可执行文件>下载预先编译好的 Windows 版本的 Hugo 可执行文件</h2><blockquote><p>2021-07-07 11:25:22 为什么找不到 hugo 的命令了，可能是因为把文件夹 STU 改名改成了 ShanghaiTech，而 windows 需要配置环境变量。重新配置环境变量中的路径应该就可以了</p><p>:heavy_check_mark: 就是这个原因，不过注意是系统变量中</p><p>环境变量，简单来说就是在系统层面给这个程序的安装路径进行登记，使得我们通过CMD或Git直接输入程序名就能全局调用。</p></blockquote><blockquote><p>使用 go 编译 Hugo 的一个优势就是仅有一个二进制文件。你不需要运行安装程序来使用它。相反，你需要把这个二进制文件复制到你的硬盘上。我假设你将把它放在 <code>D:\Hugo\bin</code> 文件夹内。如果你选择放在其它的位置，你需要在下面的命令中替换为那些路径。</p><ol><li>在浏览器中打开 <a href=https://github.com/spf13/hugo/releases>https://github.com/spf13/hugo/releases</a>。</li><li>当前的版本是 hugo_0.13_windows_amd64.zip。</li><li>下载那个 ZIP 文件，并保存到 <code>D:\Hugo\bin</code> 文件夹中。</li><li>在 Windows Explorer 中找到那个 ZIP 文件，并从中提取所有的文件。</li><li>你应该可以看到一个 <code>hugo_0.13_windows_amd64.exe</code> 文件。</li><li>把那个文件重命名为 <code>hugo.exe</code>。<ul><li>之后不要改动其位置</li></ul></li><li>确保 <code>hugo.exe</code> 文件在 <code>D:\ShanghaiTech\Hugo\bin</code> 文件夹。（有可能提取过程会把它放在一个子文件夹中。如果确实这样的话，使用 Windows Explorer 把它移动到 <code>D:\ShanghaiTech\Hugo\bin</code>。）</li><li>使用 <code>D:\ShanghaiTech\Hugo\bin>set PATH=%PATH%;D:\ShanghaiTech\Hugo\bin</code> 把 hugo.exe 可执行文件添加到你的 PATH路径中。<ul><li>在 windows 中手动添加环境变量就可以了</li></ul></li></ol></blockquote><h2 id=验证版本>验证版本</h2><p>右键点击 git bash here 打开 git 命令行，输入</p><div class=highlight><pre tabindex=0 class=chroma><code class=language-fallback data-lang=fallback><span class=line><span class=cl>hugo version
-</span></span></code></pre></div><p>返回了相应的版本号则说明 Hugo 已成功配置</p></div><div class=tags><ul class=flat><li><a href=/tags/hugo>Hugo</a></li></ul></div></div></div><div class="footer wrapper"><nav class=nav><div>2022 © Athul | <a href=https://github.com/knadh/hugo-ink>Ink</a> theme on <a href=https://gohugo.io>Hugo</a></div></nav></div><script>feather.replace()</script></body></html>
+ 在浏览器中打开 https://github.com/spf13/hugo/releases。 当前的版本是 hugo_0.13_windows_amd64.zip。 下载那个 ZIP 文件，并保存到 D:\Hugo\bin 文件夹中。 在 Windows Explorer 中找到那个 ZIP 文件，并从中提取所有的文件。 你应该可以看到一个 hugo_0."/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://huweim.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://huweim.github.io/css/main.css" />
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://huweim.github.io/css/dark.css" />
+
+	<script src="https://huweim.github.io/js/feather.min.js"></script>
+	
+		<script src="https://huweim.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+	<h1 class="site-title"><a href="https://huweim.github.io/">Cory Code</a></h1>
+	<div class="site-description"><p>Minimal and Clean <a href="https://github.com/athul/hugo-ink">blog theme for Hugo</a></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://github.com/huweim" title="GitHub"><i data-feather="github"></i></a></li><li><a href="https://twitter.com/athulcajay/" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://gitlab.com/athul/" title="GitLab"><i data-feather="gitlab"></i></a></li><li><a href="#" class="scheme-toggle" id="scheme-toggle"></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+			<li>
+				<a href="/archives">Archives</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/about/">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">24</span>
+							<span class="rest">Jul 2021</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Blog_Hugo_windows_install</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<h1 id="installing-on-windows">Installing on Windows</h1>
+<h2 id="假设">假设</h2>
+<ol>
+<li>你知道如何打开一个命令提示窗口。</li>
+<li>你运行的是一个现代64位的 Windows。</li>
+<li>你的网站地址是 <code>example.com</code>。</li>
+<li>你将使用 <code>D:\Hugo\Sites</code> 作为网站的起点。</li>
+<li>你将使用 <code>D:\Hugo\bin</code> 存储可执行文件。</li>
+</ol>
+<h2 id="设置你的文件夹">设置你的文件夹</h2>
+<p>你将需要一个存储 Hugo 可执行文件、博客内容（你创建的的那些文件），以及生成文件（Hugo 为你创建的 HTML）的地方。</p>
+<ol>
+<li>打开 Windows Explorer。</li>
+<li>创建一个新的文件夹，<code>D:\Hugo</code>。</li>
+<li>创建一个新的文件夹，<code>D:\Hugo\bin</code>。</li>
+<li>创建一个新的文件夹，<code>D:\Hugo\Sites</code>。</li>
+</ol>
+<h2 id="下载预先编译好的-windows-版本的-hugo-可执行文件">下载预先编译好的 Windows 版本的 Hugo 可执行文件</h2>
+<blockquote>
+<p>2021-07-07 11:25:22 为什么找不到 hugo 的命令了，可能是因为把文件夹 STU 改名改成了 ShanghaiTech，而 windows 需要配置环境变量。重新配置环境变量中的路径应该就可以了</p>
+<p>:heavy_check_mark: 就是这个原因，不过注意是系统变量中</p>
+<p>环境变量，简单来说就是在系统层面给这个程序的安装路径进行登记，使得我们通过CMD或Git直接输入程序名就能全局调用。</p>
+</blockquote>
+<blockquote>
+<p>使用 go 编译 Hugo 的一个优势就是仅有一个二进制文件。你不需要运行安装程序来使用它。相反，你需要把这个二进制文件复制到你的硬盘上。我假设你将把它放在 <code>D:\Hugo\bin</code> 文件夹内。如果你选择放在其它的位置，你需要在下面的命令中替换为那些路径。</p>
+<ol>
+<li>在浏览器中打开 <a href="https://github.com/spf13/hugo/releases">https://github.com/spf13/hugo/releases</a>。</li>
+<li>当前的版本是 hugo_0.13_windows_amd64.zip。</li>
+<li>下载那个 ZIP 文件，并保存到 <code>D:\Hugo\bin</code> 文件夹中。</li>
+<li>在 Windows Explorer 中找到那个 ZIP 文件，并从中提取所有的文件。</li>
+<li>你应该可以看到一个 <code>hugo_0.13_windows_amd64.exe</code> 文件。</li>
+<li>把那个文件重命名为 <code>hugo.exe</code>。
+<ul>
+<li>之后不要改动其位置</li>
+</ul>
+</li>
+<li>确保 <code>hugo.exe</code> 文件在 <code>D:\ShanghaiTech\Hugo\bin</code> 文件夹。（有可能提取过程会把它放在一个子文件夹中。如果确实这样的话，使用 Windows Explorer 把它移动到 <code>D:\ShanghaiTech\Hugo\bin</code>。）</li>
+<li>使用 <code>D:\ShanghaiTech\Hugo\bin&gt;set PATH=%PATH%;D:\ShanghaiTech\Hugo\bin</code> 把 hugo.exe 可执行文件添加到你的 PATH路径中。
+<ul>
+<li>在 windows 中手动添加环境变量就可以了</li>
+</ul>
+</li>
+</ol>
+</blockquote>
+<h2 id="验证版本">验证版本</h2>
+<p>右键点击 git bash here 打开 git 命令行，输入</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">hugo version
+</code></pre></div><p>返回了相应的版本号则说明 Hugo 已成功配置</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a></li>
+							
+							<li><a href="/tags/%E6%8A%80%E5%B7%A7">技巧</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2021  © Athul |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+</body>
+</html>

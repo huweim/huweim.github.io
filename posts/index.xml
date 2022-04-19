@@ -1,138 +1,179 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Posts on Cory Code</title><link>https://huweim.github.io/posts/</link><description>Recent content in Posts on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en-us</language><copyright>© Athul</copyright><lastBuildDate>Wed, 16 Mar 2022 08:59:50 +0800</lastBuildDate><atom:link href="https://huweim.github.io/posts/index.xml" rel="self" type="application/rss+xml"/><item><title>LeetCode刷题记录</title><link>https://huweim.github.io/posts/%E6%80%BB%E7%BB%93_leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link><pubDate>Wed, 16 Mar 2022 08:59:50 +0800</pubDate><guid>https://huweim.github.io/posts/%E6%80%BB%E7%BB%93_leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid><description>关键字检索 查缺补漏：做题时比较生疏的知识点，后面复习的时候最好也check一下熟练程度。 知识点：题目所涉及到的大概知识点。 分类：根据题库现有的tag，可以大概分为 DP，贪心，数学技巧，滑动窗口，hash，二分算法，单调栈（队列），DFS/BFS，位运算，字符串，数组，二叉树，并查集，双指针 第一遍顺序过剑指Offer，第二遍根据类型和短板刷。 总结 短板：二叉树，矩阵，DFS，BFS 3.11 查缺补漏 二叉树建树 二叉树后序遍历 3.11 JZ.03 3钟方法，Hash 遍历，时间空间均为O(n)，用的这一种秒了；
-第二种排序后，check 相邻是否重复，时间 O(nlogn)，空间O(1)
-第三种原地Hash，鸽巢原理。源于一个条件 element value &amp;lt; nums.size()，元素值归位时如果该索引处已经存在该元素，则为重复。t.O(n), s.O(1)
-知识点
-vector 可以用下标索引 标签：hash，排序，数组 JZ.04 二维数组中的查找 :x: 感觉是 DP or 一些奇淫技巧；这个题感觉算法考试里面有考过:)
-并非 DP，没有秒这题；主要是思路上的解法而非常规算法
-从右上角开始比较，比它大就往下数一行，比它小就往左数一列
-二分查找也是解法之一
-知识点
-二维 vector 能否用下标索引？ 可以 标签：数组，二分查找，分治，矩阵 JZ.05 替换空格 简单的字符串替换，被 string 和 char，&amp;quot;&amp;quot; 和 &amp;rsquo;&amp;rsquo; 的一些知识卡了一会儿。</description></item><item><title>tmux: Linux 下终端复用</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</link><pubDate>Wed, 16 Mar 2022 08:56:32 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</guid><description>0. 前言 个人理解：最重要的思想感觉是将 session 和终端分离，这样的话退出终端时不会中断 session 以及里面的任务，session 还是在后台运行。最重要的是，下次进入终端时可以连接 session，使得可以还原上一次退出时的状态，且后台任务不会中断。
-前缀键：Ctrl + B，用&amp;lt;prefix&amp;gt;表示。比如&amp;lt;prefix&amp;gt; %表示先按Ctrl，再按B键，再%键，其完成的功能就是竖直分屏。
-0.1 安装、启动、退出 $ sudo apt-get install tmux $ tmux #进入 Tmux 窗口，底部状态栏左侧是窗口信息（编号和名称），右侧是系统信息 $exit #或者 ctrl + d，退出 1. 基本概念 1.1 Session 会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话
-Session 一大特点：打开窗口，会话开始；关闭窗口，会话结束，会话内部的进程也随之结束
-基于这个 Motivation，为了解决这种关闭窗口工作丢失的问题，会话和窗口可以解绑。窗口关闭时，会话并不会终止，而是继续运行，有需要的时候（理解为需要交互的时候）再让会话绑定其他窗口。
-窗口(window): 容纳多个窗格
-窗格(pane): 可以在窗口中分成多个窗格
-1.2 Tmux Tmux 就是让会话与窗口解绑的工具
-可以在单个窗口中同时访问多个会话。对于同时运行多个命令行程序很有用 可以让新窗口 接入 已存在的会话 允许每个会话有多个连接窗口，可以多人实时共享会话 支持窗口任意的垂直和水平拆分 1. Session 1.1 new 第一个启动的 Tmux 窗口，编号是0，第二个窗口的编号是1，以此类推。这些窗口对应的会话，就是 0 号会话、1 号会话。</description></item><item><title>Vim 中常用的操作</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_vim%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Wed, 16 Mar 2022 08:54:13 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_vim%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>Vim 中常用的操作
-复制、删除中，定位的逻辑都是对应的，找最后一行 G，找第一行 1G，找行首 0，找行尾 $
-复制/粘贴 复制当前行之后的内容，yG
-复制第一行到当前行，y1G
-复制当前行，dd；向下复制 10 行，10dd
-复制游标到行首/行尾，y0/y$
-粘贴在光标下/上一行，p/P
-删除 删除当前行之后的内容
-光标定位到某行，:,$d，dG 删除第一行到当前行
-1,.d，d1G 删除当前行，dd；向下删除 10 行，10dd
-向后/向前删除 10 个字符，10x/10X
-删除游标到行首/行尾，d0/d$
-恢复上一个动作（类似 Ctrl + Z）,u
-重做上一个动作（往前恢复），ctrl + r
-重复上一个动作（再做一次），.
-跳转/移动 跳转到指定第x行，:x
-跳转到文件最后一行，shift + g、G、:$
-跳转到文件第一行，gg
-跳转到下一页，ctrl + f (forward)
-跳转到上一页，ctrl + b (back)
-向下移动 30 行，30j，30 &amp;lt;Enter&amp;gt;
-向右移动 20 个字符，20 &amp;lt;space&amp;gt;，为空格
-:star: 移动到当前行首/尾，0 or [home]/$ or [End]
-搜索 查找 /</description></item><item><title>编译运行ISPASS2009、Rodinia、Parboil</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cispass2009rodiniaparboil/</link><pubDate>Wed, 08 Dec 2021 09:45:02 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cispass2009rodiniaparboil/</guid><description>1. ISPASS'09 Ubuntu20.04 下使用 GPGPU-Sim 运行 ISPASS2009 benchmark
-1.0. 前言 之前介绍了安装，现在就尝试跑一下 ISPASS'09 的那篇经典 paper，Analyzing CUDA workloads using a detailed GPU simulator 上的几个 benchamrk. 这篇文章现在已经870次引用了，很多工作都使用了其中的 benchmark
-1.1. 安装 CUDA Toolkit and CUDA SDK CUDA 5之后，SDK 和 Toolkit 都在一个包里面，ISPASS'09 benchmark 会用到 build CUDA SDK 时创建的库，所以需要 CUDA SDK。
-之前安装的是 cuda 11.1 版本，现在切换到 cuda 4.2 版本，在 GPGPU-Sim 官方提供的虚拟机中可以找到 cuda 目录，里面有 cuda 4.2 版本的 Toolkit and SDK，复制过来，给读写权限，设置好环境变量就可以直接使用了
-1.1.1 设置软链接 sudo rm -rf /usr/local/cuda #删除之前生成的软链接 sudo ln -s /home/huweim/cuda/toolkit/4.</description></item><item><title>Python处理输出log信息并绘图</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_python%E5%A4%84%E7%90%86%E8%BE%93%E5%87%BAlog%E4%BF%A1%E6%81%AF%E5%B9%B6%E7%BB%98%E5%9B%BE/</link><pubDate>Wed, 08 Dec 2021 09:05:41 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_python%E5%A4%84%E7%90%86%E8%BE%93%E5%87%BAlog%E4%BF%A1%E6%81%AF%E5%B9%B6%E7%BB%98%E5%9B%BE/</guid><description>0. 前言 修改 GPGPU-Sim 并跑 benchmark，如果一次用12个benchmark，3种调度算法，那么一次会生成36个 output log。需要使用 python 脚本可视化这些数据来进行 high level 的分析，因此自己写了一个脚本进行输出数据的可视化工作。
-需要两个绘图工具
-对于单个 benchmark，分析其 ipc，cache hit/miss，mem_stall 等等 对于多个 benchmark，分析总体的 ipc，cache hit/miss，mem_stall 等等 1. 正则表达式 1.1 实例 def read_string(file,metrics): output={} for it_metrics in metrics: if(it_metrics==&amp;#34;gpu_ipc&amp;#34;): pattern=re.compile(it_metrics+&amp;#34; =(\s+)(\d+\.\d+)&amp;#34;) elif(it_metrics==&amp;#34;Stall&amp;#34;): pattern=re.compile(it_metrics+&amp;#34;:(\d+)&amp;#34;) else: pattern=re.compile(it_metrics+&amp;#34; = (\d+)&amp;#34;) output_sum=0 for i,line in enumerate(open(get_file_path()+file)): for match in re.finditer(pattern, line): if(it_metrics==&amp;#34;gpu_ipc&amp;#34;): output_part=list(match.group(2)) else: output_part=list(match.group(1)) output_part=float(&amp;#39;&amp;#39;.join(output_part)) output_sum+=output_part output[it_metrics]=output_sum return output 其实没有找到最舒服的正则表达式，理想情况是读取到表示数据的一串字符串，然后直接转化为浮点数。但是各种匹配方法似乎都是一次匹配一个数字/字符串，所以先使用现成的。
-for i,line in enumerate(open(file)) 遍历 log 的每一行，一定要加上 i 否则会报错。</description></item><item><title>Linux任务调度</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</link><pubDate>Mon, 29 Nov 2021 23:00:09 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</guid><description>0. 前言 记录一下 Linux 中 fg、bg、jobs、&amp;amp;、ctrl + z 等相关指令对任务进程的操作。
-也正好借此机会学习一下进程（process）的概念
-1. Process 1.0 进程类型 前台进程（交互式进程） 这些进程由终端会话初始化和控制。换句话说，需要有一个连接到系统中的用户来启动这样的进程；它们不是作为系统功能/服务的一部分自动启动。 后台进程 1.1 并发执行 To run commands concurrently you can use the &amp;amp; command separator
-~$ command1 &amp;amp; command2 &amp;amp; command3 This will start command1, then runs it in the background. The same with command2. Then it starts command3 normally.
-这样的话 command3 是在前台运行
-The output of all commands will be garbled together, but if that is not a problem for you, that would be the solution.</description></item><item><title>Ubuntu多版本CUDA,GCC切换</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcudagcc%E5%88%87%E6%8D%A2/</link><pubDate>Sun, 14 Nov 2021 22:07:35 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcudagcc%E5%88%87%E6%8D%A2/</guid><description>Ubuntu多版本CUDA,GCC切换 切换CUDA9.0和CUDA10.0 保证多个CUDA版本共存的前提是NVIDIA的驱动都能够支持你所安装的CUDA版本，所以驱动的版本尽可能高，越新的驱动支持的CUDA版本越多，博主的430能够支持9.0和10.0。
-在先前安装的CUDA的过程中，大家一般都会选择生成cuda-x.0文件夹的软链接/usr/local/cuda，这个文件夹是实际安装的cuda-x.0文件夹的链接，不包含实际文件，是方便系统设置环境变量直接调用cuda的，安装多个版本的CUDA，然后利用软链接就可以实现版本切换。
-理解这个软链接，用到了很多次 Step 1 更换软链接 不过之前环境变量用的 cuda11.1 的地址而非软链接，现在替换成软链接
-sudo rm -rf /usr/local/cuda #删除之前生成的软链接 sudo ln -s /home/huweim/cuda/toolkit/4.2/cuda /usr/local/cuda #生成新的软链接 sudo ln -s /usr/local/cuda-11.1 /usr/local/cuda #使用11.1版本 2 Check 环境变量的地址 export CUDA_INSTALL_PATH=/usr/local/cuda/ export PATH=$PATH:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:$CUDA_INSTALL_PATH/bin:$MPI_ROOT/bin export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_INSTALL_PATH/lib64 #这个不用改 export NVIDIA_COMPUTE_SDK_LOCATION=~/cuda/sdk/4.2 3 查看版本信息 上述步骤全部没问题就可以弹出版本信息了，source ~/.bashrc 或者重启终端
-nvcc: NVIDIA (R) Cuda compiler driver Copyright (c) 2005-2012 NVIDIA Corporation Built on Thu_Apr__5_00:24:31_PDT_2012 Cuda compilation tools, release 4.2, V0.2.1221 4. Bug 4.1 sh: 1: nvopencc: Permission denied 解决方法</description></item><item><title>GPGPU-Sim中的CTA &amp; warp scheduling</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim%E4%B8%AD%E7%9A%84cta-warp-scheduling/</link><pubDate>Sun, 14 Nov 2021 20:42:52 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim%E4%B8%AD%E7%9A%84cta-warp-scheduling/</guid><description>CTA Scheduling CTA/Thread Block/Work Group
-调度发生在 shader_core_ctx::issue_block2core(...)，shader_core_config::max_cta(...) 计算 core 中能容纳的 max CTA。这个取决于各硬件资源的短板，在报告中能看到是被什么限制了。
-printf(&amp;#34;GPGPU-Sim uArch: CTA/core = %u, limited by:&amp;#34;, result); if (result == result_thread) printf(&amp;#34; threads&amp;#34;); if (result == result_shmem) printf(&amp;#34; shmem&amp;#34;); if (result == result_regs) printf(&amp;#34; regs&amp;#34;); if (result == result_cta) printf(&amp;#34; cta_limit&amp;#34;); 在矩阵乘法代码中 create, verify are both limited by thread, multiple is limited by regs.
-When each thread finishes, the SIMT core calls register_cta_thread_exit(...) to update the active thread block&amp;rsquo;s state.</description></item><item><title>Software Design of GPGPU-Sim</title><link>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_software-design-of-gpgpu-sim/</link><pubDate>Sun, 14 Nov 2021 20:35:44 +0800</pubDate><guid>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_software-design-of-gpgpu-sim/</guid><description>4 Software Design of GPGPU-Sim
-所有标题都可以升一级，整个文档全是 manual 的第 4 章
-1. File list and brief description cuda-sim - The functional simulator that executes PTX kernels generated by NVCC or OpenCL compiler gpgpu-sim - The performance simulator that simulates the timing behavior of a GPU (or other many core accelerator architectures) intersim - The interconnection network simulator adopted from Bill Dally&amp;rsquo;s BookSim 1.1 Overall/Utilities abstract_hardware_model.h abstract_hardware_model.cc Provide a set of classes that interface between functional and timing simulator.</description></item><item><title>GPU_benchmark说明（转）</title><link>https://huweim.github.io/posts/%E5%8D%9A%E5%AE%A2_gpu_benchmark%E8%AF%B4%E6%98%8E%E8%BD%AC/</link><pubDate>Sun, 14 Nov 2021 20:34:48 +0800</pubDate><guid>https://huweim.github.io/posts/%E5%8D%9A%E5%AE%A2_gpu_benchmark%E8%AF%B4%E6%98%8E%E8%BD%AC/</guid><description>Introduction 本文内容主要系摘录翻译自Ang Li的博士毕业论文。
-1.Perfect Power Efficiency Revolution for Embedded Computing
-http://hpc.pnl.gov/PERFECT/
-Application Domains Kernels PERFECT Application 1 Discrete Wavelet Transform 2D Convolution Histogram Equalization Space Time Adaptive Processing System Solver Inner Product Outer Product Synthetic Aperture Radar Interpolation 1 Interpolation 2 Back Projection (Non-Fourier SAR) Wide Area Motion Imaging Debayer Image Registration Change Detection Required Kernels Sort FFT 1D FFT 2D 2.</description></item><item><title>如何评价自己的编程能力</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E5%A6%82%E4%BD%95%E8%AF%84%E4%BB%B7%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BC%96%E7%A8%8B%E8%83%BD%E5%8A%9B/</link><pubDate>Mon, 11 Oct 2021 19:52:15 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E5%A6%82%E4%BD%95%E8%AF%84%E4%BB%B7%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BC%96%E7%A8%8B%E8%83%BD%E5%8A%9B/</guid><description>0. 前言 从入学以来，编程能力一直放在自己需要提升的部分当中。慢慢的学习了一些常用的算法，Leetcode 上也刷了更多的题。自己在课程作业中比着葫芦画瓢完成了一些小的 project，现在使用模拟器也需要阅读 C/C++ 代码。不过还是存在疑惑，什么才叫做编程能力呢？如何评估自己的编程能力呢？
-1. 个人理解 针对实际应用，top to down 的抽象。需要在脑海中建立相应的一套模型，包括类的构造、函数需求等等。 动手实现的能力。有了思路后快速构造出模型，并加以验证，通过反馈不断地迭代自己的代码。这个应该算是实实在在的 coding 能力。 Debug 能力。目前对于真正工程中的 Debug 还是有一些困惑。 总结了一些东西，归根结底是感觉自己虽然写了一些小 project，但还是什么都不会，编程能力很差，不知道怎么办。但是好像学再多的知识还是有这种感觉。所以有想法可能得先做起来。该有的东西都学了，还没学的东西，只有需要用到的时候去学，才能记得深刻。
-这也是为什么觉得 CS 课程里面的 lab 是最重要的东西，最让人印象深刻的东西。做 lab 之前我也什么都不会，但是没办法我需要在 Due 之前做出来，不然就拿不到分。于是我去搜索相关资料，我去想怎么做怎么写，我去真正地写了，我去找哪里写得有问题，最后我把正确的东西做出来，或者没有做出来 :( 但是不管怎么说，这就是一个学习的过程，提升编程能力，阅读代码能力的过程。
-从最基础的东西开始做，一点一点增加功能和深度。 做一个成品，一个有完整功能的成品。不能 work 的半成品没有意义 早点开始做，不要想太多。对于模拟器也是一样的，源码看的差不多就可以上手自己改了，不要等到把模拟器每个位置都看懂。</description></item><item><title>Blog_Hugo_文章写作格式</title><link>https://huweim.github.io/posts/blog_hugo_%E6%96%87%E7%AB%A0%E5%86%99%E4%BD%9C%E6%A0%BC%E5%BC%8F/</link><pubDate>Fri, 08 Oct 2021 12:13:07 +0800</pubDate><guid>https://huweim.github.io/posts/blog_hugo_%E6%96%87%E7%AB%A0%E5%86%99%E4%BD%9C%E6%A0%BC%E5%BC%8F/</guid><description>0. 前言 记录一下文章写作和 扉页标签的内容，文章完全转载自 博客
-本文是 Hugo 使用记录的第二篇，介绍关于文章写作的一些问题，包括分类管理、排版技巧、特殊语法等，所有语法基于 LoveIt 主题。
-Hugo支持的文章格式为.md，即用markdown语言编辑的文章。所有的文章都放在content/posts目录下，支持级联目录，即在posts目录下按分类建立多个子文件夹放置文章，比如本博客的文章按分类放在四个子文件夹下。
-$ ls posts 爱编程爱技术的孩子/ 我所热爱的生活啊/ 平日里的白日梦/ 研究生的区块链学习之路/ 下面是三条方便清晰管理和生成文章的目录结构建议:
-保持博客文章存放在 content/posts 目录, 例如: content/posts/我的第一篇文章.md 保持简单的静态页面存放在 content 目录, 例如: content/about.md 保持图片之类的媒体资源存放在 static 目录, 例如: static/images/screenshot.png 1. 前置参数 Hugo 允许在文章内容前面添加 yaml, toml 或者 json 格式的前置参数，LoveIt 默认文章模板提供的前置参数有
-不过自己现在用的模板似乎不支持这么多参数
----title:&amp;#34;我的第一篇文章&amp;#34;subtitle:&amp;#34;&amp;#34;date:2020-03-04T15:58:26+08:00lastmod:2020-03-04T15:58:26+08:00draft:trueauthor:&amp;#34;&amp;#34;authorLink:&amp;#34;&amp;#34;description:&amp;#34;&amp;#34;license:&amp;#34;&amp;#34;tags:[]categories:[]hiddenFromHomePage:falsefeatured_image:&amp;#34;&amp;#34;featured_image_preview:&amp;#34;&amp;#34;toc:falseautoCollapseToc:truemath:truemapbox:accessToken:&amp;#34;&amp;#34;lightStyle:&amp;#34;&amp;#34;darkStyle:&amp;#34;&amp;#34;navigation:truegeolocate:truescale:truefullscreen:truelightgallery:truelinkToMarkdown:trueshare:enable:truecomment:true--- title: 文章标题. subtitle: 文章副标题. date: 这篇文章创建的日期时间. 它通常是从文章的前置参数中的 date 字段获取的, 但是也可以在 网站配置 中设置. lastmod: 上次修改内容的日期时间. draft: 如果设为 true, 除非 hugo 命令使用了 --buildDrafts/-D 参数, 这篇文章不会被渲染.</description></item><item><title>Blog_Hugo_归档页面制作</title><link>https://huweim.github.io/posts/blog_hugo_%E5%BD%92%E6%A1%A3%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</link><pubDate>Fri, 08 Oct 2021 12:09:11 +0800</pubDate><guid>https://huweim.github.io/posts/blog_hugo_%E5%BD%92%E6%A1%A3%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</guid><description>0. 前言 最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。
-本文记录添加 archives 页面的过程。目前使用的 Hugo 主题 Ink 需要自己添加归档页面
-1. 新建归档页面模板 进入自己的 Hugo 主题文件夹，我自己的是 themes/hugo-ink
-在主题文件夹的 layouts/_default 文件夹下新建文件 archives.html，内容直接复制 single.html
-将 archives.html 文件中的 {{ .Content }} 替换为以下内容
-{{ range (.Site.RegularPages.GroupByDate &amp;#34;2006&amp;#34;) }} &amp;lt;h3&amp;gt;{{ .Key }}&amp;lt;/h3&amp;gt; &amp;lt;ul class=&amp;#34;archive-list&amp;#34;&amp;gt; {{ range (where .Pages &amp;#34;Type&amp;#34; &amp;#34;posts&amp;#34;) }} &amp;lt;li&amp;gt; {{ .PublishDate.Format &amp;#34;2006-01-02&amp;#34; }} -&amp;gt; &amp;lt;a href=&amp;#34;{{ .RelPermalink }}&amp;#34;&amp;gt;{{ .Title }}&amp;lt;/a&amp;gt; &amp;lt;/li&amp;gt; {{ end }} &amp;lt;/ul&amp;gt; {{ end }} 解释 {{ range (where .</description></item><item><title>GPGPU-Sim源码阅读</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</link><pubDate>Tue, 28 Sep 2021 15:51:46 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</guid><description>Shader.cc shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Posts on Cory Code</title>
+    <link>https://huweim.github.io/posts/</link>
+    <description>Recent content in Posts on Cory Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Athul</copyright>
+    <lastBuildDate>Tue, 28 Sep 2021 15:51:46 +0800</lastBuildDate>
+    
+	<atom:link href="https://huweim.github.io/posts/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>GPGPU-Sim源码阅读</title>
+      <link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</link>
+      <pubDate>Tue, 28 Sep 2021 15:51:46 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</guid>
+      <description>Shader.cc shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等
 m_stats 也就是 shader_core_stats 类型的变量
 num_shaer 就是 n_simt_clusters*n_simt_cores_per_cluster，也就是 SIMT Core 的数量
 tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值
 shader_core_ctx::decode 函数 检查 fetch buffer 中的指令是否有效，如有效则进入循环。获得当前指令的 pc，并取指令。
 指令用变量 pI1 存储，调用函数 ibuffer_fill, 将 pI 装进对应 warp id 的 I-Buffer, 并将 valid bit 置为1
 随后会取下一条指令，用变量 pI2 存储，注意下一条指令的 pc = pc + pI1 -&amp;gt; isize。也就是我们常说的 pc = pc + 1, 这里的1实际上是一条指令的长度
-每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1</description></item><item><title>文档_GPGPU-sim - Performance Simulation Engine</title><link>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_gpgpu-sim-performance-simulation-engine/</link><pubDate>Tue, 28 Sep 2021 14:59:35 +0800</pubDate><guid>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_gpgpu-sim-performance-simulation-engine/</guid><description>GPGPU-sim - Performance Simulation Engine
+每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1</description>
+    </item>
+    
+    <item>
+      <title>文档_GPGPU-sim - Performance Simulation Engine</title>
+      <link>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_gpgpu-sim-performance-simulation-engine/</link>
+      <pubDate>Tue, 28 Sep 2021 14:59:35 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_gpgpu-sim-performance-simulation-engine/</guid>
+      <description>GPGPU-sim - Performance Simulation Engine
 1 Performance Model Software Objects ldst_unit *m_ldst_unit; 前面的 m 可能表示这个类型的变量
 1.2 SIMT Core Class SIMT Core 中的微架构在 shader.h/cc 的类 shader_core_ctx 中实现
-shd_warp_t objects 的集合用于建模每个 warp 在 core 中的状态 simt_stack object, 处理每个 warp 的分支 set of scheduler_unit obj, 选择 set 中 warp 的一条 or 多条指令发射执行 Scoreboard obj 处理 data hazard opndcoll_rfu_t obj, model operand collector set of simd_function_unit obj 实现 ALU pipeline ldst_unit 实现 memory pipeline shader_memroy_interface 将 SIMT Core 连接到相应的 SIMT Core Cluster 每个 core cycle, 调用 shader_core_ctx::cycle() 来模拟 SIMT Core 的一个 cycle。cycle function 以按从下往上的顺序 (也就是从 writeback() 到 fetch()) 调用下列函数</description></item><item><title>GPGPU-Sim 运行机制</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</link><pubDate>Tue, 28 Sep 2021 13:39:14 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</guid><description>0. 前言 在 GPGPU-Sim 跑一些比较大的 benchmark, 或者想要同时跑很多组 benchmark 的时候，在自己的电脑上跑，或者在虚拟机上运行的话速度肯定达不到要求，会成为工作中瓶颈。因此了解一下如何在服务器上跑 simulation, 以及如何提高运行 benchmark 的速度。
+ shd_warp_t objects 的集合用于建模每个 warp 在 core 中的状态 simt_stack object, 处理每个 warp 的分支 set of scheduler_unit obj, 选择 set 中 warp 的一条 or 多条指令发射执行 Scoreboard obj 处理 data hazard opndcoll_rfu_t obj, model operand collector set of simd_function_unit obj 实现 ALU pipeline ldst_unit 实现 memory pipeline shader_memroy_interface 将 SIMT Core 连接到相应的 SIMT Core Cluster  每个 core cycle, 调用 shader_core_ctx::cycle() 来模拟 SIMT Core 的一个 cycle。cycle function 以按从下往上的顺序 (也就是从 writeback() 到 fetch()) 调用下列函数</description>
+    </item>
+    
+    <item>
+      <title>GPGPU-Sim 运行机制</title>
+      <link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</link>
+      <pubDate>Tue, 28 Sep 2021 13:39:14 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</guid>
+      <description>0. 前言 在 GPGPU-Sim 跑一些比较大的 benchmark, 或者想要同时跑很多组 benchmark 的时候，在自己的电脑上跑，或者在虚拟机上运行的话速度肯定达不到要求，会成为工作中瓶颈。因此了解一下如何在服务器上跑 simulation, 以及如何提高运行 benchmark 的速度。
 1. GPGPU-Sim 运行机制 首先要理解 application 是如何运行在 real machine 以及 GPGPU-Sim 上的，他们的区别在哪里？这里以 CUDA 代码为例。
 GPGPU-Sim_vs_Real_Machine
 1.1 Real Machine CUDA application 分为 host code and device code, 使用 nvcc 编译 .cu 代码时, 会将 host code 和 device code 分开。device code 被编译为 .ptx 文件，再通过 ptxas 编译为 cubin.bin 文件。host code, libcuda.a, cubin.bin 文件由 C/C++编译器编译了解生成可执行文件。
-如何运行 CUDA application? 调用 libcuda 内的接口以在 GPU 上运行 device code.</description></item><item><title>搭建GPGPU-Sim实验环境</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E6%90%AD%E5%BB%BAgpgpu-sim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83/</link><pubDate>Mon, 27 Sep 2021 22:54:06 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E6%90%AD%E5%BB%BAgpgpu-sim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83/</guid><description>0. 前言 第一个思路是
-服务器OS-&amp;gt;Docker Container-&amp;gt;Ubuntu中运行GPGPU-Sim。 Docker Container update Docker Image-&amp;gt;Docker Image-&amp;gt;XXX.tar-&amp;gt;复制到你的电脑Windows-&amp;gt;复制到你的虚拟机Ubuntu-&amp;gt;XXX.tar-&amp;gt;Docker Image-&amp;gt;Docker Container-&amp;gt;Ubuntu中运行GPGPU-Sim-&amp;gt;修改GPGPU-Sim 然后同样使用上述过程移植到服务器，运行 这样是有问题的。首先这个过程没有意义，如果这样在你自己的虚拟机里面运行Docker, 那么仍然是命令行界面，和在服务器上运行的区别在哪？
+如何运行 CUDA application? 调用 libcuda 内的接口以在 GPU 上运行 device code.</description>
+    </item>
+    
+    <item>
+      <title>搭建GPGPU-Sim实验环境</title>
+      <link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E6%90%AD%E5%BB%BAgpgpu-sim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83/</link>
+      <pubDate>Mon, 27 Sep 2021 22:54:06 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_%E6%90%AD%E5%BB%BAgpgpu-sim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83/</guid>
+      <description>0. 前言 第一个思路是
+ 服务器OS-&amp;gt;Docker Container-&amp;gt;Ubuntu中运行GPGPU-Sim。 Docker Container update Docker Image-&amp;gt;Docker Image-&amp;gt;XXX.tar-&amp;gt;复制到你的电脑Windows-&amp;gt;复制到你的虚拟机Ubuntu-&amp;gt;XXX.tar-&amp;gt;Docker Image-&amp;gt;Docker Container-&amp;gt;Ubuntu中运行GPGPU-Sim-&amp;gt;修改GPGPU-Sim 然后同样使用上述过程移植到服务器，运行  这样是有问题的。首先这个过程没有意义，如果这样在你自己的虚拟机里面运行Docker, 那么仍然是命令行界面，和在服务器上运行的区别在哪？
 这样实现了Docker的其中一个作用
-我在服务器上能跑，在我自己的虚拟机上也能跑。实现了在不同的环境下运行，而且无需安装多余的依赖。因为本质上我用的是 Docker 中的 Ubuntu 14 但我没有实现自己的目的 我的目的是什么？
-在自己的Ubuntu上使用VScode修改模拟器，简单地编译测试性能。修改后需要跑大量benchmark, 这个时候我不能用自己的电脑跑了，我需要移植了。
-把跑benchmark需要用到的东西放在服务器上，用服务器的计算资源运行。需要用到的东西是什么？
-benchmark: 一般是一些 .cu/.cl 代码编译后生成的可执行文件
-编译成功gpgpusim以后，实际上主要是生成了一个libcudart.so。
-那么就需要这个 libcudart.so
-所以理论上来说如果我使用一台固定的服务器，好像不需要一直更新Docker?无需安装 gcc4.5.1, cuda4.2。每次把这几个文件拷贝过去即可。
-0.1 测试 在 gpgpu-sim_distribution 目录下只放置 lib 文件夹 也是可以 Run 的，说明程序运行时只会 call libcudart.so 这个文件</description></item><item><title>Docker 常用的命令</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Fri, 17 Sep 2021 16:25:25 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>0. 前言 最近需要使用到 Docker, 记一下笔记和常用的操作。主要是参考菜鸟教程和阮一峰老师的教程。
+ 我在服务器上能跑，在我自己的虚拟机上也能跑。实现了在不同的环境下运行，而且无需安装多余的依赖。因为本质上我用的是 Docker 中的 Ubuntu 14 但我没有实现自己的目的  我的目的是什么？
+  在自己的Ubuntu上使用VScode修改模拟器，简单地编译测试性能。修改后需要跑大量benchmark, 这个时候我不能用自己的电脑跑了，我需要移植了。
+  把跑benchmark需要用到的东西放在服务器上，用服务器的计算资源运行。需要用到的东西是什么？
+  benchmark: 一般是一些 .cu/.cl 代码编译后生成的可执行文件
+   编译成功gpgpusim以后，实际上主要是生成了一个libcudart.so。
+ 那么就需要这个 libcudart.so
+    所以理论上来说如果我使用一台固定的服务器，好像不需要一直更新Docker?无需安装 gcc4.5.1, cuda4.2。每次把这几个文件拷贝过去即可。
+  0.1 测试 在 gpgpu-sim_distribution 目录下只放置 lib 文件夹 也是可以 Run 的，说明程序运行时只会 call libcudart.so 这个文件</description>
+    </item>
+    
+    <item>
+      <title>Docker Image and Container</title>
+      <link>https://huweim.github.io/posts/docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link>
+      <pubDate>Fri, 17 Sep 2021 16:25:25 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid>
+      <description>0. 前言 最近需要使用到 Docker, 记一下笔记和常用的操作。主要是参考菜鸟教程和阮一峰老师的教程。
 1. 启动Docker服务 # service 命令的用法 $ sudo service docker start # systemctl 命令的用法 $ sudo systemctl start docker 2. Image文件 **Docker 把应用程序及其依赖，打包在 image 文件里面。**只有通过这个文件，才能生成 Docker 容器。 image 文件可以看作是容器的模板。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例。
-# 列出本机的所有 image 文件。 $ docker image ls $ docler images REPOSITORY TAG IMAGE ID CREATED SIZE ubuntu latest fb52e22af1b0 2 weeks ago 72.8MB hello-world latest d1165f221234 6 months ago 13.3kB ubuntu 15.</description></item><item><title>SIMT_Core</title><link>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_simt_core/</link><pubDate>Sat, 04 Sep 2021 19:04:57 +0800</pubDate><guid>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_simt_core/</guid><description>0. 前言 搞懂 SIMT Core 对于理解 GPGPU 的指令 fetch、指令发射、内存访问、数据传输等步骤非常重要，按照 GPGPU-Sim 的官方文档进行一个简单的梳理
+# 列出本机的所有 image 文件。 $ docker image ls $ docler images REPOSITORY TAG IMAGE ID CREATED SIZE ubuntu latest fb52e22af1b0 2 weeks ago 72.8MB hello-world latest d1165f221234 6 months ago 13.3kB ubuntu 15.</description>
+    </item>
+    
+    <item>
+      <title>SIMT_Core</title>
+      <link>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_simt_core/</link>
+      <pubDate>Sat, 04 Sep 2021 19:04:57 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/%E6%96%87%E6%A1%A3_simt_core/</guid>
+      <description>0. 前言 搞懂 SIMT Core 对于理解 GPGPU 的指令 fetch、指令发射、内存访问、数据传输等步骤非常重要，按照 GPGPU-Sim 的官方文档进行一个简单的梳理
 SIMT Core 的微架构模型中有几个比较重要的硬件单元，接下来会一一介绍他们的作用，
-000 放一个硬件概念对应表 1. Front End Instruction cache access Instruction buffer logic Scoreboard Scheduling logic SIMT stack 1.1 Fetch and Decode 这里介绍整个指令 Fetch and Decode 阶段，涉及到的硬件单元主要是 Fetch, I-Cache, Decode, I-Buffer, ScoreBoard
+000 放一个硬件概念对应表 1. Front End  Instruction cache access Instruction buffer logic Scoreboard Scheduling logic SIMT stack  1.1 Fetch and Decode 这里介绍整个指令 Fetch and Decode 阶段，涉及到的硬件单元主要是 Fetch, I-Cache, Decode, I-Buffer, ScoreBoard
 I. Fetch Fetch 单元是一个调度器，作用
-根据 PC 的值，从 I-Cache 中取指令，即发送内存请求。 对于一个 warp，如果在 I-Buffer 中没有任何 valid 指令 (valid bit 作用在 III. I-Buffer 中有介绍)，那么这个 warp 就可以进行 instruction fetch。</description></item><item><title>CUDA_set_gridDim</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_cuda_set_griddim/</link><pubDate>Tue, 17 Aug 2021 14:12:38 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_cuda_set_griddim/</guid><description>0. 前言 在一个 CUDA 课程的考试中由于这个地方的理解问题导致没有成功 pass，应该如何设置 BlockNum 呢？
-1. 参数 compute capability, CC 这个也就是计算架构，对应于具体的 NVIDIA 显卡型号，可以在编译时作为 option 输入
-ThreadsPerBlock 这个参数是最常见的，也就是 blockDim, 自己设置的是1024, 计算架构会决定 block 内线程数的上限
-RegistersPerThread 一直没有设置过这个参数，ptxas info 会给给出具体的使用数据
+ 根据 PC 的值，从 I-Cache 中取指令，即发送内存请求。  对于一个 warp，如果在 I-Buffer 中没有任何 valid 指令 (valid bit 作用在 III. I-Buffer 中有介绍)，那么这个 warp 就可以进行 instruction fetch。</description>
+    </item>
+    
+    <item>
+      <title>CUDA_set_gridDim</title>
+      <link>https://huweim.github.io/posts/cuda_set_griddim/</link>
+      <pubDate>Tue, 17 Aug 2021 14:12:38 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/cuda_set_griddim/</guid>
+      <description>0. 前言 在一个 CUDA 课程的考试中由于这个地方的理解问题导致没有成功 pass，应该如何设置 BlockNum 呢？
+1. 参数  compute capability, CC  这个也就是计算架构，对应于具体的 NVIDIA 显卡型号，可以在编译时作为 option 输入
+ ThreadsPerBlock  这个参数是最常见的，也就是 blockDim, 自己设置的是1024, 计算架构会决定 block 内线程数的上限
+ RegistersPerThread  一直没有设置过这个参数，ptxas info 会给给出具体的使用数据
 1.1 问题 接下来问题出现了，到底应该怎么设置 gridDim 呢？也就是 BlockNums. 在测试代码中数据量 N=10000000, 自己的理解是我一个 block 用1024个 threads，使用 256 个block，这样的话总共有 256*1024 个 threads 可以并行工作，那么我用 for 循环加上步长 stride = blockDim.x * gridDim.x 来实现 N 个数据的计算，也就是
-#define N 10000000 #define THREADS_PER_BLOCK 1024 #define BLOCK_NUMS 256 //#define BLOCK_NUMS ((N + THREADS_PER_BLOCK - 1) / THREADS_PER_BLOCK) __global__ void gpu_histogram(int *input, int count, int *output) { int index = blockIdx.</description></item><item><title>Ca2_lab2</title><link>https://huweim.github.io/posts/%E8%AF%BE%E7%A8%8B_ca2_lab2/</link><pubDate>Wed, 28 Jul 2021 18:23:41 +0800</pubDate><guid>https://huweim.github.io/posts/%E8%AF%BE%E7%A8%8B_ca2_lab2/</guid><description>0. 前言 很久之前就想总结一下 Computer Architecture II (CA2) 这门课上学得一些东西了，尤其是关于这几个 lab。当时无论是在 Linux, C++, 还是体系结构方面，都帮助我加深了理解。现在试着整理也是复习一下，把他放在博客的文章中。
-1. Goal</description></item><item><title>Ca2_lab1</title><link>https://huweim.github.io/posts/%E8%AF%BE%E7%A8%8B_ca2_lab1/</link><pubDate>Wed, 28 Jul 2021 16:09:45 +0800</pubDate><guid>https://huweim.github.io/posts/%E8%AF%BE%E7%A8%8B_ca2_lab1/</guid><description>0. 前言 很久之前就想总结一下 Computer Architecture II (CA2) 这门课上学得一些东西了，尤其是关于这几个 lab。当时无论是在 Linux, C++, 还是体系结构方面，都帮助我加深了理解。现在试着整理也是复习一下，把他放在博客的文章中。
+#define N 10000000#define THREADS_PER_BLOCK 1024#define BLOCK_NUMS 256//#define BLOCK_NUMS ((N + THREADS_PER_BLOCK - 1) / THREADS_PER_BLOCK)  __global__ void gpu_histogram(int *input, int count, int *output) { int index = blockIdx.</description>
+    </item>
+    
+    <item>
+      <title>Ca2_lab2</title>
+      <link>https://huweim.github.io/posts/ca2_lab2/</link>
+      <pubDate>Wed, 28 Jul 2021 18:23:41 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/ca2_lab2/</guid>
+      <description>0. 前言 很久之前就想总结一下 Computer Architecture II (CA2) 这门课上学得一些东西了，尤其是关于这几个 lab。当时无论是在 Linux, C++, 还是体系结构方面，都帮助我加深了理解。现在试着整理也是复习一下，把他放在博客的文章中。
+1. Goal </description>
+    </item>
+    
+    <item>
+      <title>Ca2_lab1</title>
+      <link>https://huweim.github.io/posts/ca2_lab1/</link>
+      <pubDate>Wed, 28 Jul 2021 16:09:45 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/ca2_lab1/</guid>
+      <description>0. 前言 很久之前就想总结一下 Computer Architecture II (CA2) 这门课上学得一些东西了，尤其是关于这几个 lab。当时无论是在 Linux, C++, 还是体系结构方面，都帮助我加深了理解。现在试着整理也是复习一下，把他放在博客的文章中。
 1. Goal 主要是由两个目标
-实现 Cache Replacement Policy 中的 OPT 算法，也就是假设已经得知了对 cache line 的访问序列，每次都 evict 最久之后访问的那个 cache line 将 Sniper 中的 inclusive policy 改为 non-inclusive policy 通过这个 lab 更深刻地理解了一些 cache replacement, 模拟器中访问 cache 和内存的 flow, cache 的地址映射方式等等
-2. 思路和 Report Optimal算法 首先，每一条指令的access操作都会经过函数 AccessSingleLine，在这个地方执行文件 IO 操作。 第一遍执行程序的时候进行文件写入（假设两次执行程序的指令序列是完全一样的），将指令的 set_index 和 tag 写入future_list.txt文件（预先将指令序列写入文件） 第二遍指令的时候，相当于我们是已知未来序列的，在第一次调用 AccessSingleLine 的时候，将文件读入一个二维数组future_list，存放所有指令的 set_index 和 tag。后续调用 AccessSingleLine 的时候不再进行文件 IO 操作（写一个条件判断，只执行一次文件 IO 操作）。 二维数组 future_list 中存放了指令 access 序列，将其在 class Cache 中定义，定义为 long long int 型的静态变量，并且有足够大的空间。 根据对 sniper 代码的阅读，此模拟器执行的是 LRU 替换算法，为了不大量修改一些函数接口和逻辑（比如当 cache 为空时的替换和替换算法的选择），我选择直接在 cache_set_lru.</description></item><item><title>Ca2_lab0</title><link>https://huweim.github.io/posts/%E8%AF%BE%E7%A8%8B_ca2_lab0/</link><pubDate>Wed, 28 Jul 2021 15:23:39 +0800</pubDate><guid>https://huweim.github.io/posts/%E8%AF%BE%E7%A8%8B_ca2_lab0/</guid><description>0. 前言 很久之前就想总结一下 Computer Architecture II (CA2) 这门课上学得一些东西了，尤其是关于这几个 lab。当时无论是在 Linux, C++, 还是体系结构方面，都帮助我加深了理解。现在试着整理也是复习一下，把他放在博客的文章中。
-1. Goal Through this lab, you would compile Sniper, a next-generation parallel, high-speed and accurate x86 simulator [0.5 points]. Then you need to modify the source code of Sniper to show expected output and upload a summary to BlackBoard [1.5 points]. Total is 2 points.
-提供了一个 C 代码文件 toy-lab0.c， 编译并运行模拟器 Sniper。然后修改 Sniper 源代码，找到 CLFLUSH 这条指令，在这条指令每次执行后打印 [STUDENT-EMAIL-ACCOUNT, function, line number] CLFLUSH instruction executed</description></item><item><title>CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_cuda_driver-nvcc-cuda-cudatoolkitcudnn%E6%B5%85%E6%9E%90/</link><pubDate>Sun, 25 Jul 2021 11:00:17 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_cuda_driver-nvcc-cuda-cudatoolkitcudnn%E6%B5%85%E6%9E%90/</guid><description>前言 文章转载自知乎答主 marsggbo，当做笔记记录一下这些 CUDA 中经常接触的内容。
+ 实现 Cache Replacement Policy 中的 OPT 算法，也就是假设已经得知了对 cache line 的访问序列，每次都 evict 最久之后访问的那个 cache line 将 Sniper 中的 inclusive policy 改为 non-inclusive policy  通过这个 lab 更深刻地理解了一些 cache replacement, 模拟器中访问 cache 和内存的 flow, cache 的地址映射方式等等
+2. 思路和 Report Optimal算法  首先，每一条指令的access操作都会经过函数 AccessSingleLine，在这个地方执行文件 IO 操作。  第一遍执行程序的时候进行文件写入（假设两次执行程序的指令序列是完全一样的），将指令的 set_index 和 tag 写入future_list.txt文件（预先将指令序列写入文件） 第二遍指令的时候，相当于我们是已知未来序列的，在第一次调用 AccessSingleLine 的时候，将文件读入一个二维数组future_list，存放所有指令的 set_index 和 tag。后续调用 AccessSingleLine 的时候不再进行文件 IO 操作（写一个条件判断，只执行一次文件 IO 操作）。 二维数组 future_list 中存放了指令 access 序列，将其在 class Cache 中定义，定义为 long long int 型的静态变量，并且有足够大的空间。   根据对 sniper 代码的阅读，此模拟器执行的是 LRU 替换算法，为了不大量修改一些函数接口和逻辑（比如当 cache 为空时的替换和替换算法的选择），我选择直接在 cache_set_lru.</description>
+    </item>
+    
+    <item>
+      <title>Ca2_lab0</title>
+      <link>https://huweim.github.io/posts/ca2_lab0/</link>
+      <pubDate>Wed, 28 Jul 2021 15:23:39 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/ca2_lab0/</guid>
+      <description>0. 前言 很久之前就想总结一下 Computer Architecture II (CA2) 这门课上学得一些东西了，尤其是关于这几个 lab。当时无论是在 Linux, C++, 还是体系结构方面，都帮助我加深了理解。现在试着整理也是复习一下，把他放在博客的文章中。
+1. Goal  Through this lab, you would compile Sniper, a next-generation parallel, high-speed and accurate x86 simulator [0.5 points]. Then you need to modify the source code of Sniper to show expected output and upload a summary to BlackBoard [1.5 points]. Total is 2 points.
+ 提供了一个 C 代码文件 toy-lab0.c， 编译并运行模拟器 Sniper。然后修改 Sniper 源代码，找到 CLFLUSH 这条指令，在这条指令每次执行后打印 [STUDENT-EMAIL-ACCOUNT, function, line number] CLFLUSH instruction executed</description>
+    </item>
+    
+    <item>
+      <title>CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析</title>
+      <link>https://huweim.github.io/posts/cuda_driver-nvcc-cuda-cudatoolkitcudnn%E6%B5%85%E6%9E%90/</link>
+      <pubDate>Sun, 25 Jul 2021 11:00:17 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/cuda_driver-nvcc-cuda-cudatoolkitcudnn%E6%B5%85%E6%9E%90/</guid>
+      <description>前言 文章转载自知乎答主 marsggbo，当做笔记记录一下这些 CUDA 中经常接触的内容。
 0 在使用深度学习框架的过程中一定会经常碰到这些东西，虽然anaconda有时会帮助我们自动地解决这些设置，但是有些特殊的库却还是需要我们手动配置环境，但是我对标题上的这些名词其实并不十分清楚，所以老是被网上的教程绕得云里雾里，所以觉得有必要写下一篇文章当做笔记供之后参考。
-0. GPU型号含义 参考【GPU编程系列之一】从深度学习选择什么样的gpu来谈谈gpu的硬件架构
-显卡： 简单理解这个就是我们前面说的GPU，尤其指NVIDIA公司生产的GPU系列，因为后面介绍的cuda,cudnn都是NVIDIA公司针对自身的GPU独家设计的。 显卡驱动：很明显就是字面意思，通常指NVIDIA Driver，其实它就是一个驱动软件，而前面的显卡就是硬件。 gpu架构：Tesla、Fermi、Kepler、Maxwell、Pascal 芯片型号：GT200、GK210、GM104、GF104等 显卡系列：GeForce、Quadro、Tesla GeForce显卡型号：G/GS、GT、GTS、GTX gpu架构指的是硬件的设计方式，例如流处理器簇中有多少个core、是否有L1 or L2缓存、是否有双精度计算单元等等。每一代的架构是一种思想，如何去更好完成并行的思想
+0. GPU型号含义  参考【GPU编程系列之一】从深度学习选择什么样的gpu来谈谈gpu的硬件架构
+  显卡： 简单理解这个就是我们前面说的GPU，尤其指NVIDIA公司生产的GPU系列，因为后面介绍的cuda,cudnn都是NVIDIA公司针对自身的GPU独家设计的。 显卡驱动：很明显就是字面意思，通常指NVIDIA Driver，其实它就是一个驱动软件，而前面的显卡就是硬件。 gpu架构：Tesla、Fermi、Kepler、Maxwell、Pascal 芯片型号：GT200、GK210、GM104、GF104等 显卡系列：GeForce、Quadro、Tesla GeForce显卡型号：G/GS、GT、GTS、GTX  gpu架构指的是硬件的设计方式，例如流处理器簇中有多少个core、是否有L1 or L2缓存、是否有双精度计算单元等等。每一代的架构是一种思想，如何去更好完成并行的思想
 芯片就是对上述gpu架构思想的实现，例如芯片型号GT200中第二个字母代表是哪一代架构，有时会有100和200代的芯片，它们基本设计思路是跟这一代的架构一致，只是在细节上做了一些改变，例如GK210比GK110的寄存器就多一倍。有时候一张显卡里面可能有两张芯片，Tesla k80用了两块GK210芯片。这里第一代的gpu架构的命名也是Tesla，但现在基本已经没有这种设计的卡了，下文如果提到了会用Tesla架构和Tesla系列来进行区分。
 而显卡系列在本质上并没有什么区别，只是NVIDIA希望区分成三种选择，
-GeFore用于家庭娱乐 Quadro用于工作站 Tesla系列用于服务器。 Tesla的k型号卡为了高性能科学计算而设计，比较突出的优点是双精度浮点运算能力高并且支持ECC内存，但是双精度能力好在深度学习训练上并没有什么卵用，所以Tesla系列又推出了M型号来做专门的训练深度学习网络的显卡。需要注意的是Tesla系列没有显示输出接口，它专注于数据计算而不是图形显示。
+ GeFore用于家庭娱乐 Quadro用于工作站 Tesla系列用于服务器。  Tesla的k型号卡为了高性能科学计算而设计，比较突出的优点是双精度浮点运算能力高并且支持ECC内存，但是双精度能力好在深度学习训练上并没有什么卵用，所以Tesla系列又推出了M型号来做专门的训练深度学习网络的显卡。需要注意的是Tesla系列没有显示输出接口，它专注于数据计算而不是图形显示。
 最后一个GeForce的显卡型号是不同的硬件定制，越往后性能越好，时钟频率越高显存越大，即G/GS&amp;lt;GT&amp;lt;GTS&amp;lt;GTX。
 1. CUDA名称含义 1.1 CUDA 看了很多答案，有人说CUDA就是一门编程语言，像C,C++,python 一样，也有人说CUDA是API。CUDA英文全称是Compute Unified Device Architecture，是显卡厂商NVIDIA推出的运算平台。 CUDA™是一种由NVIDIA推出的通用并行计算架构，该架构使GPU能够解决复杂的计算问题。按照官方的说法是，CUDA是一个并行计算平台和编程模型，能够使得使用GPU进行通用计算变得简单和优雅。
 1.2 cudnn 这个其实就是一个专门为深度学习计算设计的软件库，里面提供了很多专门的计算函数，如卷积等。从上图也可以看到，还有很多其他的软件库和中间件，包括实现c++ STL的thrust、实现gpu版本blas的cublas、实现快速傅里叶变换的cuFFT、实现稀疏矩阵运算操作的cuSparse以及实现深度学习网络加速的cuDNN等等，具体细节可参阅GPU-Accelerated Libraries
-1.2 CUDA Toolkit 参考CUDA Toolkit
-CUDA Toolkit由以下组件组成：
+1.2 CUDA Toolkit  参考CUDA Toolkit
+ CUDA Toolkit由以下组件组成：
 1.2.1 Compiler CUDA-C和CUDA-C++编译器NVCC位于bin/目录中。它建立在NVVM优化器之上，而NVVM优化器本身构建在LLVM编译器基础结构之上。因此开发人员可以使用nvm/目录下的Compiler SDK来直接针对NVVM进行开发。
 1.2.2 Tools 提供一些像profiler,debuggers等工具，这些工具可以从bin/目录中获取
 1.2.3 Libraries 下面列出的部分科学库和实用程序库可以在lib/目录中使用(Windows上的DLL位于bin/中)，它们的接口在include/目录中可获取。
-cudart: CUDA Runtime cudadevrt: CUDA device runtime cupti: CUDA profiling tools interface nvml: NVIDIA management library nvrtc: CUDA runtime compilation cublas: BLAS (Basic Linear Algebra Subprograms，基础线性代数程序集) cublas_device: BLAS kernel interface &amp;hellip; 1.</description></item><item><title>Blog_Hugo_About页面制作</title><link>https://huweim.github.io/posts/blog_hugo_about%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</link><pubDate>Sat, 24 Jul 2021 19:19:09 +0800</pubDate><guid>https://huweim.github.io/posts/blog_hugo_about%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</guid><description>前言 最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。
+ cudart: CUDA Runtime cudadevrt: CUDA device runtime cupti: CUDA profiling tools interface nvml: NVIDIA management library nvrtc: CUDA runtime compilation cublas: BLAS (Basic Linear Algebra Subprograms，基础线性代数程序集) cublas_device: BLAS kernel interface &amp;hellip;  1.</description>
+    </item>
+    
+    <item>
+      <title>Blog_Hugo_About页面制作</title>
+      <link>https://huweim.github.io/posts/blog_hugo_about%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</link>
+      <pubDate>Sat, 24 Jul 2021 19:19:09 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/blog_hugo_about%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</guid>
+      <description>前言 最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。
 本文记录添加 about 页面的过程。
 注：这个是使用 markdown 进行添加，并非制作 html 页面。Hugo 主题基于 Ink
 添加 About 页面 右键打开 Git 命令行，输入
@@ -140,31 +181,114 @@ hugo new about.md 在文件夹 posts 的同级目录下新建了一个 about.md 
 修改 markdown 文件顶部的选项使其能够出现在首页菜单栏
 title: &amp;#34;About&amp;#34; date: 2021-07-08T17:46:31+08:00 menu: &amp;#34;main&amp;#34; weight: 60 comment: false 预览 在根目录下打开 Git，输入命令
 hugo -D server 在自己的浏览器上访问网址：http://localhost:1313/ 即可预览
-Reference https://cpurely.github.io/post/hugo%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0about%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2/</description></item><item><title>GPGPU_Architecture</title><link>https://huweim.github.io/posts/%E6%95%99%E6%9D%90_gpgpu_architecture/</link><pubDate>Sat, 24 Jul 2021 16:35:27 +0800</pubDate><guid>https://huweim.github.io/posts/%E6%95%99%E6%9D%90_gpgpu_architecture/</guid><description>GPGPU Architecture 从有缩进的那一段开始成为第一段
+Reference https://cpurely.github.io/post/hugo%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0about%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2/</description>
+    </item>
+    
+    <item>
+      <title>GPGPU_Arch</title>
+      <link>https://huweim.github.io/posts/gpgpu_arch/</link>
+      <pubDate>Sat, 24 Jul 2021 16:35:27 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/gpgpu_arch/</guid>
+      <description>GPGPU Architecture 从有缩进的那一段开始成为第一段
 1. Introduction 1.1 The Landspace Of Computation Accelerators 1 提升性能不能光依赖于摩尔定律了，需要从 Computer Arch 中去寻找提升
 2 GPU 的性能优势, vector HW
 3 专用的硬件对应用的性能提升帮助很大，如谷歌 TPU
 4 modern GPUs support a Turing Complete programming model, 这是人们对 GPU 感兴趣的一大原因
 By Turing Complete, we mean that any computation can be run given enough time and memory.
 1.2 GPU Hardware Basic 1 API for GPUs,
-These APIs function by providing convenient interfaces that hide the complexity of managing communication between the CPU and GPU rather than eliminating the need for a CPU entirely.</description></item><item><title>Blog_Hugo_Windows下安装</title><link>https://huweim.github.io/posts/blog_hugo_win_install/</link><pubDate>Sat, 24 Jul 2021 16:33:34 +0800</pubDate><guid>https://huweim.github.io/posts/blog_hugo_win_install/</guid><description>Installing on Windows 假设 你知道如何打开一个命令提示窗口。 你运行的是一个现代64位的 Windows。 你的网站地址是 example.com。 你将使用 D:\Hugo\Sites 作为网站的起点。 你将使用 D:\Hugo\bin 存储可执行文件。 设置你的文件夹 你将需要一个存储 Hugo 可执行文件、博客内容（你创建的的那些文件），以及生成文件（Hugo 为你创建的 HTML）的地方。
-打开 Windows Explorer。 创建一个新的文件夹，D:\Hugo。 创建一个新的文件夹，D:\Hugo\bin。 创建一个新的文件夹，D:\Hugo\Sites。 下载预先编译好的 Windows 版本的 Hugo 可执行文件 2021-07-07 11:25:22 为什么找不到 hugo 的命令了，可能是因为把文件夹 STU 改名改成了 ShanghaiTech，而 windows 需要配置环境变量。重新配置环境变量中的路径应该就可以了
+ These APIs function by providing convenient interfaces that hide the complexity of managing communication between the CPU and GPU rather than eliminating the need for a CPU entirely.</description>
+    </item>
+    
+    <item>
+      <title>Blog_Hugo_windows_install</title>
+      <link>https://huweim.github.io/posts/blog_hugo_win_install/</link>
+      <pubDate>Sat, 24 Jul 2021 16:33:34 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/blog_hugo_win_install/</guid>
+      <description>Installing on Windows 假设  你知道如何打开一个命令提示窗口。 你运行的是一个现代64位的 Windows。 你的网站地址是 example.com。 你将使用 D:\Hugo\Sites 作为网站的起点。 你将使用 D:\Hugo\bin 存储可执行文件。  设置你的文件夹 你将需要一个存储 Hugo 可执行文件、博客内容（你创建的的那些文件），以及生成文件（Hugo 为你创建的 HTML）的地方。
+ 打开 Windows Explorer。 创建一个新的文件夹，D:\Hugo。 创建一个新的文件夹，D:\Hugo\bin。 创建一个新的文件夹，D:\Hugo\Sites。  下载预先编译好的 Windows 版本的 Hugo 可执行文件  2021-07-07 11:25:22 为什么找不到 hugo 的命令了，可能是因为把文件夹 STU 改名改成了 ShanghaiTech，而 windows 需要配置环境变量。重新配置环境变量中的路径应该就可以了
 :heavy_check_mark: 就是这个原因，不过注意是系统变量中
 环境变量，简单来说就是在系统层面给这个程序的安装路径进行登记，使得我们通过CMD或Git直接输入程序名就能全局调用。
-使用 go 编译 Hugo 的一个优势就是仅有一个二进制文件。你不需要运行安装程序来使用它。相反，你需要把这个二进制文件复制到你的硬盘上。我假设你将把它放在 D:\Hugo\bin 文件夹内。如果你选择放在其它的位置，你需要在下面的命令中替换为那些路径。
-在浏览器中打开 https://github.com/spf13/hugo/releases。 当前的版本是 hugo_0.13_windows_amd64.zip。 下载那个 ZIP 文件，并保存到 D:\Hugo\bin 文件夹中。 在 Windows Explorer 中找到那个 ZIP 文件，并从中提取所有的文件。 你应该可以看到一个 hugo_0.</description></item><item><title>Blog_Hugo_基本部署</title><link>https://huweim.github.io/posts/blog_hugo_%E5%9F%BA%E6%9C%AC%E9%83%A8%E7%BD%B2/</link><pubDate>Sat, 24 Jul 2021 16:28:22 +0800</pubDate><guid>https://huweim.github.io/posts/blog_hugo_%E5%9F%BA%E6%9C%AC%E9%83%A8%E7%BD%B2/</guid><description>前言 记录一下从0开始的部署，之前3月弄的没有记笔记，7月就忘记了，还是 要好好整理好好记录。
+  使用 go 编译 Hugo 的一个优势就是仅有一个二进制文件。你不需要运行安装程序来使用它。相反，你需要把这个二进制文件复制到你的硬盘上。我假设你将把它放在 D:\Hugo\bin 文件夹内。如果你选择放在其它的位置，你需要在下面的命令中替换为那些路径。
+ 在浏览器中打开 https://github.com/spf13/hugo/releases。 当前的版本是 hugo_0.13_windows_amd64.zip。 下载那个 ZIP 文件，并保存到 D:\Hugo\bin 文件夹中。 在 Windows Explorer 中找到那个 ZIP 文件，并从中提取所有的文件。 你应该可以看到一个 hugo_0.</description>
+    </item>
+    
+    <item>
+      <title>Blog_Hugo_基本部署</title>
+      <link>https://huweim.github.io/posts/blog_hugo_%E5%9F%BA%E6%9C%AC%E9%83%A8%E7%BD%B2/</link>
+      <pubDate>Sat, 24 Jul 2021 16:28:22 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/blog_hugo_%E5%9F%BA%E6%9C%AC%E9%83%A8%E7%BD%B2/</guid>
+      <description>前言 记录一下从0开始的部署，之前3月弄的没有记笔记，7月就忘记了，还是 要好好整理好好记录。
 假设现在已经安装好了 Hugo 环境，我使用的是 windows 下安装。
 添加主题 有很多 Hugo Theme 可以选择
 这里一开始用的是 archie，现在改成 Ink
-cd blog;\ git init;\ git submodule add https://github.com/knadh/hugo-ink.git themes/hugo-ink;\ # Edit your config.toml configuration file # and add the Ananke theme. echo &amp;#39;theme = &amp;#34;ananke&amp;#34;&amp;#39; &amp;gt;&amp;gt; config.toml 切换主题后 push github 报错的本质原因是没有执行 git submodule add, 即没有在文件 .gitmodules 中加入新的主题
-发布文章 hugo new posts/XXX.md 会在 contene/posts 文件夹下生成 XXX.md 文件
-title: &amp;#34;Blog_Hugo_基本部署&amp;#34; date: 2021-07-24T16:28:22+08:00 draft: false tags: [&amp;#34;博客&amp;#34;, &amp;#34;技巧&amp;#34;] categories: [&amp;#34;Hugo&amp;#34;] 为文章添加 tags, categories 以便分类</description></item><item><title>Ubuntu 20.04 下安装运行 GPGPU-Sim</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_ubuntu-20.04-%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C-gpgpu-sim/</link><pubDate>Mon, 10 May 2021 15:17:51 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_ubuntu-20.04-%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C-gpgpu-sim/</guid><description>0. 前言 最近因为课程 Project 需要使用 GPGPU-Sim 复现一篇 paper，在之后的课题中可能也会用到这个模拟器。所以收集了相关资料以搭建 GPGPU-Sim 的环境并运行 Demo。GPGPU-Sim 的参考资料实在是不多，主要参考了官方文档、Github 中 README 文件，还有一些相关的 Blog。
+cd blog;\ git init;\ git submodule add https://github.com/knadh/hugo-ink.git themes/hugo-ink;\ # Edit your config.toml configuration file # and add the Ananke theme. echo &amp;#39;theme = &amp;#34;ananke&amp;#34;&amp;#39; &amp;gt;&amp;gt; config.toml  切换主题后 push github 报错的本质原因是没有执行 git submodule add, 即没有在文件 .gitmodules 中加入新的主题
+ 发布文章 hugo new posts/XXX.md 会在 contene/posts 文件夹下生成 XXX.md 文件
+title: &amp;#34;Blog_Hugo_基本部署&amp;#34; date: 2021-07-24T16:28:22+08:00 draft: false tags: [&amp;#34;博客&amp;#34;, &amp;#34;技巧&amp;#34;] categories: [&amp;#34;Hugo&amp;#34;] 为文章添加 tags, categories 以便分类</description>
+    </item>
+    
+    <item>
+      <title>Ubuntu 20.04 下安装运行 GPGPU-Sim</title>
+      <link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_ubuntu-20.04-%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C-gpgpu-sim/</link>
+      <pubDate>Mon, 10 May 2021 15:17:51 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_ubuntu-20.04-%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C-gpgpu-sim/</guid>
+      <description>0. 前言 最近因为课程 Project 需要使用 GPGPU-Sim 复现一篇 paper，在之后的课题中可能也会用到这个模拟器。所以收集了相关资料以搭建 GPGPU-Sim 的环境并运行 Demo。GPGPU-Sim 的参考资料实在是不多，主要参考了官方文档、Github 中 README 文件，还有一些相关的 Blog。
 本次只跑了一个非常简单的 Demo，关于 CUDA 实例可以参考 Textbook 《CUDA by Example》。里面提供了一些 CUDA 编程的源码介绍。有人在 Github 上提供了《CUDA by Example》的源代码。
 不过自己搭建 GPGPU-Sim 的环境坑比较多，一定要注意 gcc/g++ 版本问题以及链接库。所以我个人还是建议如果不是长期使用，可以直接下载官方提供的 fully setup virtual machine 。在 http://gpgpu-sim.org/ 下载，然后导入 Virtual Box 使用。他们提供的虚拟机已经配置好了环境，可以直接使用 GPGPU-Sim 编译 .cu 文件然后在模拟器上运行。具体步骤可以参考 UCR 给的流程。
 1. 介绍 GPGPU-sim能够在Linux系统下，提供对GPU的功能模拟和性能仿真，让你在没有装NVIDIA显卡的情况下可以编译并运行CUDA程序。当然它更重要的意义是，可以通过修改仿真参数，让开发者修改GPU内部架构，并进行性能仿真，以针对自己的项目需求进行更好的代码设计，获得更好的性能表现。
 我使用的环境是
-Ubuntu 20.04 CUDA Toolkit 11.1 gcc/g++ 5 ⚠️ 注意：在 Build GPGPU-Sim 之前最好就确保使用 gcc/g++ 5 版本 当时 GPGPU-Sim 作者测试时使用的是 CUDA 4.</description></item><item><title>读田渊栋博士《博士五年总结系列》</title><link>https://huweim.github.io/posts/%E6%80%BB%E7%BB%93_summary_of_phd/</link><pubDate>Fri, 12 Mar 2021 16:54:33 +0800</pubDate><guid>https://huweim.github.io/posts/%E6%80%BB%E7%BB%93_summary_of_phd/</guid><description>读田渊栋博士《博士五年总结系列》 ​ 有幸找到了田渊栋博士的《博士五年总结系列》文章，对文章的内容进行品读、摘抄，同时慢慢加入自己的理解。希望能从文字中去体会到田渊栋博士走过的那五年，希望自己能在未来发展上产生更加深入的思考。
-一 首先，心静下来才能钻进某个领域里认真做事。 真要体会大自然的美丽，那是一 定要涉足别人达不到的地方，要有目标有耐心有毅力，做长久的打算。 其次，有毅力有决心不一定能成事，方法也是不可少的。 最好的态 度是“不抱怨，不解释”，把自己力所能及的事情做好，把自己的错误搬回家，好 好分析，才能有所进步。 因为没有实现的理想，对他人而言，一文不值。 克服困难的过程中，没人喝彩。 Research Tips 第一，要喜欢自己的研究题目。做研究有内心动力(motivation)是非常重要的。 如果自己确实喜欢探索，喜欢解难题，但是导师的方向自己不喜欢怎么办？我的答 案是，多发挥主观能动性，找一个喜欢的小点慢慢扩大。 先找一个两边都能接受的题目，把它做好。 My heart is in the work 需要培养思考的习惯，提高思考的效率。 为达到这一步，一开始需要大量 的投入来找到适合自己的正确方案。 这句话背后是有很多实践的。 可能会很不习惯，想到晚上睡不着，做事吃饭都没心思，生活琐事全都不管，俗话说是“入魔了”。 像我经常有做梦做到自己要 思考的问题，或者每天一早还没完全醒来，就想着某个问题要怎么解，结果真醒来 一看发现全想错了-_-。 在这个阶段，挫折感会特别强烈，会有放弃的念头。 但是，只要坚持下去，大脑会适应，会成习惯，效率会高，会知道一个问题中有哪些地方是关键，会知道思考到什么地步是可以停手的存盘点。 然后你就有了一具不论何时 何地都能进行后台运行的思考机器，能够积累上每天的边角时间，每时每刻在ᨀ升 进步。 正如一句话所说，不疯魔，怎成活。 第三，有思路(idea)就写下来。 写下来本身就是一种“我已经完成了什么”的标志，对士气是很鼓舞 的，也有利于下一次从中断点恢复思考。 第四，多看看别人的工作，但别看太多，抓住主线就好。 我目前认为的最好办法，莫过于在看完几篇本领域最重要的文 章后认真总结，猜出大部分人的路数还有各自方法的优缺点，然后在面对新文章时 采用跳跃式读法，边看边猜，猜对有奖。 有了一定的熟练度之后，看了一部分去猜想作者的idea，这个不是第一次听到，但还是很震撼。 二 选导师，他做什么研究并不是最重要的，比这更重要 的，是人品及交流和表达能力。 Writing 初级 paper不光要有先做啥，再做啥，最后做啥，实验结果是啥，还要有 为什么这么做，原因是什么，激发了怎样的思考，这样的方法对什么样的数据有效，有什么局限。 举个例子，写目标函数是什么，如何用梯度下降优化，数学上就 两个公式，但是段落里可以说明如何选初始点，初始点在这个具体应用中的意义何 在，如何取步长，为何这样选，收敛速度通常多快，哪里可以加速，哪里可以并行 化再加 GPU，等等，这样内容就丰富多了。 克服了这两点，做到开局有理有据，正文言之有物，实验让人信服，那这篇文章基 本上可以中稿了。接下来，就可以进入高级模式了。 中高级 首先，立意要高远。 一篇文章规矩着写，说“我们加了新特征，因为新特征针对数 据集的某些特性建模，实验效果更好”，虽然基本可被录用，但一般不会出彩； 如果说“我们提了新的框架，统一了以前的诸多方法，在这个框架下，算法能自动分析数据加入新特征，实验效果更好”，那这篇就有戏。 其次，故事要流畅。 作者老板说过，一篇好的文章，就如同带着读者在一个花园里行走，路面平坦舒适，左边有山，右边有水，引人入胜，读者漫步欣赏美景，走过亭台楼阁，一点不费劲，一下子就逛完所有还意犹未尽。 细节上，全篇重要的论点要适当重复，每次出现都要和 上下文语境相符，无聊冗长的段落适当精简，但必要的实验步骤需要交代； 每一段 都要有总起有概括，像是花园的指路牌，让读者不至于晕头转向； 不设弯路，反复 推敲逻辑关系，能用一层逻辑说清的绝不用两层，能用简单故事说明白的不用复杂 公式，就算有复杂公式也放进附录里； 繁简要有计划，细节要略写以免让人费解， 主干则要用重笔让人印象深刻； 插图要不言自明，要出现在该出现的地方，能恰当 地作成段落注解； 语句不能太长，避免从句套从句，长短结合比较好，等等。 三 Talk 克服困局 一方面是充分的准备，另一方面是对 自己研究课题的自信。 自己热爱它，为它自豪，愿意讲给别人听，也知道自己如何 遣词造句，那这时大脑就会聚焦到内容上，说着说着就入情入境，英语也就自然地 变得慢了，流畅了。 等到说完，发现自己居然说得还可以，那下一次就更不会紧张 ，久而久之，终于就可以摆脱恶性循环，进入良性轨道。 如何才是好的讲稿呢？ 如同写作一样，最好的演讲是一个有唯一主题的流畅故事。 所谓流畅故事，是指幻 灯片和幻灯片之间要有自然过渡，让人不知不觉就听完整个演讲，而不觉得有什么 转折生硬的地方。 相比作文，演讲的流畅性更为重要，因为读者看文章时可以细细 琢磨，听众听演讲时则是一晃而过。 为了流畅性，一个好的演讲可以不惜牺牲大量 细节，只把最重要最易记忆的主线说出来—— 但条件是，这最重要的主线不能失了 应有的大转折和大逻辑，不能让人觉得太过简单无聊，或太过跳跃而没有说服力。 找到主线这个点，作者反复强调，确实最需要磨练才能掌握的一个地方 最好的平衡点，在于“意料之外，情理之中”，听完有一种“原来如此，我怎么没 有想到”的感受。 一个看似无关却很有效的办法是 先把幻灯片做好，写好演讲词，然后看看是否能 在规定时间脱稿讲得出来。 先有一个雏形 最好的演讲，是看了幻灯片自然而然能说出句子，而不 需要死记硬背，转折流畅，故事清楚。 另一个常见的错误，是把自己想说的话写在幻灯 片上。但其实幻灯片上写的，应该是在演讲者说完之后，最希望观众记得的内容 （所谓的“take home message”)。 为此，一张幻灯片来来回回做个几次都是正常 的，往往是初稿的字数非常多，往后思考越深则字数越少，到最后只放一张图或者 两张图，但在观众看来，一望即明。 好的幻灯片有几种类型 可以只含一张大图，或互有联系的若干图片，或一个前人 工作的列表，或一件事物的优劣二分法，或一个算法的三个主要步骤，或一些事物 的相互关系，等等。 一句话，如果盯着它十秒钟没看出来重点是什么，那就打回去 重做吧。 四 About time management</description></item><item><title>MPI Intro and Practice</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</link><pubDate>Tue, 09 Mar 2021 22:36:19 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</guid><description>MPI Intro and Practice Intro Definition wiki:
-Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures. Feature an interface, not a programming language Main model of HPC a cross-language communication protocol Functions Communication Point-to-point communication Send Recv Collective communication Broadcast, scatter/ gather, all to all, reduce, scan, barrier Almost all parallel programs can be described using the message passing model.</description></item><item><title>Git中常用的操作</title><link>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_git%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Mon, 08 Mar 2021 19:12:40 +0800</pubDate><guid>https://huweim.github.io/posts/%E7%BC%96%E7%A8%8B_git%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>Git中常用的操作 1. Remote Repo 1.1 Add Remote Repo $ git remote add origin git@github.com:huweim/repo_name.git 1.2 Delete Remote Repo Add a wrong remote repo, we could delete it. $ git remote -v origin git@github.com:huweim/huweim.github.io.git (fetch) origin git@github.com:huweim/huweim.github.io.git (push) Delete it $ git remote rm origin 1.3 Pull Origin Master to Local :x:似乎 push 之前如果有东西需要先 pull
-是因为远端已经创建了 README.md，local 也有README.md。有冲突，所以需要先 pull 过来同步。 git pull 命令用于从远程获取代码并合并本地的版本。
-git pull 其实就是 git fetch 和 git merge FETCH_HEAD 的简写。 命令格式如下：</description></item><item><title>My First Post</title><link>https://huweim.github.io/posts/my-first-post/</link><pubDate>Mon, 08 Mar 2021 11:24:04 +0800</pubDate><guid>https://huweim.github.io/posts/my-first-post/</guid><description>About 3 days, it finally works!</description></item><item><title>Archives</title><link>https://huweim.github.io/archives/</link><pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate><guid>https://huweim.github.io/archives/</guid><description>历史文章按照年月归档.</description></item></channel></rss>
+ Ubuntu 20.04 CUDA Toolkit 11.1 gcc/g++ 5 ⚠️ 注意：在 Build GPGPU-Sim 之前最好就确保使用 gcc/g++ 5 版本 当时 GPGPU-Sim 作者测试时使用的是 CUDA 4.</description>
+    </item>
+    
+    <item>
+      <title>读田渊栋博士《博士五年总结系列》</title>
+      <link>https://huweim.github.io/posts/summary_of_phd/</link>
+      <pubDate>Fri, 12 Mar 2021 16:54:33 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/summary_of_phd/</guid>
+      <description>读田渊栋博士《博士五年总结系列》 ​	有幸找到了田渊栋博士的《博士五年总结系列》文章，对文章的内容进行品读、摘抄，同时慢慢加入自己的理解。希望能从文字中去体会到田渊栋博士走过的那五年，希望自己能在未来发展上产生更加深入的思考。
+一  首先，心静下来才能钻进某个领域里认真做事。  真要体会大自然的美丽，那是一 定要涉足别人达不到的地方，要有目标有耐心有毅力，做长久的打算。   其次，有毅力有决心不一定能成事，方法也是不可少的。 最好的态 度是“不抱怨，不解释”，把自己力所能及的事情做好，把自己的错误搬回家，好 好分析，才能有所进步。  因为没有实现的理想，对他人而言，一文不值。 克服困难的过程中，没人喝彩。    Research Tips  第一，要喜欢自己的研究题目。做研究有内心动力(motivation)是非常重要的。  如果自己确实喜欢探索，喜欢解难题，但是导师的方向自己不喜欢怎么办？我的答 案是，多发挥主观能动性，找一个喜欢的小点慢慢扩大。 先找一个两边都能接受的题目，把它做好。   My heart is in the work  需要培养思考的习惯，提高思考的效率。 为达到这一步，一开始需要大量 的投入来找到适合自己的正确方案。  这句话背后是有很多实践的。   可能会很不习惯，想到晚上睡不着，做事吃饭都没心思，生活琐事全都不管，俗话说是“入魔了”。 像我经常有做梦做到自己要 思考的问题，或者每天一早还没完全醒来，就想着某个问题要怎么解，结果真醒来 一看发现全想错了-_-。 在这个阶段，挫折感会特别强烈，会有放弃的念头。 但是，只要坚持下去，大脑会适应，会成习惯，效率会高，会知道一个问题中有哪些地方是关键，会知道思考到什么地步是可以停手的存盘点。 然后你就有了一具不论何时 何地都能进行后台运行的思考机器，能够积累上每天的边角时间，每时每刻在ᨀ升 进步。 正如一句话所说，不疯魔，怎成活。   第三，有思路(idea)就写下来。  写下来本身就是一种“我已经完成了什么”的标志，对士气是很鼓舞 的，也有利于下一次从中断点恢复思考。   第四，多看看别人的工作，但别看太多，抓住主线就好。  我目前认为的最好办法，莫过于在看完几篇本领域最重要的文 章后认真总结，猜出大部分人的路数还有各自方法的优缺点，然后在面对新文章时 采用跳跃式读法，边看边猜，猜对有奖。  有了一定的熟练度之后，看了一部分去猜想作者的idea，这个不是第一次听到，但还是很震撼。      二  选导师，他做什么研究并不是最重要的，比这更重要 的，是人品及交流和表达能力。  Writing 初级  paper不光要有先做啥，再做啥，最后做啥，实验结果是啥，还要有 为什么这么做，原因是什么，激发了怎样的思考，这样的方法对什么样的数据有效，有什么局限。 举个例子，写目标函数是什么，如何用梯度下降优化，数学上就 两个公式，但是段落里可以说明如何选初始点，初始点在这个具体应用中的意义何 在，如何取步长，为何这样选，收敛速度通常多快，哪里可以加速，哪里可以并行 化再加 GPU，等等，这样内容就丰富多了。 克服了这两点，做到开局有理有据，正文言之有物，实验让人信服，那这篇文章基 本上可以中稿了。接下来，就可以进入高级模式了。  中高级  首先，立意要高远。  一篇文章规矩着写，说“我们加了新特征，因为新特征针对数 据集的某些特性建模，实验效果更好”，虽然基本可被录用，但一般不会出彩； 如果说“我们提了新的框架，统一了以前的诸多方法，在这个框架下，算法能自动分析数据加入新特征，实验效果更好”，那这篇就有戏。   其次，故事要流畅。  作者老板说过，一篇好的文章，就如同带着读者在一个花园里行走，路面平坦舒适，左边有山，右边有水，引人入胜，读者漫步欣赏美景，走过亭台楼阁，一点不费劲，一下子就逛完所有还意犹未尽。 细节上，全篇重要的论点要适当重复，每次出现都要和 上下文语境相符，无聊冗长的段落适当精简，但必要的实验步骤需要交代； 每一段 都要有总起有概括，像是花园的指路牌，让读者不至于晕头转向； 不设弯路，反复 推敲逻辑关系，能用一层逻辑说清的绝不用两层，能用简单故事说明白的不用复杂 公式，就算有复杂公式也放进附录里； 繁简要有计划，细节要略写以免让人费解， 主干则要用重笔让人印象深刻； 插图要不言自明，要出现在该出现的地方，能恰当 地作成段落注解； 语句不能太长，避免从句套从句，长短结合比较好，等等。    三 Talk  克服困局  一方面是充分的准备，另一方面是对 自己研究课题的自信。 自己热爱它，为它自豪，愿意讲给别人听，也知道自己如何 遣词造句，那这时大脑就会聚焦到内容上，说着说着就入情入境，英语也就自然地 变得慢了，流畅了。 等到说完，发现自己居然说得还可以，那下一次就更不会紧张 ，久而久之，终于就可以摆脱恶性循环，进入良性轨道。    如何才是好的讲稿呢？  如同写作一样，最好的演讲是一个有唯一主题的流畅故事。 所谓流畅故事，是指幻 灯片和幻灯片之间要有自然过渡，让人不知不觉就听完整个演讲，而不觉得有什么 转折生硬的地方。 相比作文，演讲的流畅性更为重要，因为读者看文章时可以细细 琢磨，听众听演讲时则是一晃而过。 为了流畅性，一个好的演讲可以不惜牺牲大量 细节，只把最重要最易记忆的主线说出来——  但条件是，这最重要的主线不能失了 应有的大转折和大逻辑，不能让人觉得太过简单无聊，或太过跳跃而没有说服力。  找到主线这个点，作者反复强调，确实最需要磨练才能掌握的一个地方   最好的平衡点，在于“意料之外，情理之中”，听完有一种“原来如此，我怎么没 有想到”的感受。   一个看似无关却很有效的办法是  先把幻灯片做好，写好演讲词，然后看看是否能 在规定时间脱稿讲得出来。  先有一个雏形   最好的演讲，是看了幻灯片自然而然能说出句子，而不 需要死记硬背，转折流畅，故事清楚。 另一个常见的错误，是把自己想说的话写在幻灯 片上。但其实幻灯片上写的，应该是在演讲者说完之后，最希望观众记得的内容 （所谓的“take home message”)。 为此，一张幻灯片来来回回做个几次都是正常 的，往往是初稿的字数非常多，往后思考越深则字数越少，到最后只放一张图或者 两张图，但在观众看来，一望即明。   好的幻灯片有几种类型  可以只含一张大图，或互有联系的若干图片，或一个前人 工作的列表，或一件事物的优劣二分法，或一个算法的三个主要步骤，或一些事物 的相互关系，等等。 一句话，如果盯着它十秒钟没看出来重点是什么，那就打回去 重做吧。    四 About time management</description>
+    </item>
+    
+    <item>
+      <title>MPI Intro and Practice</title>
+      <link>https://huweim.github.io/posts/mpi_intro_and_practice/</link>
+      <pubDate>Tue, 09 Mar 2021 22:36:19 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/mpi_intro_and_practice/</guid>
+      <description>MPI Intro and Practice Intro Definition wiki:
+ Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.  Feature  an interface, not a programming language Main model of HPC a cross-language communication protocol  Functions  Communication  Point-to-point communication  Send Recv   Collective communication  Broadcast, scatter/ gather, all to all, reduce, scan, barrier     Almost all parallel programs can be described using the message passing model.</description>
+    </item>
+    
+    <item>
+      <title>Git中常用的操作</title>
+      <link>https://huweim.github.io/posts/git_operation/</link>
+      <pubDate>Mon, 08 Mar 2021 19:12:40 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/git_operation/</guid>
+      <description>Git中常用的操作 1. Remote Repo 1.1 Add Remote Repo $ git remote add origin git@github.com:huweim/repo_name.git 1.2 Delete Remote Repo  Add a wrong remote repo, we could delete it.  $ git remote -v origin git@github.com:huweim/huweim.github.io.git (fetch) origin git@github.com:huweim/huweim.github.io.git (push)  Delete it  $ git remote rm origin 2. Clone from Remote Repo $ git clone git@github.com:huweim/repo_name.git $ git clone https://github.com/huweim/repo_name.git  很多时候http速度很慢，会clone失败报错，所以建议使用ssh。  3. Delete 3.1 删除工作区文件   与win中右键删除没有区别</description>
+    </item>
+    
+    <item>
+      <title>My First Post</title>
+      <link>https://huweim.github.io/posts/my-first-post/</link>
+      <pubDate>Mon, 08 Mar 2021 11:24:04 +0800</pubDate>
+      
+      <guid>https://huweim.github.io/posts/my-first-post/</guid>
+      <description>About 3 days, it finally works!</description>
+    </item>
+    
+    <item>
+      <title>Archives</title>
+      <link>https://huweim.github.io/archives/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      
+      <guid>https://huweim.github.io/archives/</guid>
+      <description>历史文章按照年月归档.</description>
+    </item>
+    
+  </channel>
+</rss>

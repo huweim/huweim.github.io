@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Blog_Hugo_About页面制作 - Cory Code</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta itemprop="name" content="Blog_Hugo_About页面制作">
+<meta itemprop="description" content="前言 最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。
+本文记录添加 about 页面的过程。
+注：这个是使用 markdown 进行添加，并非制作 html 页面。Hugo 主题基于 Ink
+添加 About 页面 右键打开 Git 命令行，输入
+hugo new about.md 在文件夹 posts 的同级目录下新建了一个 about.md 文件。
+修改 markdown 文件顶部的选项使其能够出现在首页菜单栏
+title: &#34;About&#34; date: 2021-07-08T17:46:31&#43;08:00 menu: &#34;main&#34; weight: 60 comment: false 预览 在根目录下打开 Git，输入命令
+hugo -D server 在自己的浏览器上访问网址：http://localhost:1313/ 即可预览
+Reference https://cpurely.github.io/post/hugo%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0about%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2/">
+<meta itemprop="datePublished" content="2021-07-24T19:19:09&#43;08:00" />
+<meta itemprop="dateModified" content="2021-07-24T19:19:09&#43;08:00" />
+<meta itemprop="wordCount" content="51">
+
+
+
+<meta itemprop="keywords" content="博客,技巧," /><meta property="og:title" content="Blog_Hugo_About页面制作" />
+<meta property="og:description" content="前言 最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。
+本文记录添加 about 页面的过程。
+注：这个是使用 markdown 进行添加，并非制作 html 页面。Hugo 主题基于 Ink
+添加 About 页面 右键打开 Git 命令行，输入
+hugo new about.md 在文件夹 posts 的同级目录下新建了一个 about.md 文件。
+修改 markdown 文件顶部的选项使其能够出现在首页菜单栏
+title: &#34;About&#34; date: 2021-07-08T17:46:31&#43;08:00 menu: &#34;main&#34; weight: 60 comment: false 预览 在根目录下打开 Git，输入命令
+hugo -D server 在自己的浏览器上访问网址：http://localhost:1313/ 即可预览
+Reference https://cpurely.github.io/post/hugo%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0about%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2/" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="https://huweim.github.io/posts/blog_hugo_about/" />
+<meta property="article:published_time" content="2021-07-24T19:19:09+08:00" />
+<meta property="article:modified_time" content="2021-07-24T19:19:09+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Blog_Hugo_About页面制作"/>
+<meta name="twitter:description" content="前言 最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。
+本文记录添加 about 页面的过程。
+注：这个是使用 markdown 进行添加，并非制作 html 页面。Hugo 主题基于 Ink
+添加 About 页面 右键打开 Git 命令行，输入
+hugo new about.md 在文件夹 posts 的同级目录下新建了一个 about.md 文件。
+修改 markdown 文件顶部的选项使其能够出现在首页菜单栏
+title: &#34;About&#34; date: 2021-07-08T17:46:31&#43;08:00 menu: &#34;main&#34; weight: 60 comment: false 预览 在根目录下打开 Git，输入命令
+hugo -D server 在自己的浏览器上访问网址：http://localhost:1313/ 即可预览
+Reference https://cpurely.github.io/post/hugo%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0about%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2/"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://huweim.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://huweim.github.io/css/main.css" />
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://huweim.github.io/css/dark.css" />
+
+	<script src="https://huweim.github.io/js/feather.min.js"></script>
+	
+		<script src="https://huweim.github.io/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+	<h1 class="site-title"><a href="https://huweim.github.io/">Cory Code</a></h1>
+	<div class="site-description"><p>Minimal and Clean <a href="https://github.com/athul/hugo-ink">blog theme for Hugo</a></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://github.com/huweim" title="GitHub"><i data-feather="github"></i></a></li><li><a href="https://twitter.com/athulcajay/" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://gitlab.com/athul/" title="GitLab"><i data-feather="gitlab"></i></a></li><li><a href="#" class="scheme-toggle" id="scheme-toggle"></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+			<li>
+				<a href="/archives">Archives</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/about/">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">24</span>
+							<span class="rest">Jul 2021</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Blog_Hugo_About页面制作</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<h1 id="前言">前言</h1>
+<p>最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。</p>
+<p>本文记录添加 about 页面的过程。</p>
+<p>注：这个是使用 markdown 进行添加，并非制作 html 页面。Hugo 主题基于 Ink</p>
+<h2 id="添加-about-页面">添加 About 页面</h2>
+<p>右键打开 Git 命令行，输入</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">hugo new about.md
+</code></pre></div><p>在文件夹 <code>posts</code> 的同级目录下新建了一个 <code>about.md</code> 文件。</p>
+<p>修改 markdown 文件顶部的选项使其能够出现在首页菜单栏</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">title: &#34;About&#34;
+date: 2021-07-08T17:46:31+08:00
+menu: &#34;main&#34;
+weight: 60
+comment: false
+</code></pre></div><h2 id="预览">预览</h2>
+<p>在根目录下打开 Git，输入命令</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">hugo -D server
+</code></pre></div><p>在自己的浏览器上访问网址：http://localhost:1313/ 即可预览</p>
+<h1 id="reference">Reference</h1>
+<p><a href="https://cpurely.github.io/post/hugo%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0about%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2/">https://cpurely.github.io/post/hugo%E5%A6%82%E4%BD%95%E6%B7%BB%E5%8A%A0about%E5%92%8C%E8%87%AA%E5%AE%9A%E4%B9%89%E9%A1%B5%E9%9D%A2/</a></p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/%E5%8D%9A%E5%AE%A2">博客</a></li>
+							
+							<li><a href="/tags/%E6%8A%80%E5%B7%A7">技巧</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2021  © Athul |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+</body>
+</html>
