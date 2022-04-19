@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>GPGPU-Sim - Cory Code</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<link rel="alternate" type="application/rss+xml" href="https://huweim.github.io/tags/gpgpu-sim/index.xml" title="Cory Code" />
+	<meta itemprop="name" content="GPGPU-Sim">
+<meta itemprop="description" content=""><meta property="og:title" content="GPGPU-Sim" />
+<meta property="og:description" content="" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://huweim.github.io/tags/gpgpu-sim/" />
+<meta property="og:updated_time" content="2021-09-28T15:51:46+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="GPGPU-Sim"/>
+<meta name="twitter:description" content=""/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="https://huweim.github.io/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="https://huweim.github.io/css/main.css" />
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="https://huweim.github.io/css/dark.css" />
+
+	<script src="https://huweim.github.io/js/feather.min.js"></script>
+	
+		<script src="https://huweim.github.io/js/main.js"></script>
+</head>
+
+
+<body>
+	<div class="container wrapper list">
+		<div class="header">
+	
+	<h1 class="site-title"><a href="https://huweim.github.io/">Cory Code</a></h1>
+	<div class="site-description"><p>Minimal and Clean <a href="https://github.com/athul/hugo-ink">blog theme for Hugo</a></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://github.com/huweim" title="GitHub"><i data-feather="github"></i></a></li><li><a href="https://twitter.com/athulcajay/" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://gitlab.com/athul/" title="GitLab"><i data-feather="gitlab"></i></a></li><li><a href="#" class="scheme-toggle" id="scheme-toggle"></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+			<li>
+				<a href="/archives">Archives</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/about/">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		
+			<h2>GPGPU-Sim</h2>
+		
+		
+		
+
+		<ul class="posts flat"><li class="post">
+				<div class="post-header">
+					<div class="meta">
+						<div class="date">
+							<span class="day">28</span>
+							<span class="rest">Sep 2021</span>
+						</div>
+					</div>
+					<div class="matter">
+						<h4 class="title small">
+							<a href="/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/">GPGPU-Sim源码阅读</a>
+						</h4>
+						<span class="description">
+							
+								
+# Shader.cc
+
+shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn,...
+							
+						</span>
+					</div>
+				</div>
+			</li><li class="post">
+				<div class="post-header">
+					<div class="meta">
+						<div class="date">
+							<span class="day">28</span>
+							<span class="rest">Sep 2021</span>
+						</div>
+					</div>
+					<div class="matter">
+						<h4 class="title small">
+							<a href="/posts/%E6%96%87%E6%A1%A3_gpgpu-sim-performance-simulation-engine/">文档_GPGPU-sim - Performance Simulation Engine</a>
+						</h4>
+						<span class="description">
+							
+								
+GPGPU-sim - Performance Simulation Engine
+
+# 1 Performance Model Software Objects
+
+```c&#43;&#43;
+ldst_unit *m_ldst_unit;
+```
+
+...
+							
+						</span>
+					</div>
+				</div>
+			</li><li class="post">
+				<div class="post-header">
+					<div class="meta">
+						<div class="date">
+							<span class="day">28</span>
+							<span class="rest">Sep 2021</span>
+						</div>
+					</div>
+					<div class="matter">
+						<h4 class="title small">
+							<a href="/posts/%E7%BC%96%E7%A8%8B_gpgpu-sim-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/">GPGPU-Sim 运行机制</a>
+						</h4>
+						<span class="description">
+							
+								
+# 0. 前言
+
+在 GPGPU-Sim 跑一些比较大的 benchmark, 或者想要同时跑很多组 benchmark 的时候，在自己的电脑上跑，或者在虚拟机上运行的话速度肯定达不到要求，会成为工作中瓶颈。因此了解一下如何在服务器上跑 ...
+							
+						</span>
+					</div>
+				</div>
+			</li><li class="post">
+				<div class="post-header">
+					<div class="meta">
+						<div class="date">
+							<span class="day">27</span>
+							<span class="rest">Sep 2021</span>
+						</div>
+					</div>
+					<div class="matter">
+						<h4 class="title small">
+							<a href="/posts/%E7%BC%96%E7%A8%8B_%E6%90%AD%E5%BB%BAgpgpu-sim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83/">搭建GPGPU-Sim实验环境</a>
+						</h4>
+						<span class="description">
+							
+								
+# 0. 前言
+
+第一个思路是 
+
+&#43; 服务器OS-&gt;Docker Container-&gt;Ubuntu中运行GPGPU-Sim。
+&#43; Docker Container update Docker Image-&gt;Docker Image-&gt;...
+							
+						</span>
+					</div>
+				</div>
+			</li><li class="post">
+				<div class="post-header">
+					<div class="meta">
+						<div class="date">
+							<span class="day">04</span>
+							<span class="rest">Sep 2021</span>
+						</div>
+					</div>
+					<div class="matter">
+						<h4 class="title small">
+							<a href="/posts/%E6%96%87%E6%A1%A3_simt_core/">SIMT_Core</a>
+						</h4>
+						<span class="description">
+							
+								
+# 0. 前言
+
+搞懂 SIMT Core 对于理解 GPGPU 的指令 fetch、指令发射、内存访问、数据传输等步骤非常重要，按照 GPGPU-Sim 的官方文档进行一个简单的梳理
+
+SIMT Core 的微架构模型中有几个比较重要的...
+							
+						</span>
+					</div>
+				</div>
+			</li><li class="post">
+				<div class="post-header">
+					<div class="meta">
+						<div class="date">
+							<span class="day">10</span>
+							<span class="rest">May 2021</span>
+						</div>
+					</div>
+					<div class="matter">
+						<h4 class="title small">
+							<a href="/posts/%E7%BC%96%E7%A8%8B_ubuntu-20.04-%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C-gpgpu-sim/">Ubuntu 20.04 下安装运行 GPGPU-Sim</a>
+						</h4>
+						<span class="description">
+							
+								
+### **0. 前言**
+
+最近因为课程 Project 需要使用 GPGPU-Sim 复现一篇 paper，在之后的课题中可能也会用到这个模拟器。所以收集了相关资料以搭建 GPGPU-Sim 的环境并运行 Demo。GPGPU-Sim...
+							
+						</span>
+					</div>
+				</div>
+			</li></ul>
+	</div>
+
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2021  © Athul |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+</body>
+
+</html>

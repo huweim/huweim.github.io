@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title> - Cory Code</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta itemprop="name" content="">
+<meta itemprop="description" content="0. 前言 这部分介绍了模拟器源码中比较重要的几个部分，主要是关于 SIMT Core 中的几个单元的代码。
+4. Software Design of GPGPU-Sim 4.4 GPGPU-Sim - Performance Simulation Engine 4.4.1 Performance Model Software Objects 4.4.1.1 SIMT Core Cluster Class SIMT Core Cluster 通过类 simt_core_cluster 建模。这个类在 m_core 中包含一组 SIMT core 对象。simt_core_cluster::core_cycle() 方法只是按顺序 循环调用 (cycles) 每个 SIMT core.
+simt_core_cluster::icnt_cycle() 方法将内存请求从 interconnection network push 到 SIMT Core Cluster&rsquo;s response FIFO. 它也将 FIFO 中的请求出队，送到合适的 core&rsquo;s instruction cache or LDST unit. 这些与前面描述的硬件块密切对应。
+4.4.1.2 SIMT Core Class SIMT Core 中的微架构在 shader.">
+
+<meta itemprop="wordCount" content="315">
+
+
+
+<meta itemprop="keywords" content="" /><meta property="og:title" content="" />
+<meta property="og:description" content="0. 前言 这部分介绍了模拟器源码中比较重要的几个部分，主要是关于 SIMT Core 中的几个单元的代码。
+4. Software Design of GPGPU-Sim 4.4 GPGPU-Sim - Performance Simulation Engine 4.4.1 Performance Model Software Objects 4.4.1.1 SIMT Core Cluster Class SIMT Core Cluster 通过类 simt_core_cluster 建模。这个类在 m_core 中包含一组 SIMT core 对象。simt_core_cluster::core_cycle() 方法只是按顺序 循环调用 (cycles) 每个 SIMT core.
+simt_core_cluster::icnt_cycle() 方法将内存请求从 interconnection network push 到 SIMT Core Cluster&rsquo;s response FIFO. 它也将 FIFO 中的请求出队，送到合适的 core&rsquo;s instruction cache or LDST unit. 这些与前面描述的硬件块密切对应。
+4.4.1.2 SIMT Core Class SIMT Core 中的微架构在 shader." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/%E6%96%87%E6%A1%A3_software-design-of-gpgpu-sim/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="0. 前言 这部分介绍了模拟器源码中比较重要的几个部分，主要是关于 SIMT Core 中的几个单元的代码。
+4. Software Design of GPGPU-Sim 4.4 GPGPU-Sim - Performance Simulation Engine 4.4.1 Performance Model Software Objects 4.4.1.1 SIMT Core Cluster Class SIMT Core Cluster 通过类 simt_core_cluster 建模。这个类在 m_core 中包含一组 SIMT core 对象。simt_core_cluster::core_cycle() 方法只是按顺序 循环调用 (cycles) 每个 SIMT core.
+simt_core_cluster::icnt_cycle() 方法将内存请求从 interconnection network push 到 SIMT Core Cluster&rsquo;s response FIFO. 它也将 FIFO 中的请求出队，送到合适的 core&rsquo;s instruction cache or LDST unit. 这些与前面描述的硬件块密切对应。
+4.4.1.2 SIMT Core Class SIMT Core 中的微架构在 shader."/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="http://localhost:1313/css/dark.css" />
+
+	<script src="http://localhost:1313/js/feather.min.js"></script>
+	
+		<script src="http://localhost:1313/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+	<h1 class="site-title"><a href="http://localhost:1313/">Cory Code</a></h1>
+	<div class="site-description"><p>Minimal and Clean <a href="https://github.com/athul/hugo-ink">blog theme for Hugo</a></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://github.com/huweim" title="GitHub"><i data-feather="github"></i></a></li><li><a href="https://twitter.com/athulcajay/" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://gitlab.com/athul/" title="GitLab"><i data-feather="gitlab"></i></a></li><li><a href="#" class="scheme-toggle" id="scheme-toggle"></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+			<li>
+				<a href="/archives">Archives</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/about/">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+				<div class="matter">
+					<h1 class="title"></h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<h1 id="0-前言">0. 前言</h1>
+<p>这部分介绍了模拟器源码中比较重要的几个部分，主要是关于 SIMT Core 中的几个单元的代码。</p>
+<h1 id="4-software-design-of-gpgpu-sim">4. Software Design of GPGPU-Sim</h1>
+<h2 id="44-gpgpu-sim---performance-simulation-engine">4.4 GPGPU-Sim - Performance Simulation Engine</h2>
+<h3 id="441-performance-model-software-objects">4.4.1 Performance Model Software Objects</h3>
+<h4 id="4411-simt-core-cluster-class">4.4.1.1 SIMT Core Cluster Class</h4>
+<p>SIMT Core Cluster 通过类 <code>simt_core_cluster</code> 建模。这个类在 <code>m_core</code> 中包含一组 SIMT core 对象。<code>simt_core_cluster::core_cycle()</code> 方法只是按顺序 循环调用 (cycles) 每个 SIMT core.</p>
+<p><code>simt_core_cluster::icnt_cycle()</code> 方法将内存请求从 interconnection network push 到 SIMT Core Cluster&rsquo;s response FIFO. 它也将 FIFO 中的请求出队，送到合适的 core&rsquo;s instruction cache or LDST unit. 这些与前面描述的硬件块密切对应。</p>
+<h4 id="4412-simt-core-class">4.4.1.2 SIMT Core Class</h4>
+<p>SIMT Core 中的微架构在 shader.h/cc 的类 shader_core_ctx 中实现</p>
+<ul>
+<li>shd_warp_t objects 的集合用于 model 每个 warp 在 core 中的状态</li>
+<li>simt_stack object, 处理每个 warp 的分支</li>
+<li>set of scheduler_unit obj, 选择 set 中 warp 的一条 or 多条指令发射执行</li>
+<li>Scoreboard obj 处理 data hazard</li>
+<li>opndcoll_rfu_t obj, model operand collector</li>
+<li>set of <code>simd_function_unit</code> obj 实现 ALU pipeline</li>
+<li><code>ldst_unit</code> 实现 memory pipeline</li>
+<li><code>shader_memroy_interface</code> 将 SIMT Core 连接到相应的 SIMT Core Cluster</li>
+</ul>
+<p>每个 core cycle, 调用 <code>shader_core_ctx::cycle()</code> 来模拟 SIMT Core 的一个 cycle。cycle function 以按从下往上的顺序 (也就是从 writeback() 到 fetch()) 调用下列函数</p>
+<ul>
+<li>fetch()</li>
+<li>decode()</li>
+<li>issue()</li>
+<li>read_operand()</li>
+<li>execute()</li>
+<li>writeback()</li>
+</ul>
+<h5 id="i-fetch-and-decode-software-model">I. Fetch and Decode Software Model</h5>
+<p>I-Buffer 在 shd_warp_t 中作为数组实现，每个 shd_warp_t 有集合 m_ibuffer，大小为 2</p>
+<p>shd_warp_t 也有标志位决定 warp 的 eligibility 以备发射。解码的指令存在 ibuffer_entry，作为指针指向 <code>warp_inst_t</code> object, <code>warp_inst_t</code> 保留指令使用的操作类型和操作数的信息</p>
+<p><strong>Fetch</strong></p>
+<p>如果 decode stage 没有 stall, 即 <code>m_inst_fetch_buffer</code> 没有有效指令，那么 fetch unit 就可以工作 (<code>m_inst_fetch_buffer</code> 作为 fetch 和 decode stage 之间的 pipeline register)</p>
+<blockquote>
+<p>也就是 fetch() 函数中的 !m_inst_fetch_buffer.m_valid 时进入最外层 if 语句</p>
+</blockquote>
+<p>最后调度的 warp id 存在 <code>m_last_warp_fetched</code>。在 fetch() 函数中，进入最外层 if 语句，以及第2层中的 else 语句后，第3层中的第1个 if 语句检查 warp 是否已经完成执行，第3层中的第2个 if 语句检查当前 warp 对应的 entry 是否已经存储了有效的指令</p>
+<p><strong>Decode</strong></p>
+<p>decode stage 简单地检查 <code>m_inst_fetch_buffer</code>，然后开始解码指令，当前配置是一个周期解码2条指令</p>
+<h5 id="ii-schedule-and-issue-software-model">II. Schedule and Issue Software Model</h5>
+<p>每个 core 中，有数量可配置的 scheduler unit. 函数 <code>shader_core_ctx::issue()</code> 遍历这些 unit，每个单元都执行 <code>scheduler_unit::cycle()</code>，其中一个轮询调度算法会应用到 warp 上</p>
+<p>在 <code>scheduler_unit::cycle()</code> 中，函数 <code>shader_core_ctx::issue_warp()</code> 将指令发送到执行单元</p>
+<p>指令通过调用 <code>func_exec_inst()</code> 执行，调用 <code>simt_stack::update()</code> 更新 SIMT Stack。指令也会因为 <code>warp_t:set_membar()</code> 以及 <code>set_t::warp_reaches_barrier</code> 而等待</p>
+<p>另一方面，寄存器信息由 scoreboard 保存。scheduler_unit::m_sp_out, scheduler_unit::m_sfu_out, scheduler_unit::m_mem_out 分别指向 SP, SFU, Mem 流水线的 issue stage and execution stage 之间的第一个 pipeline register。这也是为什么在每条指令发射之前都要检查这些单元</p>
+<h5 id="iii-simt-stack-software-model">III. SIMT Stack Software Model</h5>
+<p>先忽略这个</p>
+<h5 id="iv-scoreboard-software-model">IV. Scoreboard Software Model</h5>
+<h4 id="4414-memory-partition">4.4.1.4 Memory Partition</h4>
+<p>l2cache.cc/h 中有 class <code>memory_partition_unit</code></p>
+<h5 id="ii-l2-cache-model">II. L2 Cache Model</h5>
+<p><code>mem_fetch *mf = m_L2cache-&gt;next_access();</code> 产生等待 fill MSHR entry 的内存请求的 reply,</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2021  © Athul |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+<script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10&v=2"></' + 'script>')</script></body>
+</html>

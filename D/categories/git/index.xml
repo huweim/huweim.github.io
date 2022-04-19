@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>git on Cory Code</title>
+    <link>http://localhost:1313/categories/git/</link>
+    <description>Recent content in git on Cory Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Athul</copyright>
+    <lastBuildDate>Mon, 08 Mar 2021 19:12:40 +0800</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/categories/git/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Git中常用的操作</title>
+      <link>http://localhost:1313/posts/git_operation/</link>
+      <pubDate>Mon, 08 Mar 2021 19:12:40 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/git_operation/</guid>
+      <description>Git中常用的操作 1. Remote Repo 1.1 Add Remote Repo $ git remote add origin git@github.com:huweim/repo_name.git 1.2 Delete Remote Repo  Add a wrong remote repo, we could delete it.  $ git remote -v origin git@github.com:huweim/huweim.github.io.git (fetch) origin git@github.com:huweim/huweim.github.io.git (push)  Delete it  $ git remote rm origin 2. Clone from Remote Repo $ git clone git@github.com:huweim/repo_name.git $ git clone https://github.com/huweim/repo_name.git  很多时候http速度很慢，会clone失败报错，所以建议使用ssh。  3. Delete 3.1 删除工作区文件   与win中右键删除没有区别</description>
+    </item>
+    
+  </channel>
+</rss>

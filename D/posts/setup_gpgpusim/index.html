@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title>Ubuntu 20.04 下安装运行 GPGPU-Sim - Cory Code</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta itemprop="name" content="Ubuntu 20.04 下安装运行 GPGPU-Sim">
+<meta itemprop="description" content="0. 前言 最近因为课程 Project 需要使用 GPGPU-Sim 复现一篇 paper，在之后的课题中可能也会用到这个模拟器。所以收集了相关资料以搭建 GPGPU-Sim 的环境并运行 Demo。GPGPU-Sim 的参考资料实在是不多，主要参考了官方文档、Github 中 README 文件，还有一些相关的 Blog。
+本次只跑了一个非常简单的 Demo，关于 CUDA 实例可以参考 Textbook 《CUDA by Example》。里面提供了一些 CUDA 编程的源码介绍。有人在 Github 上提供了《CUDA by Example》的源代码。
+不过自己搭建 GPGPU-Sim 的环境坑比较多，一定要注意 gcc/g&#43;&#43; 版本问题以及链接库。所以我个人还是建议如果不是长期使用，可以直接下载官方提供的 fully setup virtual machine 。在 http://gpgpu-sim.org/ 下载，然后导入 Virtual Box 使用。他们提供的虚拟机已经配置好了环境，可以直接使用 GPGPU-Sim 编译 .cu 文件然后在模拟器上运行。具体步骤可以参考 UCR 给的流程。
+1. 介绍 GPGPU-sim能够在Linux系统下，提供对GPU的功能模拟和性能仿真，让你在没有装NVIDIA显卡的情况下可以编译并运行CUDA程序。当然它更重要的意义是，可以通过修改仿真参数，让开发者修改GPU内部架构，并进行性能仿真，以针对自己的项目需求进行更好的代码设计，获得更好的性能表现。
+我使用的环境是
+ Ubuntu 20.04 CUDA Toolkit 11.1 gcc/g&#43;&#43; 5 ⚠️ 注意：在 Build GPGPU-Sim 之前最好就确保使用 gcc/g&#43;&#43; 5 版本 当时 GPGPU-Sim 作者测试时使用的是 CUDA 4.">
+<meta itemprop="datePublished" content="2021-05-10T15:17:51&#43;08:00" />
+<meta itemprop="dateModified" content="2021-05-10T15:17:51&#43;08:00" />
+<meta itemprop="wordCount" content="675">
+
+
+
+<meta itemprop="keywords" content="gpgpu-sim,环境搭建," /><meta property="og:title" content="Ubuntu 20.04 下安装运行 GPGPU-Sim" />
+<meta property="og:description" content="0. 前言 最近因为课程 Project 需要使用 GPGPU-Sim 复现一篇 paper，在之后的课题中可能也会用到这个模拟器。所以收集了相关资料以搭建 GPGPU-Sim 的环境并运行 Demo。GPGPU-Sim 的参考资料实在是不多，主要参考了官方文档、Github 中 README 文件，还有一些相关的 Blog。
+本次只跑了一个非常简单的 Demo，关于 CUDA 实例可以参考 Textbook 《CUDA by Example》。里面提供了一些 CUDA 编程的源码介绍。有人在 Github 上提供了《CUDA by Example》的源代码。
+不过自己搭建 GPGPU-Sim 的环境坑比较多，一定要注意 gcc/g&#43;&#43; 版本问题以及链接库。所以我个人还是建议如果不是长期使用，可以直接下载官方提供的 fully setup virtual machine 。在 http://gpgpu-sim.org/ 下载，然后导入 Virtual Box 使用。他们提供的虚拟机已经配置好了环境，可以直接使用 GPGPU-Sim 编译 .cu 文件然后在模拟器上运行。具体步骤可以参考 UCR 给的流程。
+1. 介绍 GPGPU-sim能够在Linux系统下，提供对GPU的功能模拟和性能仿真，让你在没有装NVIDIA显卡的情况下可以编译并运行CUDA程序。当然它更重要的意义是，可以通过修改仿真参数，让开发者修改GPU内部架构，并进行性能仿真，以针对自己的项目需求进行更好的代码设计，获得更好的性能表现。
+我使用的环境是
+ Ubuntu 20.04 CUDA Toolkit 11.1 gcc/g&#43;&#43; 5 ⚠️ 注意：在 Build GPGPU-Sim 之前最好就确保使用 gcc/g&#43;&#43; 5 版本 当时 GPGPU-Sim 作者测试时使用的是 CUDA 4." />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/setup_gpgpusim/" />
+<meta property="article:published_time" content="2021-05-10T15:17:51+08:00" />
+<meta property="article:modified_time" content="2021-05-10T15:17:51+08:00" />
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content="Ubuntu 20.04 下安装运行 GPGPU-Sim"/>
+<meta name="twitter:description" content="0. 前言 最近因为课程 Project 需要使用 GPGPU-Sim 复现一篇 paper，在之后的课题中可能也会用到这个模拟器。所以收集了相关资料以搭建 GPGPU-Sim 的环境并运行 Demo。GPGPU-Sim 的参考资料实在是不多，主要参考了官方文档、Github 中 README 文件，还有一些相关的 Blog。
+本次只跑了一个非常简单的 Demo，关于 CUDA 实例可以参考 Textbook 《CUDA by Example》。里面提供了一些 CUDA 编程的源码介绍。有人在 Github 上提供了《CUDA by Example》的源代码。
+不过自己搭建 GPGPU-Sim 的环境坑比较多，一定要注意 gcc/g&#43;&#43; 版本问题以及链接库。所以我个人还是建议如果不是长期使用，可以直接下载官方提供的 fully setup virtual machine 。在 http://gpgpu-sim.org/ 下载，然后导入 Virtual Box 使用。他们提供的虚拟机已经配置好了环境，可以直接使用 GPGPU-Sim 编译 .cu 文件然后在模拟器上运行。具体步骤可以参考 UCR 给的流程。
+1. 介绍 GPGPU-sim能够在Linux系统下，提供对GPU的功能模拟和性能仿真，让你在没有装NVIDIA显卡的情况下可以编译并运行CUDA程序。当然它更重要的意义是，可以通过修改仿真参数，让开发者修改GPU内部架构，并进行性能仿真，以针对自己的项目需求进行更好的代码设计，获得更好的性能表现。
+我使用的环境是
+ Ubuntu 20.04 CUDA Toolkit 11.1 gcc/g&#43;&#43; 5 ⚠️ 注意：在 Build GPGPU-Sim 之前最好就确保使用 gcc/g&#43;&#43; 5 版本 当时 GPGPU-Sim 作者测试时使用的是 CUDA 4."/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="http://localhost:1313/css/dark.css" />
+
+	<script src="http://localhost:1313/js/feather.min.js"></script>
+	
+		<script src="http://localhost:1313/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+	<h1 class="site-title"><a href="http://localhost:1313/">Cory Code</a></h1>
+	<div class="site-description"><p>Minimal and Clean <a href="https://github.com/athul/hugo-ink">blog theme for Hugo</a></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://github.com/huweim" title="GitHub"><i data-feather="github"></i></a></li><li><a href="https://twitter.com/athulcajay/" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://gitlab.com/athul/" title="GitLab"><i data-feather="gitlab"></i></a></li><li><a href="#" class="scheme-toggle" id="scheme-toggle"></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+			<li>
+				<a href="/archives">Archives</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/about/">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+					<div class="meta">
+						<div class="date">
+							<span class="day">10</span>
+							<span class="rest">May 2021</span>
+						</div>
+					</div>
+				
+				<div class="matter">
+					<h1 class="title">Ubuntu 20.04 下安装运行 GPGPU-Sim</h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<h3 id="0-前言"><strong>0. 前言</strong></h3>
+<p>最近因为课程 Project 需要使用 GPGPU-Sim 复现一篇 paper，在之后的课题中可能也会用到这个模拟器。所以收集了相关资料以搭建 GPGPU-Sim 的环境并运行 Demo。GPGPU-Sim 的参考资料实在是不多，主要参考了<a href="http://gpgpu-sim.org/manual/index.php/Main_Page">官方文档</a>、<a href="https://github.com/gpgpu-sim/gpgpu-sim_distribution">Github 中 README 文件</a>，还有一些相关的 Blog。</p>
+<p>本次只跑了一个非常简单的 Demo，关于 CUDA 实例可以参考 Textbook 《CUDA by Example》。里面提供了一些 CUDA 编程的源码介绍。有人在 <a href="https://github.com/jiekebo/CUDA-By-Example">Github</a> 上提供了《CUDA by Example》的源代码。</p>
+<p><strong>不过自己搭建 GPGPU-Sim 的环境坑比较多，一定要注意 gcc/g++ 版本问题以及链接库。所以我个人还是建议如果不是长期使用，可以直接下载官方提供的 fully setup virtual machine</strong> 。在 <a href="http://gpgpu-sim.org/">http://gpgpu-sim.org/</a> 下载，然后导入 Virtual Box 使用。他们提供的虚拟机已经配置好了环境，可以直接使用 GPGPU-Sim 编译 .cu 文件然后在模拟器上运行。具体步骤可以参考 <a href="http://www.danielwong.org/classes/ee260-w17/assignment1">UCR 给的流程</a>。</p>
+<h3 id="1-介绍"><strong>1. 介绍</strong></h3>
+<p>GPGPU-sim能够在Linux系统下，提供对GPU的功能模拟和性能仿真，让你在没有装NVIDIA显卡的情况下可以编译并运行CUDA程序。当然它更重要的意义是，可以通过修改仿真参数，让开发者修改GPU内部架构，并进行性能仿真，以针对自己的项目需求进行更好的代码设计，获得更好的性能表现。</p>
+<p>我使用的环境是</p>
+<ul>
+<li>Ubuntu 20.04</li>
+<li>CUDA Toolkit 11.1</li>
+<li>gcc/g++ 5</li>
+<li>⚠️ 注意：在 Build GPGPU-Sim 之前最好就确保使用 gcc/g++ 5 版本</li>
+<li>当时 GPGPU-Sim 作者测试时使用的是 CUDA 4.2 版本，gcc/g++也是 4.X 版本。</li>
+<li>我使用 gcc/g++ 9 编译 .cu 得到的可执行程序在模拟器上运行会报错: Segmentation Fault. 使用 gcc/g++ 5 版本重新 Build 模拟器并编译后才正常运行。</li>
+</ul>
+<h3 id="2-环境搭建"><strong>2. 环境搭建</strong></h3>
+<p><strong>2.1 Dependencies</strong></p>
+<p>官方给出了需要的环境</p>
+<p>GPGPU-Sim Dependencies</p>
+<ul>
+<li>gcc</li>
+<li>g++</li>
+<li>make</li>
+<li>makedepend</li>
+<li>xutils</li>
+<li>bison</li>
+<li>flex</li>
+<li>zlib</li>
+<li>CUDA Toolkit</li>
+</ul>
+<p>GPGPU-Sim documentation dependencies</p>
+<ul>
+<li>doxygen</li>
+<li>graphvi</li>
+</ul>
+<p>AerialVision Dependencies</p>
+<ul>
+<li>python-pmw</li>
+<li>python-ply</li>
+<li>python-numpy</li>
+<li>libpng 12-dev</li>
+<li>python-matplotlib</li>
+</ul>
+<p>如果您正在使用Ubuntu，以下命令将安装除 CUDA 工具包之外的所有必需的依赖项。 所以我们直接用以下命令行安装所有需要的依赖。</p>
+<p>GPGPU-Sim dependencies:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo apt-get install build-essential xutils-dev bison zlib1g-dev flex libglu1-mesa-dev
+</code></pre></div><p>GPGPU-Sim documentation dependencies:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo apt-get install doxygen graphviz
+</code></pre></div><p>AerialVision dependencies:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo apt-get install python-pmw python-ply python-numpy libpng12-dev python-matplotlib
+</code></pre></div><p>CUDA SDK dependencies:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">sudo apt-get install libxi-dev libxmu-dev libglut3-dev
+</code></pre></div><h3 id="22-cuda安装"><strong>2.2 CUDA安装</strong></h3>
+<p>这里讲一下 CUDA Toolkit 的安装过程</p>
+<h3 id="i-cuda官网下载对应的包"><strong>I. CUDA官网下载对应的包</strong></h3>
+<ul>
+<li>进入CUDA官网[https://developer.nvidia.com/zh-cn/cuda-downloads]</li>
+<li>根据自己的系统选择，建议下载runfile文件，官网给出了命令行操作</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ wget https://developer.download.nvidia.com/compute/cuda/11.1.0/local_installers/cuda_11.1.0_455.23.05_linux.run
+$ sudo sh cuda_11.1.0_455.23.05_linux.run
+</code></pre></div><p><img src="https://pic1.zhimg.com/v2-7ba2629b1e3b75a29461c9ecbc851ed4_b.png" alt="img"></p>
+<p>CUDA官网下载对应的包</p>
+<ul>
+<li>在这一界面输入 accept 继续</li>
+</ul>
+<p><img src="https://pic3.zhimg.com/v2-6a47063759886db4e5b5a4d11cd5e78a_b.png" alt="img"></p>
+<p>输入 accept</p>
+<ul>
+<li>安装CUDA工具包时如果电脑上没有GPU无需安装Driver，用叉号进行选择，仅勾选 CUDA Toolkit 即可，然后Install回车</li>
+</ul>
+<p><img src="https://pic2.zhimg.com/v2-3cb43abb13dd63dd71c8c1eaa559f28d_b.png" alt="img"></p>
+<p>勾选Toolkit后 Install</p>
+<ul>
+<li>之后会弹出一个带有 Summary 的界面，表示安装成功</li>
+</ul>
+<h3 id="ii-配置环境变量"><strong>II. 配置环境变量</strong></h3>
+<ul>
+<li>命令行输入sudo gedit ~/.bashrc</li>
+<li>在文件尾部插入如下命令，注意要去 ./usr/local 中核对一下cuda文件的名称，我这里是cuda-11.1为例</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">export CUDA_INSTALL_PATH=/usr/local/cuda-11.1
+export PATH=$CUDA_INSTALL_PATH/bin
+export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:/usr/local/cuda-11.1/lib64
+</code></pre></div><p><img src="https://pic4.zhimg.com/v2-d8f6ca792f79b725d244f73aedc4812f_b.png" alt="img"></p>
+<p>在文件尾部插入命令后保存退出</p>
+<h3 id="iii-验证"><strong>III. 验证</strong></h3>
+<ul>
+<li>输入nvcc -V验证是否安装成功，注意是大写的 V 查看版本信息</li>
+</ul>
+<p><img src="https://pic3.zhimg.com/v2-a48113b779f1f6f0c74bd2182e74ed36_b.png" alt="img"></p>
+<p>出现版本信息</p>
+<h3 id="3-gpgpu-sim部署"><strong>3. GPGPU-Sim部署</strong></h3>
+<h3 id="31-安装-gpgpu-sim"><strong>3.1 安装 GPGPU-Sim</strong></h3>
+<h3 id="i-clone-gpgpu-sim-repo"><strong>I. Clone GPGPU-Sim Repo</strong></h3>
+<p>GPGPU-Sim使用从官方 git 地址 clone 的方式，Github一般能直接搜到</p>
+<p><a href="https://github.com/gpgpu-sim/gpgpu-sim_distribution">https://github.com/gpgpu-sim/gpgpu-sim_distribution</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">$ git clone https://github.com/gpgpu-sim/gpgpu-sim_distribution
+</code></pre></div><h3 id="ii-部署gpgpu-sim"><strong>II. 部署GPGPU-Sim</strong></h3>
+<p>进入clone项目代码的文件夹，打开命令行，执行以下命令</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">source setup_environment
+</code></pre></div><p>弹出 setup_environment succeeded</p>
+<p><img src="https://pic2.zhimg.com/v2-e932eff774baf3bfcb073260cc533e3d_b.png" alt="img"></p>
+<p>setup_environment succeeded</p>
+<p>然后执行以下命令</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">make
+make docs
+</code></pre></div><p>这部分的作用是 Build Simulator，可以参考<a href="https://zhuanlan.zhihu.com/p/369673760/(https://github.com/gpgpu-sim/gpgpu-sim_distribution)">官方文档</a> README 中的 Step 2 来了解细节。</p>
+<h3 id="32-run"><strong>3.2 Run</strong></h3>
+<p>从安装好到运行这一步还真不容易，再次感叹 GPGPU-Sim 的相关资料太少了。花了一些时间去了解 CUDA，去看官方文档，这里给出运行的 Demo 实例。来自<a href="https://www.gpuinsight.com/gpgpusim_install/">博客</a></p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">/* file: hello.cu */
+#include &lt;stdio.h&gt;
+#include &lt;cuda_runtime.h&gt;
+
+__global__ void add(int a, int b, int *c)
+{
+    *c = a + b;
+}
+
+int main()
+{
+    int c;
+    int *dev_c;
+    cudaMalloc((void **)&amp;dev_c, sizeof(int));
+    add&lt;&lt;&lt;1, 1&gt;&gt;&gt;(2, 7, dev_c);
+    cudaMemcpy(&amp;c, &amp;dev_c, sizeof(int), cudaMemcpyDeviceToHost);
+    printf(&#34;2 + 7 = %d\n&#34;, c);
+
+    return 0;
+}
+</code></pre></div><p><strong>I. 编译</strong></p>
+<blockquote>
+<p>Before we run, we need to make sure the application&rsquo;s executable file is dynamically linked to CUDA runtime library. This can be done during compilation of your program by introducing the nvcc flag &ldquo;&ndash;cudart shared&rdquo; in makefile (quotes should be excluded).</p>
+</blockquote>
+<ul>
+<li>编译程序时指定&ndash;cudart shared确保可执行程序动态链接到CUDA runtime库</li>
+</ul>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">nvcc --cudart shared -o hello hello.cu
+</code></pre></div><p><strong>II. 链接</strong></p>
+<blockquote>
+<p>To confirm the same, type the follwoing command: ldd &lt;your_application_name&gt;</p>
+</blockquote>
+<p>本文 3.1 -&gt; II 中已经通过source setup_environment设置可执行程序连接到GPGPU-Sim编译的libcudart.so中。 运行ldd确保链接正确的libcudart.so:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">ldd hello
+</code></pre></div><p>❗️❌之前没有链接到正确的 libcudart.so</p>
+<p><img src="https://pic1.zhimg.com/v2-6248557c4f5b684d7acfbd389c106128_b.png" alt="img"></p>
+<p>没有链接到 GPGPU-Sim 中的 libcudart.so 文件</p>
+<blockquote>
+<p>You should see that your application is using libcudart.so file in GPGPUSim directory.</p>
+</blockquote>
+<p>✔️ 您应该看到您的应用程序正在使用 GPGPUSim 目录中的 libcudart.so 文件</p>
+<p><img src="https://pic3.zhimg.com/v2-0082a419b7b3d2ddc3fc6bb021e7eab6_b.png" alt="img"></p>
+<p>成功链接到 GPGPU-Sim 中的 libcudart.so 文件</p>
+<p>链接到 GPGPU-Sim 中的 <a href="http://libcudart.so/">libcudart.so</a> 文件</p>
+<p><strong>III. 拷贝 Config 文件</strong></p>
+<blockquote>
+<p>Copy the contents of configs/QuadroFX5800/ or configs/GTX480/ to your application&rsquo;s working directory. These files configure the microarchitecture models to resemble the respective GPGPU architectures.</p>
+</blockquote>
+<p>⭐️运行程序之前需要拷贝 GPGPU-Sim 路径下的configs/tested-cfgs/SM2_GTX480/的配置文件到当前运行 demo 的路径下。</p>
+<blockquote>
+<p>Now To run a CUDA application on the simulator, simply execute source setup_environment &lt;build_type&gt; Use the same &lt;build_type&gt; you used while building the simulator. Then just launch the executable as you would if it was to run on the hardware. By running source setup_environment &lt;build_type&gt; you change your LD_LIBRARY_PATH to point to GPGPU-Sim&rsquo;s instead of CUDA or OpenCL runtime so that you do NOT need to re-compile your application simply to run it on GPGPU-Sim.</p>
+</blockquote>
+<p>通过运行 source setup_environment release，将 LD_LIBRARY_PATH 更改为指向 GPGPU-Sim 而不是 CUDA or OpenCL</p>
+<p><strong>IV. Run</strong></p>
+<p>最后运行可执行程序:</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">./hello
+</code></pre></div><h3 id="-此时出现了-segementation-fault这个应该是编译器版本的问题引起的如前所述一开始我使用的-gccg-9">❌ 此时出现了 Segementation fault，这个应该是编译器版本的问题引起的，如前所述，一开始我使用的 gcc/g++ 9</h3>
+<p><img src="https://pic2.zhimg.com/v2-64e3d159139c56a51db44fef1f68b639_b.png" alt="img"></p>
+<p>使用gcc/g++ 9编译出来的文件运行报错</p>
+<p>在官方 Github 下面找到了<a href="https://github.com/gpgpu-sim/gpgpu-sim_distribution/issues/73">解决方法</a>，有人建议使用 gcc-5.4/g++-5.4 build the simulator，然后使用 gcc-4.4 编译 CUDA code。这样非常麻烦。</p>
+<p><strong>我的解决方法</strong> 是将 gcc/g++ 9 版本降为 gcc/g++ 5 版本，可以参考 <a href="https://blog.csdn.net/EternallyAccompany/article/details/108865331">gcc/g++版本切换</a> 。如果一开始就是用 gcc/g++ 5 版本应该不会出现这个问题。</p>
+<p><img src="https://pic2.zhimg.com/v2-6eb40ad4d1b928dfc6707d678dc04375_b.png" alt="img"></p>
+<p>成功运行，不过结果有问题QAQ</p>
+<h3 id="算是成功在-gpgpu-sim-上运行了-demo">算是成功在 GPGPU-Sim 上运行了 Demo</h3>
+<h3 id="更新"><strong>更新</strong></h3>
+<p>2021-08-16 20:59:32 更新：</p>
+<p>结果有问题还是之前对 C 语言的指针部分没理解到位，经评论区 @原子 提醒，将 <code>cudaMemcpy(&amp;c, &amp;dev_c, sizeof(int), cudaMemcpyDeviceToHost)</code> 改为 <code>cudaMemcpy(&amp;c, dev_c, sizeof(int), cudaMemcpyDeviceToHost)</code> 即可。</p>
+<p>或者都使用指针，如下</p>
+<div class="highlight"><pre class="chroma"><code class="language-fallback" data-lang="fallback">/* file: hello.cu */
+#include &lt;stdio.h&gt;
+#include &lt;cuda_runtime.h&gt;
+
+__global__ void add(int a, int b, int *c)
+{
+    *c = a + b;
+}
+
+int main()
+{
+    int *c;
+    c = (int*)malloc(sizeof(int));
+    int *dev_c;
+    cudaMalloc((void **)&amp;dev_c, sizeof(int));
+    add&lt;&lt;&lt;1, 1&gt;&gt;&gt;(2, 7, dev_c);
+    cudaMemcpy(c, dev_c, sizeof(int), cudaMemcpyDeviceToHost);
+    printf(&#34;2 + 7 = %d\n&#34;,*c);
+
+    return 0;
+}
+</code></pre></div><p><img src="https://pic1.zhimg.com/v2-cbaf91f9c6d6f085936c1c80a233051c_b.png" alt="img"></p>
+<p>正确结果</p>
+<h3 id="reference"><strong>Reference</strong></h3>
+<ul>
+<li>[https://blog.csdn.net/NKU_Yang/article/details/114662776?utm_medium=distribute.pc_relevant.none-task-blog-baidujs_title-1&amp;spm=1001.2101.3001.4242]  GPGPU-sim环境搭建教程</li>
+<li><a href="https://www.gpuinsight.com/gpgpusim_install/">https://www.gpuinsight.com/gpgpusim_install/</a>  GPGPU-Sim 安装过程</li>
+<li><a href="http://gpgpu-sim.org/manual/index.php/Main_Page">http://gpgpu-sim.org/manual/index.php/Main_Page</a> 官方手册</li>
+<li><a href="https://github.com/gpgpu-sim/gpgpu-sim_distribution">https://github.com/gpgpu-sim/gpgpu-sim_distribution</a>    Github 源码</li>
+<li><a href="http://www.danielwong.org/classes/ee260-w17/assignment1">http://www.danielwong.org/classes/ee260-w17/assignment1</a>    UCR</li>
+<li><a href="https://blog.csdn.net/EternallyAccompany/article/details/108865331">https://blog.csdn.net/EternallyAccompany/article/details/108865331</a>    gcc/g++版本切换</li>
+<li><a href="https://github.com/gpgpu-sim/gpgpu-sim_distribution/issues/73">https://github.com/gpgpu-sim/gpgpu-sim_distribution/issues/73</a></li>
+</ul>
+
+			</div>
+
+			<div class="tags">
+				
+					
+						<ul class="flat">
+							
+							<li><a href="/tags/gpgpu-sim">gpgpu-sim</a></li>
+							
+							<li><a href="/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA">环境搭建</a></li>
+							
+						</ul>
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2021  © Athul |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+<script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10&v=2"></' + 'script>')</script></body>
+</html>

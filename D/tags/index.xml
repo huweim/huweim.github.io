@@ -1,0 +1,133 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Tags on Cory Code</title>
+    <link>http://localhost:1313/tags/</link>
+    <description>Recent content in Tags on Cory Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Athul</copyright>
+    <lastBuildDate>Tue, 28 Sep 2021 13:39:14 +0800</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>gpgpu-sim</title>
+      <link>http://localhost:1313/tags/gpgpu-sim/</link>
+      <pubDate>Tue, 28 Sep 2021 13:39:14 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/gpgpu-sim/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>环境搭建</title>
+      <link>http://localhost:1313/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</link>
+      <pubDate>Mon, 27 Sep 2021 22:54:06 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/%E7%8E%AF%E5%A2%83%E6%90%AD%E5%BB%BA/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>Docker</title>
+      <link>http://localhost:1313/tags/docker/</link>
+      <pubDate>Fri, 17 Sep 2021 16:25:25 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/docker/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>技巧</title>
+      <link>http://localhost:1313/tags/%E6%8A%80%E5%B7%A7/</link>
+      <pubDate>Fri, 17 Sep 2021 16:25:25 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/%E6%8A%80%E5%B7%A7/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>官方文档</title>
+      <link>http://localhost:1313/tags/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/</link>
+      <pubDate>Sat, 04 Sep 2021 19:04:57 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/%E5%AE%98%E6%96%B9%E6%96%87%E6%A1%A3/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>浅尝辄止</title>
+      <link>http://localhost:1313/tags/%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2/</link>
+      <pubDate>Tue, 17 Aug 2021 14:12:38 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/%E6%B5%85%E5%B0%9D%E8%BE%84%E6%AD%A2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CA2</title>
+      <link>http://localhost:1313/tags/ca2/</link>
+      <pubDate>Wed, 28 Jul 2021 18:23:41 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/ca2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>lab</title>
+      <link>http://localhost:1313/tags/lab/</link>
+      <pubDate>Wed, 28 Jul 2021 18:23:41 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/lab/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>CUDA</title>
+      <link>http://localhost:1313/tags/cuda/</link>
+      <pubDate>Sun, 25 Jul 2021 11:00:17 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/cuda/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>博客</title>
+      <link>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2/</link>
+      <pubDate>Sat, 24 Jul 2021 19:19:09 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/%E5%8D%9A%E5%AE%A2/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>research</title>
+      <link>http://localhost:1313/tags/research/</link>
+      <pubDate>Sat, 24 Jul 2021 16:35:27 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/research/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>教材学习</title>
+      <link>http://localhost:1313/tags/%E6%95%99%E6%9D%90%E5%AD%A6%E4%B9%A0/</link>
+      <pubDate>Sat, 24 Jul 2021 16:35:27 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/%E6%95%99%E6%9D%90%E5%AD%A6%E4%B9%A0/</guid>
+      <description></description>
+    </item>
+    
+    <item>
+      <title>PhD</title>
+      <link>http://localhost:1313/tags/phd/</link>
+      <pubDate>Fri, 12 Mar 2021 16:54:33 +0800</pubDate>
+      
+      <guid>http://localhost:1313/tags/phd/</guid>
+      <description></description>
+    </item>
+    
+  </channel>
+</rss>

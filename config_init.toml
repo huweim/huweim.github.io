@@ -1,0 +1,86 @@
+baseURL = "https://huweim.github.io/"
+languageCode = "en-us"
+title = "Cory Code"
+theme="hugo-theme-stack"
+copyright = "© Jimmy"
+
+
+# 代码高亮
+pygmentsstyle = "monokai"
+pygmentsCodefences = true
+pygmentsUseClasses = true
+pygmentsCodefencesGuessSyntax = true
+#pygmentsOptions = "linenos=table"
+
+paginate=10 # articles per page
+paginatePath = "page"
+
+[taxonomies]
+  tag = "tags"
+  series = "series"
+  category = "categories"
+  
+#hrefTargetBlank：在文章内生成的超链接是否打开新的页面，建议设置成 true.
+[Blackfriday]
+    hrefTargetBlank = true
+
+# Main menu Items
+
+[[menu.main]]
+name = "Home"
+url = "/"
+weight = 1
+
+[[menu.main]]
+url = "/categories/"
+name = "Categories"
+weight = 3
+pre = "internal"
+post = "th"
+
+[[menu.main]]
+name = "All posts"
+url = "/posts"
+weight = 2
+
+#[[menu.main]]
+#name = "About"
+#url = "/about"
+#weight = 3
+
+[[menu.main]]
+name = "Tags"
+url = "/tags"
+weight = 4
+
+[[menu.main]]
+name = "Archives"
+url = "/archives"
+weight = 4
+
+[params]
+	mode="auto" # color-mode → light,dark or auto
+	useCDN=false # don't use CDNs for fonts and icons, instead serve them locally.
+	subtitle = "Minimal and Clean [blog theme for Hugo](https://github.com/athul/hugo-ink)"
+
+
+
+# Social Tags
+
+[[params.social]]
+name = "GitHub"
+icon = "github"
+url = "https://github.com/huweim"
+
+[[params.social]]
+name = "Twitter"
+icon = "twitter"
+url = "https://twitter.com/athulcajay/"
+
+[[params.social]]
+name = "GitLab"
+icon = "gitlab"
+url = "https://gitlab.com/athul/"
+
+
+

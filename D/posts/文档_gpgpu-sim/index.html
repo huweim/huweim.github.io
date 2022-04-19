@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge"><title> - Cory Code</title><meta name="viewport" content="width=device-width, initial-scale=1">
+	<meta itemprop="name" content="">
+<meta itemprop="description" content="0. 前言 资料主要是参考 GPGPU-Sim 官方文档
+1. Front End 在整个 SIMT Core 中有3个调度器，组成三个循环调度流水线，这里先简单的介绍一下
+ instruction fetch loop  includes the blocks labeled Fetch, I-Cache, Decode, and I-Buffer   instruction issue loop  includes the blocks labeled I-Buffer, Scoreboard, Issue, and SIMT Stack   register access scheduling loop  includes the blocks labeled Operand Collector, ALU, and Memory    1.1 Fetch Fetch 是3个调度器中的一个(1/3)。Fetch 单元根据 PC 的值，从 I-Cache 中取指令。">
+
+<meta itemprop="wordCount" content="239">
+
+
+
+<meta itemprop="keywords" content="" /><meta property="og:title" content="" />
+<meta property="og:description" content="0. 前言 资料主要是参考 GPGPU-Sim 官方文档
+1. Front End 在整个 SIMT Core 中有3个调度器，组成三个循环调度流水线，这里先简单的介绍一下
+ instruction fetch loop  includes the blocks labeled Fetch, I-Cache, Decode, and I-Buffer   instruction issue loop  includes the blocks labeled I-Buffer, Scoreboard, Issue, and SIMT Stack   register access scheduling loop  includes the blocks labeled Operand Collector, ALU, and Memory    1.1 Fetch Fetch 是3个调度器中的一个(1/3)。Fetch 单元根据 PC 的值，从 I-Cache 中取指令。" />
+<meta property="og:type" content="article" />
+<meta property="og:url" content="http://localhost:1313/posts/%E6%96%87%E6%A1%A3_gpgpu-sim/" />
+
+<meta name="twitter:card" content="summary"/>
+<meta name="twitter:title" content=""/>
+<meta name="twitter:description" content="0. 前言 资料主要是参考 GPGPU-Sim 官方文档
+1. Front End 在整个 SIMT Core 中有3个调度器，组成三个循环调度流水线，这里先简单的介绍一下
+ instruction fetch loop  includes the blocks labeled Fetch, I-Cache, Decode, and I-Buffer   instruction issue loop  includes the blocks labeled I-Buffer, Scoreboard, Issue, and SIMT Stack   register access scheduling loop  includes the blocks labeled Operand Collector, ALU, and Memory    1.1 Fetch Fetch 是3个调度器中的一个(1/3)。Fetch 单元根据 PC 的值，从 I-Cache 中取指令。"/>
+<link href='https://fonts.googleapis.com/css?family=Playfair+Display:700' rel='stylesheet' type='text/css'>
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/normalize.css" />
+	<link rel="stylesheet" type="text/css" media="screen" href="http://localhost:1313/css/main.css" />
+
+        <link id="dark-scheme" rel="stylesheet" type="text/css" href="http://localhost:1313/css/dark.css" />
+
+	<script src="http://localhost:1313/js/feather.min.js"></script>
+	
+		<script src="http://localhost:1313/js/main.js"></script>
+</head>
+
+<body>
+	<div class="container wrapper">
+		<div class="header">
+	
+	<h1 class="site-title"><a href="http://localhost:1313/">Cory Code</a></h1>
+	<div class="site-description"><p>Minimal and Clean <a href="https://github.com/athul/hugo-ink">blog theme for Hugo</a></p><nav class="nav social">
+			<ul class="flat"><li><a href="https://github.com/huweim" title="GitHub"><i data-feather="github"></i></a></li><li><a href="https://twitter.com/athulcajay/" title="Twitter"><i data-feather="twitter"></i></a></li><li><a href="https://gitlab.com/athul/" title="GitLab"><i data-feather="gitlab"></i></a></li><li><a href="#" class="scheme-toggle" id="scheme-toggle"></a></li></ul>
+		</nav>
+	</div>
+
+	<nav class="nav">
+		<ul class="flat">
+			
+			<li>
+				<a href="/">Home</a>
+			</li>
+			
+			<li>
+				<a href="/posts">All posts</a>
+			</li>
+			
+			<li>
+				<a href="/categories/">Categories</a>
+			</li>
+			
+			<li>
+				<a href="/archives">Archives</a>
+			</li>
+			
+			<li>
+				<a href="/tags">Tags</a>
+			</li>
+			
+			<li>
+				<a href="/about/">About</a>
+			</li>
+			
+		</ul>
+	</nav>
+</div>
+
+
+		<div class="post">
+			<div class="post-header">
+				
+				<div class="matter">
+					<h1 class="title"></h1>
+				</div>
+			</div>
+					
+			<div class="markdown">
+				<h1 id="0-前言">0. 前言</h1>
+<p>资料主要是参考 <a href="http://gpgpu-sim.org/manual/index.php/Main_Page">GPGPU-Sim 官方文档</a></p>
+<h1 id="1-front-end">1. Front End</h1>
+<p>在整个 SIMT Core 中有3个调度器，组成三个循环调度流水线，这里先简单的介绍一下</p>
+<ul>
+<li>instruction fetch loop
+<ul>
+<li>includes the blocks labeled Fetch, I-Cache, Decode, and I-Buffer</li>
+</ul>
+</li>
+<li>instruction issue loop
+<ul>
+<li>includes the blocks labeled I-Buffer, Scoreboard, Issue, and SIMT Stack</li>
+</ul>
+</li>
+<li>register access scheduling loop
+<ul>
+<li>includes the blocks labeled Operand Collector, ALU, and Memory</li>
+</ul>
+</li>
+</ul>
+<h2 id="11-fetch">1.1 Fetch</h2>
+<p>Fetch 是3个调度器中的一个(1/3)。Fetch 单元根据 PC 的值，从 I-Cache 中取指令。</p>
+<p>在进行指令 fetch 之前需要根据 I-Buffer 中传过来的有效位进行判断，对一个 warp 来说，如果在 I-Buffer 中没有任何 valid instruction (也就是 valid bit 为1)，那么我们就是这个 warp 是 eligible 的。</p>
+<blockquote>
+<p>那么 valid instruction 是什么意思呢？在1.4 I-Buffer 中会进行讨论，并且理解为什么说这是一个 loop</p>
+</blockquote>
+<p>eligible 代表这个 warp 可以进行指令 fetch，eligible warp 会以 round robin 的方式访问 I-Cache。默认情况下，两条连续的指令被取出</p>
+<blockquote>
+<p>为什么取两条指令？个人猜测可能是因为指令有算术指令和内存访问指令，这两种指令发射后走的是不同的流水线，可能可以同时发射</p>
+</blockquote>
+<h2 id="12-decode">1.2 Decode</h2>
+<p>Decode 单元在拿到指令后进行指令译码，解析指令需要用到的源寄存器，目的寄存器以及操作类型 (Arithmetic/LDST/Branch)，并将 decoded 指令存储在相应的 I-Buffer 中。</p>
+<p>同时，在译码阶段也会检查寄存器的 Scoreboard，以确定该指令使用的寄存器是否存在 RAW 或者 WAW 冲突。一旦检测到冲突，将使正在译码的指令失效。</p>
+<h2 id="13-scoreboard">1.3 Scoreboard</h2>
+<p>即将讲到了使用 Scoreboard 来避免寄存器依赖，那么在这里描述一下 Scoreboard 的工作方法。</p>
+<p>在指令 issue 后 Scoreboard 会追踪指令即将写但是还<strong>未完成</strong>写回的寄存器 (egisters will be written to by an instruction that has issued but not yet written its results back to the register file)。也就是说 Scoreboard 知道那些寄存器有潜在的 RAW, WAW 风险，它会根据这个信息来决定 I-Buffer 中指令的 ready bit。</p>
+<p>I-Buffer 中的 ready bit 置1说明该指令通过了 Scoreboard 的依赖检测，可以 issue。此时 warp scheduler 会根据调度算法从已经 ready 的指令中选择 issue。</p>
+<h2 id="14-i-buffer">1.4 I-Buffer</h2>
+<p>在1.1中提到，“默认情况下，两条连续的指令被取出”。所以对1个 warp 来说，有2个 I-Buffer entry。</p>
+<p>I-Buffer enry 有 valid bit (1 bit), ready bit(1 bit) 以及一个 decoded instruction。Valid bit 主要是用于和 Fetch 单元进行交互。例如对于图中 warp 1, 2, 3, valid bit 为1代表 warp 1, 2, 3 还有指令在 I-Buffer 中，这个时候 Fetch 单元不会去取 warp 1, 2, 3 的指令。</p>
+<p>对于一个 warp 来说，只要通过 Fetch 调度器进行取值操作，那么对应的 I-Buffer entry 的 valid bit 便置为1，直到该 warp 内所有指令均执行完毕</p>
+<p>Ready bit 由 scoreboard 进行更新，上一节中已经介绍了 scoreboard 的大致工作方式。Ready bit 为1代表这条指令通过了 scoreboard 的依赖检测，可以 issue。</p>
+
+			</div>
+
+			<div class="tags">
+				
+					
+				
+			</div></div>
+	</div>
+	<div class="footer wrapper">
+	<nav class="nav">
+		<div>2021  © Athul |  <a href="https://github.com/knadh/hugo-ink">Ink</a> theme on <a href="https://gohugo.io">Hugo</a></div>
+	</nav>
+</div>
+
+<script>feather.replace()</script>
+<script data-no-instant>document.write('<script src="/livereload.js?port=1313&mindelay=10&v=2"></' + 'script>')</script></body>
+</html>

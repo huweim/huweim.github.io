@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>CA2 on Cory Code</title>
+    <link>http://localhost:1313/tags/ca2/</link>
+    <description>Recent content in CA2 on Cory Code</description>
+    <generator>Hugo -- gohugo.io</generator>
+    <language>en-us</language>
+    <copyright>© Athul</copyright>
+    <lastBuildDate>Wed, 28 Jul 2021 18:23:41 +0800</lastBuildDate>
+    
+	<atom:link href="http://localhost:1313/tags/ca2/index.xml" rel="self" type="application/rss+xml" />
+    
+    
+    <item>
+      <title>Ca2_lab2</title>
+      <link>http://localhost:1313/posts/ca2_lab2/</link>
+      <pubDate>Wed, 28 Jul 2021 18:23:41 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/ca2_lab2/</guid>
+      <description>0. 前言 很久之前就想总结一下 Computer Architecture II (CA2) 这门课上学得一些东西了，尤其是关于这几个 lab。当时无论是在 Linux, C++, 还是体系结构方面，都帮助我加深了理解。现在试着整理也是复习一下，把他放在博客的文章中。
+1. Goal </description>
+    </item>
+    
+    <item>
+      <title>Ca2_lab1</title>
+      <link>http://localhost:1313/posts/ca2_lab1/</link>
+      <pubDate>Wed, 28 Jul 2021 16:09:45 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/ca2_lab1/</guid>
+      <description>0. 前言 很久之前就想总结一下 Computer Architecture II (CA2) 这门课上学得一些东西了，尤其是关于这几个 lab。当时无论是在 Linux, C++, 还是体系结构方面，都帮助我加深了理解。现在试着整理也是复习一下，把他放在博客的文章中。
+1. Goal 主要是由两个目标
+ 实现 Cache Replacement Policy 中的 OPT 算法，也就是假设已经得知了对 cache line 的访问序列，每次都 evict 最久之后访问的那个 cache line 将 Sniper 中的 inclusive policy 改为 non-inclusive policy  通过这个 lab 更深刻地理解了一些 cache replacement, 模拟器中访问 cache 和内存的 flow, cache 的地址映射方式等等
+2. 思路和 Report Optimal算法  首先，每一条指令的access操作都会经过函数 AccessSingleLine，在这个地方执行文件 IO 操作。  第一遍执行程序的时候进行文件写入（假设两次执行程序的指令序列是完全一样的），将指令的 set_index 和 tag 写入future_list.txt文件（预先将指令序列写入文件） 第二遍指令的时候，相当于我们是已知未来序列的，在第一次调用 AccessSingleLine 的时候，将文件读入一个二维数组future_list，存放所有指令的 set_index 和 tag。后续调用 AccessSingleLine 的时候不再进行文件 IO 操作（写一个条件判断，只执行一次文件 IO 操作）。 二维数组 future_list 中存放了指令 access 序列，将其在 class Cache 中定义，定义为 long long int 型的静态变量，并且有足够大的空间。   根据对 sniper 代码的阅读，此模拟器执行的是 LRU 替换算法，为了不大量修改一些函数接口和逻辑（比如当 cache 为空时的替换和替换算法的选择），我选择直接在 cache_set_lru.</description>
+    </item>
+    
+    <item>
+      <title>Ca2_lab0</title>
+      <link>http://localhost:1313/posts/ca2_lab0/</link>
+      <pubDate>Wed, 28 Jul 2021 15:23:39 +0800</pubDate>
+      
+      <guid>http://localhost:1313/posts/ca2_lab0/</guid>
+      <description>0. 前言 很久之前就想总结一下 Computer Architecture II (CA2) 这门课上学得一些东西了，尤其是关于这几个 lab。当时无论是在 Linux, C++, 还是体系结构方面，都帮助我加深了理解。现在试着整理也是复习一下，把他放在博客的文章中。
+1. Goal  Through this lab, you would compile Sniper, a next-generation parallel, high-speed and accurate x86 simulator [0.5 points]. Then you need to modify the source code of Sniper to show expected output and upload a summary to BlackBoard [1.5 points]. Total is 2 points.
+ 提供了一个 C 代码文件 toy-lab0.c， 编译并运行模拟器 Sniper。然后修改 Sniper 源代码，找到 CLFLUSH 这条指令，在这条指令每次执行后打印 [STUDENT-EMAIL-ACCOUNT, function, line number] CLFLUSH instruction executed</description>
+    </item>
+    
+  </channel>
+</rss>
