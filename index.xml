@@ -1,6 +1,143 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Tue, 19 Apr 2022 18:34:28 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 08 May 2022 20:56:54 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
 &lt;p>一个计算机体系结构方向的学生，喜欢体系结构，喜欢编程，喜欢篮球。目前的课题主要关注 GPU/GPGPU。&lt;/p>
-&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>CSAPP阅读笔记</title><link>https://huweim.github.io/post/%E6%95%99%E6%9D%90_csapp%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link><pubDate>Tue, 19 Apr 2022 18:34:28 +0800</pubDate><guid>https://huweim.github.io/post/%E6%95%99%E6%9D%90_csapp%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>关于 Deep Work</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</link><pubDate>Sun, 08 May 2022 20:56:54 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>Why read? 最近同步推进的任务比较多，包括雅思/托福，LeetCode刷题（不能说不找实习就荒废掉了），自己lead的课题（可以先读paper慢开始，但是对本人提升很重要），科研实习的课题（这个必须定时有反馈，留下不错的印象），公司的一些活儿（按时完成且上心），锻炼（荒废了一段时间但是必须），AICS 课程（好在这个和目前的研究有了相关性）。&lt;/p>
+&lt;p>因此，需要进行详细而且比较严格的时间管理，才能同时做好这么多事情。&lt;/p>
+&lt;h2 id="01-知乎">0.1 知乎&lt;/h2>
+&lt;p>知乎一位作者写的自我观察非常好，在我需要去完成论文的那段时间，我也是进入了这样一种状态。这个任务必须去交付（DDL 4.14），而且需要交互（修改之后给娄老师，并且完成娄老师交代的改动），是一种紧张，紧凑的任务，但是不觉得效率很高，写初稿反而磕磕盼盼，但是事后来看，在一段比较短的时间内（4.4-4.13）产出了一篇有结构的初稿并且慢慢完善并投稿。而现在，你需要记住、重拾这种状态，并把他融入到你的日常工作中。&lt;/p>
+&lt;blockquote>
+&lt;p>我观察到自己真正非常高效地推进困难任务，产出自己想要的结果往往发生在连续的长时间的工作中，并且我的心理状态是这样的：我一定要在这个任务上有重大突破或者完成它，不然饭也先别吃了，于是我往往会在同一个任务上从下午一点工作到六七点，或者从下午五点工作到晚上十点十一点，碰到问题就解决问题，没有头绪就尝试各种可能推进任务的可能性。别看这一下子时间花的挺长，产生的结果和进展常常令我感到惊讶。以我常规的工作方式（如每天固定投入1-2小时），往往拖了一两周都毫无进展的困难任务，我一整个下午就解决了。这样的情况发生了很多次，并且反差如此的强烈，于是我打算将这个现象思考清楚，总结出其中的原因。我很自然地联想到了Cal Newport的《Deep Work》，隐隐感觉和他提出的“深度工作”的这个概念有关。当然在总结他书中的观点之前，我会想梳理一下自己的思考。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="02-知乎总结">0.2 知乎总结&lt;/h2>
+&lt;blockquote>
+&lt;p>最小阻力定律 （The Law of Least Resistance），我们人类天生倾向于选择一条阻力最小的路径，也就是说我们倾向于回避困难任务，选择更轻松、更简单的事情先做。因此在常规工作方式下，你太容易不自觉地回避困难任务了，虽然你可能计划要在某件事上工作1-2小时，但其实在这些时间内，你都很可能有意无意地远离真正能推进任务的困难的点，只是做些表层的简单的事，并且很容易被别的事情分心从而中断在这个任务上的投入（比如，查看回复邮件，肚子饿了想着先回家吃饭）；于是你在这个困难任务上真正的有效投入其实非常有限，也就不奇怪几周时间也没什么进展了。而另一种深度工作方式，由于我在一开始就和自己约定好了：不解决问题，饭都不吃，做好了打持久战的准备，所以退无可退，避无可避，只能直面最困难的点。&lt;/p>
+&lt;/blockquote>
+&lt;p>毫无疑问，我会倾向于在简单任务（LeetCode简单题，回复邮件，刷知乎，读paper的intruction和abstract，浅层的阅读代码）上花费时间来获取反馈、满足感和完成感。面对困难任务时，总是在解决掉困难任务的一个简单部分\有所进展之后，就想回到床上躺一会儿。这时最近（2022-05-07 14:40:33）工作的普遍现象。&lt;/p>
+&lt;blockquote>
+&lt;p>尽量不要切换任务，因为有各种成本（意志力成本，任务启动成本）。意志力成本：我们对困难任务多少会有些恐惧，所以启动它本身就要消耗一些意志力，如果你按照常规的工作方式拖着很多天都没解决，那么每次启动这个任务的时候都要一次又一次地消耗意志力成本。任务启动成本：启动任务直到在最困难的点想办法推进任务之前，你需要回顾涉及到的各种背景知识、约束条件和细节，因此你在不同的时间段启动任务时，每次这个任务启动成本也是不能省的。因此一件事干大半天、一整天的收益和产生的价值远远超过你一天在几个任务间切换，每个任务各花1-2小时。当我们把指数效应放到较大的时间尺度下，我们看到的现象是一件事你坚持很多天，很多个月，很多年，越到后期你越能获得指数级的丰厚回报；其实我们也可以把指数效应放到较小的时间尺度下，比如一天，在一天中，你坚持做一件事一直做下去，越到后面你也越能获得指数级的回报，而如果你只在一件事上花了1-2小时，很可能你还没等到收益指数级增长的时候。（而像盖茨这样的大神，在创业初期写程序的时候，可能连续几周几个月连轴转都在高度专注地推进一件事，可以想象到后面所产生的恐怖的指数级的价值。）&lt;/p>
+&lt;/blockquote>
+&lt;p>没错，启动任务会消耗大量的精神力，而自己老是在启动后自我中断，这无疑大大降低了自己的效率。自己能认识到中断任务的负面反映，知道过于固定的任务时间（比如严格 2h paper reading）是不可取的，这也是我寻求 time management 方法的原因。&lt;/p>
+&lt;blockquote>
+&lt;p>当然不是所有事情都适合用深度工作的方式，现在看来自认为的困难任务是适合的，而比较简单但工作量巨大的任务却不适合，原因其实就在上面写的两条中了。
+更新一条：长时间专注于同一个任务，越到后面越会有指数级的效应和产出，还很可能和cognitive workload theory有关，越到后面，因为在之前的时间里你已经将那些基础性的东西都弄得很熟悉了，所以也就不再占据你的认知工作负荷（cognitive workload），这样到最后你大脑的认知思考能力全部被解放出来集中在最难的点上，不断地取得之前浅度工作（shallow work）所不能取得的突破。&lt;/p>
+&lt;p>Cal自己是”深度工作“的践行者，他的一整天都会深度围绕着一项核心的工作，然后将那些无法避免的浅层工作压缩到自己日程的边角料时间段里。这样一天仅仅三到四个小时的无中断的高度专注的工作，一周五天就能创造出很多有价值的东西。Cal自己还是两个孩子的父亲，这样的工作方式也让他有更多的时间留给家人，并且让他有时间阅读惊人数量的书籍。&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="1-youtube">1. Youtube&lt;/h1>
+&lt;p>举了几个例子，JK 罗琳为了避免干扰，找了家酒店写作，她原本没打算一直待在那里。但是第一天工作的效果很好，所以他就继续下去了，直到完成《哈利波特》。&lt;/p>
+&lt;p>比尔盖茨 1974 年用 deep work 理论完成 basic 的第一版，在 8 个周的时间内，他一直在写代码，累了就在键盘上趴一会儿，睡一个小时。最后 8 周完成了这个软件。&lt;/p>
+&lt;p>MIT 和一些学校的学生、老师发现 deep work 对他们研究工作的帮助，于是创作了这本书。普通人可能没法像他们那样一次在一个工作上投入 8 weeks，但是仍然有进入 deep work 的方法。&lt;/p>
+&lt;p>deep work 很难，也很稀少。我们的世界有很多分散注意力的东西，比如合作时需要立刻回邮件，回消息，比如社交媒体的影响，刷虎扑，微博等等。&lt;/p>
+&lt;p>一些 deep work 的方法&lt;/p>
+&lt;h2 id="11-schedule-distraction">1.1 Schedule Distraction&lt;/h2>
+&lt;p>大概就是说统一一个时间来处理分散注意力的事项。这个和我最近在做的其实很像，比如昨天（2022-05-07）在想去看一些信息的时候（研究院）没有立刻去，而是把它记录下来，之一统一处理。这是一个避免分散注意力，保持高效的方法。玩手机，回邮件也应该有意识地去克制。&lt;/p>
+&lt;h2 id="12-deep-work-ritual">1.2 Deep Work Ritual&lt;/h2>
+&lt;p>简而言之就是，保持节奏，养成习惯。养成习惯这个技巧，在有意识地学习。&lt;/p>
+&lt;p>一周 7 天，你可能习惯在晚上进入 deep work，那就 7 天都保持这个节奏，把会议，事项安排到早上，把需要 deep work 的工作安排在晚上。&lt;/p>
+&lt;p>研究表明新手大概能保持 1h deep work，但是 deep work master 能够保持大概 4h，要争取做到这个强度。&lt;/p>
+&lt;h2 id="13-evening-shundown">1.3 Evening Shundown&lt;/h2>
+&lt;p>休息好很重要。没做完的事情，拆分成比较具体的事情，写入第二天的计划中。因为此时一天的工作还保存在大脑的 cache 中，主要是还没有断开连接，列好计划，第二天可以减少很多开销。对于需要 deep work 的工作，需要及时 shutdown，列好计划之后在第二天留出充足的时间来完成，而不是强行低效率地去磨。&lt;/p>
+&lt;h1 id="reference">Reference&lt;/h1>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/39759254">https://zhuanlan.zhihu.com/p/39759254&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://www.youtube.com/watch?v=gTaJhjQHcf8">https://www.youtube.com/watch?v=gTaJhjQHcf8&lt;/a>&lt;/p></description></item><item><title>如何读论文（李沐）</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E5%A6%82%E4%BD%95%E8%AF%BB%E8%AE%BA%E6%96%87%E6%9D%8E%E6%B2%90/</link><pubDate>Sun, 08 May 2022 20:16:17 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E5%A6%82%E4%BD%95%E8%AF%BB%E8%AE%BA%E6%96%87%E6%9D%8E%E6%B2%90/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>最近（2022-05-08 16:40:17）看到了李沐的这个系列，之前没看过。其实读研以来陆陆续续也看过很多阅读文章，写文章的技巧，教程等等，自己也有一些感触和经验。而最近做完 GPU 微架构相关的一部分课题之后，恰好会接触一个比较新的领域。去读这种新的领域的文章，慢慢开拓到熟悉，也是一种体验。正好这个时间点，就结合自己之前读论文的经验，学到的技巧，结合李沐大神在视频中传授的方法，以及他阅读和看待文章的视角，来做一个总结和记录。&lt;/p>
+&lt;h1 id="1-方法">1. 方法&lt;/h1>
+&lt;p>第一遍，title, abs, conclusion, conclusion 一般和 abs 结构是一样的，可能会有更加详细的数据，性能提升 XX% 等等; 浏览 method 和实验部分的图表，大概花十几分钟看看这篇文章在讲什么，是不是值得继续读下去。&lt;/p>
+&lt;p>标题中的作者，学校，也很重要，你对领域内比较熟悉的话，对这些作者肯定也是有所了解的。&lt;/p>
+&lt;p>第二遍，精读，知道每个 part 在讲什么，但是不需要知道所有的细节，看懂重要的 figure description. 判断是不是自己领域内的，&lt;strong>圈出没看过的参考文献&lt;/strong>，如果这篇比较难读，可以从参考文献中的经典入手。&lt;/p>
+&lt;p>第三遍，带着自己的思考，提出的是什么问题，你能想到这个问题吗？用的什么解决方法，你来做的话会用什么方法？如果用同样的方法，你能做出什么优化？你能拓展出新的东西吗，他的做法可参考吗，你能够复现吗，他有什么地方讲得有问题吗？等等等等，带着一系列问题，给自己设置一系列问题。这一遍看完，合上文章之后，也知道文章在讲什么，也可以给别人讲述出技术细节（所以有人讨论，有一个输出的机会也是很重要的）。&lt;/p>
+&lt;h1 id="2-第二遍精读关于-alexnet">2. 第二遍精读，关于 AlexNet&lt;/h1>
+&lt;p>看视频，从李沐阅读 paper 的视角，去思考一位领域内大牛看到文章中的一些句子，脑海中的想法是怎样的。&lt;/p>
+&lt;h2 id="21-intro">2.1 Intro&lt;/h2>
+&lt;p>看到第一段，李沐不光介绍了段落表达的意思，还做了额外的科普，过拟合是 ML 中的一大派别，我想他应该能继续讲出哪些人在做这方面的工作。推测出，从现在的眼光来看，正则好像又没那么重要。&lt;/p>
+&lt;p>第一段主要是讲故事，比如自己，需要介绍 GPU 广泛应用于XXX，以及 warp 调度等等。&lt;/p>
+&lt;p>之后，分析文章写法的问题。在介绍完数据集之后，直接就开始提，用 CNN 解决问题。写法的问题在于，当时的主流并非 CNN，其实应该介绍一些主流算法，然后过渡到 CNN。（同意这个观点）&lt;/p>
+&lt;p>最后一段开始讲 paper 的贡献，讲自己的工作，做了什么，做了 5 层卷积，3 层全连接，等等。他们用了一些新的技术（挖坑，可以继续往下做），阐述了他们不光卖点很好，也有很多新的东西。&lt;/p>
+&lt;blockquote>
+&lt;p>从这个角度管中窥豹，一篇文章有好的结果本身已经是一个卖点了，但是他们的方法可能过于复杂，难以复现，别的研究者没法跟进，那么文章可能能中但是不太会有人跟；另一方面，有好的结果，同时有创新的东西，大家都可以 follow，那么这个工作很可能是一篇开山之作，挖坑之作，会有比较高的引用率。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="22-the-dataset">2.2 The DataSet&lt;/h2>
+&lt;p>AlexNet 这篇文章标题带了 ImageNet，因此大概介绍了一下数据集。自己写的时候，也是大概交代一下 GPU 的 baseline 架构背景，和简单的领域内知识。这个部分对同行来说不是很重要，完善文章结构，没有涉及到 paper 的 idea。&lt;/p>
+&lt;p>最后一段还说明了对图片做的一些处理。&lt;/p>
+&lt;p>什么是 End to end: 原始的图片\文本直接进去，不做任何特征提取，神经网络能帮你做出来。end to end 是他当时的亮点，但是当时由于历史局限性，可能没有发现。&lt;/p>
+&lt;h2 id="23-the-architecture">2.3 The Architecture&lt;/h2>
+&lt;p>Section 3.1 首先介绍了 ReLU。有一些技术细节，其实刚接触的时候是不知道具体意思的，没有关系，可以圈一下，记录一下。比如 3.1 的 saturating non-linearity, non-saturating non-linearity.&lt;/p>
+&lt;p>Section 3.2 介绍了 Training on Multiple GPU, 如何划分 GPU 的。这个部分，站在 ML 研究者角度，第二遍可以略过，除非需要复现，因为可能看不懂，而且不是 ML 方法上的东西；对于 系统/体系结构 研究者，可以关注一下。&lt;/p>
+&lt;p>Section 3.3 讲了 LRN 的一些细节，第二遍读的时候也可以忽略掉&lt;/p>
+&lt;p>Section 3.4 讲了 Overlap Pooling，实际上一般 pooling 是没有 overlap，如果不知道 pooling 是什么可以先跳过，去看了 pooling 之后再细读。这个地方可以大概知道用的 pooling 方法不太常规。&lt;/p>
+&lt;p>文章类似于一个技术报告的风格，没有 highlight, 宣传做了什么。&lt;/p>
+&lt;p>李沐老师对于 Figure 2 的讲解通俗易懂。&lt;/p>
+&lt;p>为什么模型图切到两块 GPU？可能是 Alex 刚好是这么做了，并且写了大量的代码去支撑这个工作，所以将其作为一个贡献放在里面。&lt;/p>
+&lt;h2 id="24-reducing-overfitting">2.4 Reducing Overfitting&lt;/h2>
+&lt;p>介绍如何降低过拟合。&lt;/p>
+&lt;p>Section 4.2 Dropout, 很多模型融合到一起太贵了&lt;/p>
+&lt;blockquote>
+&lt;p>这两部分主要是关于技术细节，所以结合自己经历的感触可能不是特别多。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="25-details-of-learning">2.5 Details of Learning&lt;/h2>
+&lt;p>介绍模型是如何训练的。逐渐出现了一些看起来玄学的部分，比如一些参数的设置。&lt;/p>
+&lt;p>当时需要训练 5-6 天，在两个 GPU 上。&lt;/p>
+&lt;h2 id="26-result">2.6 Result&lt;/h2>
+&lt;p>进入到了实验部分，对于不复现的人来说，或者不是同领域的人，实验相对没有那么重要。&lt;/p>
+&lt;h1 id="3-如何找到研究想法">3. 如何找到研究想法&lt;/h1>
+&lt;h2 id="31-打补丁">3.1 打补丁&lt;/h2>
+&lt;p>在原作者想法的基础上，做一些加减法。比如他用了新的 loss，用了两个（我能不能用 3 个？做数据增强，我能不能做？），用故事把你的补丁串联起来。&lt;/p>
+&lt;p>如果一篇文章已经是打补丁的论文，可能难以找到机会。如果脑洞比较大的工作，可以做更多尝试。比如 iPAWs 已经是 16 年的文章，follow 的人有但不是特别多，回头来看可能不是一个特别好的选择。&lt;/p></description></item><item><title>Matplotlib</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_matplotlib/</link><pubDate>Tue, 19 Apr 2022 20:29:07 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_matplotlib/</guid><description>&lt;h4 id="plthist">plt.hist()&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>data &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#ae81ff">0&lt;/span>,&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">2&lt;/span>,&lt;span style="color:#ae81ff">5&lt;/span>,&lt;span style="color:#ae81ff">6&lt;/span>,&lt;span style="color:#ae81ff">5&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">7&lt;/span>,&lt;span style="color:#ae81ff">64&lt;/span>,&lt;span style="color:#ae81ff">66&lt;/span>,&lt;span style="color:#ae81ff">5&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>hist(data, bins&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>, label&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;weight&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="参数">参数&lt;/h5>
+&lt;!-- raw HTML omitted -->
+&lt;ul>
+&lt;li>bins，直方图的 bucket，bins = 3 表示将区间分为 3 buckets。数值范围是 0-66，那么大概分为 0-22，23-45，45-67 三个 bucket，然后根据 &lt;code>data&lt;/code> 中的情况，往这几个 bucket 投票/计数。&lt;/li>
+&lt;li>range，x 轴的显示范围&lt;/li>
+&lt;/ul>
+&lt;h4 id="pltplot">plt.plot()&lt;/h4>
+&lt;h5 id="ylabel">y.label()&lt;/h5>
+&lt;p>给出y轴的名称&lt;/p>
+&lt;p>论文中时常需要设置 y 轴参数&lt;/p>
+&lt;p>plt.legend() 显示 label&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>legend(loc&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;upper right&amp;#39;&lt;/span>, ncol&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>, fontsize&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">30&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>ncol 设置行列如何排布，有时候需要排成一排，有时候需要排成一列&lt;/p>
+&lt;h5 id="pltxticks-pltyticks">plt.xticks(), plt.yticks()&lt;/h5>
+&lt;p>关于刻度的一些设置&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>xticks(locs, [labels], &lt;span style="color:#f92672">**&lt;/span>kwargs) &lt;span style="color:#75715e"># Set locations and labels&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>yticks(np&lt;span style="color:#f92672">.&lt;/span>arange(&lt;span style="color:#ae81ff">0.5&lt;/span>, &lt;span style="color:#ae81ff">1.3&lt;/span>, step&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0.05&lt;/span>),family&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Arial&amp;#39;&lt;/span>, weight&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;normal&amp;#39;&lt;/span>, size&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">20&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>np.arange(0.5, 1.3, step=0.05) 设置刻度的范围和步长&lt;/p>
+&lt;p>不显示 y 轴刻度&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>yticks([])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="pltylim05-13">plt.ylim((0.5, 1.3))&lt;/h5>
+&lt;p>设置坐标轴范围，为 0.5-1.3&lt;/p>
+&lt;h5 id="plttitle">plt.title()&lt;/h5>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>title(filename, {&lt;span style="color:#e6db74">&amp;#39;family&amp;#39;&lt;/span> : &lt;span style="color:#e6db74">&amp;#39;Arial&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;weight&amp;#39;&lt;/span> : &lt;span style="color:#e6db74">&amp;#39;normal&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;size&amp;#39;&lt;/span> : &lt;span style="color:#ae81ff">20&lt;/span>})
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="pltsubplot">plt.subplot()&lt;/h5>
+&lt;p>这个是画图的时候比较常用的&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 分成2x2，占用第一个，即第一行第一列的子图&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>subplot(&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> filename &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;cifar&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> show_graph_cifar(filename)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 分成2x2，占用第一个，即第一行第一列的子图&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>subplot(&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> filename &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;resnet&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> show_graph_resnet(filename)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 分成2x1，占用第二个，即第二行&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>subplot(&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> filename &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;alex&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> show_graph_alex(filename)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>效果&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;h5 id="pltlegend">plt.legend()&lt;/h5>
+&lt;p>参数 &lt;code>ncol&lt;/code> 设置列数，可以把他们排成一行&lt;/p>
+&lt;h5 id="pltgrid">plt.grid&lt;/h5>
+&lt;p>如何把网格放在最底层？zorder 似乎没有效果。虽然警告了 &lt;code>zorder unknown word&lt;/code>，但是设置之后还是 work 了。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>grid(visible&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>, which&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;major&amp;#39;&lt;/span>, axis&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;y&amp;#39;&lt;/span>, linestyle&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;--&amp;#39;&lt;/span>, zorder&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>zorder 设置值比 bar 更小，就可以放在最底层了&lt;/p>
+&lt;h5 id="pltbar-绘制直方图和叠加直方图">plt.bar() 绘制直方图和叠加直方图&lt;/h5>
+&lt;p>叠加直方图这次没做，不过不是很难，大概是给 bar 指定一个起始位置&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>bar(x_length &lt;span style="color:#f92672">+&lt;/span> bar_width,y_8,width&lt;span style="color:#f92672">=&lt;/span>bar_width,label&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;8 entry&amp;#34;&lt;/span>, color&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;darkorange&amp;#39;&lt;/span>, edgecolor&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;black&amp;#39;&lt;/span>, zorder&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>加上边框 edgecolor 会好看很多。&lt;/p>
+&lt;h5 id="pltsubplots_adjustbottom035">plt.subplots_adjust(bottom=0.35)&lt;/h5>
+&lt;p>提前设置好 top, bottom, 各种空白等参数，让打出来的图片可以直接使用&lt;/p>
+&lt;h5 id="color-参数">color 参数&lt;/h5>
+&lt;!-- raw HTML omitted --></description></item><item><title>CSAPP阅读笔记</title><link>https://huweim.github.io/post/%E6%95%99%E6%9D%90_csapp%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</link><pubDate>Tue, 19 Apr 2022 18:34:28 +0800</pubDate><guid>https://huweim.github.io/post/%E6%95%99%E6%9D%90_csapp%E9%98%85%E8%AF%BB%E7%AC%94%E8%AE%B0/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
 &lt;p>最近刚把 adaptive 调度的一部分工作写成了文章，在 SOCC DDL（4.14） 投了出去。之后会准备oneflow面试，如果可以拿下这份远程实习，对工程能力和并行计算优化方面会有更好的优化。因此，希望可以好好准备一下oneflow二面。准备的方式就是浏览一遍CSAPP，一方面是复习体系结构中的一些知识，另一方面再构建一下对整个计算机结构，操作系统，C语言的了解和认识。&lt;/p>
 &lt;h2 id="01-知识点挖坑">0.1 知识点挖坑&lt;/h2>
 &lt;ul>
@@ -3573,476 +3710,4 @@ title: &amp;#34;Blog&amp;#34;
 &lt;li>从最基础的东西开始做，一点一点增加功能和深度。&lt;/li>
 &lt;li>做一个成品，一个有完整功能的成品。不能 work 的半成品没有意义&lt;/li>
 &lt;li>早点开始做，不要想太多。对于模拟器也是一样的，源码看的差不多就可以上手自己改了，不要等到把模拟器每个位置都看懂。&lt;/li>
-&lt;/ul></description></item><item><title>Hugo 文章写作格式</title><link>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E5%86%99%E4%BD%9C%E6%A0%BC%E5%BC%8F/</link><pubDate>Fri, 08 Oct 2021 12:13:07 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E5%86%99%E4%BD%9C%E6%A0%BC%E5%BC%8F/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
-&lt;p>记录一下文章写作和 扉页标签的内容，文章完全转载自 &lt;a href="https://shuzang.github.io/2019/hugo-blog-article-write/#3-%E6%8E%92%E7%89%88%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83">博客&lt;/a>&lt;/p>
-&lt;hr>
-&lt;p>本文是 Hugo 使用记录的第二篇，介绍关于文章写作的一些问题，包括分类管理、排版技巧、特殊语法等，所有语法基于 LoveIt 主题。&lt;/p>
-&lt;p>Hugo支持的文章格式为&lt;code>.md&lt;/code>，即用markdown语言编辑的文章。所有的文章都放在&lt;code>content/posts&lt;/code>目录下，支持级联目录，即在&lt;code>posts&lt;/code>目录下按分类建立多个子文件夹放置文章，比如本博客的文章按分类放在四个子文件夹下。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-sh" data-lang="sh">&lt;span style="display:flex;">&lt;span>$ ls posts
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>爱编程爱技术的孩子/ 我所热爱的生活啊/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>平日里的白日梦/ 研究生的区块链学习之路/
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>下面是三条方便清晰管理和生成文章的目录结构建议:&lt;/p>
-&lt;ul>
-&lt;li>保持博客文章存放在 &lt;code>content/posts&lt;/code> 目录, 例如: &lt;code>content/posts/我的第一篇文章.md&lt;/code>&lt;/li>
-&lt;li>保持简单的静态页面存放在 &lt;code>content&lt;/code> 目录, 例如: &lt;code>content/about.md&lt;/code>&lt;/li>
-&lt;li>保持图片之类的媒体资源存放在 &lt;code>static&lt;/code> 目录, 例如: &lt;code>static/images/screenshot.png&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;h2 id="1-前置参数">1. 前置参数&lt;/h2>
-&lt;p>Hugo 允许在文章内容前面添加 &lt;code>yaml&lt;/code>, &lt;code>toml&lt;/code> 或者 &lt;code>json&lt;/code> 格式的前置参数，LoveIt 默认文章模板提供的前置参数有&lt;/p>
-&lt;blockquote>
-&lt;p>不过自己现在用的模板似乎不支持这么多参数&lt;/p>
-&lt;/blockquote>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>---
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">title&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;我的第一篇文章&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">subtitle&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">date&lt;/span>: &lt;span style="color:#e6db74">2020-03-04T15:58:26&lt;/span>&lt;span style="color:#ae81ff">+08&lt;/span>:&lt;span style="color:#ae81ff">00&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">lastmod&lt;/span>: &lt;span style="color:#e6db74">2020-03-04T15:58:26&lt;/span>&lt;span style="color:#ae81ff">+08&lt;/span>:&lt;span style="color:#ae81ff">00&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">draft&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">author&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">authorLink&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">description&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">license&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">tags&lt;/span>: []
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">categories&lt;/span>: []
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hiddenFromHomePage&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">featured_image&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">featured_image_preview&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">toc&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">autoCollapseToc&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">math&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">mapbox&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">accessToken&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">lightStyle&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">darkStyle&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">navigation&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">geolocate&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">scale&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">fullscreen&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">lightgallery&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">linkToMarkdown&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">share&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">enable&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">comment&lt;/span>: &lt;span style="color:#66d9ef">true&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>---
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>&lt;strong>title&lt;/strong>: 文章标题.&lt;/li>
-&lt;li>&lt;strong>subtitle&lt;/strong>: 文章副标题.&lt;/li>
-&lt;li>&lt;strong>date&lt;/strong>: 这篇文章创建的日期时间. 它通常是从文章的前置参数中的 &lt;code>date&lt;/code> 字段获取的, 但是也可以在 &lt;a href="../theme-documentation-basics/#site-configuration">网站配置&lt;/a> 中设置.&lt;/li>
-&lt;li>&lt;strong>lastmod&lt;/strong>: 上次修改内容的日期时间.&lt;/li>
-&lt;li>&lt;strong>draft&lt;/strong>: 如果设为 &lt;code>true&lt;/code>, 除非 &lt;code>hugo&lt;/code> 命令使用了 &lt;code>--buildDrafts&lt;/code>/&lt;code>-D&lt;/code> 参数, 这篇文章不会被渲染.&lt;/li>
-&lt;li>&lt;strong>author&lt;/strong>: 文章作者.&lt;/li>
-&lt;li>&lt;strong>authorLink&lt;/strong>: 文章作者的链接.&lt;/li>
-&lt;li>&lt;strong>description&lt;/strong>: 文章内容的描述.&lt;/li>
-&lt;li>&lt;strong>license&lt;/strong>: 这篇文章特殊的许可.&lt;/li>
-&lt;li>&lt;strong>tags&lt;/strong>: 文章的标签.&lt;/li>
-&lt;li>&lt;strong>categories&lt;/strong>: 文章所属的类别.&lt;/li>
-&lt;li>&lt;strong>hiddenFromHomePage&lt;/strong>: 如果设为 &lt;code>true&lt;/code>, 这篇文章将不会显示在主页上, 但是此行为可以在 &lt;a href="../theme-documentation-basics/#site-configuration">网站配置&lt;/a> 中设置的.&lt;/li>
-&lt;li>&lt;strong>featuredImage&lt;/strong>: 文章的特色图片.&lt;/li>
-&lt;li>&lt;strong>featuredImagePreview&lt;/strong>: 用在主页预览的文章特色图片.&lt;/li>
-&lt;li>&lt;strong>toc&lt;/strong>: 如果设为 &lt;code>true&lt;/code>, 这篇文章会显示右侧目录.&lt;/li>
-&lt;li>&lt;strong>autoCollapseToc&lt;/strong>: 如果设为 &lt;code>true&lt;/code>, 文章目录会自动折叠.&lt;/li>
-&lt;li>&lt;strong>math&lt;/strong>: 如果设为 &lt;code>true&lt;/code>, 将自动渲染文章中的数学公式.&lt;/li>
-&lt;li>&lt;strong>mapbox&lt;/strong>: 和 &lt;a href="../theme-documentation-basics/#site-configuration">网站配置&lt;/a> 中的 &lt;code>params.mapbox&lt;/code> 对象相同.&lt;/li>
-&lt;li>&lt;strong>lightgallery&lt;/strong>: 如果设为 &lt;code>true&lt;/code>, 文章中的图片将可以按照画廊形式呈现.&lt;/li>
-&lt;li>&lt;strong>linkToMarkdown&lt;/strong>: 如果设为 &lt;code>true&lt;/code>, 内容的页脚将显示指向原始 Markdown 文件的链接.&lt;/li>
-&lt;li>&lt;strong>share&lt;/strong>: 和 &lt;a href="../theme-documentation-basics/#site-configuration">网站配置&lt;/a> 中的 &lt;code>params.share&lt;/code> 对象相同.&lt;/li>
-&lt;li>&lt;strong>comment&lt;/strong>: 如果设为 &lt;code>true&lt;/code>, 将启用评论系统.&lt;/li>
-&lt;/ul>
-&lt;h2 id="2-标签与分类">2. 标签与分类&lt;/h2>
-&lt;p>标签和分类字段是归档文章最常用的两种形式。为了更好的使用，我们需要弄清楚它们的区别。以生活与健身的韦恩图为例&lt;a href="#fn:1">1&lt;/a>，饮食与睡眠同时属于这两个分类，当出现这类型文章时，就可以添加标签来管理。&lt;/p>
-&lt;p>&lt;img src="https://cdn.sspai.com/2019/11/17/07062af1ba37669fa8b7e91484e1d3da.jpg?imageView2/2/w/1120/q/90/interlace/1/ignore-error/1" alt="标签与分类">标签与分类&lt;/p>
-&lt;p>博客文章的存储方式决定了它无法拥有太多的分类，因此，树形逐级检索的方法不适用这种情况，我们应当在将博客分为几个大类的同时，使用标签来管理和检索文章，当同样也要注意不应滥用标签，否则会带来视觉上的混乱和管理的不便。&lt;/p>
-&lt;p>在每篇文章的元数据(Front-Matter字段)中添加&lt;code>categories&lt;/code>字段作为文章分类，添加&lt;code>tags&lt;/code>字段作为文章标签，比如本文：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">tags&lt;/span>: [&lt;span style="color:#ae81ff">博客写作]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">categories&lt;/span>: [&lt;span style="color:#ae81ff">爱编程爱技术的孩子]&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>标签可以有多个，以逗号分隔，不过即使只有一个标签，外面的中括号也不能省略。&lt;/p>
-&lt;h2 id="3-排版风格规范">3. 排版风格规范&lt;/h2>
-&lt;p>本节内容参考少数派写作排版指南&lt;a href="#fn:2">2&lt;/a>&lt;/p>
-&lt;h3 id="31-空格">3.1 空格&lt;/h3>
-&lt;p>行文时在中文与英文、中文与数字、英文与数字之间增加空格。例如：&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>推荐&lt;/strong>：苹果公司在 2015 年 9 月 9 日发布了 iPhone 6s。&lt;/li>
-&lt;li>&lt;strong>不推荐&lt;/strong>：苹果公司在2015年9月9日发布了iPhone 6s。&lt;/li>
-&lt;/ul>
-&lt;p>一段文字中有超链接的部分，在超链接的前后使用空格。例如：&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>推荐&lt;/strong>：你可以前往 &lt;a href="https://www.apple.com/cn">苹果官网&lt;/a> 了解详情。&lt;/li>
-&lt;li>&lt;strong>不推荐&lt;/strong>：你可以前往&lt;a href="https://www.apple.com/cn">苹果官网&lt;/a>了解详情。&lt;/li>
-&lt;/ul>
-&lt;p>英文前后接全角标点符号或者表示单位的角标符号时，不需要加空格。例如：&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>正确&lt;/strong>：新款屏幕的可视角度为 125°，相比旧款提升了 25%。&lt;/li>
-&lt;li>&lt;strong>错误&lt;/strong>：新款屏幕的可视角度为 125 °，相比旧款提升了 25 %。&lt;/li>
-&lt;/ul>
-&lt;p>对于有特殊用法的专有名词，如 4K、1080p、iOS 10 等，英文和数字之间是否空格以官方标准为准。&lt;/p>
-&lt;p>每段文字的开头不需要空两格。&lt;/p>
-&lt;h3 id="32-标点符号">3.2 标点符号&lt;/h3>
-&lt;p>引号使用直角引号「」，而不是弯引号 “”。对于微软拼音输入法可以键入&lt;code>uubd&lt;/code>四个字母开启标点符号的选择。&lt;/p>
-&lt;p>省略号使用 …… 的标准用法，正确输入方法是 shift + 6。不要使用三个句号。。。，也不要使用三个英文句点 …。&lt;/p>
-&lt;p>不要重复使用标点符号，尤其是在表达强烈情感的时候。例如：&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>推荐&lt;/strong>：这个提议真棒！我喜欢。&lt;/li>
-&lt;li>&lt;strong>不推荐&lt;/strong>：这个提议真棒！！！我喜欢~~~~&lt;/li>
-&lt;/ul>
-&lt;p>同时，抒发情感的方法有很多，不建议在文中大量使用感叹号等表达强烈情感的符号，也不建议使用波浪号。&lt;/p>
-&lt;h3 id="33-中文和西文符号">3.3 中文和西文符号&lt;/h3>
-&lt;p>一般情况下，一个中文句子中出现了英文部分，仍然使用中文标点，即全角符号。例如：&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>正确&lt;/strong>：我常用的电子设备是 Kindle、iPad Pro、iPhone。&lt;/li>
-&lt;li>&lt;strong>错误&lt;/strong>：我常用的电子设备是 Kindle, iPad Pro, iPhone.&lt;/li>
-&lt;/ul>
-&lt;p>如果引用一段完整的英文句子，或是出现在专有名词中的标点，则不需要更改标点符号。例如：&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>正确&lt;/strong>：乔布斯说「Stay hungry, Stay foolish.」&lt;/li>
-&lt;li>&lt;strong>错误&lt;/strong>：乔布斯说「Stay hungry，Stay foolish。」&lt;/li>
-&lt;li>&lt;strong>正确&lt;/strong>：我最喜欢的手机游戏是 Lifeline: Silent Night。&lt;/li>
-&lt;li>&lt;strong>错误&lt;/strong>：我最喜欢的手机游戏是 Lifeline：Silent Night。&lt;/li>
-&lt;/ul>
-&lt;h3 id="34-专有名词">3.4 专有名词&lt;/h3>
-&lt;p>所有品牌名称以官方网站写法为准，应用名称遵循 Google Play 或 App Store 的命名。若无官方中文名称，可使用网络上被大家熟知的通用译名，否则请直接使用外文名称，不要自行翻译。&lt;/p>
-&lt;p>请正确书写常用英文名词的大小写和空格。例如：&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>正确&lt;/strong>：iOS 10、macOS、App Store、Android&lt;/li>
-&lt;li>&lt;strong>错误&lt;/strong>：iOS10、MacOS、AppStore、android&lt;/li>
-&lt;/ul>
-&lt;p>若应用名称过长可在文中自定缩写，但需用括号注明缩写名称，并声明「下同」。&lt;/p>
-&lt;p>一般情况下，品牌和应用名称不需要使用直角引号「」括起来。&lt;/p>
-&lt;p>在称呼 app 时，请使用「应用」「应用程序」或「app」，而非「软件」「程序」。&lt;/p>
-&lt;h3 id="35-样式工具">3.5 样式工具&lt;/h3>
-&lt;p>虽然可以使用加粗、斜体、删除线、引用等样式工具，这些工具的使用也可以增加文章的可读性，但是过度使用则会造成排版混乱，因此建议正确、克制地使用样式工具。&lt;/p>
-&lt;p>例如，需要着重显示的部分请使用「加粗」功能，不要使用「斜体」，更不要使用「加粗 + 斜体」的组合。&lt;/p>
-&lt;h3 id="36-注明引用来源">3.6 注明引用来源&lt;/h3>
-&lt;p>文中有使用外站或外部内容的，务必在引用最后部分注明来源。&lt;/p>
-&lt;p>文中有使用外站图片，必须在文末标明。来源如果来自外站必须添加链接。例如，&lt;/p>
-&lt;ul>
-&lt;li>本文部分图片来自 &lt;a href="http://www.theverge.com/">The Verge&lt;/a>&lt;/li>
-&lt;li>题图来自电影《春娇与志明》截图&lt;/li>
-&lt;/ul>
-&lt;p>若文章为全文翻译，必须在文中注明原作者及原文地址，并添加原文链接。&lt;/p>
-&lt;h3 id="37-写作建议">3.7 写作建议&lt;/h3>
-&lt;p>理清文章结构，动笔之前可以先列一下写作大纲。&lt;/p>
-&lt;p>用主动语态，不要用被动语态。一般情况下，主动语态比被动语态更有力。&lt;/p>
-&lt;p>使用具体、明确、展示细节的词汇，能激发想象，使读者自己代入情境。「把硬币放进口袋里，他咧开嘴笑了」，远远强过「他满意地拿走了辛苦挣来的奖赏」。&lt;/p>
-&lt;p>减少形容词的使用，少用 「的」。&lt;/p>
-&lt;p>文中涉及到参数规格、数据的部分，要保证严谨性。&lt;/p>
-&lt;p>文章完成之后通读一遍，记住，不要让读者猜测你在讲什么。&lt;/p>
-&lt;h1 id="reference">Reference&lt;/h1>
-&lt;p>&lt;a href="https://shuzang.github.io/2019/hugo-blog-article-write/#3-%E6%8E%92%E7%89%88%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83">https://shuzang.github.io/2019/hugo-blog-article-write/#3-%E6%8E%92%E7%89%88%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83&lt;/a>&lt;/p></description></item><item><title>Hugo 归档页面制作</title><link>https://huweim.github.io/post/blog_hugo_%E5%BD%92%E6%A1%A3%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</link><pubDate>Fri, 08 Oct 2021 12:09:11 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E5%BD%92%E6%A1%A3%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
-&lt;p>最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。&lt;/p>
-&lt;p>本文记录添加 archives 页面的过程。目前使用的 Hugo 主题 Ink 需要自己添加归档页面&lt;/p>
-&lt;h1 id="1-新建归档页面模板">1. 新建归档页面模板&lt;/h1>
-&lt;ul>
-&lt;li>
-&lt;p>进入自己的 Hugo 主题文件夹，我自己的是 &lt;code>themes/hugo-ink&lt;/code>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>在主题文件夹的 &lt;code>layouts/_default&lt;/code> 文件夹下新建文件 &lt;code>archives.html&lt;/code>，内容直接复制 &lt;code>single.html&lt;/code>&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>将 &lt;code>archives.html&lt;/code> 文件中的 &lt;code>{{ .Content }}&lt;/code> 替换为以下内容&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;pre tabindex="0">&lt;code>{{ range (.Site.RegularPages.GroupByDate &amp;#34;2006&amp;#34;) }}
-&amp;lt;h3&amp;gt;{{ .Key }}&amp;lt;/h3&amp;gt;
-&amp;lt;ul class=&amp;#34;archive-list&amp;#34;&amp;gt;
-{{ range (where .Pages &amp;#34;Type&amp;#34; &amp;#34;posts&amp;#34;) }}
-&amp;lt;li&amp;gt;
-{{ .PublishDate.Format &amp;#34;2006-01-02&amp;#34; }}
--&amp;gt;
-&amp;lt;a href=&amp;#34;{{ .RelPermalink }}&amp;#34;&amp;gt;{{ .Title }}&amp;lt;/a&amp;gt;
-&amp;lt;/li&amp;gt;
-{{ end }}
-&amp;lt;/ul&amp;gt;
-{{ end }}
-&lt;/code>&lt;/pre>&lt;h5 id="解释">解释&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>{{ range (where .Pages &amp;quot;Type&amp;quot; &amp;quot;posts&amp;quot;) }}&lt;/code>
-&lt;ul>
-&lt;li>归档目录设置为 &lt;code>content/posts&lt;/code>&lt;/li>
-&lt;li>注意我的文章文件夹是 &lt;code>posts&lt;/code>，如果你的是 &lt;code>post&lt;/code>，请对应修改，否则无法正确解析&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;code> {{ .PublishDate.Format &amp;quot;2006-01-02&amp;quot; }}&lt;/code>
-&lt;ul>
-&lt;li>可以选择归档的方式&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h1 id="2-新建-archives-文档">2. 新建 archives 文档&lt;/h1>
-&lt;p>假设文章都存在目录 &lt;code>content/posts&lt;/code> 下，打开 Git 命令行，输入&lt;/p>
-&lt;pre tabindex="0">&lt;code>hugo new posts/archives.md
-&lt;/code>&lt;/pre>&lt;p>将其顶部配置内容进行如下修改&lt;/p>
-&lt;pre tabindex="0">&lt;code>---
-title: &amp;#34;Archives&amp;#34;
-layout: archives
-hidden: true
-type: posts
-summary: 历史文章按照年月归档.
-url: /archives/
----
-&lt;/code>&lt;/pre>&lt;h1 id="3-主题jane">3. 主题Jane&lt;/h1>
-&lt;p>不同主题的配置上会有细微的差距，比如配置主题 &lt;a href="https://github.com/xianmin/hugo-theme-jane">Jane&lt;/a>，文章目录的名称是 post 而非 posts，没有弄对就无法显示。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>{{ &lt;span style="color:#ae81ff">range (.Site.RegularPages.GroupByDate &amp;#34;2006&amp;#34;) }}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">&amp;lt;h3&amp;gt;{{ .Key }}&amp;lt;/h3&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">&amp;lt;ul class=&amp;#34;archive-list&amp;#34;&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ &lt;span style="color:#ae81ff">range (where .Pages &amp;#34;Type&amp;#34; &amp;#34;post&amp;#34;) }}&lt;/span> &lt;span style="color:#75715e">#注意是post&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">&amp;lt;li&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ &lt;span style="color:#ae81ff">.PublishDate.Format &amp;#34;2006-01-02&amp;#34; }}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> -&amp;gt;&lt;span style="color:#e6db74">
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;a href=&amp;#34;{{ .RelPermalink }}&amp;#34;&amp;gt;{{ .Title }}&amp;lt;/a&amp;gt;
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;lt;/li&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ &lt;span style="color:#ae81ff">end }}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#ae81ff">&amp;lt;/ul&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{{ &lt;span style="color:#ae81ff">end }}&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="reference">Reference&lt;/h1>
-&lt;p>&lt;a href="https://xbc.me/how-to-create-an-archives-page-with-hugo/">https://xbc.me/how-to-create-an-archives-page-with-hugo/&lt;/a>&lt;/p>
-&lt;p>&lt;a href="http://maitianblog.com/hugo-archives.html">http://maitianblog.com/hugo-archives.html&lt;/a>&lt;/p></description></item><item><title>GPGPU-Sim源码阅读</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</link><pubDate>Tue, 28 Sep 2021 15:51:46 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</guid><description>&lt;h1 id="shadercc">Shader.cc&lt;/h1>
-&lt;p>shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等&lt;/p>
-&lt;p>m_stats 也就是 shader_core_stats 类型的变量&lt;/p>
-&lt;p>num_shaer 就是 n_simt_clusters*n_simt_cores_per_cluster，也就是 SIMT Core 的数量&lt;/p>
-&lt;p>tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值&lt;/p>
-&lt;h3 id="shader_core_ctxdecode-函数">shader_core_ctx::decode 函数&lt;/h3>
-&lt;p>检查 fetch buffer 中的指令是否有效，如有效则进入循环。获得当前指令的 pc，并取指令。&lt;/p>
-&lt;p>指令用变量 pI1 存储，调用函数 ibuffer_fill, 将 pI 装进对应 warp id 的 I-Buffer, 并将 valid bit 置为1&lt;/p>
-&lt;p>随后会取下一条指令，用变量 pI2 存储，注意下一条指令的 &lt;code>pc = pc + pI1 -&amp;gt; isize&lt;/code>。也就是我们常说的 pc = pc + 1, 这里的1实际上是一条指令的长度&lt;/p>
-&lt;p>每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1&lt;/p>
-&lt;h5 id="ifetch_buffer_taddress_type-pc-unsigned-nbytes-unsigned-warp_id">ifetch_buffer_t(address_type pc, unsigned nbytes, unsigned warp_id)&lt;/h5>
-&lt;p>是一个结构体，包含 m_valid, m_pc, m_nbytes, m_warp_id&lt;/p>
-&lt;p>构造时 valid 直接置为1&lt;/p>
-&lt;p>其变量作为 fetch 和 decode stage 之间的 pipeline register&lt;/p>
-&lt;p>理解为用于使得 fetch and decode 可以流水线执行的一个结构体&lt;/p>
-&lt;h3 id="shader_core_ctxfetch-函数">shader_core_ctx::fetch 函数&lt;/h3>
-&lt;p>访问内存 (L1 Cache or memory)，获取指令的 pc, size, warp_id&lt;/p>
-&lt;p>如果 L1 Cache 的 access ready, 也就是已经可以内存访问（之前 Miss 的时候需要的 data 已经从内存中取到了）&lt;/p>
-&lt;p>如果没有 access ready, 就去找一个 active, 并且在 I-Buffer 中还有空间, 没有在等待 cache miss 的 warp，取其 next instruction from i-cache&lt;/p>
-&lt;blockquote>
-&lt;p>第3层中的第1个 if 语句检查 warp 是否已经完成执行，第3层中的第2个 if 语句检查当前 warp 对应的 entry 是否已经存储了有效的指令&lt;/p>
-&lt;/blockquote>
-&lt;h3 id="issue_warp-函数">issue_warp 函数&lt;/h3>
-&lt;p>free 掉相应的 I-Buffer&lt;/p>
-&lt;h3 id="scheduler_unitcycle">scheduler_unit::cycle()&lt;/h3>
-&lt;p>In function &lt;code>scheduler_unit::cycle()&lt;/code> , call &lt;code>order_warps()&lt;/code> to sort warps according to their priority.&lt;/p>
-&lt;p>排序后的 warp 放在 vector &lt;code>m_next_cycle_prioritized_warps&lt;/code> 中，对其进行遍历来处理这个 vector 中的 warp。&lt;/p>
-&lt;p>❗ 值得注意的是在 order_warp() 后，for 循环会遍历 vector &lt;code>m_next_cycle_prioritized_warps&lt;/code> 中的所有 warp。而不是发射一个 warp 就重新排序一次。&lt;/p>
-&lt;blockquote>
-&lt;p>这一点和自己的理解与猜想不太一样&lt;/p>
-&lt;/blockquote>
-&lt;hr>
-&lt;p>进入 for 循环，拿到 warp id，判断&lt;/p>
-&lt;ul>
-&lt;li>I-Buffer 是否为空；是否处于 waiting 状态。如果都通过，进入一个 while 循环
-&lt;ul>
-&lt;li>如果指令是有效的 &lt;code>if(pI)&lt;/code>
-&lt;ul>
-&lt;li>如果出现分支 &lt;code>if(pc != pI-&amp;gt;pc)&lt;/code>，刷掉 I-Buffer&lt;/li>
-&lt;li>如果没有分支，此时 &lt;code>valid=true&lt;/code>，指令是有效的。如果通过 scoreboard 检测，终于可以执行了。先读取 active mask 确定要执行哪些线程，然后判断 &lt;code>pI-&amp;gt;op&lt;/code> 是 内存操作 还是 运算操作。如果相应的寄存器可以使用 &lt;code>has_free()&lt;/code>，则 call &lt;code>issue_warp()&lt;/code> 将寄存器、指令、active mask、warp id、scheduler id 发送并执行。&lt;/li>
-&lt;li>&lt;code>warp_inst_issued = true; issued++; issued_inst = true&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>else if 下一条指令是有效的
-&lt;ul>
-&lt;li>&amp;hellip;&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>如果指令成功发射 &lt;code>if (warp_inst_issued)&lt;/code>，执行了 issue_warp() 后会进入这个 if 语句，做一些 warp 发射后的统计信息等等
-&lt;ul>
-&lt;li>call &lt;code>do_on_warp_issued(warp_id, issued, iter);&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>checked++&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>从 while 循环出来，如果至少有一个 warp 被发射 &lt;code>if(issued)&lt;/code>，遍历 &lt;code>m_supervised_warps&lt;/code>，找到那个被发射的 warp，然后将其赋值给 &lt;code>m_last_supervised_issued&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;hr>
-&lt;h5 id="scheduler_size">scheduler_size()&lt;/h5>
-&lt;p>scheduler.size 就是2，代表一个 core 中 warp scheduler 的数量&lt;/p>
-&lt;h2 id="关于类">关于类&lt;/h2>
-&lt;p>阅读一个类，应该先观察他还包含哪些子类，继承自哪个类，从全局上把握他的作用&lt;/p>
-&lt;p>class opndcoll_rfu_t&lt;/p>
-&lt;ul>
-&lt;li>class op_t&lt;/li>
-&lt;li>class allocation_t&lt;/li>
-&lt;li>class arbiter_t&lt;/li>
-&lt;li>class input_port_t&lt;/li>
-&lt;li>class collector_unit_t&lt;/li>
-&lt;li>dispatch_unit_t&lt;/li>
-&lt;/ul>
-&lt;h2 id="地址信息">地址信息&lt;/h2>
-&lt;p>src/abstract_hardware_model.h&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">struct&lt;/span> &lt;span style="color:#a6e22e">per_thread_info&lt;/span> {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> per_thread_info() {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">unsigned&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> MAX_ACCESSES_PER_INSN_PER_THREAD; i&lt;span style="color:#f92672">++&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> memreqaddr[i] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dram_callback_t callback;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> new_addr_type
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> memreqaddr[MAX_ACCESSES_PER_INSN_PER_THREAD]; &lt;span style="color:#75715e">// effective address,
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// upto 8 different
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// requests (to support
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// 32B access in 8 chunks
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// of 4B each)
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> };
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>...
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>std&lt;span style="color:#f92672">::&lt;/span>vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>per_thread_info&lt;span style="color:#f92672">&amp;gt;&lt;/span> m_per_scalar_thread;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>现在我们关注每个 kernel_launch_uid 中的访存信息和打印出来的访存次数是否匹配&lt;/p>
-&lt;ul>
-&lt;li>✔️ 匹配。前两个 kernel (都是 create matrix) &lt;code>gpgpu_n_param_mem_insn + gpgpu_n_store_insn = number of memaddr&lt;/code>&lt;/li>
-&lt;li>不过要注意 Memory Access Statistics 的信息应该是总和而非单一 kernel&lt;/li>
-&lt;/ul>
-&lt;h1 id="tracing">Tracing&lt;/h1>
-&lt;h2 id="4个-cycle-函数调用关系">4个 Cycle() 函数调用关系&lt;/h2>
-&lt;p>4个 cycle() 函数&lt;/p>
-&lt;p>shader_core_ctx::cycle() 在 issue 中调用 scheduler_unit::cycle(), 这两个应该是负责 SIMT Front 部分，从指令 fetch, decode, 到准备好后的调度发射 (sheduling and issue).&lt;/p>
-&lt;p>ldst_unit::cycle() 负责各个 memory 的时钟建模，包括 shared memory, L1 latebcy queue, constant menory, texture memory&lt;/p>
-&lt;h5 id="shader_core_ctxcycle">shader_core_ctx::cycle()&lt;/h5>
-&lt;ul>
-&lt;li>SIMT Core Cluster clock domain = frequency of the pipeline stages in a core clock (i.e. the rate at which &lt;code>simt_core_cluster::core_cycle()&lt;/code> is called)
-&lt;ul>
-&lt;li>&lt;code>simt_core_cluster::core_cycle()&lt;/code> will call &lt;code>shader_core_ctx::cycle()&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;ul>
-&lt;li>⭐ &lt;code>m_thread[tid]-&amp;gt;ptx_exec_inst(inst, t);&lt;/code> 用于执行 ptx 指令的执行&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>shader_core_ctx&lt;span style="color:#f92672">::&lt;/span>cycle()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|--&lt;/span> writeback();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|--&lt;/span> execute();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> m_fu[n]&lt;span style="color:#f92672">-&amp;gt;&lt;/span>cycle(); &lt;span style="color:#75715e">//m_fu[] contains ldst_unit, sfu_unit, sp_unit
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">|--&lt;/span> ldst_unit&lt;span style="color:#f92672">::&lt;/span>cycle();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> writeback();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> m_operand_collector&lt;span style="color:#f92672">-&amp;gt;&lt;/span>step();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> issue(register_set &lt;span style="color:#f92672">&amp;amp;&lt;/span>source_reg)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|--&lt;/span> read_operands();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|--&lt;/span> issue();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> scheduler_unit&lt;span style="color:#f92672">::&lt;/span>cycle();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> order_warps();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> m_shader&lt;span style="color:#f92672">-&amp;gt;&lt;/span>get_pdom_stack_top_info(warp_id, pI, &lt;span style="color:#f92672">&amp;amp;&lt;/span>pc, &lt;span style="color:#f92672">&amp;amp;&lt;/span>rpc);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> m_shader&lt;span style="color:#f92672">-&amp;gt;&lt;/span>issue_warp();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> (&lt;span style="color:#f92672">*&lt;/span>pipe_reg)&lt;span style="color:#f92672">-&amp;gt;&lt;/span>warp_inst_t&lt;span style="color:#f92672">::&lt;/span>issue();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> func_exec_inst(&lt;span style="color:#f92672">**&lt;/span>pipe_reg);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> execute_warp_inst_t(inst);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> m_thread[tid]&lt;span style="color:#f92672">-&amp;gt;&lt;/span>ptx_exec_inst(inst, t);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> insn_memaddr &lt;span style="color:#f92672">=&lt;/span> last_eaddr();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> inst.set_addr(lane_id, insn_memaddr); &lt;span style="color:#75715e">//util this, we have //the address in the class warp_inst_t
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">|--&lt;/span> updateSIMTStack(warp_id, &lt;span style="color:#f92672">*&lt;/span>pipe_reg);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> reserveRegisters(&lt;span style="color:#f92672">*&lt;/span>pipe_reg);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> set_next_pc(next_inst&lt;span style="color:#f92672">-&amp;gt;&lt;/span>pc &lt;span style="color:#f92672">+&lt;/span> next_inst&lt;span style="color:#f92672">-&amp;gt;&lt;/span>isize);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|--&lt;/span> decode();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> ibuffer_fill(&lt;span style="color:#ae81ff">0&lt;/span>, pI1);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> inc_inst_in_pipeline();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|--&lt;/span> fetch();
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="scheduler_unitcycle-1">scheduler_unit::cycle()&lt;/h5>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|--&lt;/span> order_warps();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">//if warp is valid and not waiting
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">|--&lt;/span> &lt;span style="color:#66d9ef">const&lt;/span> warp_inst_t &lt;span style="color:#f92672">*&lt;/span>pI &lt;span style="color:#f92672">=&lt;/span> warp(warp_id).ibuffer_next_inst();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|--&lt;/span> m_shader&lt;span style="color:#f92672">-&amp;gt;&lt;/span>get_pdom_stack_top_info(warp_id, pI, &lt;span style="color:#f92672">&amp;amp;&lt;/span>pc, &lt;span style="color:#f92672">&amp;amp;&lt;/span>rpc);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">//deal with the control hazard
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">//pc is the PC in the top of SIMT stack, pI-&amp;gt;pc is the PC in the I-Buffer
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">//not equal means jump or ohter control hazard
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#66d9ef">while&lt;/span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span>(pI){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (pc &lt;span style="color:#f92672">!=&lt;/span> pI&lt;span style="color:#f92672">-&amp;gt;&lt;/span>pc) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> warp(warp_id).set_next_pc(pc);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> warp(warp_id).ibuffer_flush(); &lt;span style="color:#75715e">//need to flush
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>{
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(&lt;span style="color:#f92672">!&lt;/span>m_scoreboard&lt;span style="color:#f92672">-&amp;gt;&lt;/span>checkCollision(warp_id, pI)){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> m_shader&lt;span style="color:#f92672">-&amp;gt;&lt;/span>get_active_mask(warp_id, pI);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// need to check which pipieline to send, MEM, SP, SFU...
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// the only different is the first parameter, register_set *m_XX_out
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">|--&lt;/span> m_shader&lt;span style="color:#f92672">-&amp;gt;&lt;/span>shader_core_ctx&lt;span style="color:#f92672">::&lt;/span>issue_warp(&lt;span style="color:#f92672">*&lt;/span>m_mem_out, pI, active_mask, warp_id, m_id);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">else&lt;/span> &lt;span style="color:#a6e22e">if&lt;/span>(valid){
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">// this case can happen after a return instruction in diverged warp
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">|--&lt;/span> warp(warp_id).set_next_pc(pc);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> warp(warp_id).ibuffer_flush(); &lt;span style="color:#75715e">//need to flush
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}&lt;span style="color:#75715e">//while
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>...
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>执行这个 issue_warp 的时候需要的源操作数的寄存器已经拿到了 (判断 has_free()才会进入这个条件语句)&lt;/p>
-&lt;h5 id="ldst_unitcycle">ldst_unit::cycle()&lt;/h5>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>ldst_unit&lt;span style="color:#f92672">::&lt;/span>cycle()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|--&lt;/span> writeback();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> Scoreboard&lt;span style="color:#f92672">::&lt;/span>releaseRegister();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> warp_inst_complete(m_next_wb);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> clear();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">|--&lt;/span> m_operand_collector&lt;span style="color:#f92672">-&amp;gt;&lt;/span>step();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> dispatch_ready_cu(); &lt;span style="color:#75715e">//把 ready_cu 发射到执行单元
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">|--&lt;/span> cu&lt;span style="color:#f92672">-&amp;gt;&lt;/span>dispatch();
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> allocate_reads(); &lt;span style="color:#75715e">// process read requests that do not have conflicts. Map bank
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">// and collector unit, 连接了 bank 和 cu, 准确到 cu 的哪个操作数
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#66d9ef">for&lt;/span>()&lt;span style="color:#f92672">|--&lt;/span> allocate_cu(p);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> allocated &lt;span style="color:#f92672">=&lt;/span> cu&lt;span style="color:#f92672">-&amp;gt;&lt;/span>allocate(inp.m_in[i], inp.m_out[i]);&lt;span style="color:#75715e">//终于找到了
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">|--&lt;/span> m_arbiter.add_read_requests(cu); &lt;span style="color:#75715e">//把 cu 对特定 bank 的读请求入队
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#75715e">//m_queue[bank].push_back(op);
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">|--&lt;/span> process_banks(); &lt;span style="color:#75715e">//reset allocation, free cu
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">|--&lt;/span> move_warp(warp_inst_t &lt;span style="color:#f92672">*&amp;amp;&lt;/span>dst, warp_inst_t &lt;span style="color:#f92672">*&amp;amp;&lt;/span>src); &lt;span style="color:#75715e">// move src to dst
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">|--&lt;/span> m_L1T&lt;span style="color:#f92672">/&lt;/span>m_L1C&lt;span style="color:#f92672">/&lt;/span>m_L1D&lt;span style="color:#f92672">-&amp;gt;&lt;/span>fill(); &lt;span style="color:#75715e">//deal with fill request
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#f92672">|--&lt;/span> m_L1T&lt;span style="color:#f92672">/&lt;/span>m_L1C&lt;span style="color:#f92672">/&lt;/span>m_L1D&lt;span style="color:#f92672">-&amp;gt;&lt;/span>cycle(); &lt;span style="color:#75715e">//send next request to lower level of memory
-&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在上述的 &lt;code>allocated = cu-&amp;gt;allocate(inp.m_in[i], inp.m_out[i])&lt;/code> 函数中&lt;del>为寄存器赋值&lt;/del> 确定读哪个bank的哪个寄存器&lt;/p>
-&lt;p>m_src_op 中装的就是32个 源操作数寄存器，去哪个位置找 寄存器 的详细信息&lt;/p>
-&lt;p>dispatch() 后会 reset m_src_op,&lt;/p>
-&lt;h5 id="pipelined_simd_unitcycle">pipelined_simd_unit::cycle()&lt;/h5>
-&lt;p>用于模拟流水线，移动寄存器的 value..&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> (&lt;span style="color:#f92672">!&lt;/span>m_pipeline_reg[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">-&amp;gt;&lt;/span>empty()) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> m_result_port&lt;span style="color:#f92672">-&amp;gt;&lt;/span>move_in(m_pipeline_reg[&lt;span style="color:#ae81ff">0&lt;/span>]); &lt;span style="color:#75715e">//move src to m_pipeline_reg[0]
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">|--&lt;/span> warp_inst_t &lt;span style="color:#f92672">**&lt;/span>free &lt;span style="color:#f92672">=&lt;/span> get_free(); &lt;span style="color:#75715e">//return a free register to variable **free
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> &lt;span style="color:#f92672">|--&lt;/span> move_warp(&lt;span style="color:#f92672">*&lt;/span>free, src); &lt;span style="color:#75715e">//move src to *free
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> active_insts_in_pipeline&lt;span style="color:#f92672">--&lt;/span>;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> (active_insts_in_pipeline) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">unsigned&lt;/span> stage &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; (stage &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>) &lt;span style="color:#f92672">&amp;lt;&lt;/span> m_pipeline_depth; stage&lt;span style="color:#f92672">++&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">|--&lt;/span> move_warp(m_pipeline_reg[stage], m_pipeline_reg[stage &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>]);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="文档中-cycle-的介绍">文档中 Cycle() 的介绍&lt;/h2>
-&lt;h5 id="simt_core_clustercore_cycle">simt_core_cluster::core_cycle()&lt;/h5>
-&lt;p>&lt;code>simt_core_cluster::core_cycle()&lt;/code> 方法只是按顺序 循环调用 (cycles) 每个 SIMT core.&lt;/p>
-&lt;p>&lt;code>simt_core_cluster::icnt_cycle()&lt;/code> 方法将内存请求从 interconnection network push 到 SIMT Core Cluster&amp;rsquo;s response FIFO. 它也将 FIFO 中的请求出队，送到合适的 core&amp;rsquo;s instruction cache or LDST unit. 这些与前面描述的硬件块密切对应。&lt;/p>
-&lt;h5 id="shader_core_ctxcycle-1">shader_core_ctx::cycle()&lt;/h5>
-&lt;ul>
-&lt;li>每个 core cycle, 调用 &lt;code>shader_core_ctx::cycle()&lt;/code> 来模拟 SIMT Core 的一个 cycle。&lt;/li>
-&lt;li>operand collector 被建模为主流水线中的一个 stage, 通过函数 &lt;code>shader_core_ctx::cycle()&lt;/code> 执行&lt;/li>
-&lt;/ul>
-&lt;h5 id="scheduler_unitcycle-2">scheduler_unit::cycle()&lt;/h5>
-&lt;ul>
-&lt;li>在 &lt;code>scheduler_unit::cycle()&lt;/code> 中，函数 &lt;code>shader_core_ctx::issue_warp()&lt;/code> 将指令发送到执行单元&lt;/li>
-&lt;li>调用 &lt;code>func_exec_inst()&lt;/code> 执行指令&lt;/li>
-&lt;li>调用 &lt;code>simt_stack::update()&lt;/code> 更新 SIMT Stack&lt;/li>
-&lt;/ul>
-&lt;h5 id="ldst_unitcycle-1">ldst_unit::cycle()&lt;/h5>
-&lt;ul>
-&lt;li>·ldst_unit::cycle()· 处理来自 interconnect 的内存响应（存储在 m_response_fifo 中），填充 cache (&lt;code>m_L1D-&amp;gt;fill()&lt;/code>) 并将存储标记为完成。&lt;/li>
-&lt;li>该函数还 cycle caches，以便它们可以将 missed data 的请求发送到 interconnect&lt;/li>
-&lt;li>对每种类型的 L1 内存的 cache accesses 分别在 &lt;code>shared cycle()&lt;/code>、&lt;code>constant cycle()&lt;/code>、&lt;code>texture cycle() &lt;/code>和 &lt;code>memory cycle()&lt;/code> 中完成 (在 &lt;code>ldst_unit::cycle()&lt;/code> 函数中调用)&lt;/li>
-&lt;/ul>
-&lt;h5 id="gpgpu_simcycle">gpgpu_sim::cycle()&lt;/h5>
-&lt;ul>
-&lt;li>&lt;code>gpgpu sim::cycle()&lt;/code> 方法为 gpgpu - sim 中的所有架构组件的时钟，包括 Memory Partition 的队列，DRAM channel 和 L2 cache bank.&lt;/li>
-&lt;li>对 &lt;code>memory_partition_unit::dram_cycle()&lt;/code> 的调用将内存请求从 L2-&amp;gt;dram queue 移动到 dram channele，从 dram channel 移动到 dram-&amp;gt;L2 queue，并 cycles 片外 GDDR3 dram 内存。&lt;/li>
-&lt;li>在这个函数中，调用
-&lt;ul>
-&lt;li>icnt_cycle()&lt;/li>
-&lt;li>dram_cycle()&lt;/li>
-&lt;li>cache_cycle()&lt;/li>
-&lt;li>core_cycle()&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>所以可以看到，这个函数应该是调用了每个组件的 cycle(), 以此来建模整个 GPGPU-Sim cycle&lt;/p>
-&lt;h5 id="memory_partition_unitcache_cycle">memory_partition_unit::cache_cycle()&lt;/h5>
-&lt;ul>
-&lt;li>在 &lt;code>memory_partition_unit::cache_cycle()&lt;/code> 中，调用 &lt;code>mem_fetch *mf = m_L2cache-&amp;gt;next_access();&lt;/code> 为在 filled MSHR entry 中等待的内存请求产生 replies.&lt;/li>
-&lt;li>L2 产生的由于 read miss 的 fill 请求将从 L2&amp;rsquo;s miss queu 中弹出，并通过调用 &lt;code>m_L2cache-&amp;gt;cycle();&lt;/code> 将其push into L2-&amp;gt;dram queue&lt;/li>
-&lt;/ul>
-&lt;h5 id="dram_tcycle">dram_t::cycle()&lt;/h5>
-&lt;ul>
-&lt;li>The function &lt;code>dram_t::cycle()&lt;/code> represents a DRAM cycle&lt;/li>
-&lt;li>每个周期，DRAM从请求队列中弹出一个请求，然后调用调度器函数，让调度器根据调度策略选择一个需要服务的请求。&lt;/li>
 &lt;/ul></description></item></channel></rss>
