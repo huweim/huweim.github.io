@@ -1,0 +1,271 @@
+---
+title: "（转载）MLSys 个方向综述"
+date: 2022-05-09T22:17:43+08:00
+lastmod: 
+draft: false
+author: "Cory"
+tags: ["MLSys"]
+categories: ["科研"]
+---
+
+最近在试着寻找ML + sys可做的方向，发现涉及到的坑太多了，有点眼花缭乱的感觉......不如写点东西总结一哈，帮自己理一下思路。
+
+个人感觉MLsys不能算是一种方向，而是一种思路......比如对于system研究者来说，可以把ML作为我们开发的系统要适配的一种benchmark，就像transaction对于数据库、某种文件场景对于File System的意义一样。这样一想可做的空间就宽广多了。就算ML哪天又进入寒冬，之前所学的技术也仍然是可持续的。传统的system研究者也应该适应这个潮流，不能简单的把MLsys一律归为大水漫灌..
+
+有很多topic我也是初次接触，还不是很熟悉。如有错误还请批评指点~
+
+
+
+# 1. 分布式机器学习（Distributed DNN Training）
+这个又可以分为两个方面：from ML / system perspective。安利一下刘铁岩老师的《分布式机器学习》这本书（[ch_]表示引用这本书中的一些章节），还有UCB cs294 19fall的这一节。
+
+## 1.1 ML
+
+从ML的角度做，主要是发明或改进分布式训练算法[ch4] [ch5]，保证在分布式加速的同时，仍然能达到原来的学习效果（loss/accuracy）。因此很多工作也被投在像ICML、NIPS这种专业ML会议上。主要用到的方法包括优化（optimization）和统计学习理论（statistical learning theory）。
+
+还有一类工作涉及到如何把单机算法改造成分布式[ch9]，比如同步/异步SGD等。这里主要涉及到的问题是如何降低分布式环境下的通信开销，提高加速比。
+
+这方面了解不多就少写点了... 可以参考这里。
+
+## 1.2 System
+
+还有一个就是从System的角度做。从分布式计算的角度来看，可以把相关工作分为以下几类：
+
+对于计算量太大的场景（计算并行），可以多线程/多节点并行计算，多节点共享公共的存储空间。常用的一个算法就是同步随机梯度下降（synchronous stochastic gradient descent），含义大致相当于K个（K是节点数）mini-batch SGD [ch6.2]
+对于训练数据太多，单机放不下的场景（数据并行，也是最主要的场景），需要将数据划分到多个节点上训练。每个节点先用本地的数据先训练出一个子模型，同时和其他节点保持通信（比如更新参数）以保证最终可以有效整合来自各个节点的训练结果，并得到全局的ML模型。 [ch6.3]
+对于模型太大的场景，需要把模型（例如NN中的不同层）划分到不同节点上进行训练。此时不同节点之间可能需要频繁的sync。这个叫做模型并行。 [ch6.4]
+Pipeline Parallelism：这是去年（SOSP19 PipeDream）才出现的概念，参考这里的第90、95页 以及这里的简介。Pipeline Parallelism相当于把数据并行和模型并行结合起来，把数据划分成多个chunk，也把训练模型的过程分成了Forward Pass和Backward Pass两个stage。然后用流水线的思想进行计算。
+另外，分布式ML本质上还是分布式系统嘛，所以像传统分布式系统里的一些topic（比如一致性、fault tolerance、通信、load balance等等）也可以放到这个背景下进行研究。
+
+最近挖的比较多的坑大致涉及以下几个点：
+
+### 1.1.1 分布式ML系统设计
+
+[ch7.3] 最著名的就是几大分布式DL模型：Parameter Server / AllReduce等。
+
+个人感觉这里面一个可以挖的坑是Decentralized Training。地里一位大佬也在做这个方向。
+
+### 1.1.2 Edge Computing
+
+很多ML模型是需要在手机上运行的（比如毁图秀秀）。针对这一场景，一个是要对手机这种低功耗设备对ML model进行裁剪加速（后面会提到），还有一个要做的就是运行在多个device上的分布式ML。
+
+这里有个最近非常火的概念：Federated Learning。其实本质还是炒数据并行的冷饭...不过应用场景比较不一样。FL更多是为了Privacy的考虑，而分布式加速训练在这里倒是个次要目标。FL还涉及到了模型聚合[ch8]，也就是如何把多个device本地训练出的模型合并到一起。
+
+### 1.1.3 大量计算资源的Scheduling / device placement
+
+UCB的CS294 19spring对这一节有过介绍。
+
+这里的计算资源的数量级是很大的......比如工业界会有万台CPU服务器 / 上千台GPU服务器搭建的DL平台。这个小方向要解决的问题就是如何充分利用它们的性能。比如在阿里PAI组的JD里就有这么一条：“设计探索高效的分布式Placement算法，以更系统化的方式来解决大规模深度学习高效训练的问题”。
+
+这方面比较早的工作大概是这篇paper，说的是如何为TensorFlow计算图里的不同算子分配不同的device，最后用强化学习实现了这个目标。这个工作看起来有点prototype，但提出了一个新的思路。另外还有很多猛如虎的类似Train XX model in y minutes的工作。这种就不仅是placement好就能完成的了，还需要涉及系统拓扑的设计、降低communication开销等等。
+
+对于集群调度，工业界的一个热点是使用容器平台（例如k8s）来运行分布式机器学习应用。虽然k8s本身就有容器集群调度的功能，但为了让它更好地适应ML的workload，人们开发了一些新的轮子，比如针对TensorFlow（Parameter Server模型）和PyTorch的KubeFlow。还有用k8s来跑AutoML的katib。学术界对这方面的一个研究热点是GPU集群调度，在下面2.2节会介绍。
+
+### 1.1.4 communication相关
+
+[ch3.5] [ch7]介绍了一些宏观上的通信模型，但深入进去还有很多可搞的坑。传统搞网络/分布式系统的组比较契合这个小方向。
+
+例如我校的分布式组原来有一些geo-distributed system的工作，现在也可以往ML上装。
+
+### 1.1.5 其他sys for ML可做的坑
+
+工业界的一个ML pipeline不仅仅是训练，还涉及到很多其他的坑。这些是目前被挖的还比较少的：
+
+存储 / Data Management：
+1) 训练数据的规模是很大的。如何为ML设计一个专用的文件系统（类似大数据界的HDFS）或者数据库来加速读数据呢？ 类似的工作有管理ML model的ModelDB.
+2) 在ML framework中，以及Parameter Server中，需要用一个KV storage system来存储参数。可不可以针对ML的场景优化这个KV存储系统呢？ 关于这个可以参考neopenx大神的blog。
+
+
+# 2. 深度学习模型压缩/加速 :star:
+这方面和architecture结合比较紧密。CS229有这一节，也可以参考NIPS19上的这个talk。
+
+对DL model进行压缩主要考虑两个角度：减少计算量（例如conv层的计算量） / 内存占用（NN的参数数量）。不仅要考虑ML上的metric，也要考虑system层面的performance（例如latency / throughput / 功耗。有时候这些比ML模型的accuracy还重要）。具体的方式大概有以下几种：
+
+1. Architectural Compression
+Layer Design -> Typically using factorization techniques to reduce storage and computation
+Pruning（剪枝） -> Eliminating weights, layers, or channels to reduce storage and computation from large pre-trained models. 减少卷积核大小 / 通道数等等
+2. Weight Compression
+Low Bit Precision Arithmetic -> Weights and activations are stored and computed using low bit precision
+Quantized（量化） Weight Encoding -> Weights are quantized and stored using dictionary encodings.
+很多相关的工作是在ML的角度来压缩模型的（也就是Arch Compression，特别是针对CNN和RNN。比如很著名的MobileNet）。这里我们先(kan)略(bu)过(dong)，来看从System的角度是如何加速的。
+
+## 2.1 通过Quantized（量化）降低计算精度要求 :star::star:
+
+量化的含义是将卷积层（the weights and / or activations of a CNN）通常要用到的32位浮点数用更低位的数来表示，如int32, int16, int8等等，来降低资源占用（float32无论是计算还是存储都是很吃资源的..）。量化之后无疑会损失一部分精度，但神经网络对噪声并不是特别敏感，因此控制好量化的程度之后对ML任务的影响可以很小。
+
+一种常用的量化方法是train in floating point and then quantize the resulting weights，训练时还是用float32（因为要涉及到反向传播和梯度下降，全是int就很难搞了..），但在inference的阶段就可以加速啦。一个直观的方法是事先找好一般网络参数的min / max值，然后将训练好的网络参数乘一个scala factor来映射到[MIN_INT, MAX_INT]区间内的整数存起来。在inference时先按int来计算，最后结果再转换回float32。这一过程中其实加速了大量的卷积计算。比如这篇paper就实现了float32到int8的量化。
+
+混合精度计算：上面讲的方法是用在inference阶段的，其实在模型训练时也可以用类似的方法来加速，只不过再用int就不大行了。一种比较新的方法是用float16（也就是俗称的半精度），fp16占用空间是单精度(fp32)的一半，双精度(double，也就是fp64)的1/4。
+
+量化的具体实现方法可以参考这里。NVIDIA专门推出了针对inference阶段量化加速的工具包TensorRT
+
+## 2.2 新硬件 / DL Acclerator :star::star:
+
+在纯硬件方面针对DL workload的工作也有很多，这里来看几个parallel相关的技术。最近Data-Level Parallelism不仅在深度学习中，在其他一些领域（比如数据库）也有了越来越多的应用。
+
+CPU：尽管GPU已经成了深度学习计算的标配，有时候仍然是需要CPU运算的。例如要在手机等辣鸡设备上进行inference。
+
+SIMD：SIMD的含义是同一条指令在多个数据流上操作，和在向量处理器中一样。在具体实现中（例如SSE指令集）是把一个128位SSE寄存器（这是新增加的SIMD专用寄存器，和早期借用FPU寄存器的MMX不同。在SSE指令集中是增加了8个这种寄存器）划分成4个块，同时存放4个float32单精度浮点数，4个块可以同时进行运算（有多个运算单元，作用于不同的地址），这样就提高了并行度。后来的SSE2 / SSE3 / SSE4 / AVX指令集在此基础上又增加对float64 / 更多运算的支持，以及扩展了SIMD专用寄存器的位数，但本质上还是一样的。　　另外，SIMD带来的并行和超标量处理器的并行性（一个周期issue多个指令，用于instruction level parallelism）不是一个概念。非超标量处理器也可以SIMD，而超标量处理器可以更并行issue多个SIMD操作。
+
+VLIW：和一次issue多条指令，然后靠硬件进行ILP调度（也叫动态多发射。需要硬件实现乱序执行、分支预测等操作）的超标量处理器不同，VLIW（Very Large Instruction Width，采用这种技术的处理器也叫做静态多发射处理器）的含义是一次只issue一条可以完成多个操作的复杂长指令（也叫发射包，其实从软件的角度看是多条指令的集合）。因此一条指令的位宽可以很大。VLIW是通过编译器来进行指令级并行调度的（比如一个常用的方法是循环展开，通过识别出可并行的重叠跨循环体指令块来实现ILP）。VLIW的本意是希望在编译阶段就识别出程序中的依赖关系（静态调度），得到可以并行执行的发射包，硬件只需要根据调度好的发射包直接执行即可，这样就简化了硬件实现，从而实现更大宽度发射包的并行执行。intel Itanium的IA64指令集就使用了这个技术，但它在当年并没有取得成功。一个重要的原因是它只适合计算密集、算法固定可控的workload。传统的通用应用程序可能很难具备这个属性（有很多run-time才能确定的值，另外cache访问也是不确定的），但深度学习任务具备这些性质。
+
+GPU：GPU的本质可以看做SIMT（Single Instruction Multiple Threads）。
++ GPU集群：DL框架一般都支持GPU和分布式训练，已经可以在GPU集群环境下运行了，但实际上还存在一些问题导致分布式场景下资源的使用率提不上去：1). CPU和GPU之间memcpy开销太大、2). 参数通信开销太大、3). 显存不够用、4). GPU很难虚拟化(多任务共享)、5).需要针对ML workload的更好的集群调度策略。 对于1和3其实也可以用前面提到的神经网络压缩、模型并行等方法解决； 对于2一个解决方案是尽量让计算和通信在时间上重叠起来，参考ATC17的Poseidon； MSR对于5做了很多工作，一方面是对大规模GPU集群上的真实日志数据进行分析，得出了一些经验（发表在ATC19）。另一方面是设计一些更好的scheduling策略，例如OSDI2018的Gandiva（针对DL workload自身的特点来提高GPU集群使用率）和NSDI2019的Tiresias； 对于4目前还没啥很好的解决方案，但可以通过一些软调度方案来模拟。
++ 这学期8205课上会有GPGPU的topic，到时候再补充 :star::star::star:
+
+系统结构：这个和纯计算关系不是很大，可能暂时和ML加速也没啥关系（事实上目前在计算机网络研究中用的还多一些）......但对于优化整体性能会有帮助
++ NUMA：当单个CPU性能已经到瓶颈时，多处理器就成了比较好的解决方案。为了方便编程，需要保证能为应用程序提供跨越所有处理器的单一物理地址空间，这种也叫做共享内存处理器（Shared Memory Processor）。SMP又可以分为两种类型：1) 任何处理器访问任何地址的仿存时间都是相同的，叫做统一存储访问（Uniform Memory Access）。 2) 对于每个核心，访问某些字会比访问其他字快一些，整个内存空间被分割并分配给不同处理器 / 内存控制器，这叫做非统一存储访问（NonUniform Memory Access，NUMA）。NUMA虽然看起来复杂，但可以支持更大的规模（更多的核心），并且访问附近的存储器时具有较低的延迟。 在过去内存控制器还在北桥的时代，多处理器用的是UMA（所有处理器都通过FSB总线连接北桥，再访问内存）。后来随着核心越来越多，为提高访存速度，内存处理器被做到了CPU内，每个CPU有（或者很少的几个核心共享）一个内存控制器，然后直连一部分内存空间，这些核心就被归为一个NUMA node。而跨NUMA node之间的内存访问需要走QPI总线。可以参考这里的图解。 在一些涉及many core的工作中会经常用到NUMA的概念
++ RDMA：在网络环境中会用到。RDMA全称是Remote Direct Memory Access，用于实现不需要OS参与的远程内存访问（因为message passing through kernel会浪费本来很大的内存和网络带宽）。具体的技术细节可以参考这里。不过最近（Eurosys2019）已经有了应用RDMA来加速分布式机器学习的工作。
+
+专用硬件：CPU性能太菜，GPU又太庞大，于是人们开发了AI专用芯片
++ FPGA：全称是Field Programmable Gate Array，是可以多次烧写的。因为本质上属于软件所以可以快速开发 / 迭代。
++ ASIC：全称是application-specific integrated circuits，出厂后电路就不可以改变了（需要流片）。但是性能比FPGA高。Google的TPU就属于一种ASIC。
+## 2.3 矩阵算子优化
+
+神经网络中的很多运算本质上就是对矩阵运算，因此可以用一些矩阵乘法优化方案来加速。比如cublas就是封装好的针对矩阵和向量运算的加速库，而对于神经网络加速则会使用cudnn
+
+算子优化是个非常贴近hardware的工作，对多种设备都人工调优这些算子其实是比较难的...如果能简化一部分工作就最好啦。于是就有了下面会提到的深度学习编译器。
+
+> 这个工作可能偏向于工业界
+
+## 2.4 AutoML
+
+这个严格来说可能不算MLsys了...但它的思路在很多MLsys问题中也会被用到
+
+AutoML最早只能调很有限的几种参数，用的方法也比较暴力（启发式搜索）。后来能调的东西越来越多，方法也更加猛如虎...一个里程碑是NAS，标志着神经网络结构也可以Auto了。
+
+常用的调参方法大致可以分为这几种：
+
++ 随机搜索，或者说叫启发式搜索。包括 GridSearch 和 RandomSearch。这种方法的改进空间主要体现在使用不同的采样方法生成配置，但本质上仍然是随机试验不同的配置，没有根据跑出来的结果来反馈指导采样过程，效率比较低。
+  
++ Multi-armed Bandit。这种方法综合考虑了“探索”和“利用”两个问题，既可以配置更多资源（也就是采样机会）给搜索空间中效果更优的一部分，也会考虑尝试尽量多的可能性。Bandit 结合贝叶斯优化，就构成了传统的 AutoML 的核心。
+  
++ 深度强化学习。强化学习在 AutoML 中最著名的应用就是 NAS，用于自动生成神经网络结构。另外它在 深度学习参数调优 中也有应用。它的优点是从“从数据中学习”转变为“从动作中学习”（比如某个参数从小调到大），既可以从性能好的样本中学习，也可以从性能坏的样本中学习。但强化学习的坑也比较多，体现在训练可能比较困难，有时结果比较难复现。
+之所以把AutoML也列出来，是因为这些方法在下面提到的ML for system问题中会很有用。比如之前做过的AutoTiKV就应用了一种贝叶斯优化方法来调节数据库参数。
+
+cs294中给出了几个可提高的方向：
+
+Accelerate data collection and preparation
++ Automatic data discovery
++ Distributed data processing, esp. for image and video data
++ Data cleaning and schema driven auto-featurization
+  
+
+Accelerate model selection and hyper-parameter search
++ Parallel and distributed execution
++ Data and feature caching across training runs
+  
+
+Provenance
++ Track previous model development to inform future decisions
++ Connect errors in production with decisions in model development
+
+
+# 3. 深度学习框架/系统设计
+和Distributed Training的区别是这里更关注一些工程上的东西（框架设计、API设计等等）。一个Deep Learning Framework大致需要以下几个元素：
+
++ 支持各种算子(op) 和 tensor (data)
++ 计算图的定义方式（动态 v.s. 静态）
++ Auto Diff
++ Optimizer（例如Adam）
++ 各种加速和优化的库：cudnn, openblas,mkl等
+## 3.1 Deep Learning Framework
+
+这一节重点关注这几个方向：
+
++ Differentiable Programming：如果用过Keras或者PyTorch就会记得它可以简单得像搭积木一样摞一个NN出来，只需要定义一个一个的层（前向传播逻辑）和损失函数就行了。而NN的训练需要Backward Propagation / Forward Propagation，也就是计算微分，运算时framework可以根据定义好的计算图自动求导算梯度。只要可微分就可以保证这个积木能摞出来，然后使用链式法则就可以自动计算微分（Automatic Differentiation）。如果一个语言或者framework具备了Differentiable Programming的性质，就可以更简单的在它上面开发Deep Learning应用（可以类比python手写NN和Keras的区别）。这篇文章对Auto Diff的实现做了很详细的介绍。
+  
++ Embedded Domain Specific Languages：DSL的概念我们都知道，比如SQL就是数据库系统中的DSL，但这已经相当于一个全新的语言了。Embedded DSL是在现有语言上（例如Python）针对某个特定任务做的扩展。比如为了让Python做矩阵计算更方便发明了numpy；为了进行机器学习就有了TensorFlow / PyTorch等等。Embedded DSL的作用是完成 Linear Algebra -> Pipelines -> Differentiable Programs 的转化。
+
++ 根据计算图的定义方式，可以分为Declarative Abstraction（Embedded DSL先生成静态计算图，类似编译执行 define-and-run，例如Tensorflow、Caffe）和Imperative（Embedded DSL生成动态计算图并直接输出结果，类似解释执行 define-by-run，例如PyTorch、Tensorflow Eager）
+  
+
+对于具体的DL框架来说，虽然很多公司都开始自研框架了，但最流行的基本就TensorFlow、PyTorch、mxnet等等那几家了。不过最近又出现了分布式强化学习框架Ray，也具有很好的落地潜能。
+
+> 确实如此，工业界很多公司都在做自己的框架了。
+
+## 3.2 Inference / Model Serving
+
+之前关注了很多训练ML模型中会遇到的问题。但实际应用场景里，inference（直接使用训练好的模型predict）的次数会比training多很多，因此inference的性能也很重要。
+
+Inference可以再分为以下两种：
+
++ Offline: Pre-Materialize Predictions：所有可能的query都是已知的，就事先predict好存起来。一般没有这么玩的...
+
++ Online: Compute Predictions on the fly：根据用户的输入实时predict。这才是最常见的场景
+  
+
+一个典型的ML inference pipeline大致涉及到以下工序：
+
++ input data
++ -> Preprocessing(比如图片要resize)
++ -> model prediction(有时候会同时用很多model，还要ensemble起来)
++ -> 输出结果，有时候还要处理一下
+
+这个pipeline的衡量指标包括Latency、Throughput等（和传统的system问题一样呀）。cs294里列出了几个最近的工作，可以参考这里的paper解读。个人感觉这里可做的坑不多....大多是修修补补...
+
+## 3.3深度学习编译器
+
+这里值得提一下TVM。这篇文章对TVM进行了非常详细的介绍。
+
+简单的说TVM是在把训练好的ML model部署在不同设备上时用的，重点关注的是Inference而不是Training（也就是推理引擎）。在这一过程中，模型本身可能用了不同的framework来写（比如tensorflow / PyTorch / MXNet，本质区别在于使用的算子类型可能不一样），而要部署到的设备也可能有不同的硬件架构（比如x86 / ARM / GPU / FPGA）。inference的过程也就是将framework X写出来的model放在硬件Y上运行的过程，这一过程和编译器是非常相似的（将语言X写的程序编译到硬件Y上运行），这也就是深度学习编译器的含义。
+
+为了设计一个高效的深度学习编译器，TVM借鉴了传统编译器LLVM的设计思想：抽象出编译器前端[ 高级语言C/java -> IR ]，编译器中端[ 优化IR，这种是不同编译器平台共享的 ]，编译器后端[ IR -> 目标硬件上的binary ]等概念，引入IR (Intermediate Representation。深度学习问题中可以将计算图作为IR，称为Graph IR)。这样不同硬件/framework都对标同一套IR，就避免了需要对每种硬件和framework排列组合适配的问题。TVM主要解决的是后端的问题[在目标硬件上高效运行IR]。而前端的问题[生成和优化IR]就交给深度学习框架们完成（针对这一步，在TVM stack中提供了NNVM，作用是represent workloads from different frameworks into standardized computation graphs）。
+
+TVM是和硬件深度集成的，也就是需要针对每种硬件平台实现相关的AI算子（类似NVIDIA GPU上的cuDNN）。然而人工调优这些算子的实现是很费精力的（特别是要针对不同形状的业务模型），这里面也有一些knob需要调整。为了让这个过程也能ML化，于是后来有了AutoTVM。
+
+cs294 sp19还提出了几个可能的future work：
+
+- Compilers are great at Ahead of Time scheduling, what about Just-In-Time scheduling?
+- Any way we can share GPU in predictable way and maximize utilization for DNN inference?
+- Can we optimize for “fitness” of the kernel when it’s executed along with other kernels instead of its latency?
+
+
+# 4. 用ML优化传统的system问题
+
+这里面的花样就更多了...在上学期Jon的ML system课上有过较详细的接触。大部分是用ML去优化一个传统system问题中，一些需要人工经验调整、或者说可以从历史情况learn到一些东西的模块。比如数据库参数、操作系统页表、数据库索引等等。一个模块可以被ML化的前提是它必须是empirical的，参考它在页表（OS的工作集原理）、数据库（DBA是个很吃经验的活...）中的应用。如果人工都看不出来啥规律就别指望它能ML了...
+
+一般认为用ML优化system的思想是起源于Jeff Dean在NIPS2017的workshop。这方面的工作很多发表在纯system的顶级会议以及下属的AI for xxx workshop上，另外一些AI会议的workshop也会收录一些这方面的工作，比如nips 2018的MLsys workshop。从2017年开始已经有很多坑被做过了，但个人感觉还是有一些搞头的。感觉可以从下面两个角度再来搞：
+
+同样的scenario，使用更合适的ML算法。注意这里是更合适，而不是更高大上猛如虎。
+比如这篇ML+Database的paper，使用了LSTM来预测未来的workload pattern，还要用GPU训练，但生产环境上要求数据库服务器也安个显卡是不现实的。工程上的一个解决方案是搞个集中式的训练集群（类似OtterTune），在DBaaS的情况下这种方法倒是行得通，但在对外发布的数据库产品中就不行了。
+这里感觉可以参考早期AutoML的一些工作，因为它们本质是很类似的（都是调参嘛...）。传统方法有启发式搜索/贝叶斯优化。最近也有很多人用强化学习去搞，但还是存在太吃资源的问题...
+这方面对ML知识的要求高一点。
+寻找system界更多可以ML化的场景。这个更适合专业的system researcher来做，对ML倒是略有了解即可。
+有一类思路是把ML深度集成到系统设计中，比如Andy在2019年的15-721课上提到过Self-Driving Database的概念，和之前用ML优化数据库的工作不同的是，Self-Driving DB更关注如何把ML和DB深度集成，而不是搞一个又一个外挂的模块了。
+一个类似的工作是在OS领域：https://engineering.purdue.edu/WukLab/LearnedOS-OSR19.pdf 。
+另外还有个工作是在Key-Value Storage Engine的领域：https://arxiv.org/pdf/1907.05443.pdf。它提出了Design Continuum的概念：存储系统中的很多数据结构本质上是很像的（arise from the very same set of fundamental design principles），例如B+tree, LSM-tree, LSH-table等，但它们却有不同的应用场景（比如KV Store中用LSM就比B+ Tree更合适），很难有一个十全十美的设计。这说明它们有相互替换的空间。这样我们可以将不同数据结构的选择也作为存储系统的一个knob，根据具体workload和硬件的情况来自动选择一个合适的底层数据结构（find a close to optimal data structure design for a key-value store given a target workload and hardware environment）。
+一个更宏观一些的思路是做system and algorithm co-design，让任意计算机系统都能和ml深度集成。虽然具体的target system不一样，但其中有很多模块都是类似的（例如training、inference、system monitor等等）。针对这一目标MSR提出了AutoSys，对这些通用模块进行了整合。
+
+> 这部分就如同用 ML 方法去选择调度算法一样，比较 trick。
+
+# 5. 其他
+方向不是很契合就先不看了...等用到了再填坑
+
+ML pipeline / lifecycle：https://ucbrise.github.io/cs294-ai-sys-fa19/assets/lectures/lec03/03_ml-lifecycle.pdf
+Privacy：https://ucbrise.github.io/cs294-ai-sys-fa19/assets/lectures/lec10/10_adversarial_ml.pdf
+图神经网络训练系统：https://www.msra.cn/zh-cn/news/features/2019-review-machine-learning-system [ATC19 NeuGraph]
+
+
+需要的技能树
+这是从一些公司ML System Research Scientist岗位的招聘要求中整理出来的，更侧重system一些。
+
+System：
+
+工程基础：C/C++、OO programming。阅读源码是个很好的学习方式
+OS
+分布式系统
+编译原理。特别是编译器优化技术、LLVM、memory optimization。Parser之类不喜欢也可以不看
+Computer Architecture。另外还需要了解：1.GPU架构，例如显存分配机制、CPU与GPU交互。 2.CPU、存储系统相关的新技术。 3.有条件可以了解下深度学习专用硬件。
+常见的并行计算框架，例如MPI/OpenMP/CUDA
+ML framework的底层原理，扒源码
+工业界的一些新东西：例如k8s、KubeFlow、ElasticDL
+ML：
+
+机器学习基础
+常见的分布式机器学习算法、DL模型压缩、模型加速方法（根据具体方向而定）
+数理基础不要太菜…不要被人吐槽像没学过高中数学…
+
+# Reference 
+
+https://zhuanlan.zhihu.com/p/104444471
