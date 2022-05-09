@@ -1,6 +1,445 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 08 May 2022 20:56:54 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 09 May 2022 22:17:43 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
 &lt;p>一个计算机体系结构方向的学生，喜欢体系结构，喜欢编程，喜欢篮球。目前的课题主要关注 GPU/GPGPU。&lt;/p>
-&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>关于 Deep Work</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</link><pubDate>Sun, 08 May 2022 20:56:54 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>（转载）MLSys 个方向综述</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E8%BD%AC%E8%BD%BDmlsys-%E4%B8%AA%E6%96%B9%E5%90%91%E7%BB%BC%E8%BF%B0/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E8%BD%AC%E8%BD%BDmlsys-%E4%B8%AA%E6%96%B9%E5%90%91%E7%BB%BC%E8%BF%B0/</guid><description>&lt;p>最近在试着寻找ML + sys可做的方向，发现涉及到的坑太多了，有点眼花缭乱的感觉&amp;hellip;&amp;hellip;不如写点东西总结一哈，帮自己理一下思路。&lt;/p>
+&lt;p>个人感觉MLsys不能算是一种方向，而是一种思路&amp;hellip;&amp;hellip;比如对于system研究者来说，可以把ML作为我们开发的系统要适配的一种benchmark，就像transaction对于数据库、某种文件场景对于File System的意义一样。这样一想可做的空间就宽广多了。就算ML哪天又进入寒冬，之前所学的技术也仍然是可持续的。传统的system研究者也应该适应这个潮流，不能简单的把MLsys一律归为大水漫灌..&lt;/p>
+&lt;p>有很多topic我也是初次接触，还不是很熟悉。如有错误还请批评指点~&lt;/p>
+&lt;h1 id="1-分布式机器学习distributed-dnn-training">1. 分布式机器学习（Distributed DNN Training）&lt;/h1>
+&lt;p>这个又可以分为两个方面：from ML / system perspective。安利一下刘铁岩老师的《分布式机器学习》这本书（[ch_]表示引用这本书中的一些章节），还有UCB cs294 19fall的这一节。&lt;/p>
+&lt;h2 id="11-ml">1.1 ML&lt;/h2>
+&lt;p>从ML的角度做，主要是发明或改进分布式训练算法[ch4] [ch5]，保证在分布式加速的同时，仍然能达到原来的学习效果（loss/accuracy）。因此很多工作也被投在像ICML、NIPS这种专业ML会议上。主要用到的方法包括优化（optimization）和统计学习理论（statistical learning theory）。&lt;/p>
+&lt;p>还有一类工作涉及到如何把单机算法改造成分布式[ch9]，比如同步/异步SGD等。这里主要涉及到的问题是如何降低分布式环境下的通信开销，提高加速比。&lt;/p>
+&lt;p>这方面了解不多就少写点了&amp;hellip; 可以参考这里。&lt;/p>
+&lt;h2 id="12-system">1.2 System&lt;/h2>
+&lt;p>还有一个就是从System的角度做。从分布式计算的角度来看，可以把相关工作分为以下几类：&lt;/p>
+&lt;p>对于计算量太大的场景（计算并行），可以多线程/多节点并行计算，多节点共享公共的存储空间。常用的一个算法就是同步随机梯度下降（synchronous stochastic gradient descent），含义大致相当于K个（K是节点数）mini-batch SGD [ch6.2]
+对于训练数据太多，单机放不下的场景（数据并行，也是最主要的场景），需要将数据划分到多个节点上训练。每个节点先用本地的数据先训练出一个子模型，同时和其他节点保持通信（比如更新参数）以保证最终可以有效整合来自各个节点的训练结果，并得到全局的ML模型。 [ch6.3]
+对于模型太大的场景，需要把模型（例如NN中的不同层）划分到不同节点上进行训练。此时不同节点之间可能需要频繁的sync。这个叫做模型并行。 [ch6.4]
+Pipeline Parallelism：这是去年（SOSP19 PipeDream）才出现的概念，参考这里的第90、95页 以及这里的简介。Pipeline Parallelism相当于把数据并行和模型并行结合起来，把数据划分成多个chunk，也把训练模型的过程分成了Forward Pass和Backward Pass两个stage。然后用流水线的思想进行计算。
+另外，分布式ML本质上还是分布式系统嘛，所以像传统分布式系统里的一些topic（比如一致性、fault tolerance、通信、load balance等等）也可以放到这个背景下进行研究。&lt;/p>
+&lt;p>最近挖的比较多的坑大致涉及以下几个点：&lt;/p>
+&lt;h3 id="111-分布式ml系统设计">1.1.1 分布式ML系统设计&lt;/h3>
+&lt;p>[ch7.3] 最著名的就是几大分布式DL模型：Parameter Server / AllReduce等。&lt;/p>
+&lt;p>个人感觉这里面一个可以挖的坑是Decentralized Training。地里一位大佬也在做这个方向。&lt;/p>
+&lt;h3 id="112-edge-computing">1.1.2 Edge Computing&lt;/h3>
+&lt;p>很多ML模型是需要在手机上运行的（比如毁图秀秀）。针对这一场景，一个是要对手机这种低功耗设备对ML model进行裁剪加速（后面会提到），还有一个要做的就是运行在多个device上的分布式ML。&lt;/p>
+&lt;p>这里有个最近非常火的概念：Federated Learning。其实本质还是炒数据并行的冷饭&amp;hellip;不过应用场景比较不一样。FL更多是为了Privacy的考虑，而分布式加速训练在这里倒是个次要目标。FL还涉及到了模型聚合[ch8]，也就是如何把多个device本地训练出的模型合并到一起。&lt;/p>
+&lt;h3 id="113-大量计算资源的scheduling--device-placement">1.1.3 大量计算资源的Scheduling / device placement&lt;/h3>
+&lt;p>UCB的CS294 19spring对这一节有过介绍。&lt;/p>
+&lt;p>这里的计算资源的数量级是很大的&amp;hellip;&amp;hellip;比如工业界会有万台CPU服务器 / 上千台GPU服务器搭建的DL平台。这个小方向要解决的问题就是如何充分利用它们的性能。比如在阿里PAI组的JD里就有这么一条：“设计探索高效的分布式Placement算法，以更系统化的方式来解决大规模深度学习高效训练的问题”。&lt;/p>
+&lt;p>这方面比较早的工作大概是这篇paper，说的是如何为TensorFlow计算图里的不同算子分配不同的device，最后用强化学习实现了这个目标。这个工作看起来有点prototype，但提出了一个新的思路。另外还有很多猛如虎的类似Train XX model in y minutes的工作。这种就不仅是placement好就能完成的了，还需要涉及系统拓扑的设计、降低communication开销等等。&lt;/p>
+&lt;p>对于集群调度，工业界的一个热点是使用容器平台（例如k8s）来运行分布式机器学习应用。虽然k8s本身就有容器集群调度的功能，但为了让它更好地适应ML的workload，人们开发了一些新的轮子，比如针对TensorFlow（Parameter Server模型）和PyTorch的KubeFlow。还有用k8s来跑AutoML的katib。学术界对这方面的一个研究热点是GPU集群调度，在下面2.2节会介绍。&lt;/p>
+&lt;h3 id="114-communication相关">1.1.4 communication相关&lt;/h3>
+&lt;p>[ch3.5] [ch7]介绍了一些宏观上的通信模型，但深入进去还有很多可搞的坑。传统搞网络/分布式系统的组比较契合这个小方向。&lt;/p>
+&lt;p>例如我校的分布式组原来有一些geo-distributed system的工作，现在也可以往ML上装。&lt;/p>
+&lt;h3 id="115-其他sys-for-ml可做的坑">1.1.5 其他sys for ML可做的坑&lt;/h3>
+&lt;p>工业界的一个ML pipeline不仅仅是训练，还涉及到很多其他的坑。这些是目前被挖的还比较少的：&lt;/p>
+&lt;p>存储 / Data Management：&lt;/p>
+&lt;ol>
+&lt;li>训练数据的规模是很大的。如何为ML设计一个专用的文件系统（类似大数据界的HDFS）或者数据库来加速读数据呢？ 类似的工作有管理ML model的ModelDB.&lt;/li>
+&lt;li>在ML framework中，以及Parameter Server中，需要用一个KV storage system来存储参数。可不可以针对ML的场景优化这个KV存储系统呢？ 关于这个可以参考neopenx大神的blog。&lt;/li>
+&lt;/ol>
+&lt;h1 id="2-深度学习模型压缩加速-">2. 深度学习模型压缩/加速 ⭐&lt;/h1>
+&lt;p>这方面和architecture结合比较紧密。CS229有这一节，也可以参考NIPS19上的这个talk。&lt;/p>
+&lt;p>对DL model进行压缩主要考虑两个角度：减少计算量（例如conv层的计算量） / 内存占用（NN的参数数量）。不仅要考虑ML上的metric，也要考虑system层面的performance（例如latency / throughput / 功耗。有时候这些比ML模型的accuracy还重要）。具体的方式大概有以下几种：&lt;/p>
+&lt;ol>
+&lt;li>Architectural Compression
+Layer Design -&amp;gt; Typically using factorization techniques to reduce storage and computation
+Pruning（剪枝） -&amp;gt; Eliminating weights, layers, or channels to reduce storage and computation from large pre-trained models. 减少卷积核大小 / 通道数等等&lt;/li>
+&lt;li>Weight Compression
+Low Bit Precision Arithmetic -&amp;gt; Weights and activations are stored and computed using low bit precision
+Quantized（量化） Weight Encoding -&amp;gt; Weights are quantized and stored using dictionary encodings.
+很多相关的工作是在ML的角度来压缩模型的（也就是Arch Compression，特别是针对CNN和RNN。比如很著名的MobileNet）。这里我们先(kan)略(bu)过(dong)，来看从System的角度是如何加速的。&lt;/li>
+&lt;/ol>
+&lt;h2 id="21-通过quantized量化降低计算精度要求-">2.1 通过Quantized（量化）降低计算精度要求 ⭐⭐&lt;/h2>
+&lt;p>量化的含义是将卷积层（the weights and / or activations of a CNN）通常要用到的32位浮点数用更低位的数来表示，如int32, int16, int8等等，来降低资源占用（float32无论是计算还是存储都是很吃资源的..）。量化之后无疑会损失一部分精度，但神经网络对噪声并不是特别敏感，因此控制好量化的程度之后对ML任务的影响可以很小。&lt;/p>
+&lt;p>一种常用的量化方法是train in floating point and then quantize the resulting weights，训练时还是用float32（因为要涉及到反向传播和梯度下降，全是int就很难搞了..），但在inference的阶段就可以加速啦。一个直观的方法是事先找好一般网络参数的min / max值，然后将训练好的网络参数乘一个scala factor来映射到[MIN_INT, MAX_INT]区间内的整数存起来。在inference时先按int来计算，最后结果再转换回float32。这一过程中其实加速了大量的卷积计算。比如这篇paper就实现了float32到int8的量化。&lt;/p>
+&lt;p>混合精度计算：上面讲的方法是用在inference阶段的，其实在模型训练时也可以用类似的方法来加速，只不过再用int就不大行了。一种比较新的方法是用float16（也就是俗称的半精度），fp16占用空间是单精度(fp32)的一半，双精度(double，也就是fp64)的1/4。&lt;/p>
+&lt;p>量化的具体实现方法可以参考这里。NVIDIA专门推出了针对inference阶段量化加速的工具包TensorRT&lt;/p>
+&lt;h2 id="22-新硬件--dl-acclerator-">2.2 新硬件 / DL Acclerator ⭐⭐&lt;/h2>
+&lt;p>在纯硬件方面针对DL workload的工作也有很多，这里来看几个parallel相关的技术。最近Data-Level Parallelism不仅在深度学习中，在其他一些领域（比如数据库）也有了越来越多的应用。&lt;/p>
+&lt;p>CPU：尽管GPU已经成了深度学习计算的标配，有时候仍然是需要CPU运算的。例如要在手机等辣鸡设备上进行inference。&lt;/p>
+&lt;p>SIMD：SIMD的含义是同一条指令在多个数据流上操作，和在向量处理器中一样。在具体实现中（例如SSE指令集）是把一个128位SSE寄存器（这是新增加的SIMD专用寄存器，和早期借用FPU寄存器的MMX不同。在SSE指令集中是增加了8个这种寄存器）划分成4个块，同时存放4个float32单精度浮点数，4个块可以同时进行运算（有多个运算单元，作用于不同的地址），这样就提高了并行度。后来的SSE2 / SSE3 / SSE4 / AVX指令集在此基础上又增加对float64 / 更多运算的支持，以及扩展了SIMD专用寄存器的位数，但本质上还是一样的。　　另外，SIMD带来的并行和超标量处理器的并行性（一个周期issue多个指令，用于instruction level parallelism）不是一个概念。非超标量处理器也可以SIMD，而超标量处理器可以更并行issue多个SIMD操作。&lt;/p>
+&lt;p>VLIW：和一次issue多条指令，然后靠硬件进行ILP调度（也叫动态多发射。需要硬件实现乱序执行、分支预测等操作）的超标量处理器不同，VLIW（Very Large Instruction Width，采用这种技术的处理器也叫做静态多发射处理器）的含义是一次只issue一条可以完成多个操作的复杂长指令（也叫发射包，其实从软件的角度看是多条指令的集合）。因此一条指令的位宽可以很大。VLIW是通过编译器来进行指令级并行调度的（比如一个常用的方法是循环展开，通过识别出可并行的重叠跨循环体指令块来实现ILP）。VLIW的本意是希望在编译阶段就识别出程序中的依赖关系（静态调度），得到可以并行执行的发射包，硬件只需要根据调度好的发射包直接执行即可，这样就简化了硬件实现，从而实现更大宽度发射包的并行执行。intel Itanium的IA64指令集就使用了这个技术，但它在当年并没有取得成功。一个重要的原因是它只适合计算密集、算法固定可控的workload。传统的通用应用程序可能很难具备这个属性（有很多run-time才能确定的值，另外cache访问也是不确定的），但深度学习任务具备这些性质。&lt;/p>
+&lt;p>GPU：GPU的本质可以看做SIMT（Single Instruction Multiple Threads）。&lt;/p>
+&lt;ul>
+&lt;li>GPU集群：DL框架一般都支持GPU和分布式训练，已经可以在GPU集群环境下运行了，但实际上还存在一些问题导致分布式场景下资源的使用率提不上去：1). CPU和GPU之间memcpy开销太大、2). 参数通信开销太大、3). 显存不够用、4). GPU很难虚拟化(多任务共享)、5).需要针对ML workload的更好的集群调度策略。 对于1和3其实也可以用前面提到的神经网络压缩、模型并行等方法解决； 对于2一个解决方案是尽量让计算和通信在时间上重叠起来，参考ATC17的Poseidon； MSR对于5做了很多工作，一方面是对大规模GPU集群上的真实日志数据进行分析，得出了一些经验（发表在ATC19）。另一方面是设计一些更好的scheduling策略，例如OSDI2018的Gandiva（针对DL workload自身的特点来提高GPU集群使用率）和NSDI2019的Tiresias； 对于4目前还没啥很好的解决方案，但可以通过一些软调度方案来模拟。&lt;/li>
+&lt;li>这学期8205课上会有GPGPU的topic，到时候再补充 ⭐⭐⭐&lt;/li>
+&lt;/ul>
+&lt;p>系统结构：这个和纯计算关系不是很大，可能暂时和ML加速也没啥关系（事实上目前在计算机网络研究中用的还多一些）&amp;hellip;&amp;hellip;但对于优化整体性能会有帮助&lt;/p>
+&lt;ul>
+&lt;li>NUMA：当单个CPU性能已经到瓶颈时，多处理器就成了比较好的解决方案。为了方便编程，需要保证能为应用程序提供跨越所有处理器的单一物理地址空间，这种也叫做共享内存处理器（Shared Memory Processor）。SMP又可以分为两种类型：1) 任何处理器访问任何地址的仿存时间都是相同的，叫做统一存储访问（Uniform Memory Access）。 2) 对于每个核心，访问某些字会比访问其他字快一些，整个内存空间被分割并分配给不同处理器 / 内存控制器，这叫做非统一存储访问（NonUniform Memory Access，NUMA）。NUMA虽然看起来复杂，但可以支持更大的规模（更多的核心），并且访问附近的存储器时具有较低的延迟。 在过去内存控制器还在北桥的时代，多处理器用的是UMA（所有处理器都通过FSB总线连接北桥，再访问内存）。后来随着核心越来越多，为提高访存速度，内存处理器被做到了CPU内，每个CPU有（或者很少的几个核心共享）一个内存控制器，然后直连一部分内存空间，这些核心就被归为一个NUMA node。而跨NUMA node之间的内存访问需要走QPI总线。可以参考这里的图解。 在一些涉及many core的工作中会经常用到NUMA的概念&lt;/li>
+&lt;li>RDMA：在网络环境中会用到。RDMA全称是Remote Direct Memory Access，用于实现不需要OS参与的远程内存访问（因为message passing through kernel会浪费本来很大的内存和网络带宽）。具体的技术细节可以参考这里。不过最近（Eurosys2019）已经有了应用RDMA来加速分布式机器学习的工作。&lt;/li>
+&lt;/ul>
+&lt;p>专用硬件：CPU性能太菜，GPU又太庞大，于是人们开发了AI专用芯片&lt;/p>
+&lt;ul>
+&lt;li>FPGA：全称是Field Programmable Gate Array，是可以多次烧写的。因为本质上属于软件所以可以快速开发 / 迭代。&lt;/li>
+&lt;li>ASIC：全称是application-specific integrated circuits，出厂后电路就不可以改变了（需要流片）。但是性能比FPGA高。Google的TPU就属于一种ASIC。&lt;/li>
+&lt;/ul>
+&lt;h2 id="23-矩阵算子优化">2.3 矩阵算子优化&lt;/h2>
+&lt;p>神经网络中的很多运算本质上就是对矩阵运算，因此可以用一些矩阵乘法优化方案来加速。比如cublas就是封装好的针对矩阵和向量运算的加速库，而对于神经网络加速则会使用cudnn&lt;/p>
+&lt;p>算子优化是个非常贴近hardware的工作，对多种设备都人工调优这些算子其实是比较难的&amp;hellip;如果能简化一部分工作就最好啦。于是就有了下面会提到的深度学习编译器。&lt;/p>
+&lt;blockquote>
+&lt;p>这个工作可能偏向于工业界&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="24-automl">2.4 AutoML&lt;/h2>
+&lt;p>这个严格来说可能不算MLsys了&amp;hellip;但它的思路在很多MLsys问题中也会被用到&lt;/p>
+&lt;p>AutoML最早只能调很有限的几种参数，用的方法也比较暴力（启发式搜索）。后来能调的东西越来越多，方法也更加猛如虎&amp;hellip;一个里程碑是NAS，标志着神经网络结构也可以Auto了。&lt;/p>
+&lt;p>常用的调参方法大致可以分为这几种：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>随机搜索，或者说叫启发式搜索。包括 GridSearch 和 RandomSearch。这种方法的改进空间主要体现在使用不同的采样方法生成配置，但本质上仍然是随机试验不同的配置，没有根据跑出来的结果来反馈指导采样过程，效率比较低。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Multi-armed Bandit。这种方法综合考虑了“探索”和“利用”两个问题，既可以配置更多资源（也就是采样机会）给搜索空间中效果更优的一部分，也会考虑尝试尽量多的可能性。Bandit 结合贝叶斯优化，就构成了传统的 AutoML 的核心。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>深度强化学习。强化学习在 AutoML 中最著名的应用就是 NAS，用于自动生成神经网络结构。另外它在 深度学习参数调优 中也有应用。它的优点是从“从数据中学习”转变为“从动作中学习”（比如某个参数从小调到大），既可以从性能好的样本中学习，也可以从性能坏的样本中学习。但强化学习的坑也比较多，体现在训练可能比较困难，有时结果比较难复现。
+之所以把AutoML也列出来，是因为这些方法在下面提到的ML for system问题中会很有用。比如之前做过的AutoTiKV就应用了一种贝叶斯优化方法来调节数据库参数。&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>cs294中给出了几个可提高的方向：&lt;/p>
+&lt;p>Accelerate data collection and preparation&lt;/p>
+&lt;ul>
+&lt;li>Automatic data discovery&lt;/li>
+&lt;li>Distributed data processing, esp. for image and video data&lt;/li>
+&lt;li>Data cleaning and schema driven auto-featurization&lt;/li>
+&lt;/ul>
+&lt;p>Accelerate model selection and hyper-parameter search&lt;/p>
+&lt;ul>
+&lt;li>Parallel and distributed execution&lt;/li>
+&lt;li>Data and feature caching across training runs&lt;/li>
+&lt;/ul>
+&lt;p>Provenance&lt;/p>
+&lt;ul>
+&lt;li>Track previous model development to inform future decisions&lt;/li>
+&lt;li>Connect errors in production with decisions in model development&lt;/li>
+&lt;/ul>
+&lt;h1 id="3-深度学习框架系统设计">3. 深度学习框架/系统设计&lt;/h1>
+&lt;p>和Distributed Training的区别是这里更关注一些工程上的东西（框架设计、API设计等等）。一个Deep Learning Framework大致需要以下几个元素：&lt;/p>
+&lt;ul>
+&lt;li>支持各种算子(op) 和 tensor (data)&lt;/li>
+&lt;li>计算图的定义方式（动态 v.s. 静态）&lt;/li>
+&lt;li>Auto Diff&lt;/li>
+&lt;li>Optimizer（例如Adam）&lt;/li>
+&lt;li>各种加速和优化的库：cudnn, openblas,mkl等&lt;/li>
+&lt;/ul>
+&lt;h2 id="31-deep-learning-framework">3.1 Deep Learning Framework&lt;/h2>
+&lt;p>这一节重点关注这几个方向：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Differentiable Programming：如果用过Keras或者PyTorch就会记得它可以简单得像搭积木一样摞一个NN出来，只需要定义一个一个的层（前向传播逻辑）和损失函数就行了。而NN的训练需要Backward Propagation / Forward Propagation，也就是计算微分，运算时framework可以根据定义好的计算图自动求导算梯度。只要可微分就可以保证这个积木能摞出来，然后使用链式法则就可以自动计算微分（Automatic Differentiation）。如果一个语言或者framework具备了Differentiable Programming的性质，就可以更简单的在它上面开发Deep Learning应用（可以类比python手写NN和Keras的区别）。这篇文章对Auto Diff的实现做了很详细的介绍。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Embedded Domain Specific Languages：DSL的概念我们都知道，比如SQL就是数据库系统中的DSL，但这已经相当于一个全新的语言了。Embedded DSL是在现有语言上（例如Python）针对某个特定任务做的扩展。比如为了让Python做矩阵计算更方便发明了numpy；为了进行机器学习就有了TensorFlow / PyTorch等等。Embedded DSL的作用是完成 Linear Algebra -&amp;gt; Pipelines -&amp;gt; Differentiable Programs 的转化。&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>根据计算图的定义方式，可以分为Declarative Abstraction（Embedded DSL先生成静态计算图，类似编译执行 define-and-run，例如Tensorflow、Caffe）和Imperative（Embedded DSL生成动态计算图并直接输出结果，类似解释执行 define-by-run，例如PyTorch、Tensorflow Eager）&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>对于具体的DL框架来说，虽然很多公司都开始自研框架了，但最流行的基本就TensorFlow、PyTorch、mxnet等等那几家了。不过最近又出现了分布式强化学习框架Ray，也具有很好的落地潜能。&lt;/p>
+&lt;blockquote>
+&lt;p>确实如此，工业界很多公司都在做自己的框架了。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="32-inference--model-serving">3.2 Inference / Model Serving&lt;/h2>
+&lt;p>之前关注了很多训练ML模型中会遇到的问题。但实际应用场景里，inference（直接使用训练好的模型predict）的次数会比training多很多，因此inference的性能也很重要。&lt;/p>
+&lt;p>Inference可以再分为以下两种：&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>Offline: Pre-Materialize Predictions：所有可能的query都是已知的，就事先predict好存起来。一般没有这么玩的&amp;hellip;&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>Online: Compute Predictions on the fly：根据用户的输入实时predict。这才是最常见的场景&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>一个典型的ML inference pipeline大致涉及到以下工序：&lt;/p>
+&lt;ul>
+&lt;li>input data&lt;/li>
+&lt;li>-&amp;gt; Preprocessing(比如图片要resize)&lt;/li>
+&lt;li>-&amp;gt; model prediction(有时候会同时用很多model，还要ensemble起来)&lt;/li>
+&lt;li>-&amp;gt; 输出结果，有时候还要处理一下&lt;/li>
+&lt;/ul>
+&lt;p>这个pipeline的衡量指标包括Latency、Throughput等（和传统的system问题一样呀）。cs294里列出了几个最近的工作，可以参考这里的paper解读。个人感觉这里可做的坑不多&amp;hellip;.大多是修修补补&amp;hellip;&lt;/p>
+&lt;h2 id="33深度学习编译器">3.3深度学习编译器&lt;/h2>
+&lt;p>这里值得提一下TVM。这篇文章对TVM进行了非常详细的介绍。&lt;/p>
+&lt;p>简单的说TVM是在把训练好的ML model部署在不同设备上时用的，重点关注的是Inference而不是Training（也就是推理引擎）。在这一过程中，模型本身可能用了不同的framework来写（比如tensorflow / PyTorch / MXNet，本质区别在于使用的算子类型可能不一样），而要部署到的设备也可能有不同的硬件架构（比如x86 / ARM / GPU / FPGA）。inference的过程也就是将framework X写出来的model放在硬件Y上运行的过程，这一过程和编译器是非常相似的（将语言X写的程序编译到硬件Y上运行），这也就是深度学习编译器的含义。&lt;/p>
+&lt;p>为了设计一个高效的深度学习编译器，TVM借鉴了传统编译器LLVM的设计思想：抽象出编译器前端[ 高级语言C/java -&amp;gt; IR ]，编译器中端[ 优化IR，这种是不同编译器平台共享的 ]，编译器后端[ IR -&amp;gt; 目标硬件上的binary ]等概念，引入IR (Intermediate Representation。深度学习问题中可以将计算图作为IR，称为Graph IR)。这样不同硬件/framework都对标同一套IR，就避免了需要对每种硬件和framework排列组合适配的问题。TVM主要解决的是后端的问题[在目标硬件上高效运行IR]。而前端的问题[生成和优化IR]就交给深度学习框架们完成（针对这一步，在TVM stack中提供了NNVM，作用是represent workloads from different frameworks into standardized computation graphs）。&lt;/p>
+&lt;p>TVM是和硬件深度集成的，也就是需要针对每种硬件平台实现相关的AI算子（类似NVIDIA GPU上的cuDNN）。然而人工调优这些算子的实现是很费精力的（特别是要针对不同形状的业务模型），这里面也有一些knob需要调整。为了让这个过程也能ML化，于是后来有了AutoTVM。&lt;/p>
+&lt;p>cs294 sp19还提出了几个可能的future work：&lt;/p>
+&lt;ul>
+&lt;li>Compilers are great at Ahead of Time scheduling, what about Just-In-Time scheduling?&lt;/li>
+&lt;li>Any way we can share GPU in predictable way and maximize utilization for DNN inference?&lt;/li>
+&lt;li>Can we optimize for “fitness” of the kernel when it’s executed along with other kernels instead of its latency?&lt;/li>
+&lt;/ul>
+&lt;h1 id="4-用ml优化传统的system问题">4. 用ML优化传统的system问题&lt;/h1>
+&lt;p>这里面的花样就更多了&amp;hellip;在上学期Jon的ML system课上有过较详细的接触。大部分是用ML去优化一个传统system问题中，一些需要人工经验调整、或者说可以从历史情况learn到一些东西的模块。比如数据库参数、操作系统页表、数据库索引等等。一个模块可以被ML化的前提是它必须是empirical的，参考它在页表（OS的工作集原理）、数据库（DBA是个很吃经验的活&amp;hellip;）中的应用。如果人工都看不出来啥规律就别指望它能ML了&amp;hellip;&lt;/p>
+&lt;p>一般认为用ML优化system的思想是起源于Jeff Dean在NIPS2017的workshop。这方面的工作很多发表在纯system的顶级会议以及下属的AI for xxx workshop上，另外一些AI会议的workshop也会收录一些这方面的工作，比如nips 2018的MLsys workshop。从2017年开始已经有很多坑被做过了，但个人感觉还是有一些搞头的。感觉可以从下面两个角度再来搞：&lt;/p>
+&lt;p>同样的scenario，使用更合适的ML算法。注意这里是更合适，而不是更高大上猛如虎。
+比如这篇ML+Database的paper，使用了LSTM来预测未来的workload pattern，还要用GPU训练，但生产环境上要求数据库服务器也安个显卡是不现实的。工程上的一个解决方案是搞个集中式的训练集群（类似OtterTune），在DBaaS的情况下这种方法倒是行得通，但在对外发布的数据库产品中就不行了。
+这里感觉可以参考早期AutoML的一些工作，因为它们本质是很类似的（都是调参嘛&amp;hellip;）。传统方法有启发式搜索/贝叶斯优化。最近也有很多人用强化学习去搞，但还是存在太吃资源的问题&amp;hellip;
+这方面对ML知识的要求高一点。
+寻找system界更多可以ML化的场景。这个更适合专业的system researcher来做，对ML倒是略有了解即可。
+有一类思路是把ML深度集成到系统设计中，比如Andy在2019年的15-721课上提到过Self-Driving Database的概念，和之前用ML优化数据库的工作不同的是，Self-Driving DB更关注如何把ML和DB深度集成，而不是搞一个又一个外挂的模块了。
+一个类似的工作是在OS领域：https://engineering.purdue.edu/WukLab/LearnedOS-OSR19.pdf 。
+另外还有个工作是在Key-Value Storage Engine的领域：https://arxiv.org/pdf/1907.05443.pdf。它提出了Design Continuum的概念：存储系统中的很多数据结构本质上是很像的（arise from the very same set of fundamental design principles），例如B+tree, LSM-tree, LSH-table等，但它们却有不同的应用场景（比如KV Store中用LSM就比B+ Tree更合适），很难有一个十全十美的设计。这说明它们有相互替换的空间。这样我们可以将不同数据结构的选择也作为存储系统的一个knob，根据具体workload和硬件的情况来自动选择一个合适的底层数据结构（find a close to optimal data structure design for a key-value store given a target workload and hardware environment）。
+一个更宏观一些的思路是做system and algorithm co-design，让任意计算机系统都能和ml深度集成。虽然具体的target system不一样，但其中有很多模块都是类似的（例如training、inference、system monitor等等）。针对这一目标MSR提出了AutoSys，对这些通用模块进行了整合。&lt;/p>
+&lt;blockquote>
+&lt;p>这部分就如同用 ML 方法去选择调度算法一样，比较 trick。&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="5-其他">5. 其他&lt;/h1>
+&lt;p>方向不是很契合就先不看了&amp;hellip;等用到了再填坑&lt;/p>
+&lt;p>ML pipeline / lifecycle：https://ucbrise.github.io/cs294-ai-sys-fa19/assets/lectures/lec03/03_ml-lifecycle.pdf
+Privacy：https://ucbrise.github.io/cs294-ai-sys-fa19/assets/lectures/lec10/10_adversarial_ml.pdf
+图神经网络训练系统：https://www.msra.cn/zh-cn/news/features/2019-review-machine-learning-system [ATC19 NeuGraph]&lt;/p>
+&lt;p>需要的技能树
+这是从一些公司ML System Research Scientist岗位的招聘要求中整理出来的，更侧重system一些。&lt;/p>
+&lt;p>System：&lt;/p>
+&lt;p>工程基础：C/C++、OO programming。阅读源码是个很好的学习方式
+OS
+分布式系统
+编译原理。特别是编译器优化技术、LLVM、memory optimization。Parser之类不喜欢也可以不看
+Computer Architecture。另外还需要了解：1.GPU架构，例如显存分配机制、CPU与GPU交互。 2.CPU、存储系统相关的新技术。 3.有条件可以了解下深度学习专用硬件。
+常见的并行计算框架，例如MPI/OpenMP/CUDA
+ML framework的底层原理，扒源码
+工业界的一些新东西：例如k8s、KubeFlow、ElasticDL
+ML：&lt;/p>
+&lt;p>机器学习基础
+常见的分布式机器学习算法、DL模型压缩、模型加速方法（根据具体方向而定）
+数理基础不要太菜…不要被人吐槽像没学过高中数学…&lt;/p>
+&lt;h1 id="reference">Reference&lt;/h1>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/104444471">https://zhuanlan.zhihu.com/p/104444471&lt;/a>&lt;/p></description></item><item><title>cmake 目录结构和使用</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_cmake-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%92%8C%E4%BD%BF%E7%94%A8/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_cmake-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%92%8C%E4%BD%BF%E7%94%A8/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>cuTLASS 使用到了 cmake，之前没有接触过，先学习一下他的目录结构和编译过程。&lt;/p>
+&lt;h2 id="01-cmake-简介">0.1 Cmake 简介&lt;/h2>
+&lt;p>对于 C++ 程序，手动编写 Makefile 非常麻烦。cmake 用于自动编写 Makefile。通过读取 CMakeLists.txt 文件，可以自动生成 make 文件。cmake 中 macro 和 function 的使用，使得 cmake 更像是一个脚本语言。&lt;/p>
+&lt;h1 id="1-cmake-目录">1. cmake 目录&lt;/h1>
+&lt;h2 id="11-目录结构">1.1 目录结构&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>|-- bin &lt;span style="color:#75715e">#存放可执行文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|-- build &lt;span style="color:#75715e">#目录用于存放编译生成的文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|-- CMakeLists.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|-- include &lt;span style="color:#75715e">#统一存放头文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| |-- hello.h
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| |-- gpgpu.h
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|-- lib
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|-- README.md
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|-- src
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| |-- CMakeLists.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| |-- main.cpp
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| |-- model1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| | |-- CMakeLists.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| | |-- gpgpu.cpp
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| | |-- model.cpp
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| |-- model2
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| | |-- CMakeLists.txt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| | |-- hello.cpp
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| | |-- model.cpp
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>对于大一点的项目可能还会需要 util 目录，library 目录夹或者 tool 目录&lt;/p>
+&lt;p>&lt;strong>src&lt;/strong>: 这个 example 包含了 2 models，main.cpp 依赖于 2 基础 models，另外，注意到他们都包含 &lt;code>CMakeLists.txt&lt;/code> 文件&lt;/p>
+&lt;h2 id="12-理解-cmakeliststxt">1.2 理解 CMakeLists.txt&lt;/h2>
+&lt;p>注意 cmake 文件中不区分大小写&lt;/p>
+&lt;h3 id="121-baseline">1.2.1 Baseline&lt;/h3>
+&lt;p>最基础的包含以下一些信息，&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 规定该CMakeLists.txt适用的cmake最小版本，这里是 3.12，自己手动安装了 3.20 版本&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cmake_minimum_required&lt;span style="color:#f92672">(&lt;/span>VERSION 3.12.4 FATAL_ERROR&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 项目名称，也就是 cutlass&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>project&lt;span style="color:#f92672">(&lt;/span>CUTLASS VERSION 2.9.0 LANGUAGES CXX&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 定义生成的可执行文件(程序)的名称，假设为 gemm&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 这里没找到 cutlass 对应的，cutlass 中有一个 function(cutlass_add_executable_tests NAME TARGET)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>add_executable &lt;span style="color:#f92672">(&lt;/span>gemm gemm.cxx&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 指定头文件搜索路径，根目录下 include&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>include_directories &lt;span style="color:#f92672">(&lt;/span>include&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="2-cmake-编译过程">2. cmake 编译过程&lt;/h1>
+&lt;h2 id="21-build-编译并运行">2.1 build, 编译并运行&lt;/h2>
+&lt;p>build 目录用于存放编译生成的文件，一般的编译过程：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ mkdir build &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> cd build
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ cmake .. -DCUTLASS_NVCC_ARCHS&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">75&lt;/span> &lt;span style="color:#75715e"># compile for NVIDIA Turing GPU architecture&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="22-问题可执行程序在哪个目录生成">2.2 问题，可执行程序在哪个目录生成？&lt;/h2>
+&lt;p>看起来似乎是和 Makefile 文件同一目录，而 cutlass 中，执行 make 操作之后，会对程序进行编译，然后直接运行。由于在 sim 上运行需要把 gpgpusim.config 放到程序运行的目录下，所以我们需要知道是在哪个目录运行的。&lt;/p>
+&lt;p>cmake 设置 library and executable 文件的存放路径：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>set&lt;span style="color:#f92672">(&lt;/span>LIBRARY_OUTPUT_PATH path&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>set&lt;span style="color:#f92672">(&lt;/span>EXECUTABLE_OUTPUT_PATH path&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
+&lt;p>如果子目录中的某个CMakeLists.txt中设置了 set(&amp;hellip;)，就以当前文件中设置的路径为主，否则以父目录中设置的路径为主&lt;/p>
+&lt;/blockquote>
+&lt;p>如果都没设置呢？从简单的程序来看，在 &lt;code>build&lt;/code> 目录下 &lt;code>cmake .. XXXX&lt;/code>，在 &lt;code>build&lt;/code> 目录下生成 Makefile，执行 &lt;code>make &amp;amp; make install&lt;/code>，可执行程序就在当前（&lt;code>build&lt;/code>） 目录下。&lt;/p></description></item><item><title>Hugo_让你的博客被Google收录</title><link>https://huweim.github.io/post/blog_hugo_%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%A2%ABgoogle%E6%94%B6%E5%BD%95/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%A2%ABgoogle%E6%94%B6%E5%BD%95/</guid><description>&lt;h1 id="1-step">1. Step&lt;/h1>
+&lt;p>网站在没有提交搜索引擎收录之前，直接搜索你网站的内容是搜不到的，因为搜索引擎不会去检索你的Github仓库。下面的解决方法&lt;/p>
+&lt;h2 id="11-check-是否被谷歌收录">1.1 Check 是否被谷歌收录&lt;/h2>
+&lt;p>打开谷歌搜索，在搜索框中输入&lt;/p>
+&lt;p>site:https://huweim.github.io/&lt;/p>
+&lt;p>如果提示说：找不到和您查询的“site:https://huweim.github.io/ ” 相符的内容或信息，说明未被收录。&lt;/p>
+&lt;p>如果搜索结果的第一条就是你的博客站点，说明已被收录，不用再继续看下面的内容了。&lt;/p>
+&lt;h2 id="12-提交谷歌搜索">1.2 提交谷歌搜索&lt;/h2>
+&lt;p>进入Google Web Master Search Console，登录之后提交你的博客网址&lt;/p>
+&lt;p>提交后需要通过 DNS 记录验证域名所有权，Github DNS 服务器配置教程：https://docs.github.com/cn/enterprise-server@3.2/admin/configuration/configuring-network-settings/configuring-dns-nameservers&lt;/p>
+&lt;p>❌ 1.2.1 ssh 链接到 GitHub Enterprise Server instance，不使用域名验证方法，使用上传 html 文件的方法&lt;/p>
+&lt;h2 id="13-上传-html-文件">1.3 上传 html 文件&lt;/h2>
+&lt;h3 id="131-放在-content">1.3.1 放在 content&lt;/h3>
+&lt;p>将下载的 html 文件放置在 &lt;code>content&lt;/code> 目录下，开启服务后，&lt;code>http://localhost:1313/googlead4e3c06724927ae/&lt;/code> 能够索引到即可，然后 push to Github. ❌&lt;/p>
+&lt;h3 id="132-放在-themelayouts">1.3.2 放在 theme/layouts&lt;/h3>
+&lt;p>放在 content 目录下不行，检索不到后缀 .html，比如 &lt;code>http://localhost:1313/googlead4e3c06724927ae.html/&lt;/code> 就索引不到了。折腾了半个小时，发现应该放在 &lt;code>themes\jane\layouts&lt;/code> 目录下，因为发现 &lt;code>http://localhost:1313/index.html&lt;/code> 才能够有效地索引，那么对于 &lt;code>googlead4e3c06724927ae.html&lt;/code> 也是一样的道理。&lt;/p>
+&lt;p>不过仍然找不到，不是说复制到&lt;code>themes\jane\layouts&lt;/code> 目录下就能索引到，比如我复制了一个 &lt;code>404.html&lt;/code>，改名为 &lt;code>40411.html&lt;/code>，是无法直接找到的。&lt;/p>
+&lt;h3 id="133-static">1.3.3 static&lt;/h3>
+&lt;p>知识：static这个文件夹有一个特性就是可以将里面的文件复制到public文件夹里面。我们可以将我们自定义的页面放到这个目录下，因为它不是hugo生成的，所以不会被覆盖。&lt;/p>
+&lt;p>首先在根目录下的 &lt;code>static&lt;/code> 下创建一个目录，目录名是你的页面名（googlead4e3c06724927ae.html）。然后在这个目录下创建 &lt;code>index.html&lt;/code>，把 &lt;code>googlead4e3c06724927ae.html&lt;/code> 中的内容复制到 &lt;code>index.html&lt;/code>，目的就达到了。这样，访问 &lt;code>http://localhost:1313/googlead4e3c06724927ae.html/&lt;/code> 页面时加载的就是 &lt;code>googlead4e3c06724927ae.html&lt;/code> 的内容。&lt;/p>
+&lt;p>2022-05-09 11:13:15，这一方法验证成功。&lt;/p>
+&lt;p>&lt;img src="./Img/Verify.png" alt="">&lt;/p>
+&lt;h2 id="14-等待">1.4 等待&lt;/h2>
+&lt;p>提交博客之后，需要等待一段时间才能在Google上搜到，因为Google需要时间来处理我们的请求、抓取相应网页并将其编入索引。&lt;/p>
+&lt;h1 id="reference">Reference&lt;/h1>
+&lt;p>&lt;a href="https://huiyu-li.github.io/2019/11/27/Tools/2019-11-27-%E8%AE%A9%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E5%88%B0%E8%87%AA%E5%B7%B1%E5%86%8DGitHub%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2/">https://huiyu-li.github.io/2019/11/27/Tools/2019-11-27-%E8%AE%A9%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E5%88%B0%E8%87%AA%E5%B7%B1%E5%86%8DGitHub%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2/&lt;/a>&lt;/p></description></item><item><title>编译运行cuTLASS</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Ccutlass/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Ccutlass/</guid><description>&lt;h1 id="1-环境">1. 环境&lt;/h1>
+&lt;h2 id="11-prerequisites">1.1 Prerequisites&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ git clone https://github.com/NVIDIA/cutlass
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>CUTLASS requires:&lt;/p>
+&lt;ul>
+&lt;li>NVIDIA CUDA Toolkit (9.2 or later required, 11.1 recommended)&lt;/li>
+&lt;li>CMake 3.12+&lt;/li>
+&lt;li>host compiler supporting C++11 or greater (g++ 7.3.0 or Microsoft Visual Studio 2015 recommended)&lt;/li>
+&lt;li>Python 3.6+&lt;/li>
+&lt;/ul>
+&lt;p>CUTLASS may be optionally compiled and linked with&lt;/p>
+&lt;ul>
+&lt;li>cuBLAS&lt;/li>
+&lt;li>cuDNN v7.6 or later&lt;/li>
+&lt;/ul>
+&lt;h3 id="111-cmake">1.1.1 cmake&lt;/h3>
+&lt;p>官方给出了建议的环境，cmake 没有安装，apt-get install 安装的是 3.12 版本，不符合要求。手动安装一下 3.20 cmake，&lt;a href="https://gist.github.com/bmegli/4049b7394f9cfa016c24ed67e5041930">教程&lt;/a>&lt;/p>
+&lt;p>注意有个 BUG，&lt;code> Could NOT find OpenSSL,&lt;/code>，&lt;code>apt-get install libssl-dev&lt;/code> 即可&lt;/p>
+&lt;h3 id="112-gcc">1.1.2 gcc&lt;/h3>
+&lt;h2 id="12-build">1.2 Build&lt;/h2>
+&lt;p>之后就可以 build 了。这里用 Turing 架构&lt;/p>
+&lt;p>Construct a build directory and run CMake.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ export CUDACXX&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>CUDA_INSTALL_PATH&lt;span style="color:#e6db74">}&lt;/span>/bin/nvcc
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ mkdir build &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> cd build
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ cmake .. -DCUTLASS_NVCC_ARCHS&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">75&lt;/span> &lt;span style="color:#75715e"># compiles for NVIDIA Turing GPU architecture&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="13-build-and-run-the-cutlass-profiler">1.3 Build and run the CUTLASS Profiler&lt;/h2>
+&lt;p>From the &lt;code>build/&lt;/code> directory created above, compile the the CUTLASS Profiler. 主要是 build &lt;code>build/tool/profiler&lt;/code> 目录。 ✔️&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ make cutlass_profiler -j12
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Then execute the CUTLASS Profiler computing GEMM, execute the following command. ❌&lt;/p>
+&lt;p>这一步果然不行，cudaGetDeviceProperties() failed for given device，找不到 device&lt;/p>
+&lt;p>2022-05-08 14:41:46，✔️，在工作站上就可以用 gpgpu-sim 运行，很奇怪，明明都是同一个 Docker 环境，只是自己电脑没有 GPU 而已&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ./tools/profiler/cutlass_profiler --kernels&lt;span style="color:#f92672">=&lt;/span>sgemm --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4352&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>4096
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">=============================&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Problem ID: &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Provider: CUTLASS
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Operation: cutlass_simt_sgemm_128x128_nn
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Disposition: Passed
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Status: Success
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Arguments: --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4352&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --A&lt;span style="color:#f92672">=&lt;/span>f32:column --B&lt;span style="color:#f92672">=&lt;/span>f32:column --C&lt;span style="color:#f92672">=&lt;/span>f32:column --alpha&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> --beta&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --split_k_slices&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> --batch_count&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> --op_class&lt;span style="color:#f92672">=&lt;/span>simt --accum&lt;span style="color:#f92672">=&lt;/span>f32 --cta_m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">128&lt;/span> --cta_n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">128&lt;/span> --cta_k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">8&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --stages&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span> --warps_m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span> --warps_n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span> --warps_k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> --inst_m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> --inst_n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> --inst_k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> --min_cc&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">50&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --max_cc&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1024&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Bytes: &lt;span style="color:#ae81ff">52428800&lt;/span> bytes
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> FLOPs: &lt;span style="color:#ae81ff">146064539648&lt;/span> flops
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Runtime: 10.5424 ms
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Memory: 4.63158 GiB/s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Math: 13854.9 GFLOP/s
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="14-build-and-run-cutlass-unit-tests">1.4 Build and run CUTLASS Unit Tests&lt;/h2>
+&lt;h3 id="141-workspace">1.4.1 Workspace&lt;/h3>
+&lt;p>From the &lt;code>build/&lt;/code> directory created above, simply build the target &lt;code>test_unit&lt;/code> to compile and run all unit tests. ❌&lt;/p>
+&lt;p>这一步失败，看起来是 gcc 版本的问题。换了 gcc 版本，还是直接崩掉。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ make test_unit -j
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>...
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span>----------&lt;span style="color:#f92672">]&lt;/span> Global test environment tear-down
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[==========]&lt;/span> &lt;span style="color:#ae81ff">946&lt;/span> tests from &lt;span style="color:#ae81ff">57&lt;/span> test cases ran. &lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#ae81ff">10812&lt;/span> ms total&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">[&lt;/span> PASSED &lt;span style="color:#f92672">]&lt;/span> &lt;span style="color:#ae81ff">946&lt;/span> tests.
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>指定一个 unit，会 building 目录 &lt;code>test/unit/gemm/warp/CMakeFiles&lt;/code> 中的内容，仍然是找不到 GPU Device ID&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ make test_unit_gemm_warp -j
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="142-工作站">1.4.2 工作站&lt;/h3>
+&lt;p>&lt;strong>工作站：&lt;/strong> 还是找不到 gpgpusim.config，这个应该找到对应的执行目录，把 config 文件复制过去即可。&lt;code>cp ~/gpgpu-sim_distribution/configs/tested-cfgs/SM75_RTX2060/* ~/cutlass/build/test/unit/gemm/warp/CMakeFiles/test_unit_gemm_warp.dir/&lt;/code>&lt;/p>
+&lt;p>2022-05-09 15:31:59，猜测是在 &lt;code>/cutlass/build/test/unit/gemm/warp&lt;/code> 目录下执行，把 gpgpusim.config 文件复制过去。✔️&lt;/p>
+&lt;p>可以成功运行，新的问题是之前遇到的一个问题，wmma 指令的 align syntax 错误。&lt;/p>
+&lt;h2 id="15-profiler-和-test-unit-的执行有什么区别">1.5 Profiler 和 Test Unit 的执行有什么区别？&lt;/h2>
+&lt;h2 id="16-gemm-运行参数">1.6 gemm 运行参数&lt;/h2>
+&lt;p>cutlass_profiler 支持非常自由的运行参数，并且支持参数的批处理（用 , 间隔）。参数如下，f32 应该就是对应的 data type 设置。&lt;/p>
+&lt;p>2022-05-09 20:34:24 找到了官方的 &lt;a href="https://github.com/NVIDIA/cutlass#documentation">Documentation&lt;/a>，可以看 Section 3 中的详细解释。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>cutlass_profiler &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --operation&lt;span style="color:#f92672">=&lt;/span>Gemm &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">8192&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">8192&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">8192&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --A&lt;span style="color:#f92672">=&lt;/span>f32:column &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --B&lt;span style="color:#f92672">=&lt;/span>f32:column &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --C&lt;span style="color:#f92672">=&lt;/span>f32:column &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --beta&lt;span style="color:#f92672">=&lt;/span>0,1,2 &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --profiling-iterations&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --providers&lt;span style="color:#f92672">=&lt;/span>cutlass &lt;span style="color:#ae81ff">\
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --output&lt;span style="color:#f92672">=&lt;/span>functional-test.csv
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>尝试修改 data type，是否有 i8? 这个语句执行结束后生成了一堆 .csv 文件，包括 conv2d, conv3d, gemm, rank_k, rank_2k，难道是一次执行了这么多程序？而且没有成功跑起来 ❌&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ./tools/profiler/cutlass_profiler --kernels&lt;span style="color:#f92672">=&lt;/span>cutlass_tensorop_s*gemm_f16_*_nt_align8 --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3456&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --A&lt;span style="color:#f92672">=&lt;/span>i8:column --B&lt;span style="color:#f92672">=&lt;/span>i8:column --C&lt;span style="color:#f92672">=&lt;/span>i8:column --output&lt;span style="color:#f92672">=&lt;/span>test.csv &amp;gt; ~/output/tensor_op3.log.lrr &amp;amp;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>去掉 output 选项，data type 改成 f32&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ./tools/profiler/cutlass_profiler --kernels&lt;span style="color:#f92672">=&lt;/span>cutlass_tensorop_s*gemm_f16_*_nt_align8 --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3456&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --A&lt;span style="color:#f92672">=&lt;/span>f32:column --B&lt;span style="color:#f92672">=&lt;/span>f32:column --C&lt;span style="color:#f92672">=&lt;/span>f32:column &amp;gt; ~/output/tensor_op3.log.lrr &amp;amp;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="2-examples">2. examples&lt;/h1>
+&lt;p>使用官方 README.md 编译会因为没有 Device 而失败，那么换一个思路，尝试利用 cmake 编译运行 examples 中提供的文件。&lt;/p>
+&lt;h2 id="21-cmake-编译流程">2.1 cmake 编译流程&lt;/h2>
+&lt;ul>
+&lt;li>编写CMakeLists.txt&lt;/li>
+&lt;li>通过cmake生成Makefile&lt;/li>
+&lt;li>make编译&lt;/li>
+&lt;/ul>
+&lt;p>cuTLASS 在 &lt;code>example&lt;/code> 目录下提供了 CMakeLists.txt。用法&lt;/p>
+&lt;ul>
+&lt;li>进入 example 目录，新建 build 文件夹；&lt;code>$ mkdir build; cd build&lt;/code>&lt;/li>
+&lt;li>&lt;code>cmake ../&lt;/code>; cmake会在找到上级目录找到CMakeLists.txt，生成makefile和一些其它文件&lt;/li>
+&lt;li>在makefile所在目录，调用make命令，会根据makefile对程序进行编译生成。&lt;/li>
+&lt;/ul>
+&lt;h1 id="3-documentation">3. Documentation&lt;/h1>
+&lt;h2 id="32-functionality">3.2 Functionality&lt;/h2>
+&lt;p>这个部分介绍了 opcode class, *&lt;strong>data type&lt;/strong>, layout. data type 正是我们所需要的。&lt;/p>
+&lt;p>opcode class, including Simt, TensorOp, SpTensorOp&lt;/p>
+&lt;h3 id="322-device-level-implicit-gemm-convolution">3.2.2 Device-level Implicit GEMM convolution&lt;/h3>
+&lt;p>列出了 Device-level Implicit GEMM convolution 的 opcode class, data type, layout&lt;/p>
+&lt;h3 id="323-warp-level-matrix-multiply-with-tensor-cores">3.2.3 Warp-level Matrix Multiply with Tensor Cores&lt;/h3>
+&lt;p>TensorOp 16-by-8-by-64. 支持 int4b_t，&lt;/p>
+&lt;h3 id="324-warp-level-matrix-multiply-with-cuda-wmma-api">3.2.4 Warp-level Matrix Multiply with CUDA WMMA API&lt;/h3>
+&lt;p>WmmaTensorOp,&lt;/p>
+&lt;p>Instruction Shape ( 16-by-16-by-16, 8-by-32-by-16)&lt;/p>
+&lt;p>Warp Shapes (32x32x16, 32x64x16, 64x32x16; 32x32x16, 32x64x16, 64x32x16)&lt;/p>
+&lt;h2 id="33-efficient-gemm-in-cuda">3.3 Efficient GEMM in CUDA&lt;/h2>
+&lt;h3 id="331-threadblock-level-gemm">3.3.1 Threadblock-level GEMM&lt;/h3>
+&lt;p>Each threadblock computes its portion of the output GEMM by iteratively loading tiles of input matrices and computing an accumulated matrix product.&lt;/p>
+&lt;h3 id="332-warp-level-gemm">3.3.2 Warp-level GEMM&lt;/h3>
+&lt;p>Multiple warps within a threadblock fetch data from shared memory into registers and perform computations. Warp-level GEMMs may be implemented either by TensorCores issuing mma.sync or wmma instructions or by thread-level matrix computations issued to CUDA cores. For maximum performance, access to shared memory should be bank conflict free. To maximize data reuse within the warp, a large warp-level GEMM tile should be chosen.&lt;/p>
+&lt;p>使用到了 wmma 指令，shared memory。&lt;/p>
+&lt;h3 id="333-thread-level-gemm">3.3.3 Thread-level GEMM&lt;/h3>
+&lt;p>SGEMM, IGEMM, HGEMM, and DGEMM are computed by SIMT math instructions issued by thread-level matrix multiply procedures.&lt;/p>
+&lt;p>所以现在跑的是 thread-level GEMM&lt;/p>
+&lt;h2 id="34-terminology">3.4 Terminology&lt;/h2>
+&lt;p>Layout: functor mapping logical coordinates of a tensor to linear offset (as LongIndex); owns stride vectors, if any.&lt;/p>
+&lt;p>Operator: an object performing a computation on matrix or tensor objects. May be further refined by scope within the execution model hierarchy.&lt;/p>
+&lt;p>Tile: partitions of a tensor that have constant extents and layout known at compile time&lt;/p>
+&lt;h2 id="35-cutlass-profiler-">3.5 CUTLASS Profiler ⭐&lt;/h2>
+&lt;p>The CUTLASS Profiler is a command-line driven test and profiling environment for CUTLASS computations defined in the CUTLASS Instance Library. The CUTLASS Profiler is capable of executing each GEMM, Sparse Gemm, Conv2d, and Conv3d kernel.&lt;/p>
+&lt;p>&lt;code>cutlass_profiler&lt;/code> 就是一个封装好的脚本，运行各类程序&lt;/p>
+&lt;p>进入到目录 &lt;code>build/tools/profiler&lt;/code>，运行 &lt;code>cutlass_profiler --help&lt;/code> 可以查看一些有用的信息，直接 &lt;code>cutlass_profiler --help&lt;/code> 找不到 cutlass_profiler；用 &lt;code>./cutlass_profiler --help&lt;/code> 就开始跑程序了，有点不知道怎么用这个 &amp;ndash;help。&lt;/p>
+&lt;p>2022-05-09 20:22:30，还是用 &lt;code>./cutlass_profiler --help&lt;/code> 就可以跑，不过神奇的是这是用 gpgpu-sim 跑得，最后会把需要的信息 print 在屏幕上。&lt;/p>
+&lt;h3 id="351-gemm">3.5.1 GEMM&lt;/h3>
+&lt;p>The CUTLASS Profiler is capable of executing GEMM and Sparse GEMM problems.&lt;/p>
+&lt;h4 id="3511-gemm-arguments-">3.5.1.1 GEMM Arguments ⭐&lt;/h4>
+&lt;p>The complete set of arguments available to each operation may be viewed by specifying the operation name in addition to &amp;ndash;help. The argument flags and their aliases usable for GEMM appear as follows.&lt;/p>
+&lt;p>可以通过 option &lt;code>--help&lt;/code> 查看完整的 operation，他这里给出的例子是 &lt;code>./tools/profiler/cutlass_profiler --operation=gemm --help&lt;/code>，所以还是得执行这个脚本吧。&lt;/p>
+&lt;p>&lt;img src="./Image/gemm_aug.png" alt="">&lt;/p>
+&lt;h4 id="3512-example-tensor-core-gemm-operations">3.5.1.2 Example Tensor Core GEMM Operations&lt;/h4>
+&lt;p>To execute kernels targeting Tensor Core operations, supply the flag &lt;code>--op_class=tensorop&lt;/code> in the command line.&lt;/p>
+&lt;p>实际上，op_class 也就是选择 TensorOp or SIMT&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ./tools/profiler/cutlass_profiler --op_class&lt;span style="color:#f92672">=&lt;/span>tensorop --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3456&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">8192&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="3513-自己运行">3.5.1.3 自己运行&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>./tools/profiler/cutlass_profiler --operation&lt;span style="color:#f92672">=&lt;/span>Gemm --op_class&lt;span style="color:#f92672">=&lt;/span>tensorop --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1024&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1024&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">128&lt;/span> --inst_m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">8&lt;/span> --inst_n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">8&lt;/span> --inst_k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">32&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>如何使用 4-bit 进行计算&lt;/strong>: 对于 TensorOp, Instruction Shape 8-by-8-by-32 对应的是 A-int4b_t, B-int4b_t, C-int32_t，通过参数 &lt;code>--inst_m&lt;/code>, &lt;code>--inst_n&lt;/code>, &lt;code>inst_k&lt;/code> 来决定&lt;/p>
+&lt;h3 id="352-conv">3.5.2 Conv&lt;/h3>
+&lt;p>和 gemm 也是类似的，重点还是搞懂他们的参数。&lt;/p></description></item><item><title>关于 Deep Work</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</link><pubDate>Sun, 08 May 2022 20:56:54 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
 &lt;p>Why read? 最近同步推进的任务比较多，包括雅思/托福，LeetCode刷题（不能说不找实习就荒废掉了），自己lead的课题（可以先读paper慢开始，但是对本人提升很重要），科研实习的课题（这个必须定时有反馈，留下不错的印象），公司的一些活儿（按时完成且上心），锻炼（荒废了一段时间但是必须），AICS 课程（好在这个和目前的研究有了相关性）。&lt;/p>
 &lt;p>因此，需要进行详细而且比较严格的时间管理，才能同时做好这么多事情。&lt;/p>
 &lt;h2 id="01-知乎">0.1 知乎&lt;/h2>
@@ -1942,1772 +2381,4 @@ title: &amp;#34;Blog&amp;#34;
 &lt;p>⚠️ &lt;em>gcc/g++版本须保持一致&lt;/em>&lt;/p>
 &lt;h2 id="6-check-版本">6. Check 版本&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>gcc -vg++ -v
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>GPGPU-Sim中的CTA &amp; warp scheduling</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_gpgpu-sim%E4%B8%AD%E7%9A%84cta-warp-scheduling/</link><pubDate>Sun, 14 Nov 2021 20:42:52 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_gpgpu-sim%E4%B8%AD%E7%9A%84cta-warp-scheduling/</guid><description>&lt;h1 id="cta-scheduling">CTA Scheduling&lt;/h1>
-&lt;p>CTA/Thread Block/Work Group&lt;/p>
-&lt;p>调度发生在 &lt;code>shader_core_ctx::issue_block2core(...)&lt;/code>，&lt;code>shader_core_config::max_cta(...)&lt;/code> 计算 core 中能容纳的 max CTA。这个取决于各硬件资源的短板，在报告中能看到是被什么限制了。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>printf(&lt;span style="color:#e6db74">&amp;#34;GPGPU-Sim uArch: CTA/core = %u, limited by:&amp;#34;&lt;/span>, result);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (result &lt;span style="color:#f92672">==&lt;/span> result_thread) printf(&lt;span style="color:#e6db74">&amp;#34; threads&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (result &lt;span style="color:#f92672">==&lt;/span> result_shmem) printf(&lt;span style="color:#e6db74">&amp;#34; shmem&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (result &lt;span style="color:#f92672">==&lt;/span> result_regs) printf(&lt;span style="color:#e6db74">&amp;#34; regs&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> (result &lt;span style="color:#f92672">==&lt;/span> result_cta) printf(&lt;span style="color:#e6db74">&amp;#34; cta_limit&amp;#34;&lt;/span>);
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在矩阵乘法代码中 create, verify are both limited by thread, multiple is limited by regs.&lt;/p>
-&lt;p>When each thread finishes, the SIMT core calls &lt;code>register_cta_thread_exit(...)&lt;/code> to update the active thread block&amp;rsquo;s state. CTA 中的所有线程执行完毕后，active CTA 数量减一，允许新的 CTA 在下个周期被调度。&lt;/p>
-&lt;h1 id="warp-scheduling">Warp Scheduling&lt;/h1>
-&lt;h2 id="1-from-code">1. From Code&lt;/h2>
-&lt;ul>
-&lt;li>A new front-end that models instruction caches and separates the &lt;strong>warp scheduling (issue) stage&lt;/strong> from the fetch and decode stage&lt;/li>
-&lt;/ul>
-&lt;h5 id="flow">Flow&lt;/h5>
-&lt;p>&lt;code>shader_core_ctx::issue()&lt;/code> call &lt;code>scheduler_unit::cycle()&lt;/code>。&lt;/p>
-&lt;p>In function &lt;code>scheduler_unit::cycle()&lt;/code> , call &lt;code>order_warps()&lt;/code> to sort warps according to their priority.&lt;/p>
-&lt;p>排序后的 warp 放在 vector &lt;code>m_next_cycle_prioritized_warps&lt;/code> 中，对其进行遍历来处理这个 vector 中的 warp。&lt;/p>
-&lt;p>进入 for 循环，拿到 warp id，判断&lt;/p>
-&lt;ul>
-&lt;li>I-Buffer 是否为空；是否处于 waiting 状态。如果都通过，进入一个 while 循环
-&lt;ul>
-&lt;li>如果指令是有效的 &lt;code>if(pI)&lt;/code>
-&lt;ul>
-&lt;li>如果出现分支 &lt;code>if(pc != pI-&amp;gt;pc)&lt;/code>，刷掉 I-Buffer&lt;/li>
-&lt;li>如果没有分支，此时 &lt;code>valid=true&lt;/code>，指令是有效的。如果通过 scoreboard 检测，终于可以执行了。先读取 active mask 确定要执行哪些线程，然后判断 &lt;code>pI-&amp;gt;op&lt;/code> 是 内存操作 还是 运算操作。如果相应的寄存器可以使用 &lt;code>has_free()&lt;/code>，则 call &lt;code>issue_warp()&lt;/code> 将寄存器、指令、active mask、warp id、scheduler id 发送并执行。&lt;/li>
-&lt;li>&lt;code>warp_inst_issued = true;&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>else if 下一条指令是有效的
-&lt;ul>
-&lt;li>&amp;hellip;&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>如果指令成功发射 &lt;code>if (warp_inst_issued)&lt;/code>
-&lt;ul>
-&lt;li>call &lt;code>do_on_warp_issued(warp_id, issued, iter);&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>checked++&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h5 id="scheduler_size">scheduler_size()&lt;/h5>
-&lt;p>scheduler.size 就是2，代表一个 core 中 warp scheduler 的数量&lt;/p>
-&lt;h5 id="lrr-特征">lrr 特征&lt;/h5>
-&lt;ul>
-&lt;li>单双数 round-robin 1-3-5-7-9, 2-4-6-8-10&lt;/li>
-&lt;/ul>
-&lt;p>Why? there are two schedulers per SM, an even and odd scheduler that concurrently execute even and odd warps.&lt;/p>
-&lt;h5 id="gto-特征">gto 特征&lt;/h5>
-&lt;p>贪心，没有 stall 的话会看到连续的 warp id 相同&lt;/p>
-&lt;p>OP: 8 (LOAD) 后面可能会接一个相同 warp id 的 OP: 1 (ALU_OP)&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>warp id:24 OP:6 &lt;span style="color:#75715e">#INTP_OP&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>warp id:24 OP:8
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>warp id:24 OP:1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="12-构造-scheduler">1.2 构造 scheduler&lt;/h3>
-&lt;p>根据 warp scheduling policy 构造 scheduler。config 文件传入调度策略，&lt;code>shader_core_ctx::create_schedulers()&lt;/code> 根据传入的字符构造对应的 scheduler 类。&lt;/p>
-&lt;h4 id="131-class-scheduler_unit">1.3.1 class scheduler_unit&lt;/h4>
-&lt;h5 id="i-stdvector-shd_warp_t--m_next_cycle_prioritized_warps">I. std::vector&amp;lt; shd_warp_t* &amp;gt; m_next_cycle_prioritized_warps&lt;/h5>
-&lt;p>This is the prioritized warp list that is looped over each cycle to determine which warp gets to issue.&lt;/p>
-&lt;p>作为 order 函数的 result_list。每个 cycle 遍历这个 list，决定发射哪个 warp。已经按调度策略/优先级排序。size 为 24&lt;/p>
-&lt;h5 id="ii-stdvector-shd_warp_t--m_supervised_warps">II. std::vector&amp;lt; shd_warp_t* &amp;gt; m_supervised_warps;&lt;/h5>
-&lt;p>The m_supervised_warps list is &lt;strong>all the warps&lt;/strong> this scheduler is supposed to arbitrate between. This is useful in systems where there is more than one warp scheduler. In a single scheduler system, this is simply all the warps assigned to this core.&lt;/p>
-&lt;p>这个作为 order 函数的 input_list，里面装了所有待仲裁的 warp。size 为 24&lt;/p>
-&lt;p>在构造 scheduler 时，通过函数 &lt;code>add_supervised_war_id(i)&lt;/code> 向 m_supervised_warps 添加 warp。warp 0 -&amp;gt; scheduler 0, warp 1 -&amp;gt; scheduler 1, warp 2 -&amp;gt; scheduler 0&amp;hellip;&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> (&lt;span style="color:#66d9ef">unsigned&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> m_warp.size(); i&lt;span style="color:#f92672">++&lt;/span>) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">//distribute i&amp;#39;s evenly though schedulers;
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span> schedulers[i&lt;span style="color:#f92672">%&lt;/span>m_config&lt;span style="color:#f92672">-&amp;gt;&lt;/span>gpgpu_num_sched_per_core]&lt;span style="color:#f92672">-&amp;gt;&lt;/span>add_supervised_warp_id(i);
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="iii-stdvector-shd_warp_t-const_iterator-m_last_supervised_issued">III. std::vector&amp;lt; shd_warp_t* &amp;gt;::const_iterator m_last_supervised_issued;&lt;/h5>
-&lt;p>记录上一个被发射的 warp&lt;/p>
-&lt;h2 id="2-from-paper">2. From Paper&lt;/h2>
-&lt;h3 id="21-warp-scheduler">2.1 Warp Scheduler&lt;/h3>
-&lt;p>The warp scheduler connects to the back end of the SIMT processor and is responsible for issuing instructions.&lt;/p>
-&lt;blockquote>
-&lt;p>warp scheduler 是 front-end and back-end 之间的连接&lt;/p>
-&lt;/blockquote>
-&lt;p>Because the registers for each warp are independent, saving and restoring warp states are not needed.&lt;/p>
-&lt;blockquote>
-&lt;p>warp 有自己独享的寄存器，所以无需专门保存 warp state&lt;/p>
-&lt;/blockquote>
-&lt;p>The warp scheduler only needs to keep track of those warps whose instructions are ready for issue.&lt;/p>
-&lt;blockquote>
-&lt;p>在 ready intructions 选一个来发射&lt;/p>
-&lt;/blockquote>
-&lt;p>If none of the warps are ready for issue or the back-end of the SIMT processor does not have enough free space, the warps are &lt;strong>stalled&lt;/strong> and no instruction is sent to the back-end of the SIMT processor.&lt;/p>
-&lt;blockquote>
-&lt;p>可以在 Output 中观察到，LRR and GTO 的 stall cycle 是不同的&lt;/p>
-&lt;/blockquote>
-&lt;h3 id="22-functional-units">2.2 Functional Units&lt;/h3>
-&lt;p>The memory instructions and arithmetic instructions operate in different pipelines.&lt;/p>
-&lt;p>Each back-end pipeline owns a set of dedicated collector units shared in a pool. The data from the collector units are sent to the functional units including arithmetic logic units (ALU) and load-store units (LSU).&lt;/p>
-&lt;p>When an instruction from a warp occupies the arithmetic logic units, the other warps may use the load-store units to enhance instruction level parallelism and hide the latency.&lt;/p>
-&lt;blockquote>
-&lt;p>一个 warp 使用 ALU，其他的 warp 指令仍然可以使用 LSU。以此来隐藏延迟，增加并行度&lt;/p>
-&lt;/blockquote>
-&lt;p>As for the load-store units, the coalescer combines the memory requests within a warp, which allows fewer requests to be sent to the L1 cache memory. There are also miss status holding registers (MSHR) supporting multiple outstanding requests to external memory, which enhances the memory level parallelism to hide the latency.&lt;/p>
-&lt;blockquote>
-&lt;p>coalescing access, MSHR&lt;/p>
-&lt;/blockquote></description></item><item><title>Software Design of GPGPU-Sim</title><link>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_software-design-of-gpgpu-sim/</link><pubDate>Sun, 14 Nov 2021 20:35:44 +0800</pubDate><guid>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_software-design-of-gpgpu-sim/</guid><description>&lt;p>4 Software Design of GPGPU-Sim&lt;/p>
-&lt;p>所有标题都可以升一级，整个文档全是 manual 的第 4 章&lt;/p>
-&lt;h1 id="1-file-list-and-brief-description">1. File list and brief description&lt;/h1>
-&lt;ul>
-&lt;li>cuda-sim - The functional simulator that executes PTX kernels generated by NVCC or OpenCL compiler&lt;/li>
-&lt;li>gpgpu-sim - The performance simulator that simulates the timing behavior of a GPU (or other many core accelerator architectures)&lt;/li>
-&lt;li>intersim - The interconnection network simulator adopted from Bill Dally&amp;rsquo;s BookSim&lt;/li>
-&lt;/ul>
-&lt;h2 id="11-overallutilities">1.1 Overall/Utilities&lt;/h2>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>abstract_hardware_model.h abstract_hardware_model.cc&lt;/th>
-&lt;th>Provide a set of classes that interface between functional and timing simulator.&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>shader.h &lt;!-- raw HTML omitted -->shader.cc&lt;/td>
-&lt;td>SIMT core timing model. It calls cudu-sim for functional simulation of a particular thread and cuda-sim would return with performance-sensitive information for the thread.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td>visualizer.h &lt;!-- raw HTML omitted -->visualizer.cc&lt;/td>
-&lt;td>Output dynamic statistics for the visualizer&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h2 id="13-gpgpu-sim">1.3 gpgpu-sim&lt;/h2>
-&lt;p>几个需要注意的列出来，gluing 时钟频率，注意有单独的 gpu-cache.cc 和 l2cache.cc&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th>gpu-sim.h gpu-sim.cc&lt;/th>
-&lt;th>Gluing different timing models in GPGPU-Sim into one. It contains implementations to support multiple clock domains and implements the thread block dispatcher.&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td>&lt;/td>
-&lt;td>&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="3-abstract-hardware-model">3. Abstract Hardware Model&lt;/h1>
-&lt;p>The files abstract_hardware_model{.h,.cc} provide a set of classes that interface between functional and timing simulator.&lt;/p>
-&lt;p>只列了一部分，查表的话去官方文档更方便，注意有单独的 cache operator type&lt;/p>
-&lt;p>kernel function 的信息也存在里面了&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:center">Enum Name&lt;/th>
-&lt;th style="text-align:center">Description&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:center">_memory_space_t&lt;/td>
-&lt;td style="text-align:center">Memory space type (register, local, shared, global, &amp;hellip;)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">uarch_op_t&lt;/td>
-&lt;td style="text-align:center">Type of operation (ALU_OP, SFU_OP, LOAD_OP, STORE_OP, &amp;hellip;)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">_memory_op_t&lt;/td>
-&lt;td style="text-align:center">Defines whether instruction accesses (load or store) memory.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">mem_access_type&lt;/td>
-&lt;td style="text-align:center">Different types of accesses in the timing simulator to different types of memories.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">cache_operator_type&lt;/td>
-&lt;td style="text-align:center">Different types of &lt;strong>L1 data cache access&lt;/strong> behavior provided by PTX&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">&lt;strong>Class Name&lt;/strong>&lt;/td>
-&lt;td style="text-align:center">&lt;strong>Description&lt;/strong>&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">class kernel_info_t&lt;/td>
-&lt;td style="text-align:center">Holds information of a kernel. It contains information like kernel function(function_info), &lt;strong>grid and block size&lt;/strong> and list of &lt;strong>active threads&lt;/strong> inside that kernel (ptx_thread_info).&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">class core_t&lt;/td>
-&lt;td style="text-align:center">Abstract base class of a core for both functional and performance model. shader_core_ctx (the class that implements a SIMT core in timing model) is derived from this class.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">class memory_space_t&lt;/td>
-&lt;td style="text-align:center">Information of a memory space like type of memory and number of banks for this memory space.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">class mem_access_t&lt;/td>
-&lt;td style="text-align:center">Contains information of each &lt;strong>memory access&lt;/strong> in the timing simulator. This class has information about type of memory access, requested address, size of data and active masks of threads inside warp accessing the memory.This class is used as one of parameters of mem_fetch class, which basically instantiated for each memory access. This class is for interfacing between two different level of memory and passing through interconnects.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">struct dram_callback_t&lt;/td>
-&lt;td style="text-align:center">This class is the one who is responsible for atomic operations. The function pointer is set during functional simulation(atom_impl()) to atom_callback(&amp;hellip;). During timing simulation this function pointer is being called when in l2cache memory controller pop memory partition unit to interconnect. This function is supposed to compute result of atomic operation and saving it in memory.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">class inst_t&lt;/td>
-&lt;td style="text-align:center">Base class of all instruction classes. This class contains information about type and size of instruction, address of instruction, inputs and outputs, latency and memory scope (memory_space_t) of the instruction.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:center">class warp_inst_t&lt;/td>
-&lt;td style="text-align:center">Data of instructions need during timing simulation. Each instruction (ptx_instruction) which is inherited from warp_inst_t contains data for timing and functional simulation. ptx_instruction is filled during functional simulation. After this level program needs only timing information so it casts ptx_instruction to warp_inst_t (some data is being loosed) for timing simulation. warp_inst_t inherited from inst_t. It holds &lt;strong>warp_id, active thread mask&lt;/strong> inside the warp, list of &lt;strong>memory accesses (mem_access_t)&lt;/strong> and information of threads inside that warp (per_thread_info)&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="4-gpgpu-sim---performance-simulation-engine">4. GPGPU-sim - Performance Simulation Engine&lt;/h1>
-&lt;h2 id="41-performance-model-software-objects">4.1 Performance Model Software Objects&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>ldst_unit &lt;span style="color:#f92672">*&lt;/span>m_ldst_unit;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>前面的 m 可能表示这个类型的变量&lt;/p>
-&lt;h3 id="411-simt-core-cluster-class">4.1.1 SIMT Core Cluster Class&lt;/h3>
-&lt;p>SIMT Core Cluster 通过类 &lt;code>simt_core_cluster&lt;/code> 建模。这个类在 &lt;code>m_core&lt;/code> 中包含一组 SIMT core 对象。&lt;code>simt_core_cluster::core_cycle()&lt;/code> 方法只是按顺序 循环调用 (cycles) 每个 SIMT core.&lt;/p>
-&lt;p>&lt;code>simt_core_cluster::icnt_cycle()&lt;/code> 方法将内存请求从 interconnection network push 到 SIMT Core Cluster&amp;rsquo;s response FIFO. 它也将 FIFO 中的请求出队，送到合适的 core&amp;rsquo;s instruction cache or LDST unit. 这些与前面描述的硬件块密切对应。&lt;/p>
-&lt;h3 id="412-simt-core-class-">4.1.2 SIMT Core Class ⭐&lt;/h3>
-&lt;p>SIMT Core 中的微架构在 shader.h/cc 的类 shader_core_ctx 中实现&lt;/p>
-&lt;ul>
-&lt;li>shd_warp_t objects 的集合用于建模每个 warp 在 core 中的状态&lt;/li>
-&lt;li>simt_stack object, 处理每个 warp 的分支&lt;/li>
-&lt;li>set of scheduler_unit obj, 选择 set 中 warp 的一条 or 多条指令发射执行&lt;/li>
-&lt;li>Scoreboard obj 处理 data hazard&lt;/li>
-&lt;li>opndcoll_rfu_t obj, model operand collector&lt;/li>
-&lt;li>set of &lt;code>simd_function_unit&lt;/code> obj 实现 ALU pipeline&lt;/li>
-&lt;li>&lt;code>ldst_unit&lt;/code> 实现 memory pipeline&lt;/li>
-&lt;li>&lt;code>shader_memroy_interface&lt;/code> 将 SIMT Core 连接到相应的 SIMT Core Cluster&lt;/li>
-&lt;/ul>
-&lt;p>每个 core cycle, 调用 &lt;code>shader_core_ctx::cycle()&lt;/code> 来模拟 SIMT Core 的一个 cycle。cycle function 以按从下往上的顺序 (也就是从 writeback() 到 fetch()) 调用下列函数&lt;/p>
-&lt;ul>
-&lt;li>fetch()&lt;/li>
-&lt;li>decode()&lt;/li>
-&lt;li>issue()&lt;/li>
-&lt;li>read_operand()&lt;/li>
-&lt;li>execute()&lt;/li>
-&lt;li>writeback()&lt;/li>
-&lt;/ul>
-&lt;p>多个流水线阶段通过一组指向 &lt;code>warp_inst_t&lt;/code> 的流水线寄存器链接 (除了 Fetch and Decode, 它们通过 &lt;code>ifetch_buffer_t&lt;/code> 连接)&lt;/p>
-&lt;blockquote>
-&lt;p>也就是 Fetch 和 Decode 函数中的变量 m_inst_fetch_buffer&lt;/p>
-&lt;/blockquote>
-&lt;p>当访问特定于 SIMT core 的配置选项时，每个 &lt;code>shader_core_ctx&lt;/code> 对象引用一个公共 &lt;code>shader_core_config&lt;/code> 对象。所有 &lt;code>shader_core_ctx&lt;/code> 对象也链接到 &lt;code>shader_core_stats&lt;/code> 对象的一个普通实例，该对象跟踪所有 SIMT core 的一组性能测量值。&lt;/p>
-&lt;h4 id="4121-fetch-and-decode-software-model">4.1.2.1 Fetch and Decode Software Model&lt;/h4>
-&lt;p>I-Buffer 在 &lt;code>shd_warp_t&lt;/code> 类中作为数组实现，每个 &lt;code>shd_warp_t&lt;/code> 有集合 m_ibuffer，默认大小为 2&lt;/p>
-&lt;blockquote>
-&lt;p>可以修改 IBUFFER_SIZE 来调整每个 warp 的 I-Buffer slot 大小&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;code>shd_warp_t&lt;/code> 也有标志位决定 warp 的 eligibility 以备发射。解码的指令存在 ibuffer_entry，作为指针指向 &lt;code>warp_inst_t&lt;/code> object, &lt;code>warp_inst_t&lt;/code> 保留指令使用的操作类型和操作数的信息&lt;/p>
-&lt;p>&lt;strong>Fetch&lt;/strong>&lt;/p>
-&lt;p>如果 decode stage 没有 stall, 即 &lt;code>m_inst_fetch_buffer&lt;/code> 没有有效指令，那么 fetch unit 就可以工作 (&lt;code>shader_core_ctx::m_inst_fetch_buffer&lt;/code> 作为 fetch 和 decode stage 之间的 pipeline register)&lt;/p>
-&lt;blockquote>
-&lt;p>也就是 fetch() 函数中的 !m_inst_fetch_buffer.m_valid 时进入最外层 if 语句&lt;/p>
-&lt;/blockquote>
-&lt;p>外层循环用于实现轮询调度器，最新调度的 warp id 存在 &lt;code>m_last_warp_fetched&lt;/code>。&lt;/p>
-&lt;p>在 fetch() 函数中，进入最外层 if 语句，以及第2层中的 else 语句后，&lt;/p>
-&lt;ul>
-&lt;li>第3层中的第1个 if 语句检查 warp 是否已经完成执行&lt;/li>
-&lt;li>第3层中的第2个 if 语句完成实际的从指令 cache 中取数据 (hit)，或者生成内存访问 (miss) 的操作。
-&lt;ul>
-&lt;li>第2个 if 语句主要是检查当前 warp 对应的 entry 是否已经存储了有效的指令
-&lt;ul>
-&lt;li>条件语句中的 &lt;code>m_warp[warp_id]-&amp;gt;ibuffer_empty()&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>Decode&lt;/strong>&lt;/p>
-&lt;p>decode stage 简单地检查 &lt;code>shader_core_ctx::m_inst_fetch_buffer&lt;/code>，然后开始解码指令，当前配置是一个周期解码2条指令，并将其存入对应的 I-Buffer entry (也就是 &lt;code>m_ibuffer &lt;/code>)&lt;/p>
-&lt;h4 id="4122-schedule-and-issue-software-model">4.1.2.2 Schedule and Issue Software Model&lt;/h4>
-&lt;p>每个 core 中，有数量可配置的 scheduler unit. 在函数 &lt;code>shader_core_ctx::issue()&lt;/code> 中，会使用一个 for loop 遍历这些 scheduler unit，每个 scheduler unit 都调用 &lt;code>scheduler_unit::cycle()&lt;/code> 函数&lt;/p>
-&lt;ul>
-&lt;li>在 &lt;code>scheduler_unit::cycle()&lt;/code> 函数中，通过调用 &lt;code>shader_core_ctx::issue_warp()&lt;/code> 将指令发送到执行流水线&lt;/li>
-&lt;li>&lt;strong>在 &lt;code>shader_core_ctx::issue_warp()&lt;/code> 函数中&lt;/strong>，指令通过调用 &lt;code>shader_core_ctx::func_exec_inst()&lt;/code> 来执行，调用 &lt;code>updateSIMTStack()&lt;/code> 中的 &lt;code>simt_stack::update()&lt;/code> 来更新 SIMT Stack。指令也会因为 &lt;code>warp_t:set_membar()&lt;/code> 以及 &lt;code>set_t::warp_reaches_barrier&lt;/code> 而等待/释放&lt;/li>
-&lt;/ul>
-&lt;p>另一方面，寄存器信息由 &lt;code>Scoreboard::reserveRegisters()&lt;/code> 保存。&lt;code>scheduler_unit::m_sp_out, scheduler_unit::m_sfu_out, scheduler_unit::m_mem_out&lt;/code> 分别指向 SP, SFU, Mem 流水线的 issue stage and execution stage 之间的第一个 pipeline register。这也是为什么在每条指令发射之前都要检查这些单元&lt;/p>
-&lt;h4 id="4123-simt-stack-software-model">4.1.2.3 SIMT Stack Software Model&lt;/h4>
-&lt;p>每个scheduler unit 有一个 SIMT stacks. 每个 SIMT stack 对应一个 warp&lt;/p>
-&lt;blockquote>
-&lt;p>所以 SIMT Stack 可以作为 warp scheduler unit 中的硬件实现，为一个 warp 服务&lt;/p>
-&lt;/blockquote>
-&lt;p>在 &lt;code>scheduler_unit::cycle()&lt;/code> 函数中，被调度的 warp 对应的 SIMT Stack 中的栈顶 entry 决定被发射的指令。栈顶 entry 的 PC value 通常与该 warp 对应 I-Buffer 下一条指令的 PC value 一致 (一致说明没有出现分支)。否则出现 control hazard, 它们如果不匹配，I-Buffer 中的指令会被 flush.&lt;/p>
-&lt;blockquote>
-&lt;p>也就是说这是一个简单的分支跳转检测机制。SIMT Stack 的栈顶存放的是下一条指令，也就是 next PC value. 无跳转情况下 I-Buffer 中的下一条指令的 PC value 应该和 SIMT Stack 栈顶的 next PC value 一致。&lt;/p>
-&lt;p>如果不一致说明出现了跳转，那么在 I-Buffer 中的下一条指令的 PC value 是无效的，需要刷掉 I-Buffer&lt;/p>
-&lt;/blockquote>
-&lt;p>❓ ​SIMT Stack 在类 &lt;code>simt_stack&lt;/code> 中实现。SIMT Stack 在每次发射后通过函数 &lt;code>simt_stack::update(...)&lt;/code> 更新。函数 &lt;code>simt_stack::update(...)&lt;/code> (in abstarct_hardware_model.cc) 实现了在发散点和聚合点所需的算法。Functional execution (参见4.5，这个部分讲述了指令的执行) 是在更新 SIMT stack 之前的发射阶段执行的。这允许发射阶段拥有每个线程的 next PC 的信息，因此，可以根据需要更新 SIMT stack.&lt;/p>
-&lt;blockquote>
-&lt;p>Functional execution 是什么？可能要看了4.5才知道&lt;/p>
-&lt;/blockquote>
-&lt;h4 id="4124-scoreboard-software-model">4.1.2.4 Scoreboard Software Model&lt;/h4>
-&lt;p>scoreboard unit 在 &lt;code>shader_core_ctx&lt;/code> 作为成员对象被实例化，通过引用 (指针) 传递到 &lt;code>scheduler_unit &lt;/code>。&lt;/p>
-&lt;blockquote>
-&lt;p>理解为 scoreboard 作为 core 的一个硬件单元&lt;/p>
-&lt;/blockquote>
-&lt;p>它存储了 shader core id (&lt;code>m_sid&lt;/code>) 和一个通过 warp id 索引的寄存器表 (&lt;code>reg_table&lt;/code>)。寄存器表存储了每个 warp 保留的寄存器的数量。 函数 &lt;code>Scoreboard::reserveRegisters(...), Scoreboard::releaseRegisters(...) and Scoreboard::checkCollision(...)&lt;/code> 分别用于保留寄存器，释放寄存器，在 warp 发射前检查冲突。&lt;/p>
-&lt;h4 id="4125-operand-collector-software-model">4.1.2.5 Operand Collector Software Model&lt;/h4>
-&lt;p>Operand Collector 建模在主流水线的一个阶段，由函数 &lt;code>shader_core_ctx::cycle()&lt;/code> 调用执行。这个阶段由函数 &lt;code> shader_core_ctx::read_operands()&lt;/code> 表示。关于 ALU Pipeline 的更多细节在下一节 1.2.6&lt;/p>
-&lt;p>类 &lt;code>opndcoll_rfu_t &lt;/code> 基于寄存器文件单元建模了 operand collector. 包括 collector unit 集合，仲裁器，dispatch 单元的抽象。&lt;/p>
-&lt;p>&lt;code>opndcoll_rfu_t::allocate_cu(...)&lt;/code> 用于将 &lt;code>warp_inst_t &lt;/code> 分配到给定 operand collector 集合中的空闲 operand collector. 它也将所有源操作数的读请求添加到仲裁器中相应的 bank 队列&lt;/p>
-&lt;p>然而，&lt;code>opndcoll_rfu_t::allocate_reads(...)&lt;/code> 处理没有冲突的读请求，也就是不同寄存器 bank 中并且没有进入同一个 operand collector 的读请求将从仲裁器队列中出队。写请求总是优先于读请求。&lt;/p>
-&lt;p>函数 &lt;code>opndcoll_rfu_t::dispatch_ready_cu()&lt;/code> 会 dispatch ready operand collectors 的操作数寄存器到执行阶段&lt;/p>
-&lt;p>函数 &lt;code>opndcoll_rfu_t::writeback( const warp_inst_t &amp;amp;inst )&lt;/code> 在内存流水线的写回阶段被调用。用于分配写请求。&lt;/p>
-&lt;p>上述内容总结了建模 operand collector 的主要函数的重点，更多的细节在源代码中的 &lt;code>shader.cc/h&lt;/code> 中的类 &lt;code>opndcoll_rfu_t&lt;/code>&lt;/p>
-&lt;h4 id="4126-alu-pipeline-software-model">4.1.2.6 ALU Pipeline Software Model&lt;/h4>
-&lt;p>SP 单元和 SFU 单元的时间模型主要在 &lt;code>shader.h&lt;/code> 中的类 &lt;code>pipelined_simd_unit&lt;/code> 中实现。建模这两个单元的特定类 (&lt;code>sp_unit&lt;/code> and &lt;code>sfu&lt;/code>) 派生自这个类 (&lt;code>pipelined_simd_unit&lt;/code>)，其中包含被重写的成员函数 &lt;code>can_issue()&lt;/code> ，用于指定单元可执行的指令类型。&lt;/p>
-&lt;blockquote>
-&lt;p>比如源代码中，类 &lt;code>sfu&lt;/code> 可以执行执行类型 &lt;code>SFU_OP, ALU_SFU_OP, DP_OP&lt;/code>&lt;/p>
-&lt;/blockquote>
-&lt;p>SP 单元通过流水线寄存器 &lt;code>OC_EX_SP&lt;/code> 连接 operand collector, SFU 单元通过流水线寄存器 &lt;code>OC_EX_SFU&lt;/code> 连接 operand collector. 两个单元通过流水线寄存器 &lt;code>WB_EX&lt;/code> 共享写回阶段。为了避免两个单元在写回阶段冲突而停滞，每一条进入任一单元的指令都必须在结果总线(&lt;code>m_result_bus&lt;/code>)中分配一个 slot，然后才会被发送到指定单元 (细节在 &lt;code>shader_core_ctx::execute()&lt;/code>)&lt;/p>
-&lt;blockquote>
-&lt;p>OC -&amp;gt; operand collector&lt;/p>
-&lt;/blockquote>
-&lt;p>下图说明了 &lt;code>pipelined_simd_unit&lt;/code> 如何建模不同类型指令的吞吐量和延迟&lt;/p>
-&lt;!-- raw HTML omitted -->
-&lt;p>在每个 &lt;code>pipelined_simd_unit&lt;/code>, 成员函数 &lt;code>issue(warp_inst_t*&amp;amp;)&lt;/code> 将给定的流水线寄存器的内容移动到 &lt;code>m_dispatch_reg&lt;/code>. 指令在 &lt;code>m_dispatch_reg&lt;/code> 中等待 &lt;code>initiation_interval&lt;/code> cycles. 同时，没有其他指令被发射到这个单元，所以这个等待建模了指令的吞吐量。在等待后，指令派遣 (dispatch) 到内部流水线寄存器 &lt;code>m_pipeline_reg&lt;/code> 以建模延迟 (可以得到指令等待了多久才被派遣到 &lt;code>m_pipeline_reg&lt;/code>)。派遣位置是确定的，这样花费在 &lt;code>m_dispatch_reg&lt;/code> 中的时间也被计入延迟。每个周期，指令将通过流水线寄存器前进，最终进入 &lt;code>m_result_port&lt;/code>，这是 SP and SFU 单元的公共回写阶段的共享流水线寄存器 (&lt;code>WB_EX&lt;/code>)。&lt;/p>
-&lt;p>每种指令类型的吞吐量和延迟在 &lt;code>cuda-sim.cc&lt;/code> 中的&lt;code>ptx_instruction::set_opcode_and_latency()&lt;/code> 中指定。这个函数在预解码期间被调用。&lt;/p>
-&lt;blockquote>
-&lt;p>指令吞吐量，一个 cycle 内处理指令的条数，也就是 ipc?&lt;/p>
-&lt;p>延迟也就是指令等待的时间&lt;/p>
-&lt;p>指令执行吞吐一般指的是每个时钟周期内可以执行的指令数目，不同指令的吞吐会有所不同。通常GPU的指令吞吐用每个SM每周期可以执行多少指令来计量。对于多数算术逻辑指令而言，指令执行吞吐只与SM内的单元有关，整个GPU的吞吐就是每个SM的吞吐乘以SM的数目。&lt;/p>
-&lt;p>主要受以下因素影响&lt;/p>
-&lt;ul>
-&lt;li>&lt;strong>功能单元&lt;/strong>的数目&lt;/li>
-&lt;li>指令&lt;strong>Dispatch Port&lt;/strong>和&lt;strong>Dispatch Unit&lt;/strong>的吞吐。
-&lt;ul>
-&lt;li>一个 warp 的指令要发射，首先要 eligible, 也就是没有等待 cache miss, 通过了 scoreboard 等待。&lt;/li>
-&lt;li>其次要被 warp scheduler 选中，由 Dispatch Unit 发送到相应的 Dispatch Port. Kepler、Maxwell和Pascal是一个Warp Scheduler有两个Dispatch Unit，所以每cycle最多可以发射两个指令，也就是双发射。而Turing、Ampere每个Warp Scheduler只有一个Dispatch Unit，没有双发射，那每个周期就最多只能发一个指令。但是Kepler、Maxwell和Pascal都是一个Scheduler带32个单元（这里指full-throughput的单元），每周期都可以发新的warp。而Turing、Ampere是一个Scheduler带16个单元，每个指令要发两cycle，从而空出另一个cycle给别的指令用。&lt;/li>
-&lt;li>&lt;strong>最后要求Dispatch Port或其他资源不被占用&lt;/strong>，port被占的原因可能是前一个指令的执行吞吐小于发射吞吐，导致要Dispatch多次，比如Turing的两个FFMA至少要stall 2cycle，LDG之类的指令至少是4cycle。更详细的介绍大家可以参考之前的专栏文章。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;strong>GPR读写吞吐&lt;/strong>。绝大部分的指令都要涉及GPR的读写，由于Register File每个bank每个cycle的吞吐是有限的（一般是32bit），如果一个指令读取的GPR过多或是GPR之间有bank conflict，都会导致指令吞吐受影响。GPR的吞吐设计是影响指令发射的重要原因之一，有的时候甚至占主导地位，功能单元的数目配置会根据它和指令集功能的设计来定。比如NV常用的配置是4个Bank，每个bank每个周期可以输出一个32bit的GPR。这样FFMA这种指令就是3输入1输出，在没有bank conflict的时候可以一个cycle读完。其他如DFMA、HFMA2指令也会根据实际的输入输出需求，进行功能单元的配置。&lt;/li>
-&lt;li>很多指令有&lt;strong>replay&lt;/strong>的逻辑（&lt;a href="https://link.zhihu.com/?target=https%3A//stackoverflow.com/questions/35566178/how-to-explain-instruction-replay-in-cuda">参考Greg Smith在StackOverflow上的一个回答&lt;/a>）。这就意味着有的指令一次发射可能不够。这并不是之前提过的由于功能单元少而连续占用多轮dispath port，而是指令处理的逻辑上有需要分批或是多次处理的部分。比如constant memory做立即数时的cache miss，memory load时的地址分散，shared memory的bank conflict，atomic的地址conflict，甚至是普通的cache miss或是TLB的miss之类。根据上面Greg的介绍，Maxwell之前，这些replay都是在warp scheduler里做的，maxwell开始将它们下放到了各级功能单元，从而节约最上层的发射吞吐。不过，只要有replay，相应dispath port的占用应该是必然的，这样同类指令的总发射和执行吞吐自然也就会受影响。
-&lt;ul>
-&lt;li>L1 cache miss 也有进行 replay 的逻辑&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;/blockquote>
-&lt;h4 id="4127-memory-stage-software-model">4.1.2.7 Memory Stage Software Model&lt;/h4>
-&lt;p>&lt;code>shader.cc&lt;/code> 中的类 &lt;code>ldst_unit&lt;/code> 实现了 shader 流水线的内存阶段。这个类实例化了所有 in-shader 内存的操作: texture (&lt;code>m_L1T&lt;/code>), constant (&lt;code>m_L1C&lt;/code>) and data (&lt;code>m_L1D&lt;/code>). &lt;code>ldst_unit::cycle()&lt;/code> implements the guts of the unit&amp;rsquo;s operation and is pumped &lt;code>m_config-&amp;gt;mem_warp_parts&lt;/code> times pre core cycle. 完全对齐的内存访问 (fully coalesced memory access) 可以在一个 shader cycle 内被处理。&lt;code>ldst_unit::cycle()&lt;/code> 处理来自 interconnect 的内存响应 (存在 &lt;code>m_response_fifo&lt;/code>), 填充 cache 并将存储标记为完成。这个函数还 cycles the caches 以便它们可以将未命中数据的请求发送给 interconnect.&lt;/p>
-&lt;p>每种 L1 内存类型的 cache 访问分别在 &lt;code>shared_cycle(), constant_cycle(), texture_cycle()&lt;/code> and &lt;code>memory_cycle()&lt;/code> 中完成。&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>memory_cycle()&lt;/code> 用于访问 L1 data cache.&lt;/li>
-&lt;/ul>
-&lt;p>每个函数会调用 &lt;code>process_memory_access_queue()&lt;/code>, 这是一个通用函数，它从指令内部访问队列中提取访问并将这个请求发送到 cache 中。如果访问不能再这个 cycle 中被处理 (即没有未命中，也没有命中 (也就是之前介绍中提到的第三个状态 reserved fail)，这可能发生在系统队列满的时候，或是所有 cache line reserved 但还没有 fill)，那么会在下个 cycle 再次试图访问。&lt;/p>
-&lt;p>值得注意的是，并不是所有的指令都到达单元的写回阶段。在所有请求的 cache block 命中时，所有的 ST 指令和 LD 指令都将在 &lt;code>cycle&lt;/code> 函数中退出流水线。这是因为它们不需要等待来自 interconnect 的响应，并且可以 by-pass 写回逻辑，该逻辑保存指令所请求的 cache line 和那些已经返回的 cache line。&lt;/p>
-&lt;h4 id="4128-cache-software-model">4.1.2.8 Cache Software Model&lt;/h4>
-&lt;p>&lt;code>gpu-cache.h&lt;/code> 实现了 &lt;code>ldst_unit&lt;/code> 用到的所有 cache. constant cache and data cache 都包含一个成员对象 &lt;code>tag_array&lt;/code>，用于实现保留和替换的逻辑。函数 &lt;code>probe()&lt;/code> 检查 cache block 地址而不影响相关数据的 LRU 位置, 函数 &lt;code>access()&lt;/code> 旨在建模影响 LRU 位置的查找，生成未命中和访问的统计信息。MSHR 用类 &lt;code>msgr_table&lt;/code> 建模，它建模了一个全相联 table, 合并有限数量的请求。请求通过 &lt;code>next_access()&lt;/code> 函数从MSHR释放。&lt;/p>
-&lt;p>类 &lt;code>read_only_cache&lt;/code> 被 constant cache 使用，并作为类 &lt;code>data_cache&lt;/code> 的基类。这个层次结构可能有点令人困惑，因为 R/W data cache 是从 &lt;code>read_only_cache&lt;/code> 扩展的 (理解为 R/W data cache 就是在只读 cache 类基础上加了一些功能来实现，从代码角度很好理解这句话)。原因是它们共享很多相同功能的函数，除了函数 &lt;code>access&lt;/code> 需要写 &lt;code>data_cacje&lt;/code> 这一点有所区别。L2 cache 也是通过类 &lt;code>data_cache&lt;/code> 实现。&lt;/p>
-&lt;blockquote>
-&lt;p>这一点从 C 语言中类的角度去理解就好&lt;/p>
-&lt;/blockquote>
-&lt;p>类 &lt;code>tex_cache&lt;/code> 实现 texture cache. 它没有使用 &lt;code>tag_array&lt;/code> 或是 &lt;code>mshr_table&lt;/code>，因为它的操作和传统 cache 不太一样&lt;/p>
-&lt;h4 id="4129-thread-block--cta--work-group-scheduling">4.1.2.9 Thread Block / CTA / Work Group Scheduling&lt;/h4>
-&lt;p>Thread Block 向 SIMT cores 的调度在 &lt;code>shader_core_ctx::issue_block2core(...)&lt;/code> 中实现。一个 core 中可以并行调度的最大 block 数量由函数 &lt;code>shader_core_config::max_cta(...)&lt;/code> 计算。这个函数基于程序中定义的 ThreadPerBlock (CUDA 编程中由程序员定义), 以及每个线程的寄存器使用情况、共享内存使用情况以及每个 core 的最大线程块数量的配置限制来计算上述 &lt;strong>可以并行调度的最大 block 数量&lt;/strong>。具体地说，计算可以分配给 SIMT core 的 block 数量，上面的每个标准都是限制因素。其中的最小值是可以分配给 SIMT core 的最大 block 数量。&lt;/p>
-&lt;blockquote>
-&lt;p>各种资源中的短板决定了最多可以有多少个 block 并行。CUDA 编程的知识&lt;/p>
-&lt;/blockquote>
-&lt;p>在函数 &lt;code>shader_core_ctx::issue_block2core(...)&lt;/code> 中，block size 首先被填充为 warp size 的倍数。然后决定一个空闲硬件 thread id 的范围。通过调用函数 &lt;code>ptx_sim_init_thread&lt;/code> 来初始化每个线程的函数状态。调用函数 &lt;code>shader_core_ctx::init_warp&lt;/code> 初始化 SIMT stack and warp state.&lt;/p>
-&lt;p>当每条线程完成，SIMT core 调用函数 &lt;code>shader_core_ctx::init_warp(...)&lt;/code> 来更新 active thread block 的状态。当 block 内所有线程完成执行， 同一个函数会减少 core 上 active block 的数量，允许在下一 cycle 调度更多 block. 从 pending kernels 中选择要调度的新线程块。&lt;/p>
-&lt;h3 id="4413-interconnection-network">4.4.1.3 Interconnection Network&lt;/h3>
-&lt;p>Interconnection Network 接口有以下几个功能。这些函数在 &lt;code>interconnect_interface.cpp&lt;/code> 中实现。这些函数被封装在 &lt;code>icnt_wrapper.cpp&lt;/code> 中。使用&lt;code>icnt_wrapper.cpp&lt;/code> 的最初目的是允许其他 network 模拟器连接到 GPGPU-Sim。&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>init_interconnect()&lt;/code>: 初始化网络模拟器。它的输入是互连网络的配置文件和SIMT核心团簇和内存节点的数量。&lt;/li>
-&lt;li>&lt;code>interconnect_push()&lt;/code>: 指定源节点、目的节点、指向要传输的数据包的指针和数据包大小(以字节为单位)。&lt;/li>
-&lt;li>&lt;code>interconnect_pop()&lt;/code>: 获取一个节点号作为输入，并返回一个指向在该节点等待被弹出的数据包的指针。如果没有数据包，则返回NULL。&lt;/li>
-&lt;li>&lt;code>interconnect_has_buffer()&lt;/code>: 获取作为输入要发送的节点号和数据包大小，如果源节点的输入缓冲区有足够的空间，则返回1 (true)。&lt;/li>
-&lt;li>&lt;code>advance_interconnect()&lt;/code>: 应该在每个互连时钟周期被调用。顾名思义，它在一个周期内完成网络的所有内部步骤。&lt;/li>
-&lt;li>&lt;code>interconnect_busy()&lt;/code>: 如果网络中有一个正在传输的数据包，则返回1 (true)&lt;/li>
-&lt;li>&lt;code>interconnect_stats()&lt;/code>: 打印网络统计信息。&lt;/li>
-&lt;/ul>
-&lt;h3 id="415-memory-partition">4.1.5 Memory Partition&lt;/h3>
-&lt;p>l2cache.cc/h 中有 class &lt;code>memory_partition_unit&lt;/code>&lt;/p>
-&lt;p>II. L2 Cache Model&lt;/p>
-&lt;p>&lt;code>mem_fetch *mf = m_L2cache-&amp;gt;next_access();&lt;/code> 产生等待 fill MSHR entry 的内存请求的 reply,&lt;/p></description></item><item><title>GPU_benchmark说明（转）</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpu_benchmark%E8%AF%B4%E6%98%8E%E8%BD%AC/</link><pubDate>Sun, 14 Nov 2021 20:34:48 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpu_benchmark%E8%AF%B4%E6%98%8E%E8%BD%AC/</guid><description>&lt;h1 id="introduction">Introduction&lt;/h1>
-&lt;p>本文内容主要系摘录翻译自&lt;a href="http://parse.ele.tue.nl/ali">Ang Li&lt;/a>的博士毕业论文。&lt;/p>
-&lt;h1 id="1perfect">1.Perfect&lt;/h1>
-&lt;p>Power Efficiency Revolution for Embedded Computing&lt;/p>
-&lt;p>&lt;a href="http://hpc.pnl.gov/PERFECT/">http://hpc.pnl.gov/PERFECT/&lt;/a>&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">&lt;strong>Application Domains&lt;/strong>&lt;/th>
-&lt;th style="text-align:left">&lt;strong>Kernels&lt;/strong>&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">PERFECT Application 1&lt;/td>
-&lt;td style="text-align:left">Discrete Wavelet Transform&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;/td>
-&lt;td style="text-align:left">2D Convolution&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;/td>
-&lt;td style="text-align:left">Histogram Equalization&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">Space Time Adaptive Processing&lt;/td>
-&lt;td style="text-align:left">System Solver&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;/td>
-&lt;td style="text-align:left">Inner Product&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;/td>
-&lt;td style="text-align:left">Outer Product&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">Synthetic Aperture Radar&lt;/td>
-&lt;td style="text-align:left">Interpolation 1&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;/td>
-&lt;td style="text-align:left">Interpolation 2&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;/td>
-&lt;td style="text-align:left">Back Projection (Non-Fourier SAR)&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">Wide Area Motion Imaging&lt;/td>
-&lt;td style="text-align:left">Debayer&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;/td>
-&lt;td style="text-align:left">Image Registration&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;/td>
-&lt;td style="text-align:left">Change Detection&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">Required Kernels&lt;/td>
-&lt;td style="text-align:left">Sort&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;/td>
-&lt;td style="text-align:left">FFT 1D&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;/td>
-&lt;td style="text-align:left">FFT 2D&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="2-axbench">2. AxBench&lt;/h1>
-&lt;p>A Multiplatform Benchmark Suite for Approximate Computing&lt;/p>
-&lt;p>One of the goals of AxBench is to provide a diverse set of applications to further facilitate research and development in approximate computing.&lt;/p>
-&lt;p>&lt;a href="http://ieeexplore.ieee.org/abstract/document/7755728/">http://ieeexplore.ieee.org/abstract/document/7755728/&lt;/a>&lt;/p>
-&lt;p>下载地址&lt;/p>
-&lt;p>&lt;a href="http://axbench.org/">http://axbench.org/&lt;/a>&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">benchmark&lt;/th>
-&lt;th style="text-align:left">platform&lt;/th>
-&lt;th style="text-align:left">domain&lt;/th>
-&lt;th style="text-align:left">Quality Metric&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">binarization&lt;/td>
-&lt;td style="text-align:left">GPU&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Image Diff&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">blackscholes&lt;/td>
-&lt;td style="text-align:left">CPU, GPU&lt;/td>
-&lt;td style="text-align:left">Finance&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">brent-kung&lt;/td>
-&lt;td style="text-align:left">ASIC&lt;/td>
-&lt;td style="text-align:left">Arithmetic Computation&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">canneal&lt;/td>
-&lt;td style="text-align:left">CPU&lt;/td>
-&lt;td style="text-align:left">Optimization&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">convolution&lt;/td>
-&lt;td style="text-align:left">GPU&lt;/td>
-&lt;td style="text-align:left">Machine Learning&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">fastwalsh&lt;/td>
-&lt;td style="text-align:left">GPU&lt;/td>
-&lt;td style="text-align:left">Signal Processing&lt;/td>
-&lt;td style="text-align:left">Image Diff&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">fft&lt;/td>
-&lt;td style="text-align:left">CPU&lt;/td>
-&lt;td style="text-align:left">Signal Processing&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">fir&lt;/td>
-&lt;td style="text-align:left">ASIC&lt;/td>
-&lt;td style="text-align:left">Signal Processing&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">forwardk2j&lt;/td>
-&lt;td style="text-align:left">CPU, ASIC&lt;/td>
-&lt;td style="text-align:left">Robotics&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">inversek2j&lt;/td>
-&lt;td style="text-align:left">CPU, GPU, ASIC&lt;/td>
-&lt;td style="text-align:left">Robotics&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">jmeint&lt;/td>
-&lt;td style="text-align:left">CPU, GPU&lt;/td>
-&lt;td style="text-align:left">3D Gaming&lt;/td>
-&lt;td style="text-align:left">Miss Rate&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">jpeg&lt;/td>
-&lt;td style="text-align:left">CPU&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Image Diff&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">kmeans&lt;/td>
-&lt;td style="text-align:left">CPU, ASIC&lt;/td>
-&lt;td style="text-align:left">Machine Learning&lt;/td>
-&lt;td style="text-align:left">Image Diff&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">kogge-stone&lt;/td>
-&lt;td style="text-align:left">ASIC&lt;/td>
-&lt;td style="text-align:left">Arithmetic Computation&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">laplacian&lt;/td>
-&lt;td style="text-align:left">GPU&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Image Diff&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">meanfilter&lt;/td>
-&lt;td style="text-align:left">GPU&lt;/td>
-&lt;td style="text-align:left">Machine Vision&lt;/td>
-&lt;td style="text-align:left">Image Diff&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">neural network&lt;/td>
-&lt;td style="text-align:left">ASIC&lt;/td>
-&lt;td style="text-align:left">Machine Learning&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">newton-raph&lt;/td>
-&lt;td style="text-align:left">GPU&lt;/td>
-&lt;td style="text-align:left">Numerical Analysis&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">sobel&lt;/td>
-&lt;td style="text-align:left">CPU, GPU, ASIC&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Image Diff&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">srad&lt;/td>
-&lt;td style="text-align:left">GPU&lt;/td>
-&lt;td style="text-align:left">Medical Imaging&lt;/td>
-&lt;td style="text-align:left">Image Diff&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">wallace-tree&lt;/td>
-&lt;td style="text-align:left">ASIC&lt;/td>
-&lt;td style="text-align:left">Arithmetic Computation&lt;/td>
-&lt;td style="text-align:left">Avg. Relative Error&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="3-rodinia">3. Rodinia&lt;/h1>
-&lt;p>&lt;a href="http://rodinia.cs.virginia.edu/">http://rodinia.cs.virginia.edu/&lt;/a>&lt;/p>
-&lt;p>下载页面：&lt;/p>
-&lt;p>&lt;a href="http://lava.cs.virginia.edu/Rodinia/download_links.htm">http://lava.cs.virginia.edu/Rodinia/download_links.htm&lt;/a>&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">&lt;/th>
-&lt;th style="text-align:left">&lt;/th>
-&lt;th style="text-align:left">&lt;/th>
-&lt;th style="text-align:left">&lt;/th>
-&lt;th style="text-align:left">&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">Applications&lt;/td>
-&lt;td style="text-align:left">Dwarves&lt;/td>
-&lt;td style="text-align:left">Domains&lt;/td>
-&lt;td style="text-align:left">Parallel Model&lt;/td>
-&lt;td style="text-align:left">Incre. Ver.&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Leukocyte">Leukocyte&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Structured Grid&lt;/td>
-&lt;td style="text-align:left">Medical Imaging&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">√&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Heart_Wall">Heart Wall&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Structured Grid&lt;/td>
-&lt;td style="text-align:left">Medical Imaging&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/MUMmerGPU">MUMmerGPU&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Graph Traversal&lt;/td>
-&lt;td style="text-align:left">Bioinformatics&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/CFD_Solver">CFD Solver1&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Unstructured Grid&lt;/td>
-&lt;td style="text-align:left">Fluid Dynamics&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/LU_Decomposition">LU Decomposition&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Dense Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">√&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/HotSpot">HotSpot&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Structured Grid&lt;/td>
-&lt;td style="text-align:left">Physics Simulation&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Back_Propagation">Back Propagation&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Unstructured Grid&lt;/td>
-&lt;td style="text-align:left">Pattern Recognition&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Needleman-Wunsch">Needleman-Wunsch&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Dynamic Programming&lt;/td>
-&lt;td style="text-align:left">Bioinformatics&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">√&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/K-Means">Kmeans&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Dense Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Graph_traversal">Breadth-First Search1&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Graph Traversal&lt;/td>
-&lt;td style="text-align:left">Graph Algorithms&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/SRAD">SRAD&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Structured Grid&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">√&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Streamcluster">Streamcluster1&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Dense Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Particle_Filter">Particle Filter&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Structured Grid&lt;/td>
-&lt;td style="text-align:left">Medical Imaging&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Shortest_Path">PathFinder&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Dynamic Programming&lt;/td>
-&lt;td style="text-align:left">Grid Traversal&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Gaussian_Elimination">Gaussian Elimination&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Dense Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">CUDA, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Nearest_Neighbor">k-Nearest Neighbors&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Dense Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/LavaMD">LavaMD2&lt;/a>&lt;/td>
-&lt;td style="text-align:left">N-Body&lt;/td>
-&lt;td style="text-align:left">Molecular Dynamics&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Myocyte">Myocyte&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Structured Grid&lt;/td>
-&lt;td style="text-align:left">Biological Simulation&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/B%2B_Tree">B+ Tree&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Graph Traversal&lt;/td>
-&lt;td style="text-align:left">Search&lt;/td>
-&lt;td style="text-align:left">CUDA, OMP, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/GPUDWT">GPUDWT&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Spectral Method&lt;/td>
-&lt;td style="text-align:left">Image/Video Compression&lt;/td>
-&lt;td style="text-align:left">CUDA, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php/Hybrid_Sort">Hybrid Sort&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Sorting&lt;/td>
-&lt;td style="text-align:left">Sorting Algorithms&lt;/td>
-&lt;td style="text-align:left">CUDA, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php?title=Hotspot3D&amp;amp;action=edit&amp;amp;redlink=1">Hotspot3D&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Structured Grid&lt;/td>
-&lt;td style="text-align:left">Physics Simulation&lt;/td>
-&lt;td style="text-align:left">CUDA, OCL, OMP&lt;/td>
-&lt;td style="text-align:left">Hotspot for 3D IC&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">&lt;a href="https://www.cs.virginia.edu/~skadron/wiki/rodinia/index.php?title=Huffman&amp;amp;action=edit&amp;amp;redlink=1">Huffman&lt;/a>&lt;/td>
-&lt;td style="text-align:left">Finite State Machine&lt;/td>
-&lt;td style="text-align:left">Lossless data compression&lt;/td>
-&lt;td style="text-align:left">CUDA, OCL&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;p>Ang Li的分类：&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">Application&lt;/th>
-&lt;th style="text-align:left">Description&lt;/th>
-&lt;th style="text-align:left">Domain&lt;/th>
-&lt;th style="text-align:left">CUDA&lt;/th>
-&lt;th style="text-align:left">OpenCL&lt;/th>
-&lt;th style="text-align:left">OpenMP&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">backprop&lt;/td>
-&lt;td style="text-align:left">Perceptron back propagation&lt;/td>
-&lt;td style="text-align:left">Neural Network&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">bfs&lt;/td>
-&lt;td style="text-align:left">Breadth first search&lt;/td>
-&lt;td style="text-align:left">Graph Algorithm&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">b+tree&lt;/td>
-&lt;td style="text-align:left">B+tree Operation&lt;/td>
-&lt;td style="text-align:left">Searching Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">leukocyte&lt;/td>
-&lt;td style="text-align:left">Detect leukocytes in blood vessel video&lt;/td>
-&lt;td style="text-align:left">Medical Imaging&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">heartwall&lt;/td>
-&lt;td style="text-align:left">Tracks the mouse heart movement by stimulus&lt;/td>
-&lt;td style="text-align:left">Medical Imaging&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">cfd&lt;/td>
-&lt;td style="text-align:left">Finite volume solver for 3D Euler equations for flow&lt;/td>
-&lt;td style="text-align:left">Fluid Dynamics&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">lud&lt;/td>
-&lt;td style="text-align:left">Calculate the solutions of a set of linear equations&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">hotspot&lt;/td>
-&lt;td style="text-align:left">Estimate processor temperature&lt;/td>
-&lt;td style="text-align:left">Physical Simulation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">nw&lt;/td>
-&lt;td style="text-align:left">Optimization method for DNA sequence alignments&lt;/td>
-&lt;td style="text-align:left">Bioinformatics&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">kmeans&lt;/td>
-&lt;td style="text-align:left">Clustering algorithm&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">srad&lt;/td>
-&lt;td style="text-align:left">Speckle reducing anisotropic diffusion&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">streamcluster&lt;/td>
-&lt;td style="text-align:left">Finds medians to assign points to nearest centers&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">particlefilter&lt;/td>
-&lt;td style="text-align:left">Locate object location based on Noise and path&lt;/td>
-&lt;td style="text-align:left">Medical Imaging&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">pathfinder&lt;/td>
-&lt;td style="text-align:left">Dynamic programming to find a path on a 2D grid Grid&lt;/td>
-&lt;td style="text-align:left">Traversal&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">gaussian&lt;/td>
-&lt;td style="text-align:left">Solving variables in a linear system&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">nn&lt;/td>
-&lt;td style="text-align:left">Find k-nearest neighbors from an unstructured data set&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">lavaMD&lt;/td>
-&lt;td style="text-align:left">Calculate particle potential and relocation in 3D&lt;/td>
-&lt;td style="text-align:left">Molecular Dynamics&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">myocyte&lt;/td>
-&lt;td style="text-align:left">Simulate the behavior of cardiac hear muscle cell&lt;/td>
-&lt;td style="text-align:left">Biological Simulation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="4-parboil">4. Parboil&lt;/h1>
-&lt;p>Parboil强调面向吞吐量的流媒体应用。其中的每个应用都有原生的CUDA应用和优化过的应用。&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">Application&lt;/th>
-&lt;th style="text-align:left">Description&lt;/th>
-&lt;th style="text-align:left">Domain&lt;/th>
-&lt;th style="text-align:left">CUDA&lt;/th>
-&lt;th style="text-align:left">OpenCL&lt;/th>
-&lt;th style="text-align:left">C&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">bfs&lt;/td>
-&lt;td style="text-align:left">Breadth-first-search&lt;/td>
-&lt;td style="text-align:left">Graph Algorithm&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">cutcp&lt;/td>
-&lt;td style="text-align:left">Compute Coulombic potential for a 3D grid&lt;/td>
-&lt;td style="text-align:left">Molecular Dynamics&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">histogram&lt;/td>
-&lt;td style="text-align:left">Compute 2D saturating histogram with maximum 256 bins&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">lbm&lt;/td>
-&lt;td style="text-align:left">Fluid dynamics simulation using Lattice-Bolzmann Method&lt;/td>
-&lt;td style="text-align:left">Fluid Dynamics&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">mm&lt;/td>
-&lt;td style="text-align:left">Dense matrix-matrix multiply&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">mri-gridding&lt;/td>
-&lt;td style="text-align:left">Compute regular data grid via weighted interpolation&lt;/td>
-&lt;td style="text-align:left">Medical Imaging&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">mir-q&lt;/td>
-&lt;td style="text-align:left">Compute scanner configuration for calibration in 3D MRI&lt;/td>
-&lt;td style="text-align:left">Medical Imaging&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">sad&lt;/td>
-&lt;td style="text-align:left">Sum of absolute differences kernel in MPEG video encoders&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">spmv&lt;/td>
-&lt;td style="text-align:left">Compute the product of a sparse matrix with a dense vector&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">stencil&lt;/td>
-&lt;td style="text-align:left">An iterative Jacobi stencil operation on a regular 3D grid&lt;/td>
-&lt;td style="text-align:left">Cellular Automation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">tpacf&lt;/td>
-&lt;td style="text-align:left">Analyze the spatial distribution of astronomical bodies&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="5-shoc">5. Shoc&lt;/h1>
-&lt;p>测量协处理的稳定性和性能，such as GPUs, Xeon-Phi, etc。&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">Application&lt;/th>
-&lt;th style="text-align:left">Description&lt;/th>
-&lt;th style="text-align:left">Domain&lt;/th>
-&lt;th style="text-align:left">CUDA&lt;/th>
-&lt;th style="text-align:left">OpenCL&lt;/th>
-&lt;th style="text-align:left">C&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">qtclustering&lt;/td>
-&lt;td style="text-align:left">Group genes into high quality clusters&lt;/td>
-&lt;td style="text-align:left">Bioinformatics&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">s3d&lt;/td>
-&lt;td style="text-align:left">Compute chemical reaction rate across a 3D grid&lt;/td>
-&lt;td style="text-align:left">Simulation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">scan&lt;/td>
-&lt;td style="text-align:left">Parallel prefix sum of floating point numbers&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">reduction&lt;/td>
-&lt;td style="text-align:left">Sum reduction operation of floating point numbers&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">md&lt;/td>
-&lt;td style="text-align:left">Lennard-Jones potential computations&lt;/td>
-&lt;td style="text-align:left">Molecular Dynamics&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">fft&lt;/td>
-&lt;td style="text-align:left">Fast Fourier transform&lt;/td>
-&lt;td style="text-align:left">Signal Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">sgemm&lt;/td>
-&lt;td style="text-align:left">Single precision general matrix multiply&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">sort&lt;/td>
-&lt;td style="text-align:left">Fast radix sort program&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">stencil2d&lt;/td>
-&lt;td style="text-align:left">Standard 2d 9 points stencil calculation&lt;/td>
-&lt;td style="text-align:left">Cellular Automation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">bfs&lt;/td>
-&lt;td style="text-align:left">Breadth-first-search&lt;/td>
-&lt;td style="text-align:left">Graph Algorithm&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">spmv&lt;/td>
-&lt;td style="text-align:left">Sparse matrix vector multiplication&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="6-polybench">6. Polybench&lt;/h1>
-&lt;p>包含从[非]结构循环嵌套转换的Kernel。这些循环以前用于评估基于多面体模型的优化工具。&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">Application&lt;/th>
-&lt;th style="text-align:left">Description&lt;/th>
-&lt;th style="text-align:left">Domain&lt;/th>
-&lt;th style="text-align:left">CUDA&lt;/th>
-&lt;th style="text-align:left">OpenCL&lt;/th>
-&lt;th style="text-align:left">C&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">2dconv&lt;/td>
-&lt;td style="text-align:left">2D convolution&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">2mm&lt;/td>
-&lt;td style="text-align:left">2 matrix multiply&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">3dconv&lt;/td>
-&lt;td style="text-align:left">3D convolution&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">3mm&lt;/td>
-&lt;td style="text-align:left">3 matrix multiply&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">atax&lt;/td>
-&lt;td style="text-align:left">Matrix transpose and vector multiplication&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">bicg&lt;/td>
-&lt;td style="text-align:left">Bicg kernel for BiCGStab linear solver&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">corr&lt;/td>
-&lt;td style="text-align:left">Correlation computation&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">covar&lt;/td>
-&lt;td style="text-align:left">Covariance computation&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">fdtd2d&lt;/td>
-&lt;td style="text-align:left">2D finite difference time domain kernel&lt;/td>
-&lt;td style="text-align:left">Simulation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">gemm&lt;/td>
-&lt;td style="text-align:left">matrix multiply&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">gesummv&lt;/td>
-&lt;td style="text-align:left">Scalar vector and matrix multiplication&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">gramschm&lt;/td>
-&lt;td style="text-align:left">Gram-schmidt process&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">mvt&lt;/td>
-&lt;td style="text-align:left">Matrix vector product and transpose&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">syr2k&lt;/td>
-&lt;td style="text-align:left">Symmetric rank-2k operations&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">syrk&lt;/td>
-&lt;td style="text-align:left">Symmetric rank-k operations&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="7-mars">7. Mars&lt;/h1>
-&lt;p>用map reduce实现的data-mining的benchmark。&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">Application&lt;/th>
-&lt;th style="text-align:left">Description&lt;/th>
-&lt;th style="text-align:left">Domain&lt;/th>
-&lt;th style="text-align:left">CUDA&lt;/th>
-&lt;th style="text-align:left">OpenCL&lt;/th>
-&lt;th style="text-align:left">C&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">sm&lt;/td>
-&lt;td style="text-align:left">Find the position of a string in a file&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">ii&lt;/td>
-&lt;td style="text-align:left">Build inverted index for links in HTML files&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">ss&lt;/td>
-&lt;td style="text-align:left">Compute pair-wise similarity score for docs&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">mm&lt;/td>
-&lt;td style="text-align:left">Multiply two matrices&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">pvc&lt;/td>
-&lt;td style="text-align:left">Count distinct page views from web logs&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">pvr&lt;/td>
-&lt;td style="text-align:left">Find the top ten hottest pages in the web log&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="8-longstar">8. Longstar&lt;/h1>
-&lt;p>关注于不规则的应用，主要是数据依赖和拓扑依赖。&lt;/p>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">Application&lt;/th>
-&lt;th style="text-align:left">Description&lt;/th>
-&lt;th style="text-align:left">Domain&lt;/th>
-&lt;th style="text-align:left">CUDA&lt;/th>
-&lt;th style="text-align:left">OpenCL&lt;/th>
-&lt;th style="text-align:left">C&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">bfs&lt;/td>
-&lt;td style="text-align:left">Breadth first search&lt;/td>
-&lt;td style="text-align:left">Graph Algorithm&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">bh&lt;/td>
-&lt;td style="text-align:left">Simulate the gravitational forces in Barnes-Hut&lt;/td>
-&lt;td style="text-align:left">algorithm Simulation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">dc&lt;/td>
-&lt;td style="text-align:left">Lossless compression upon double-precision FP data&lt;/td>
-&lt;td style="text-align:left">Signal Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">dmr&lt;/td>
-&lt;td style="text-align:left">Meshrefinement algorithm from computational geometry&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">pta&lt;/td>
-&lt;td style="text-align:left">Andersen’s flow/context-insensitive points-to analysis&lt;/td>
-&lt;td style="text-align:left">Graph Algorithm&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">sp&lt;/td>
-&lt;td style="text-align:left">Heuristic SAT-solver based on BaYesian inference&lt;/td>
-&lt;td style="text-align:left">Graph Algorithm&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">sssp&lt;/td>
-&lt;td style="text-align:left">Shortest path in a directed graph with weighted edges&lt;/td>
-&lt;td style="text-align:left">Graph Algorithm&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">tsp&lt;/td>
-&lt;td style="text-align:left">Traveling salesman problem&lt;/td>
-&lt;td style="text-align:left">Graph Algorithm&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="9-cuda-sdk">9. CUDA SDK&lt;/h1>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">Application&lt;/th>
-&lt;th style="text-align:left">Description&lt;/th>
-&lt;th style="text-align:left">Domain&lt;/th>
-&lt;th style="text-align:left">CUDA&lt;/th>
-&lt;th style="text-align:left">OpenCL&lt;/th>
-&lt;th style="text-align:left">C&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">bilateralFilter&lt;/td>
-&lt;td style="text-align:left">Edge-preserving non-linear smoothing filter&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">binomialOption&lt;/td>
-&lt;td style="text-align:left">Evaluate option call price using binomial model&lt;/td>
-&lt;td style="text-align:left">Computational Finance&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">BlackScholes&lt;/td>
-&lt;td style="text-align:left">Evaluate option call price using Black-Scholes model&lt;/td>
-&lt;td style="text-align:left">Computational Finance&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">convolutionFFT2D&lt;/td>
-&lt;td style="text-align:left">2D convolutions using FFT&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">dct8x8&lt;/td>
-&lt;td style="text-align:left">Discrete cosine transform for blocks of 8 by 8 pixels&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">dxtc&lt;/td>
-&lt;td style="text-align:left">High quality DXT compression&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">dwtHaar1D&lt;/td>
-&lt;td style="text-align:left">1D discrete Haar wavelet decomposition&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">eigenvalues&lt;/td>
-&lt;td style="text-align:left">Eigenvalues of a tridiagonal symmetric matrix&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">fastWalshTransform&lt;/td>
-&lt;td style="text-align:left">Hadamard-ordered Fast Walsh transform&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">FDTD3d&lt;/td>
-&lt;td style="text-align:left">Finite differences&lt;/td>
-&lt;td style="text-align:left">time domain progression stencil&lt;/td>
-&lt;td style="text-align:left">Cellular Automation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">grabcutNPP&lt;/td>
-&lt;td style="text-align:left">GrabCut approach using the 8 neighborhood&lt;/td>
-&lt;td style="text-align:left">Graph Algorithm&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">histogram&lt;/td>
-&lt;td style="text-align:left">64/256 bin histogram&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">imageDenoising&lt;/td>
-&lt;td style="text-align:left">Using KNN and NLM for image denoising&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">lineOfSight&lt;/td>
-&lt;td style="text-align:left">A simple line-of-sight algorithm&lt;/td>
-&lt;td style="text-align:left">Graphic Application&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">Mandelbrot&lt;/td>
-&lt;td style="text-align:left">Mandelbrot or Julia sets interactively&lt;/td>
-&lt;td style="text-align:left">Graphic Application&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">matrixMul&lt;/td>
-&lt;td style="text-align:left">Matrix multiplication&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">mergeSortv&lt;/td>
-&lt;td style="text-align:left">Merge Sort algorithm&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">MersenneTwister&lt;/td>
-&lt;td style="text-align:left">The Mersenne Twister random number generator&lt;/td>
-&lt;td style="text-align:left">Signal Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">MonteCarlo&lt;/td>
-&lt;td style="text-align:left">Evaluate option call price using Monte Carlo approach&lt;/td>
-&lt;td style="text-align:left">Computational Finance&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">nbody&lt;/td>
-&lt;td style="text-align:left">All-pairs gravitational n-body simulation&lt;/td>
-&lt;td style="text-align:left">Simulation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">oceanFFT&lt;/td>
-&lt;td style="text-align:left">Simulate an Ocean height field&lt;/td>
-&lt;td style="text-align:left">Simulation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">reduction&lt;/td>
-&lt;td style="text-align:left">Compute the sum of a large arrays of values&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">scalarProd&lt;/td>
-&lt;td style="text-align:left">Calculate scalar products of input vector pairs&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">scan&lt;/td>
-&lt;td style="text-align:left">Parallel prefix sum&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">SobelFilter&lt;/td>
-&lt;td style="text-align:left">Sobel edge detection filter for 8-bit monochrome images&lt;/td>
-&lt;td style="text-align:left">Image Processing&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">SobolQRNG&lt;/td>
-&lt;td style="text-align:left">Sobol Quasirandom Sequence Generator&lt;/td>
-&lt;td style="text-align:left">Computational Finance&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">transpose&lt;/td>
-&lt;td style="text-align:left">Matrix transpose&lt;/td>
-&lt;td style="text-align:left">Linear Algebra&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="10-gpgpu-sim">10. GPGPU-Sim&lt;/h1>
-&lt;table>
-&lt;thead>
-&lt;tr>
-&lt;th style="text-align:left">Application&lt;/th>
-&lt;th style="text-align:left">Description&lt;/th>
-&lt;th style="text-align:left">Domain&lt;/th>
-&lt;th style="text-align:left">CUDA&lt;/th>
-&lt;th style="text-align:left">OpenCL&lt;/th>
-&lt;th style="text-align:left">C&lt;/th>
-&lt;/tr>
-&lt;/thead>
-&lt;tbody>
-&lt;tr>
-&lt;td style="text-align:left">aes&lt;/td>
-&lt;td style="text-align:left">AES algorithm in CUDA to encrypt and decrypt files&lt;/td>
-&lt;td style="text-align:left">Cryptography&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">dc&lt;/td>
-&lt;td style="text-align:left">A discontinuous Galerkin time-domain solver&lt;/td>
-&lt;td style="text-align:left">Simulation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">lps&lt;/td>
-&lt;td style="text-align:left">3D Laplace Solver&lt;/td>
-&lt;td style="text-align:left">Computational Finance&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">lib&lt;/td>
-&lt;td style="text-align:left">Monte Carlo simulation in London-interbank-offered-rate Model&lt;/td>
-&lt;td style="text-align:left">Computational Finance&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">mum&lt;/td>
-&lt;td style="text-align:left">Pairwise local sequence alignment for DNA string&lt;/td>
-&lt;td style="text-align:left">Bioinformatics&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">nn&lt;/td>
-&lt;td style="text-align:left">Convolutional neural network to recognize handwritten digits&lt;/td>
-&lt;td style="text-align:left">Machine Learning&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">nqu&lt;/td>
-&lt;td style="text-align:left">The N-Queen solver&lt;/td>
-&lt;td style="text-align:left">Simulation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">ray&lt;/td>
-&lt;td style="text-align:left">Ray-tracing (rendering graphics with near photo-realism)&lt;/td>
-&lt;td style="text-align:left">Graphic Application&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">sto&lt;/td>
-&lt;td style="text-align:left">Sliding-window implementation of the MD5 algorithm&lt;/td>
-&lt;td style="text-align:left">Data Mining&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;tr>
-&lt;td style="text-align:left">wp&lt;/td>
-&lt;td style="text-align:left">Accelerate part of the Weather Research and Forecast Model (WRF)&lt;/td>
-&lt;td style="text-align:left">Simulation&lt;/td>
-&lt;td style="text-align:left">Yes&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;td style="text-align:left">No&lt;/td>
-&lt;/tr>
-&lt;/tbody>
-&lt;/table>
-&lt;h1 id="reference">Reference&lt;/h1>
-&lt;p>&lt;a href="https://www.findhao.net/easycoding/2304.html">https://www.findhao.net/easycoding/2304.html&lt;/a>&lt;/p></description></item><item><title>如何评价自己的编程能力</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E5%A6%82%E4%BD%95%E8%AF%84%E4%BB%B7%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BC%96%E7%A8%8B%E8%83%BD%E5%8A%9B/</link><pubDate>Mon, 11 Oct 2021 19:52:15 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E5%A6%82%E4%BD%95%E8%AF%84%E4%BB%B7%E8%87%AA%E5%B7%B1%E7%9A%84%E7%BC%96%E7%A8%8B%E8%83%BD%E5%8A%9B/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
-&lt;p>从入学以来，编程能力一直放在自己需要提升的部分当中。慢慢的学习了一些常用的算法，Leetcode 上也刷了更多的题。自己在课程作业中比着葫芦画瓢完成了一些小的 project，现在使用模拟器也需要阅读 C/C++ 代码。不过还是存在疑惑，什么才叫做编程能力呢？如何评估自己的编程能力呢？&lt;/p>
-&lt;h1 id="1-个人理解">1. 个人理解&lt;/h1>
-&lt;ul>
-&lt;li>针对实际应用，top to down 的抽象。需要在脑海中建立相应的一套模型，包括类的构造、函数需求等等。&lt;/li>
-&lt;li>动手实现的能力。有了思路后快速构造出模型，并加以验证，通过反馈不断地迭代自己的代码。这个应该算是实实在在的 coding 能力。&lt;/li>
-&lt;li>Debug 能力。目前对于真正工程中的 Debug 还是有一些困惑。&lt;/li>
-&lt;/ul>
-&lt;p>总结了一些东西，归根结底是感觉自己虽然写了一些小 project，但还是什么都不会，编程能力很差，不知道怎么办。但是好像学再多的知识还是有这种感觉。所以有想法可能得先做起来。该有的东西都学了，还没学的东西，只有需要用到的时候去学，才能记得深刻。&lt;/p>
-&lt;p>这也是为什么觉得 CS 课程里面的 lab 是最重要的东西，最让人印象深刻的东西。做 lab 之前我也什么都不会，但是没办法我需要在 Due 之前做出来，不然就拿不到分。于是我去搜索相关资料，我去想怎么做怎么写，我去真正地写了，我去找哪里写得有问题，最后我把正确的东西做出来，或者没有做出来 :( 但是不管怎么说，这就是一个学习的过程，提升编程能力，阅读代码能力的过程。&lt;/p>
-&lt;ul>
-&lt;li>从最基础的东西开始做，一点一点增加功能和深度。&lt;/li>
-&lt;li>做一个成品，一个有完整功能的成品。不能 work 的半成品没有意义&lt;/li>
-&lt;li>早点开始做，不要想太多。对于模拟器也是一样的，源码看的差不多就可以上手自己改了，不要等到把模拟器每个位置都看懂。&lt;/li>
-&lt;/ul></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
