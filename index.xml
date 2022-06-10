@@ -1,6 +1,180 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 09 May 2022 22:17:43 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 10 Jun 2022 15:27:08 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
 &lt;p>一个计算机体系结构方向的学生，喜欢体系结构，喜欢编程，喜欢篮球。目前的课题主要关注 GPU/GPGPU。&lt;/p>
-&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>（转载）MLSys 个方向综述</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E8%BD%AC%E8%BD%BDmlsys-%E4%B8%AA%E6%96%B9%E5%90%91%E7%BB%BC%E8%BF%B0/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E8%BD%AC%E8%BD%BDmlsys-%E4%B8%AA%E6%96%B9%E5%90%91%E7%BB%BC%E8%BF%B0/</guid><description>&lt;p>最近在试着寻找ML + sys可做的方向，发现涉及到的坑太多了，有点眼花缭乱的感觉&amp;hellip;&amp;hellip;不如写点东西总结一哈，帮自己理一下思路。&lt;/p>
+&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>VSCode, Chrome 常用快捷键</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</link><pubDate>Fri, 10 Jun 2022 15:27:08 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</guid><description>&lt;h1 id="1-vscode">1. VSCode&lt;/h1>
+&lt;p>&lt;strong>目前生疏但是需要常用的&lt;/strong> 2022-06-10 15:14:48&lt;/p>
+&lt;ul>
+&lt;li>⭐ 选择所有当前选中的字符（可以理解为全局版的 Ctrl + D）: Ctrl + Shift + L&lt;/li>
+&lt;li>在选中行末尾插入光标：Alt + Shift + i&lt;/li>
+&lt;li>在右侧打开 Markdown 预览：Ctrl + K, V&lt;/li>
+&lt;li>查看定义：Alt + F12；只是小窗查看，比较方便，注意跳转和查看的区别&lt;/li>
+&lt;li>重新打开最后关闭的标签页：Ctrl + Shift + T&lt;/li>
+&lt;li>向左切换标签：Ctrl + Tab / Ctrl + PgDn&lt;/li>
+&lt;li>向右切换标签：Ctrl + Shift + Tab / Ctrl + PgUp&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>快捷键的意义不在于记住每一个键位，而是你需要知道某个操作是可以通过快捷键达到的。当你需要多次重复这个操作时，可以去查找这个快捷键。&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="11-编辑">1.1 编辑&lt;/h2>
+&lt;ul>
+&lt;li>
+&lt;p>选中当前单词 Ctrl + D，多次按的话可以批量更改变量&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>⭐ 选择所有当前选中的字符（可以理解为全局版的 Ctrl + D）: Ctrl + Shift + L&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>选择所有出现的当前单词：Ctrl + F2；不用选中，光标放在单词上即可，相当于先 Ctrl + D 然后 Ctrl + Shift + L&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>控制台终端显示与隐藏&lt;/strong>：Ctrl + ~&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>选中代码 ：&lt;/strong> Shift + Home/End/方向键 （配置 Ctrl 使用效果更佳）&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>&lt;strong>全局替换：&lt;/strong> Ctrl + Shift + H&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>分屏 Ctrl + \&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>合并分屏 Ctrl + Alt + \&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>重新打开最后关闭的标签页：Ctrl + Shift + T&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在选中行末尾插入光标/也就是 1.3 中的多行编辑：Alt + Shift + i&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在右侧打开 Markdown 预览：Ctrl + K, V&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>向左切换标签：Ctrl + Tab / Ctrl + PgDn&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>向右切换标签：Ctrl + Shift + Tab / Ctrl + PgUp&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>按单词跳转 ⭐ Ctrl + 方向键&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>这个非常常用，可以快速地在单行的单词之前跳转光标&lt;/p>
+&lt;/blockquote>
+&lt;p>行操作&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>复制当前行&lt;/strong>：Shift + Alt + Up/Down / Ctrl + C&lt;/li>
+&lt;li>剪切当前行 Ctrl + X&lt;/li>
+&lt;li>&lt;strong>删除当前行&lt;/strong>：Shift + Ctrl + K&lt;/li>
+&lt;li>选择整行 Ctrl + L&lt;/li>
+&lt;li>移动选中的行：Alt + Up/Down&lt;/li>
+&lt;li>跳转到指定行 Ctrl + G&lt;/li>
+&lt;/ul>
+&lt;h2 id="12-编程">1.2 编程&lt;/h2>
+&lt;ul>
+&lt;li>Go to definition: Ctrl + 鼠标左键/F12&lt;/li>
+&lt;li>显示所有引用：Shift + F12&lt;/li>
+&lt;li>跳转到光标的上一个位置： Alt + 方向键←&lt;/li>
+&lt;li>参数提示：Ctrl + Shift + Space&lt;/li>
+&lt;li>查看定义：Alt + F12；只是小窗查看，比较方便，注意跳转和查看的区别&lt;/li>
+&lt;/ul>
+&lt;h2 id="13-多行编辑">1.3 多行编辑&lt;/h2>
+&lt;p>Step&lt;/p>
+&lt;ul>
+&lt;li>选中多行；可以用鼠标，也可以用 Ctrl + Shift + 方向键/Home/End&lt;/li>
+&lt;li>按下快捷键 Alt + Shift + i，进入多行编辑状态&lt;/li>
+&lt;/ul>
+&lt;h2 id="14-文件">1.4 文件&lt;/h2>
+&lt;p>打开新窗口：Ctrl + N
+打开文件：Ctrl + P
+选择文件：Ctrl + O
+最近打开的 workplace: Ctrl + R&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;h1 id="2-chrome">2. Chrome&lt;/h1>
+&lt;p>&lt;strong>最常用&lt;/strong>并且目前比较生疏 2022-06-10 14:45:52&lt;/p>
+&lt;ul>
+&lt;li>新建标签页：Ctrl + T&lt;/li>
+&lt;li>向左切换标签：Ctrl + Tab / Ctrl + PgDn&lt;/li>
+&lt;li>向右切换标签：Ctrl + Shift + Tab / Ctrl + PgUp&lt;/li>
+&lt;li>跳转到地址栏：Ctrl + l / Alt + D / F6&lt;/li>
+&lt;/ul>
+&lt;h2 id="21-标签和窗口">2.1 标签和窗口&lt;/h2>
+&lt;p>个人认为会比较常用的&lt;/p>
+&lt;ul>
+&lt;li>新建标签页：Ctrl + T&lt;/li>
+&lt;li>重新打开最后关闭的标签页：Ctrl + Shift + T&lt;/li>
+&lt;li>向左切换标签：Ctrl + Tab / Ctrl + PgDn&lt;/li>
+&lt;li>向右切换标签：Ctrl + Shift + Tab / Ctrl + PgUp&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>2022-06-10 14:24:50，向左右切换标签正是在寻找的功能，这个也可以用在 VSCode 窗口中使用。&lt;/p>
+&lt;/blockquote>
+&lt;ul>
+&lt;li>在新的后台标签页中打开链接：Ctrl + 单击 / 鼠标滚轮单机&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>可以代替 右键 -&amp;gt; 在新标签页中打开链接&lt;/p>
+&lt;/blockquote>
+&lt;p>其他&lt;/p>
+&lt;ul>
+&lt;li>新建窗口：Ctrl + N&lt;/li>
+&lt;li>新建无痕窗口：Ctrl + Shift + N&lt;/li>
+&lt;li>标签内打开 Home 页面：Alt + Home&lt;/li>
+&lt;li>最小化当前窗口：Alt + 空格键 + N&lt;/li>
+&lt;li>最大化当前窗口：Alt + 空格键 + X&lt;/li>
+&lt;li>在新窗口打开链接： Shift + 单击&lt;/li>
+&lt;/ul>
+&lt;h2 id="22-功能">2.2 功能&lt;/h2>
+&lt;p>个人认为常用，好像没有特别常用的。。&lt;/p>
+&lt;p>其他&lt;/p>
+&lt;ul>
+&lt;li>下载内容：Ctrl + J&lt;/li>
+&lt;li>历史记录：Ctrl + H&lt;/li>
+&lt;li>开发者工具：F12 / Ctrl + Shift + J / Ctrl + Shift + I&lt;/li>
+&lt;li>保存网页：Ctrl + S&lt;/li>
+&lt;li>添加书签：Ctrl + D&lt;/li>
+&lt;li>添加所有打开的网页添加书签：Ctrl + Shift + D&lt;/li>
+&lt;li>书签管理器：Ctrl + Shift + O&lt;/li>
+&lt;li>用浏览器打开文件：Ctrl + O&lt;/li>
+&lt;li>任务管理器：Shift + Esc&lt;/li>
+&lt;li>清除历史记录：Ctrl + Shift + Del&lt;/li>
+&lt;/ul>
+&lt;h2 id="23-地址栏">2.3 地址栏&lt;/h2>
+&lt;p>&lt;strong>个人认为常用&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>地址栏搜索：Ctrl + K / Ctrl + E&lt;/li>
+&lt;li>跳转到地址栏：Ctrl + l / Alt + D / F6&lt;/li>
+&lt;li>站内搜索：关键字 + site：网址&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>快速跳转到地址栏是需要掌握的
+站内搜索：关键字 + site：网址，这个如果使用 google 需要翻墙，并不是单纯地字符串匹配。&lt;/p>
+&lt;/blockquote>
+&lt;p>其他&lt;/p>
+&lt;ul>
+&lt;li>使用其他搜索引擎进行搜索：Tab&lt;/li>
+&lt;li>为网站名称添加 www. 和 .com：Ctrl + Enter&lt;/li>
+&lt;/ul>
+&lt;h2 id="24-页面">2.4 页面&lt;/h2>
+&lt;p>个人认为常用&lt;/p>
+&lt;ul>
+&lt;li>搜索：Ctrl + F&lt;/li>
+&lt;li>刷新：Ctrl + R / F5 / Ctrl + F5&lt;/li>
+&lt;li>调整页面字体大小：Ctrl + &amp;lsquo;&amp;rsquo;+&amp;rsquo;&amp;rsquo; / Ctrl + &amp;lsquo;&amp;rsquo;-&amp;rsquo;&amp;rsquo; 或者 Ctrl + 鼠标滚轮上/下&lt;/li>
+&lt;/ul>
+&lt;p>其他&lt;/p>
+&lt;ul>
+&lt;li>先下翻页：PgUp&lt;/li>
+&lt;li>向上翻页：PgDn&lt;/li>
+&lt;li>滑动到最顶部：Home&lt;/li>
+&lt;li>滑动到最底部：End&lt;/li>
+&lt;li>打印：Ctrl + P&lt;/li>
+&lt;li>页面字体恢复默认：Ctrl + 0&lt;/li>
+&lt;li>全屏切换：F11&lt;/li>
+&lt;/ul>
+&lt;h1 id="reference">Reference&lt;/h1>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/43730820#:~:text=Chrome%20%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%A4%A7%E5%85%A8%201%20%E5%90%8C%E4%B8%AA%E7%AA%97%E5%8F%A3%E6%96%B0%E5%BB%BA%E6%A0%87%E7%AD%BE%EF%BC%9ACtrl%20%2B%20T%202%20%E9%87%8D%E6%96%B0%E6%89%93%E5%BC%80%E6%9C%80%E5%90%8E%E5%85%B3%E9%97%AD%E7%9A%84%E6%A0%87%E7%AD%BE%E9%A1%B5%EF%BC%9ACtrl,%2F%20Ctrl%20%2B%20Shift%20%2B%20...%20%E6%9B%B4%E5%A4%9A%E7%BB%93%E6%9E%9C...%20">https://zhuanlan.zhihu.com/p/43730820#:~:text=Chrome%20%E5%BF%AB%E6%8D%B7%E9%94%AE%E5%A4%A7%E5%85%A8%201%20%E5%90%8C%E4%B8%AA%E7%AA%97%E5%8F%A3%E6%96%B0%E5%BB%BA%E6%A0%87%E7%AD%BE%EF%BC%9ACtrl%20%2B%20T%202%20%E9%87%8D%E6%96%B0%E6%89%93%E5%BC%80%E6%9C%80%E5%90%8E%E5%85%B3%E9%97%AD%E7%9A%84%E6%A0%87%E7%AD%BE%E9%A1%B5%EF%BC%9ACtrl,%2F%20Ctrl%20%2B%20Shift%20%2B%20...%20%E6%9B%B4%E5%A4%9A%E7%BB%93%E6%9E%9C...%20&lt;/a>&lt;/p></description></item><item><title>（转载）MLSys 个方向综述</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E8%BD%AC%E8%BD%BDmlsys-%E4%B8%AA%E6%96%B9%E5%90%91%E7%BB%BC%E8%BF%B0/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E8%BD%AC%E8%BD%BDmlsys-%E4%B8%AA%E6%96%B9%E5%90%91%E7%BB%BC%E8%BF%B0/</guid><description>&lt;p>最近在试着寻找ML + sys可做的方向，发现涉及到的坑太多了，有点眼花缭乱的感觉&amp;hellip;&amp;hellip;不如写点东西总结一哈，帮自己理一下思路。&lt;/p>
 &lt;p>个人感觉MLsys不能算是一种方向，而是一种思路&amp;hellip;&amp;hellip;比如对于system研究者来说，可以把ML作为我们开发的系统要适配的一种benchmark，就像transaction对于数据库、某种文件场景对于File System的意义一样。这样一想可做的空间就宽广多了。就算ML哪天又进入寒冬，之前所学的技术也仍然是可持续的。传统的system研究者也应该适应这个潮流，不能简单的把MLsys一律归为大水漫灌..&lt;/p>
 &lt;p>有很多topic我也是初次接触，还不是很熟悉。如有错误还请批评指点~&lt;/p>
 &lt;h1 id="1-分布式机器学习distributed-dnn-training">1. 分布式机器学习（Distributed DNN Training）&lt;/h1>
@@ -2312,73 +2486,4 @@ title: &amp;#34;Blog&amp;#34;
 &lt;p>&amp;amp;和nohup没有半毛钱的关系， 要让进程真正不受shell中Ctrl C和shell关闭的影响， 那该怎么办呢？ 那就用nohup ./start.sh &amp;amp;吧， 两全其美。&lt;/p>
 &lt;h1 id="reference">Reference&lt;/h1>
 &lt;p>&lt;a href="https://ehlxr.me/2017/01/18/Linux-%E4%B8%AD-fg%E3%80%81bg%E3%80%81jobs%E3%80%81-%E6%8C%87%E4%BB%A4/">https://ehlxr.me/2017/01/18/Linux-%E4%B8%AD-fg%E3%80%81bg%E3%80%81jobs%E3%80%81-%E6%8C%87%E4%BB%A4/&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.cnblogs.com/machangwei-8/p/10391440.html">https://www.cnblogs.com/machangwei-8/p/10391440.html&lt;/a>&lt;/p></description></item><item><title>Ubuntu多版本CUDA,GCC切换</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcudagcc%E5%88%87%E6%8D%A2/</link><pubDate>Sun, 14 Nov 2021 22:07:35 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcudagcc%E5%88%87%E6%8D%A2/</guid><description>&lt;h1 id="ubuntu多版本cudagcc切换">Ubuntu多版本CUDA,GCC切换&lt;/h1>
-&lt;h1 id="切换cuda90和cuda100">切换CUDA9.0和CUDA10.0&lt;/h1>
-&lt;p>保证多个CUDA版本共存的前提是NVIDIA的驱动都能够支持你所安装的CUDA版本，所以驱动的版本尽可能高，越新的驱动支持的CUDA版本越多，博主的430能够支持9.0和10.0。&lt;/p>
-&lt;p>在先前安装的CUDA的过程中，大家一般都会选择生成cuda-x.0文件夹的软链接/usr/local/cuda，这个文件夹是实际安装的cuda-x.0文件夹的链接，不包含实际文件，是方便系统设置环境变量直接调用cuda的，安装多个版本的CUDA，然后利用软链接就可以实现版本切换。&lt;/p>
-&lt;ul>
-&lt;li>理解这个软链接，用到了很多次&lt;/li>
-&lt;/ul>
-&lt;h2 id="step">Step&lt;/h2>
-&lt;h3 id="1-更换软链接">1 更换软链接&lt;/h3>
-&lt;p>不过之前环境变量用的 cuda11.1 的地址而非软链接，现在替换成软链接&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo rm -rf /usr/local/cuda &lt;span style="color:#75715e">#删除之前生成的软链接&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ln -s /home/huweim/cuda/toolkit/4.2/cuda /usr/local/cuda &lt;span style="color:#75715e">#生成新的软链接&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ln -s /usr/local/cuda-11.1 /usr/local/cuda &lt;span style="color:#75715e">#使用11.1版本&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="2-check-环境变量的地址">2 Check 环境变量的地址&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>export CUDA_INSTALL_PATH&lt;span style="color:#f92672">=&lt;/span>/usr/local/cuda/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH&lt;span style="color:#f92672">=&lt;/span>$PATH:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:$CUDA_INSTALL_PATH/bin:$MPI_ROOT/bin
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export LD_LIBRARY_PATH&lt;span style="color:#f92672">=&lt;/span>$LD_LIBRARY_PATH:$CUDA_INSTALL_PATH/lib64 &lt;span style="color:#75715e">#这个不用改&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export NVIDIA_COMPUTE_SDK_LOCATION&lt;span style="color:#f92672">=&lt;/span>~/cuda/sdk/4.2
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="3-查看版本信息">3 查看版本信息&lt;/h3>
-&lt;p>上述步骤全部没问题就可以弹出版本信息了，&lt;code>source ~/.bashrc&lt;/code> 或者重启终端&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>nvcc: NVIDIA &lt;span style="color:#f92672">(&lt;/span>R&lt;span style="color:#f92672">)&lt;/span> Cuda compiler driver
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copyright &lt;span style="color:#f92672">(&lt;/span>c&lt;span style="color:#f92672">)&lt;/span> 2005-2012 NVIDIA Corporation
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Built on Thu_Apr__5_00:24:31_PDT_2012
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Cuda compilation tools, release 4.2, V0.2.1221
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="4-bug">4. Bug&lt;/h3>
-&lt;h4 id="41-sh-1-nvopencc-permission-denied">4.1 sh: 1: nvopencc: Permission denied&lt;/h4>
-&lt;p>解决方法&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>sudo chmod -R &lt;span style="color:#ae81ff">777&lt;/span> /usr/local/cuda
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="切换gcc-g-9---5">切换gcc, g++ 9 -&amp;gt; 5&lt;/h1>
-&lt;p>Reference&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="https://blog.csdn.net/EternallyAccompany/article/details/108865331">https://blog.csdn.net/EternallyAccompany/article/details/108865331&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;p>linux上可以gcc多版本共存，可以通过&lt;strong>修改软链接&lt;/strong>的方式选择自己要用的gcc版本，该方法简单方便，可以随时依据自己的需求将gcc降级或升级，解决不同的软件要求不同的环境的问题。&lt;/p>
-&lt;p>apt-get安装gcc、g++，默认下载最新版本的，此时ubuntu里的gcc和g++版本均为9。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>1. sudo apt-get install gcc
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>2. sudo apt-get install g++
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>3. gcc -v //查看的版本为9.0.0
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>4. g++ -v //查看的版本为9.0.0
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="1-软件源">1. 软件源&lt;/h2>
-&lt;p>打开sources.list&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo gedit /etc/apt/sources.list
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Add&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>deb http://dk.archive.ubuntu.com/ubuntu/ xenial main
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>deb http://dk.archive.ubuntu.com/ubuntu/ xenial universe
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Update&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt-get update
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="2-安装gcc5-g5">2. 安装gcc5, g++5&lt;/h2>
-&lt;p>apt-get 安装gcc、g++ 5版本。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt-get install g++-5 gcc-5sudo apt-get -f install &lt;span style="color:#75715e">#if need &lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>2021-07-09 10:40:42 gcc5版本又出现了一些问题，找&lt;a href="https://blog.csdn.net/qq_42566274/article/details/106399531">教程&lt;/a>安装了 gcc4.8 版本，这个文章里面说最低 4.7 版本，那就先用 4.8 版本试试 gpgpu-sim 能不能 work&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo apt-get install gcc-4.8sudo apt-get install g++-4.8
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="3-查看">3. 查看&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>ls /usr/bin/gcc*ls /usr/bin/g++*
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="4-设置优先级">4. 设置优先级&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 90sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 80sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 &lt;span style="color:#ae81ff">80&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>增加&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 95sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 &lt;span style="color:#ae81ff">95&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>成功配置上了 gcc 4.8&lt;/p>
-&lt;blockquote>
-&lt;p>由于gpgpusim必须使用gcc4.7及以前的版本，而修改自己的电脑系统可能带来不方便，因此使用docker来运行程序，docker在运行程序时，性能损失大概在10%以内，但也比vbox快多了。&lt;/p>
-&lt;/blockquote>
-&lt;p>好吧，必须使用 gcc4.7 以前的版本&lt;/p>
-&lt;h2 id="5-选择gccg版本">5. 选择gcc/g++版本&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo update-alternatives --config gccsudo update-alternatives --config g++
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>输入编号选择gcc/g++版本&lt;/p>
-&lt;p>⚠️ &lt;em>gcc/g++版本须保持一致&lt;/em>&lt;/p>
-&lt;h2 id="6-check-版本">6. Check 版本&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>gcc -vg++ -v
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
+&lt;p>&lt;a href="https://www.cnblogs.com/machangwei-8/p/10391440.html">https://www.cnblogs.com/machangwei-8/p/10391440.html&lt;/a>&lt;/p></description></item></channel></rss>
