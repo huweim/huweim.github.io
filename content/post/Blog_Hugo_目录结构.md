@@ -1,7 +1,7 @@
 ---
-title: "Hugo 文件结构"
+title: "Hugo 目录结构"
 date: 2022-04-19T18:10:17+08:00
-lastmod: 2022-04-19T18:10:17+08:00
+lastmod: 2022-06-11 11:12:52
 draft: false
 author: "Cory"
 tags: ["Hugo"]

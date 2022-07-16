@@ -9,6 +9,17 @@ categories: ["工具"]
 
 # Git中常用的操作
 
+### 0. 设置账户和 ssh
+
+#### 0.1 Set who you are
+```shell
+$ git config --global user.email "506834968@qq.com"
+$ git config --global user.name "huweim"
+```
+#### 0.2 ssh
+
+
+
 ### 1. Remote Repo
 
 #### 1.1 Add Remote Repo

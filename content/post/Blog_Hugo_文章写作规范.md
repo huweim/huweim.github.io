@@ -1,7 +1,7 @@
 ---
 title: "Hugo 文章写作格式"
 date: 2021-10-08T12:13:07+08:00
-lastmod: 
+lastmod: 2022-06-11 11:13:15
 draft: false
 author: "Cory"
 keywords: ["文章写作规范"]
