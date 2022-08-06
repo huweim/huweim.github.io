@@ -224,7 +224,7 @@ push -u origin master -f
 > - **`-f`** 覆盖当前主分支 如果您的仓库只有自己在玩,这个命令可以随意使用
 > - 如果你是协同开发共用仓库,请务必不要带 **`-f`** 参数提交代码,后果不亚于 **删库跑路**
 
-### 5. Reference
+# Reference
 
 <https://www.jianshu.com/p/bc067471781f>
 
