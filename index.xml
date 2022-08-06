@@ -1,6 +1,58 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 10 Jun 2022 15:27:08 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 16 Jul 2022 16:39:35 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
 &lt;p>一个计算机体系结构方向的学生，喜欢体系结构，喜欢编程，喜欢篮球。目前的课题主要关注 GPU/GPGPU。&lt;/p>
-&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>VSCode, Chrome 常用快捷键</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</link><pubDate>Fri, 10 Jun 2022 15:27:08 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</guid><description>&lt;h1 id="1-vscode">1. VSCode&lt;/h1>
+&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>国内硕博如何提升自己的英语</title><link>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</link><pubDate>Sat, 16 Jul 2022 16:39:35 +0800</pubDate><guid>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</guid><description>&lt;p>这个是最近（2022-07-16 16:09:15）我一直在思考的问题。因为之后可能会选择在国内度过自己的博士生涯。目前的英语水平可以说是完全不够的。并不是说 paper 看多了，英语水平就上去了。听说读写是耦合在一起的，没有国外的英文环境，就需要有意识地去提升自己的英语水平。&lt;/p>
+&lt;h5 id="一些建议">一些建议&lt;/h5>
+&lt;p>即使到了国外，可能也很难通过和外国人交朋友来提升自己的英文水平，英语提升还是需要刻意去练习的。&lt;/p>
+&lt;ul>
+&lt;li>可以根据自己的喜好，坚持地去阅读或者听一些东西，比如电视新闻评论，转播的篮球比赛，电视剧，TED 演讲等等。一个是选择自己喜欢的东西，做起来没有额外的开销，另一个是要 &lt;strong>坚持&lt;/strong>，自己的学习就非常零散。&lt;/li>
+&lt;li>读自己写的东西，也就是读出声音。&lt;/li>
+&lt;/ul>
+&lt;h5 id="施一公如何提高科研写作能力">施一公：如何提高科研写作能力&lt;/h5>
+&lt;p>&lt;strong>他是怎么做的&lt;/strong>？&lt;/p>
+&lt;ul>
+&lt;li>每天花 45 分钟读《华盛顿邮报》。他每天早上安排完第一批实验后，会在十点左右花一个小时阅读《华盛顿邮报》，主要看新闻版
+&lt;ul>
+&lt;li>这里的重点其实不是读什么，而是每天都坚持&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>阅读变多了，他常常会有自己动笔去写的冲动。《巴尔的摩太阳报》也刊登了他的信刊。&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>一些经历&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>他在 1994 年写完论文之后感觉很差，自己都不愿意再读第二遍，就交给了老板。（我自己也感觉自己写的是一坨屎，不想再看）&lt;/li>
+&lt;li>他的老板花了 4 个小时把文章的整体写完了，只缺少 method 和 reference，并且根本没用施一公的初稿
+&lt;ul>
+&lt;li>&lt;strong>写文章贵在一气呵成&lt;/strong>，之后他也沿袭这个风格，两次一晚上通宵赶一篇文章。不过前提是对研究领域非常熟悉，对文章整体的大概思路已经深思熟虑，所有的 figures 已经做好了。&lt;/li>
+&lt;li>这些前期工作，全身心投入也得花费 3-4 天。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>总结&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>保持阅读英文文章的习惯，每天 30-60 分钟。从英文报纸，英文新闻开始，逐渐转为专业的杂志&lt;/li>
+&lt;li>写科研论文，最重要的是逻辑。必须先讨论出一套清晰的思路，根据思路作图（也就是逻辑 flow，或者结构），然后再动笔开始写&lt;/li>
+&lt;li>写作时，根据思路写一个 subheading 框架，也就是设计好每个部分的小标题。第一稿切忌每句话都追求完美（这个深有体会，自己第一次写作时知道这一点，但是又忍不住反复琢磨一个词一句话，因为词汇量匮乏，这个要通过反复练习来避免）
+&lt;ul>
+&lt;li>第一稿追求的重点是逻辑（logic flow），要注意前后句的逻辑关系，相邻两段的逻辑关系&lt;/li>
+&lt;li>写作时，全力以赴，不受任何事情干扰（关闭手机，座机，微信等），争取在最短时间内拿出第一稿&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;strong>照葫芦画瓢&lt;/strong>。学习自己领域内文章的一些固定表达，整理一些局势，但切忌抄袭。在美国的一些机构，连续 7 个英文单词和别人完全一样，原则上就被认为是抄袭（plagiarism）&lt;/li>
+&lt;li>第一稿写完后，给自己不超过一天的休息时间，开始改第二稿。修改时还是逻辑为主，每句话都要推敲，要学会同义替换（thesaurus），避免过多重复。第二稿非常关键，往后可能不会大改了。&lt;/li>
+&lt;li>第二稿以后的修改，关注具体的字句，逻辑基本定型。投稿前，整体读一遍。一篇文章不会因为个别语法错误被拒，但一定会因为逻辑混乱被拒。&lt;/li>
+&lt;/ul>
+&lt;h5 id="可行的方案">可行的方案&lt;/h5>
+&lt;p>实际上，最难的部分还是每天坚持，下面列一些可行的方案。阅读 paper 自然不用说，这个是自然的。但是除了阅读 paper 以外，也应该坚持阅读一些新闻杂志。&lt;/p>
+&lt;ul>
+&lt;li>观看 &lt;strong>LinusTechTips&lt;/strong> 频道的视频。这是一个科技频道，每个视频 10 分钟左右，也是自己感兴趣的方向。（听，读）&lt;/li>
+&lt;li>每天早上阅读一篇英文新闻。（读）&lt;/li>
+&lt;li>每周，根据一周阅读的 paper，写一篇英文 reivew。一般 paper reading 都会记下笔记，前期可以把模板固定好。有了笔记的总结和格式模板，熟练之后的开销就只有写作了。（写）&lt;/li>
+&lt;li>（option），italk，定期和别人对话，练习口语。（听，说）&lt;/li>
+&lt;li>（option），B 站关注听说方面的 up，每天边听边跟读。（听，说）&lt;/li>
+&lt;li>坚持&lt;/li>
+&lt;li>坚持&lt;/li>
+&lt;li>坚持，这个是最难的&lt;/li>
+&lt;/ul></description></item><item><title>VSCode, Chrome 常用快捷键</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</link><pubDate>Fri, 10 Jun 2022 15:27:08 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</guid><description>&lt;h1 id="1-vscode">1. VSCode&lt;/h1>
 &lt;p>&lt;strong>目前生疏但是需要常用的&lt;/strong> 2022-06-10 15:14:48&lt;/p>
 &lt;ul>
 &lt;li>⭐ 选择所有当前选中的字符（可以理解为全局版的 Ctrl + D）: Ctrl + Shift + L&lt;/li>
@@ -2332,158 +2384,4 @@ title: &amp;#34;Blog&amp;#34;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> y_lrr&lt;span style="color:#f92672">=&lt;/span>list(y_lrr_dict)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> y_gto&lt;span style="color:#f92672">=&lt;/span>list(y_gto_dict)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> y_cory&lt;span style="color:#f92672">=&lt;/span>list(y_cory_dict)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Linux任务调度</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</link><pubDate>Mon, 29 Nov 2021 23:00:09 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
-&lt;p>记录一下 &lt;code>Linux&lt;/code> 中 &lt;code>fg&lt;/code>、&lt;code>bg&lt;/code>、&lt;code>jobs&lt;/code>、&lt;code>&amp;amp;&lt;/code>、&lt;code>ctrl + z&lt;/code> 等相关指令对任务进程的操作。&lt;/p>
-&lt;p>也正好借此机会学习一下进程（process）的概念&lt;/p>
-&lt;h1 id="1-process">1. Process&lt;/h1>
-&lt;h2 id="10-进程类型">1.0 进程类型&lt;/h2>
-&lt;ul>
-&lt;li>前台进程（交互式进程）
-&lt;ul>
-&lt;li>这些进程由终端会话初始化和控制。换句话说，需要有一个连接到系统中的用户来启动这样的进程；它们不是作为系统功能/服务的一部分自动启动。&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>后台进程&lt;/li>
-&lt;/ul>
-&lt;h2 id="11-并发执行">1.1 并发执行&lt;/h2>
-&lt;p>To run commands concurrently you can use the &lt;code>&amp;amp;&lt;/code> command separator&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>~$ command1 &amp;amp; command2 &amp;amp; command3
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>This will start &lt;code>command1&lt;/code>, then runs it in the background. The same with &lt;code>command2&lt;/code>. Then it starts &lt;code>command3&lt;/code> normally.&lt;/p>
-&lt;blockquote>
-&lt;p>这样的话 command3 是在前台运行&lt;/p>
-&lt;/blockquote>
-&lt;p>The output of all commands will be garbled together, but if that is not a problem for you, that would be the solution.&lt;/p>
-&lt;p>If you want to have a separate look at the output later, you can pipe the output of each command into &lt;code>tee&lt;/code>, which lets you specify a file to mirror the output to.&lt;/p>
-&lt;pre tabindex="0">&lt;code class="language-bsh" data-lang="bsh">~$ command1 | tee 1.log &amp;amp; command2 | tee 2.log &amp;amp; command3 | tee 3.log
-&lt;/code>&lt;/pre>&lt;blockquote>
-&lt;p>这样可以分别在对应的 log 中查看不同 command output，我也是这么做的&lt;/p>
-&lt;p>加&amp;amp;的作用其实就是将命令放到后台执行&lt;/p>
-&lt;/blockquote>
-&lt;h3 id="111-终止并发执行的后台进程">1.1.1 终止并发执行的后台进程&lt;/h3>
-&lt;ul>
-&lt;li>方法一： 通过 &lt;code>jobs&lt;/code> 命令查看任务号（假设为 &lt;code>num&lt;/code>），然后执行：&lt;code>kill %num&lt;/code>&lt;/li>
-&lt;li>方法二： 通过 &lt;code>ps&lt;/code> 命令查看任务的进程号（&lt;code>PID&lt;/code>，假设为 &lt;code>pid&lt;/code>），然后执行：&lt;code>kill pid&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;h2 id="12-进程及性能分析">1.2 进程及性能分析&lt;/h2>
-&lt;h3 id="121-进程状态">1.2.1 进程状态&lt;/h3>
-&lt;ul>
-&lt;li>R： &lt;strong>RUNNING &amp;amp; RUNNABLE&lt;/strong>，正在运行或在运行队列中等待&lt;/li>
-&lt;li>S：&lt;strong>INTERRRUPTABLE_SLEEP&lt;/strong>，休眠中, 受阻, 在等待某个条件的形成或接受到 signal&lt;/li>
-&lt;li>D：&lt;strong>UNINTERRUPTABLE_SLEEP&lt;/strong>，不可中断（usually IO）&lt;/li>
-&lt;li>T：&lt;strong>STOPPED&lt;/strong>，ctrl + z 进入这个状态&lt;/li>
-&lt;li>Z：&lt;strong>ZOMBIE&lt;/strong>，进程已终止, 但进程描述符存在, 直到父进程调用wait4()系统调用后释放&lt;/li>
-&lt;/ul>
-&lt;h3 id="122-查看进程状态-ps">1.2.2 查看进程状态 ps&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ps -aux &lt;span style="color:#75715e">#显示所有包含其他使用者的行程 &lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>%CPU&lt;/strong>：该 process 使用掉的 CPU 资源百分比&lt;/p>
-&lt;p>&lt;strong>%MEM&lt;/strong>：该 process 所占用的物理内存百分比&lt;/p>
-&lt;p>&lt;strong>TTY&lt;/strong> ：该 process 是在那个终端机上面运作，若与终端机无关，则显示 ?，另外， tty1-tty6 是本机上面的登入者程序，若为 pts/0 等等的，则表示为由网络连接进主机的程序。&lt;/p>
-&lt;p>&lt;strong>STAT&lt;/strong>：该程序目前的状态，主要的状态参考 &lt;strong>1.2进程状态&lt;/strong>&lt;/p>
-&lt;p>&lt;strong>START&lt;/strong>：该 process 被触发启动的时间&lt;/p>
-&lt;p>&lt;strong>TIME&lt;/strong> ：该 process 实际使用 CPU 运作的时间&lt;/p>
-&lt;h3 id="123-性能分析-top">1.2.3 性能分析 top&lt;/h3>
-&lt;h5 id="信息查看实例">信息查看实例&lt;/h5>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>top - 19:39:49 up &lt;span style="color:#ae81ff">77&lt;/span> days, 8:54, &lt;span style="color:#ae81ff">0&lt;/span> users, load average: 5.00, 5.00, 5.00
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 系统当前时间；开机到现在77days 8h 54 mins；0 users 在线；系统1分钟、5分钟、15分钟的CPU负载信息&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Tasks: &lt;span style="color:#ae81ff">13&lt;/span> total, &lt;span style="color:#ae81ff">1&lt;/span> running, &lt;span style="color:#ae81ff">12&lt;/span> sleeping, &lt;span style="color:#ae81ff">0&lt;/span> stopped, &lt;span style="color:#ae81ff">0&lt;/span> zombie
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>%Cpu&lt;span style="color:#f92672">(&lt;/span>s&lt;span style="color:#f92672">)&lt;/span>: 20.9 us, 0.0 sy, 0.0 ni, 79.1 id, 0.0 wa, 0.0 hi, 0.0 si, 0.0 st
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># %us：用户态进程占用CPU时间百分比，不包含renice值为负的任务占用的CPU的时间。&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># %sy：内核占用CPU时间百分比&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># %ni：改变过优先级的进程占用CPU的百分比&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># %id：空闲CPU时间百分比&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># %wa：等待I/O的CPU时间百分比&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># %hi：CPU硬中断时间百分比&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># %si：CPU软中断时间百分比&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 这里显示数据是所有cpu的平均值，如果想看每一个cpu的处理情况，按1即可；折叠，再次按1&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>MiB Mem : 48192.1 total, 25777.1 free, 2605.3 used, 19809.7 buff/cache
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>MiB Swap: 19530.0 total, 19491.7 free, 38.2 used. 45002.0 avail Mem
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="查看单个进程使用cpu情况">查看单个进程使用CPU情况&lt;/h5>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ top -p pid
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ ps -aux &lt;span style="color:#75715e">#这个好像更加方便一点&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="13-为什么top查看只有1-running其他sleeping">1.3 为什么top查看只有1 running，其他sleeping?&lt;/h2>
-&lt;h5 id="stackoverflow回答">Stackoverflow回答&lt;/h5>
-&lt;p>There is no correlation between CPU usage as reported by &lt;code>top&lt;/code> and process state. The &lt;a href="http://linux.die.net/man/1/top">man page&lt;/a> says (&lt;em>emphasis&lt;/em> mine):&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;strong>%CPU&lt;/strong> &amp;ndash; CPU usage&lt;/p>
-&lt;p>The task&amp;rsquo;s share of the elapsed CPU time &lt;em>since the last screen update&lt;/em>, expressed as a percentage of total CPU time.&lt;/p>
-&lt;/blockquote>
-&lt;p>So, your process indeed used a huge amount of processor time since the last screen update. It is sleeping, yes, but that&amp;rsquo;s because the currently running process is &lt;code>top&lt;/code> itself (which makes sense, since it&amp;rsquo;s currently updating the screen).&lt;/p>
-&lt;h5 id="理解">理解&lt;/h5>
-&lt;p>这个1 running 就是 top process 本身，其他的 process 其实也是在运行的。每次 top 面板更新时活跃 process 正好是 top，所以 only 1 running。但是查看详细信息可以看到其实是在运行的。&lt;/p>
-&lt;h1 id="2-进程调度">2. 进程调度&lt;/h1>
-&lt;h2 id="21-基本用法">2.1. 基本用法&lt;/h2>
-&lt;h3 id="211--和-jobs-指令">2.1.1 &lt;code>&amp;amp;&lt;/code> 和 &lt;code>jobs&lt;/code> 指令&lt;/h3>
-&lt;p>&lt;code>&amp;amp;&lt;/code> 用在一个命令的最后，可以把这个命令转换为&lt;strong>后台运行&lt;/strong>的任务进程。&lt;/p>
-&lt;p>&lt;code>jobs&lt;/code> 查看当前终端有多少在后台运行的进程。&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>jobs&lt;/code> 命令执行的结果，&lt;code>＋&lt;/code> 表示是一个当前的作业，&lt;code>-&lt;/code> 减号表示是一个当前作业之后的一个作业。&lt;/li>
-&lt;li>&lt;code>jobs -l&lt;/code> 选项可显示所有任务的进程号 &lt;code>pid&lt;/code>&lt;/li>
-&lt;li>&lt;code>jobs&lt;/code> 的状态可以是 &lt;code>running&lt;/code>，&lt;code>stopped&lt;/code>，&lt;code>terminated&lt;/code>。但是如果任务进程被终止了（&lt;code>kill&lt;/code>），当前的终端环境中也就删除了任务的进程标识；也就是说 &lt;strong>jobs 命令显示的是当前 shell 环境中后台正在运行或者被挂起的任务进程信息&lt;/strong>&lt;/li>
-&lt;/ul>
-&lt;h3 id="213-fg-和-bg-指令">2.1.3 &lt;code>fg&lt;/code> 和 &lt;code>bg&lt;/code> 指令&lt;/h3>
-&lt;p>&lt;code>fg&lt;/code> 将后台任务进程调至&lt;strong>前台&lt;/strong>继续运行，如果后台中有多个任务进程，可以用 &lt;code>fg %num&lt;/code> 将选中的任务进程调至前台。&lt;/p>
-&lt;p>&lt;code>bg&lt;/code> 将挂起的任务进程重新启动运行，如果有多个暂停的任务进程，可以用 &lt;code>bg %num&lt;/code> 将选中的任务进程启动运行。&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;code>%num&lt;/code> 是通过 &lt;code>jobs&lt;/code> 命令查到的后台正在执行的任务的序号（不是 &lt;code>pid&lt;/code>）&lt;/p>
-&lt;/blockquote>
-&lt;p>❗ 使用 ispass_run.sh 的时候最好使用 &lt;code>fg&lt;/code>，如果使用 &lt;code>bg&lt;/code> 则无法再次挂起，&lt;del>猜测是因为&lt;/del>，原因是 &lt;code>ctrl + z&lt;/code> 是用于挂起前台进程，使用 &lt;code>stop&lt;/code> 将其挂起即可&lt;/p>
-&lt;blockquote>
-&lt;p>使用 stop 2，好像也无法将其挂起？&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="22-进程的挂起">2.2. 进程的挂起&lt;/h2>
-&lt;h3 id="221-后台进程的挂起">2.2.1 后台进程的挂起&lt;/h3>
-&lt;ul>
-&lt;li>在 &lt;code>solaris&lt;/code> 中通过 &lt;code>stop&lt;/code> 命令执行，通过 &lt;code>jobs&lt;/code> 命令查看任务号（假设为 &lt;code>num&lt;/code>），然后执行：&lt;code>stop %num&lt;/code>&lt;/li>
-&lt;li>在 &lt;code>redhat&lt;/code> 中，不存在 &lt;code>stop&lt;/code> 命令，可通过执行命令 &lt;code>kill -stop PID&lt;/code>，将进程挂起&lt;/li>
-&lt;/ul>
-&lt;h3 id="222-前台进程的挂起-ctrlz">2.2.2 前台进程的挂起 ctrl+z&lt;/h3>
-&lt;p>&lt;code>ctrl + z&lt;/code>：可以将一个正在s前台执行的任务放到后台运行，并且挂起&lt;/p>
-&lt;h2 id="23-挂起进程重新运行-bg-fg">2.3. 挂起进程重新运行 bg, fg&lt;/h2>
-&lt;ul>
-&lt;li>通过 &lt;code>bg %num&lt;/code> 即可将挂起的任务进程的状态由 &lt;code>stopped&lt;/code> 改为 &lt;code>running&lt;/code>，仍在后台运行&lt;/li>
-&lt;li>通过 &lt;code>fg %num&lt;/code> 即可将挂起的任务进程转为前台执行&lt;/li>
-&lt;/ul>
-&lt;h2 id="24-进程的终止">2.4. 进程的终止&lt;/h2>
-&lt;h3 id="241-后台进程的终止-kill-killall">2.4.1 后台进程的终止 kill, killall&lt;/h3>
-&lt;ul>
-&lt;li>方法一： 通过 &lt;code>jobs&lt;/code> 命令查看任务号（假设为 &lt;code>num&lt;/code>），然后执行：&lt;code>kill %num&lt;/code>&lt;/li>
-&lt;li>方法二： 通过 &lt;code>ps&lt;/code> 命令查看任务的进程号（&lt;code>PID&lt;/code>，假设为 &lt;code>pid&lt;/code>），然后执行：&lt;code>kill pid&lt;/code>&lt;/li>
-&lt;li>&lt;code>killall CMD&lt;/code>：通过进程名 kill 感觉比根据 pid 方便很多&lt;/li>
-&lt;/ul>
-&lt;h3 id="242-前台进程的终止-ctrlc">2.4.2 前台进程的终止 ctrl+c&lt;/h3>
-&lt;p>执行 &lt;code>ctrl+c&lt;/code> 即可终止前台执行任务进程&lt;/p>
-&lt;blockquote>
-&lt;p>假设要后台运行 &lt;code>xmms&lt;/code>，可通过命令：&lt;code>xmms &amp;amp;&lt;/code>。但万一你运行程序时忘记使用 &lt;code>&amp;amp;&lt;/code> 了，又不想重新执行，你可以先使用 &lt;code>ctrl+z&lt;/code> 挂起任务进程，然后敲入&lt;code>bg&lt;/code> 命令，这样任务进程就在后台继续运行了。&lt;/p>
-&lt;/blockquote>
-&lt;h1 id="3-查看cpu信息">3. 查看CPU信息&lt;/h1>
-&lt;ul>
-&lt;li>查看物理CPU个数&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>cat /proc/cpuinfo| grep &lt;span style="color:#e6db74">&amp;#34;physical id&amp;#34;&lt;/span>| sort| uniq| wc -l
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>查看每个物理CPU中core的个数(即核数)&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>cat /proc/cpuinfo| grep &lt;span style="color:#e6db74">&amp;#34;cpu cores&amp;#34;&lt;/span>| uniq
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>查看逻辑CPU的个数&lt;/li>
-&lt;/ul>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>cat /proc/cpuinfo| grep &lt;span style="color:#e6db74">&amp;#34;processor&amp;#34;&lt;/span>| wc -l
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="4-why-jobs-看不到后台-process">4. Why &lt;code>jobs&lt;/code> 看不到后台 process&lt;/h1>
-&lt;h2 id="41-关闭终端造成孤儿进程">4.1 关闭终端造成孤儿进程&lt;/h2>
-&lt;blockquote>
-&lt;p>jobs是查看当前后台作业（进程），是获取本次bash下的后台作业。
-当本次终端退出后，后台作业变成&lt;strong>孤儿进程&lt;/strong>，孤儿进程有系统父进程接管。
-当再次连接终端时，&lt;strong>原作业&lt;/strong>与&lt;strong>当前终端&lt;/strong>，不存在关系父子关系，故看不到进程。
-但是原作业，会在系统中一致运行，直到完成或被停止。
-这就是为什么终端退出后，jobs看不到的原因了&lt;/p>
-&lt;/blockquote>
-&lt;h2 id="42-nohup">4.2 nohup&lt;/h2>
-&lt;h3 id="421-">4.2.1 &amp;amp;&lt;/h3>
-&lt;p>守护进程貌似跟nohup + &amp;amp;方式启动的进程差不多。都可以实现与终端的无关联。&lt;/p>
-&lt;p>&amp;amp; 可以让进程在后台运行，ctrl + C 无法终端，对 SIGINT 信号免疫，但是直接关闭 shell 后进程会消失。&amp;amp; 后台没有那么硬 :)，对 SIGHUP 信号不免疫&lt;/p>
-&lt;h3 id="422-nohup--作用">4.2.2 nohup 作用&lt;/h3>
-&lt;p>nohup 的作用是忽略 SIGHUP 信号，也就是不挂断地运行&lt;/p>
-&lt;p>&amp;amp;和nohup没有半毛钱的关系， 要让进程真正不受shell中Ctrl C和shell关闭的影响， 那该怎么办呢？ 那就用nohup ./start.sh &amp;amp;吧， 两全其美。&lt;/p>
-&lt;h1 id="reference">Reference&lt;/h1>
-&lt;p>&lt;a href="https://ehlxr.me/2017/01/18/Linux-%E4%B8%AD-fg%E3%80%81bg%E3%80%81jobs%E3%80%81-%E6%8C%87%E4%BB%A4/">https://ehlxr.me/2017/01/18/Linux-%E4%B8%AD-fg%E3%80%81bg%E3%80%81jobs%E3%80%81-%E6%8C%87%E4%BB%A4/&lt;/a>&lt;/p>
-&lt;p>&lt;a href="https://www.cnblogs.com/machangwei-8/p/10391440.html">https://www.cnblogs.com/machangwei-8/p/10391440.html&lt;/a>&lt;/p></description></item></channel></rss>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
