@@ -41,3 +41,18 @@ title: "Blog"
 > 其中，`date` 说明该博客建立时间，`draft` 说明这篇是否是草稿，若是草稿，在无特别指明情况下并不会生成静态网页，`title` 表明该文件显示的标题。
 >
 > 在同样文件夹下，建立其他 `.md` 文件，同样也是有相似的文件头部。该博客的文件名应和 `title` 一致，但要注意 `title` 中的空格或者 `+` 作为文件名时应该替换成`-`， 不然会报找不到404网页。文件内容在这块区域下面，使用markdown语法。
+
+# 2. theme 目录结构
+
+## 2.1 修改 post 页面
+
+以主题 `jane` 为例，在文件 `theme/jane/layouts/post/single.html` 中存放着如何显示 post。根据文件中的代码，关于 table of content 的设定存放在 `theme/jane/layouts/partials/post/toc.html`
+
+之后把原来的 tableofcontent 那部分代码放到 nav 中即可。
+
+```html
+  <nav class="hide-on-mobile section-nav">
+    <h3 class="ml-1">Table of contents</h3>
+    {{ .TableOfContents }}
+  </nav>
+```
