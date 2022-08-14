@@ -1,6 +1,23 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 28 Jul 2022 16:05:35 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Aug 2022 19:33:17 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
 &lt;p>一个计算机体系结构方向的学生，喜欢体系结构，喜欢编程，喜欢篮球。目前的课题主要关注 GPU/GPGPU。&lt;/p>
-&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>PyTorch 学习</title><link>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</link><pubDate>Thu, 28 Jul 2022 16:05:35 +0800</pubDate><guid>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h2 id="12-tensor">1.2 Tensor&lt;/h2>
+&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>Hugo 文章页面添加固定目录栏</title><link>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%9B%AE%E5%BD%95/</link><pubDate>Sun, 14 Aug 2022 19:33:17 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%9B%AE%E5%BD%95/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>阅读博客文章时有一个固定的目录会舒服很多，现在就来探索一下怎么添加这个功能。&lt;/p>
+&lt;h1 id="1-固定目录">1. 固定目录&lt;/h1>
+&lt;p>以主题 &lt;code>jane&lt;/code> 为例，在文件 &lt;code>theme/jane/layouts/post/single.html&lt;/code> 中存放着如何显示 post。根据文件中的代码，关于 table of content 的设定存放在 &lt;code>theme/jane/layouts/partials/post/toc.html&lt;/code>&lt;/p>
+&lt;p>之后把原来的 tableofcontent 那部分代码放到 nav 中即可，如下，注释掉原来的代码（15-17 行）&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span>{{ if or .Params.toc (and .Site.Params.toc (ne .Params.toc false)) }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;&lt;span style="color:#f92672">div&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;post-toc&amp;#34;&lt;/span> &lt;span style="color:#a6e22e">id&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;post-toc&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">h2&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;post-toc-title&amp;#34;&lt;/span>&amp;gt;{{ i18n &amp;#34;toc&amp;#34; }}&amp;lt;/&lt;span style="color:#f92672">h2&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">&amp;lt;!-- &amp;lt;div class=&amp;#34;post-toc-content&amp;#34;&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> {{.TableOfContents}}
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"> &amp;lt;/div&amp;gt; --&amp;gt;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">nav&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;hide-on-mobile section-nav&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">h3&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;ml-1&amp;#34;&lt;/span>&amp;gt;Table of contents&amp;lt;/&lt;span style="color:#f92672">h3&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ .TableOfContents }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">nav&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{{- end }}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>PyTorch 学习</title><link>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</link><pubDate>Thu, 28 Jul 2022 16:05:35 +0800</pubDate><guid>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h2 id="12-tensor">1.2 Tensor&lt;/h2>
 &lt;p>张量，多维数组。&lt;/p>
 &lt;p>数据类型需要注意一下&lt;/p>
 &lt;blockquote>
@@ -1868,7 +1885,16 @@ title: &amp;#34;Blog&amp;#34;
 &lt;/code>&lt;/pre>&lt;blockquote>
 &lt;p>其中，&lt;code>date&lt;/code> 说明该博客建立时间，&lt;code>draft&lt;/code> 说明这篇是否是草稿，若是草稿，在无特别指明情况下并不会生成静态网页，&lt;code>title&lt;/code> 表明该文件显示的标题。&lt;/p>
 &lt;p>在同样文件夹下，建立其他 &lt;code>.md&lt;/code> 文件，同样也是有相似的文件头部。该博客的文件名应和 &lt;code>title&lt;/code> 一致，但要注意 &lt;code>title&lt;/code> 中的空格或者 &lt;code>+&lt;/code> 作为文件名时应该替换成&lt;code>-&lt;/code>， 不然会报找不到404网页。文件内容在这块区域下面，使用markdown语法。&lt;/p>
-&lt;/blockquote></description></item><item><title>LeetCode刷题记录</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link><pubDate>Wed, 16 Mar 2022 08:59:50 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid><description>&lt;h4 id="关键字检索">关键字检索&lt;/h4>
+&lt;/blockquote>
+&lt;h1 id="2-theme-目录结构">2. theme 目录结构&lt;/h1>
+&lt;h2 id="21-修改-post-页面">2.1 修改 post 页面&lt;/h2>
+&lt;p>以主题 &lt;code>jane&lt;/code> 为例，在文件 &lt;code>theme/jane/layouts/post/single.html&lt;/code> 中存放着如何显示 post。根据文件中的代码，关于 table of content 的设定存放在 &lt;code>theme/jane/layouts/partials/post/toc.html&lt;/code>&lt;/p>
+&lt;p>之后把原来的 tableofcontent 那部分代码放到 nav 中即可。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">nav&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;hide-on-mobile section-nav&amp;#34;&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">h3&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;ml-1&amp;#34;&lt;/span>&amp;gt;Table of contents&amp;lt;/&lt;span style="color:#f92672">h3&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ .TableOfContents }}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">nav&lt;/span>&amp;gt;
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>LeetCode刷题记录</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link><pubDate>Wed, 16 Mar 2022 08:59:50 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid><description>&lt;h4 id="关键字检索">关键字检索&lt;/h4>
 &lt;ul>
 &lt;li>查缺补漏：做题时比较生疏的知识点，后面复习的时候最好也check一下熟练程度。&lt;/li>
 &lt;li>知识点：题目所涉及到的大概知识点。&lt;/li>
@@ -2545,225 +2571,4 @@ title: &amp;#34;Blog&amp;#34;
 &lt;p>⭐ 移动到当前行首/尾，&lt;code>0 or [home]&lt;/code>/&lt;code>$ or [End]&lt;/code>&lt;/p>
 &lt;h4 id="搜索">搜索&lt;/h4>
 &lt;p>查找 &lt;code>/&lt;/code>&lt;/p>
-&lt;p>统计字符串数量，&lt;code>:%s/GTO://gn&lt;/code>&lt;/p></description></item><item><title>编译运行ISPASS2009、Rodinia、Parboil</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cbenchmarkispassrodiniaparboil/</link><pubDate>Wed, 08 Dec 2021 09:45:02 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cbenchmarkispassrodiniaparboil/</guid><description>&lt;h1 id="ispass">ISPASS&lt;/h1>
-&lt;p>Ubuntu20.04下使用GPGPU-Sim运行ISPASS2009benchmark&lt;/p>
-&lt;h2 id="0-前言">0. 前言&lt;/h2>
-&lt;p>之前介绍了安装，现在就尝试跑一下 ISPASS'09 的那篇经典 paper，Analyzing CUDA workloads using a detailed GPU simulator 上的几个 benchamrk. 这篇文章1.现在已经870次引用了，很多工作都使用了其中的 benchmark&lt;/p>
-&lt;h2 id="1-安装-cuda-toolkit-and-cuda-sdk">1. 安装 CUDA Toolkit and CUDA SDK&lt;/h2>
-&lt;p>CUDA 5之后，SDK 和 Toolkit 都在一个包里面，可以参考 XX 中安装 CUDA 的步骤，在安装时除了 Toolkit 以外再勾选上 &lt;code>CUDA Samples 11.1&lt;/code>。ISPASS'09 benchmark 会用到 build CUDA SDK 时创建的库，所以需要 CUDA SDK。&lt;/p>
-&lt;blockquote>
-&lt;p>But, it looks like NVIDIA has messed up the webpages a bit, the CUDA Toolkit and the GPU Computing SDK pages point at each other, with neither offering the SDK.&lt;/p>
-&lt;/blockquote>
-&lt;p>所以看起来是需要切换 CUDA 版本&lt;/p>
-&lt;h3 id="11-更换软链接">1.1 更换软链接&lt;/h3>
-&lt;p>不过之前环境变量用的 cuda11.1 的地址而非软链接，现在替换成软链接&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo rm -rf /usr/local/cuda &lt;span style="color:#75715e">#删除之前生成的软链接&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ln -s /home/huweim/cuda/toolkit/4.2/cuda /usr/local/cuda &lt;span style="color:#75715e">#生成新的软链接&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="12-check-环境变量的地址">1.2 Check 环境变量的地址&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>export CUDA_INSTALL_PATH&lt;span style="color:#f92672">=&lt;/span>/usr/local/cuda/toolkit/4.2/cuda
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH&lt;span style="color:#f92672">=&lt;/span>$PATH:/usr/local/sbin:/usr/local/bin:/sbin:/bin:/usr/sbin:/usr/bin:$CUDA_INSTALL_PATH/bin:$MPI_ROOT/bin
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export LD_LIBRARY_PATH&lt;span style="color:#f92672">=&lt;/span>$LD_LIBRARY_PATH:$CUDA_INSTALL_PATH/lib64 &lt;span style="color:#75715e">#这个不用改&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export NVIDIA_COMPUTE_SDK_LOCATION&lt;span style="color:#f92672">=&lt;/span>~/cuda/sdk/4.2
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="13-查看版本信息">1.3 查看版本信息&lt;/h3>
-&lt;p>上述步骤全部没问题就可以弹出版本信息了，&lt;code>source ~/.bashrc&lt;/code> 或者重启终端&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>nvcc: NVIDIA &lt;span style="color:#f92672">(&lt;/span>R&lt;span style="color:#f92672">)&lt;/span> Cuda compiler driver
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Copyright &lt;span style="color:#f92672">(&lt;/span>c&lt;span style="color:#f92672">)&lt;/span> 2005-2012 NVIDIA Corporation
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Built on Thu_Apr__5_00:24:31_PDT_2012
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Cuda compilation tools, release 4.2, V0.2.1221
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="2-gcc-g-版本">2. gcc, g++ 版本&lt;/h2>
-&lt;p>CUDA 更换为4.2版本后，重新 build 模拟器得知 &lt;code>unsupported GNU version! gcc 4.7 and up are not supported!&lt;/code>。之前在别人的博客也看到需要 4.7 以下版本 gcc，不过当时在 cuda11.1 版本下是可以用 gcc 4.8/5 跑模拟器的。现在需要跑一下 ISPASS'09 benchmark, 所以配置到符合要求的版本。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo add-apt-repository &lt;span style="color:#e6db74">&amp;#39;deb http://archive.ubuntu.com/ubuntu/ trusty main&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo add-apt-repository &lt;span style="color:#e6db74">&amp;#39;deb http://archive.ubuntu.com/ubuntu/ trusty universe&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt update
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt install gcc-4.4
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.4 50 &lt;span style="color:#75715e">#设置优先级&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.4 50 &lt;span style="color:#75715e">#设置优先级&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo update-alternatives --config gcc &lt;span style="color:#75715e">#输入编号选择gcc/g++版本&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo update-alternatives --config g++ &lt;span style="color:#75715e">#输入编号选择gcc/g++版本&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>gcc -v &lt;span style="color:#75715e">#Check 版本&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>g++ -v &lt;span style="color:#75715e">#Check 版本&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>更换版本后不支持原子操作？编译代码时加上选项 &lt;code>-arch sm_20&lt;/code>&lt;/p>
-&lt;h2 id="2-compile-nvidia-sdk-42">2. Compile Nvidia SDK 4.2&lt;/h2>
-&lt;ul>
-&lt;li>&lt;code>sudo apt-get install libboost-dev libboost-system-dev libboost-filesystem-dev libboost-all-dev mpich2 binutils-gold libcuda1-304&lt;/code>&lt;/li>
-&lt;li>&lt;code>sudo gedit ~/cuda/sdk/4.2/C/common/common.mk&lt;/code>, line like “&lt;code>LIB += … ${OPENGLLIB} …. $(RENDERCHECKGLLIB) …&lt;/code>” should have &lt;code>$(RENDERCHECKGLLIB)&lt;/code> moved before &lt;code>${OPENGLLIB}&lt;/code>. There should be 3 lines like this, it may be line 271, 275 and 282.
-&lt;ul>
-&lt;li>将 line26 &lt;code>CUDA_INSTALL_PATH ?= /home/gpgpu-sim/cuda/toolkit/4.2/cuda&lt;/code> 修改为 &lt;code>CUDA_INSTALL_PATH ?= /home/huweim/cuda/toolkit/4.2/cuda&lt;/code>
-&lt;ul>
-&lt;li>这一步应该不用了，用软链接代替路径即可&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>因为这个文件直接拷贝过来的，所以要设置为自己的安装路径&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;code>sudo gedit ~/cuda/sdk/4.2/CUDALibraries/common/common_cudalib.mk&lt;/code> and do the same thing.&lt;/li>
-&lt;/ul>
-&lt;!-- raw HTML omitted -->
-&lt;ul>
-&lt;li>&lt;code>cd ~/cuda/sdk/4.2&lt;/code>&lt;/li>
-&lt;li>Edit Makefile through &lt;code>sudo gedit ./Makefile&lt;/code>. Comment all lines with &lt;code>CUDALibraries&lt;/code> and &lt;code>OpenCL&lt;/code> as we only want the application binaries. You comment by placing &lt;code>#&lt;/code> in the front of the line.&lt;/li>
-&lt;/ul>
-&lt;!-- raw HTML omitted -->
-&lt;ul>
-&lt;li>&lt;code>make&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;h3 id="21-bug">2.1 Bug&lt;/h3>
-&lt;p>遇到 bug&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>/usr/bin/ld: cannot find -lcudart
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/usr/bin/ld: cannot find -lcufft
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/usr/bin/ld: cannot find -lXi
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/usr/bin/ld: cannot find -lXmu
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/usr/bin/ld: cannot find -lglut
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="212-解决">2.1.2 解决&lt;/h4>
-&lt;p>建立 cudart 的软链接&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>sudo ln -s /usr/local/cuda/lib64/libcudart.so.4.2.9 /usr/lib/libcudart.so
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ln -s /usr/local/cuda/lib64/libcufft.so.4.2.9 /usr/lib/libcufft.so
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#下面几个没有太大必要&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#sudo ln -s /usr/local/cuda/lib64/libculas.so.4.2.9 /usr/lib/libculas.so&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#sudo ln -s /usr/local/cuda/lib64/libcuspare.so.4.2.9 /usr/lib/libcufspare.so&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#sudo ln -s /usr/local/cuda/lib64/libcuinj.so.4.2.9 /usr/lib/libcuinj.so&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#sudo ln -s /usr/local/cuda/lib64/libcurand.so.4.2.9 /usr/lib/libcurand.so&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#sudo ln -s /usr/local/cuda/lib64/libnpp.so.4.2.9 /usr/lib/libnpp.so&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo rm /usr/lib/libculas.so
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>sudo apt-get install libxi-dev
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt-get install libxmu-dev
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo apt-get install freeglut3-dev
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="4-ispass2009-benchmarks">4. ISPASS2009 Benchmarks&lt;/h2>
-&lt;ul>
-&lt;li>&lt;code>git clone https://github.com/gpgpu-sim/ispass2009-benchmarks.git&lt;/code>, we also upload it to the pan.shanghaitech.&lt;/li>
-&lt;li>&lt;code>sudo gedit ~/.bashrc&lt;/code>, add &lt;code>export NVIDIA_COMPUTE_SDK_LOCATION=~/cuda/sdk/4.2&lt;/code>&lt;/li>
-&lt;li>&lt;code>cd ispass2009-benchmarks&lt;/code>&lt;/li>
-&lt;li>&lt;code>sudo gedit ./Makefile.ispass-2009&lt;/code>
-&lt;ul>
-&lt;li>comment out line 16 and 28. The AES and WP benchmark does not compiler readily.
-&lt;ul>
-&lt;li>❗ Note not line 16 to 28, only this two lines&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>Change &lt;code>BOOST_LIB&lt;/code> to the following path: &lt;code>/usr/lib/x86_64-linux-gnu/&lt;/code>&lt;/li>
-&lt;li>Change &lt;code>BOOST_ROOT&lt;/code> to the following path: &lt;code>/usr/include/boost/&lt;/code>&lt;/li>
-&lt;li>Change &lt;code>OPENMPI_BINDIR&lt;/code> to the following path: &lt;code>/usr/bin/&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;code>sudo gedit ./DG/Makefile&lt;/code>
-&lt;ul>
-&lt;li>Line 54, change &lt;code>-I/opt/mpich/include&lt;/code> to &lt;code>-I/usr/include/mpich&lt;/code>&lt;/li>
-&lt;li>Line 56, append &lt;code>-I/usr/include/mpich&lt;/code> to end of the line&lt;/li>
-&lt;li>Line 59-61, add &lt;code>.mpich2&lt;/code> to the end of each line. For example, &lt;code>NEWCC = $(OPENMPI_BINDIR)mpicc.mpich2&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>&lt;code>make -f Makefile.ispass-2009&lt;/code>. Note: If you do a &lt;code>make -f Makefile.ispass-2009 clean&lt;/code>, you may have to recompile the SDK.&lt;/li>
-&lt;/ul>
-&lt;h3 id="41-dg">4.1 DG&lt;/h3>
-&lt;p>需要 openmpi 的环境&lt;/p>
-&lt;p>Ubuntu20.04下使用GPGPU-Sim运行 Rodinia&lt;/p>
-&lt;h1 id="rodinia">Rodinia&lt;/h1>
-&lt;h2 id="0-前言-1">0. 前言&lt;/h2>
-&lt;p>Rodinia 的类型还是更多，尝试将其编译好&lt;/p>
-&lt;h2 id="1-修改路径">1. 修改路径&lt;/h2>
-&lt;p>修改 &lt;code>gpu-rodinia-master/common/make.config&lt;/code> 中 CUDA_INSTALL_PATH，CUDA_LIB_DIR，SDK_DIR 为 your own path&lt;/p>
-&lt;p>&lt;del>对我来说只用修改 SDK_DIR&lt;/del>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>CUDA_LIB_DIR :&lt;span style="color:#f92672">=&lt;/span> /home/huweim/gpgpu-sim_distribution/lib/gcc-4.4.7/cuda-4020/release
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>CUDA_LIB_DIR :&lt;span style="color:#f92672">=&lt;/span> /home/huweim/gpgpu-sim_distribution/lib/gcc-4.4.7/cuda-11020/release &lt;span style="color:#75715e">#如果要修改版本&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>SDK_DIR &lt;span style="color:#f92672">=&lt;/span> /home/huweim/cuda/sdk/4.2/C
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="11-sim_v40">1.1 sim_v4.0&lt;/h3>
-&lt;p>如果使用 v4.0 版本的模拟器，&lt;del>需要在编译选项中加上 &lt;code>--cudart shared&lt;/code>&lt;/del>，编译选项是针对 nvcc，我们尝试使用 gcc 4.5, nvcc 4.2 来运行，官方文档中说 gpgpu-sim v4.0 是支持 nvcc 4.2 的。&lt;/p>
-&lt;p>在 common.mk 中添加对应的架构版本 &lt;code>SM_VERSION := sm_10 sm_11 sm_12 sm_13 sm_20&lt;/code>&lt;/p>
-&lt;h2 id="2-data-set">2. Data Set&lt;/h2>
-&lt;p>惊喜地发现 data set 是空的，download from &lt;a href="http://lava.cs.virginia.edu/Rodinia/download_links.htm">http://lava.cs.virginia.edu/Rodinia/download_links.htm&lt;/a>&lt;/p>
-&lt;p>好家伙一个 G Data Set&lt;/p>
-&lt;h2 id="3-进入-cuda-文件夹逐一编译即可">3. 进入 cuda 文件夹逐一编译即可&lt;/h2>
-&lt;h3 id="30-找不到--lcuda-大多数文件">3.0 找不到 -lcuda 大多数文件&lt;/h3>
-&lt;p>原因就是没找到动态链接库，guess 因为我们没有安装驱动 ✔️&lt;/p>
-&lt;p>&lt;del>make.config 中 &lt;code>CUDA_LIB_DIR&lt;/code> 改为 libcudart.so 所在的路径&lt;/del>，需要的是 libcuda.so 而不是 libcudart.so&lt;/p>
-&lt;p>❌ &lt;del>去&lt;a href="https://developer.nvidia.com/cuda-toolkit-42-archive">官网&lt;/a>下载驱动&lt;/del>，电脑没有 NVIDIA GPU 无法安装 Driver&lt;/p>
-&lt;p>✔️ 去掉 -lcuda 编译选项，出现 &lt;code>undefined reference to symbol '__gxx_personality_v0@@CXXABI_1.3'&lt;/code> 错误时，把 &lt;code>CC = gcc&lt;/code> 更改为 &lt;code>CC = g++&lt;/code>，或者添加编译选项 &lt;code>-lstdc++&lt;/code>&lt;/p>
-&lt;p>暂不清楚去掉 -lcuda 编译选项后的影响&lt;/p>
-&lt;h3 id="31-kmeans-leukocyte">3.1 kmeans, leukocyte&lt;/h3>
-&lt;p>&lt;strong>BUG&lt;/strong>：提示缺少 .o&lt;/p>
-&lt;p>&lt;strong>Solution&lt;/strong>：Makefile 这个 [ch] 会读到 .h，从而编译不出 kmeans.o，&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-makefile" data-lang="makefile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">%.o&lt;/span>&lt;span style="color:#f92672">:&lt;/span> %.[ch]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">$(&lt;/span>CC&lt;span style="color:#66d9ef">)&lt;/span> &lt;span style="color:#66d9ef">$(&lt;/span>CC_FLAGS&lt;span style="color:#66d9ef">)&lt;/span> $&amp;lt; -c
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#改成后正确编译
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>&lt;span style="color:#a6e22e">%.o&lt;/span>&lt;span style="color:#f92672">:&lt;/span> %.[c]
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">$(&lt;/span>CC&lt;span style="color:#66d9ef">)&lt;/span> &lt;span style="color:#66d9ef">$(&lt;/span>CC_FLAGS&lt;span style="color:#66d9ef">)&lt;/span> $&amp;lt; -c
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>kmeans： &lt;code>libgomp.so.1 =&amp;gt; not found&lt;/code>&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ apt-get install libgomp1
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="32-huffman-srad">3.2 huffman, srad&lt;/h3>
-&lt;p>架构版本改成 &lt;code>-arch=sm_20&lt;/code>&lt;/p>
-&lt;h3 id="33-hotspot3d">3.3 hotspot3D&lt;/h3>
-&lt;p>include 路径改一下&lt;/p>
-&lt;h3 id="34-hybridsort">3.4 hybridsort&lt;/h3>
-&lt;p>bucketsort.cu:10: fatal error: GL/glew.h: No such file or directory&lt;/p>
-&lt;p>看起来是没有 OpenGL&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ sudo apt-get install libglew-dev
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="4-run">4. Run&lt;/h2>
-&lt;h3 id="41-why-these-benchmark-so-slow">4.1 Why these benchmark so slow?&lt;/h3>
-&lt;p>streamcluster, leu, fdtd2d 等等&lt;/p>
-&lt;p>Rodinia 大多数 benchmark 都跑得很慢，有的在服务器上两三天都没跑完，不知道是数据量太大还是编译过程除了问题？尽管 GPGPU-Sim 可以自行在达到一定的 cycle 数时停止，还是想知道为什么 Rodinia 如此之慢。&lt;/p>
-&lt;h1 id="parbiol">Parbiol&lt;/h1>
-&lt;h2 id="0-前言-2">0. 前言&lt;/h2>
-&lt;p>Ubuntu20.04 下使用 GPGPU-Sim 编译运行 Parboil&lt;/p>
-&lt;h2 id="1-下载和修改文件">1. 下载和修改文件&lt;/h2>
-&lt;h3 id="11-下载">1.1 下载&lt;/h3>
-&lt;p>最好在&lt;a href="http://impact.crhc.illinois.edu/parboil/parboil_download_page.aspx">官网&lt;/a>下载后部署，Github 上的文件多了几个 benchmark，但是没有他们的数据集。&lt;/p>
-&lt;p>在官网下载好需要的目录，按照 README 中的要求部署，&lt;code>Parboil&lt;/code> 中需要有 4 个目录，&lt;code>benchmarks&lt;/code>，&lt;code>common&lt;/code>，&lt;code>driver&lt;/code>，&lt;code>datasets&lt;/code>&lt;/p>
-&lt;!-- raw HTML omitted -->
-&lt;h3 id="12-makefileconf">1.2 Makefile.conf&lt;/h3>
-&lt;p>进入 common 目录，里面有对应设备的一些 Makefile examples。主要使用的是cuda，check 文件 Makefile.conf.example-nvidia 中的 CUDA 路径，&lt;strong>复制&lt;/strong>并改名为 Makefile.conf。&lt;/p>
-&lt;h3 id="13-cuda_lib_path">1.3 CUDA_LIB_PATH&lt;/h3>
-&lt;p>修改为 gpgpu-sim 的中的 libcudart.so 路径即可&lt;/p>
-&lt;p>&lt;code>CUDA_LIB_PATH=/home/huweim/gpgpu-sim_distribution/lib/gcc-4.4.7/cuda-4020/release/&lt;/code>&lt;/p>
-&lt;h2 id="2-data-set-1">2. Data Set&lt;/h2>
-&lt;p>download from &lt;a href="http://impact.crhc.illinois.edu/parboil/parboil_download_page.aspx">http://impact.crhc.illinois.edu/parboil/parboil_download_page.aspx&lt;/a>，在 1.1 的步骤中应该已经下载了，但是在 Github 中不带 data set，如果 data set 不全，使用他的脚本编译可能会报错，所以建议在官网下载。&lt;/p>
-&lt;p>包含 11 个 benchmark data set&lt;/p>
-&lt;h2 id="3-compile">3. Compile&lt;/h2>
-&lt;h3 id="31-bug">3.1 Bug&lt;/h3>
-&lt;p>这里就是之前说的 BUG，所以东西都去官网下载就不会有这些 BUG 了。&lt;/p>
-&lt;h4 id="311-dataset-不全">3.1.1 Dataset 不全&lt;/h4>
-&lt;!-- raw HTML omitted -->
-&lt;p>16 benchmark src，但是 dataset 只有11个&lt;/p>
-&lt;p>✔️ 解决方法，直接去官方网站下载，不在 github 上下载，11 benchmark 对应 11 dataset&lt;/p>
-&lt;h4 id="312-gcc">3.1.2 gcc&lt;/h4>
-&lt;p>&lt;code>error: identifier &amp;quot;__builtin_ia32_vec_set_v8hi&amp;quot; is undefined&lt;/code>，网上也没有搜索到。
-尝试切换一下 gcc 版本，发现只能用 gcc 4.7 及以前的版本。&lt;/p>
-&lt;p>✔️ 解决方法，直接去官方网站下载，不在 github 上下载，11 benchmark 对应 11 dataset。这个时候 compile 也没有错误了。&lt;/p>
-&lt;h3 id="32-compile-命令">3.2 Compile 命令&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ./parboil compile benchmark_name platform_name
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ ./parboil compile bfs cuda
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#bfs 可执行文件在目录 parboil_Dir/benchmarks/bfs/build/cuda_default/bfs&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>接下来逐一编译11个 benchmark 即可&lt;/p>
-&lt;h2 id="4-run-1">4. Run&lt;/h2>
-&lt;h3 id="41-run-命令">4.1 Run 命令&lt;/h3>
-&lt;p>2021-12-05 13:20:02 ✔️ 搞定&lt;/p>
-&lt;p>⭐ ​使用 GPGPU-Sim 需要在运行目录下放置 3 个 config 文件&lt;/p>
-&lt;p>GPGPU-Sim 配置文件放在 &lt;code>~/Parboil/benchmarks/bfs&lt;/code> 目录下即可，成功运行&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ cp ~/gpgpu-sim_distribution/configs/GTX480/* ~/Parboil/benchmarks/bfs/
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ ./parboil run bfs cuda 1M
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="5-script">5. Script&lt;/h2>
-&lt;h3 id="51-config文件">5.1 Config文件&lt;/h3>
-&lt;p>每个 benchmark 目录下复制好3个 GPGPU-Sim 必备的 config 文件，怎么实现并行执行是一个考验。在不改动原来的脚本文件前提下，每次运行都是在 &lt;code>~/Parboil/benchmarks/Benchmark_Name_Dir&lt;/code> 目录下，所以在使用不同的调度策略启动前，需要将对应的 config 文件复制到此目录。
-而为了保证并行，需要在其启动后（不可能等待其执行完毕再复制），就复制另一种调度策略的 config 文件。&lt;/p>
-&lt;h1 id="polybench">Polybench&lt;/h1>
-&lt;h2 id="0-前言-3">0. 前言&lt;/h2>
-&lt;p>Ubuntu20.04 下使用 GPGPU-Sim 编译运行 Polybench&lt;/p>
-&lt;h2 id="1-40-sim">1. 4.0 sim&lt;/h2>
-&lt;p>在 CUDA/utilities/common.mk 中，&lt;code>nvcc&lt;/code> 后面加上 &amp;ndash;cudart shared&lt;/p>
-&lt;h1 id="tango">Tango&lt;/h1>
-&lt;p>CUDA Code 似乎和 parboil 类似，都是读取当前目录下的 data 文件夹，因此需要在 tango 的目录中去运行，写一下脚本。&lt;/p>
-&lt;p>2022-03-18 14:32:07，确实如此，否则会出现 &lt;code>File Not Found&lt;/code>&lt;/p>
-&lt;h1 id="cuda-sdk">CUDA SDK&lt;/h1>
-&lt;h2 id="0-前言-4">0. 前言&lt;/h2>
-&lt;p>CUDA Samples 似乎没有放置在 toolkit 里面，需要单独安装使用&lt;/p>
-&lt;h2 id="1-排坑">1. 排坑&lt;/h2>
-&lt;p>实际没有链接到 CUDA 4.2，而是自己装的 CUDA 11.1 版本，所以报错&lt;/p>
-&lt;p>先尝试修改一下环境变量，简单地修改环境变量是不行的。切换 CUDA 版本还需要修改软链接&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>sudo rm -rf /usr/local/cuda &lt;span style="color:#75715e">#删除之前创建的软链接&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#sudo ln -s /home/huweim/cuda/toolkit/4.2/cuda /usr/local/cuda&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ln -s /usr/local/cuda11.4 /usr/local/cuda
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nvcc -v
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
+&lt;p>统计字符串数量，&lt;code>:%s/GTO://gn&lt;/code>&lt;/p></description></item></channel></rss>
