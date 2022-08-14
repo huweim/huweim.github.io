@@ -1,11 +1,11 @@
 
-# [submodule "themes/archie"]
-# 	path = themes/archie
-# 	url = https://github.com/athul/archie.git
-# [submodule "themes/hugo-ink"]
-# 	path = themes/hugo-ink
-# 	url = https://github.com/knadh/hugo-ink.git
-# [submodule "themes/jane"]
-# path = themes/jane
-# url = https://github.com/xianmin/hugo-theme-jane.git
+[submodule "themes/archie"]
+	path = themes/archie
+	url = https://github.com/athul/archie.git
+[submodule "themes/hugo-ink"]
+	path = themes/hugo-ink
+	url = https://github.com/knadh/hugo-ink.git
+[submodule "themes/jane"]
+path = themes/jane
+url = https://github.com/xianmin/hugo-theme-jane.git
 
