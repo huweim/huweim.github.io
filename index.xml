@@ -1,6 +1,483 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 16 Jul 2022 16:39:35 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 28 Jul 2022 16:05:35 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
 &lt;p>一个计算机体系结构方向的学生，喜欢体系结构，喜欢编程，喜欢篮球。目前的课题主要关注 GPU/GPGPU。&lt;/p>
-&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>国内硕博如何提升自己的英语</title><link>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</link><pubDate>Sat, 16 Jul 2022 16:39:35 +0800</pubDate><guid>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</guid><description>&lt;p>这个是最近（2022-07-16 16:09:15）我一直在思考的问题。因为之后可能会选择在国内度过自己的博士生涯。目前的英语水平可以说是完全不够的。并不是说 paper 看多了，英语水平就上去了。听说读写是耦合在一起的，没有国外的英文环境，就需要有意识地去提升自己的英语水平。&lt;/p>
+&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>PyTorch 学习</title><link>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</link><pubDate>Thu, 28 Jul 2022 16:05:35 +0800</pubDate><guid>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h2 id="12-tensor">1.2 Tensor&lt;/h2>
+&lt;p>张量，多维数组。&lt;/p>
+&lt;p>数据类型需要注意一下&lt;/p>
+&lt;blockquote>
+&lt;p>关于 dtype，PyTorch 提供了 9 种数据类型，共分为 3 大类：float (16-bit, 32-bit, 64-bit)、integer (unsigned-8-bit ,8-bit, 16-bit, 32-bit, 64-bit)、Boolean。模型参数和数据用的最多的类型是 float-32-bit。label 常用的类型是 integer-64-bit。&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="1-python-模块">1. Python 模块&lt;/h1>
+&lt;h2 id="11-parser-模块">1.1 parser 模块&lt;/h2>
+&lt;h3 id="111-parseradd_argument">1.1.1 parser.add_argument()&lt;/h3>
+&lt;p>在命令行给代码赋值，不需要反复在 python 中修改代码。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parser&lt;span style="color:#f92672">.&lt;/span>add_argument(&lt;span style="color:#e6db74">&amp;#39;--file-dir&amp;#39;&lt;/span>,type&lt;span style="color:#f92672">=&lt;/span>str, required&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>,help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Input file directory&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## 实例&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parser&lt;span style="color:#f92672">.&lt;/span>add_argument(&lt;span style="color:#e6db74">&amp;#39;--dataset&amp;#39;&lt;/span>, default&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;cifar10&amp;#39;&lt;/span>, type&lt;span style="color:#f92672">=&lt;/span>str,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;dataset name&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parser&lt;span style="color:#f92672">.&lt;/span>add_argument(&lt;span style="color:#e6db74">&amp;#39;--dataset_path&amp;#39;&lt;/span>, default&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;/state/partition/imagenet-raw-data&amp;#39;&lt;/span>, type&lt;span style="color:#f92672">=&lt;/span>str,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;dataset path&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parser&lt;span style="color:#f92672">.&lt;/span>add_argument(&lt;span style="color:#e6db74">&amp;#39;--model&amp;#39;&lt;/span>, default&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;resnet18&amp;#39;&lt;/span>, type&lt;span style="color:#f92672">=&lt;/span>str,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;model name&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parser&lt;span style="color:#f92672">.&lt;/span>add_argument(&lt;span style="color:#e6db74">&amp;#39;--train&amp;#39;&lt;/span>, default&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>, action&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;store_true&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;train&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>action&lt;/code>: &lt;code>-train&lt;/code> 设置成一个开关，&lt;/p>
+&lt;ul>
+&lt;li>如果使用了 &lt;code>python -u -m --train ...&lt;/code>，就会把参数 &lt;code>--train&lt;/code> 设置为 True&lt;/li>
+&lt;li>&lt;code>python -u -m ...&lt;/code>，没有这个开关，则参数存储为 False&lt;/li>
+&lt;/ul>
+&lt;h3 id="112-parserparse_args">1.1.2 parser.parse_args()&lt;/h3>
+&lt;h1 id="2-torch">2. torch&lt;/h1>
+&lt;p>有很多方便的数学操作，同理，先了解有这个东西，需要用到时看具体的用法。包括 torch.rand(), torch.range(), torch.chunk(), torch.normal(), torch.add()&lt;/p>
+&lt;p>pytorch 主要分为五大模块&lt;/p>
+&lt;ul>
+&lt;li>dataset&lt;/li>
+&lt;li>model&lt;/li>
+&lt;li>loss funtion&lt;/li>
+&lt;li>optimizer&lt;/li>
+&lt;li>迭代训练&lt;/li>
+&lt;/ul>
+&lt;h2 id="21-nn">2.1 nn&lt;/h2>
+&lt;p>&lt;code>torch.nn&lt;/code> 主要包含 4 个模块&lt;/p>
+&lt;ul>
+&lt;li>nn.Parameter, Tensor 子类，表示可学习的参数，如 weights, bias&lt;/li>
+&lt;li>nn.Modules, 所有模型的基类，用于管理网络的属性&lt;/li>
+&lt;li>nn.functional, 函数具体实现，如 conv, pool, 激活函数&lt;/li>
+&lt;li>nn,init, 网络参数初始化方法&lt;/li>
+&lt;/ul>
+&lt;h3 id="211-nnmodule">2.1.1 nn.Module&lt;/h3>
+&lt;p>class torch.nn.Module 是所有网络的基类（Base class for all neural network modules），每个模型都应该继承这个类，参考lab1的网络模型&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Net&lt;/span>(nn&lt;span style="color:#f92672">.&lt;/span>Module):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super(Net, self)&lt;span style="color:#f92672">.&lt;/span>__init__()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>conv1 &lt;span style="color:#f92672">=&lt;/span> nn&lt;span style="color:#f92672">.&lt;/span>Conv2d(&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, bias&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>pool &lt;span style="color:#f92672">=&lt;/span> nn&lt;span style="color:#f92672">.&lt;/span>MaxPool2d(&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>) &lt;span style="color:#75715e"># run after each conv (hence the 5x5 FC layer)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>conv2 &lt;span style="color:#f92672">=&lt;/span> nn&lt;span style="color:#f92672">.&lt;/span>Conv2d(&lt;span style="color:#ae81ff">6&lt;/span>, &lt;span style="color:#ae81ff">16&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, bias&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>fc1 &lt;span style="color:#f92672">=&lt;/span> nn&lt;span style="color:#f92672">.&lt;/span>Linear(&lt;span style="color:#ae81ff">16&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">120&lt;/span>, bias&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>fc2 &lt;span style="color:#f92672">=&lt;/span> nn&lt;span style="color:#f92672">.&lt;/span>Linear(&lt;span style="color:#ae81ff">120&lt;/span>, &lt;span style="color:#ae81ff">84&lt;/span>, bias&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>fc3 &lt;span style="color:#f92672">=&lt;/span> nn&lt;span style="color:#f92672">.&lt;/span>Linear(&lt;span style="color:#ae81ff">84&lt;/span>, &lt;span style="color:#ae81ff">10&lt;/span>, bias&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">forward&lt;/span>(self, x: torch&lt;span style="color:#f92672">.&lt;/span>Tensor) &lt;span style="color:#f92672">-&amp;gt;&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>Tensor:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>pool(F&lt;span style="color:#f92672">.&lt;/span>relu(self&lt;span style="color:#f92672">.&lt;/span>conv1(x)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>pool(F&lt;span style="color:#f92672">.&lt;/span>relu(self&lt;span style="color:#f92672">.&lt;/span>conv2(x)))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">=&lt;/span> x&lt;span style="color:#f92672">.&lt;/span>view(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">16&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span> &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">=&lt;/span> F&lt;span style="color:#f92672">.&lt;/span>relu(self&lt;span style="color:#f92672">.&lt;/span>fc1(x)) &lt;span style="color:#75715e">#输入是列向量&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">=&lt;/span> F&lt;span style="color:#f92672">.&lt;/span>relu(self&lt;span style="color:#f92672">.&lt;/span>fc2(x))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>fc3(x)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>net &lt;span style="color:#f92672">=&lt;/span> Net()&lt;span style="color:#f92672">.&lt;/span>to(device)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>一般在 model.py 文件中定义 NN model，再举一个 ViT 的例子&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">ViT&lt;/span>(nn&lt;span style="color:#f92672">.&lt;/span>Module):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&amp;#34;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> Args:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> name (str): Model name, e.g. &amp;#39;B_16&amp;#39;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> pretrained (bool): Load pretrained weights
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> in_channels (int): Number of channels in input data
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> num_classes (int): Number of classes, default 1000
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> References:
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> [1] https://openreview.net/forum?id=YicbFdNTTy
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74"> &amp;#34;&amp;#34;&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> name: Optional[str] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">None&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pretrained: bool &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">False&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> patches: int &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">16&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dim: int &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">768&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ff_dim: int &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">3072&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> num_heads: int &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">12&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> num_layers: int &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">12&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> attention_dropout_rate: float &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.0&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> dropout_rate: float &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.1&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> representation_size: Optional[int] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">None&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> load_repr_layer: bool &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">False&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> classifier: str &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;token&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> positional_embedding: str &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;1d&amp;#39;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> in_channels: int &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">3&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> image_size: Optional[int] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">None&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> num_classes: Optional[int] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">None&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super()&lt;span style="color:#f92672">.&lt;/span>__init__()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">forward&lt;/span>(self, x):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">...&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="2111-一些子函数">2.1.1.1 一些子函数&lt;/h4>
+&lt;p>2022-08-06 22:31:40&lt;/p>
+&lt;p>named_ 系列&lt;/p>
+&lt;p>&lt;strong>model.named_parameters()&lt;/strong>，返回两个变量，比如赋值给 name(e.g. &lt;code>name&lt;/code> -&amp;gt; &lt;code>stage_1.0.conv_b.weight&lt;/code>) 和 param (e.g. &lt;code>param.requires_grad&lt;/code> -&amp;gt; &lt;code>False&lt;/code>)&lt;/p>
+&lt;h3 id="212-nnlayer">2.1.2 nn.Layer&lt;/h3>
+&lt;p>&lt;strong>model.named_modules()&lt;/strong>，返回所有模块的迭代器。打印的话会输出模型的结构，如同 &lt;code>print(model)&lt;/code>&lt;/p>
+&lt;p>&lt;strong>model.named_children&lt;/strong>，named_modules 的子集，返回子模块的迭代器&lt;/p>
+&lt;p>&lt;strong>model.children()&lt;/strong>，返回下一级模块的迭代器&lt;/p>
+&lt;blockquote>
+&lt;p>所以这个只是访问到一级，如果下一级是一个 Sequential，那么就还得继续迭代，这个时候用 .modules() 可能会更好&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>model.modules()&lt;/strong>，Returns an iterator over all modules in the network&lt;/p>
+&lt;p>model.named_modules() 会有冗余的返回，这种情况下需要结合一些函数来过滤。&lt;/p>
+&lt;p>nn 还包含了很多 layer，比如 &lt;code>nn.Conv2d&lt;/code>, &lt;code>nn.MaxPool1d&lt;/code>, &lt;code>nn.ReLU&lt;/code>&lt;/p>
+&lt;h3 id="213-model-的创建">2.1.3 model 的创建&lt;/h3>
+&lt;p>主要是 2 个要素，构建子模块和拼接子模块，把子模块理解为 layer，构建子模块就是 &lt;code>__init__&lt;/code>，拼接子模块就是 &lt;code>forward()&lt;/code>&lt;/p>
+&lt;ul>
+&lt;li>调用 &lt;code>model = ViT(model_name, pretrained=True)&lt;/code> 创建模型时，会调用 &lt;code>__init__()&lt;/code> 方法创建模型的子模块&lt;/li>
+&lt;li>训练时调用 &lt;code>outputs = net(inputs)&lt;/code> 时，会进入 &lt;code>module.py&lt;/code> 的 &lt;code>call()&lt;/code> 函数中&lt;/li>
+&lt;li>在 &lt;code>__call__&lt;/code> 中调用 &lt;code>result = self.forward(*input, **kwargs)&lt;/code> 函数，进入到模型的 &lt;code>forward()&lt;/code> 函数中，进行前向传播&lt;/li>
+&lt;/ul>
+&lt;h4 id="2131-model-实例">2.1.3.1 model() 实例&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>model &lt;span style="color:#f92672">=&lt;/span> quantize_model(model)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>outputs &lt;span style="color:#f92672">=&lt;/span> model(inputs)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>loss &lt;span style="color:#f92672">=&lt;/span> criterion(outputs, targets)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">...&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>在 &lt;code>outputs = model(inputs)&lt;/code> 语句中会进入到 &lt;code>class Conv2dQuantizer(nn.Module)&lt;/code> 的 forward 函数，&lt;code>super(Conv2dQuantizer, self).__init__()&lt;/code> 是继承父类的构造函数 &lt;code>__init__()&lt;/code>，从而使得 Conv2dQuantizer 中包含了父类&lt;/p>
+&lt;h4 id="2132-modeleval">2.1.3.2 model.eval()&lt;/h4>
+&lt;p>作用：不启动 BatchNormalization 和 Dropout，保证 BN 和 Dropout 不发生变化，pytorch 框架会自动把 BN 和 Dropout 固定住，不会取平均值，而是用训练好的值，不然的话，一旦 test 的 batch_size 过小，很容易就会被 BN 层导致生成图片颜色失真极大。&lt;/p>
+&lt;p>Reference: &lt;a href="https://zhuanlan.zhihu.com/p/357075502">https://zhuanlan.zhihu.com/p/357075502&lt;/a>&lt;/p>
+&lt;h4 id="2133-torchno_grad">2.1.3.3 torch.no_grad()&lt;/h4>
+&lt;p>tensor 有一个参数是 &lt;code>requires_grad&lt;/code>，如果设置为 True，则反向传播时该 tensor 会自动求导，默认为 False，反向传播时不求导，可以极大地节约显存或者内存。&lt;/p>
+&lt;p>&lt;code>with torch.no_grad&lt;/code> 的作用：所有计算得出的 tensor 的 requires_grad 都自动设置为 False&lt;/p>
+&lt;h3 id="214-crossentropyloss">2.1.4 CrossEntropyLoss&lt;/h3>
+&lt;p>This criterion combines LogSoftmax and NLLLoss in one single class.&lt;/p>
+&lt;h2 id="22-tensor">2.2 Tensor&lt;/h2>
+&lt;p>&lt;code>Tensor&lt;/code> is a multi-dimensional matrix containing elements of a single data type&lt;/p>
+&lt;p>可以用 list 作为参数来构造 tensor&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>tensor([[&lt;span style="color:#ae81ff">1.&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1.&lt;/span>], [&lt;span style="color:#ae81ff">1.&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1.&lt;/span>]])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tensor([[ &lt;span style="color:#ae81ff">1.0000&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1.0000&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [ &lt;span style="color:#ae81ff">1.0000&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1.0000&lt;/span>]])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>tensor(np&lt;span style="color:#f92672">.&lt;/span>array([[&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>], [&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>]]))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tensor([[ &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [ &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>]])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="23-autograd">2.3 autograd&lt;/h2>
+&lt;p>weight 更新依赖于梯度的计算，在 pytorch 中搭建好 forward 计算图，利用 &lt;code>torch.autograd&lt;/code> 自动求导得到所有 gradient of tensor&lt;/p>
+&lt;h2 id="24-data-模块">2.4 data 模块&lt;/h2>
+&lt;p>数据模块可以细分为 4 个部分&lt;/p>
+&lt;ul>
+&lt;li>数据收集：样本，label&lt;/li>
+&lt;li>数据划分：train set, valid set, test set&lt;/li>
+&lt;li>数据读取：pytorch dataloader 模块，dataloader 包括 sampler, dataset
+&lt;ul>
+&lt;li>sampler: 生成索引(index)&lt;/li>
+&lt;li>dataset: 根据生成的索引(index)读取样本以及标签(label)&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>数据预处理：对应于 pytorch transforms&lt;/li>
+&lt;/ul>
+&lt;h3 id="241-dataloader">2.4.1 DataLoader&lt;/h3>
+&lt;p>&lt;code>torch.utils.data.DataLoader()&lt;/code>, 构建可迭代的数据装载器&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>torch&lt;span style="color:#f92672">.&lt;/span>utils&lt;span style="color:#f92672">.&lt;/span>data&lt;span style="color:#f92672">.&lt;/span>DataLoader(dataset, batch_size&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, shuffle&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>, sampler&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">None&lt;/span>, batch_sampler&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">None&lt;/span>, num_workers&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>, collate_fn&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">None&lt;/span>, pin_memory&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>, drop_last&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>, timeout&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>, worker_init_fn&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">None&lt;/span>, multiprocessing_context&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">None&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>dataset: torchvision.datasets 类，决定数据从哪里读取，如何读取，以及是否下载，是否训练，给出一个例子&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>cifar100_test &lt;span style="color:#f92672">=&lt;/span> torchvision&lt;span style="color:#f92672">.&lt;/span>datasets&lt;span style="color:#f92672">.&lt;/span>CIFAR100(root&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;./data&amp;#39;&lt;/span>, train&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>, download&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>, transform&lt;span style="color:#f92672">=&lt;/span>transform_test)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
+&lt;li>num_works: 是否多进程读取，指定读取的进程数量&lt;/li>
+&lt;li>shuffle: 每个 epoch 是否乱序&lt;/li>
+&lt;li>sampler: 指定一个 &lt;code>torch.utils.data.distributed.DistributedSampler&lt;/code> 类型&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>其他名词&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Epoch: 所有训练样本都已经输入到模型中，称为一个 epoch&lt;/li>
+&lt;li>Iteration: a batch of 样本已经输入到模型中&lt;/li>
+&lt;li>Batchsize: 批大小，决定一个 iteration 有多少样本，也决定了一个 Epoch 有多少个 Iteration&lt;/li>
+&lt;/ul>
+&lt;h4 id="2411-nvidiadali">2.4.1.1 NVIDIA.DALI&lt;/h4>
+&lt;p>2022-07-28 21:24:17 了解到这玩意儿&lt;/p>
+&lt;h3 id="242-dataset">2.4.2 DataSet&lt;/h3>
+&lt;p>&lt;code>torch.utils.data.Dataset&lt;/code>, 抽象类，所有自定义大的 DataSet 都需要继承该类。&lt;/p>
+&lt;p>在Dataset 的初始化函数中会调用 &lt;code>get_img_info()&lt;/code> 方法。&lt;/p>
+&lt;h3 id="242-torchvision">2.4.2 torchvision&lt;/h3>
+&lt;p>计算机视觉工具包，有 3 个主要的模块&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>torchvision.transforms&lt;/code>, 包括常用的图像预处理方法&lt;/li>
+&lt;li>&lt;code>torchvision.datasets&lt;/code>, 包括常用的 dataset, e.g. MNIST, CIFAR-10, ImageNet&lt;/li>
+&lt;li>&lt;code>torchvision.models&lt;/code>, 常用的 pre-trained models, e.g. AlexNet, VGG, ResNet, GoogleNet&lt;/li>
+&lt;/ul>
+&lt;p>data 的数量和分布对模型训练的结果起决定性的作用，需要对 data 进行 pre-process 和数据增强。目的是增加数据的多样性，提高模型的泛化能力。&lt;/p>
+&lt;h3 id="243-batch-size">2.4.3 Batch Size&lt;/h3>
+&lt;p>2022-08-09 18:24:56，学习一下梯度，训练，和 batch size 的关系。&lt;/p>
+&lt;p>通过举例来学习，比如目前使用的网络，batch_size = 128，训练数据行数为 $|x| = 1024$，代表每次网络模型的迭代使用了 128 个样本，128 个样本来自 $x$，可能是无序抽样，也可能是有序抽样。&lt;/p>
+&lt;p>每个 epoch 包含 1024/128 iterations&lt;/p>
+&lt;blockquote>
+&lt;p>同一个 epoch，我用第一个 batch 完成了一次前向反向，接下来的第二次 iteration，换了一个 batch，但是 weight 已经更新过了
+这个就是之前卡住我的点，要理解这一点。训练是为了让 weight 收敛。&lt;/p>
+&lt;/blockquote>
+&lt;h4 id="2431-epoch-bach-iteration">2.4.3.1 epoch, bach, iteration&lt;/h4>
+&lt;p>epoch: 把所有训练数据丢进网络的周期&lt;/p>
+&lt;p>batch_size: 一次迭代的数据量；这个从一些说法中，看起来是图片的张数&lt;/p>
+&lt;p>iteration: 完成所有训练数据的迭代，所需要的次数。&lt;/p>
+&lt;blockquote>
+&lt;p>batch_size = 128，训练数据行数为 $|x| = 1024$，代表每次网络模型的迭代使用了 128 个样本，128 个样本来自 $x$，可能是无序抽样，也可能是有序抽样。
+每个 epoch 包含 1024/128 iterations&lt;/p>
+&lt;/blockquote>
+&lt;p>⭐ 注意，第一个 epoch 结束之后，weight 是没有 reset 的，也就是说第二个 epoch 仍然接着更新 weight。&lt;/p>
+&lt;blockquote>
+&lt;p>epoch，背诵词典次数多了，就记牢了。当然，也有可能背傻了（过拟合）&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="25-模型训练">2.5 模型训练&lt;/h2>
+&lt;h3 id="251-损失函数">2.5.1 损失函数&lt;/h3>
+&lt;p>Loss Function, 衡量模型输出与真实标签之间的差异，也就是 &lt;strong>一个&lt;/strong> 样本的 output 和真实标签（label）的差异&lt;/p>
+&lt;p>Cost Function, 计算整个样本集的 output 和真实标签（label）的差异&lt;/p>
+&lt;p>pytorch 中的损失函数也是继承于 &lt;code>nn.Module&lt;/code>&lt;/p>
+&lt;h3 id="252-optimizer">2.5.2 optimizer&lt;/h3>
+&lt;p>PyTorch 中的优化器是用于管理并更新模型中 &lt;strong>可学习参数的值&lt;/strong>，使得模型输出更加接近真实标签。&lt;/p>
+&lt;h4 id="2521-属性">2.5.2.1 属性&lt;/h4>
+&lt;ul>
+&lt;li>defaults: 优化器的超参数，如 weight_decay, momentum&lt;/li>
+&lt;li>state: 参数的缓存，如 momentum 中需要用到前几次的梯度，缓存在这个变量中&lt;/li>
+&lt;li>param_groups: 管理的参数组，是一个 list，其中每个元素是 dict，包括 momentum, lr, weight_decay, params&lt;/li>
+&lt;li>_step_count: 记录更新次数，在学习率调整中使用&lt;/li>
+&lt;/ul>
+&lt;h4 id="2522-optimizer-方法">2.5.2.2 optimizer 方法&lt;/h4>
+&lt;ul>
+&lt;li>zero_grad(): 清空所管理参数的梯度。因为 pytorch 张量的梯度不会自动清零，因此每次反向传播之后都需要清空梯度&lt;/li>
+&lt;li>step(): 执行一步梯度更新&lt;/li>
+&lt;li>add_param_group(): 添加参数组&lt;/li>
+&lt;li>state_dict(): 获取优化器当前状态&lt;/li>
+&lt;li>load_state_dict(): 加载状态信息的 dict&lt;/li>
+&lt;/ul>
+&lt;h4 id="2523-learning-rate">2.5.2.3 learning rate&lt;/h4>
+&lt;p>learning rate, 影响 loss function 收敛的重要因素，控制了梯度下降更新的步伐&lt;/p>
+&lt;h2 id="26-regularization-正则化">2.6 Regularization 正则化&lt;/h2>
+&lt;p>正则化是一种减少方差的策略&lt;/p>
+&lt;h3 id="261-weight-decay">2.6.1 weight decay&lt;/h3>
+&lt;p>weight decay 是优化器中的一个参数，在执行 &lt;code>optim_wdecay_step()&lt;/code> 时，会计算 weight decay 后的梯度&lt;/p>
+&lt;h3 id="262-dropout">2.6.2 Dropout&lt;/h3>
+&lt;p>一种抑制过拟合的方法。理解为放缩数据&lt;/p>
+&lt;h3 id="263-normalization">2.6.3 Normalization&lt;/h3>
+&lt;p>Batch Normalization, 经过 normalization 后的数据服从 $N(0, 1)$ 分布，有如下优点&lt;/p>
+&lt;ul>
+&lt;li>可以使用更大的 lr，加速模型收敛&lt;/li>
+&lt;li>可以不用精心设计 weight 初始化&lt;/li>
+&lt;li>可以不用 dropout 或者较小的 dropout&lt;/li>
+&lt;li>可以不用 L2 或者较小的 weight decay&lt;/li>
+&lt;li>可以不用 LRN (Local Response Normalization)&lt;/li>
+&lt;/ul>
+&lt;h2 id="27-model-相关的操作">2.7 Model 相关的操作&lt;/h2>
+&lt;h3 id="271-torchsave">2.7.1 torch.save&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>torch&lt;span style="color:#f92672">.&lt;/span>save(obj, f, pickle_module, pickle_protocol&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>, _use_new_zipfile_serialization&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>obj 是保存的对象，f 是输出路径。还有 2 种方式&lt;/p>
+&lt;ul>
+&lt;li>保存整个 Module, &lt;code>torch.savev(net, path)&lt;/code> 这种方法比较耗时，保存的文件比较大&lt;/li>
+&lt;li>只保存模型的参数，&lt;code>torch.savev(state_sict, path)&lt;/code>，推荐，保存的文件比较小&lt;/li>
+&lt;/ul>
+&lt;h3 id="272-torchload">2.7.2 torch.load&lt;/h3>
+&lt;p>对应于 save&lt;/p>
+&lt;h3 id="273-fine-tuning">2.7.3 Fine-tuning&lt;/h3>
+&lt;p>一种迁移学习的方法，比如在人脸识别应用中，ImageNet 作为 source domain，人脸数据作为 target domain。通常 source domain 比 target domain 大很多，可以利用 ImageNet 训练好的网络应用到人脸识别中。&lt;/p>
+&lt;p>&lt;strong>理解&lt;/strong>
+对于一个模型，可以分为流程在前面的 feature extractor （conv 层） 和后面的 classifier。fine-tune 通常不改变 feature extractor 的 weight，也就是冻结 conv 层；改变最后一个 fc layer 的输出来适应目标任务，训练后面 classifier 的 weight。&lt;/p>
+&lt;p>通常 target domain 的数据比较小，不足以训练全部参数，容易导致过拟合，因此不改变 feature extractor 的 weight。&lt;/p>
+&lt;p>&lt;strong>Step&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>获取 pre-trained model 参数&lt;/li>
+&lt;li>&lt;code>load_state_dict()&lt;/code> 把参数加载到模型中&lt;/li>
+&lt;li>修改输出层&lt;/li>
+&lt;li>固定 feature extractor 的参数，通常有 2 种做法
+&lt;ul>
+&lt;li>固定 conv 层的预训练参数。可以设置 &lt;code>requires_grad = False&lt;/code> 或者 &lt;code>lr = 0&lt;/code>&lt;/li>
+&lt;li>通过 &lt;code>params_group&lt;/code> 给 feature extractor 设置一个较小的 lr&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="3-pytorch-分布式训练">3. pytorch 分布式训练&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>dist&lt;span style="color:#f92672">.&lt;/span>init_process_group(backend&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;nccl&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># backend是后台利用nccl进行通信&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>调试时报错，如何在调试分布式训练的模型&lt;/p>
+&lt;h2 id="31-debug-分布式训练的模型">3.1 debug 分布式训练的模型&lt;/h2>
+&lt;p>修改 python &lt;code>launch.json&lt;/code> 文件，把 program 换成 torch.distribution 的 launch.py&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>{
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">//&lt;/span> Use IntelliSense to learn about possible attributes&lt;span style="color:#f92672">.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">//&lt;/span> Hover to view descriptions of existing attributes&lt;span style="color:#f92672">.&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">//&lt;/span> For more information, visit: https:&lt;span style="color:#f92672">//&lt;/span>go&lt;span style="color:#f92672">.&lt;/span>microsoft&lt;span style="color:#f92672">.&lt;/span>com&lt;span style="color:#f92672">/&lt;/span>fwlink&lt;span style="color:#f92672">/&lt;/span>&lt;span style="color:#960050;background-color:#1e0010">?&lt;/span>linkid&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">830387&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;version&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;0.2.0&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;configurations&amp;#34;&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;name&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;Python: Current File&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;type&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;python&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;request&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;launch&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;program&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;/nvme/wmhu/anaconda3/envs/ant/lib/python3.8/site-packages/torch/distributed/launch.py&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;console&amp;#34;&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;integratedTerminal&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;justMyCode&amp;#34;&lt;/span>: true,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;args&amp;#34;&lt;/span>: [
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;--nproc_per_node=1&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;/nvme/wmhu/work/ANT/ImageNet/main.py&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;--dataset=imagenet&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;--model=vit_b_16&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;--dataset_path=/nvme/imagenet&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;--epoch=4&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;--mode=int&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;--wbit=4&amp;#34;&lt;/span>,
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;--abit=4&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#e6db74">&amp;#34;env&amp;#34;&lt;/span>:{&lt;span style="color:#e6db74">&amp;#34;CUDA_VISIBLE_DIVICES&amp;#34;&lt;/span>:&lt;span style="color:#e6db74">&amp;#34;0&amp;#34;&lt;/span>},
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意 &lt;code>nproc_per_node&lt;/code> 是 Python 自带的参数，因此可以写到里面，对于 &lt;code>--dataset=imagenet&lt;/code> 会有报错。&lt;/p>
+&lt;p>&lt;code>--dataset=imagenet&lt;/code> 要放到 &lt;code>main.py&lt;/code> 的后面，这个方法相当于用调整参数的形式来达到目的。不太有通用性，相当于专门改了一个 &lt;code>launch.json&lt;/code> 文件。&lt;/p>
+&lt;h1 id="4-hook">4. Hook&lt;/h1>
+&lt;p>这个功能被广泛用于可视化神经网络中间层的 feature、gradient，从而诊断神经网络中可能出现的问题，分析网络有效性。&lt;/p>
+&lt;p>视频：https://www.youtube.com/watch?v=syLFCVYua6Q&lt;/p>
+&lt;p>pytorch 计算图似乎只会保留叶子节点的梯度，舍弃中间的梯度&lt;/p>
+&lt;blockquote>
+&lt;p>简而言之，register_hook的作用是，反向传播时，除了完成原有的反传，额外多完成一些任务。你可以定义一个中间变量的hook，将它的grad值打印出来，当然你也可以定义一个全局列表，将每次的grad值添加到里面去。&lt;/p>
+&lt;/blockquote>
+&lt;p>什么是中间变量：有的博客里有提到，似乎是没有直接指定数值，而是通过计算得到的变量。比如下面的 z 就是中间变量。z 的梯度是不会保存的&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>x &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>Tensor([&lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>])&lt;span style="color:#f92672">.&lt;/span>requires_grad_()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>y &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>Tensor([&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>, &lt;span style="color:#ae81ff">7&lt;/span>])&lt;span style="color:#f92672">.&lt;/span>requires_grad_()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>z &lt;span style="color:#f92672">=&lt;/span> x &lt;span style="color:#f92672">+&lt;/span> y &lt;span style="color:#75715e"># 中间变量&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>output &lt;span style="color:#f92672">=&lt;/span> model(input)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 此时会做几件事，一个是调用 forward 方法计算结果，一个是判断有没有注册 forward_hook，有的话就将 forward 的输入及结果作为 hook 的实参&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="41-register_hook">4.1 register_hook&lt;/h2>
+&lt;p>&lt;code>z.register_hook(hook_fn)&lt;/code>，这个 hook_fn 是一个用户自定义函数，返回 Tensor （如果需要对 grad 进行修改）或者 None（用于直接打印，不修改），所以直接用 lambda 函数即可，&lt;code>z.register_hook(lambda grad: print(grad))&lt;/code>&lt;/p>
+&lt;blockquote>
+&lt;p>个人理解下来，register_hook 可以实现保留中间变量梯度的功能，而且不像 &lt;code>retain_grad&lt;/code> 那样会带来很大的开销&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="411-register_forward_hook">4.1.1 register_forward_hook&lt;/h3>
+&lt;p>&lt;strong>作用&lt;/strong>：获取中间层的 feature map&lt;/p>
+&lt;p>通常，pytorch 只提供了网络整体的输入和输出，对于夹在网络中间的模块，很难获得他的输入输出。除非设计网络时，在 forward 函数的返回值中包含中间 module 的输出。总而言之别的方法都比较麻烦，pytorch 设计好了 register_forward_hook 和 register_backward_hook。&lt;/p>
+&lt;p>相比针对 tensor 的 register_hook，这个 forward hook 没有返回值，也就是不能改变输入，只能打印。&lt;/p>
+&lt;p>代码实例，讲的非常清晰，来自&lt;a href="https://cloud.tencent.com/developer/article/1475430">博客&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>Class Model(nn&lt;span style="color:#f92672">.&lt;/span>Module):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">forward&lt;/span>(self, x):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#f92672">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 全局变量，用于存储中间层的 feature&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>total_feature_out &lt;span style="color:#f92672">=&lt;/span> []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>total_feature_in &lt;span style="color:#f92672">=&lt;/span> []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>model &lt;span style="color:#f92672">=&lt;/span> Model()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 定义 forward hook function&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">hook_fn_forward&lt;/span>(module, input, output):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(module) &lt;span style="color:#75715e"># 用于区分模块&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;input&amp;#39;&lt;/span>, input) &lt;span style="color:#75715e"># 首先打印出来&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;output&amp;#39;&lt;/span>, output)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> total_feature_out&lt;span style="color:#f92672">.&lt;/span>append(output) &lt;span style="color:#75715e"># 然后分别存入全局 list 中&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> total_feature_in&lt;span style="color:#f92672">.&lt;/span>append(input)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 给每个 module 都装上 hook&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> name, module &lt;span style="color:#f92672">in&lt;/span> model&lt;span style="color:#f92672">.&lt;/span>named_children():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> module&lt;span style="color:#f92672">.&lt;/span>register_forward_hook(hook_fn_forward)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 前向传播和回传&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>Tensor([[&lt;span style="color:#ae81ff">1.0&lt;/span>, &lt;span style="color:#ae81ff">1.0&lt;/span>, &lt;span style="color:#ae81ff">1.0&lt;/span>]])&lt;span style="color:#f92672">.&lt;/span>requires_grad_()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>o &lt;span style="color:#f92672">=&lt;/span> model(x)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>o&lt;span style="color:#f92672">.&lt;/span>backward()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(&lt;span style="color:#e6db74">&amp;#39;==========Saved inputs and outputs==========&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> idx &lt;span style="color:#f92672">in&lt;/span> range(len(total_feature_in)):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;input: &amp;#39;&lt;/span>, total_feature_out[idx])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;output: &amp;#39;&lt;/span>, total_feature_out[idx])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="412-register_backward_hook">4.1.2 register_backward_hook()&lt;/h3>
+&lt;h4 id="4121-使用方法和示例">4.1.2.1 使用方法和示例&lt;/h4>
+&lt;p>&lt;strong>作用&lt;/strong>：用于获取梯度&lt;/p>
+&lt;p>&lt;strong>使用&lt;/strong>：&lt;code>module.register_backward_hook(hook_fn)&lt;/code>, &lt;code>hook_fn(module, grad_input, grad_output) -&amp;gt; Tensor or None&lt;/code>&lt;/p>
+&lt;p>如果有多个输入或者输出，grad_input, grad_output 可以是 tuple 类型。比如对于线性模块，grad_input 是一个三元组，分别是 $g_{bias}$, $g_x$, $g_W$，对 bias 的导数，对 x 的导数以及对 weight 的导数。&lt;/p>
+&lt;p>直接看代码，这个代码是可以直接跑的，不得不说写的确实很好。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> torch
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> torch &lt;span style="color:#f92672">import&lt;/span> nn
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Model&lt;/span>(nn&lt;span style="color:#f92672">.&lt;/span>Module):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super(Model, self)&lt;span style="color:#f92672">.&lt;/span>__init__()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>fc1 &lt;span style="color:#f92672">=&lt;/span> nn&lt;span style="color:#f92672">.&lt;/span>Linear(&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>relu1 &lt;span style="color:#f92672">=&lt;/span> nn&lt;span style="color:#f92672">.&lt;/span>ReLU()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>fc2 &lt;span style="color:#f92672">=&lt;/span> nn&lt;span style="color:#f92672">.&lt;/span>Linear(&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>initialize()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">initialize&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">with&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>no_grad():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>fc1&lt;span style="color:#f92672">.&lt;/span>weight &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>nn&lt;span style="color:#f92672">.&lt;/span>Parameter(
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> torch&lt;span style="color:#f92672">.&lt;/span>Tensor([[&lt;span style="color:#ae81ff">1.&lt;/span>, &lt;span style="color:#ae81ff">2.&lt;/span>, &lt;span style="color:#ae81ff">3.&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">4.&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">5.&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">6.&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [&lt;span style="color:#ae81ff">7.&lt;/span>, &lt;span style="color:#ae81ff">8.&lt;/span>, &lt;span style="color:#ae81ff">9.&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">10.&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">11.&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">12.&lt;/span>]]))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>fc1&lt;span style="color:#f92672">.&lt;/span>bias &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>nn&lt;span style="color:#f92672">.&lt;/span>Parameter(torch&lt;span style="color:#f92672">.&lt;/span>Tensor([&lt;span style="color:#ae81ff">1.0&lt;/span>, &lt;span style="color:#ae81ff">2.0&lt;/span>, &lt;span style="color:#ae81ff">3.0&lt;/span>, &lt;span style="color:#ae81ff">4.0&lt;/span>]))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>fc2&lt;span style="color:#f92672">.&lt;/span>weight &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>nn&lt;span style="color:#f92672">.&lt;/span>Parameter(torch&lt;span style="color:#f92672">.&lt;/span>Tensor([[&lt;span style="color:#ae81ff">1.0&lt;/span>, &lt;span style="color:#ae81ff">2.0&lt;/span>, &lt;span style="color:#ae81ff">3.0&lt;/span>, &lt;span style="color:#ae81ff">4.0&lt;/span>]]))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>fc2&lt;span style="color:#f92672">.&lt;/span>bias &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>nn&lt;span style="color:#f92672">.&lt;/span>Parameter(torch&lt;span style="color:#f92672">.&lt;/span>Tensor([&lt;span style="color:#ae81ff">1.0&lt;/span>]))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">forward&lt;/span>(self, x):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> o &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>fc1(x)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> o &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>relu1(o)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> o &lt;span style="color:#f92672">=&lt;/span> self&lt;span style="color:#f92672">.&lt;/span>fc2(o)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> o
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 全局变量，用于存储中间层的 feature&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>total_grad_out &lt;span style="color:#f92672">=&lt;/span> []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>total_grad_in &lt;span style="color:#f92672">=&lt;/span> []
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>model &lt;span style="color:#f92672">=&lt;/span> Model()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 定义 forward hook function&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">hook_fn_backward&lt;/span>(module, grad_input, grad_output):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(module) &lt;span style="color:#75715e"># 用于区分模块&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 为了符合反向传播顺序，先打印 grad_output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;grad_output&amp;#39;&lt;/span>, grad_output)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;grad_input&amp;#39;&lt;/span>, grad_input)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> total_grad_out&lt;span style="color:#f92672">.&lt;/span>append(grad_output)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> total_grad_in&lt;span style="color:#f92672">.&lt;/span>append(grad_input)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 给每个 module 都装上 hook&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> name, module &lt;span style="color:#f92672">in&lt;/span> model&lt;span style="color:#f92672">.&lt;/span>named_children():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> module&lt;span style="color:#f92672">.&lt;/span>register_backward_hook(hook_fn_backward)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 前向传播和回传&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 这里的 requires_grad 很重要，如果不加，backward hook&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 执行到第一层，对 x 的导数将为 None，某英文博客作者这里疏忽了&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 此外再强调一遍 x 的维度，一定不能写成 torch.Tensor([1.0, 1.0, 1.0]).requires_grad_()&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 否则 backward hook 会出问题。&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>Tensor([[&lt;span style="color:#ae81ff">1.0&lt;/span>, &lt;span style="color:#ae81ff">1.0&lt;/span>, &lt;span style="color:#ae81ff">1.0&lt;/span>]])&lt;span style="color:#f92672">.&lt;/span>requires_grad_()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>o &lt;span style="color:#f92672">=&lt;/span> model(x)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>o&lt;span style="color:#f92672">.&lt;/span>backward()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(&lt;span style="color:#e6db74">&amp;#39;==========Saved inputs and outputs==========&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> idx &lt;span style="color:#f92672">in&lt;/span> range(len(total_grad_in)):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;input: &amp;#39;&lt;/span>, total_grad_in[idx])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;output: &amp;#39;&lt;/span>, total_grad_out[idx])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>注意&lt;/strong>，作者提到“register_backward_hook只能操作简单模块，而不能操作包含多个子模块的复杂模块。如果对复杂模块用了 backward hook，那么我们只能得到该模块最后一次简单操作的梯度信息。”不太确定什么是简单模块，不太确定诸如 resnet18 这样的网络是不是简单模块。&lt;/p>
+&lt;p>2022-08-06 23:14:22，这个地方应该是想说，用 for loop 遍历 model.named_children() 是有必要的，否则直接 &lt;code>model = Model()model.register_backward_hook(hook_fn_backward)&lt;/code> 会有问题。&lt;/p>
+&lt;h4 id="4122-注意事项">4.1.2.2 注意事项&lt;/h4>
+&lt;p>&lt;strong>形状&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>在卷积层中，weight 的梯度和 weight 的形状相同&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在全连接层中，weight 的梯度的形状是 weight 形状的转秩（观察上文中代码的输出可以验证）&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>grad_input tuple 中各梯度的顺序&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>在卷积层中，bias 的梯度位于tuple 的末尾：grad_input = (对feature的导数，对权重 W 的导数，对 bias 的导数)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在全连接层中，bias 的梯度位于 tuple 的开头：grad_input=(对 bias 的导数，对 feature 的导数，对 W 的导数)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>当 batchsize &amp;gt; 1 时，对 bias 的梯度处理不同&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>
+&lt;p>在卷积层，对 bias 的梯度为整个 batch 的数据在 bias 上的梯度之和：grad_input = (对feature的导数，对权重 W 的导数，对 bias 的导数)&lt;/p>
+&lt;/li>
+&lt;li>
+&lt;p>在全连接层，对 bias 的梯度是分开的，bach 中每条数据，对应一个 bias 的梯度：grad_input = ((data1 对 bias 的导数，data2 对 bias 的导数 &amp;hellip;)，对 feature 的导数，对 W 的导数)&lt;/p>
+&lt;/li>
+&lt;/ul>
+&lt;h1 id="misc">Misc&lt;/h1>
+&lt;p>@classmethod 用法&lt;/p>
+&lt;p>想给初始类再新添功能，不需要改初始类，只要在下一个类内部新写一个方法，方法用@classmethod装饰一下即可。、&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@classmethod&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">convert_sync_batchnorm&lt;/span>(cls, module, process_group&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">None&lt;/span>):
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="问题">问题&lt;/h1>
+&lt;ul>
+&lt;li>Debug 的时候怎么看 tensor 变量的参数？&lt;/li>
+&lt;/ul>
+&lt;h1 id="reference">Reference&lt;/h1>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/265394674">https://zhuanlan.zhihu.com/p/265394674&lt;/a>&lt;/p>
+&lt;p>&lt;a href="https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-nn/">https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-nn/&lt;/a> pytorch 中文文档&lt;/p>
+&lt;p>&lt;a href="https://cloud.tencent.com/developer/article/1475430#">https://cloud.tencent.com/developer/article/1475430#&lt;/a>&lt;/p></description></item><item><title>国内硕博如何提升自己的英语</title><link>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</link><pubDate>Sat, 16 Jul 2022 16:39:35 +0800</pubDate><guid>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</guid><description>&lt;p>这个是最近（2022-07-16 16:09:15）我一直在思考的问题。因为之后可能会选择在国内度过自己的博士生涯。目前的英语水平可以说是完全不够的。并不是说 paper 看多了，英语水平就上去了。听说读写是耦合在一起的，没有国外的英文环境，就需要有意识地去提升自己的英语水平。&lt;/p>
 &lt;h5 id="一些建议">一些建议&lt;/h5>
 &lt;p>即使到了国外，可能也很难通过和外国人交朋友来提升自己的英文水平，英语提升还是需要刻意去练习的。&lt;/p>
 &lt;ul>
@@ -2289,99 +2766,4 @@ title: &amp;#34;Blog&amp;#34;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#sudo ln -s /home/huweim/cuda/toolkit/4.2/cuda /usr/local/cuda&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>sudo ln -s /usr/local/cuda11.4 /usr/local/cuda
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nvcc -v
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>Python处理输出log信息并绘图</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E5%A4%84%E7%90%86%E8%BE%93%E5%87%BAlog%E4%BF%A1%E6%81%AF%E5%B9%B6%E7%BB%98%E5%9B%BE/</link><pubDate>Wed, 08 Dec 2021 09:05:41 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E5%A4%84%E7%90%86%E8%BE%93%E5%87%BAlog%E4%BF%A1%E6%81%AF%E5%B9%B6%E7%BB%98%E5%9B%BE/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
-&lt;p>修改 GPGPU-Sim 并跑 benchmark，如果一次用12个benchmark，3种调度算法，那么一次会生成36个 output log。需要使用 python 脚本可视化这些数据来进行 high level 的分析，因此自己写了一个脚本进行输出数据的可视化工作。&lt;/p>
-&lt;p>需要两个绘图工具&lt;/p>
-&lt;ul>
-&lt;li>对于单个 benchmark，分析其 ipc，cache hit/miss，mem_stall 等等&lt;/li>
-&lt;li>对于多个 benchmark，分析总体的 ipc，cache hit/miss，mem_stall 等等&lt;/li>
-&lt;/ul>
-&lt;h1 id="1-正则表达式">1. 正则表达式&lt;/h1>
-&lt;h2 id="11-实例">1.1 实例&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">read_string&lt;/span>(file,metrics):
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> output&lt;span style="color:#f92672">=&lt;/span>{}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> it_metrics &lt;span style="color:#f92672">in&lt;/span> metrics:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(it_metrics&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#e6db74">&amp;#34;gpu_ipc&amp;#34;&lt;/span>):
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pattern&lt;span style="color:#f92672">=&lt;/span>re&lt;span style="color:#f92672">.&lt;/span>compile(it_metrics&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#e6db74">&amp;#34; =(\s+)(\d+\.\d+)&amp;#34;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">elif&lt;/span>(it_metrics&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Stall&amp;#34;&lt;/span>):
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pattern&lt;span style="color:#f92672">=&lt;/span>re&lt;span style="color:#f92672">.&lt;/span>compile(it_metrics&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#e6db74">&amp;#34;:(\d+)&amp;#34;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pattern&lt;span style="color:#f92672">=&lt;/span>re&lt;span style="color:#f92672">.&lt;/span>compile(it_metrics&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#e6db74">&amp;#34; = (\d+)&amp;#34;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> output_sum&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> i,line &lt;span style="color:#f92672">in&lt;/span> enumerate(open(get_file_path()&lt;span style="color:#f92672">+&lt;/span>file)):
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> match &lt;span style="color:#f92672">in&lt;/span> re&lt;span style="color:#f92672">.&lt;/span>finditer(pattern, line):
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span>(it_metrics&lt;span style="color:#f92672">==&lt;/span>&lt;span style="color:#e6db74">&amp;#34;gpu_ipc&amp;#34;&lt;/span>):
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> output_part&lt;span style="color:#f92672">=&lt;/span>list(match&lt;span style="color:#f92672">.&lt;/span>group(&lt;span style="color:#ae81ff">2&lt;/span>))
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> output_part&lt;span style="color:#f92672">=&lt;/span>list(match&lt;span style="color:#f92672">.&lt;/span>group(&lt;span style="color:#ae81ff">1&lt;/span>))
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> output_part&lt;span style="color:#f92672">=&lt;/span>float(&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>join(output_part))
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> output_sum&lt;span style="color:#f92672">+=&lt;/span>output_part
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> output[it_metrics]&lt;span style="color:#f92672">=&lt;/span>output_sum
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> output
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>其实没有找到最舒服的正则表达式，理想情况是读取到表示数据的一串字符串，然后直接转化为浮点数。但是各种匹配方法似乎都是一次匹配一个数字/字符串，所以先使用现成的。&lt;/p>
-&lt;p>&lt;code>for i,line in enumerate(open(file))&lt;/code> 遍历 log 的每一行，一定要加上 &lt;code>i&lt;/code> 否则会报错。&lt;/p>
-&lt;p>&lt;code>match.group(1)&lt;/code> 每次会返回一个整数，这个时候整数是元组的形式，所以需要先转化为 list，然后转化为 float 类型，这个时候便可以用于算术运算。&lt;/p>
-&lt;h3 id="111-group">1.1.1 group&lt;/h3>
-&lt;ul>
-&lt;li>似乎有点理解这个匹配了，对于 &lt;code>gpu_ipc&lt;/code>，\s+ 匹配的是至少一个空格，实际匹配的是多个空格，如果使用 group(1) 就会返回这个元组&lt;/li>
-&lt;li>我们想要的是 \d+，所以返回第二个元组，再将其转化为 float 即可&lt;/li>
-&lt;li>2021-10-28 20:11:01：搞定，小数部分也能保留&lt;/li>
-&lt;/ul>
-&lt;h2 id="12-字符串开头结尾匹配">1.2 字符串开头/结尾匹配&lt;/h2>
-&lt;p>检查字符串开头或结尾的一个简单方法是使用 &lt;code>str.startswith()&lt;/code> 或者是 &lt;code>str.endswith()&lt;/code> 方法。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> filename &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;spam.txt&amp;#39;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> filename&lt;span style="color:#f92672">.&lt;/span>endswith(&lt;span style="color:#e6db74">&amp;#39;.txt&amp;#39;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">True&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="2-文件操作">2. 文件操作&lt;/h1>
-&lt;h2 id="21-python-os-文件目录方法">2.1 Python OS 文件/目录方法&lt;/h2>
-&lt;p>&lt;strong>os&lt;/strong> 模块提供了非常丰富的方法用来处理文件和目录。常用的方法如下表所示&lt;/p>
-&lt;p>&lt;code>os.listdir(path)&lt;/code>，返回path指定的文件夹包含的文件或文件夹的名字的列表。&lt;/p>
-&lt;h1 id="3-绘图">3. 绘图&lt;/h1>
-&lt;h2 id="31-并列柱状图">3.1 并列柱状图&lt;/h2>
-&lt;p>绘制并列柱状图与堆叠柱状图类似，都是绘制多组柱体，只需要控制好每组柱体的位置和大小即可。例如：&lt;/p>
-&lt;p>❗ 注意设置柱状图宽度不可忽略，否则无法正常显示&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> numpy &lt;span style="color:#66d9ef">as&lt;/span> np
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> matplotlib.pyplot &lt;span style="color:#66d9ef">as&lt;/span> plt
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>size &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>arange(size)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>a &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>random&lt;span style="color:#f92672">.&lt;/span>random(size)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>b &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>random&lt;span style="color:#f92672">.&lt;/span>random(size)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>c &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>random&lt;span style="color:#f92672">.&lt;/span>random(size)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>total_width, n &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0.8&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>width &lt;span style="color:#f92672">=&lt;/span> total_width &lt;span style="color:#f92672">/&lt;/span> n
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x &lt;span style="color:#f92672">=&lt;/span> x &lt;span style="color:#f92672">-&lt;/span> (total_width &lt;span style="color:#f92672">-&lt;/span> width) &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>bar(x, a, width&lt;span style="color:#f92672">=&lt;/span>width, label&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;a&amp;#39;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>bar(x &lt;span style="color:#f92672">+&lt;/span> width, b, width&lt;span style="color:#f92672">=&lt;/span>width, label&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;b&amp;#39;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>bar(x &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">*&lt;/span> width, c, width&lt;span style="color:#f92672">=&lt;/span>width, label&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;c&amp;#39;&lt;/span>)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>legend()
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>show()
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;!-- raw HTML omitted -->
-&lt;h1 id="4-调试">4. 调试&lt;/h1>
-&lt;h2 id="41-调试时需要输入">4.1 调试时需要输入&lt;/h2>
-&lt;h1 id="5--">5. (), [],&lt;/h1>
-&lt;h2 id="51--元组">5.1 () 元组&lt;/h2>
-&lt;p>代表tuple元祖数据类型，元祖是一种不可变序列。创建方法很简单，大多数时候都是小括号括起来的。&lt;/p>
-&lt;h2 id="52--列表">5.2 [] 列表&lt;/h2>
-&lt;p>代表list列表数据类型，列表是一种可变序列。创建方法既简单又特别。&lt;/p>
-&lt;h2 id="53--字典">5.3 {} 字典&lt;/h2>
-&lt;p>代表dict字典数据类型，字典是Python中唯一内建的映射类型。字典中的值没有特殊的顺序，但都是存储在一个特定的键（key）下。键可以是数字、字符串甚至是元祖。&lt;/p>
-&lt;h3 id="531-字典">5.3.1 字典&lt;/h3>
-&lt;p>字典的每个键值 &lt;strong>key=&amp;gt;value&lt;/strong> 对用冒号 &lt;strong>:&lt;/strong> 分割，每个键值对之间用逗号 &lt;strong>,&lt;/strong> 分割，整个字典包括在花括号 &lt;strong>{}&lt;/strong> 中 ,格式如下所示：&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>d &lt;span style="color:#f92672">=&lt;/span> {key1 : value1, key2 : value2 }
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>相当于是键值对索引，key 只能是 &lt;code>字符串，数字或元组&lt;/code>&lt;/p>
-&lt;ul>
-&lt;li>python 中单引号和双引号字符串没有区别&lt;/li>
-&lt;/ul>
-&lt;h3 id="532-用到了字典排序字典转化为-list">5.3.2 用到了字典排序、字典转化为 list&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e">#按键(key)排序:&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sorted(y_lrr_dict)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sorted(y_gto_dict)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sorted(y_cory_dict)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> y_lrr&lt;span style="color:#f92672">=&lt;/span>list(y_lrr_dict)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> y_gto&lt;span style="color:#f92672">=&lt;/span>list(y_gto_dict)
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> y_cory&lt;span style="color:#f92672">=&lt;/span>list(y_cory_dict)
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
