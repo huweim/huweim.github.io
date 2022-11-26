@@ -1,16 +1,16 @@
 ---
 title: "CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析"
 date: 2021-07-25T11:00:17+08:00
+lastmod: 2022-11-26T16:17:41+08:00
 draft: false
 tags: ["浅尝辄止"]
 categories: ["CUDA"]
 ---
 
-# 前言
+# 0. 前言
 
 文章转载自知乎答主 [marsggbo](https://www.zhihu.com/people/hexin_marsggbo)，当做笔记记录一下这些 CUDA 中经常接触的内容。
 
-# 0
 
 在使用深度学习框架的过程中一定会经常碰到这些东西，虽然anaconda有时会帮助我们自动地解决这些设置，但是有些特殊的库却还是需要我们手动配置环境，但是我对标题上的这些名词其实并不十分清楚，所以老是被网上的教程绕得云里雾里，所以觉得有必要写下一篇文章当做笔记供之后参考。
 
@@ -20,6 +20,8 @@ categories: ["CUDA"]
 
 - **显卡**： 简单理解这个就是我们前面说的**GPU**，尤其指NVIDIA公司生产的GPU系列，因为后面介绍的cuda,cudnn都是NVIDIA公司针对自身的GPU独家设计的。
 - **显卡驱动**：很明显就是字面意思，通常指**NVIDIA Driver**，其实它就是一个驱动软件，而前面的**显卡**就是硬件。
+
+
 - gpu架构：Tesla、Fermi、Kepler、Maxwell、Pascal
 - 芯片型号：GT200、GK210、GM104、GF104等
 - 显卡系列：GeForce、Quadro、Tesla
@@ -46,9 +48,9 @@ Tesla的k型号卡为了高性能科学计算而设计，比较突出的优点�
 看了很多答案，有人说CUDA就是一门编程语言，像C,C++,python 一样，也有人说CUDA是API。CUDA英文全称是Compute Unified Device Architecture，是显卡厂商NVIDIA推出的运算平台。 CUDA™是一种由NVIDIA推出的通用并行计算架构，该架构使GPU能够解决复杂的计算问题。按照[官方](https://link.zhihu.com/?target=https%3A//blogs.nvidia.com/blog/2012/09/10/what-is-cuda-2/)的说法是，**CUDA是一个并行计算平台和编程模型，能够使得使用GPU进行通用计算变得简单和优雅**。
 
 
-
-![img](https://pic3.zhimg.com/80/v2-1181b6863ba6fe9c8b12ddb33c280fd6_1440w.jpg)
-
+<div align=left>
+<img src = Image/CUDA_Compute.jpg width = "80%">
+</div>
 
 
 ## 1.2 cudnn
@@ -89,8 +91,9 @@ CUDA Toolkit由以下组件组成：
 ### 1.2.5 CUDA Driver
 
  运行CUDA应用程序需要系统至少有一个**具有CUDA功能的GPU**和**与CUDA工具包兼容的驱动程序**。每个版本的CUDA工具包都对应一个最低版本的CUDA Driver，也就是说如果你安装的CUDA Driver版本比官方推荐的还低，那么很可能会无法正常运行。CUDA Driver是向后兼容的，这意味着根据CUDA的特定版本编译的应用程序将继续在后续发布的Driver上也能继续工作。通常为了方便，在安装CUDA Toolkit的时候会默认安装CUDA Driver。在开发阶段可以选择默认安装Driver，但是对于像Tesla GPU这样的商用情况时，建议在[官方](https://link.zhihu.com/?target=http%3A//www.nvidia.com/drivers)安装最新版本的Driver。 目前(2019年10月)的CUDA Toolkit和CUDA Driver版本的对应情况如下：
-
-![img](https://pic1.zhimg.com/80/v2-fc8c720a858b6c2583b09f0228c4b3e0_1440w.jpg)
+<div align=left>
+<img src = Image/CUDA_Driver.jpg width="50%">
+</div>
 
 # 2. `nvcc`&`nvidia-smi`
 
@@ -98,7 +101,9 @@ CUDA Toolkit由以下组件组成：
 
 这个在前面已经介绍了，`nvcc`其实就是CUDA的编译器,可以从CUDA Toolkit的`/bin`目录中获取,类似于`gcc`就是c语言的编译器。由于程序是要经过编译器编程成可执行的二进制文件，而cuda程序有两种代码，一种是运行在cpu上的host代码，一种是运行在gpu上的device代码，所以`nvcc`编译器要保证两部分代码能够编译成二进制文件在不同的机器上执行。nvcc涉及到的文件后缀及相关意义如下表
 
-![img](https://pic3.zhimg.com/80/v2-82d456f1cce3cdb72793a9588544d97a_1440w.jpg)
+<div align = left>
+<img src = Image/CUDA_file.jpg width = "70%">
+<div>
 
 ## 2.2 `nvidia-smi`
 
@@ -176,9 +181,9 @@ CUDA有两个主要的API：**runtime(运行时) API**和**driver API**。这两
 主上下文会根据需要创建，每个设备每个进程一个上下文，并进行引用计数，然后在没有更多的引用时销毁它们。在一个进程中，所有runtime API的用户都将共享主上下文，除非上下文已成为每个线程的当前上下文。runtime使用的上下文，即当前上下文或主上下文，可以用`cudaDeviceSynchronize()`同步，也可以用`cudaDeviceReset()`销毁。 但是，将runtime API与主上下文一起使用会有tradeoff。例如，对于那些需要给较大的软件包写插件的开发者来说者会带来不少麻烦，因为如果所有的插件都在同一个进程中运行，它们将共享一个上下文，但可能无法相互通信。也就是说，如果其中一个在完成所有CUDA工作后调用`cudaDeviceReset()`，其他插件将失败，因为它们使用的上下文在它们不知情的情况下被破坏。为了避免这个问题，CUDA clients可以使用driver API来创建和设置当前上下文，然后使用runtime API来处理它。但是，上下文可能会消耗大量的资源，比如设备内存、额外的主机线程和设备上上下文切换的性能成本。当将driver API与基于runtime API(如cuBLAS或cuFFT)构建的库一起使用时，这种runtime-driver上下文共享非常重要。
 
 
-
-![img](https://pic3.zhimg.com/80/v2-a1f1d9f699697a8e05979abf749fbeae_1440w.jpg)
-
+<div align=left>
+<img src = Image/CUDA_layer.jpg width="50%">
+</div>
 
 
 # 4. Linux中PATH、 LIBRARY_PATH、 LD_LIBRARY_PATH的区别
@@ -224,8 +229,9 @@ PS：自己在安装使用 GPGPU-Sim 中也记录了 CUDA 的安装过程
 到 [CUDA Toolkit Download](https://link.zhihu.com/?target=https%3A//developer.nvidia.com/cuda-downloads) 下载所需版本，以 cuda_9.0.176_384.81_linux.run为例：
 
 
-
-![img](https://pic2.zhimg.com/80/v2-73e1c14194b431054b3f567035bba4b5_1440w.jpg)
+<div align=left>
+<img src = Image/CUDA_Toolkit_install.jpg width="70%">
+</div>
 
 
 

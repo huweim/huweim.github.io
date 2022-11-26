@@ -1,16 +1,21 @@
 ---
 title: "Ubuntu多版本CUDA,GCC切换"
 date: 2021-11-14T22:07:35+08:00
-lastmod: 
+lastmod: 2022-11-26T16:18:17+08:00
 draft: false
 author: "Cory"
 tags: [""]
 categories: ["CUDA"]
 ---
 
-# Ubuntu多版本CUDA,GCC切换
+# 0. 前言
+2022-11-25 20:05:01。笔记写得比较早，大概是21年用 gpgpusim 那段时间写的，补一下前言。
 
-# 切换CUDA9.0和CUDA10.0
+在使用 gpgpusim 的时候，切换 gcc, CUDA 版本是非常常见的场景。由于这些操作涉及到有系统文件夹的修改，涉及到 sudo 权限，所以最好在 Docker 环境下配置 gpgpusim 开发环境。
+
+# 1. CUDA 版本切换
+
+**切换CUDA9.0和CUDA10.0**
 
 保证多个CUDA版本共存的前提是NVIDIA的驱动都能够支持你所安装的CUDA版本，所以驱动的版本尽可能高，越新的驱动支持的CUDA版本越多，博主的430能够支持9.0和10.0。
 
@@ -18,9 +23,9 @@ categories: ["CUDA"]
 
 + 理解这个软链接，用到了很多次
 
-## Step
+## 1.1 Step
 
-### 1 更换软链接
+### 1.1.1 更换软链接
 
 不过之前环境变量用的 cuda11.1 的地址而非软链接，现在替换成软链接
 
@@ -30,7 +35,7 @@ sudo ln -s /home/huweim/cuda/toolkit/4.2/cuda /usr/local/cuda #生成新的软�
 sudo ln -s /usr/local/cuda-11.1 /usr/local/cuda	#使用11.1版本
 ```
 
-### 2 Check 环境变量的地址
+### 1.1.2 Check 环境变量的地址
 
 ```bash
 export CUDA_INSTALL_PATH=/usr/local/cuda/
@@ -39,7 +44,7 @@ export LD_LIBRARY_PATH=$LD_LIBRARY_PATH:$CUDA_INSTALL_PATH/lib64	#这个不用�
 export NVIDIA_COMPUTE_SDK_LOCATION=~/cuda/sdk/4.2
 ```
 
-### 3 查看版本信息
+### 1.1.3 查看版本信息
 
 上述步骤全部没问题就可以弹出版本信息了，`source ~/.bashrc` 或者重启终端
 
@@ -50,9 +55,9 @@ Built on Thu_Apr__5_00:24:31_PDT_2012
 Cuda compilation tools, release 4.2, V0.2.1221
 ```
 
-### 4. Bug
+### 1.1.4. Bug
 
-#### 4.1 sh: 1: nvopencc: Permission denied
+#### 1.1.4.1 sh: 1: nvopencc: Permission denied
 
 解决方法
 
@@ -60,9 +65,9 @@ Cuda compilation tools, release 4.2, V0.2.1221
 sudo chmod -R 777 /usr/local/cuda
 ```
 
+# 2. gcc 版本切换
 
-
-# 切换gcc, g++ 9 -> 5
+**切换gcc, g++ 9 -> 5**
 
 Reference
 
@@ -78,10 +83,13 @@ apt-get安装gcc、g++，默认下载最新版本的，此时ubuntu里的gcc和g
 3. gcc -v   //查看的版本为9.0.0
 4. g++ -v   //查看的版本为9.0.0
 ```
+## 2.1 apt-get 方法重新安装
 
-## 1. 软件源
+### 2.1.1 软件源
 
-打开sources.list
+通过 apt-get 方法安装的话，不一定每个版本的 gcc 都有，因此需要找到合适的源。
+
+打开 sources.list
 
 ```bash
 sudo gedit /etc/apt/sources.list
@@ -100,38 +108,45 @@ Update
 sudo apt-get update
 ```
 
-## 2. 安装gcc5, g++5
+### 2.1.2 安装gcc5, g++5
 
 apt-get 安装gcc、g++ 5版本。
 
 ```bash
-sudo apt-get install g++-5 gcc-5sudo apt-get -f install   #if need 
+sudo apt-get install g++-5 gcc-5
+sudo apt-get -f install   #if need 
 ```
 
 2021-07-09 10:40:42 gcc5版本又出现了一些问题，找[教程](https://blog.csdn.net/qq_42566274/article/details/106399531)安装了 gcc4.8 版本，这个文章里面说最低 4.7 版本，那就先用 4.8 版本试试 gpgpu-sim 能不能 work
 
 ```bash
-sudo apt-get install gcc-4.8sudo apt-get install g++-4.8
+sudo apt-get install gcc-4.8
+sudo apt-get install g++-4.8
 ```
 
 
 
-## 3. 查看
+### 2.1.3 查看
 
 ```bash
-ls /usr/bin/gcc*ls /usr/bin/g++*
+ls /usr/bin/gcc*
+ls /usr/bin/g++*
 ```
 
-## 4. 设置优先级
+### 2.1.4 设置优先级
 
 ```bash
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 90sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 80sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 80
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-5 90
+sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-9 80
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-5 90
+sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-9 80
 ```
 
 增加
 
 ```bash
-sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 95sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 95
+$ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 95
+$ sudo update-alternatives --install /usr/bin/g++ g++ /usr/bin/g++-4.8 95
 ```
 
 成功配置上了 gcc 4.8
@@ -140,19 +155,40 @@ sudo update-alternatives --install /usr/bin/gcc gcc /usr/bin/gcc-4.8 95sudo upda
 
 好吧，必须使用 gcc4.7 以前的版本
 
-## 5. 选择gcc/g++版本
+**删除**
+
+删除update-alternatives对某一个版本的管理使用命令
+
+```shell
+$ update-alternatives --remove gcc /usr/bin/gcc-4.8
+```
+
+### 2.1.5 选择gcc/g++版本
 
 ```bash
-sudo update-alternatives --config gccsudo update-alternatives --config g++
+sudo update-alternatives --config gcc
+sudo update-alternatives --config g++
 ```
 
 输入编号选择gcc/g++版本
 
 :warning: *gcc/g++版本须保持一致*
 
-## 6. Check 版本
+### 2.1.6 Check 版本
 
 ```bash
-gcc -vg++ -v
+gcc -v
+g++ -v
 ```
 
+## 2.2 conda 中改变 gcc 版本
+
+直接在 conda install gcc_linux-64=7.5.0 之后，系统中的 gcc 版本仍然没有改变，需要设置软链接。
+
+```shell
+conda create -n ngp
+conda install gcc_linux-64=7.5.0
+ln -s ~/anaconda3/envs/ngp_1/libexec/gcc/x86_64-conda-linux-gnu/7.5.0/gcc ~/anaconda3/envs/ngp_1/bin/gcc
+conda deactivate
+conda activate ngp_1
+```

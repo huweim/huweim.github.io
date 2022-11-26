@@ -1,7 +1,7 @@
 ---
 title: "Docker 常用的命令"
 date: 2021-09-17T16:25:25+08:00
-lastmod: 2021-12-08 09:00:58
+lastmod: 2022-11-26 16:20:58
 draft: false
 tags: ["Docker"]
 categories: ["工具"]
@@ -21,10 +21,13 @@ $ sudo service docker start
 $ sudo systemctl start docker
 ```
 
-# 2. Image文件
+# 2. Image
 
-**Docker 把应用程序及其依赖，打包在 image 文件里面。**只有通过这个文件，才能生成 Docker 容器。
-**image 文件可以看作是容器的模板**。Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例。
+## 2.1 本地 image 管理
+
+**Docker 把应用程序及其依赖，打包在 image 文件里面。** 只有通过这个文件，才能生成 Docker 容器。
+
+**image 文件可以看作是容器的模板** Docker 根据 image 文件生成容器的实例。同一个 image 文件，可以生成多个同时运行的容器实例。
 
 ```bash
 # 列出本机的所有 image 文件。
@@ -86,14 +89,18 @@ $ docker run -it findhao/gpgpusim_runtime
 $ docker run -it ubuntu:20.04 /bin/bash
 ```
 
-## 2.4 创建镜像
+**选项**
+
+`--gpus all`: 把所有 GPU 映射到镜像
+
+## 2.5 创建镜像
 
 两种方法
 
 + 从已经创建的容器中更新镜像，并且提交这个镜像。即把容器快照导入镜像
 + 使用 Dockerfile 指令来创建一个新的镜像
 
-### 2.4.1 更新镜像
+### 2.5.1 更新镜像
 
 更新镜像之前，我们需要使用镜像来创建一个容器
 
@@ -116,9 +123,9 @@ sha256:93069e854b178767dfcd334c8ce99d29141fdc87719c2bb1251d9e16e255de73
 
 > 也就是我们在镜像中做了修改，随时更新保存为新的镜像即可
 
-### 2.4.2 构建镜像
+### 2.5.2 构建镜像
 
-#### 2.4.2.1 Dockerfile
+#### 2.5.2.1 Dockerfile
 
 首先，在项目的根目录下，新建一个文本文件`.dockerignore`，写入下面的[内容](https://github.com/ruanyf/koa-demos/blob/master/.dockerignore)。
 
@@ -148,7 +155,7 @@ CMD node demos/01.js
 
 > Ubuntu 我自己使用 touch Dockerfile, 然后 gedit Dockfile 去编辑
 
-#### 2.4.2.2 Docker build
+#### 2.5.2.2 Docker build
 
 有了 Dockerfile 文件以后，就可以使用`docker image build`命令创建 image 文件了。
 
@@ -170,13 +177,13 @@ $ docker build -t runoob/centos:6.7 .
 
 > 可以跑起来，不过太大了中途终止掉
 
-### 2.4.3 设置镜像标签
+### 2.5.3 设置镜像标签
 
 ```bash
 $ docker tag IMAGEID runoob/centos:dev
 ```
 
-### 2.4.4 生成容器
+### 2.5.4 生成容器
 
 ```bash
 $ docker container run -p 8000:3000 -it koa-demo /bin/bash
@@ -190,7 +197,7 @@ $ docker container run -p 8000:3000 -it koa-demo:0.0.1 /bin/bash
 
 可以使用`docker container run`命令的`--rm`参数，在容器终止运行后自动删除容器文件。
 
-### 2.4.5 CMD命令
+### 2.5.5 CMD命令
 
 > 上一节的例子里面，容器启动以后，需要手动输入命令`node demos/01.js`。我们可以把这个命令写在 Dockerfile 里面，这样容器启动以后，这个命令就已经执行了，不用再手动输入了。
 
@@ -203,6 +210,15 @@ $ docker container run -p 8000:3000 -it koa-demo:0.0.1 /bin/bash
 ```bash
 $ docker container run --rm -p 8000:3000 -it koa-demo:0.0.1
 ```
+
+## 2.6 删除镜像
+
+```shell
+$ docker rmi IMAGE_ID
+$ docker rmi IMAGE_NAME:TAG
+```
+
+
 
 # 3. 实例：hello world
 
@@ -261,9 +277,9 @@ $ docker container run hello-world
 > $ docker container kill [containID]
 > ```
 
-# 4. Container文件
+# 4. Container
 
-**image 文件生成的容器实例，本身也是一个文件，称为容器文件。**也就是说，一旦容器生成，就会同时存在两个文件： image 文件和容器文件。而且关闭容器并不会删除容器文件，只是容器停止运行而已。
+**image 文件生成的容器实例，本身也是一个文件，称为容器文件。** 也就是说，一旦容器生成，就会同时存在两个文件： image 文件和容器文件。而且关闭容器并不会删除容器文件，只是容器停止运行而已。
 
 ```bash
 # 列出本机正在运行的容器
@@ -350,7 +366,7 @@ $ cat docker/ubuntu.tar | docker import - test/ubuntu:v1
 此外，也可以通过指定 URL 或者某个目录来导入，例如
 
 ```bash
-$ docker import http://example.com/exampleimag	e.tgz example/imagerepo
+$ docker import http://example.com/exampleimage.tgz example/imagerepo
 ```
 
 ## 4.6 拷贝容器文件到本机
@@ -384,14 +400,162 @@ $ docker load -i gpgpusim.tar
 + import: Container -> .tar, export: .tar -> Image
 + save: Image -> .tar, load: .tar -> Image
 
-# 6. 文件夹挂载
+# 6. 挂载 :star:
 
 ```bash
 $ docker run -it -v /home/vsp/huweim/gpgpusim:/root/share ubuntu:20.04 /bin/bash
 ```
 
+2022-05-30 10:52:45，使用这个选项时，会用 host 中的文件来覆盖 docker 容器中的文件
 
+## 6.1 补充
+host 作为 user，没有 root 权限，此时运行 docker，docker 中的 user id 需要和 host user id 一致，才可以在 docker 中修改挂载目录。
 
+## 6.2 修改容器的挂载目录
+
+方法1，停止 Docker 服务后，修改 docker 配置文件。但是在服务器上停止服务比较麻烦，采用方法2。
+
+方法2，把容器提交为镜像，之后创建新的容器。
+
+## 6.3 直接修改 docker 中挂载目录
+
+把 docker user id 修改为和 host 一样的 user id，查看主机 user id 为 `wmhu:x:2039:2039::/home/wmhu:/usr/bin/zsh`
+```shell
+$ vim /etc/passwd
+```
+
+## 6.4 在服务器上使用 Docker 以及挂载文件夹
+
+以 qz 服务器为例吧，2022-06-02 13:51:40，在 GPU74 结点上突然又可以用 docker 了。
+
+### 6.4.1 Step1
+因为是在服务器上，所以要用 sudo
+```shell 
+$ sudo docker pull a1245967/gpgpusim
+$ sudo docker run -it -v /nvme/wmhu/share_docker:/home/wmhu/share -v /home/wmhu/gpgpu-sim_distribution:/home/wmhu/gpgpu-sim_distribution --privileged=true -p 50002:22 a1245967/gpgpusim /bin/bash
+```
+
+至此已经创建了容器，以及相应的挂载文件夹。
+
+#### 6.4.1.1 插曲
+
+连接服务器，在 /home/user 目录下创建 .vscode 目录，此时可以用 vscode 连接，在 GPU68 结点下，将 /home/user 目录下的 .vscode 目录作为 GPU68:/nvme/wmhu 目录下的软链接。如果切换到 GPU74 结点，访问 /home/user 目录下的 .vscode 目录，实际访问的是 GPU68:/nvme/wmhu 目录，而 GPU74 结点是访问不到 GPU68 结点的这个目录，因此 vscode 会连接失败，而 ssh 直接连接是可以额。
+
+解决：登录 GPU68 结点，删除 /home/user 目录下的 .vscode 软链接。然后用 GPU74 直接登录，会在 /home/user 目录下重新下载 .vscode，此时可以登录。
+
+### 6.4.2 Step2
+
+此时进入了服务器的 Docker，在 Docker 中创建 user 并且修改 user id，和服务器上的 user id 一致
+```shell
+$ useradd wmhu 
+$ passwd wmhu #设置密码，输入两次
+$ id # 查看 user id，修改为和 host 一致的 id
+uid=1129(zdli) gid=1118(group_ljw) groups=1118(group_ljw)
+$ usermod -u 1129 wmhu
+# qz server 上的 group 是 group_ljw，所以要手动添加 group
+$ groupadd -g 1118 group_ljw
+$ usermod -g group_ljw wmhu # 把 wmhu 添加到 group_ljw
+# 接下来修改挂载目录的 user 和 group，原本是 root
+$ chown -R wmhu:group_ljw *
+$ usermod -aG sudo wmhu # 给 sudo 权限
+```
+
+# 7. 磁盘清理
+
+> 2022-01-07 12:05:29，不过这次磁盘爆掉主要是因为在 Docker 中没有清理 gpgpusim log 文件
+
+对于 Contains，长期不关闭或者清理会导致占用的内存过大
+
+```shell
+$ docker system df #查看 Docker 占用分布
+$ docker system prune #对空间自动清理
+```
+
+自动清理范围
+
+> 已停止的容器
+> 未被任何容器使用的卷
+> 未被任何容器所关联的网络
+> 所有悬空的镜像
+
+# 8. 镜像上传 Push
+
+上传前需要先登录，这里默认已经登录了
+
+```shell
+$ docker login
+```
+
+## 8.1 改名
+
+将名字带上 docker hub 的 ID，否则无法 push，我自己是 `ccoryhu`
+
+```shell
+$ docker tag b356b84be90b ccoryhu/gpgpu4.0-init
+$ docker push ccoryhu/gpgpu4.0-init
+```
+## 8.2 更改存储位置
+
+为了防止占用太多硬盘空间，把镜像放到更大的磁盘 `/home/Data` 中，使用软链接的方法
+
+```shell
+$ sudo service docker stop
+$ mv /var/lib/docker /home/Data/docker
+$ sudo ln -s /home/Data/docker/docker /var/lib/docker #建立软链接
+
+$ ls /var/lib/docker #确认一下类型
+$ sudo service docker start #开启服务
+$ docker ps -a
+$ docker images #确认能够读到容器和镜像
+```
+
+# 9. 添加 docker group
+Manage Docker as a non-root user: 
+
+> The Docker daemon binds to a Unix socket instead of a TCP port. By default that Unix socket is owned by the user root and other users can only access it using sudo. The Docker daemon always runs as the root user.
+>
+> If you don’t want to preface the docker command with sudo, create a Unix group called docker and add users to it. When the Docker daemon starts, it creates a Unix socket accessible by members of the docker group.
+
+> Docker 守护进程绑定到 Unix 套接字而不是 TCP 端口。 默认情况下，Unix 套接字由用户 root 拥有，其他用户只能使用 sudo 访问它。 Docker 守护程序始终以 root 用户身份运行。
+>
+> 如果您不想在 docker 命令前面加上 sudo，请创建一个名为 docker 的 Unix 组并将用户添加到其中。 当 Docker 守护进程启动时，它会创建一个可供 docker 组成员访问的 Unix 套接字。
+
+## 9.1 Step
+
+```shell
+# Create the docker group.
+$  sudo groupadd docker
+# Add your user to the docker group.
+$  sudo usermod -aG docker $USER
+# Log out and log back in so that your group membership is re-evaluated.
+# Linux use the following command
+$  newgrp docker 
+# Verify that you can run docker commands without sudo.
+$  docker run hello-world
+```
+
+# 10. BUG
+
+## 10.1 
+Job for docker.service failed because the control process exited with error code
+
+启动时报错使用 `sudo dockerd --debug` 查看，发现错误是 `failed to start daemon: error initializing graphdriver: driver not supported`
+
+## 10.2 
+Error processing tar file(exit status 1): unexpected EOF
+
+把 .tar 文件上传到服务器上时，没有 `chmod` 给权限，所以报错
+
+## 10.3
+Docker容器里没有权限执行命令，提示Permission denied
+
+原因是 mkdir 执行的对象是 host 和 Docker 之间的共享文件夹，docker 可能对 host 文件夹没有操作的权限，所以 Permission denied。
+
+方法1：`sudo docker exec -it -u wmhu 582c677c2c35 /bin/bash`；但是在交大服务器上没有 sudo 权限，所有尝试用方法2.
+
+方法2：创建容器实例的时候，增加参数--privileged=true；同时，还需要指定 user id。
+
+这两个方法也许可以解决问题，但自己没有测试，因为 mwhu 这个用户不在 docker group 里面。选择的处理方式是在 Docker 中不修改挂载目录，在 host 端修改和编译即可。
 # Reference
 
 https://www.ruanyifeng.com/blog/2018/02/docker-tutorial.html	Docker 入门教程

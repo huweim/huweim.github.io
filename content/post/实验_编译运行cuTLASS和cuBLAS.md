@@ -1,12 +1,17 @@
 ---
-title: "编译运行cuTLASS"
+title: "编译运行 CUTLASS 和 cuBLAS"
 date: 2022-05-09T22:17:43+08:00
-lastmod: 
+lastmod: 2022-11-26T16:23:21+08:00
 draft: false
 author: "Cory"
-tags: ["GPGPU-Sim", "cutlass"]
+tags: ["CUTLASS", "CUDA"]
 categories: ["实验"]
 ---
+
+# 0. 前言
+内容包括根据官方文档运行 CUTLASS 的实例，过程中遇到的一些问题，在 GPGPU-Sim 上运行 CUTLASS，阅读官方 doc 的笔记。
+
+包括根据官方文档运行 cuBLAS 的实例，过程中遇到的问题。
 
 # 1. 环境
 
@@ -50,6 +55,54 @@ $ export CUDACXX=${CUDA_INSTALL_PATH}/bin/nvcc
 $ mkdir build && cd build
 
 $ cmake .. -DCUTLASS_NVCC_ARCHS=75  # compiles for NVIDIA Turing GPU architecture
+
+# 在 ~/cutlass/build/tools/library/generated/ 目录下生成 conv2d and gemm 的所有抽象组合
+$ cmake .. -DCUTLASS_NVCC_ARCHS=75 -DCUTLASS_LIBRARY_KERNELS=all 
+
+# 仅需要 subset of gemm kernels with FP32 accumulation and FP16 input, in Ampere and Turing
+$ cmake .. -DCUTLASS_NVCC_ARCHS='75;80' -DCUTLASS_LIBRARY_KERNELS=cutlass_tensorop_s*gemm_f16_*_nt_align8
+# 我想这个 * 应该表示正则表达式
+
+$ make cutlass_profiler -j16
+
+```
+
+**需求**
+```shell
+$ cmake .. -DCUTLASS_NVCC_ARCHS=75 -DCUTLASS_LIBRARY_KERNELS=cutlass_tensorop_i88*gemm_s*_256x128_*x2_tn_align*
+
+$ cmake .. -DCUTLASS_NVCC_ARCHS=75 -DCUTLASS_LIBRARY_KERNELS=cutlass_tensorop_i8832gemm_s4_256x128_128x2_tn_align32
+
+$ cmake .. -DCUTLASS_NVCC_ARCHS=75 -DCUTLASS_LIBRARY_KERNELS=cutlass_tensorop_i8816gemm_s8_256x128_64x2_tn_align16
+
+$ make cutlass_profiler -j16
+
+$ nsys profile --stats=true ./turing_tensorop_gemm
+```
+
+### 1.2.1 cmake 在做什么
+
+`cmake .. -DCUTLASS_NVCC_ARCHS=75 -DCUTLASS_LIBRARY_KERNELS=all `，在 `~/cutlass/build/tools/library/generated/` 目录下生成相应的 .cu 接口
+
+### 1.2.2 make 在做什么
+
+`Building CUDA object tools/library/CMakeFiles/cutlass_library_objs.dir/generated/gemm/cutlass_tensorop_i8816gemm_s8_256x128_64x2_tn_align16.cu.o`
+
+猜测是根据 cmake 中生成的接口文件，生成 `cutlass_profiler` 能够运行/调用的目标文件。
+
+`make cutlass_profiler -j16` 这一步之后才能使用 `./tools/profiler/cutlass_profiler --kernels=cutlass_tensorop_i8816gemm_s8_256x128_64x2_tn_align16` 来运行。
+
+### 1.2.3 Test in real GPU
+
+工作站 GPU 是 GTX980，SM_50
+
+```shell
+$ cmake .. -DCUTLASS_NVCC_ARCHS=50 -DCUTLASS_LIBRARY_KERNELS=cutlass_simt_sgemm_128x128_8x2_nn_align1
+
+$ make cutlass_profiler -j16
+
+$ ./tools/profiler/cutlass_profiler --kernels=cutlass_simt_sgemm_128x128_8x2_nn_align1
+
 ```
 
 ## 1.3 Build and run the CUTLASS Profiler
@@ -189,7 +242,7 @@ TensorOp 16-by-8-by-64. 支持 int4b_t，
 
 WmmaTensorOp, 
 
-Instruction Shape ( 16-by-16-by-16, 8-by-32-by-16)
+Instruction Shape (	16-by-16-by-16, 8-by-32-by-16)
 
 Warp Shapes (32x32x16, 32x64x16, 64x32x16; 32x32x16, 32x64x16, 64x32x16)
 
@@ -238,9 +291,9 @@ The CUTLASS Profiler is capable of executing GEMM and Sparse GEMM problems.
 The complete set of arguments available to each operation may be viewed by specifying the operation name in addition to --help. The argument flags and their aliases usable for GEMM appear as follows.
 
 可以通过 option `--help` 查看完整的  operation，他这里给出的例子是 `./tools/profiler/cutlass_profiler --operation=gemm --help`，所以还是得执行这个脚本吧。
-
-![](./Image/gemm_aug.png)
-
+<div align=left>
+<img src = ./Image/gemm_aug.png width = "80%">
+<div>
 #### 3.5.1.2 Example Tensor Core GEMM Operations
 
 To execute kernels targeting Tensor Core operations, supply the flag `--op_class=tensorop` in the command line.
@@ -262,3 +315,106 @@ $ ./tools/profiler/cutlass_profiler --op_class=tensorop --m=3456 --n=4096 --k=81
 ### 3.5.2 Conv
 
 和 gemm 也是类似的，重点还是搞懂他们的参数。
+
+## 3.6 GEMM API Components
+
+This document focuses on device-level, threadblock-level GEMMs, warp-level GEMMs, thread-level GEMMs, and instruction-level GEMMs.
+
+
+### 3.6.1 Device-wide GEMM API
+
+The device-wide GEMM API is embodied by the following operators
+
++ cutlass::gemm::device::Gemm - basic GEMM operation
++ cutlass::gemm::device::GemmArray - batched GEMM operation in which input matrices are read from arrays of pointers
++ cutlass::gemm::device::GemmBatched - batched GEMM operation in which input matrices are separated by a constant stride
++ cutlass::gemm::device::GemmSplitKParallel - GEMM operation that partitions the GEMM K dimension then launches a separate reduction kernel
+
+都在 `cutlass/include/cutlass/gemm/device/` 目录下，basic GEMM 对应 `gemm.h` 文件
+
+# 4. 在 GPGPU-Sim 上运行
+
+## 4.1 cutlass-sim
+
+尝试了 Admodt 提供的 `https://github.com/gpgpu-sim/cutlass-gpgpu-sim`，仍然是 syntax error，估计是新版本编译的 PTX 有问题。2022-05-26 15:53:30，确实如此。
+
+不同 CUDA 版本对应不同的 PTX .version，得到的 PTX 指令是不一样的。这就是为什么 CUDA 11.4 wmma 指令会报错。
+
+## 4.2 Step
+
++ 下载并安装 CUDA Toolkit 9.2，使用这个版本编译模拟器。
+```shell
+
+
+```
+
+---
+接下来是编译运行 cuBLAS 的过程
+
+# 1. NVIDIA Samples
+
+https://github.com/NVIDIA/cuda-samples/ 在 library 目录中有提供调用 cublas 的代码，果然官方提供的资源才是最好的。git clone 下来就可以在 A10 上编译运行。重点是理解不同 API 的含义，需要的 parameter，gemm 的 data type, shape 等等，这一点需要多看文档。
+
+## 1.1 如何确定调用了 tensor core? 
+
+> Tensor cores were first introduced with Volta GPUs (compute capability>=sm_70) and significantly accelerate matrix multiplications. Starting with cuBLAS version 11.0.0, the library will automatically make use of Tensor Core capabilities wherever possible, unless they are explicitly disabled by selecting pedantic compute modes in cuBLAS (see cublasSetMathMode(), cublasMath_t).
+
+文档中说 cublas 会自动调用 tensor core
+
+
+
+# 2. Documentation
+
+## 2.1 Using the cuBLAS API
+
+> cuBLAS库提供了现成的矩阵乘法算子，例如`cublasGemmEx`和`cublasLtMatmul`。其中后者是轻量级版本，API调用更灵活。
+
+cublasGemmEx
+
+## 2.1.1 General Description
+
+> 应该注意的是，该库将选择启用 Tensor Core 的实现，只要它确定它将提供最佳性能。
+
+cuBLAS 11.0.0 之后支持任何 size 的矩阵，只是对齐的 size 能够更好地发挥 Tensor core 的性能。
+
+
+
+## 2.1.2 cuBLAS Datatypes Reference
+
+`cublasDataType_t handle`，一个有关cuBLAS库的上下文的句柄，之后需要传递给API函数，即计算乘法的函数
+
+`cublasOperation_t`, N, 非转置；T，转置；C，共轭转置。
+
+`cublasGemmEx` 中的 `cublasGemmAlgo_t`，`cublasGemmAlgo_t` 最高支持 sm_75，sm_80 已经不支持了，所以在 sm_80 中指定了也是无效的，在 sm_80 中所有枚举都等同于 `CUBLAS_GEMM_DEFAULT` 或者 `CUBLAS_GEMM_DEFAULT_TENSOR_OP`。在更新的架构中也会 deprecated
+
+`cudaDataType_t`, 直接作为 `cublasGemmEx` 的参数，支持 int8 到 double 类型。
+
+### 2.1.3 cuBLAS Level - 3 Function Reference
+
+`cublasSgemm`, `cublasDgemm`, `cublasCgemm`, `cublasZgemm`, `cublasHgemm` 应该是比较初始的 API。
+
+### 2.1.4 BLAS-like Extension
+
+> `cublasGemmEx()`. This function is an extension of cublas<t>gemm that allows the user to individually specify the data types for each of the A, B and C matrices, the precision of computation and the GEMM algorithm to be run. Supported combinations of arguments are listed further down in this section.
+
+自定义 data types，自己在 int8 中就用的这个 API，支持 sm_50 以上的架构。
+
+## 2.2 Using the cuBLASLt API
+
+cuBLASLt, a lightweight library dedicated to GEMM
+
+> The cuBLASLt in general does not guarantee to support all possible sizes and configurations.
+
+不一定支持任何 size
+
+### 2.2.1 cuBLASLt Datatypes Reference
+
+`cublasLtMatmulTile_t` 提供多种 tile size 
+
+## 2.3 Using the cuBLASXt API
+
+The cuBLASXt API of cuBLAS exposes a multi-GPU capable Host interface 
+
+cuBLASXT 似乎可以调用多个 GPU，比如有 4 A10 in QZ Server，code 限制只用两个 GPU。通过 cuBLASXT 执行 FP32 gemm，TFLOPS 应该不具备参考性了。
+
+参考：https://github.com/sxzhang1993/Run-cutlass-with-gpgpu-sim
