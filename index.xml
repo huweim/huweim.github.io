@@ -1,6 +1,708 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sun, 14 Aug 2022 19:33:17 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory Code</title><link>https://huweim.github.io/</link><description>Recent content on Cory Code</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Mon, 26 Sep 2022 02:42:41 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
 &lt;p>一个计算机体系结构方向的学生，喜欢体系结构，喜欢编程，喜欢篮球。目前的课题主要关注 GPU/GPGPU。&lt;/p>
-&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>Hugo 文章页面添加固定目录栏</title><link>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%9B%AE%E5%BD%95/</link><pubDate>Sun, 14 Aug 2022 19:33:17 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%9B%AE%E5%BD%95/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>（转载）Having Effective Meetings Between Advisors and Students</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_having-effective-meetings-between-advisors-and-students/</link><pubDate>Mon, 26 Sep 2022 02:42:41 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_having-effective-meetings-between-advisors-and-students/</guid><description>&lt;h1 id="having-effective-meetings-between-advisors-and-students">Having Effective Meetings Between Advisors and Students&lt;/h1>
+&lt;blockquote>
+&lt;p>by Mingyu Gao on Nov 2, 2020 | Tags: Academia, Advice, Students&lt;/p>
+&lt;/blockquote>
+&lt;p>链接：https://www.sigarch.org/having-effective-meetings-between-advisors-and-students/#undefined&lt;/p>
+&lt;p>来自高鸣宇老师，以下是翻译：&lt;/p>
+&lt;p>导师和学生之间的有效合作和交流是学术成功的关键。不幸的是，在大多数情况下，导师只能提供一周一次或者两周一次，而非日常的一对一 meeting。这意味着学生一个月也无法和导师交流几次。因此如何优化会议，实现学生和导师之间的有效交流就很值得思考。&lt;/p>
+&lt;p>实际上，对我来说现在有很多重要的课题。过去一年半内，我们组扩张到了 8 位研究生（包括下一年即将入学的学生）和一些本科生，以及 gap-year 实习生。几乎每个人都有自己的独立课题，需要时间开会和讨论。每周都会有这样的一次会议，每次会议的时间限制在 30-45 分钟。在这种情况下，交流的有效性十分重要。&lt;/p>
+&lt;p>我站在导师和学生这两个角色的视角思考了这件事，我会基于最近的经验分享一些建议，希望这个一手的建议对于新的研究生和导师有用。&lt;/p>
+&lt;h5 id="在开始的时候建立合适的风格">在开始的时候建立合适的风格&lt;/h5>
+&lt;p>在给出具体的建议之前，我想强调每个人有不同的偏好和工作风格。下面的建议不适用于所有人。因此了解彼此是很重要的，在师生关系开始的时候设置好清晰的期望。比如，学生可能会想知道导师的风格是怎样的，项目的里程碑和论文 deadline 可以预见一年内的节奏。导师也需要认知到学生有多独立，学生一周会在哪些时候工作，会工作多久。直接对话并不是一个坏主意，而不是一直观察并且慢慢适应。&lt;/p>
+&lt;blockquote>
+&lt;p>这个可以理解为前期的沟通，这也十分重要。适应彼此的节奏。&lt;/p>
+&lt;/blockquote>
+&lt;h5 id="专注于长期路线图和脚下的路">专注于长期路线图和脚下的路&lt;/h5>
+&lt;p>很多低年级学生喜欢准备很长很细节的进展报告，描述他们上周做过的所有事情。因为他们担心到时会觉得他们做的太少了。我认为这是不够的。为了从宝贵的时间中获得更多的信息，学生应该 &lt;strong>花更多的时间来寻求他们下一步应该做什么的建议&lt;/strong>。&lt;/p>
+&lt;blockquote>
+&lt;p>我完全同意这一点，实际上我在 meeting 的早期也是这么做的。描述了一些工作，询问下一步应该做 A 好一点还是做 B 好一点。但是有的时候投入的时间不足，自己都没怎么思考，也没什么进度，那肯定也就没有 &lt;strong>带着问题&lt;/strong> 去开会。这样的话可能只会觉得水过去就好了，浪费了宝贵的开会时间。&lt;/p>
+&lt;/blockquote>
+&lt;p>这是从导师那里学习如何思考研究问题，以及在 high level 审视项目的时间。更好的方法是学生简单地总结 &lt;strong>where they are now in the overall plan&lt;/strong>，以及 &lt;strong>接下来的计划是什么&lt;/strong>。之后导师可以开始提供评论和建议。&lt;/p>
+&lt;blockquote>
+&lt;p>我认为之前有过简单的总结，但是缺少一个 overall 的整理，确实，我们需要先总结之前工作的结论，然后总结目前推进到了哪一步，对于整体进度到了哪一步，然后再阐述接下来的计划。&lt;/p>
+&lt;/blockquote>
+&lt;p>有两种形式的讨论比较通用。在项目早期，快速地根据精炼的总结，和 high level 的预期来建立 &lt;strong>overall research roadmap&lt;/strong> 是非常重要的。低年级学生可能会提出一个有前途的想法，但是通常不会预见所有的设计问题和全部潜力。导师有助于彻底地分析挑战和机会，更好地找到期望的关键贡献。在投入阶段，应该把更多的时间花在 &lt;strong>immediate next steps&lt;/strong>，也就是下周应该关注什么。比如诸多事情里面优先级最高的，如何调整以处理实验中不好的结果，为了让这个工作更完整还需要补充什么探索。&lt;/p>
+&lt;p>在这样的会议之后，学生对于接下来做什么应该有清晰的蓝图，不管是对于最终的文章，还是对于下次会议前的工作。在会议之后总结一个 to do list 总是有所帮助的，它可以作为便于查询的一次记录，下次会议之前也可以检查进度。&lt;/p>
+&lt;h5 id="在线下写作中保存细节">在线下写作中保存细节&lt;/h5>
+&lt;p>如果会议都是关于 high level 的想法，我们什么时候应该讨论同样重要的底层细节，例如定理证明、模型细节、工作进展描述和具体案例研究？我的建议是把他们全部保存下来。换句话说，学生应该 &lt;strong>write detailed and comprehensive documents&lt;/strong>，包括这次会议中所有重要的，支撑 high level 观点的细节。导师可以在会议前后查阅这份文档。&lt;/p>
+&lt;p>我想强调的是这份文章需要 &lt;strong>尽可能地详细&lt;/strong>，这个和仅仅总结要点的，简明的会议 slide 不同。一眼看上去，这似乎非常低效，因为写作是非常耗时的。但是相比其优点，这都是值得的。&lt;/p>
+&lt;blockquote>
+&lt;p>目前参与了接近 3 个月 intern，在其中几次会议时会记下很多东西和细节，但是在过去一两个月之后，很多东西已经忘记了。一个研究项目的周期是很长的，因此这件事情确实也是有必要做的。&lt;/p>
+&lt;/blockquote>
+&lt;p>首先，当你开始写下这件事情的时候，作为学生，有机会组织整个 idea，回顾整个设计。有些时候总是会忘记一些事情，除非把他们都写下来，并且详尽地检查。其次，对老师来说，可以用充足的，线下的时间来仔细地浏览所有细节，而不是在背靠背的会议上，顶着紧凑的时间压力来做这些事情。第三点，对学生来说也是练习写作的好机会。如果你发现难以用文字清晰地解释完整的设计细节，总是将通过直接交谈来表达，那你应该记住，你是没有机会和文章审稿人交谈的。最后，这些内部文档的段落和图片很可能被重复使用，或者直接拷贝到最终的文章中。总之，你的时间没有被浪费。&lt;/p>
+&lt;blockquote>
+&lt;p>不知道有哪种工具适于这种 &lt;strong>内部文档&lt;/strong>，这个听起来是一个大家都能看到的，前期的 paper manuscript，应该有详细的图片和阐述。格式可能都接近于 paper 了，这个倒是可以请教一下高老师。&lt;/p>
+&lt;/blockquote>
+&lt;h5 id="学会做深度的分析">学会做深度的分析&lt;/h5>
+&lt;p>学生应该掌握的另一个技能是自己处理简单的问题，节约会议的时间，用这个时间来解决更重要和更困难的问题。这意味着学生应该学习如何独立地进行深度分析，以解决遇到的问题，或者至少收集足够的数据细节和证据，用于下一次会议的讨论。&lt;/p>
+&lt;p>一个例子是，当实验结果和初试期望不符时。与其等到下一次会议才报告给导师，不如通过分析数据主动找出合理的原因。一个技巧是 &lt;strong>zoom in to the next level of details&lt;/strong>，或者 &lt;strong>always measure one level deeper&lt;/strong>。例如，当网络数据包的时延呈现长尾（long tail）时，可以在 tail 中选择几个有代表性的数据包，检查它们的路由是否规律（从所有数据包进入到单个数据包），或者检查它们是否存在沿这些路径的常见热点（hotspot）（从整个路径（routes）进入到单个链接（link））。&lt;/p>
+&lt;blockquote>
+&lt;p>首先，道理就是很简单的要自己主动。但是行动起来并不容易。并且，这并不是一个简单的按钮，“行动”或者“不行动”，通常，人会在几种状态中切换。有的时候是不想去推进这个课题，由于遇到了一些阻力，可能是没有找到充足的论文支撑，可能是受到了导师的批评，可能是 peer pressure，可能是审稿人的质疑，可能是程序的 bug。这是一个螺旋推进的过程，要不断地调整自己的状态，周期性地审视。&lt;/p>
+&lt;p>根据高老师举的例子，理解为做更加底层/细粒度的分析。&lt;/p>
+&lt;/blockquote>
+&lt;h5 id="寻求帮助">寻求帮助&lt;/h5>
+&lt;p>reach out for help&lt;/p>
+&lt;p>最后的建议，同样也是最重要的，就是 &lt;strong>actively seek help when needed&lt;/strong>。从来没有人能够独自做所有事情。在你尝试了你能想到的一切方法后（比如那些前人的建议），是时候和你的同门交流，或者直接向导师寻求帮助。承认你遇到了问题，这个场景并不会羞耻或者尴尬。&lt;strong>你不必等到下一次会议&lt;/strong>。发送一封短邮件，或者直接去导师的办公室，简单交谈 5 分钟。或许导师的一两个词就是一盏明灯，让你有更多进展，而不是被卡在原地。生活和研究总是有起有落。请记住，你并不孤单，导师在这里提供帮助和支持。&lt;/p>
+&lt;blockquote>
+&lt;p>&lt;strong>不必等到下一次会议&lt;/strong>，一定要主动，积极。&lt;/p>
+&lt;p>&lt;strong>请记住，你并不孤单，导师在这里提供帮助和支持&lt;/strong>，当你找到了一起同行的人，一起讨论的人，一定要珍惜。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>作为总结&lt;/strong>，有效的会议是 &lt;strong>make a good plan for time and content&lt;/strong>。我的经验是按以下内容来组织。快速查看当前进度。主要花时间在改进建议和下一步的计划上。以待办事项摘要来结束会议。将简单和次要的问题，以及详细的审视作为离线任务。学习如何独立和全面地分析问题。在需要时积极寻求帮助。&lt;/p></description></item><item><title>论文阅读的笔记模板</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%9A%84%E7%AC%94%E8%AE%B0%E6%A8%A1%E6%9D%BF/</link><pubDate>Fri, 23 Sep 2022 11:15:41 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_%E8%AE%BA%E6%96%87%E9%98%85%E8%AF%BB%E7%9A%84%E7%AC%94%E8%AE%B0%E6%A8%A1%E6%9D%BF/</guid><description>&lt;h1 id="论文标题-title">论文标题 Title&lt;/h1>
+&lt;p>会议/期刊的信息，例：&lt;strong>MICRO'21&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>作者信息：&lt;/strong> 大概总结一下一作和其导师目前的情况，之前的一些工作，目前的机构等等。&lt;/p>
+&lt;h2 id="abs">Abs&lt;/h2>
+&lt;p>总结一下摘要。&lt;/p>
+&lt;p>浏览文章的图片，可以稍微总结一下图片传递的信息。&lt;/p>
+&lt;h2 id="1-intro-总体介绍">1. Intro 总体介绍&lt;/h2>
+&lt;p>看懂原文内容后，翻译或者用自己的话阐述，这部分要把几个问题说清楚，并且要有逻辑。&lt;/p>
+&lt;ul>
+&lt;li>文章大概的背景，之后会引申出，目前的问题是什么？&lt;/li>
+&lt;li>目前有哪些解决方案，有哪些工作，之后会阐述目前的工作的问题&lt;/li>
+&lt;li>介绍他们的解决方案（他们的 paper 做了什么，contribution 是什么）&lt;/li>
+&lt;/ul>
+&lt;h2 id="2-背景知识的相关工作">2. 背景知识的相关工作&lt;/h2>
+&lt;p>这部分会根据文章背景，把一些需要了解的概念稍微展开讲一下。&lt;/p>
+&lt;p>可能会把相关工作归类之后再讲一遍，如果是第一次读这个子领域的顶会，那么这部分内容涉及到的工作可以都浏览一下，了解大概的研究情况。&lt;/p>
+&lt;h2 id="3-method">3. Method&lt;/h2>
+&lt;p>这部分占据了主要的篇幅，一篇 12 页的文章可能有一半篇幅。我认为核心的地方是看懂每一张图片，暂时先不要过分沉浸于细节（比如各种参数是怎么设置的，除非图片有清晰的说明，否则这个需求应该是为复现服务的）。&lt;/p>
+&lt;p>总结一下，可能会有以下几个部分。&lt;/p>
+&lt;ul>
+&lt;li>展示一些实验结果，主要是为了说明： XX 参数我们为什么要设置为 YY；根据这个观察（例：前几层 layer 不需要高精度）所以我们有了 XX insight；主要是阐述为什么这个系统/架构中的一些参数/模块为什么要这么设计。&lt;/li>
+&lt;li>架构/系统的设计细节，能够完整地介绍工作的 flow&lt;/li>
+&lt;/ul>
+&lt;h2 id="4-实验评估结果">4. 实验/评估/结果&lt;/h2>
+&lt;p>介绍实验是怎么做的，用的什么模型/benchmark，在什么框架/系统/模拟器上实现的。&lt;/p>
+&lt;p>结果怎么样。一般很多人浏览时会在看完 intro 之后直接看结果如何。所以结果一定是直观的，一目了然的。&lt;/p>
+&lt;h2 id="5-结论">5. 结论&lt;/h2>
+&lt;p>总结一下作者结论部分的内容。&lt;/p>
+&lt;h2 id="6-总结">6. 总结&lt;/h2>
+&lt;p>⭐ 这部分是用自己的话总结，也是对自己的锻炼。阐述这篇文章解决的问题，他们的效果如何，他们和之前看的一些 &lt;strong>文章/方法/解决方案&lt;/strong> 相比如何。如果对小领域有了一些了解，还可以写下自己的 “主观” 评价，他们对于实际的 模型/硬件/框架 是否有作用，文章图片画的如何，文章结构如何，写作怎么样，有哪些可以学习的地方，工作量怎么样，有哪些地方比较 confuse，有哪些可以借鉴的地方，如果是你在设计实验，你会怎么做。&lt;/p></description></item><item><title>Python 语法学习</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</link><pubDate>Wed, 14 Sep 2022 11:15:41 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h5 id="函数">函数&lt;/h5>
+&lt;p>&lt;code>def forward(self, x: torch.Tensor) -&amp;gt; torch.Tensor:&lt;/code>，箭头 &lt;code>-&amp;gt;&lt;/code> 后面表示返回值&lt;/p>
+&lt;p>尝试在 class 内部调用成员函数，报了错。调用 class 内部成员函数要加上前缀 &lt;code>self.&lt;/code>，否则会被当成外部函数&lt;/p>
+&lt;p>&lt;strong>Python 不支持函数重载&lt;/strong>&lt;/p>
+&lt;h1 id="1-attribute">1. Attribute&lt;/h1>
+&lt;h2 id="11-string">1.1 string&lt;/h2>
+&lt;p>用 for 循环实现了 list 中的元素转为 string，目的是用来索引。for 感觉比较麻烦，不易读也不优雅，有没有更好的方法？&lt;/p>
+&lt;h3 id="111-operation">1.1.1 Operation&lt;/h3>
+&lt;h4 id="1111-slice">1.1.1.1 slice&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>b &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, World!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(b[&lt;span style="color:#ae81ff">2&lt;/span>:&lt;span style="color:#ae81ff">5&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># llo&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(b[&lt;span style="color:#ae81ff">2&lt;/span>:])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># llo, World! &lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="1112-replace">1.1.1.2 replace&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>string&lt;span style="color:#f92672">.&lt;/span>replace(oldvalue, newvalue, count)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># replaces a specified phrase with another specified phrase.&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="1113-split">1.1.1.3 Split&lt;/h4>
+&lt;p>The split() method splits a string into a list&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>string&lt;span style="color:#f92672">.&lt;/span>split(separator, maxsplit)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> file &lt;span style="color:#f92672">in&lt;/span> files:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># file -&amp;gt; &amp;#39;64_768_192.log&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> str_tmp &lt;span style="color:#f92672">=&lt;/span> file&lt;span style="color:#f92672">.&lt;/span>split(&lt;span style="color:#e6db74">&amp;#39;.&amp;#39;&lt;/span>)[&lt;span style="color:#ae81ff">0&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># file.split(&amp;#39;.&amp;#39;) -&amp;gt; [&amp;#39;64_768_192&amp;#39;, &amp;#39;log&amp;#39;]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># file.split(&amp;#39;.&amp;#39;)[0] -&amp;gt; &amp;#39;64_768_192&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> gemm_data[str_tmp] &lt;span style="color:#f92672">=&lt;/span> process_result(&lt;span style="color:#e6db74">&amp;#34;ant&amp;#34;&lt;/span>, file)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="1114-format">1.1.1.4 Format&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>txt1 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;My name is &lt;/span>&lt;span style="color:#e6db74">{fname}&lt;/span>&lt;span style="color:#e6db74">, I&amp;#39;m &lt;/span>&lt;span style="color:#e6db74">{age}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>format(fname &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;John&amp;#34;&lt;/span>, age &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">36&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>txt2 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;My name is &lt;/span>&lt;span style="color:#e6db74">{0}&lt;/span>&lt;span style="color:#e6db74">, I&amp;#39;m &lt;/span>&lt;span style="color:#e6db74">{1}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>format(&lt;span style="color:#e6db74">&amp;#34;John&amp;#34;&lt;/span>,&lt;span style="color:#ae81ff">36&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>txt3 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;My name is &lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">, I&amp;#39;m &lt;/span>&lt;span style="color:#e6db74">{}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>format(&lt;span style="color:#e6db74">&amp;#34;John&amp;#34;&lt;/span>,&lt;span style="color:#ae81ff">36&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(txt1)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># My name is John, I&amp;#39;m 36&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(txt2)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># My name is John, I&amp;#39;m 36&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(txt3)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># My name is John, I&amp;#39;m 36&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="112-实际使用时的一些需求">1.1.2 实际使用时的一些需求&lt;/h3>
+&lt;h4 id="1121-list-转-string">1.1.2.1 list 转 string&lt;/h4>
+&lt;p>&lt;strong>list item 是 string 类型，join&lt;/strong>&lt;/p>
+&lt;p>join, return values are strings&lt;/p>
+&lt;p>注意，使用这个方法，list 中的元素也需要是字符串，所以对于 list item 不是字符串的情况，也许还是得用 for loop。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># list = [1, 2, 3, 4, 5]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>list &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;1&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;2&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;3&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;4&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;5&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>join(list) &lt;span style="color:#75715e"># get &amp;#34;12345&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#39;,&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>join(list) &lt;span style="color:#75715e"># get &amp;#34;1,2,3,4,5&amp;#34; &lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>list item 不是 string 类型&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> it &lt;span style="color:#f92672">in&lt;/span> list:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> conv_list &lt;span style="color:#f92672">+=&lt;/span> str(it) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#39; &amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="1122-string-转-list">1.1.2.2 string 转 list&lt;/h4>
+&lt;p>&lt;strong>使用 list 函数&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> string
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>str_ &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;abcde&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>list1 &lt;span style="color:#f92672">=&lt;/span> list(str_)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(list1)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># [&amp;#39;a&amp;#39;, &amp;#39;b&amp;#39;, &amp;#39;c&amp;#39;, &amp;#39;d&amp;#39;, &amp;#39;e&amp;#39;]&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>使用 split() 函数&lt;/strong>，根据 string 中的某个分隔符来划分 element&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> file &lt;span style="color:#f92672">in&lt;/span> files:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># file -&amp;gt; &amp;#39;64_768_192.log&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> str_tmp &lt;span style="color:#f92672">=&lt;/span> file&lt;span style="color:#f92672">.&lt;/span>split(&lt;span style="color:#e6db74">&amp;#39;.&amp;#39;&lt;/span>)[&lt;span style="color:#ae81ff">0&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># file.split(&amp;#39;.&amp;#39;) -&amp;gt; [&amp;#39;64_768_192&amp;#39;, &amp;#39;log&amp;#39;]&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># file.split(&amp;#39;.&amp;#39;)[0] -&amp;gt; &amp;#39;64_768_192&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> gemm_data[str_tmp] &lt;span style="color:#f92672">=&lt;/span> process_result(&lt;span style="color:#e6db74">&amp;#34;ant&amp;#34;&lt;/span>, file)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="12-list">1.2 list&lt;/h1>
+&lt;h3 id="121-一些性质">1.2.1 一些性质&lt;/h3>
+&lt;ul>
+&lt;li>&lt;code>m_list[-1]&lt;/code> 直接索引到最后一个元素；&lt;code>m_list[-2]&lt;/code> 索引倒数第二个&lt;/li>
+&lt;/ul>
+&lt;h3 id="122-实际使用时的需要">1.2.2 实际使用时的需要&lt;/h3>
+&lt;h4 id="1221-multi-dimension-to-one-dimension">1.2.2.1 multi-dimension to one-dimension&lt;/h4>
+&lt;p>也就是多维列表转一维列表，有些时候只是想拿到所有数据并绘图或者做其他处理，不需要其 shape&lt;/p>
+&lt;p>对于二维列表，方法比较多，对于多维，目前找到一种方法，并且必须知道具体维度，写对应数量的 for 循环处理&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># from_iterable 方法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">from&lt;/span> itertools &lt;span style="color:#f92672">import&lt;/span> chain
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tmp_list &lt;span style="color:#f92672">=&lt;/span> list(chain&lt;span style="color:#f92672">.&lt;/span>from_iterable(grad_output[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>tolist()))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># grad_output[0].tolist() 是一个二维 list&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 使用 for 循环遍历，对于 四维 list&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tmp_list &lt;span style="color:#f92672">=&lt;/span> [element &lt;span style="color:#66d9ef">for&lt;/span> batch &lt;span style="color:#f92672">in&lt;/span> grad_output[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>tolist() &lt;span style="color:#66d9ef">for&lt;/span> channel &lt;span style="color:#f92672">in&lt;/span> batch &lt;span style="color:#66d9ef">for&lt;/span> height &lt;span style="color:#f92672">in&lt;/span> channel &lt;span style="color:#66d9ef">for&lt;/span> element &lt;span style="color:#f92672">in&lt;/span> height]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="1222-切片">1.2.2.2 切片&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>tmp_list &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#e6db74">&amp;#39;CS&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;EE&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;EECS&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 取前两个元素&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tmp_list[:&lt;span style="color:#ae81ff">2&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 从 index = 1 开始，取两个元素&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tmp_list[&lt;span style="color:#ae81ff">1&lt;/span>:&lt;span style="color:#ae81ff">3&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 前 10 个数，每 2 个数取一个&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tmp_list[:&lt;span style="color:#ae81ff">10&lt;/span>:&lt;span style="color:#ae81ff">2&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 所有数，每 5 个取一个&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tmp_list[::&lt;span style="color:#ae81ff">5&lt;/span>]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="1223-迭代">1.2.2.3 迭代&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 判断是否可以迭代&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#f92672">from&lt;/span> collections.abc &lt;span style="color:#f92672">import&lt;/span> Iterable
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> isinstance(&lt;span style="color:#e6db74">&amp;#39;abc&amp;#39;&lt;/span>, Iterable) &lt;span style="color:#75715e"># str是否可迭代&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">True&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> isinstance(&lt;span style="color:#ae81ff">123&lt;/span>, Iterable) &lt;span style="color:#75715e"># 整数是否可迭代&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">False&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 下标循环，用 enumerate&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#66d9ef">for&lt;/span> i, value &lt;span style="color:#f92672">in&lt;/span> enumerate([&lt;span style="color:#e6db74">&amp;#39;A&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;B&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;C&amp;#39;&lt;/span>]):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">...&lt;/span> print(i, value)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">0&lt;/span> A
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">1&lt;/span> B
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">2&lt;/span> C
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 二维 list 遍历&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#66d9ef">for&lt;/span> x, y &lt;span style="color:#f92672">in&lt;/span> [(&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>), (&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>), (&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">9&lt;/span>)]:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">...&lt;/span> print(x, y)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">3&lt;/span> &lt;span style="color:#ae81ff">9&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="1224-列表生成">1.2.2.4 列表生成&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 最基本的用 range&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> list(range(&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">11&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>, &lt;span style="color:#ae81ff">7&lt;/span>, &lt;span style="color:#ae81ff">8&lt;/span>, &lt;span style="color:#ae81ff">9&lt;/span>, &lt;span style="color:#ae81ff">10&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 用 for 循环&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> [x &lt;span style="color:#f92672">*&lt;/span> x &lt;span style="color:#66d9ef">for&lt;/span> x &lt;span style="color:#f92672">in&lt;/span> range(&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">11&lt;/span>)]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">9&lt;/span>, &lt;span style="color:#ae81ff">16&lt;/span>, &lt;span style="color:#ae81ff">25&lt;/span>, &lt;span style="color:#ae81ff">36&lt;/span>, &lt;span style="color:#ae81ff">49&lt;/span>, &lt;span style="color:#ae81ff">64&lt;/span>, &lt;span style="color:#ae81ff">81&lt;/span>, &lt;span style="color:#ae81ff">100&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 比如列出当前目录下的所有文件和目录名&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#f92672">import&lt;/span> os
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> [d &lt;span style="color:#66d9ef">for&lt;/span> d &lt;span style="color:#f92672">in&lt;/span> os&lt;span style="color:#f92672">.&lt;/span>listdir(&lt;span style="color:#e6db74">&amp;#39;.&amp;#39;&lt;/span>)] &lt;span style="color:#75715e"># os.listdir可以列出文件和目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#e6db74">&amp;#39;.emacs.d&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;.ssh&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;.Trash&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;Adlm&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;Applications&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;Desktop&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;Documents&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;Downloads&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;Library&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;Movies&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;Music&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;Pictures&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;Public&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;VirtualBox VMs&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;Workspace&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;XCode&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="13-tuple">1.3 tuple&lt;/h2>
+&lt;h3 id="131-基本性质">1.3.1 基本性质&lt;/h3>
+&lt;p>&lt;code>m_tuple = ('CS', 'EE', 'EECS')&lt;/code>&lt;/p>
+&lt;p>和 list 比较类似，不过 tuple 不能修改，只读；不过看了一些拓展，这个不可变似乎只是指针的指向不变，而指针对象本身是否改变就不知道了。&lt;/p>
+&lt;p>&lt;strong>只有一个元素的 tuple 为了消除歧义&lt;/strong>，会表示为 &lt;code>t = (1, )&lt;/code>；这一点和我打印出来的结果是一致的，一开始还困惑为什么有个 &lt;code>,&lt;/code>&lt;/p>
+&lt;h3 id="132-操作">1.3.2 操作&lt;/h3>
+&lt;p>&lt;strong>切片&lt;/strong>，和 list 类似&lt;/p>
+&lt;h2 id="14-dict">1.4 dict&lt;/h2>
+&lt;h3 id="141-判断-keyvalue-是否存在">1.4.1 判断 key/value 是否存在&lt;/h3>
+&lt;p>&lt;strong>key&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>dict_tmp&lt;span style="color:#f92672">.&lt;/span>has_key()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>value&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 判断 key 是否存在&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#39;CS&amp;#39;&lt;/span> &lt;span style="color:#f92672">in&lt;/span> Major
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 不存在则返回 None&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Major&lt;span style="color:#f92672">.&lt;/span>get(&lt;span style="color:#e6db74">&amp;#39;CS&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 不存在则返回 -1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Major&lt;span style="color:#f92672">.&lt;/span>get(&lt;span style="color:#e6db74">&amp;#39;CS&amp;#39;&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="142-存放">1.4.2 存放&lt;/h3>
+&lt;p>dict 内部存放的顺序和 key 放入的顺序是没有关系的。&lt;/p>
+&lt;p>key 必须是不可变对象，比如 string, 整数可以作为 key，但是 list 不能作为 key，因为 list 可变&lt;/p>
+&lt;h3 id="143-迭代">1.4.3 迭代&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 默认迭代 key&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>d &lt;span style="color:#f92672">=&lt;/span> {&lt;span style="color:#e6db74">&amp;#39;a&amp;#39;&lt;/span>: &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;b&amp;#39;&lt;/span>: &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;c&amp;#39;&lt;/span>: &lt;span style="color:#ae81ff">3&lt;/span>}
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> key &lt;span style="color:#f92672">in&lt;/span> d:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">pass&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 迭代 value&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> value &lt;span style="color:#f92672">in&lt;/span> d&lt;span style="color:#f92672">.&lt;/span>values():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">pass&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 同时迭代&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> k, v &lt;span style="color:#f92672">in&lt;/span> d&lt;span style="color:#f92672">.&lt;/span>items():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">pass&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="15-set">1.5 set&lt;/h2>
+&lt;p>看起来就是去重的数组&lt;/p>
+&lt;h2 id="16-array">1.6 array&lt;/h2>
+&lt;h3 id="161-什么是-array-like">1.6.1 什么是 array like&lt;/h3>
+&lt;p>&lt;a href="https://stackoverflow.com/questions/40378427/numpy-formal-definition-of-array-like-objects">https://stackoverflow.com/questions/40378427/numpy-formal-definition-of-array-like-objects&lt;/a> 回答 in stackoverflow&lt;/p>
+&lt;blockquote>
+&lt;p>It turns out almost anything is technically an array-like. &amp;ldquo;Array-like&amp;rdquo; is more of a statement of how the input will be interpreted than a restriction on what the input can be; if a parameter is documented as array-like, NumPy will try to interpret it as an array.&lt;/p>
+&lt;/blockquote>
+&lt;p>一个陈述，如何去理解 input，而非一个限制。&lt;/p>
+&lt;blockquote>
+&lt;p>The term &amp;ldquo;array-like&amp;rdquo; is used in NumPy, referring to anything that can be passed as first parameter to &lt;code>numpy.array()&lt;/code> to create an array ().&lt;/p>
+&lt;/blockquote>
+&lt;p>直接的定义，可以作为 &lt;code>numpy.array()&lt;/code> 的第一个参数&lt;/p>
+&lt;p>&lt;a href="https://thecleverprogrammer.com/2021/03/19/difference-between-tensors-and-arrays/">https://thecleverprogrammer.com/2021/03/19/difference-between-tensors-and-arrays/&lt;/a>&lt;/p>
+&lt;p>The difference between a NumPy array and a tensor is that the tensors are backed by the accelerator memory like GPU and they are immutable, unlike NumPy arrays.&lt;/p>
+&lt;p>总的来说，&lt;strong>Tensors are like arrays&lt;/strong>, both are data structures that are used to store data that can be indexed individually.&lt;/p>
+&lt;p>&lt;strong>综上，tensor 是否是 array-like?&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>是的&lt;/strong>&lt;/p>
+&lt;h2 id="1x-其他特性">1.X 其他特性&lt;/h2>
+&lt;h3 id="1x1-generator">1.X.1 generator&lt;/h3>
+&lt;p>暂时没有用过，先挖个坑&lt;/p>
+&lt;h1 id="2-数据类型变量语法">2. 数据类型，变量，语法&lt;/h1>
+&lt;h2 id="21-data-type">2.1 data type&lt;/h2>
+&lt;p>python 支持的 data type 应该足够满足日常使用了。&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>complex 在 cutlass 里面也有支持，不过平时没有使用过。tuple 使用也比较少&lt;/p>
+&lt;h3 id="211-float">2.1.1 float&lt;/h3>
+&lt;p>可以写成 &lt;code>1.23e9&lt;/code>&lt;/p>
+&lt;h3 id="212-string">2.1.2 string&lt;/h3>
+&lt;p>python 中，用 &lt;code>''&lt;/code> 和 &lt;code>&amp;quot;&amp;quot;&lt;/code> 有什么区别？&lt;/p>
+&lt;p>从 stackoverflow 回答来看是完全一样的&lt;/p>
+&lt;h2 id="22-类型转换">2.2 类型转换&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>x &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">25&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>str_ &lt;span style="color:#f92672">=&lt;/span> str(x)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>int_ &lt;span style="color:#f92672">=&lt;/span> int(str_)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="23-编码">2.3 编码&lt;/h2>
+&lt;blockquote>
+&lt;p>UTF-8 编码，把一个Unicode字符根据不同的数字大小编码成1-6个字节，常用的英文字母被编码成1个字节，汉字通常是3个字节，只有很生僻的字符才会被编码成4-6个字节。&lt;/p>
+&lt;/blockquote>
+&lt;p>看来这里也有哈夫曼的思想&lt;/p>
+&lt;h2 id="24-global-variables">2.4 Global Variables&lt;/h2>
+&lt;p>在函数内部创建变量时，默认是局部的&lt;/p>
+&lt;p>在函数外部定义变量时，默认是全局的，此时无需使用 global 关键字；在函数外使用 global 没有作用。&lt;/p>
+&lt;p>在函数内读写全局变量时，需要使用 global 关键字&lt;/p>
+&lt;h1 id="3-file-操作">3. File 操作&lt;/h1>
+&lt;h2 id="31-文件读写">3.1 文件读写&lt;/h2>
+&lt;p>read, open, write&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>f &lt;span style="color:#f92672">=&lt;/span> open(&lt;span style="color:#e6db74">&amp;#34;demofile.txt&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;r&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(f&lt;span style="color:#f92672">.&lt;/span>read())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>f &lt;span style="color:#f92672">=&lt;/span> open(&lt;span style="color:#e6db74">&amp;#34;demofile2.txt&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;a&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># a, append; w, overwrite&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>f&lt;span style="color:#f92672">.&lt;/span>write(&lt;span style="color:#e6db74">&amp;#34;Now the file has more content!&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>f&lt;span style="color:#f92672">.&lt;/span>close()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>实际使用&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> i, line &lt;span style="color:#f92672">in&lt;/span> enumerate(open(get_file_path() &lt;span style="color:#f92672">+&lt;/span> file)):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> match &lt;span style="color:#f92672">in&lt;/span> re&lt;span style="color:#f92672">.&lt;/span>finditer(pattern_cycle, line):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> tmp &lt;span style="color:#f92672">=&lt;/span> list(match&lt;span style="color:#f92672">.&lt;/span>group(&lt;span style="color:#ae81ff">1&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> tmp &lt;span style="color:#f92672">=&lt;/span> float(&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>join(tmp))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res_data[&lt;span style="color:#e6db74">&amp;#34;cycle&amp;#34;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> tmp
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="32-文件目录操作">3.2 文件目录操作&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">(&lt;/span>torch&lt;span style="color:#f92672">)&lt;/span> zdli@GPU74:/nvme/wmhu$ &lt;span style="color:#75715e"># 工作目录&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>/nvme/wmhu/shader_docker/cutlass-gpgpu-sim &lt;span style="color:#75715e"># python 文件所在的目录&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>一些常用的路径&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>path_ &lt;span style="color:#f92672">=&lt;/span> os.getcwd&lt;span style="color:#f92672">()&lt;/span> &lt;span style="color:#75715e"># 获取当前工作目录的绝对路径, /nvme/wmhu&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>path_ &lt;span style="color:#f92672">=&lt;/span> os.path.abspath&lt;span style="color:#f92672">(&lt;/span>__ file __&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#75715e"># 获取当前文件的绝对路径, /nvme/wmhu/shader_docker/cutlass-gpgpu-sim/data_analyze.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>path_ &lt;span style="color:#f92672">=&lt;/span> os.path.dirname&lt;span style="color:#f92672">(&lt;/span>__file__&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#75715e"># 获得当前文件所在目录的绝对路径, /nvme/wmhu/shader_docker/cutlass-gpgpu-sim&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="4-函数">4. 函数&lt;/h1>
+&lt;h2 id="41-一些特性">4.1 一些特性&lt;/h2>
+&lt;h3 id="411-别名和引用">4.1.1 别名和引用&lt;/h3>
+&lt;p>Python 中可以把函数名赋值给一个对象&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> a &lt;span style="color:#f92672">=&lt;/span> abs
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> a(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="412-pass-占位符">4.1.2 pass 占位符&lt;/h3>
+&lt;p>还没想好函数或者条件语句的内容，可以用一个 pass，让代码可以先运行&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">nop&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">pass&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">if&lt;/span> agr &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">18&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">pass&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="413-参数检查">4.1.3 参数检查&lt;/h3>
+&lt;p>参数数量不对时，Python 解释器可以检查；如果是参数 type 错误，Python 解释器可能看不出来。可以用函数 &lt;code>isinstance()&lt;/code> 来检查，这个看起来有点像 assert()，一个典型的错误和异常处理&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">my_abs&lt;/span>(x):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> isinstance(x, (int, float)):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">raise&lt;/span> &lt;span style="color:#a6e22e">TypeError&lt;/span>(&lt;span style="color:#e6db74">&amp;#39;bad operand type&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> x &lt;span style="color:#f92672">&amp;gt;=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">else&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> &lt;span style="color:#f92672">-&lt;/span>x
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="42-__init__-and-forward">4.2 &lt;strong>init&lt;/strong> and forward()&lt;/h2>
+&lt;p>了解函数的定义，以及调用，比如 &lt;strong>init&lt;/strong>&lt;/p>
+&lt;h3 id="421-__init__">4.2.1 &lt;strong>init&lt;/strong>&lt;/h3>
+&lt;blockquote>
+&lt;p>个人将其理解为 C 中的构造函数&lt;/p>
+&lt;/blockquote>
+&lt;p>创建对象时，python 解释器会自动调用它。&lt;/p>
+&lt;h3 id="422-forward">4.2.2 forward()&lt;/h3>
+&lt;p>使用 pytorch 的训练模型的时候，不需要调用 forward 函数，只需要在实例化一个对象中（&lt;code>model = ViT(model_name, pretrained=True)&lt;/code>）传入对应的参数，就可以自动调用 forward 函数，下面展示一个例子。来自 &lt;a href="https://zhuanlan.zhihu.com/p/357021687">https://zhuanlan.zhihu.com/p/357021687&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Module&lt;/span>(nn&lt;span style="color:#f92672">.&lt;/span>Module):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> super()&lt;span style="color:#f92672">.&lt;/span>__init__()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># ......&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">forward&lt;/span>(self, x):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># ......&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>data &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">......&lt;/span> &lt;span style="color:#75715e"># 输入数据&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 实例化一个对象&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>model &lt;span style="color:#f92672">=&lt;/span> Module()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 前向传播&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>model(data)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 而不是使用下面的&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># model.forward(data) &lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="422-why">4.2.2 Why?&lt;/h3>
+&lt;p>为什么有这种等价关系？&lt;code>model(data)&lt;/code> 等价于 &lt;code>model.forward(data)&lt;/code>，因为在 class 中使用了 &lt;strong>call&lt;/strong> 函数。更深的就不继续展开了。&lt;/p>
+&lt;h2 id="43-unittest">4.3 unittest&lt;/h2>
+&lt;p>2022-08-01 14:38:19，今天接触到这玩意儿。因为组里面这边在做和 ngp 相关的东西。有同学用 jax 写了一版代码，test.py 文件看起来没有入口，所有函数都在 class 里面。调试的方式就是 &lt;code>python -m unittest test.py&lt;/code>。所以算是接触到了一个新的东西。&lt;/p>
+&lt;p>编写单元测试时，我们需要编写一个测试类，从unittest.TestCase继承。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 如下，继承自 unittest.TestCase&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">TestFoward&lt;/span>(unittest&lt;span style="color:#f92672">.&lt;/span>TestCase):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">pass&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="44-pytest">4.4 pytest&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>pip install pytest
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="441-命名规则">4.4.1 命名规则&lt;/h3>
+&lt;ul>
+&lt;li>测试文件名必须以“test_”开头&lt;/li>
+&lt;li>测试类以Test开头，并且不能带有 init 方法&lt;/li>
+&lt;li>测试函数必须以“test_”开头&lt;/li>
+&lt;li>除了有setup/teardown，还能更自由的定义fixture装载测试用例&lt;/li>
+&lt;li>&amp;hellip;&lt;/li>
+&lt;/ul>
+&lt;h3 id="442-case">4.4.2 case&lt;/h3>
+&lt;p>来自 &lt;a href="https://www.jianshu.com/p/75c27fe23b4e">https://www.jianshu.com/p/75c27fe23b4e&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># test_class.py&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">TestClass&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">test_one&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;this&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">assert&lt;/span> &lt;span style="color:#e6db74">&amp;#39;h&amp;#39;&lt;/span> &lt;span style="color:#f92672">in&lt;/span> x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">test_two&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;hello&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">assert&lt;/span> hasattr(x, &lt;span style="color:#e6db74">&amp;#39;check&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>运行&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ pytest -v test_
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="45-参数">4.5 参数&lt;/h2>
+&lt;p>函数作为另一个函数的参数传入：&lt;/p>
+&lt;h3 id="451-返回多个参数">4.5.1 返回多个参数&lt;/h3>
+&lt;p>其实就是返回一个 tuple，但是在语法上，接收时不需要用括号&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> math
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">move&lt;/span>(x, y, step, angle&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> nx &lt;span style="color:#f92672">=&lt;/span> x &lt;span style="color:#f92672">+&lt;/span> step &lt;span style="color:#f92672">*&lt;/span> math&lt;span style="color:#f92672">.&lt;/span>cos(angle)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> ny &lt;span style="color:#f92672">=&lt;/span> y &lt;span style="color:#f92672">-&lt;/span> step &lt;span style="color:#f92672">*&lt;/span> math&lt;span style="color:#f92672">.&lt;/span>sin(angle)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> nx, ny
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x, y &lt;span style="color:#f92672">=&lt;/span> move(&lt;span style="color:#ae81ff">100&lt;/span>, &lt;span style="color:#ae81ff">100&lt;/span>, &lt;span style="color:#ae81ff">60&lt;/span>, math&lt;span style="color:#f92672">.&lt;/span>pi &lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#ae81ff">6&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="452-默认参数">4.5.2 默认参数&lt;/h3>
+&lt;p>Python 应该不像 C 语言那样有函数的重构，可以用默认参数；必选参数必须全部放在前面，而全部可选参数/默认参数放在后面&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">power&lt;/span>(x, n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> s &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">while&lt;/span> n &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> n &lt;span style="color:#f92672">=&lt;/span> n &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> s &lt;span style="color:#f92672">=&lt;/span> s &lt;span style="color:#f92672">*&lt;/span> x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> s
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> power(&lt;span style="color:#ae81ff">5&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">25&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> power(&lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">25&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="453-可变参数">4.5.3 可变参数&lt;/h3>
+&lt;p>和返回的情况类似，传入的参数是一个 tuple，下面给出语法&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 加上 * 代表传入可变参数&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">calc&lt;/span>(&lt;span style="color:#f92672">*&lt;/span>numbers):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sum &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> n &lt;span style="color:#f92672">in&lt;/span> numbers:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> sum &lt;span style="color:#f92672">=&lt;/span> sum &lt;span style="color:#f92672">+&lt;/span> n &lt;span style="color:#f92672">*&lt;/span> n
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> sum
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nums &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 传可变参数，过于繁琐&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>calc(nums[&lt;span style="color:#ae81ff">0&lt;/span>], nums[&lt;span style="color:#ae81ff">1&lt;/span>], nums[&lt;span style="color:#ae81ff">2&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 类似于返回多参数的写法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>calc(&lt;span style="color:#f92672">*&lt;/span>nums)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="454-关键字参数">4.5.4 关键字参数&lt;/h3>
+&lt;p>2022-08-11 15:28:10，这一块就是在理论上比较薄弱的地方，也是为什么之前阅读 Python 代码存在一些阻碍。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 除了必选参数 name, age，还可以传入任意个关键字参数 kw&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>def person&lt;span style="color:#f92672">(&lt;/span>name, age, **kw&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print&lt;span style="color:#f92672">(&lt;/span>&lt;span style="color:#e6db74">&amp;#39;name:&amp;#39;&lt;/span>, name, &lt;span style="color:#e6db74">&amp;#39;age:&amp;#39;&lt;/span>, age, &lt;span style="color:#e6db74">&amp;#39;other:&amp;#39;&lt;/span>, kw&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="455-命名关键字参数">4.5.5 命名关键字参数&lt;/h3>
+&lt;p>这个感觉在很多 Python 内置库中常用，限制关键字参数的名字。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># * 作为分隔符，* 之后的参数被视为命名关键字参数&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">person&lt;/span>(name, age, &lt;span style="color:#f92672">*&lt;/span>, city, job):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(name, age, city, job)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 也可以由一个可变参数来分隔&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">person&lt;/span>(name, age, &lt;span style="color:#f92672">*&lt;/span>args, city, job):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(name, age, args, city, job)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> person(&lt;span style="color:#e6db74">&amp;#39;Jack&amp;#39;&lt;/span>, &lt;span style="color:#ae81ff">24&lt;/span>, city&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;Beijing&amp;#39;&lt;/span>, job&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;Engineer&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>Jack &lt;span style="color:#ae81ff">24&lt;/span> Beijing Engineer
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>对于任意函数，都可以通过类似func(*args, **kw)的形式调用它，无论它的参数是如何定义的。&lt;/p>
+&lt;h2 id="45-高阶函数">4.5 高阶函数&lt;/h2>
+&lt;p>2022-08-11 16:02:01，之前疑惑的一个地方，函数作为另一个函数的参数传入。这个就是高阶函数。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 高阶函数的例子&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">add&lt;/span>(x, y, f):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">return&lt;/span> f(x) &lt;span style="color:#f92672">+&lt;/span> f(y)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="451-map-reduce">4.5.1 map, reduce&lt;/h3>
+&lt;p>&lt;code>map()&lt;/code> 的参数，一个是函数，另一个是可迭代序列，&lt;code>map()&lt;/code> 会把传入的函数依次作用到序列的每个元素，然后把结果返回到序列中&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">f&lt;/span>(x):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">...&lt;/span> &lt;span style="color:#66d9ef">return&lt;/span> x &lt;span style="color:#f92672">*&lt;/span> x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">...&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> r &lt;span style="color:#f92672">=&lt;/span> map(f, [&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>, &lt;span style="color:#ae81ff">7&lt;/span>, &lt;span style="color:#ae81ff">8&lt;/span>, &lt;span style="color:#ae81ff">9&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> list(r)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">9&lt;/span>, &lt;span style="color:#ae81ff">16&lt;/span>, &lt;span style="color:#ae81ff">25&lt;/span>, &lt;span style="color:#ae81ff">36&lt;/span>, &lt;span style="color:#ae81ff">49&lt;/span>, &lt;span style="color:#ae81ff">64&lt;/span>, &lt;span style="color:#ae81ff">81&lt;/span>]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>reduce()&lt;/code> 也就接受函数作为参数，他会把函数作用在一个序列上，并把结果和序列中的下一个元素做累计计算&lt;/p>
+&lt;p>&lt;code>reduce(f, [x1, x2, x3, x4]) = f(f(f(x1, x2), x3), x4)&lt;/code>&lt;/p>
+&lt;h3 id="452-lambda">4.5.2 lambda&lt;/h3>
+&lt;p>匿名函数，简化代码的一种方式&lt;/p>
+&lt;h1 id="5-class">5. Class&lt;/h1>
+&lt;h2 id="51-构造函数">5.1 构造函数&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Student&lt;/span>(object):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(self, name, score):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>name &lt;span style="color:#f92672">=&lt;/span> name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>score &lt;span style="color:#f92672">=&lt;/span> score
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 如果要定义为 私有成员，加两个下划线&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>__name &lt;span style="color:#f92672">=&lt;/span> name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> self&lt;span style="color:#f92672">.&lt;/span>__score &lt;span style="color:#f92672">=&lt;/span> score
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> bart &lt;span style="color:#f92672">=&lt;/span> Student(&lt;span style="color:#e6db74">&amp;#39;Bart Simpson&amp;#39;&lt;/span>, &lt;span style="color:#ae81ff">59&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> bart&lt;span style="color:#f92672">.&lt;/span>name
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#39;Bart Simpson&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> bart&lt;span style="color:#f92672">.&lt;/span>score
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">59&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="52-继承">5.2 继承&lt;/h2>
+&lt;p>继承的语法&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Animal&lt;/span>(object):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">run&lt;/span>(self):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(&lt;span style="color:#e6db74">&amp;#39;Animal is running...&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 把这个 object 换成需要继承的 class 即可&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Dog&lt;/span>(Animal):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">pass&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Cat&lt;/span>(Animal):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">pass&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="6-module--模块">6. module / 模块&lt;/h1>
+&lt;h2 id="61-获取模块中的元素--遍历模块">6.1 获取模块中的元素 / 遍历模块&lt;/h2>
+&lt;p>定义了一个模块 &lt;code>coda_int.py&lt;/code> 用来装需要绘图的所有 list，一个接一个输入名字过于繁琐，尝试获取模块的中对象来自动遍历。&lt;/p>
+&lt;h3 id="611-遍历模块">6.1.1 遍历模块&lt;/h3>
+&lt;p>2022-09-14 11:13:48 搞定。用 &lt;code>if not key.startswith('__')&lt;/code> 来过滤掉一些自带的方法，剩下的就是 &lt;code>cola_int&lt;/code> 这个 module 中的 list。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> key, value &lt;span style="color:#f92672">in&lt;/span> cola_int&lt;span style="color:#f92672">.&lt;/span>__dict__&lt;span style="color:#f92672">.&lt;/span>items():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> key&lt;span style="color:#f92672">.&lt;/span>startswith(&lt;span style="color:#e6db74">&amp;#39;__&amp;#39;&lt;/span>):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(value[&lt;span style="color:#e6db74">&amp;#39;max&amp;#39;&lt;/span>])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="debug">Debug&lt;/h1>
+&lt;blockquote>
+&lt;p>用Python开发程序，完全可以一边在文本编辑器里写代码，一边开一个交互式命令窗口，在写代码的过程中，把部分代码粘到命令行去验证，事半功倍！前提是得有个27&amp;rsquo;的超大显示器！&lt;/p>
+&lt;/blockquote>
+&lt;p>这倒是这类语言的一个debug 方法&lt;/p>
+&lt;h1 id="bug">BUG&lt;/h1>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#e6db74">&amp;#39;dict_values&amp;#39;&lt;/span> object &lt;span style="color:#f92672">is&lt;/span> &lt;span style="color:#f92672">not&lt;/span> subscriptable
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tot_stat[model_name &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;_&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> mode] &lt;span style="color:#f92672">=&lt;/span> sum_stat&lt;span style="color:#f92672">.&lt;/span>values()[len_ &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>:]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意 sum_stat.values() 返回的是 dict_keys 对象而不是 list，不支持 index 索引，可以使用&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>tot_stat[model_name &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;_&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> mode] &lt;span style="color:#f92672">=&lt;/span> list(sum_stat&lt;span style="color:#f92672">.&lt;/span>values())[len_ &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>:]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="reference">Reference&lt;/h1>
+&lt;p>&lt;a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017024645952992">https://www.liaoxuefeng.com/wiki/1016959663602400/1017024645952992&lt;/a>&lt;/p></description></item><item><title>Tips to Become a Better (Computer Science) Ph.D. Student (By Ziyang Xu)</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-to-become-a-better-computer-science-ph.d.-student/</link><pubDate>Sun, 28 Aug 2022 00:04:17 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-to-become-a-better-computer-science-ph.d.-student/</guid><description>&lt;p>转载北大本科生，本科在梁云老师那里实习，现在是 princeton phd&lt;/p>
+&lt;p>Other amazing blogs out there:&lt;/p>
+&lt;ul>
+&lt;li>&lt;a href="http://www.pgbovine.net/PhD-memoir.htm">The Ph.D. Grind&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.ifs.tuwien.ac.at/~silvia/research-tips/">Tips: How to Do Research&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.cs.unc.edu/~azuma/hitch4.html">So long, and thanks for the Ph.D.!&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.math.waikato.ac.nz/~seano/grad-school-advice.html">Graduate School Survival Guide&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.sigarch.org/tips-for-a-new-computer-architecture-phd-student/">Tips for a New Computer Architecture PhD Student&lt;/a>&lt;/li>
+&lt;/ul>
+&lt;h2 id="5-topics">5 Topics&lt;/h2>
+&lt;h3 id="research--course">Research &amp;gt; Course&lt;/h3>
+&lt;p>Young Ph.D. students tend to spend too much time on courses. However, research outweighs courses.&lt;/p>
+&lt;p>&lt;strong>Take courses with a grain of salt&lt;/strong>&lt;/p>
+&lt;p>Courses are not as important as they seem to be. The priority of a Ph.D. student is to do research – the earlier you start your research, the better off you’ll be in the long run.&lt;/p>
+&lt;p>However, &lt;strong>don’t go to extremes&lt;/strong>! A poor grade can also be a huge problem. You should always be familiar with the requirement of qualification exams or generals and meet all the standards about the courses.&lt;/p>
+&lt;p>&lt;strong>Remember the main ideas of courses&lt;/strong>&lt;/p>
+&lt;p>Trapping ourselves in trivial details of a course is easy. However, most of the specifics are not important to our research even if the topic is related to our area.&lt;/p>
+&lt;p>A good approach is to use what you’ve learned from one course and apply it to a different field (e.g., taking an analysis tool from a compiler course and applying it in computer networks).&lt;/p>
+&lt;blockquote>
+&lt;p>低年级的 phd 容易迷失在课程中，但是这也完全可以理解。我自己研一的时候由于不适应节奏，感觉几乎所有时间都是花在课程上的。科研比课程重要，我相信大多数人都知道，只是去调整，去适应还需要花费一点时间。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="be-professional">Be professional&lt;/h3>
+&lt;p>Treat your Ph.D. as a job. You get paid (albeit not much) for being a Ph.D. candidate, so make your work worth the money. This professional mindset should also be apparent to your advisor. Some advisors take on a more hands-off approach, for instance letting you work from home, but this is no reason for slacking; you should be responsible for your research schedule, such as reminding your advisor of plans from previous group meetings. Your status is not that of a student but rather that of a peer in the research community.&lt;/p>
+&lt;blockquote>
+&lt;p>个人理解举几个具体一点的例子吧，比如 meeting 之类的做好 PPT，有什么事情快速回复和确认，不要看到了之后想着做完了再回复；做不出来的东西也要及时反馈；有时间观念&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="read-a-lot-and-read-broadly">Read a lot and read broadly&lt;/h3>
+&lt;p>Though it can be very daunting starting out, reading papers is an essential part of the Ph.D. life. Previously, you may have read papers when it was necessary for a class or a project. However, you should put reading papers in your daily routine. Doing so allows you to draw inspiration from a sea of knowledge and prevents yourself from reinventing the wheel. Besides, it’s a great way to be productive on a slow day.&lt;/p>
+&lt;h3 id="make-a-plan-to-read">Make a plan to read&lt;/h3>
+&lt;p>When scheduling your day, assign one period just for reading papers. You can read one paper in depth or compare several papers; regardless of your choice, allotting time to this task is the key.&lt;/p>
+&lt;h3 id="read-broadly">Read broadly&lt;/h3>
+&lt;p>Reading papers from different subfields of computer science is a great way to learn the jargon, the method, and the mindset of researchers in each field. This can be the first step towards discovering opportunities for collaboration.&lt;/p>
+&lt;blockquote>
+&lt;p>很惭愧还没有养成每天固定阅读的习惯，我觉得这个必须在入学前做好。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="fail-fast">Fail fast&lt;/h3>
+&lt;p>It is not uncommon for a Ph.D. student to spend several years building a system that turns out to be fundamentally flawed or not as applicable as expected. Don’t worry! There is nothing wrong with failing, and perhaps we should even expect failure to be part of the journey. But we should aim to fail early in order to have time to work on another project (and graduate!).&lt;/p>
+&lt;p>&lt;strong>Perform a limit study&lt;/strong>&lt;/p>
+&lt;p>Perform a quick limit study before sticking with a project. A limit study includes in-depth analyses of implicit assumptions we make when coming up with an idea, a related works search, and the potential of the work if everything goes well. A great limit study can itself be a publishable paper. An example can be found &lt;a href="https://homes.cs.washington.edu/~luisceze/publications/fortuna-iiswc2010.pdf">&lt;strong>here&lt;/strong>&lt;/a>.&lt;/p>
+&lt;p>&lt;strong>Hacky implementation can be useful&lt;/strong>&lt;/p>
+&lt;p>Being a researcher, your work is to develop proof-of-concepts. Nevertheless, you need to demonstrate that your concept is sound for the simplest of cases before continuing to the full-blown system. Hack in the minimum set to show that your idea is possible while resisting the temptation to build a robust infrastructure – if your idea fails, you will know to stop earlier.&lt;/p>
+&lt;h3 id="impact-humankind">Impact humankind&lt;/h3>
+&lt;p>Impacting humankind may sound too ambitious, but it should be the ultimate reason why we embark on this journey.&lt;/p>
+&lt;p>&lt;strong>Choose an impactful research topic&lt;/strong>&lt;/p>
+&lt;p>In terms of how our Ph.D. research could impact human knowledge, I would like to refer to &lt;a href="http://matt.might.net/articles/phd-school-in-pictures/">&lt;strong>The Illustrated Guide to a Ph.D.&lt;/strong>&lt;/a> by Matt Might. All we will do in five years is pushing the boundary of human knowledge by a minute margin. Choose a topic that you are able to contribute to, feel passionate about, and can explain the importance of to a layman in a 3-min talk.&lt;/p>
+&lt;p>Check out why &lt;a href="http://matt.might.net/">&lt;strong>Matt Might&lt;/strong>&lt;/a> changed his research focus from programming languages to precise medicine.&lt;/p>
+&lt;p>&lt;strong>How can our research actually impact people from other fields?&lt;/strong>&lt;/p>
+&lt;p>&lt;a href="https://liberty.princeton.edu/Publications/sc11_survey.pdf">&lt;strong>A survey paper&lt;/strong>&lt;/a> by the Liberty Research Group sheds light on how the improvement of programming tools impacts (&lt;del>computational scientists&lt;/del>) all scientists. Thinking about how your research affects people from other fields can help you define the scope of your contribution.&lt;/p>
+&lt;blockquote>
+&lt;p>做有影响力的课题&lt;/p>
+&lt;/blockquote>
+&lt;h2 id="5-tips">5 Tips&lt;/h2>
+&lt;h3 id="dont-give-up-on-your-research-topic-easily">Don’t give up on your research topic easily&lt;/h3>
+&lt;p>At some point, we will get bored with our research topic and find something else interesting. Think twice before switching topics. You must differentiate between your project heading nowhere and you getting tired of being stuck.&lt;/p>
+&lt;blockquote>
+&lt;p>这是显然的，不过如何选课题也要慎重。目前自己还暂时没有去自主选择一个课题，但是毫无疑问，当你真正开始做这个事的时候，可能是需要投入时间最多的时候。这极大可能决定了之后6-9个月的努力是否有效。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="aim-for-top-tier-conferences">Aim for top-tier conferences&lt;/h3>
+&lt;p>You should focus on publishing at only top-tier conferences. Don’t consider second-tier venues unless the work has been rejected several times by top-tier conferences. This can prevent you from doing incremental work to make your publication list look better.&lt;/p>
+&lt;blockquote>
+&lt;p>当你做好准备，并且有合适的老师指导的时候，确实可以把这个当做研究的动机，只瞄准顶级会议，加油。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="use-existing-resources-in-your-group">Use existing resources in your group&lt;/h3>
+&lt;p>For many fields in computer science, a mature infrastructure requires several years of development by multiple graduate students. Think about how to make use of the infrastructure and resources in the group to boost your research progress.&lt;/p>
+&lt;blockquote>
+&lt;p>这个其实就很好理解，组里面做硬件很强的学长，以及发过顶会的学长，各个方向的，都是非常宝贵资源。&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="you-are-powerful">You are powerful&lt;/h3>
+&lt;p>Even though we are just junior graduate students, we can have a massive impact on ourselves, our group, and even our department. For example, if there is no reading group for your field in your department, start one!&lt;/p>
+&lt;blockquote>
+&lt;p>心态调整好&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="focus-on-publishing">Focus on publishing&lt;/h3>
+&lt;p>Needless to say, publications are essential since those are what people look at once we graduate.&lt;/p>
+&lt;blockquote>
+&lt;p>pub 是一名 phd 唯一要做的事情&lt;/p>
+&lt;/blockquote></description></item><item><title>Tips for a New Computer Architecture PhD Student (By Swapnil Haria)</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-for-a-new-computer-architecture-phd-student/</link><pubDate>Sat, 27 Aug 2022 23:57:17 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-for-a-new-computer-architecture-phd-student/</guid><description>&lt;p>原文网址：https://www.sigarch.org/tips-for-a-new-computer-architecture-phd-student/&lt;/p>
+&lt;p>作者在 2019 年是 UWM 5 年级 phd，导师是 Mark Hill，毕业后去了 Google 做一名软件开发工程师。&lt;/p>
+&lt;p>原文&lt;/p>
+&lt;p>I have been fortunate enough to have many helpful senior students and two wonderful advisors to learn from throughout my PhD. Now as a senior PhD student myself, I have identified some lessons that proved most valuable as well as common mistakes made by younger graduate students. While these may be common knowledge, I am documenting these tips here to pass on some of our collectively learned lessons to future graduate students.&lt;/p>
+&lt;p>&lt;strong>1. Learn to read a paper efficiently.&lt;/strong>
+Fifty years of architecture research has produced a venerable but sizeable collection of research literature, growing by almost 200+ papers a year just from the top four conferences. To make good progress as we wade through the ocean of related work, it is important to read papers efficiently. &lt;a href="http://ccr.sigcomm.org/online/files/p83-keshavA.pdf">Here&lt;/a> is a useful three-pass technique for reading papers efficiently. For me, reading a paper involves finding an answer to these questions (inspired by &lt;a href="http://pages.cs.wisc.edu/~markhill/grant-tips.html">grant writing tips&lt;/a>):&lt;/p>
+&lt;ul>
+&lt;li>What is the problem that the paper is trying to solve?&lt;/li>
+&lt;li>Why is the problem relevant?&lt;/li>
+&lt;li>What is the insight that drives the solution proposed by the paper?&lt;/li>
+&lt;li>What are the trade-offs of the proposed solution?&lt;/li>
+&lt;li>How have the authors evaluated the solution?&lt;/li>
+&lt;li>What is one good trait in the paper (problem, solution, evaluation, presentation)?&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>甚至可以把这些问题贴在墙边，读论文的时候才能反复地去思考问题的答案，提升效率。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>2. Know when to stop reading papers.&lt;/strong>
+Whenever one begins a new project, it is easy to fall into the trap of endlessly reading paper after paper of related work. While surveying related literature is essential, it tends to yield diminishing returns after a certain point. it is equally important to get one’s feet wet and actually start working on a project. There will be gaps in one’s knowledge but any critical gaps can be filled when that information is actually needed. After all, a graduate student is expected to be an information producer and not just a consumer.&lt;/p>
+&lt;blockquote>
+&lt;p>这个其实很难。对我自己来说，读了一段时间我就会想去做一些实验，一方面也是一些调剂，一种做同一件事情总会觉得疲劳。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>3. Join or start a reading group.&lt;/strong>
+One way of being social is to participate in a reading group, which is a group of students that meet regularly to discuss an interesting paper (old or new) related to a particular area (e.g., architecture). In each meeting, one of the members is responsible for leading the discussion while the others are expected to have read the paper so as to contribute to the discussion. Through reading groups, one is forced to read papers outside of one’s particular niche. Ph.D. graduates often end up working in an area outside of the focus of their thesis. Thus, being exposed to a wide variety of topics is extremely useful. Group discussions also help bring out multiple perspectives into the same paper.&lt;/p>
+&lt;blockquote>
+&lt;p>这个是一个很有意思的建议，不过推动这件事情通常需要一些有影响力的 host，或者是导师组织的，不知道美国是否会有比较多的自发组织的 reading group&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>4. Use appropriate evaluation methodologies.&lt;/strong>
+There is no one size fits all when it comes to &lt;a href="https://www.morganclaypool.com/doi/abs/10.2200/S00273ED1V01Y201006CAC010">evaluation methodologies&lt;/a>. Always select an appropriate methodology by taking into account development time, simulation speed and accuracy of results. There are three broad types of evaluation methodologies. Analytical modelling involves building mathematical models of the area of interest. At early stages of a project, it may be more useful to build simple mathematical models to get a broad sense of the efficacy of a research idea. Popular analytical models include the Roofline Model, Little’s law, Bottleneck analysis and others. Trace-based simulation involves using simulators that read in instruction or memory accesses sequences (traces) to provide reasonable estimates of runtime. Finally, execution-based simulators model hardware behavior at a cycle granularity. While such simulators offer the most accurate results, they also require the most development time as well as simulation time. As such, they may be overkill for simpler experiments. Hence, it is good to be familiar with different evaluation methodologies and use the right one at the right time.&lt;/p>
+&lt;blockquote>
+&lt;p>paper 看多了之后，基本能知道一些常用的分析方法&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>5. Work on real systems.&lt;/strong>
+Although simulators are becoming more sophisticated, there is no substitute for working on real systems. This involves prototyping ideas in the linux kernel, modifying device drivers, building &lt;a href="https://rise.cs.berkeley.edu/projects/firesim/">FPGA-based systems&lt;/a> or &lt;a href="https://mshahrad.github.io/openpiton-asplos16.html">taping out chips&lt;/a>. Looking at real systems gives us an idea of the complexity and robustness of industrial-strength solutions. This also forces us to confront the practical limitations of our ideas. The rise of open-source hardware along with existing open-source software has made it easy to work on real-world &lt;a href="https://www.linux.org/">operating systems&lt;/a>, &lt;a href="https://llvm.org/">compilers&lt;/a>, &lt;a href="https://riscv.org/">CPUs&lt;/a> and &lt;a href="http://miaowgpu.org/">GPUs&lt;/a>.&lt;/p>
+&lt;blockquote>
+&lt;p>这一点是我非常赞同的，simulation work 是一件非常危险的事情，有条件的话一定要转向真实的系统&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>6. Spend time improving your programming skills.&lt;/strong>
+New computer architecture graduates may not already be good software engineers as computer architecture attracts students with backgrounds in hardware as well. However, PhD-level architecture research typically involves writing a lot of code as part of simulators, operating systems or benchmarks. Hence, it is worth spending some time early in the graduate lifecycle to improve one’s programming skills. Here are some handy resources:
+&lt;a href="http://cs-www.cs.yale.edu/homes/aspnes/classes/223/notes.pdf">Data Structures&lt;/a>, &lt;a href="http://bigocheatsheet.com/">Complexity Theory&lt;/a>, &lt;a href="http://pages.cs.wisc.edu/~swapnilh/resources/design-pattern-scard.pdf">Design Patterns&lt;/a>, &lt;a href="http://google.github.io/styleguide/">Code Style&lt;/a>, &lt;a href="http://rogerdudler.github.io/git-guide/">Git/Mercurial&lt;/a>, &lt;a href="http://cslibrary.stanford.edu/102/PointersAndMemory.pdf">Pointers&lt;/a>.&lt;/p>
+&lt;blockquote>
+&lt;p>体系结构的学生需要同时具备硬件和软件背景，至少他们必须会使用模拟器，熟悉操作系统，各种 benchmark&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>7. Use microbenchmarks wisely.&lt;/strong>
+Microbenchmarks are simple and self-contained programs written to achieve a specific outcome. Microbenchmarks are immensely useful for preliminary exploration as well as sanity checking. An example is a program that can deterministically generate ~100K TLB misses on every execution. Our example microbenchmark can validate a TLB simulator by comparing simulator-reported misses with microbenchmark-generated misses. Being simpler and more easily understood than full-fledged benchmarks, they can be used for initial evaluation to get results that demonstrate general trends. However, microbenchmarks should not be relied upon for any meaningful evaluation, particularly they should not be used as a proxy for real applications.&lt;/p>
+&lt;blockquote>
+&lt;p>目前自己用的比较少，但这个绝对是体系结构领域非常重要的东西&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>8. Create talks/posters/paper drafts to get early feedback.&lt;/strong>
+Once we start plugging away at implementation work, we sometimes lose track of the big research picture and instead simply generate a lot of experimental results. It is important to analyze these results in the context of the overall project. Then, crafting a talk or poster even with little to no results forces us to present our ideas in actual words and images. Different presentation media make us think about our research differently and thus refine our story. By presenting our posters and talks to other researchers, we get timely feedback that can help set the direction of our project.&lt;/p>
+&lt;blockquote>
+&lt;p>2022-08-27 09:53:50，今天就是 poster talk 的 DDL，只能说自己确实比较拖延，正常来说可能应该找别人讨论一下，模拟一下。确实，沉浸在实验中时，容易丢失 high level 的视野，只能不断提醒自己不要忘记最初的 motivation 和故事的框架&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>9. Care for your mental and physical well-being and maintain a support system.&lt;/strong>
+The typical &lt;a href="http://phdcomics.com/comics/archive.php?comicid=125">PhD lifetime&lt;/a> is long years of hard work with a few triumphant occasions such as paper acceptances mixed in. Remember that graduate school is a marathon and not a sprint. Hence, it is important to care for one’s overall health by getting enough sleep, having a healthy diet and spending time on exercise and hobbies. More importantly, graduate school is the first time many of us struggle academically or feel unproductive which may lead to &lt;a href="https://www.theatlantic.com/education/archive/2018/11/anxiety-depression-mental-health-graduate-school/576769/">mental health issues&lt;/a>. Just remember that you are not alone in facing these issues and it is okay to ask for help. Most schools offer free or subsidized &lt;a href="https://www.uhs.wisc.edu/mental-health/">mental health resources&lt;/a>. Furthermore, try to build and subsequently maintain a strong support structure for yourself by nurturing personal relationships with family and friends. Be social with your peers and almost never say no to going out for lunch, attending practice talks and other such activities.&lt;/p>
+&lt;blockquote>
+&lt;p>毫无疑问，保持身体健康和心理健康非常重要&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Acknowledgements&lt;/strong>
+I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improving this document. For teaching me these lessons in the first place, I am grateful to Prof. Mark Hill, Prof. Michael Swift, Prof. David Wood, Lena Olson, Jason Lowe-Power, Nilay Vaish, Jayneel Gandhi, Hongil Yoon, Rathijit Sen, Gokul Ravi, Marc Orr, Muhammad Shoaib, Joel Hestness, Prof. Tony Nowatzki, Newsha Ardalani, Vijay Thiruvengadam, Vinay Gangadhar and many others whom I encountered in graduate school.&lt;/p>
+&lt;p>&lt;strong>About the author:&lt;/strong> &lt;a href="http://pages.cs.wisc.edu/~swapnilh/">Swapnil Haria&lt;/a> is a 5th-year PhD Candidate at the University of Wisconsin-Madison, advised by Mark Hill and Michael Swift. His research is focused on hardware and software support for persistent memory.&lt;/p>
+&lt;p>&lt;strong>Disclaimer:&lt;/strong> &lt;em>These posts are written by individual contributors to share their thoughts on the Computer Architecture Today blog for the benefit of the community. Any views or opinions represented in this blog are per&lt;/em>&lt;/p></description></item><item><title>What My Mentors Taught Me (By Shan Lu)</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_what-my-mentors-taught-me-by-shan-lu/</link><pubDate>Sat, 27 Aug 2022 23:57:17 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_what-my-mentors-taught-me-by-shan-lu/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>视频地址：https://www.youtube.com/watch?v=lOOBJix9-Dw&amp;amp;t=5s&lt;/p>
+&lt;p>这是来自卢山老师的 talk&lt;/p>
+&lt;p>shan lu 老师目前是芝加哥大学的教授，计算机系统领域的大牛。&lt;/p>
+&lt;p>&lt;strong>一定要 open to help，千万不要害羞，千万不要害怕向别人寻求帮助&lt;/strong>&lt;/p>
+&lt;p>大牛第一篇 paper 被拒了 5 次，第三年还没有一作 paper。&lt;/p>
+&lt;p>&lt;strong>Why did you want to be a phd student&lt;/strong>&lt;/p>
+&lt;p>第三年换了一个 topic，投到了 ISCA，也被拒绝了。当时老师觉得是他的 phd 最低谷的时候了。&lt;/p>
+&lt;p>他的 phd 导师一直鼓励着他，在低估的时候给予指引，在低估的时候给予 support，真的是一个非常 nice 的事情。&lt;/p>
+&lt;p>ISCA 被拒之后中了 ASPLOS，有时候真的很难说。之后几年的 research 都非常顺利。YY 告诉她一定要注意英语。同学写信建议她多 read English book，她花了一年多看完了两本难啃的书。那之后他看英文书变得很快很快。有的时候是 advice 来自不同的地方。&lt;/p>
+&lt;p>第四年开始 conference presentation. 一定要去找别的老师，要敢于去找 senior 的老师。一定要告诉别人你在 job market 上面。他说了之后，CMU 老师说他们没有 position，但是可以给她一个 mock interview。&lt;/p>
+&lt;p>&lt;strong>只要自己鼓起勇气，很多 senior 的老师会给出很多好的建议&lt;/strong>&lt;/p>
+&lt;p>&lt;strong>第一次去要 external letter&lt;/strong>&lt;/p>
+&lt;p>别人的回复是 &amp;ldquo;No. I don&amp;rsquo;t know your work well enough.&amp;rdquo; 作者说他已经出汗了，但是我觉得这本身已经是很大的勇气了。&lt;/p>
+&lt;p>他咨询的教授非常 straight forward&lt;/p>
+&lt;p>&lt;strong>My interview trip&lt;/strong>&lt;/p>
+&lt;p>&amp;ldquo;I am surprised how much you have improved&amp;rdquo;&lt;/p>
+&lt;p>去 UWM，mark 给了他很多 advice。所以还是一定要 open。&lt;/p>
+&lt;p>&lt;strong>Say bye to YY&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>Do what you believe in. Be yourself&lt;/li>
+&lt;li>Family and Health are two glass balls; career is plastic ball&lt;/li>
+&lt;li>Integrity is the most important&lt;/li>
+&lt;li>Faculty life is a marathon; Ph.D. life is a sprint&lt;/li>
+&lt;li>It is a learning experience&lt;/li>
+&lt;/ul>
+&lt;p>在不同的环境中也要像不同的人学习&lt;/p>
+&lt;p>&lt;strong>My first ASPLOS paper as a faculty&lt;/strong>&lt;/p>
+&lt;p>Mark 作为同事仍然在帮助他修改 paper。Mark 从 introduction 中没有读到他的 passion，希望他重新想一下，重新构思这个 story。&lt;/p>
+&lt;p>Mark 说他确实有不错的 idea，但是写的不行。&lt;/p>
+&lt;p>⭐ Mark 提了一个建议。画一个 2-dimension 图片，以前的 paper 是专注于 Effects 这个维度，我们的工作和他们不一样在哪？This paper 专注于 Causes 这个维度。&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>Mark 说我来告诉你你的 introduction 每个 paragraph 应该写什么，应该怎么写。而且不能是大概，每一个词都必须要想清楚。&lt;/p>
+&lt;blockquote>
+&lt;p>这一点也得说一下，有些时候自己也会觉得大概知道了要讲什么，但实际到了真正的细节那里还是一片模糊，这样是不行的。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>My first undergrad. teaching&lt;/strong>&lt;/p>
+&lt;p>don&amp;rsquo;t give back, give forward；回馈给下一代&lt;/p>
+&lt;p>&lt;strong>My first NSF proposal&lt;/strong>&lt;/p>
+&lt;p>&amp;ldquo;You are not a Turing Award Winner, why worrying about rejection&amp;rdquo;&lt;/p>
+&lt;p>Mark 仍然在帮助他修改 proposal。&lt;/p>
+&lt;p>如果从头再来，他会主动地去找 Mark 帮忙。&lt;/p>
+&lt;p>&lt;strong>My student first conference presentation&lt;/strong>&lt;/p>
+&lt;p>一定要 seek advice&lt;/p>
+&lt;p>写一篇 paper 一定是有 6 months delay，当你 feel good，是因为半年前做得好，而不是现在做得好。当你 feel bad，也不要太 bad，因为收益也是延后的&lt;/p>
+&lt;p>他的 co-author 给他反馈了 comment&lt;/p>
+&lt;p>&lt;strong>My depression&lt;/strong>&lt;/p>
+&lt;p>2011 年有段时间，看起来很累，晚上没法入睡。Andrea 主动邀请他一起上画画课，走出沮丧的情绪。&lt;/p>
+&lt;p>&lt;strong>Is my research too incremental&lt;/strong>&lt;/p>
+&lt;p>他担心自己的工作过于 incremental。同行告诉不用太担心，还是要不断地去做探索，才能够发掘出新的工作。&lt;/p>
+&lt;p>&lt;strong>My first leaving student&lt;/strong>&lt;/p>
+&lt;p>他的有一个学生想转学去 CMU。Mark 的建议是要给学生写好的推荐信&lt;/p>
+&lt;p>&lt;strong>Service, Service&lt;/strong>&lt;/p>
+&lt;p>指的是一些会议的 service，这些东西其实需要去平衡。因为很容易就花费太多时间在上面。&lt;/p>
+&lt;p>&lt;strong>提问环境&lt;/strong>&lt;/p>
+&lt;p>卢山老师起点很高，怎么去看 2 流会议，或者非 top 会议？&lt;/p>
+&lt;ul>
+&lt;li>先从最好的 conference 上发表&lt;/li>
+&lt;/ul>
+&lt;p>如果一篇 paper 被领域内的会议拒稿太多次只有，会做什么&lt;/p>
+&lt;ul>
+&lt;li>他跟着 YY 做的时候，基本觉得想出一个 idea 都能投到 top 会议。去了 UW 之后，觉得不要有一个特别牛的 idea 才开始做。只要解决了问题，就可以去做一些，因为学生也需要 training，不能总投 top 会议。&lt;/li>
+&lt;li>他一开始的时候想了 ASPLOS 的一个点，做着做着就开始拓展了。做完之后觉得好像也成了 top 会议了&lt;/li>
+&lt;/ul></description></item><item><title>Hugo 文章页面添加固定目录栏</title><link>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%9B%AE%E5%BD%95/</link><pubDate>Sun, 14 Aug 2022 19:33:17 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%9B%AE%E5%BD%95/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
 &lt;p>阅读博客文章时有一个固定的目录会舒服很多，现在就来探索一下怎么添加这个功能。&lt;/p>
 &lt;h1 id="1-固定目录">1. 固定目录&lt;/h1>
 &lt;p>以主题 &lt;code>jane&lt;/code> 为例，在文件 &lt;code>theme/jane/layouts/post/single.html&lt;/code> 中存放着如何显示 post。根据文件中的代码，关于 table of content 的设定存放在 &lt;code>theme/jane/layouts/partials/post/toc.html&lt;/code>&lt;/p>
@@ -1007,7 +1709,10 @@ ML：&lt;/p>
 &lt;h2 id="14-等待">1.4 等待&lt;/h2>
 &lt;p>提交博客之后，需要等待一段时间才能在Google上搜到，因为Google需要时间来处理我们的请求、抓取相应网页并将其编入索引。&lt;/p>
 &lt;h1 id="reference">Reference&lt;/h1>
-&lt;p>&lt;a href="https://huiyu-li.github.io/2019/11/27/Tools/2019-11-27-%E8%AE%A9%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E5%88%B0%E8%87%AA%E5%B7%B1%E5%86%8DGitHub%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2/">https://huiyu-li.github.io/2019/11/27/Tools/2019-11-27-%E8%AE%A9%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E5%88%B0%E8%87%AA%E5%B7%B1%E5%86%8DGitHub%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2/&lt;/a>&lt;/p></description></item><item><title>编译运行cuTLASS</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Ccutlass/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Ccutlass/</guid><description>&lt;h1 id="1-环境">1. 环境&lt;/h1>
+&lt;p>&lt;a href="https://huiyu-li.github.io/2019/11/27/Tools/2019-11-27-%E8%AE%A9%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E5%88%B0%E8%87%AA%E5%B7%B1%E5%86%8DGitHub%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2/">https://huiyu-li.github.io/2019/11/27/Tools/2019-11-27-%E8%AE%A9%E8%B0%B7%E6%AD%8C%E6%90%9C%E7%B4%A2%E5%88%B0%E8%87%AA%E5%B7%B1%E5%86%8DGitHub%E4%B8%8A%E7%9A%84%E5%8D%9A%E5%AE%A2/&lt;/a>&lt;/p></description></item><item><title>编译运行 CUTLASS 和 cuBLAS</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Ccutlass%E5%92%8Ccublas/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Ccutlass%E5%92%8Ccublas/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>内容包括根据官方文档运行 CUTLASS 的实例，过程中遇到的一些问题，在 GPGPU-Sim 上运行 CUTLASS，阅读官方 doc 的笔记。&lt;/p>
+&lt;p>包括根据官方文档运行 cuBLAS 的实例，过程中遇到的问题。&lt;/p>
+&lt;h1 id="1-环境">1. 环境&lt;/h1>
 &lt;h2 id="11-prerequisites">1.1 Prerequisites&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ git clone https://github.com/NVIDIA/cutlass
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>CUTLASS requires:&lt;/p>
@@ -1034,6 +1739,38 @@ ML：&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ mkdir build &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> cd build
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ cmake .. -DCUTLASS_NVCC_ARCHS&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">75&lt;/span> &lt;span style="color:#75715e"># compiles for NVIDIA Turing GPU architecture&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 在 ~/cutlass/build/tools/library/generated/ 目录下生成 conv2d and gemm 的所有抽象组合&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ cmake .. -DCUTLASS_NVCC_ARCHS&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">75&lt;/span> -DCUTLASS_LIBRARY_KERNELS&lt;span style="color:#f92672">=&lt;/span>all
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 仅需要 subset of gemm kernels with FP32 accumulation and FP16 input, in Ampere and Turing&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ cmake .. -DCUTLASS_NVCC_ARCHS&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;75;80&amp;#39;&lt;/span> -DCUTLASS_LIBRARY_KERNELS&lt;span style="color:#f92672">=&lt;/span>cutlass_tensorop_s*gemm_f16_*_nt_align8
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 我想这个 * 应该表示正则表达式&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ make cutlass_profiler -j16
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>需求&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ cmake .. -DCUTLASS_NVCC_ARCHS&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">75&lt;/span> -DCUTLASS_LIBRARY_KERNELS&lt;span style="color:#f92672">=&lt;/span>cutlass_tensorop_i88*gemm_s*_256x128_*x2_tn_align*
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ cmake .. -DCUTLASS_NVCC_ARCHS&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">75&lt;/span> -DCUTLASS_LIBRARY_KERNELS&lt;span style="color:#f92672">=&lt;/span>cutlass_tensorop_i8832gemm_s4_256x128_128x2_tn_align32
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ cmake .. -DCUTLASS_NVCC_ARCHS&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">75&lt;/span> -DCUTLASS_LIBRARY_KERNELS&lt;span style="color:#f92672">=&lt;/span>cutlass_tensorop_i8816gemm_s8_256x128_64x2_tn_align16
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ make cutlass_profiler -j16
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ nsys profile --stats&lt;span style="color:#f92672">=&lt;/span>true ./turing_tensorop_gemm
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="121-cmake-在做什么">1.2.1 cmake 在做什么&lt;/h3>
+&lt;p>&lt;code>cmake .. -DCUTLASS_NVCC_ARCHS=75 -DCUTLASS_LIBRARY_KERNELS=all &lt;/code>，在 &lt;code>~/cutlass/build/tools/library/generated/&lt;/code> 目录下生成相应的 .cu 接口&lt;/p>
+&lt;h3 id="122-make-在做什么">1.2.2 make 在做什么&lt;/h3>
+&lt;p>&lt;code>Building CUDA object tools/library/CMakeFiles/cutlass_library_objs.dir/generated/gemm/cutlass_tensorop_i8816gemm_s8_256x128_64x2_tn_align16.cu.o&lt;/code>&lt;/p>
+&lt;p>猜测是根据 cmake 中生成的接口文件，生成 &lt;code>cutlass_profiler&lt;/code> 能够运行/调用的目标文件。&lt;/p>
+&lt;p>&lt;code>make cutlass_profiler -j16&lt;/code> 这一步之后才能使用 &lt;code>./tools/profiler/cutlass_profiler --kernels=cutlass_tensorop_i8816gemm_s8_256x128_64x2_tn_align16&lt;/code> 来运行。&lt;/p>
+&lt;h3 id="123-test-in-real-gpu">1.2.3 Test in real GPU&lt;/h3>
+&lt;p>工作站 GPU 是 GTX980，SM_50&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ cmake .. -DCUTLASS_NVCC_ARCHS&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">50&lt;/span> -DCUTLASS_LIBRARY_KERNELS&lt;span style="color:#f92672">=&lt;/span>cutlass_simt_sgemm_128x128_8x2_nn_align1
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ make cutlass_profiler -j16
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ ./tools/profiler/cutlass_profiler --kernels&lt;span style="color:#f92672">=&lt;/span>cutlass_simt_sgemm_128x128_8x2_nn_align1
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="13-build-and-run-the-cutlass-profiler">1.3 Build and run the CUTLASS Profiler&lt;/h2>
 &lt;p>From the &lt;code>build/&lt;/code> directory created above, compile the the CUTLASS Profiler. 主要是 build &lt;code>build/tool/profiler&lt;/code> 目录。 ✔️&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ make cutlass_profiler -j12
@@ -1150,8 +1887,7 @@ ML：&lt;/p>
 &lt;h4 id="3511-gemm-arguments-">3.5.1.1 GEMM Arguments ⭐&lt;/h4>
 &lt;p>The complete set of arguments available to each operation may be viewed by specifying the operation name in addition to &amp;ndash;help. The argument flags and their aliases usable for GEMM appear as follows.&lt;/p>
 &lt;p>可以通过 option &lt;code>--help&lt;/code> 查看完整的 operation，他这里给出的例子是 &lt;code>./tools/profiler/cutlass_profiler --operation=gemm --help&lt;/code>，所以还是得执行这个脚本吧。&lt;/p>
-&lt;p>&lt;img src="./Image/gemm_aug.png" alt="">&lt;/p>
-&lt;h4 id="3512-example-tensor-core-gemm-operations">3.5.1.2 Example Tensor Core GEMM Operations&lt;/h4>
+&lt;!-- raw HTML omitted -->
 &lt;p>To execute kernels targeting Tensor Core operations, supply the flag &lt;code>--op_class=tensorop&lt;/code> in the command line.&lt;/p>
 &lt;p>实际上，op_class 也就是选择 TensorOp or SIMT&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ./tools/profiler/cutlass_profiler --op_class&lt;span style="color:#f92672">=&lt;/span>tensorop --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3456&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">8192&lt;/span>
@@ -1159,7 +1895,70 @@ ML：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>./tools/profiler/cutlass_profiler --operation&lt;span style="color:#f92672">=&lt;/span>Gemm --op_class&lt;span style="color:#f92672">=&lt;/span>tensorop --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1024&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1024&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">128&lt;/span> --inst_m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">8&lt;/span> --inst_n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">8&lt;/span> --inst_k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">32&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;strong>如何使用 4-bit 进行计算&lt;/strong>: 对于 TensorOp, Instruction Shape 8-by-8-by-32 对应的是 A-int4b_t, B-int4b_t, C-int32_t，通过参数 &lt;code>--inst_m&lt;/code>, &lt;code>--inst_n&lt;/code>, &lt;code>inst_k&lt;/code> 来决定&lt;/p>
 &lt;h3 id="352-conv">3.5.2 Conv&lt;/h3>
-&lt;p>和 gemm 也是类似的，重点还是搞懂他们的参数。&lt;/p></description></item><item><title>关于 Deep Work</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</link><pubDate>Sun, 08 May 2022 20:56:54 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>和 gemm 也是类似的，重点还是搞懂他们的参数。&lt;/p>
+&lt;h2 id="36-gemm-api-components">3.6 GEMM API Components&lt;/h2>
+&lt;p>This document focuses on device-level, threadblock-level GEMMs, warp-level GEMMs, thread-level GEMMs, and instruction-level GEMMs.&lt;/p>
+&lt;h3 id="361-device-wide-gemm-api">3.6.1 Device-wide GEMM API&lt;/h3>
+&lt;p>The device-wide GEMM API is embodied by the following operators&lt;/p>
+&lt;ul>
+&lt;li>cutlass::gemm::device::Gemm - basic GEMM operation&lt;/li>
+&lt;li>cutlass::gemm::device::GemmArray - batched GEMM operation in which input matrices are read from arrays of pointers&lt;/li>
+&lt;li>cutlass::gemm::device::GemmBatched - batched GEMM operation in which input matrices are separated by a constant stride&lt;/li>
+&lt;li>cutlass::gemm::device::GemmSplitKParallel - GEMM operation that partitions the GEMM K dimension then launches a separate reduction kernel&lt;/li>
+&lt;/ul>
+&lt;p>都在 &lt;code>cutlass/include/cutlass/gemm/device/&lt;/code> 目录下，basic GEMM 对应 &lt;code>gemm.h&lt;/code> 文件&lt;/p>
+&lt;h1 id="4-在-gpgpu-sim-上运行">4. 在 GPGPU-Sim 上运行&lt;/h1>
+&lt;h2 id="41-cutlass-sim">4.1 cutlass-sim&lt;/h2>
+&lt;p>尝试了 Admodt 提供的 &lt;code>https://github.com/gpgpu-sim/cutlass-gpgpu-sim&lt;/code>，仍然是 syntax error，估计是新版本编译的 PTX 有问题。2022-05-26 15:53:30，确实如此。&lt;/p>
+&lt;p>不同 CUDA 版本对应不同的 PTX .version，得到的 PTX 指令是不一样的。这就是为什么 CUDA 11.4 wmma 指令会报错。&lt;/p>
+&lt;h2 id="42-step">4.2 Step&lt;/h2>
+&lt;ul>
+&lt;li>下载并安装 CUDA Toolkit 9.2，使用这个版本编译模拟器。&lt;/li>
+&lt;/ul>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;/code>&lt;/pre>&lt;/div>&lt;hr>
+&lt;p>接下来是编译运行 cuBLAS 的过程&lt;/p>
+&lt;h1 id="1-nvidia-samples">1. NVIDIA Samples&lt;/h1>
+&lt;p>&lt;a href="https://github.com/NVIDIA/cuda-samples/">https://github.com/NVIDIA/cuda-samples/&lt;/a> 在 library 目录中有提供调用 cublas 的代码，果然官方提供的资源才是最好的。git clone 下来就可以在 A10 上编译运行。重点是理解不同 API 的含义，需要的 parameter，gemm 的 data type, shape 等等，这一点需要多看文档。&lt;/p>
+&lt;h2 id="11-如何确定调用了-tensor-core">1.1 如何确定调用了 tensor core?&lt;/h2>
+&lt;blockquote>
+&lt;p>Tensor cores were first introduced with Volta GPUs (compute capability&amp;gt;=sm_70) and significantly accelerate matrix multiplications. Starting with cuBLAS version 11.0.0, the library will automatically make use of Tensor Core capabilities wherever possible, unless they are explicitly disabled by selecting pedantic compute modes in cuBLAS (see cublasSetMathMode(), cublasMath_t).&lt;/p>
+&lt;/blockquote>
+&lt;p>文档中说 cublas 会自动调用 tensor core&lt;/p>
+&lt;h1 id="2-documentation">2. Documentation&lt;/h1>
+&lt;h2 id="21-using-the-cublas-api">2.1 Using the cuBLAS API&lt;/h2>
+&lt;blockquote>
+&lt;p>cuBLAS库提供了现成的矩阵乘法算子，例如&lt;code>cublasGemmEx&lt;/code>和&lt;code>cublasLtMatmul&lt;/code>。其中后者是轻量级版本，API调用更灵活。&lt;/p>
+&lt;/blockquote>
+&lt;p>cublasGemmEx&lt;/p>
+&lt;h2 id="211-general-description">2.1.1 General Description&lt;/h2>
+&lt;blockquote>
+&lt;p>应该注意的是，该库将选择启用 Tensor Core 的实现，只要它确定它将提供最佳性能。&lt;/p>
+&lt;/blockquote>
+&lt;p>cuBLAS 11.0.0 之后支持任何 size 的矩阵，只是对齐的 size 能够更好地发挥 Tensor core 的性能。&lt;/p>
+&lt;h2 id="212-cublas-datatypes-reference">2.1.2 cuBLAS Datatypes Reference&lt;/h2>
+&lt;p>&lt;code>cublasDataType_t handle&lt;/code>，一个有关cuBLAS库的上下文的句柄，之后需要传递给API函数，即计算乘法的函数&lt;/p>
+&lt;p>&lt;code>cublasOperation_t&lt;/code>, N, 非转置；T，转置；C，共轭转置。&lt;/p>
+&lt;p>&lt;code>cublasGemmEx&lt;/code> 中的 &lt;code>cublasGemmAlgo_t&lt;/code>，&lt;code>cublasGemmAlgo_t&lt;/code> 最高支持 sm_75，sm_80 已经不支持了，所以在 sm_80 中指定了也是无效的，在 sm_80 中所有枚举都等同于 &lt;code>CUBLAS_GEMM_DEFAULT&lt;/code> 或者 &lt;code>CUBLAS_GEMM_DEFAULT_TENSOR_OP&lt;/code>。在更新的架构中也会 deprecated&lt;/p>
+&lt;p>&lt;code>cudaDataType_t&lt;/code>, 直接作为 &lt;code>cublasGemmEx&lt;/code> 的参数，支持 int8 到 double 类型。&lt;/p>
+&lt;h3 id="213-cublas-level---3-function-reference">2.1.3 cuBLAS Level - 3 Function Reference&lt;/h3>
+&lt;p>&lt;code>cublasSgemm&lt;/code>, &lt;code>cublasDgemm&lt;/code>, &lt;code>cublasCgemm&lt;/code>, &lt;code>cublasZgemm&lt;/code>, &lt;code>cublasHgemm&lt;/code> 应该是比较初始的 API。&lt;/p>
+&lt;h3 id="214-blas-like-extension">2.1.4 BLAS-like Extension&lt;/h3>
+&lt;blockquote>
+&lt;p>&lt;code>cublasGemmEx()&lt;/code>. This function is an extension of cublas&lt;!-- raw HTML omitted -->gemm that allows the user to individually specify the data types for each of the A, B and C matrices, the precision of computation and the GEMM algorithm to be run. Supported combinations of arguments are listed further down in this section.&lt;/p>
+&lt;/blockquote>
+&lt;p>自定义 data types，自己在 int8 中就用的这个 API，支持 sm_50 以上的架构。&lt;/p>
+&lt;h2 id="22-using-the-cublaslt-api">2.2 Using the cuBLASLt API&lt;/h2>
+&lt;p>cuBLASLt, a lightweight library dedicated to GEMM&lt;/p>
+&lt;blockquote>
+&lt;p>The cuBLASLt in general does not guarantee to support all possible sizes and configurations.&lt;/p>
+&lt;/blockquote>
+&lt;p>不一定支持任何 size&lt;/p>
+&lt;h3 id="221-cublaslt-datatypes-reference">2.2.1 cuBLASLt Datatypes Reference&lt;/h3>
+&lt;p>&lt;code>cublasLtMatmulTile_t&lt;/code> 提供多种 tile size&lt;/p>
+&lt;h2 id="23-using-the-cublasxt-api">2.3 Using the cuBLASXt API&lt;/h2>
+&lt;p>The cuBLASXt API of cuBLAS exposes a multi-GPU capable Host interface&lt;/p>
+&lt;p>cuBLASXT 似乎可以调用多个 GPU，比如有 4 A10 in QZ Server，code 限制只用两个 GPU。通过 cuBLASXT 执行 FP32 gemm，TFLOPS 应该不具备参考性了。&lt;/p>
+&lt;p>参考：https://github.com/sxzhang1993/Run-cutlass-with-gpgpu-sim&lt;/p></description></item><item><title>关于 Deep Work</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</link><pubDate>Sun, 08 May 2022 20:56:54 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
 &lt;p>Why read? 最近同步推进的任务比较多，包括雅思/托福，LeetCode刷题（不能说不找实习就荒废掉了），自己lead的课题（可以先读paper慢开始，但是对本人提升很重要），科研实习的课题（这个必须定时有反馈，留下不错的印象），公司的一些活儿（按时完成且上心），锻炼（荒废了一段时间但是必须），AICS 课程（好在这个和目前的研究有了相关性）。&lt;/p>
 &lt;p>因此，需要进行详细而且比较严格的时间管理，才能同时做好这么多事情。&lt;/p>
 &lt;h2 id="01-知乎">0.1 知乎&lt;/h2>
@@ -1599,7 +2398,7 @@ ML：&lt;/p>
 &lt;p>IP, Socket, Web 服务器, HTTP。&lt;/p>
 &lt;p>PS：这部分自己不是很熟&lt;/p>
 &lt;h1 id="12-并发编程">12. 并发编程&lt;/h1>
-&lt;p>竞争，死锁&lt;/p></description></item><item><title>Paper写作 如何写文章</title><link>https://huweim.github.io/post/%E5%86%99%E4%BD%9C_%E5%A6%82%E4%BD%95%E5%86%99%E6%96%87%E7%AB%A0/</link><pubDate>Tue, 19 Apr 2022 18:34:28 +0800</pubDate><guid>https://huweim.github.io/post/%E5%86%99%E4%BD%9C_%E5%A6%82%E4%BD%95%E5%86%99%E6%96%87%E7%AB%A0/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>竞争，死锁&lt;/p></description></item><item><title>Paper写作 如何写文章</title><link>https://huweim.github.io/post/%E7%A7%91%E7%A0%94_%E5%A6%82%E4%BD%95%E5%86%99%E6%96%87%E7%AB%A0/</link><pubDate>Tue, 19 Apr 2022 18:34:28 +0800</pubDate><guid>https://huweim.github.io/post/%E7%A7%91%E7%A0%94_%E5%A6%82%E4%BD%95%E5%86%99%E6%96%87%E7%AB%A0/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
 &lt;p>终于要开始写作了，先动笔把内容填上去，再一步一步地修正。&lt;/p>
 &lt;p>自己的想法，摆几篇领域内的经典文章，尤其是相关的，比如前人做的各种调度算法，模仿他们的introduction，关键是要把你自己的动机和故事写上去。&lt;/p>
 &lt;p>摆一篇你熟悉的老师的文章，模仿他的风格。&lt;/p>
@@ -1693,6 +2492,102 @@ ML：&lt;/p>
 &lt;p>&lt;a href="https://mp.weixin.qq.com/s/Kb9Vnl3gpYWsOC-AY1TjTw">https://mp.weixin.qq.com/s/Kb9Vnl3gpYWsOC-AY1TjTw&lt;/a>&lt;/p>
 &lt;p>画图非常重要，图不行就不要投论文了。&lt;/p>
 &lt;p>摘要和结论放在最后写&lt;/p>
+&lt;h5 id="cvpr-tutorial-how-to-write-a-good-paper">CVPR-Tutorial-How to write a good paper&lt;/h5>
+&lt;p>如何去组织一篇文章的结构，不过我个人看起来下面这几点应该是在说如何写 introduction&lt;/p>
+&lt;ul>
+&lt;li>在开头，一定要去陈述你准备解决的问题，在脑海中想象着一群听众，你要向他们解释。你必须告诉他们为什么要 care about this problem&lt;/li>
+&lt;li>必须简单地介绍为什么别的 solution 不够完美。如果他们足够完美，那就不需要你的 work 了&lt;/li>
+&lt;li>之后，和之前的方法作对比，阐述为什么你的方法 better&lt;/li>
+&lt;li>最后，讨论那些 &lt;strong>和你用了相同技术和实验，但是运用于解决其他问题的 paper&lt;/strong>
+&lt;ul>
+&lt;li>这一点比较新鲜，也是一个新思路。因为实际上很多时候 insight 来自很多地方，看到别人用了 A 问题这个解决方法，受到启发，觉得可以用在 B 问题上面。那么自然要加以引用和讨论&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>explain the main idea with a simple, toy example.&lt;/p>
+&lt;blockquote>
+&lt;p>这一点也是很重要的。我觉得去表达一个东西，最好的方式就是举一个例子。这一点在考试中也是适用的。对我自己来说，例题可以帮助我快速理解作者想要表达的东西。&lt;/p>
+&lt;/blockquote>
+&lt;p>Knuth: keep the reader upper-most in your mind.&lt;/p>
+&lt;blockquote>
+&lt;p>也许大师写文章的时候正是带着这种心态，才能够做出好的工作&lt;/p>
+&lt;/blockquote>
+&lt;p>The readership of your paper&lt;/p>
+&lt;blockquote>
+&lt;p>80% 的人只是扫一眼标题，10% 的人只浏览摘要，8% 的人会把图片看完，2% 的人会 read every word&lt;/p>
+&lt;/blockquote>
+&lt;p>Figures and caption&lt;/p>
+&lt;blockquote>
+&lt;p>很多人提到过的一点，So the figure captions should be self-contained and the caption should tell the reader what to notice about the figure.&lt;/p>
+&lt;p>描述中需要把图片讲清楚&lt;/p>
+&lt;/blockquote>
+&lt;p>⭐ &lt;strong>Quick and easy reasons to reject a paper&lt;/strong>&lt;/p>
+&lt;p>不过下面的建议说的都比较 general&lt;/p>
+&lt;ul>
+&lt;li>Do the authors not deliver what they promise?
+&lt;ul>
+&lt;li>这个应该是关于代码开源，或者是补充结果的承诺；如果没有兑现的话那肯定是要被拒稿的&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Are important references missing (and therefore one suspects the authors not up on the state-of-the-art for this problem)?
+&lt;ul>
+&lt;li>这个也是很显然的，survey 一定要全面，该引用的一定要引用&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Are the results too incremental (too similar to previous work)?
+&lt;ul>
+&lt;li>简单地说，就是 novelty 不足&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Are the results believable?&lt;/li>
+&lt;li>Is the paper poorly written?&lt;/li>
+&lt;li>Are there mistakes or incorrect statements?&lt;/li>
+&lt;/ul>
+&lt;p>了解他们是如何去拒稿的也很重要。&lt;/p>
+&lt;p>From an area chair’s point of view, the types of papers in your pile&lt;/p>
+&lt;p>这一点也很有意思，chair 是如何为会议中的论文分类的&lt;/p>
+&lt;ul>
+&lt;li>About 1/3 are obvious rejects&lt;/li>
+&lt;li>In the whole set, maybe 1 is a really nice paper&amp;ndash;well-written, great results, good idea. That will be an oral presentation.
+&lt;ul>
+&lt;li>大概只有 1 篇，或者是这样一个比例的 paper，是写作完美，结果很不错，idea 也很好的&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>The rest are borderline, and these fall into two camps&amp;hellip;
+&lt;ul>
+&lt;li>其他的都是 borderline，非常犀利的评语&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>&lt;strong>border 又分为两种&lt;/strong>&lt;/p>
+&lt;ul>
+&lt;li>尽管没有什么令人激动的东西，但是写作挺好，结果有一些增量，是无聊的 CVPR paper。这种 paper 会有大概 2/3 被接受，1/3 被拒绝&lt;/li>
+&lt;li>工作量十足的 paper，但是存在一些明显的 flaw. 这个 flow 可能不重要，但是一个有力的 reject 理由。这类文章可能有 2/3 被拒绝，1/3 被接受为 poster。&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>所以，千万不能存在明显的 flaw&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Good writing is re-writing, and it often helps to put the paper down and return to it fresh later.
+This means you need to start writing the paper early!&lt;/strong>&lt;/p>
+&lt;blockquote>
+&lt;p>这一点也非常同意。反复修改才能越来越好，通常一个东西需要放置一段时间，然后去重新看，会有不一样的体会。&lt;/p>
+&lt;/blockquote>
+&lt;p>&lt;strong>Sources on writing technical papers&lt;/strong>&lt;/p>
+&lt;p>一些提供的资源，就直接保存下来了&lt;/p>
+&lt;p>• How to Get Your SIGGRAPH Paper Rejected, Jim Kajiya,
+SIGGRAPH 1993 Papers Chair, &lt;a href="http://www.siggraph.org/publications/">http://www.siggraph.org/publications/&lt;/a>
+instructions/rejected.html
+• Ted Adelson&amp;rsquo;s Informal guidelines for writing a paper, 1991. http:// &lt;a href="https://www.ai.mit.edu/courses/6.899/papers/ted.htm">www.ai.mit.edu/courses/6.899/papers/ted.htm&lt;/a>
+• Notes on technical writing, Don Knuth, 1989.&lt;/p>
+&lt;p>• What&amp;rsquo;s wrong with these equations, David Mermin, Physics
+Today, Oct., 1989. &lt;a href="http://www.ai.mit.edu/courses/6.899/papers/mermin.pdf">http://www.ai.mit.edu/courses/6.899/papers/mermin.pdf&lt;/a>
+• Notes on writing by Fredo Durand, people.csail.mit.edu/fredo/
+PUBLI/writing.pdf and Aaron Hertzmann, http://&lt;/p>
+&lt;p>&lt;a href="https://www.dgp.toronto.edu/~hertzman/advice/writing-technical-">www.dgp.toronto.edu/~hertzman/advice/writing-technical-&lt;/a>
+papers.pdf&lt;/p>
+&lt;p>• Three sins of authors in computer science and math, Jonathan
+Shewchuck, &lt;a href="http://www.cs.cmu.edu/~jrs/sins.html">http://www.cs.cmu.edu/~jrs/sins.html&lt;/a>
+• Ten Simple Rules for Mathematical Writing, Dimitri&lt;/p>
 &lt;h1 id="6-实际写作感受和总结">6. 实际写作感受和总结&lt;/h1>
 &lt;ul>
 &lt;li>第一句话可以先概括，尤其是展示图片，然后再开始叙述&lt;/li>
@@ -1708,867 +2603,4 @@ ML：&lt;/p>
 &lt;p>&lt;a href="https://www.zhihu.com/question/22790506/answer/990626321">https://www.zhihu.com/question/22790506/answer/990626321&lt;/a> 如何写好一篇高质量的IEEE/ACM Transaction级别的计算机科学论文? By Dr.Evil&lt;/p>
 &lt;p>&lt;a href="https://mp.weixin.qq.com/s/Kb9Vnl3gpYWsOC-AY1TjTw">https://mp.weixin.qq.com/s/Kb9Vnl3gpYWsOC-AY1TjTw&lt;/a> 【人大赵鑫老师】如何以初学者角度写好一篇国际学术论文？&lt;/p>
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/158599066">https://zhuanlan.zhihu.com/p/158599066&lt;/a> 导师教给我的英文论文写作经验 By Joy Chu
-​&lt;/p></description></item><item><title>Paper写作 文章添加引用</title><link>https://huweim.github.io/post/%E5%86%99%E4%BD%9C_%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E5%BC%95%E7%94%A8/</link><pubDate>Tue, 19 Apr 2022 18:34:28 +0800</pubDate><guid>https://huweim.github.io/post/%E5%86%99%E4%BD%9C_%E6%96%87%E7%AB%A0%E6%B7%BB%E5%8A%A0%E5%BC%95%E7%94%A8/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
-&lt;p>2022-04-10 22:59:52，折腾了一个小时搞定，纠结了很久顺序的问题，其实文末的引用是 bib 自动生成的。粘贴一篇比较好的教程&lt;/p>
-&lt;h1 id="1-模板">1. 模板&lt;/h1>
-&lt;p>就用 IEEE Conference 模板即可&lt;/p>
-&lt;pre tabindex="0">&lt;code>https://www.ieee.org/content/dam/ieee-org/ieee/web/org/pubs/conference-latex-template_10-17-19.zip
-&lt;/code>&lt;/pre>&lt;h2 id="11-代码替换">1.1 代码替换&lt;/h2>
-&lt;blockquote>
-&lt;p>对于 LATEX，我们一般在谷歌学术或者知网导出 &lt;code>BibTex&lt;/code> 格式的参考文献，而 IEEE 会议模版默认使用的参考文献为 &lt;code>\bibitem&lt;/code>&lt;/p>
-&lt;/blockquote>
-&lt;p>在同级目录下新建文件 &lt;code>ref.bib&lt;/code>，用来存放需要引用的文章信息&lt;/p>
-&lt;p>模板代码替换&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-latex" data-lang="latex">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">\begin&lt;/span>{thebibliography}{00}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">\bibitem&lt;/span>{b1} G. Eason, B. Noble, and I. N. Sneddon, ``On certain integrals of Lipschitz-Hankel type involving products of Bessel functions,&amp;#39;&amp;#39; Phil. Trans. Roy. Soc. London, vol. A247, pp. 529--551, April 1955.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">\bibitem&lt;/span>{b2} J. Clerk Maxwell, A Treatise on Electricity and Magnetism, 3rd ed., vol. 2. Oxford: Clarendon, 1892, pp.68--73.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">\bibitem&lt;/span>{b3} I. S. Jacobs and C. P. Bean, ``Fine particles, thin films and exchange anisotropy,&amp;#39;&amp;#39; in Magnetism, vol. III, G. T. Rado and H. Suhl, Eds. New York: Academic, 1963, pp. 271--350.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">\bibitem&lt;/span>{b4} K. Elissa, ``Title of paper if known,&amp;#39;&amp;#39; unpublished.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">\bibitem&lt;/span>{b5} R. Nicole, ``Title of paper with only first word capitalized,&amp;#39;&amp;#39; J. Name Stand. Abbrev., in press.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">\bibitem&lt;/span>{b6} Y. Yorozu, M. Hirano, K. Oka, and Y. Tagawa, ``Electron spectroscopy studies on magneto-optical media and plastic substrate interface,&amp;#39;&amp;#39; IEEE Transl. J. Magn. Japan, vol. 2, pp. 740--741, August 1987 [Digests 9th Annual Conf. Magnetics Japan, p. 301, 1982].
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">\bibitem&lt;/span>{b7} M. Young, The Technical Writer&amp;#39;s Handbook. Mill Valley, CA: University Science, 1989.
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">\end&lt;/span>{thebibliography}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>直接替换为&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-latex" data-lang="latex">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">\bibliographystyle&lt;/span>{IEEEtran}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">\bibliography&lt;/span>{references}{}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="12-bib-文件">1.2 bib 文件&lt;/h2>
-&lt;p>在 &lt;code>ref.bib&lt;/code> 中添加一篇参考文献&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-latex" data-lang="latex">&lt;span style="display:flex;">&lt;span>@article{creswell2018generative,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> title={Generative adversarial networks: An overview},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> author={Creswell, Antonia and White, Tom and Dumoulin, Vincent and Arulkumaran, Kai and Sengupta, Biswa and Bharath, Anil A},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> journal={IEEE Signal Processing Magazine},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volume={35},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> number={1},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pages={53--65},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> year={2018},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> publisher={IEEE}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="13-正文中引用">1.3 正文中引用&lt;/h2>
-&lt;p>原来不是手动输入框框 []，通过代码 &lt;code>\cite{creswell2018generative}&lt;/code> 来引用，LaTex 会自动编号参考文献（原来不是手动地在后面添加）&lt;/p>
-&lt;h1 id="2-编译">2. 编译&lt;/h1>
-&lt;p>还有关键的一步，编译需要选择 &lt;code>PDFLaTex ——&amp;gt;BibTex——&amp;gt;PDFLaTex——&amp;gt;PDFLaTex&lt;/code>&lt;/p>
-&lt;h1 id="3-引用模板">3. 引用模板&lt;/h1>
-&lt;h2 id="31-会议">3.1 会议&lt;/h2>
-&lt;p>需要 author, booktile 填一下会议的名称，如果加了缩写，那么所有引用都加上缩写，个人喜欢加上缩写。Proceedings of the 是自己手动添加的，后面跟上会议名称即可，根据别人的引用情况，去掉了类似于“第几届”，“IEEE”之类的信息&lt;/p>
-&lt;p>title 填写文章标题，&lt;strong>需要注意的是如果有大写&lt;/strong>，需要用 &lt;code>{}&lt;/code> 括起来，这个 CAWA 其实是一个典型，甚至第一次提交（2022-04-14 16:47:01）忘记了大写 GPGPU，而最开始别人标题中的大写没有生效，后来发现是 {} 的原因&lt;/p>
-&lt;p>address 最好加上，正式一点，搜一下这个会议就能查到了。year 和 page 是一定要有的。page 要注意有些 bibtex 没有给完整，只有一页，需要自己去核对一下。&lt;/p>
-&lt;p>以目前的了解（2022-04-14 20:10:36），其他信息应该不作要求&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-latex" data-lang="latex">&lt;span style="display:flex;">&lt;span>@INPROCEEDINGS{7284091,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>author={Lee, Shin-Ying and Arunkumar, Akhil and Wu, Carole-Jean},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>booktitle={Proceedings of the International Symposium on Computer Architecture (ISCA)},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>title={{CAWA}: Coordinated warp scheduling and Cache Prioritization for critical warp acceleration of GPGPU workloads},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>address={Portland, OR, USA},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>year={2015},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>volume={},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>number={},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>pages={515-527}, doi={10.1145/2749469.2750418}}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="32-期刊">3.2 期刊&lt;/h2>
-&lt;p>title, author, pages, year 等信息和会议类似。&lt;/p>
-&lt;p>journal 填写期刊名称就行，根据全局的情况加上缩写。不过这个 Computing in Science &amp;amp; Engineering 的缩写为 Computing Sci. Eng.，感觉比较相似我就没加，之后核对一下。&lt;/p>
-&lt;p>volume, number 是期刊区别于会议的信息，要正确填写。期刊一般没有 address&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-latex" data-lang="latex">&lt;span style="display:flex;">&lt;span>@article{stone2010opencl,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> title={{OpenCL}: A parallel programming standard for heterogeneous computing systems},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> author={Stone, John E and Gohara, David and Shi, Guochun},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> journal={Computing in Science &lt;span style="color:#66d9ef">\&amp;amp;&lt;/span> Engineering},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> volume={12},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> number={3},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> year={2010},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> pages={66-73},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> publisher={NIH Public Access}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="33-书籍">3.3 书籍&lt;/h2>
-&lt;p>除了这些信息，可能还需要别的&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-latex" data-lang="latex">&lt;span style="display:flex;">&lt;span>@book{farber2011cuda,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> title={{CUDA} application design and development},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> author={Farber, Rob},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> year={2011},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> publisher={Elsevier}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="34-技术报告">3.4 技术报告&lt;/h2>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-latex" data-lang="latex">&lt;span style="display:flex;">&lt;span>@TECHREPORT{Krizhevsky09learningmultiple,
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> author = {Alex Krizhevsky},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> title = {Learning multiple layers of features from tiny images},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> institution = {},
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> year = {2009}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="reference">Reference&lt;/h1>
-&lt;p>&lt;a href="https://blog.51cto.com/u_13977270/3398538">https://blog.51cto.com/u_13977270/3398538&lt;/a> IEEE 会议论文的参考文献&lt;/p></description></item><item><title>Hugo 文章扉页设置</title><link>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E6%89%89%E9%A1%B5%E8%AE%BE%E7%BD%AE/</link><pubDate>Tue, 19 Apr 2022 18:10:17 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E6%89%89%E9%A1%B5%E8%AE%BE%E7%BD%AE/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
-&lt;p>描述如何设置和自定义一篇 post 的页面内容和标签&lt;/p>
-&lt;p>这个在英文中的描述应该是 扉页 front matter&lt;/p>
-&lt;h1 id="1原型">1、原型&lt;/h1>
-&lt;p>原型是创建新页面内容（运行&lt;code>hugo new&lt;/code>命令）时使用的模板，预先配置格式：例如md文件的&lt;strong>扉页&lt;/strong>（ front matter）、其它格式等。原型文件应该存放在&lt;strong>archetypes&lt;/strong>目录内。&lt;/p>
-&lt;p>原型（&lt;strong>archetypes/default.md&lt;/strong>）内的扉页貌似不能进行日期格式转换：&lt;/p>
-&lt;ul>
-&lt;li>date属性只能是&lt;code>date: {{ .Date }}&lt;/code>，因为之后的日期格式转换&lt;a href="https://gohugo.io/functions/format/#hugo-date-and-time-templating-reference">基于此date属性&lt;/a>。若&lt;code>date: {{.Date.Format &amp;quot;2006-01-02&amp;quot;}}&lt;/code>，将会触发错误：Error: Failed to process archetype file “default.md”:: template: default:3:19: executing “default” at &amp;lt;.Date.format&amp;gt;: can&amp;rsquo;t evaluate field format in type string&lt;/li>
-&lt;/ul>
-&lt;h2 id="11-archetypesdefaultmd">1.1 archetypes/default.md&lt;/h2>
-&lt;p>default.md：将md文件构建为HTML的页面文件（type：缺省）。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>---
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">title&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;{{ replace .Name &amp;#34;&lt;/span>-&lt;span style="color:#e6db74">&amp;#34; &amp;#34;&lt;/span> &lt;span style="color:#e6db74">&amp;#34; | title }}&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">date&lt;/span>: {{ &lt;span style="color:#ae81ff">.Date }}&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">author&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;komantao&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">LastModifierDisplayName&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;komantao&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">LastModifierEmail&lt;/span>: &lt;span style="color:#ae81ff">komantao@hotmail.com&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">weight&lt;/span>: &lt;span style="color:#ae81ff">20&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">url&lt;/span>: {{ &lt;span style="color:#ae81ff">replace .Dir &amp;#34;\\&amp;#34; &amp;#34;/&amp;#34; }}{{ replace .Name &amp;#34;-&amp;#34; &amp;#34; &amp;#34; | title }}.html&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">draft&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">description&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;文章描述&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">keywords&lt;/span>: [&lt;span style="color:#ae81ff">keyword1, keyword2, keyword3]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">tags&lt;/span>: [&lt;span style="color:#ae81ff">标签1, 标签2]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">categories&lt;/span>: [&lt;span style="color:#ae81ff">分类1, 分类2]&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>---
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">首页描述。&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="3扉页">3、扉页&lt;/h1>
-&lt;p>扉页（ front matter）用来配置文章的标题、时间、链接、分类等元信息，提供给模板调用。可使用的格式有：yaml格式（默认格式，使用3个减号-）、toml格式（使用3个加号+）、json格式（使用大括号{}）。除了网站主页外，其它内容文件都需要扉页来识别文件类型和编译文件。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>---
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">title&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;xxx&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 文章标题&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">menuTitle&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;xxx&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 文章标题在菜单栏中显示的名称&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">description&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;xxx&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 文章描述&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">keywords&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;Hugo&amp;#34;&lt;/span>,&lt;span style="color:#e6db74">&amp;#34;keyword&amp;#34;&lt;/span>] &lt;span style="color:#75715e"># 关键字描述&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">date&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;2018-08-20&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 文章创建日期&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">tags&lt;/span>: [ &lt;span style="color:#e6db74">&amp;#34;tag1&amp;#34;&lt;/span>, &lt;span style="color:#e6db74">&amp;#34;tag2&amp;#34;&lt;/span>] &lt;span style="color:#75715e"># 自定义标签&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">categories&lt;/span>: [&lt;span style="color:#e6db74">&amp;#34;cat1&amp;#34;&lt;/span>,&lt;span style="color:#e6db74">&amp;#34;cat2&amp;#34;&lt;/span>] &lt;span style="color:#75715e"># 自定义分类&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">weight&lt;/span>: &lt;span style="color:#ae81ff">20&lt;/span> &lt;span style="color:#75715e"># 自定义此页面在章节中的排序优先级（按照数字的正序排序）&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">disableToc&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;false&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 若值为false（缺省值）时，此页面启用TOC&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">pre&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 自定义menu标题的前缀&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">post&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 自定义menu标题的后缀&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">chapter&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span> &lt;span style="color:#75715e"># 若值为true（缺省值）时，将此页面设置为章节（chapter）&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">hidden&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span> &lt;span style="color:#75715e"># 若值为true（缺省值）时，此页面在menu中隐藏&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">LastModifierDisplayName&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 自定义修改者的名称，显示在页脚中&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">LastModifierEmail&lt;/span>: &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span> &lt;span style="color:#75715e"># 自定义修改者的Email，显示在页脚中&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">draft&lt;/span>: &lt;span style="color:#66d9ef">false&lt;/span> &lt;span style="color:#75715e"># true，表示草稿，Hugo将不渲染草稿&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">url&lt;/span>: &lt;span style="color:#75715e"># 重置permalink，默认使用文件名&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">type&lt;/span>: &lt;span style="color:#75715e"># type与layout参数将改变Hugo寻找该文章模板的顺序&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">layout&lt;/span>:
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>---
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>
-&lt;p>weight属性&lt;/p>
-&lt;ul>
-&lt;li>缺省时按照date属性的倒序排序（新日期排在前面）&lt;/li>
-&lt;li>设置时，自定义此页面在章节中的排序（按照数字值的正序排序，数字小的排在前面，若数字值相同，则按照date属性的倒序排序）&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>
-&lt;p>pre属性&lt;/p>
-&lt;p>在菜单栏中的标题前添加前缀：可为数字、文字、图标（&lt;a href="https://fontawesome.com/v4.7.0/icons/">&lt;strong>Font Awesome&lt;/strong>&lt;/a>库）等。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-yaml" data-lang="yaml">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">+++&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">title = &amp;#34;Github repo&amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">pre = &amp;#34;&amp;lt;i class=&amp;#39;fab fa-github&amp;#39;&amp;gt;&amp;lt;/i&amp;gt; &amp;#34;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">+++&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;/li>
-&lt;li>
-&lt;p>menuTitle属性&lt;/p>
-&lt;ul>
-&lt;li>缺省时调用title属性作为此页面在menu中显示的名称&lt;/li>
-&lt;li>设置时，自定义此页面在menu中显示的名称&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h1 id="reference">Reference&lt;/h1>
-&lt;p>&lt;a href="https://kuang.netlify.app/blog/hugo.html">https://kuang.netlify.app/blog/hugo.html&lt;/a>&lt;/p></description></item><item><title>Hugo 目录结构</title><link>https://huweim.github.io/post/blog_hugo_%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</link><pubDate>Tue, 19 Apr 2022 18:10:17 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
-&lt;p>配置博客的代码高亮&lt;/p>
-&lt;h1 id="1-文件夹结构">1. 文件夹结构&lt;/h1>
-&lt;p>其中，&lt;code>config.toml&lt;/code> 是网站的配置文件，Hugo还可使用 &lt;code>config.yaml&lt;/code> 或者 &lt;code>config.json&lt;/code> 进行配置。&lt;/p>
-&lt;p>&lt;code>content&lt;/code> 文件夹中存放所有的网站内容，可在此文件夹中建立其他子文件夹，即为子模块。&lt;/p>
-&lt;p>&lt;code>layouts&lt;/code> 文件夹存放 &lt;code>.html&lt;/code> 格式的模板。模板确定了静态网站渲染的样式。&lt;/p>
-&lt;p>&lt;code>themes&lt;/code> 文件夹存放网站使用的theme主题模板。&lt;/p>
-&lt;p>&lt;code>static&lt;/code> 文件夹存放未来网站使用的静态内容，比如图片、css、JavaScript等。当Hugo生成静态网站时，该文件夹中的所有内容会原封不动的被复制。&lt;/p>
-&lt;p>&lt;code>archetypes&lt;/code> 文件夹存放网站预设置的文件模板头部，当使用 &lt;code>hugo new&lt;/code> 时即可生成一个带有该头部的实例。&lt;/p>
-&lt;p>&lt;code>data&lt;/code> 文件夹用来存储Hugo生成网站时应用的配置文件。配置文件可以是YAML，JSON或者TOML格式。&lt;/p>
-&lt;h2 id="11-post">1.1 Post&lt;/h2>
-&lt;pre tabindex="0">&lt;code>---
-date: &amp;#34;2021-07-08T19:38:26+08:00&amp;#34;
-draft: false
-title: &amp;#34;Blog&amp;#34;
----
-&lt;/code>&lt;/pre>&lt;blockquote>
-&lt;p>其中，&lt;code>date&lt;/code> 说明该博客建立时间，&lt;code>draft&lt;/code> 说明这篇是否是草稿，若是草稿，在无特别指明情况下并不会生成静态网页，&lt;code>title&lt;/code> 表明该文件显示的标题。&lt;/p>
-&lt;p>在同样文件夹下，建立其他 &lt;code>.md&lt;/code> 文件，同样也是有相似的文件头部。该博客的文件名应和 &lt;code>title&lt;/code> 一致，但要注意 &lt;code>title&lt;/code> 中的空格或者 &lt;code>+&lt;/code> 作为文件名时应该替换成&lt;code>-&lt;/code>， 不然会报找不到404网页。文件内容在这块区域下面，使用markdown语法。&lt;/p>
-&lt;/blockquote>
-&lt;h1 id="2-theme-目录结构">2. theme 目录结构&lt;/h1>
-&lt;h2 id="21-修改-post-页面">2.1 修改 post 页面&lt;/h2>
-&lt;p>以主题 &lt;code>jane&lt;/code> 为例，在文件 &lt;code>theme/jane/layouts/post/single.html&lt;/code> 中存放着如何显示 post。根据文件中的代码，关于 table of content 的设定存放在 &lt;code>theme/jane/layouts/partials/post/toc.html&lt;/code>&lt;/p>
-&lt;p>之后把原来的 tableofcontent 那部分代码放到 nav 中即可。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-html" data-lang="html">&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">nav&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;hide-on-mobile section-nav&amp;#34;&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;&lt;span style="color:#f92672">h3&lt;/span> &lt;span style="color:#a6e22e">class&lt;/span>&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;ml-1&amp;#34;&lt;/span>&amp;gt;Table of contents&amp;lt;/&lt;span style="color:#f92672">h3&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> {{ .TableOfContents }}
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">nav&lt;/span>&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>LeetCode刷题记录</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</link><pubDate>Wed, 16 Mar 2022 08:59:50 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_leetcode%E5%88%B7%E9%A2%98%E8%AE%B0%E5%BD%95/</guid><description>&lt;h4 id="关键字检索">关键字检索&lt;/h4>
-&lt;ul>
-&lt;li>查缺补漏：做题时比较生疏的知识点，后面复习的时候最好也check一下熟练程度。&lt;/li>
-&lt;li>知识点：题目所涉及到的大概知识点。&lt;/li>
-&lt;li>分类：根据题库现有的tag，可以大概分为 DP，贪心，数学技巧，滑动窗口，hash，二分算法，单调栈（队列），DFS/BFS，位运算，字符串，数组，二叉树，并查集，双指针&lt;/li>
-&lt;li>第一遍顺序过剑指Offer，第二遍根据类型和短板刷。&lt;/li>
-&lt;/ul>
-&lt;h4 id="短板总结">短板总结&lt;/h4>
-&lt;ul>
-&lt;li>短板：二叉树，矩阵，DFS，BFS&lt;/li>
-&lt;/ul>
-&lt;p>2022-04-15 17:28:42，BFS，DFS，二叉树 稍微熟练了一些；目前的短板&lt;/p>
-&lt;ul>
-&lt;li>DP，堆，矩阵&lt;/li>
-&lt;/ul>
-&lt;h3 id="常见-bug">常见 BUG&lt;/h3>
-&lt;h5 id="1-itoa">1. itoa&lt;/h5>
-&lt;p>gcc error : undefined reference to `itoa'&lt;/p>
-&lt;p>原因：itoa is a non-standard function which is supported by some compilers. Going by the error, it&amp;rsquo;s not supported by your compiler. Your best bet is to use snprintf() instead.&lt;/p>
-&lt;h3 id="311">3.11&lt;/h3>
-&lt;h4 id="查缺补漏">查缺补漏&lt;/h4>
-&lt;ul>
-&lt;li>二叉树建树&lt;/li>
-&lt;li>二叉树后序遍历&lt;/li>
-&lt;/ul>
-&lt;h3 id="311-1">3.11&lt;/h3>
-&lt;h5 id="jz03">JZ.03&lt;/h5>
-&lt;p>3钟方法，Hash 遍历，时间空间均为O(n)，用的这一种秒了；&lt;/p>
-&lt;p>第二种排序后，check 相邻是否重复，时间 O(nlogn)，空间O(1)&lt;/p>
-&lt;p>第三种原地Hash，鸽巢原理。源于一个条件 &lt;code>element value &amp;lt; nums.size()&lt;/code>，元素值归位时如果该索引处已经存在该元素，则为重复。t.O(n), s.O(1)&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>vector 可以用下标索引&lt;/li>
-&lt;li>标签：hash，排序，数组&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz04-二维数组中的查找-">JZ.04 二维数组中的查找 ❌&lt;/h5>
-&lt;p>感觉是 DP or 一些奇淫技巧；这个题感觉算法考试里面有考过:)&lt;/p>
-&lt;p>并非 DP，没有秒这题；主要是思路上的解法而非常规算法&lt;/p>
-&lt;blockquote>
-&lt;p>从右上角开始比较，比它大就往下数一行，比它小就往左数一列&lt;/p>
-&lt;p>二分查找也是解法之一&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>二维 vector 能否用下标索引？
-&lt;ul>
-&lt;li>可以&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;li>标签：数组，二分查找，分治，矩阵&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz05-替换空格">JZ.05 替换空格&lt;/h5>
-&lt;p>简单的字符串替换，被 string 和 char，&amp;quot;&amp;quot; 和 &amp;rsquo;&amp;rsquo; 的一些知识卡了一会儿。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>字符串裁剪 &lt;code>str.substr(pos, len)&lt;/code>，&lt;/li>
-&lt;li>⚠️ 字符串比较；string 可以直接用 &lt;code>==&lt;/code>，但是注意 s[0] 是 char 型；所以 &lt;code>s[0] == &amp;quot; &amp;quot;&lt;/code> 会报错，应该是 &lt;code>s[0] == ' '&lt;/code>；或者 &lt;code>strcmp(s[0], ' ');&lt;/code>&lt;/li>
-&lt;li>注意 &amp;quot;&amp;quot; 和 ''&lt;/li>
-&lt;li>❗ 为什么不能用 strcmp？
-&lt;ul>
-&lt;li>用 &lt;code>strcmp(string , string)&lt;/code> 会就报错；使用 &lt;code>strcmp(char [], char[])&lt;/code> 就可以了；有什么区别？&lt;/li>
-&lt;li>string 是一个 managed type，不用担心有多长；char[] 分配的长度固定&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz06-反转链表">&lt;strong>JZ.06 反转链表&lt;/strong>&lt;/h5>
-&lt;p>从尾到头打印链表，单链表&lt;/p>
-&lt;p>自己的思路：用一个数组存，反向打印这个数组。都是 $O(n)$&lt;/p>
-&lt;p>也可以使用 递归&lt;/p>
-&lt;p>⚠️ 注意边界条件，基本每次 case 都会有&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>单向链表；指针；vector&lt;/li>
-&lt;li>标签：栈，链表，递归，双指针&lt;/li>
-&lt;/ul>
-&lt;h3 id="313">3.13&lt;/h3>
-&lt;h5 id="jz07-重建二叉树-">JZ.07 重建二叉树 ❌&lt;/h5>
-&lt;p>二叉树和链表的数据结构要记住。&lt;/p>
-&lt;p>如何由前序和中序遍历确定一颗二叉树？确定根节点和左右子树，然后继续递归，确定左右子树的根节点和左右子树。可以用分治和递归求解&lt;/p>
-&lt;p>In_Hash 映射作用：pre 第一个节点为 root，根据第一个节点 val，在 In 中快速定位到 index。&lt;/p>
-&lt;p>❌ 看了题解第一遍没写对，注意传入参数为 pre 的起始以及 In 的起始，而非 left_start, right_start。&lt;/p>
-&lt;p>pre_start 作用：找到 root。In_start 作用：确定 root index，进一步确定 left_child_size 和 right_child_size&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>前序遍历列表：第一个元素永远是 【根节点 (root)】&lt;/li>
-&lt;li>中序遍历列表：根节点 (root)【左边】的所有元素都在根节点的【左分支】，【右边】的所有元素都在根节点的【右分支】&lt;/li>
-&lt;li>做题时忽略了一个关键的知识点，确定了pre root，后面的节点都是其左子树，然后才是右子树，也就是说知道了 left_child_size，就能够确定 pre_end&lt;/li>
-&lt;li>标签：数组，hash，分治，二叉树&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz09-用两个栈实现队列">JZ.09 用两个栈实现队列&lt;/h5>
-&lt;p>自己的思路：stack_1 用来插入，需要删除时把 stack_1 全部倒入 stack_2，此时先进来的 element 在栈顶，出栈即可，再把 stack_2 中全部倒回 stack_1。操作上开销比较大。&lt;/p>
-&lt;p>更好的思路：其实不用再把 stack_2 中全部倒回 stack_1&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>栈和队列；自带的 stack 和 queue 库使用的不多；创建栈和队列的关键字？&lt;code>stack&amp;lt;int&amp;gt; stk; queue&amp;lt;int&amp;gt; q;&lt;/code>&lt;/li>
-&lt;li>两个栈实现队列&lt;/li>
-&lt;li>标签：栈，队列&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz10-斐波那契数列-dp">JZ.10 斐波那契数列 DP&lt;/h5>
-&lt;p>自己的思路：感觉是经典的递归教学，但是肯定有比递归更好的解法。用递归会超时，可以加一个 hash 表来优化。加了 hash 优化后 AC，题解中称之为记忆递归&lt;/p>
-&lt;p>更好的思路：这题可以用 DP，没有想到。&lt;/p>
-&lt;p>现成的状态转移方程 $f(n+1) = f(n) + f(n-1)$；&lt;/p>
-&lt;p>转移方程：$dp[i+1] = dp[i] + dp[i-1]$&lt;/p>
-&lt;p>初始状态：$dp[0] = 0; dp[1] = 1$&lt;/p>
-&lt;p>返回值：$dp[n]$&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>查缺补漏：对迭代的概念不太熟悉；DP 的概念和思路&lt;/li>
-&lt;li>标签：DP&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz11-青蛙跳台阶">JZ.11 青蛙跳台阶&lt;/h5>
-&lt;p>自己的思路：hash 递归；DP&lt;/p>
-&lt;p>和上一题很类似，写的是优化空间后的 DP，&lt;/p>
-&lt;p>✔️ 要求自己写一个常规的 DP 加深理解&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>DP&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz11-旋转数组的最小数字-">JZ.11 旋转数组的最小数字 ❌&lt;/h5>
-&lt;blockquote>
-&lt;p>这个题目肯定有复杂度要求的，小于线性复杂度，也就是要求 $O(logn)$；看题解做出来的&lt;/p>
-&lt;/blockquote>
-&lt;p>确实值得一道 hard。也是二分查找的思想，只是舍弃的区间有一定的变化。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：二分查找，数组&lt;/li>
-&lt;li>查缺补漏：二分查找熟练度不够&lt;/li>
-&lt;/ul>
-&lt;h3 id="314">3.14&lt;/h3>
-&lt;h5 id="jz12-矩阵中的路径-">JZ.12 矩阵中的路径 ❌&lt;/h5>
-&lt;p>自己的思路：递归查找可以解，但是复杂度为 $O(mn)$ ；确实是用 DFS递归查找，而题解的复杂度为 $O(3^kmn)$&lt;/p>
-&lt;p>题解 DFS，DFS 已经非常生疏了&lt;/p>
-&lt;p>看了题解后手写了一个性能比较差的 DFS，通过了 case。和题解的写法差不多，性能也是一个级别。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>典型的矩阵搜索问题&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz13-机器人运动范围">JZ.13 机器人运动范围&lt;/h5>
-&lt;p>这个也是算法设计课程中出现的考试题目。&lt;/p>
-&lt;p>自己的思路：看起来暴力遍历可解，不过应该有复杂度要求；第一次做的时候没考虑到棋盘被截断的情况，如果有截断，那么一些满足条件的区域也是去不了的。&lt;/p>
-&lt;p>写错了一句 &lt;code>tag[i][j] == -1;&lt;/code>，报错居然是 &lt;code>stackoverflow&lt;/code>，要注意尽量一次写出 bug-free code。&lt;/p>
-&lt;p>题解：差不多，也上题一样，也是 DFS/BFS，回溯算法，矩阵&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>和上一题类似，也是矩阵，DFS还是可以用。&lt;/li>
-&lt;li>标签：&lt;strong>DP&lt;/strong>，BFS，DFS；DP 体现在哪？了解 DP 的解法&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz14-i-剪绳子-">JZ.14-I 剪绳子 ❌&lt;/h5>
-&lt;p>自己的思路：m 从 2 到 n/2 进行遍历，每次均分长度，求出最大的乘积，可以AC，$O(n^2)$&lt;/p>
-&lt;p>更好的思路：&lt;/p>
-&lt;p>&lt;strong>DP&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>求长度为 n 的绳子剪掉后的乘积，从 &amp;lt;n 的绳子转移而来&lt;/li>
-&lt;li>&lt;code>dp数组&lt;/code> 记录 &lt;code>0到n&lt;/code> 的绳子的最大乘积，初始化 &lt;code>dp[2] = 1&lt;/code>&lt;/li>
-&lt;li>剪掉第一段，长度为 j，j &amp;gt; 1&lt;/li>
-&lt;li>剪了第一段，剩下长度为 &lt;code>(i - j)&lt;/code> 可以剪或者不剪。不剪的话 &lt;code>length = j * (i - j)&lt;/code>；剪了的话 &lt;code>length = j * dp[i - j]&lt;/code>；&lt;code>max(j * (i - j), j * dp[i - j])&lt;/code>&lt;/li>
-&lt;li>遍历 j，$j \in [2, i)$，取最大值。&lt;/li>
-&lt;/ul>
-&lt;p>难道其实你已经用了 DP 思想？3.16 早上来给出答案。2022-03-15 23:27:16。&lt;/p>
-&lt;p>&lt;strong>2022-03-16 10:38:06&lt;/strong>，尝试写一下 DP 解法 ✔️。DP 和自己的思路性能差不多。&lt;/p>
-&lt;p>&lt;strong>贪心&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>均值不等式思想；n &amp;gt; 4 时，尽可能把绳子分为长度为 3 的小段，进行乘加。&lt;/li>
-&lt;/ul>
-&lt;h3 id="316">3.16&lt;/h3>
-&lt;h5 id="jz14-ii-剪绳子">JZ.14-II 剪绳子&lt;/h5>
-&lt;p>在 I 的基础上加了一个答案取模，取模对于加法没有影响，~~但是会影响乘法的计算结果。~~并没有，那么这题在考察什么？&lt;/p>
-&lt;p>这个题目就是考察贪心的解法，如果继续用 DP，应该会超时&lt;/p>
-&lt;h5 id="jz15-二进制中1的个数">JZ.15 二进制中1的个数&lt;/h5>
-&lt;p>考察位运算。&lt;/p>
-&lt;p>自己的思路：比较基础的 $/2%2$ 进行二进制化，时间复杂度 $O(logn)$，可以AC。bitset&lt;/p>
-&lt;p>更好的思路：$n&amp;amp;(n-1)$，$n-1:$ 二进制数字 $n$ 最右边的 1 变成 0 ，此 1 右边的 0 都变成 1；$n&amp;amp;(n - 1):$ 二进制数字 $n$ 最右边的 1 变成 0 ，其余不变。时间复杂度 $O(M)$，M 为 1 的数量&lt;/p>
-&lt;!-- raw HTML omitted -->
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：位运算&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz16-数值的整数次方-">JZ.16 数值的整数次方 ❌&lt;/h5>
-&lt;p>自己的思路：计算 $pow(x, n)$，naive 直接乘 $n$ 次，时间复杂度 $O(n)$，会超时，因此需要的不是 $O(n)$ 的解法。好像和复杂度没有关系，注意 $n$ 的范围，涉及越界的问题。&lt;/p>
-&lt;blockquote>
-&lt;p>&lt;del>我认为这个应该就是考察 INT 型表示范围的细节，尤其是 $n = 0 - n$ 这种写法会越界&lt;/del>。看来并非如此&lt;/p>
-&lt;/blockquote>
-&lt;p>处理了越界仍然会超时，用 $x$ 的范围去换 $n$ 的范围。这样并没有降低时间复杂度的数量级，304 case 全过但是仍然超时。因此猜测 $O(n)$​ 的解法 A 不了。加了一个判断 &lt;code>if(x &amp;lt; 0.000005) return x * init_x;&lt;/code> 后 AC 了，因为输出只保留到小数点后 5 位，有点取巧，虽然 AC 但是可能没有满足这道题的考察意图。⚠️ 这个取巧做法不能算真正的 AC。&lt;/p>
-&lt;p>&lt;strong>更好的解法&lt;/strong>：确实有 $O(logn)$ 的解法，&lt;strong>快速幂&lt;/strong>。快速幂也就是在循环中递归地使用你只用了一次的降幂操作，每次可以降幂的时候，$x *= x, n &amp;raquo;= 1$，这样将复杂度降至 $O(logn)$&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>$(-3) % 2$，余数是 1 还是 -1？答案：余数是 -1&lt;/li>
-&lt;li>标签：递归，数学&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz17-打印从1到最大的n位数">JZ.17 打印从1到最大的n位数&lt;/h5>
-&lt;p>自己的思路：遍历，时间复杂度 $O(10^n)$，直接 A，意义在哪？评论区有人说原题目是要考虑大数越界问题的。因此，这道题的本意应该是考察字符串和整型数字的转换。&lt;/p>
-&lt;p>先放一下&lt;/p>
-&lt;blockquote>
-&lt;p>若不考虑大数问题，则十分简单一个从1到最大数的循环即可。 若考虑大数问题，则首先需要将数字转成字符串避免溢出，然后全排列字符串的第0位到第n-1位。 存储结果时需去掉字符串前几位的0(0099没有意义，应为99)再放入结果。&lt;/p>
-&lt;/blockquote>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：数组（越界，大数），字符串&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz18-删除链表的节点">JZ.18 删除链表的节点&lt;/h5>
-&lt;p>自己的思路：最简单的单链表删除，时间复杂度 $O(n)$，AC。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：链表&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz20-表示数值的字符串">JZ.20 表示数值的字符串&lt;/h5>
-&lt;p>这个题是有实用性的，也许在某些爬虫提取数据的时候会用到。&lt;/p>
-&lt;p>自己的思路：就是用条件判断筛选出不合规的情况 &lt;code>return false&lt;/code>，第一次以为空格直接删除就行，提交后发现空格不能出现在有效符号的中间。&lt;/p>
-&lt;p>提交 23 次 AC，基本就是看着 case 补条件，完全没有周全考虑，没有使用正则表达式思想。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：字符串，有限状态机&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz21-调整数组顺序使奇数位于偶数前面">JZ.21 调整数组顺序使奇数位于偶数前面&lt;/h5>
-&lt;p>自己的思路：两次遍历，$O(n)$，AC，有没有复杂度更低的解法？&lt;/p>
-&lt;p>题解的思路：也是 $O(n)$ 复杂度，但只用遍历一次，双指针，类似快排的思路。分别从左右开始遍历，然后交换。稍快一点。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：数组，双指针，排序&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz22-链表中倒数第k个节点">JZ.22 链表中倒数第k个节点&lt;/h5>
-&lt;p>自己的思路：打印倒数的节点，所以遍历两次，第一次确定链表长度 L，L - k 次 next 就可以找到目标结果，然后返回，AC，时间复杂度 $O(n)$&lt;/p>
-&lt;p>更好的解法：双指针，无需统计链表的长度。前指针先走 $k$ 步，然后共同移动，前指针到终点时返回后指针即可，时间复杂度 $O(n)$&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：链表，双指针&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz24-反转链表">JZ.24 反转链表&lt;/h5>
-&lt;p>自己的思路：一次遍历，forward 指针在前，head 自己在后，一遍遍历一边调整，AC，时间复杂度 O(n)。&lt;/p>
-&lt;p>❌ 注意边界条件，注意条件判断时写了 &lt;code>if(head-&amp;gt;next == NULL || head == NULL)&lt;/code>，报错。因为当 head==NULL，是找不到 head-&amp;gt;next，自己写代码不要忽略边界和细节。&lt;/p>
-&lt;p>题解：除双指针，还有递归的解法，时间空间都是 $O(n)$&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：递归，链表&lt;/li>
-&lt;li>关于递归，心中要有明确的终止条件的概念。&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz25-合并两个递增排序的链表">JZ.25 合并两个递增排序的链表&lt;/h5>
-&lt;p>自己的思路：非常基础的算法题，一次遍历，其中一个链表完成遍历后直接接过去。最初出现错误的原因：遍历的时候 &lt;code>l2 = l2-&amp;gt;next&lt;/code>，忘记保存头结点。&lt;/p>
-&lt;p>一开始的合并写法没有 AC，逻辑有点混乱了，后来直接换了一种写法，新建了一个链表，比较耗费空间，时间复杂度 $O(m+n)$，空间复杂度 $O(m+n)$。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：递归，链表&lt;/li>
-&lt;li>引入 &lt;strong>伪头结点&lt;/strong> 合并链表是本题的最优解&lt;/li>
-&lt;/ul>
-&lt;h4 id="317">3.17&lt;/h4>
-&lt;h5 id="jz26-树的子结构-">JZ.26 树的子结构 ❌&lt;/h5>
-&lt;p>又到了短板，二叉树相关的题目。&lt;/p>
-&lt;p>自己的思路：是否会有一段完全相同的中序遍历？中序遍历能否唯一确定？手写中序遍历 DFS，大概的还记得，有些地方比如 visied，还有判断条件（only care left）疏忽了，但是很快能想起来。Value 还存在负数，那么只能前序也 check 一次了。&lt;/p>
-&lt;p>check 了一次前序一次中序，但是还是 AC 不了，说明一开始的思路可能有点问题。写出了前序和中序，但是没法 AC，思路是错的。&lt;/p>
-&lt;p>更好的解法：遍历 A 树中的每个节点 $n_A$，判断以 $n_A$ 为根节点的字数是否包含 B。状态一般，没有自己手写题解，之后再熟悉一遍。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：树，DFS&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz27-二叉树的镜像">JZ.27 二叉树的镜像&lt;/h5>
-&lt;p>自己的思路：简单递归。AC，时间复杂度 $O(n)$，空间复杂度 $O(n)$，由递归栈的深度决定.&lt;/p>
-&lt;h5 id="jz28-对称的二叉树-">JZ.28 对称的二叉树 ⚠️&lt;/h5>
-&lt;p>自己的思路：一开始直接指针指向 root，翻转二叉树，比较，忽略了只是指针指向了 root，没有保留翻转前的树。后来分别使用递归建树、翻转、比较，AC，时间复杂度 $O(n)$，空间复杂度 $O(n)$。&lt;/p>
-&lt;p>更好的思路：一次递归，无需求镜像。递归地比较左右子树是否相等即可&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>这个题用到和复习的知识点比较多，包括建树。翻转二叉树，比较&lt;/li>
-&lt;li>标签：二叉树，BFS，DFS&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz29-顺时针打印矩阵">JZ.29 顺时针打印矩阵&lt;/h5>
-&lt;p>自己的思路：没考虑算法，用循环每次 push 边界上的几组数，然后不断地更新边界条件，直到所有数都 push 进去。注意边界条件。AC，时间复杂度 $o(mn)$，空间复杂度 $O(mn)$。&lt;/p>
-&lt;p>题解：和 K 神题解的思想差不多。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>数组，矩阵，模拟&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz30-包含-min-的栈">JZ.30 包含 min 的栈&lt;/h5>
-&lt;p>自己的思路：用 vector 实现，push 的时候对比一下记录 min 即可，关于 vector 的指定 index 删除有点忘记了。&lt;code>v.erase(pos)&lt;/code>。噢，不过突然想起 stack 是先进后出，那么直接 &lt;code>v.pop_back()&lt;/code> 删掉最后一个即可。不过为了更加造轮子，还是不用 STL 了吧，用数组好了。&lt;/p>
-&lt;p>还有一个细节，还需要额外保存一个次小值，当 min pop 时需要用次小值顶上。次小值还不够，应该用一个数组记录不同 stack size 时的 min，空间换时间。&lt;/p>
-&lt;p>❗ 细节：栈空时要重置 min。&lt;/p>
-&lt;p>题解：很多题解都是用辅助栈，不过这题个人主要是尝试用数组求解。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>关于 vector 的指定 index 删除。&lt;code>v.erase(pos)&lt;/code>。&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz31-栈的-push-pop-顺序">JZ.31 栈的 push, pop 顺序&lt;/h5>
-&lt;p>也是经典的算法考题，给一个 push 顺序和 pop 顺序，判断 pop 顺序是否有可能是该 push 顺序下的一个 pop 结果。&lt;/p>
-&lt;p>自己的思路：插 pop，给出所有可能性然后对比，这样复杂度有点太夸张了。加一点数学思路来优化，假设 push 序列是顺序的，如果 4 pop，那么 4 之后 &amp;lt;4 的元素出栈时一定不可能是升序，比如 1，2，3；推理到元素 i 出栈，之后 $&amp;lt;i$ 的元素出栈序列一定是降序排列。&lt;/p>
-&lt;p>不一定是顺序输入，所以可能需要用 hash 转换一下。hash 转换得费点脑子，找找经典的理解方法。注意细节，mmax 更换时 slide_min 便作废了。AC，时间复杂度 $O(n)$，空间复杂度 $O(n)$，用了额外的 hash 空间排序。&lt;/p>
-&lt;p>题解：这个题其实蛮有意思，题解完全是另一种做法，自己是利用一些数学/算法上的特征解的。根据 push 序列模拟入栈操作，当栈顶元素 &lt;code>top() == popped[i]&lt;/code> 时出栈元素，i++，push 操作完成观察栈是否空即可。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：栈，数组，模拟&lt;/li>
-&lt;li>自己使用到了 hash 思想；栈的基本知识；栈空时调用 s.top() 会报错&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz32-ii-从上到下打印二叉树">JZ.32-II 从上到下打印二叉树&lt;/h5>
-&lt;p>自己的思路：线序遍历，根据 height 来决定 push 到哪一行。其中遇到了 vector 初始化的问题，不初始化没办法直接 &lt;code>v[height].push_back(root-&amp;gt;val)&lt;/code>，先根据上限 &lt;code>v.resize(1000)&lt;/code>，遍历结束后根据深度 &lt;code>v.resize(height+1);&lt;/code> 即可。时间复杂度 $O(n)$，空间复杂度 $O(n)$。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>二维 vector 初始化
-&lt;ul>
-&lt;li>&lt;code>v.resize(4); v[0].resize(4);&lt;/code>&lt;/li>
-&lt;li>&lt;code>vector&amp;lt;vecotr&amp;lt;int&amp;gt;&amp;gt; v(m, vector&amp;lt;int&amp;gt;(n, 0))&lt;/code>; m 行 n 列全部初始化为0&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz32-iii-从上到下打印二叉树">JZ.32-III 从上到下打印二叉树&lt;/h5>
-&lt;p>和上题区别在于，第一层从左到右打印，第二层从右到左打印，没法先序遍历直接解。&lt;/p>
-&lt;p>自己的思路：vector 是否自带 reverse？正好复习一下，&lt;code>reverse(v.begin(), v.end());&lt;/code>，AC。&lt;/p>
-&lt;p>不过有评论说这是经典面试0分方法 😓，那认真学习下题解思路。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：树，BFS&lt;/li>
-&lt;li>reverse()&lt;/li>
-&lt;/ul>
-&lt;h4 id="318">3.18&lt;/h4>
-&lt;p>2022-03-17 22:45:21，先把两道树的题方法搞了。贪心和 DP 是薄弱点，后期要加强。&lt;/p>
-&lt;h4 id="319">3.19&lt;/h4>
-&lt;h5 id="606-construct-string-from-binary-tree-每日一题">606. Construct String from Binary Tree 每日一题&lt;/h5>
-&lt;p>这道题中文描述简直是 bullshit，还没给范围，之后直接看英文好了。这道题应该是简单吗？虽然确实不太难但是东西还蛮多，涉及先序遍历，数字转字符串等等。&lt;/p>
-&lt;p>自己的思路：先序遍历，数字转字符串，可以省略空子树的括号，省略右子树为空仅有左子树时的括号。时间复杂度 $O(n)$&lt;/p>
-&lt;p>&lt;strong>彩蛋&lt;/strong>：2020.04.02 AC过，当时直接用的 &lt;code>to_string()&lt;/code>，记一下这个函数。不知道当时是不是看的题解，那个时候写的解法更好一点~&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>树，DFS，字符串&lt;/li>
-&lt;/ul>
-&lt;h4 id="320">3.20&lt;/h4>
-&lt;h5 id="jz33-二叉搜索树的后序遍历-">JZ.33 二叉搜索树的后序遍历 ❌&lt;/h5>
-&lt;p>一开始看题目描述蒙了，没有理解其意思。原来是忽略了二叉搜索树这个条件，太久没有接触到所以生疏了，也就是左孩子 value 小于当前节点，右孩子 value 大于当前节点。&lt;/p>
-&lt;p>自己的思路：后序遍历建树，后序遍历不能唯一确定，不过二叉搜索树好像是完全二叉树？这点得确认一下，先按照这个假设。然后判断建好的树是否满足搜索树的概念。&lt;/p>
-&lt;p>注意：循环中，&lt;code>it&lt;/code> 不能回到 begin，因为 begin 位置上可能还有之前跳过的数字，留在当前位置即可。出现了意料之外的 case，所以搜索树不一定是完全二叉树？确实如此。&lt;/p>
-&lt;p>题解思路：遍历顺序 左右根。这个思路之前有想过。后续遍历区间$[i,j]$，遍历划分左右子树区间，找到第一个大于 root 的元素 index $m$，左子树区间 $[i, m-1]$，右子树区间 $[m,j-1]$，递归判断子树的合法性即可。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>vector：可以使用迭代器作为 &lt;code>v.erase(pos)&lt;/code> 中的 pos 进行删除；删除后 &lt;code>v.size()&lt;/code> 会发生变化.&lt;/li>
-&lt;li>二叉搜索树的概念，正是因为记错了所以思路出现了问题。&lt;/li>
-&lt;li>后续遍历的性质，左右根，左右子树的区间&lt;/li>
-&lt;li>标签：栈，树，二叉搜索树，递归，单调栈&lt;/li>
-&lt;/ul>
-&lt;h4 id="326">3.26&lt;/h4>
-&lt;h5 id="jz-19-正则表达式匹配-">JZ. 19 正则表达式匹配 ❌&lt;/h5>
-&lt;p>自己的思路：考虑所有情况，硬配。写了一个多小时还是考虑不全所有情况，这是一种冗余分类的思路，还没有概括完所有情况。遂看题解，发现原来这也能DP。&lt;/p>
-&lt;p>题解的思路：拆分子问题&lt;/p>
-&lt;ul>
-&lt;li>B 的最后一个字符为正常字符串， 比较 $A_{n-1}$ 和 $B_{m-1}$，如果相等则继续比较 $A_{0..n-2}$ 和 $B_{0..m-2}$，不相等则返回 false&lt;/li>
-&lt;li>如果 B 的最后一个字符串为 &lt;code>.&lt;/code>，则比较 $A_{0..n-2}$ 和 $B_{0..m-2}$&lt;/li>
-&lt;li>如果 B 的最后一个字符串为 &lt;code>*&lt;/code>，则 $B_{m-2} = c$ 可以重复0次或多次
-&lt;ul>
-&lt;li>case 1：$A_{n-1}$ 是0个c，舍弃 B 中的 &lt;code>c*&lt;/code>，比较 $A_{0..n-1}$ 和 $B_{0..m-3}$&lt;/li>
-&lt;li>case 2：$A_{n-1}$ 是多个c中的最后一个，比较 $A_{0..n-2}$ 和 $B_{0..m-1}$&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>转移方程&lt;/strong>&lt;/p>
-&lt;p>$f[i][j]$ 代表 A 的前 $i$ 个和 B 的前 $j$ 个能否匹配&lt;/p>
-&lt;ul>
-&lt;li>对于前两种情况可以进行合并，$f[i][j] = f[i-1][j-1]$
-&lt;ul>
-&lt;li>第三种情况，$f[i][j] = f[i][j-2]$，case 2: $f[i][j] = f[i-1][j]$&lt;/li>
-&lt;/ul>
-&lt;/li>
-&lt;/ul>
-&lt;p>&lt;strong>初始条件&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>空串和空正则可以匹配，$f[0][0] = true$&lt;/li>
-&lt;li>空串和非空正则，需要判断&lt;/li>
-&lt;li>非空串和空正则，不匹配，$f[1][0]&amp;hellip;f[n-1][0]=false$&lt;/li>
-&lt;li>非空串和非空正则，需要判断&lt;/li>
-&lt;/ul>
-&lt;p>看题解后自己写：没有正确理解，不是倒着来的，本质上还是正常动态规划的求解过程。用的是&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>; i &lt;span style="color:#f92672">&amp;lt;&lt;/span> m; i&lt;span style="color:#f92672">++&lt;/span>) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span>(&lt;span style="color:#66d9ef">int&lt;/span> j &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>; j &lt;span style="color:#f92672">&amp;lt;&lt;/span> n; j&lt;span style="color:#f92672">++&lt;/span>) {
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> }
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>不需要双指针同步推进&lt;/p>
-&lt;p>2022-03-27 10:22:03，有点绕，之后再来一遍，看懂了再自己写&lt;/p>
-&lt;h5 id="jz-35-复杂链表的复制">JZ. 35 复杂链表的复制&lt;/h5>
-&lt;p>自己的思路：先通过&lt;del>递归遍历原链表&lt;/del>，修改了一下，实际无需递归，直接遍历即可。此时 random 指针还没有赋值。第二次遍历复制链表，用 traver_cpoy 指针一一为每个节点找 random 指针应该指向的节点。怎么找？双指针一同遍历 init 链表和 copy 链表，当 init 链表到达当前节点的 random 后停止，copy 指针也跟着停止，此时 copy 指针的位置就是 traver_copy 指针节点的 random 节点。AC，时间复杂度 $O(n^2)$。&lt;/p>
-&lt;p>更好的思路：hash map 映射，这个能够加深对于 hash 的应用上的理解。第一次遍历构造新节点时，以 hash 的形式存下 init 和 copy 对应节点的指针 &lt;code>map&amp;lt;*Node, *Node&amp;gt; hash_m&lt;/code>，第二次遍历构造 copy 链表的 random，init 指向 &lt;code>head-&amp;gt;random&lt;/code>，通过 &lt;code>head-&amp;gt;random&lt;/code> 以及 hash，可以查找到 copy random &lt;code>hash_m[head-&amp;gt;random]&lt;/code>，&lt;code>copy-&amp;gt;random = hash_m[head-&amp;gt;random]&lt;/code>。时间复杂度 $O(n)$，空间复杂度 $O(n)$。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>注意复制链表需要新建节点，&lt;code>Node* tmp = new Node(val);&lt;/code>，不然指针连接到之前的链表上，就违背了复制的意图。&lt;/li>
-&lt;li>原来这个就是&lt;strong>深拷贝&lt;/strong>的一个例子&lt;/li>
-&lt;li>标签：hash，链表&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz-36-二叉搜索树与双向链表">JZ. 36 二叉搜索树与双向链表&lt;/h5>
-&lt;p>自己的思路：刚学的 hash 的思想似乎可以用上。中序遍历把节点的指针存入数组 &lt;code>vector&amp;lt;Node*&amp;gt; ans&lt;/code>，此时 ans 中的指针是有序的。遍历 ans 数组，重新调整节点 &lt;code>left&lt;/code> 和 &lt;code>right&lt;/code> 指针的指向即可。AC。&lt;/p>
-&lt;p>和题解思路一致&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>栈，DFS，二叉树，双向链表&lt;/li>
-&lt;li>主要是利用了 二叉搜索树 中序遍历后有序的性质&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz37-序列化二叉树">JZ.37 序列化二叉树&lt;/h5>
-&lt;p>序列化函数：也就是将二叉树以 string 的形式存起来。反序列化函数：将 string 构造为二叉树&lt;/p>
-&lt;p>自己的思路：想到的还是 hash 的形式，把节点的指针存下来。得到了中序和前序遍历的序列，然后就是根据中序和前序遍历建树&lt;/p>
-&lt;p>2022-03-31 22:13:41 的思路：有什么东西不重复呢？一开始想到了随机数，但是其实还有有风险，地址应该是不重复的。注意索引越界的问题&lt;/p>
-&lt;p>建树：注意传入参数为 pre 的起始以及 In 的起始，而非 left_start, right_start。忘了加参数 inorder_left 和 inorder_right&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>整型转字符串：&lt;code>itoa(int num, char* str, int radix)&lt;/code>&lt;/li>
-&lt;li>字符串，&lt;code>char str = 'a'; str += 1&lt;/code>，可以直接加整型，此时 &lt;code>str = 'b';&lt;/code>&lt;/li>
-&lt;li>map 如何通过 value 查找 key&lt;/li>
-&lt;/ul>
-&lt;h4 id="331">3.31&lt;/h4>
-&lt;h5 id="728-自除数-每日一题">728. 自除数 每日一题&lt;/h5>
-&lt;p>每日打卡，简单题，没什么亮点。&lt;/p>
-&lt;h4 id="43">4.3&lt;/h4>
-&lt;h5 id="每日一题">每日一题&lt;/h5>
-&lt;h5 id="jz38-字符串的排序-">JZ.38 字符串的排序 ❌&lt;/h5>
-&lt;p>自己的思路：双重循环，swap，set来去重。时间复杂度 $O(n^2)$。❌这种方法覆盖不了所有情况。20分钟没有思路&lt;/p>
-&lt;p>题解的思路：递归回溯填空位的思想。递归回去时，使用过的字符串标记也会回溯。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>❗ 本以为把 visit 数组当做参数传进去，return 的时候自动回溯，没想到也需要手动回溯。&lt;/li>
-&lt;li>突然想起来，要用引用传参。也不全是，只是突然想起来引用传参这个知识点。&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz39-数组中出现次数超过一半的数字">JZ.39 数组中出现次数超过一半的数字&lt;/h5>
-&lt;p>自己的思路：这个题之前应该是遇到过。最直接的方法就是遍历然后填充 hash 表，之后简单地判断，时间复杂度 $O(n)$，空间复杂度 $O(n)$。印象中有时间复杂度更低的解法，分治的思想之类的。想起来是排序之后找中间那个元素，&lt;del>时间复杂度 $O(logn)$&lt;/del>,oh，原来排序的时间复杂度是 $O(nlogn)$&lt;/p>
-&lt;h5 id="jz40-最小的k个数-">JZ.40 最小的k个数 ❌&lt;/h5>
-&lt;p>自己的思路：排序后遍历，这样做没有意义，直接看题解。&lt;/p>
-&lt;p>题解：基于快排的特点。快排时每次都能把 pivot 放在他最终的位置。当结束一次快排，pivot 正好在 $index_k$ 时，返回数组的前 $k$ 个数即可。&lt;/p>
-&lt;p>对快排特点的应用。&lt;/p>
-&lt;p>❌ 忘记了快排的写法，这个题卡了1个小时的原因，在于你完全不会手写快排。如同上次蔚来面试答不出快排一样。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>看了题解之后还是折腾了1个小时；完全是因为快排写错了。&lt;/li>
-&lt;/ul>
-&lt;h4 id="44">4.4&lt;/h4>
-&lt;h5 id="307-">307 ❌&lt;/h5>
-&lt;p>线段树、树状数组踩坑，明天来学习&lt;/p>
-&lt;p>自己的思路：用一个 hash，&lt;code>hash[i]&lt;/code> 存的是数组前 &lt;code>i+1&lt;/code> 个元素之和，查找时复杂度为 $O(1)$，update 时复杂度为 $O(n)$，这个级别的复杂度达不到要求，需要更好的方法。遂看题解。&lt;/p>
-&lt;p>题解思路：分块处理，把时间复杂度优化到 $O(\sqrt{n})$；线段树，其实就是把一个完整的区间划分，左右子树分别是根节点的子区间。树节点保存的值为区间内的元素和，线段树看下图会很清晰。首先根据区间建树，用堆来存储更好。递归回退的时候计算每个节点的 val（也就是区间和），这个思路值得学习。&lt;/p>
-&lt;p>2022-04-05 14:17:41，做得一团 bullshit，又浪费了一个小时，坑还是剩下，不要抄代码强行提交，先去写论文了。&lt;/p>
-&lt;!-- raw HTML omitted -->
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>vector 还可以不使用 push，直接 index 吗？&lt;/li>
-&lt;/ul>
-&lt;h4 id="45">4.5&lt;/h4>
-&lt;h5 id="762">762&lt;/h5>
-&lt;p>自己的思路：判断质数函数一个，对于整数&lt;code>num&lt;/code>，从 2 遍历到 &lt;code>num/2&lt;/code>，没有整除就是质数，时间复杂度 $O(n)$；统计 bit 为1数量的函数，移位并计数，时间复杂度 $O（logn）$。AC&lt;/p>
-&lt;h5 id="5-最长回文子串">5. 最长回文子串&lt;/h5>
-&lt;p>经典DP&lt;/p>
-&lt;p>自己的思路：秒不了，想不出DP，直接题解。&lt;/p>
-&lt;p>题解：中心扩散法，这个比较好理解，主要是来学习DP。&lt;/p>
-&lt;blockquote>
-&lt;p>动态规划就是为了减少重复计算的问题。动态规划听起来很高大上。其实说白了就是空间换时间，将计算结果暂存起来，避免重复计算。&lt;/p>
-&lt;/blockquote>
-&lt;h5 id="每日-310-最小高度树">每日 310. 最小高度树&lt;/h5>
-&lt;p>自己的思路：就是找一个节点，遍历所有节点的深度最小。建表之后dfs，写出了dfs解法，超时，需要优化。还是超时，遂先放弃。&lt;/p>
-&lt;h4 id="415">4.15&lt;/h4>
-&lt;h5 id="jz41-数据流中的中位数">JZ.41 数据流中的中位数&lt;/h5>
-&lt;p>自己的思路：这道题的瓶颈在于排序，无论是插入时排序，还是找中位数时排序，如果每次 call 都进行一次排序，一定会超时。也许需要一颗平衡二叉排序树，把插入时排序的开销降低到 $O(logn)$。&lt;/p>
-&lt;p>以为需要建堆，看题解之后AC。但是直接用的现成的优先队列，并且是看的题解，这道题几乎没有自己想的部分。&lt;/p>
-&lt;p>题解：大顶堆，小顶堆。小顶堆 A 保存较大的一半数据（size = m），大顶堆 B 保存较小的一般数据（size = n）。插入时优先插入到 A，即：&lt;/p>
-&lt;p>m = n，把新元素加到 A：把新元素 num 插入 B，再将 B 的堆顶插入 A。查找：返回 A 和 B 的堆顶之和 / 2&lt;/p>
-&lt;p>m != n，把新元素加到 B：把新元素 num 插入 A，再将 A 的堆顶插入 B。返回 A 的堆顶&lt;/p>
-&lt;p>为什么用优先队列实现大顶堆？什么事优先队列？优先队列是计算机科学中的一类抽象数据类型。优先队列中的每个元素都有各自的优先级，优先级最高的元素最先得到服务；优先级相同的元素按照其在优先队列中的顺序得到服务。优先队列往往用堆来实现。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;p>C++中的优先队列实现。不过要注意，直接用现成的轮子，建堆的过程其实还是不会的。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-c++" data-lang="c++">&lt;span style="display:flex;">&lt;span>priority_queue&lt;span style="color:#f92672">&amp;lt;&lt;/span>Type, Container, Functional&lt;span style="color:#f92672">&amp;gt;&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">//升序队列
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>priority_queue &lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>,vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span>,greater&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> q;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">//降序队列
-&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>priority_queue &lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>,vector&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span>,less&lt;span style="color:#f92672">&amp;lt;&lt;/span>&lt;span style="color:#66d9ef">int&lt;/span>&lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span>q;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;ul>
-&lt;li>堆（优先队列），数据流，排序，双指针&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz42-连续子数组的最大和">JZ.42 连续子数组的最大和&lt;/h5>
-&lt;p>自己的思路：经典的DP来了，练习DP的机会来了。这个似乎就是那位同学说的商汤2面的编程题。dp[i] 存放以 index i 为右边界的数组的最大和。&lt;/p>
-&lt;p>2022-04-15 18:03:47，果然没有想出来，和我自己想的不太一样。写 dp 方程的时候没考虑到需要连续这一特性。要接受自己的愚蠢，看答案。&lt;/p>
-&lt;p>思路绕进去了，一直在想 dp[i] 小于0不一定不能加；实际上自己想的是 nums[i] 小于0不一定不能加。而 dp[i] 如果小于0，说明以 i 为右边界的数组的连续子数组最大和为负数，故可以直接舍弃。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>数组，分治，DP&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz43-1n-整数中-1-出现的次数">JZ.43 1～n 整数中 1 出现的次数&lt;/h5>
-&lt;p>自己的思路：首先尝试暴力的方法，遍历，把int转为char，统计1的数量。itoa 还是用不了，找到了替代，sprintf。暴力法必然超时，打表应该是通过的方法之一，这样需要预处理。没有使用打表的方式，以10000为步长来计算。一次AC，nice（2022-04-15 20:44:01），虽然这道题可能算不上困难。&lt;/p>
-&lt;ul>
-&lt;li>递归，数学规律，DP&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz44-数字序列中某一位的数字-">JZ.44 数字序列中某一位的数字 ❌&lt;/h5>
-&lt;p>自己的思路：实际上就是构造这个序列化字符串。这个字符串长度大于n时跳出即可。承接上一题，还是继续使用 sprintf。atoi 格式忘记了。&lt;/p>
-&lt;p>2022-04-16 19:50:05，先放一放，往后做&lt;/p>
-&lt;h4 id="416">4.16&lt;/h4>
-&lt;h5 id="jz45-把数组排成最小的数-">JZ.45 把数组排成最小的数 ❌&lt;/h5>
-&lt;p>自己的思路：排序后遍历，因为数字都是100以内，先拼接小的即可，拼接22之前先拼接2，拼接33之前先拼接3。晕，看错条件了，说的是 nums 长度小于 100。&lt;/p>
-&lt;p>没有A，看题解了。这道题也是有一些数学的规律，自定义字符串的排序规则。字符串排序规则，若 $x + y &amp;gt; y + x$，说明 y 应该放在左边。&lt;/p>
-&lt;p>除了 sprinft，还可以用 to_string(INT);&lt;/p>
-&lt;h4 id="417">4.17&lt;/h4>
-&lt;h5 id="jz46-数字翻译成字符串">JZ.46 数字翻译成字符串&lt;/h5>
-&lt;p>自己的思路：感觉是一个标准的 DP 问题。判断两数是否能组合时，要注意一些边界条件上的细节。时间复杂度 $O(n)$。实际上就是青蛙跳台阶的思路。&lt;/p>
-&lt;p>2022-04-17 22:10:46，成功AC。这个是刷 LeetCode DP 问题的一个里程碑。标志着你也许能够独立做出一些 DP 问题了。&lt;/p>
-&lt;p>初始状态：以 0 结尾的字符串，有1种翻译&lt;/p>
-&lt;p>状态：以 i 结尾的字符串，有多少种翻译；~$dp[i] = dp[i-1] + 1（单加一个） + if_combined$~ （i 和 i - 1 是否能够组合在一起）。
-应该没有这个 +1，并非叠加，$dp[i] = dp[i-1] + if_combined$&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>个人认为关于 DP，有个很关键的地方是，从初始态出发必须能够到达当前状态，他们是有桥梁的，因为每一步都伴随着信息的更新。&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz47-礼物的最大价值">JZ.47 礼物的最大价值&lt;/h5>
-&lt;p>自己的思路：感觉是一个和棋盘/二维数组相关的 DP 问题。边界问题补一层 padding，因为 value 非负，直接初始化为0即可。AC，比较简单的 DP 问题。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>数组，DP，矩阵&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz48-最长不含重复字符的子字符串">JZ.48 最长不含重复字符的子字符串&lt;/h5>
-&lt;p>自己的思路：最自然的是暴力法，遍历字符串，往后找其第一个重复的串，记录长度，时间复杂度 $O(n^2$。第一个思路有问题，这个思路不太行。明天来做，2022-04-17 23:39:50。&lt;/p>
-&lt;p>2022-04-18 11:51:19，AC，做了比较久，做了接近一个小时。总算绕通了其中的逻辑。自己用的应该是双指针遍历的方法，用 hash_map 存出现过的字符串，遇到重复时更新左边的指针，以及舍弃掉此重复字符串左边的字符串。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>标签：滑动窗口，字符串，hash&lt;/li>
-&lt;/ul>
-&lt;h5 id="每日一题-819-最常见的单词">每日一题 819. 最常见的单词&lt;/h5>
-&lt;p>自己的思路：没什么思路，直接遍历，hash 表存出现的次数，大写转小写。我记得是有大小写转换的函数的，不过忘记了，手动转一下吧。ASCII 差值搞忘了，好像是32？可以建个表。确实是32，还算记得，不用建表了。AC，逻辑有点不清晰，花了大概30分钟。20年4月做过这道题。&lt;/p>
-&lt;h4 id="418">4.18&lt;/h4>
-&lt;h5 id="每日一题-386-lexicographical-numbers-">每日一题 386. Lexicographical Numbers ❌&lt;/h5>
-&lt;p>自己的思路：要求时间复杂度 $O(n)$，也就是一次遍历。n &amp;lt; 10 时直接返回 1-n，否则标记 1-9，后续遇到 1 开头的数就插入到 1 后面，然后标记，遇到 2 开头的数就插入到 2 后面，然后标记。不过 vector 插入的时间复杂度好像是 $O(n)$，这样的话整体就是 $O(n^2)$ 了。&lt;/p>
-&lt;p>15分钟没有思路，上题解。看了一部分评论之后有一个思路，应该将其转换为字符串，这样就无需考虑整数的顺序问题。&lt;/p>
-&lt;p>题解：迭代 DFS 的思想。对于数 number，加入数组，判断 $10*number \leq n$ 是否成立，如果成立则加入数组，并继续搜索（DFS）；如果不成立，判断 $number + 1$ 的情况，如果 number 的个位数为9（number 个位数1-9已经全部搜索过了）或者 number + 1 &amp;gt; n（DFS返回条件），则回退到上一层（number /= 10）&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;p>标签：DFS，前缀树&lt;/p>
-&lt;h5 id="jz49-丑数-">JZ.49 丑数 ❌&lt;/h5>
-&lt;p>自己的思路：已知是一道DP。看题解&lt;/p>
-&lt;p>题解：核心思想是后面的丑数一定由前面的丑数乘以2，或者乘以3，或者乘以5得来。在这个基础上可以使用最小堆，每次取出堆顶元素 xx，则 xx 是堆中最小的丑数，由于 2x, 3x, 5x2x,3x,5x 也是丑数，因此将 2x, 3x, 5x2x,3x,5x 加入堆，然后去重。&lt;/p>
-&lt;p>方法二：DP 三指针。令 $\textit{dp}[i]=\min(\textit{dp}[p_2] \times 2, \textit{dp}[p_3] \times 3, \textit{dp}[p_5] \times 5)$，被使用到的对应指针++。&lt;/p>
-&lt;p>&lt;code>dp[i] = min(min(n2, n3), n5);&lt;/code> 学到了&lt;/p>
-&lt;h4 id="419">4.19&lt;/h4>
-&lt;h5 id="每日一题-821字符的最短距离">每日一题 821.字符的最短距离&lt;/h5>
-&lt;p>自己的思路：第一次遍历记录字符的所有下标，第二次遍历找出当前字符 - 下标集合的最小值。时间复杂度最坏 $O(n^2)$。AC&lt;/p>
-&lt;p>更好的思路：两次遍历。从左往右，一边遍历一遍更新字符idx；从右往左再来一次。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>
-&lt;p>&lt;code>int ans[] = new int(len);&lt;/code> 写法有问题，注意是：&lt;code>int *ans = new int[len]{0};&lt;/code>，一定是指针形式&lt;/p>
-&lt;/li>
-&lt;li>
-&lt;p>vector 初始化：&lt;code>vector&amp;lt;int&amp;gt; ans(len);&lt;/code> 以及 &lt;code>vector&amp;lt;int&amp;gt; ans; ans.resize(len);&lt;/code>&lt;/p>
-&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz50-第一个只出现一次的字符">JZ.50 第一个只出现一次的字符&lt;/h5>
-&lt;p>自己的思路：hash，两次遍历。&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>这道题有一个比较好奇的地方，map 中元素顺序是否是按加入的顺序；噢，map 似乎是自动排序的，根据 first 排序&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz51--数组中的逆序对-">JZ.51 数组中的逆序对 ❌&lt;/h5>
-&lt;p>自己的思路：这是一个 hard 题，最自然的想法是暴力法，$o(n^2)$，很自然地，超时。换一种思路，DP，dp[i] 代表位置 i 之前有 dp[i] 个大于 nums[i] 的数。看题解&lt;/p>
-&lt;p>题解：归并排序和逆序对息息相关，归并排序体现了分治的思想。归并的同时顺便统计信息。&lt;/p>
-&lt;p>PS：着题解代码写得&lt;/p>
-&lt;p>&lt;strong>知识点&lt;/strong>&lt;/p>
-&lt;ul>
-&lt;li>二分查找，归并排序，分治，树状数组，线段树&lt;/li>
-&lt;/ul>
-&lt;h5 id="jz50-两个链表的第一个公共节点">JZ.50 两个链表的第一个公共节点&lt;/h5>
-&lt;p>自己的思路：题目要求尽量用时间复杂度 $O(n)$，空间复杂度 $O(1)$，&lt;/p></description></item><item><title>tmux: Linux 下终端复用</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</link><pubDate>Wed, 16 Mar 2022 08:56:32 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</guid><description>&lt;h2 id="0-前言">0. 前言&lt;/h2>
-&lt;p>个人理解：最重要的思想感觉是将 session 和终端分离，这样的话退出终端时不会中断 session 以及里面的任务，session 还是在后台运行。最重要的是，下次进入终端时可以连接 session，使得可以还原上一次退出时的状态，且后台任务不会中断。&lt;/p>
-&lt;p>前缀键：Ctrl + B，用&lt;code>&amp;lt;prefix&amp;gt;&lt;/code>表示。比如&lt;code>&amp;lt;prefix&amp;gt; %&lt;/code>表示先按&lt;code>Ctrl&lt;/code>，再按&lt;code>B&lt;/code>键，再&lt;code>%&lt;/code>键，其完成的功能就是竖直分屏。&lt;/p>
-&lt;h3 id="01-安装启动退出">0.1 安装、启动、退出&lt;/h3>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ sudo apt-get install tmux
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ tmux &lt;span style="color:#75715e">#进入 Tmux 窗口，底部状态栏左侧是窗口信息（编号和名称），右侧是系统信息&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$exit &lt;span style="color:#75715e">#或者 ctrl + d，退出&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="1-基本概念">1. 基本概念&lt;/h2>
-&lt;!-- raw HTML omitted -->
-&lt;h3 id="11-session">1.1 Session&lt;/h3>
-&lt;p>会话(session): 建立一个 tmux 工作区会话，会话可以长期驻留，重新连接服务器不会丢失，我们只需重新 tmux attach 到之前的工作区就可以恢复会话&lt;/p>
-&lt;p>Session 一大特点：打开窗口，会话开始；关闭窗口，会话结束，会话内部的进程也随之结束&lt;/p>
-&lt;p>基于这个 Motivation，为了解决这种关闭窗口工作丢失的问题，会话和窗口可以解绑。窗口关闭时，会话并不会终止，而是继续运行，有需要的时候（理解为需要交互的时候）再让会话绑定其他窗口。&lt;/p>
-&lt;p>窗口(window): 容纳多个窗格&lt;/p>
-&lt;p>窗格(pane): 可以在窗口中分成多个窗格&lt;/p>
-&lt;h3 id="12-tmux">1.2 Tmux&lt;/h3>
-&lt;p>Tmux 就是让会话与窗口解绑的工具&lt;/p>
-&lt;ul>
-&lt;li>可以在单个窗口中同时访问多个会话。对于同时运行多个命令行程序很有用&lt;/li>
-&lt;li>可以让新窗口 接入 已存在的会话&lt;/li>
-&lt;li>允许每个会话有多个连接窗口，可以多人实时共享会话&lt;/li>
-&lt;li>支持窗口任意的垂直和水平拆分&lt;/li>
-&lt;/ul>
-&lt;h2 id="1-session">1. Session&lt;/h2>
-&lt;h3 id="11-new">1.1 new&lt;/h3>
-&lt;p>第一个启动的 Tmux 窗口，编号是&lt;code>0&lt;/code>，第二个窗口的编号是&lt;code>1&lt;/code>，以此类推。这些窗口对应的会话，就是 0 号会话、1 号会话。&lt;/p>
-&lt;blockquote>
-&lt;p>这里指的是不同会话的窗口？&lt;/p>
-&lt;/blockquote>
-&lt;p>使用编号区分会话，不太直观，更好的方法是为会话起名。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-text" data-lang="text">&lt;span style="display:flex;">&lt;span>$ tmux new -s &amp;lt;session-name&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>上面命令新建一个指定名称的会话。&lt;/p>
-&lt;h3 id="12-detach">1.2 Detach&lt;/h3>
-&lt;p>在 Tmux 窗口中，按下&lt;code>&amp;lt;prefix&amp;gt; d&lt;/code>或者输入&lt;code>tmux detach&lt;/code>命令，就会将当前会话与窗口分离。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ tmux detach
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>上面命令执行后，就会退出当前 Tmux 窗口，但是会话和里面的进程仍然在后台运行。&lt;/p>
-&lt;h3 id="13-查看会话">1.3 查看会话&lt;/h3>
-&lt;p>&lt;code>tmux ls&lt;/code>命令可以查看当前所有的 Tmux 会话。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ tmux ls
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># or&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ tmux list-session
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="14-attach-kill-switch">1.4 Attach, Kill, Switch&lt;/h3>
-&lt;p>&lt;code>tmux attach&lt;/code>命令用于重新接入某个已存在的会话。&lt;/p>
-&lt;p>&lt;code>tmux kill-session&lt;/code>命令用于杀死某个会话。&lt;/p>
-&lt;p>&lt;code>tmux switch&lt;/code>命令用于切换会话。&lt;/p>
-&lt;p>&lt;code>tmux rename-session&lt;/code>命令用于重命名会话。&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 使用会话编号&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ tmux attach -t &lt;span style="color:#ae81ff">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ tmux kill-session -t &lt;span style="color:#ae81ff">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ tmux switch -t &lt;span style="color:#ae81ff">0&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 使用会话名称&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ tmux attach -t &amp;lt;session-name&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ tmux kill-session -t &amp;lt;session-name&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ tmux switch -t &amp;lt;session-name&amp;gt;
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#重命名&lt;/span>
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ tmux rename-session -t &lt;span style="color:#ae81ff">0&lt;/span> &amp;lt;new-name&amp;gt;
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="2-快捷键">2. 快捷键&lt;/h2>
-&lt;h3 id="21-session">2.1 Session&lt;/h3>
-&lt;p>下面是一些会话相关的快捷键。&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>&amp;lt;prefix&amp;gt; d&lt;/code>：分离当前会话。&lt;/li>
-&lt;li>&lt;code>&amp;lt;prefix&amp;gt; s&lt;/code>：列出所有会话。&lt;/li>
-&lt;li>&lt;code>&amp;lt;prefix&amp;gt; $&lt;/code>：重命名当前会话。&lt;/li>
-&lt;/ul>
-&lt;h3 id="22-window">2.2 Window&lt;/h3>
-&lt;ul>
-&lt;li>&lt;code>&amp;lt;prefix&amp;gt; c&lt;/code>：创建一个新窗口，&lt;a href="https://www.zhihu.com/search?q=%E7%8A%B6%E6%80%81%E6%A0%8F&amp;amp;search_source=Entity&amp;amp;hybrid_search_source=Entity&amp;amp;hybrid_search_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A261206348%7D">状态栏&lt;/a>会显示多个窗口的信息。&lt;/li>
-&lt;li>&lt;code>&amp;lt;prefix&amp;gt; p&lt;/code>：切换到上一个窗口（按照状态栏上的顺序）。&lt;/li>
-&lt;li>&lt;code>&amp;lt;prefix&amp;gt; n&lt;/code>：切换到下一个窗口。&lt;/li>
-&lt;li>&lt;code>&amp;lt;prefix&amp;gt;&lt;/code>：切换到指定编号的窗口，其中的``是状态栏上的&lt;a href="https://www.zhihu.com/search?q=%E7%AA%97%E5%8F%A3%E7%BC%96%E5%8F%B7&amp;amp;search_source=Entity&amp;amp;hybrid_search_source=Entity&amp;amp;hybrid_search_extra=%7B%22sourceType%22%3A%22article%22%2C%22sourceId%22%3A261206348%7D">窗口编号&lt;/a>。&lt;/li>
-&lt;li>&lt;code>&amp;lt;prefix&amp;gt; w&lt;/code>：从列表中选择窗口。&lt;/li>
-&lt;li>&lt;code>&amp;lt;prefix&amp;gt; ,&lt;/code>：窗口重命名。&lt;/li>
-&lt;/ul>
-&lt;h2 id="3-常用">3. 常用&lt;/h2>
-&lt;h3 id="31-翻屏">3.1 翻屏&lt;/h3>
-&lt;ul>
-&lt;li>进入tmux翻屏模式:先按&lt;code>ctrl ＋ｂ&lt;/code>，松开，然后再按&lt;code>[&lt;/code>&lt;/li>
-&lt;li>操作同vim：jkhl上下左右&lt;/li>
-&lt;/ul>
-&lt;h3 id="32-最简操作">3.2 最简操作&lt;/h3>
-&lt;ol>
-&lt;li>新建会话&lt;code>tmux new -s my_session&lt;/code>。&lt;/li>
-&lt;li>在 Tmux 窗口运行所需的程序。&lt;/li>
-&lt;li>按下快捷键 d 将会话分离。&lt;/li>
-&lt;li>下次使用时，重新连接到会话&lt;code>tmux attach -t my_session&lt;/code>。&lt;/li>
-&lt;/ol>
-&lt;h2 id="4-设置">4. 设置&lt;/h2>
-&lt;h3 id="41-启用鼠标滚轮">4.1 启用鼠标滚轮&lt;/h3>
-&lt;p>Ctrl + b，然后输入&lt;/p>
-&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ setw mode-mouse on
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="reference">Reference&lt;/h1>
-&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/261206348">https://zhuanlan.zhihu.com/p/261206348&lt;/a>&lt;/p></description></item><item><title>Vim 中常用的操作</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_vim%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Wed, 16 Mar 2022 08:54:13 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_vim%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>&lt;p>&lt;strong>Vim 中常用的操作&lt;/strong>&lt;/p>
-&lt;p>复制、删除中，定位的逻辑都是对应的，找最后一行 G，找第一行 1G，找行首 0，找行尾 $&lt;/p>
-&lt;h4 id="复制粘贴">复制/粘贴&lt;/h4>
-&lt;p>复制&lt;strong>当前行&lt;/strong>之后的内容，&lt;code>yG&lt;/code>&lt;/p>
-&lt;p>复制第一行到当前行，&lt;code>y1G&lt;/code>&lt;/p>
-&lt;p>复制当前行，&lt;code>dd&lt;/code>；向下复制 10 行，&lt;code>10dd&lt;/code>&lt;/p>
-&lt;p>复制游标到行首/行尾，&lt;code>y0&lt;/code>/&lt;code>y$&lt;/code>&lt;/p>
-&lt;p>粘贴在光标下/上一行，&lt;code>p&lt;/code>/&lt;code>P&lt;/code>&lt;/p>
-&lt;h4 id="删除">删除&lt;/h4>
-&lt;p>删除&lt;strong>当前行&lt;/strong>之后的内容&lt;/p>
-&lt;ul>
-&lt;li>光标定位到某行，&lt;code>:,$d&lt;/code>，&lt;code>dG&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;p>删除第一行到当前行&lt;/p>
-&lt;ul>
-&lt;li>&lt;code>1,.d&lt;/code>，&lt;code>d1G&lt;/code>&lt;/li>
-&lt;/ul>
-&lt;p>删除当前行，&lt;code>dd&lt;/code>；向下删除 10 行，&lt;code>10dd&lt;/code>&lt;/p>
-&lt;p>向后/向前删除 10 个字符，&lt;code>10x&lt;/code>/&lt;code>10X&lt;/code>&lt;/p>
-&lt;p>删除游标到行首/行尾，&lt;code>d0&lt;/code>/&lt;code>d$&lt;/code>&lt;/p>
-&lt;p>恢复上一个动作（类似 Ctrl + Z）,&lt;code>u&lt;/code>&lt;/p>
-&lt;p>重做上一个动作（往前恢复），&lt;code>ctrl + r&lt;/code>&lt;/p>
-&lt;p>重复上一个动作（再做一次），&lt;code>.&lt;/code>&lt;/p>
-&lt;h4 id="跳转移动">跳转/移动&lt;/h4>
-&lt;p>跳转到指定&lt;strong>第x行&lt;/strong>，&lt;code>:x&lt;/code>&lt;/p>
-&lt;p>跳转到文件最后一行，&lt;code>shift + g&lt;/code>、&lt;code>G&lt;/code>、&lt;code>:$&lt;/code>&lt;/p>
-&lt;p>跳转到文件第一行，&lt;code>gg&lt;/code>&lt;/p>
-&lt;p>跳转到下一页，&lt;code>ctrl + f (forward)&lt;/code>&lt;/p>
-&lt;p>跳转到上一页，&lt;code>ctrl + b (back)&lt;/code>&lt;/p>
-&lt;p>向下移动 30 行，&lt;code>30j&lt;/code>，&lt;code>30 &amp;lt;Enter&amp;gt;&lt;/code>&lt;/p>
-&lt;p>向右移动 20 个字符，&lt;code>20 &amp;lt;space&amp;gt;&lt;/code>，&lt;!-- raw HTML omitted --> 为空格&lt;/p>
-&lt;p>⭐ 移动到当前行首/尾，&lt;code>0 or [home]&lt;/code>/&lt;code>$ or [End]&lt;/code>&lt;/p>
-&lt;h4 id="搜索">搜索&lt;/h4>
-&lt;p>查找 &lt;code>/&lt;/code>&lt;/p>
-&lt;p>统计字符串数量，&lt;code>:%s/GTO://gn&lt;/code>&lt;/p></description></item></channel></rss>
+​&lt;/p></description></item></channel></rss>
