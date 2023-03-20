@@ -1630,12 +1630,29 @@ ML：&lt;/p>
 &lt;h1 id="reference">Reference&lt;/h1>
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/104444471">https://zhuanlan.zhihu.com/p/104444471&lt;/a>&lt;/p></description></item><item><title>cmake 目录结构和使用</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_cmake-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%92%8C%E4%BD%BF%E7%94%A8/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_cmake-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%92%8C%E4%BD%BF%E7%94%A8/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
 &lt;p>cuTLASS 使用到了 cmake，之前没有接触过，先学习一下他的目录结构和编译过程。&lt;/p>
+&lt;p>2023-03-16 11:25:11，在学习一个工具时，Getting Started 或许是最快的入门方式。&lt;/p>
 &lt;h2 id="01-cmake-简介">0.1 Cmake 简介&lt;/h2>
 &lt;p>对于 C++ 程序，手动编写 Makefile 非常麻烦。cmake 用于自动编写 Makefile。通过读取 CMakeLists.txt 文件，可以自动生成 make 文件。cmake 中 macro 和 function 的使用，使得 cmake 更像是一个脚本语言。&lt;/p>
+&lt;h2 id="02-安装">0.2 安装&lt;/h2>
+&lt;p>官方给出了建议的环境，cmake 没有安装，apt-get install 安装的是 3.12 版本，不符合要求。手动安装一下 3.20 cmake，&lt;a href="https://gist.github.com/bmegli/4049b7394f9cfa016c24ed67e5041930">教程&lt;/a>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># get and build CMake&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget https://github.com/Kitware/CMake/releases/download/v3.24.0/cmake-3.24.0.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -zvxf cmake-3.24.0.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd cmake-3.24.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./bootstrap
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make -j8
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># add path&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH&lt;span style="color:#f92672">=&lt;/span>$PATH:$CUDA_INSTALL_PATH/bin:~/cmake-3.24.0/bin
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意有个 BUG，&lt;code> Could NOT find OpenSSL,&lt;/code>，&lt;code>apt-get install libssl-dev&lt;/code> 即可&lt;/p>
+&lt;h2 id="03-基本特性">0.3 基本特性&lt;/h2>
+&lt;p>cmake 命令不区分大小写，但是变量区分大小写。&lt;/p>
 &lt;h1 id="1-cmake-目录">1. cmake 目录&lt;/h1>
 &lt;h2 id="11-目录结构">1.1 目录结构&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>|-- bin &lt;span style="color:#75715e">#存放可执行文件&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|-- build &lt;span style="color:#75715e">#目录用于存放编译生成的文件&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| |-- dependencies &lt;span style="color:#75715e">#存放 external libraries or dependencies that are required by the project being built&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| |-- CMakeFiles
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|-- CMakeLists.txt
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>|-- include &lt;span style="color:#75715e">#统一存放头文件&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>| |-- hello.h
@@ -1657,6 +1674,10 @@ ML：&lt;/p>
 &lt;p>&lt;strong>src&lt;/strong>: 这个 example 包含了 2 models，main.cpp 依赖于 2 基础 models，另外，注意到他们都包含 &lt;code>CMakeLists.txt&lt;/code> 文件&lt;/p>
 &lt;h2 id="12-理解-cmakeliststxt">1.2 理解 CMakeLists.txt&lt;/h2>
 &lt;p>注意 cmake 文件中不区分大小写&lt;/p>
+&lt;blockquote>
+&lt;p>In a CMake-based project, each directory containing C++ source code should contain a CMakeLists.txt file. This file describes the rules for building the code in that directory.&lt;/p>
+&lt;/blockquote>
+&lt;p>2023-03-16 14:19:11，每个 dir 下都要有一个 CMakeLists.txt&lt;/p>
 &lt;h3 id="121-baseline">1.2.1 Baseline&lt;/h3>
 &lt;p>最基础的包含以下一些信息，&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 规定该CMakeLists.txt适用的cmake最小版本，这里是 3.12，自己手动安装了 3.20 版本&lt;/span>
@@ -1684,7 +1705,78 @@ ML：&lt;/p>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;blockquote>
 &lt;p>如果子目录中的某个CMakeLists.txt中设置了 set(&amp;hellip;)，就以当前文件中设置的路径为主，否则以父目录中设置的路径为主&lt;/p>
 &lt;/blockquote>
-&lt;p>如果都没设置呢？从简单的程序来看，在 &lt;code>build&lt;/code> 目录下 &lt;code>cmake .. XXXX&lt;/code>，在 &lt;code>build&lt;/code> 目录下生成 Makefile，执行 &lt;code>make &amp;amp; make install&lt;/code>，可执行程序就在当前（&lt;code>build&lt;/code>） 目录下。&lt;/p></description></item><item><title>Hugo_让你的博客被Google收录</title><link>https://huweim.github.io/post/blog_hugo_%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%A2%ABgoogle%E6%94%B6%E5%BD%95/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%A2%ABgoogle%E6%94%B6%E5%BD%95/</guid><description>&lt;h1 id="1-step">1. Step&lt;/h1>
+&lt;p>如果都没设置呢？从简单的程序来看，在 &lt;code>build&lt;/code> 目录下 &lt;code>cmake .. XXXX&lt;/code>，在 &lt;code>build&lt;/code> 目录下生成 Makefile，执行 &lt;code>make &amp;amp; make install&lt;/code>，可执行程序就在当前（&lt;code>build&lt;/code>） 目录下。&lt;/p>
+&lt;h2 id="23-cmake-文件变量赋值">2.3 cmake 文件变量赋值&lt;/h2>
+&lt;p>cutlass 编译 example 报错，不确定问题是不是出在变量的传递。&lt;/p>
+&lt;p>2023-03-14 15:49:24，似乎是编译 example 的方式不对。&lt;/p>
+&lt;h2 id="24-制定-cuda-编译器">2.4 制定 cuda 编译器&lt;/h2>
+&lt;p>使用 CMAKE_CUDA_COMPILER 这个内建变量可以做到。&lt;/p>
+&lt;p>可以通过命令 &lt;code>cmake -DCMAKE_CUDA_COMPILER=&amp;quot;xxx&amp;quot;&lt;/code> 来修改&lt;/p>
+&lt;h1 id="3-命令行参数">3. 命令行参数&lt;/h1>
+&lt;h2 id="31--d">3.1 -D&lt;/h2>
+&lt;p>原来 -D 是一个传参选项，怪不得在 CMakeList 里面直接搜索 -DCUTLASS_NVCC_ARCHS，没有找到这个命令。&lt;/p>
+&lt;p>-D 的作用就是定义变量的默认值，比如 &lt;code>-DCUTLASS_NVCC_ARCHS=75&lt;/code>，也就是定义了 &lt;code>CUTLASS_NVCC_ARCHS&lt;/code> 的值&lt;/p>
+&lt;p>此外，&lt;code>CUTLASS_NVCC_ARCHS&lt;/code> 的属性应该得是一个 CACHE STRING，否则可能无法被改变&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>set&lt;span style="color:#f92672">(&lt;/span>CUTLASS_NVCC_ARCHS &lt;span style="color:#e6db74">${&lt;/span>CUTLASS_NVCC_ARCHS_SUPPORTED&lt;span style="color:#e6db74">}&lt;/span> CACHE STRING &lt;span style="color:#e6db74">&amp;#34;The SM architectures requested.&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>set&lt;span style="color:#f92672">(&lt;/span>CUTLASS_LIBRARY_KERNELS &lt;span style="color:#e6db74">&amp;#34;&amp;#34;&lt;/span> CACHE STRING &lt;span style="color:#e6db74">&amp;#34;Comma delimited list of kernel name filters. If unspecified, only the largest tile size is enabled. If &amp;#39;all&amp;#39; is specified, all kernels are enabled.&amp;#34;&lt;/span>&lt;span style="color:#f92672">)&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>那么，尝试修改 &lt;code>CMAKE_CUDA_ARCHITECTURES&lt;/code>，找到给其赋值，并且属性为 CACHE STRING 的 &lt;code>TCNN_CUDA_ARCHITECTURES&lt;/code>，使用命令行实现：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>cmake . -B build -DTCNN_CUDA_ARCHITECTURES&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;75&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="32-添加编译选项">3.2 添加编译选项&lt;/h2>
+&lt;p>对于 C/C++ 代码，一般来说，编译选项命名为 FLAG。可以通过 &lt;code>add_compilie_options&lt;/code> 命令设置编译选项，也可以通过 &lt;code>set&lt;/code> 命令修改 &lt;code>CMAKE_CXX_FLAGS&lt;/code> 或者 &lt;code>CMAKE_C_FLAGS&lt;/code>。&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>add_compile_options&lt;/code> 添加的选项是针对所有编译器，包括 C 和 C++&lt;/li>
+&lt;li>set 命令设置的 &lt;code>CMAKE_CXX_FLAGS&lt;/code> 或者 &lt;code>CMAKE_C_FLAGS&lt;/code> 变量分别针对 C 和 C++&lt;/li>
+&lt;/ul>
+&lt;p>e.g.&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmake" data-lang="cmake">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#判断编译器类型,如果是gcc编译器,则在编译选项中加入c++11支持
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>if(&lt;span style="color:#e6db74">CMAKE_COMPILER_IS_GNUCXX&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> set(&lt;span style="color:#e6db74">CMAKE_CXX_FLAGS&lt;/span> &lt;span style="color:#e6db74">&amp;#34;-std=c++11 ${CMAKE_CXX_FLAGS}&amp;#34;&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> message(&lt;span style="color:#e6db74">STATUS&lt;/span> &lt;span style="color:#e6db74">&amp;#34;optional:-std=c++11&amp;#34;&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>endif(&lt;span style="color:#e6db74">CMAKE_COMPILER_IS_GNUCXX&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>add_compile_options(&lt;span style="color:#e6db74">&amp;lt;option&amp;gt;&lt;/span> &lt;span style="color:#e6db74">...&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>&lt;span style="color:#75715e"># 例子
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">&lt;/span>add_compile_options(&lt;span style="color:#e6db74">-Wall&lt;/span> &lt;span style="color:#e6db74">-Wextra&lt;/span> &lt;span style="color:#e6db74">-pedantic&lt;/span> &lt;span style="color:#e6db74">-Werror&lt;/span> &lt;span style="color:#e6db74">-g&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="33-cmake_progress_start">3.3 cmake_progress_start&lt;/h2>
+&lt;h1 id="4-command-命令">4. Command 命令&lt;/h1>
+&lt;h2 id="41-set">4.1 set&lt;/h2>
+&lt;h3 id="411-set-normal-value">4.1.1 Set Normal Value&lt;/h3>
+&lt;p>&lt;code>set (&amp;lt;variable&amp;gt; &amp;lt;value&amp;gt;... [PARENT_SCOPE])&lt;/code>
+&lt;code>set(CMAKE_CXX_FLAGS &amp;quot;-std=c++11 ${CMAKE_CXX_FLAGS}&amp;quot;)&lt;/code>&lt;/p>
+&lt;blockquote>
+&lt;p>If the PARENT_SCOPE option is given the variable will be set in the scope above the current scope. Each new directory or function() command creates a new scope. A scope can also be created with the block() command.&lt;/p>
+&lt;/blockquote>
+&lt;p>目前还没有太明白 scope 的概念。&lt;/p>
+&lt;h3 id="412-set-cache-entry">4.1.2 Set Cache Entry&lt;/h3>
+&lt;p>&lt;code>set(&amp;lt;variable&amp;gt; &amp;lt;value&amp;gt;... CACHE &amp;lt;type&amp;gt; &amp;lt;docstring&amp;gt; [FORCE])&lt;/code>&lt;/p>
+&lt;p>&lt;code>FORCE&lt;/code> option to overwrite existing entries&lt;/p>
+&lt;h2 id="42-message">4.2 message&lt;/h2>
+&lt;p>这个函数的功能是打印&lt;/p>
+&lt;p>&lt;code>message(STATUS &amp;quot;Obtained CUDA architectures from CMake variable TCNN_CUDA_ARCHITECTURES=${TCNN_CUDA_ARCHITECTURES}&amp;quot;)&lt;/code>&lt;/p>
+&lt;h2 id="43-function">4.3 function&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmake" data-lang="cmake">&lt;span style="display:flex;">&lt;span>function(&lt;span style="color:#e6db74">&amp;lt;name&amp;gt;&lt;/span> &lt;span style="color:#e6db74">[&amp;lt;arg1&amp;gt;&lt;/span> &lt;span style="color:#e6db74">...]&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">&amp;lt;commands&amp;gt;
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>endfunction()&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>NOTE: A function opens a new scope: see set(var PARENT_SCOPE) for details.&lt;/p>
+&lt;p>function 伴随 scope 的概念，或许可以用局部变量和全局变量去理解。&lt;/p>
+&lt;h2 id="44-list">4.4 list&lt;/h2>
+&lt;p>list 有很多子命令，包括 &lt;code>APPEND&lt;/code>, &lt;code>INSERT&lt;/code> 等，用于修改变量。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-cmake" data-lang="cmake">&lt;span style="display:flex;">&lt;span>if (&lt;span style="color:#e6db74">MSVC&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> list(&lt;span style="color:#e6db74">APPEND&lt;/span> &lt;span style="color:#e6db74">CUDA_NVCC_FLAGS&lt;/span> &lt;span style="color:#e6db74">&amp;#34;-Xcompiler=/bigobj&amp;#34;&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span>else()&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> list(&lt;span style="color:#e6db74">APPEND&lt;/span> &lt;span style="color:#e6db74">CUDA_NVCC_FLAGS&lt;/span> &lt;span style="color:#e6db74">&amp;#34;-Xcompiler=-Wno-float-conversion&amp;#34;&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> list(&lt;span style="color:#e6db74">APPEND&lt;/span> &lt;span style="color:#e6db74">CUDA_NVCC_FLAGS&lt;/span> &lt;span style="color:#e6db74">&amp;#34;-Xcompiler=-fno-strict-aliasing&amp;#34;&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">&lt;/span> list(&lt;span style="color:#e6db74">APPEND&lt;/span> &lt;span style="color:#e6db74">CUDA_NVCC_FLAGS&lt;/span> &lt;span style="color:#e6db74">&amp;#34;-Xcudafe=--diag_suppress=unrecognized_gcc_pragma&amp;#34;&lt;/span>)&lt;span style="color:#960050;background-color:#1e0010">
+&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="5-object-file-and-link">5. Object file and link&lt;/h1>
+&lt;p>在目录 &lt;code>mlp_learning_an_image.dir&lt;/code> 生成 &lt;code>.o&lt;/code> 文件之后，同一个目录下有 &lt;code>link.txt&lt;/code> 文件，这个文件就是用来进行链接的。&lt;/p>
+&lt;p>解析一下&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>/usr/bin/c++ -O3 -DNDEBUG CMakeFiles/mlp_learning_an_image.dir/mlp_learning_an_image.cu.o CMakeFiles/mlp_learning_an_image.dir/__/dependencies/stbi/stbi_wrapper.cpp.o -o ../mlp_learning_an_image -L/usr/local/cuda/targets/x86_64-linux/lib ../libtiny-cuda-nn.a -lcuda ../dependencies/fmt/libfmt.a -lcudadevrt -lcudart_static -lrt -lpthread -ldl
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># ../libtiny-cuda-nn.a 这个是 tiny-cuda-nn 那一堆编译生成的，也会被链接进来&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>nvcc -o mlp_learning_an_image CMakeFiles/mlp_learning_an_image.dir/mlp_learning_an_image.cu.o CMakeFiles/mlp_learning_an_image.dir/__/dependencies/stbi/stbi_wrapper.cpp.o -L/usr/local/cuda/targets/x86_64-linux/lib ../libtiny-cuda-nn.a -lcuda ../dependencies/fmt/libfmt.a -lcudadevrt -lcudart_static -lrt -lpthread -ldl
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&lt;code>/usr/bin/ar qc libtiny-cuda-nn.a &amp;quot;CMakeFiles/tiny-cuda-nn.dir/src/common.cu.o&amp;quot;...&lt;/code>，&lt;code>ar&lt;/code> 命令用于创建和管理 static lib, qc 是其 opti&lt;/p>
+&lt;h1 id="reference">Reference&lt;/h1>
+&lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/93895403">https://zhuanlan.zhihu.com/p/93895403&lt;/a>&lt;/p></description></item><item><title>Hugo_让你的博客被Google收录</title><link>https://huweim.github.io/post/blog_hugo_%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%A2%ABgoogle%E6%94%B6%E5%BD%95/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%A2%ABgoogle%E6%94%B6%E5%BD%95/</guid><description>&lt;h1 id="1-step">1. Step&lt;/h1>
 &lt;p>网站在没有提交搜索引擎收录之前，直接搜索你网站的内容是搜不到的，因为搜索引擎不会去检索你的Github仓库。下面的解决方法&lt;/p>
 &lt;h2 id="11-check-是否被谷歌收录">1.1 Check 是否被谷歌收录&lt;/h2>
 &lt;p>打开谷歌搜索，在搜索框中输入&lt;/p>
@@ -1713,6 +1805,16 @@ ML：&lt;/p>
 &lt;p>内容包括根据官方文档运行 CUTLASS 的实例，过程中遇到的一些问题，在 GPGPU-Sim 上运行 CUTLASS，阅读官方 doc 的笔记。&lt;/p>
 &lt;p>包括根据官方文档运行 cuBLAS 的实例，过程中遇到的问题。&lt;/p>
 &lt;h1 id="1-环境">1. 环境&lt;/h1>
+&lt;h2 id="10-project-的目录结构">1.0 project 的目录结构&lt;/h2>
+&lt;p>为什么会有这么多 .cmake 文件？应该是提供了其他功能的模板&lt;/p>
+&lt;ul>
+&lt;li>For a project with cmake, why there is a CMakeFiles dir in build dir, and there is &amp;ldquo;Makefile2&amp;rdquo; in CMakeFiles dir
+&lt;ul>
+&lt;li>The &lt;code>CMakeFiles&lt;/code> directory is generated during the CMake build process and contains all the necessary &lt;strong>intermediate files&lt;/strong> used to build the project.&lt;/li>
+&lt;li>&lt;code>Makefile2&lt;/code> 文件不是用来由用户直接修改的，而是由CMake生成，并由make根据CMakeLists.txt文件中指定的指示来构建项目。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
 &lt;h2 id="11-prerequisites">1.1 Prerequisites&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ git clone https://github.com/NVIDIA/cutlass
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>CUTLASS requires:&lt;/p>
@@ -1729,9 +1831,19 @@ ML：&lt;/p>
 &lt;/ul>
 &lt;h3 id="111-cmake">1.1.1 cmake&lt;/h3>
 &lt;p>官方给出了建议的环境，cmake 没有安装，apt-get install 安装的是 3.12 版本，不符合要求。手动安装一下 3.20 cmake，&lt;a href="https://gist.github.com/bmegli/4049b7394f9cfa016c24ed67e5041930">教程&lt;/a>&lt;/p>
-&lt;p>注意有个 BUG，&lt;code> Could NOT find OpenSSL,&lt;/code>，&lt;code>apt-get install libssl-dev&lt;/code> 即可&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># get and build CMake&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tar -zvxf cmake-3.20.0.tar.gz
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>cd cmake-3.20.0
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>./bootstrap
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>make -j8
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># add path&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>export PATH&lt;span style="color:#f92672">=&lt;/span>$PATH:$CUDA_INSTALL_PATH/bin:~/cmake-3.20.0/bin
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意有个 BUG，&lt;code> Could NOT find OpenSSL,&lt;/code>，&lt;code>apt-get install libssl-dev&lt;/code> 即可&lt;/p>
 &lt;h3 id="112-gcc">1.1.2 gcc&lt;/h3>
 &lt;h2 id="12-build">1.2 Build&lt;/h2>
+&lt;p>2023-03-16 15:31:43，编译的逻辑是吧多个 cutlass 算子都链接到 cutlass_profiler 文件中。&lt;/p>
 &lt;p>之后就可以 build 了。这里用 Turing 架构&lt;/p>
 &lt;p>Construct a build directory and run CMake.&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ export CUDACXX&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">${&lt;/span>CUDA_INSTALL_PATH&lt;span style="color:#e6db74">}&lt;/span>/bin/nvcc
@@ -1877,6 +1989,9 @@ ML：&lt;/p>
 &lt;p>Layout: functor mapping logical coordinates of a tensor to linear offset (as LongIndex); owns stride vectors, if any.&lt;/p>
 &lt;p>Operator: an object performing a computation on matrix or tensor objects. May be further refined by scope within the execution model hierarchy.&lt;/p>
 &lt;p>Tile: partitions of a tensor that have constant extents and layout known at compile time&lt;/p>
+&lt;h2 id="35-align-含义">3.5 align 含义&lt;/h2>
+&lt;p>&lt;code>cutlass_tensorop_f16_s884gemm_f16_64x64_32x2_tn_align8.cu&lt;/code>&lt;/p>
+&lt;p>In the case of this Cutlass file, the &amp;ldquo;align8&amp;rdquo; suffix indicates that the matrix data is aligned to an 8-byte boundary. This can help improve performance when the matrix multiplication algorithm accesses the matrix data.&lt;/p>
 &lt;h2 id="35-cutlass-profiler-">3.5 CUTLASS Profiler ⭐&lt;/h2>
 &lt;p>The CUTLASS Profiler is a command-line driven test and profiling environment for CUTLASS computations defined in the CUTLASS Instance Library. The CUTLASS Profiler is capable of executing each GEMM, Sparse Gemm, Conv2d, and Conv3d kernel.&lt;/p>
 &lt;p>&lt;code>cutlass_profiler&lt;/code> 就是一个封装好的脚本，运行各类程序&lt;/p>
@@ -1958,6 +2073,41 @@ ML：&lt;/p>
 &lt;h2 id="23-using-the-cublasxt-api">2.3 Using the cuBLASXt API&lt;/h2>
 &lt;p>The cuBLASXt API of cuBLAS exposes a multi-GPU capable Host interface&lt;/p>
 &lt;p>cuBLASXT 似乎可以调用多个 GPU，比如有 4 A10 in QZ Server，code 限制只用两个 GPU。通过 cuBLASXT 执行 FP32 gemm，TFLOPS 应该不具备参考性了。&lt;/p>
+&lt;h1 id="3-深入理解其-makefile-以及-cmake">3. 深入理解其 makefile 以及 cmake&lt;/h1>
+&lt;h2 id="31-s-文件">3.1 .s 文件&lt;/h2>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-makefile" data-lang="makefile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#960050;background-color:#1e0010">cd&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">/home/data2/Workspace/huwm/share/work/cutlass/build&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">&amp;amp;&amp;amp;&lt;/span> &lt;span style="color:#66d9ef">$(&lt;/span>MAKE&lt;span style="color:#66d9ef">)&lt;/span> &lt;span style="color:#66d9ef">$(&lt;/span>MAKESILENT&lt;span style="color:#66d9ef">)&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">-f&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">tools/library/CMakeFiles/cutlass_library_objs.dir/build.make&lt;/span> &lt;span style="color:#960050;background-color:#1e0010">tools/library/CMakeFiles/cutlass_library_objs.dir/generated/trmm/cutlass_tensorop_z884trmm_128x64_8x3_tn_rs_u_un_align1.cu.s&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>.s 文件就是 assembly code.&lt;/p>
+&lt;h2 id="32-makefile-中这个-rule-的意义">3.2 Makefile 中这个 rule 的意义&lt;/h2>
+&lt;p>这里 rule 的作用是什么&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-makefile" data-lang="makefile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">tools/profiler/CMakeFiles/cutlass_profiler.dir/rule&lt;/span>&lt;span style="color:#f92672">:&lt;/span> cmake_check_build_system
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">$(&lt;/span>CMAKE_COMMAND&lt;span style="color:#66d9ef">)&lt;/span> -E cmake_progress_start /home/data2/Workspace/huwm/share/work/cutlass/build/CMakeFiles &lt;span style="color:#ae81ff">50&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">$(&lt;/span>MAKE&lt;span style="color:#66d9ef">)&lt;/span> &lt;span style="color:#66d9ef">$(&lt;/span>MAKESILENT&lt;span style="color:#66d9ef">)&lt;/span> -f CMakeFiles/Makefile2 tools/profiler/CMakeFiles/cutlass_profiler.dir/all
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">$(&lt;/span>CMAKE_COMMAND&lt;span style="color:#66d9ef">)&lt;/span> -E cmake_progress_start /home/data2/Workspace/huwm/share/work/cutlass/build/CMakeFiles &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">.PHONY &lt;/span>&lt;span style="color:#f92672">:&lt;/span> tools/profiler/CMakeFiles/cutlass_profiler.dir/rule
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="33-d-文件">3.3 .d 文件&lt;/h2>
+&lt;blockquote>
+&lt;p>The .d file is a dependency file that specifies the dependencies of the source file&lt;/p>
+&lt;/blockquote>
+&lt;p>列出源文件的依赖关系，是一个可读的文本文件。&lt;/p>
+&lt;h2 id="34-make-cutlass_profiler-and-test_unit">3.4 make cutlass_profiler and test_unit&lt;/h2>
+&lt;p>cutlass 提供了两种 target，理解为 test_unit 是用于测试程序的正确性，而 cutalss_profiler 内置了评估性能的代码。&lt;/p>
+&lt;h1 id="bug">BUG&lt;/h1>
+&lt;p>2022&lt;/p>
+&lt;h4 id="1212">12.12&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>CMake Error at CMakeLists.txt:31 &lt;span style="color:#f92672">(&lt;/span>cutlass_example_add_executable&lt;span style="color:#f92672">)&lt;/span>:
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Unknown CMake command &lt;span style="color:#e6db74">&amp;#34;cutlass_example_add_executable&amp;#34;&lt;/span>.
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>原因：可能是 gcc 版本问题，官方说的是 gcc7.3+，用的是 gcc5.5。&lt;/p>
+&lt;p>切换到 gcc7.5.0 没有解决这个问题。&lt;/p>
+&lt;h4 id="314">3.14&lt;/h4>
+&lt;p>2023.3.14 继续解决这个问题。&lt;/p>
+&lt;p>2023-03-14 15:49:24，似乎是编译 example 的方式不对，根据一个模板，使用以下方式来编译&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 根目录下编译整个 projec&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ mkdir build &lt;span style="color:#f92672">&amp;amp;&amp;amp;&lt;/span> cd build
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ cmake ..
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ make 00_basic_gemm
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 00_basic_gemm bin 会生成在 cutlass/build/examples/00_basic_gemm 目录下&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="reference">Reference&lt;/h1>
 &lt;p>参考：https://github.com/sxzhang1993/Run-cutlass-with-gpgpu-sim&lt;/p></description></item><item><title>关于 Deep Work</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</link><pubDate>Sun, 08 May 2022 20:56:54 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
 &lt;p>Why read? 最近同步推进的任务比较多，包括雅思/托福，LeetCode刷题（不能说不找实习就荒废掉了），自己lead的课题（可以先读paper慢开始，但是对本人提升很重要），科研实习的课题（这个必须定时有反馈，留下不错的印象），公司的一些活儿（按时完成且上心），锻炼（荒废了一段时间但是必须），AICS 课程（好在这个和目前的研究有了相关性）。&lt;/p>
 &lt;p>因此，需要进行详细而且比较严格的时间管理，才能同时做好这么多事情。&lt;/p>
