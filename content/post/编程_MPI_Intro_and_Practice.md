@@ -2,6 +2,9 @@
 title: "MPI Intro and Practice"
 date: 2021-03-09T22:36:19+08:00
 draft: false
+author: "Cory"
+tags: ["MPI"]
+categories: ["编程"]
 ---
 
 # MPI Intro and Practice

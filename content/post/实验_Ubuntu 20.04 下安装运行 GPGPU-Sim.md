@@ -2,8 +2,8 @@
 title: "Ubuntu 20.04 下安装运行 GPGPU-Sim"
 date: 2021-05-10T15:17:51+08:00
 draft: false
-tags: ["GPGPU-Sim", "环境搭建"]
-categories: ["实验"]
+tags: ["GPGPU-Sim"]
+categories: ["编程"]
 ---
 
 ### **0. 前言**

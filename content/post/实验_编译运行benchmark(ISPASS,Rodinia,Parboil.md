@@ -5,7 +5,7 @@ lastmod: 2022-04-19T09:45:02+08:00
 draft: false
 author: "Cory"
 tags: ["GPGPU-Sim", "benchmark"]
-categories: ["实验"]
+categories: ["编程"]
 ---
 
 # ISPASS

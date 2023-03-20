@@ -1,11 +1,11 @@
 ---
 title: "编译运行 CUTLASS 和 cuBLAS"
 date: 2022-05-09T22:17:43+08:00
-lastmod: 2022-11-26T16:23:21+08:00
+lastmod: 2023-03-20T22:42:21+08:00
 draft: false
 author: "Cory"
 tags: ["CUTLASS", "CUDA"]
-categories: ["实验"]
+categories: ["编程"]
 ---
 
 # 0. 前言
@@ -14,6 +14,14 @@ categories: ["实验"]
 包括根据官方文档运行 cuBLAS 的实例，过程中遇到的问题。
 
 # 1. 环境
+
+## 1.0 project 的目录结构
+
+为什么会有这么多 .cmake 文件？应该是提供了其他功能的模板
+
++ For a project with cmake, why there is a CMakeFiles dir in build dir, and there is "Makefile2" in CMakeFiles dir
+  + The `CMakeFiles` directory is generated during the CMake build process and contains all the necessary **intermediate files** used to build the project.
+  + `Makefile2` 文件不是用来由用户直接修改的，而是由CMake生成，并由make根据CMakeLists.txt文件中指定的指示来构建项目。
 
 ## 1.1 Prerequisites
 
@@ -37,6 +45,18 @@ CUTLASS may be optionally compiled and linked with
 
 官方给出了建议的环境，cmake 没有安装，apt-get install 安装的是 3.12 版本，不符合要求。手动安装一下 3.20 cmake，[教程](https://gist.github.com/bmegli/4049b7394f9cfa016c24ed67e5041930)
 
+```shell
+# get and build CMake
+wget https://github.com/Kitware/CMake/releases/download/v3.20.0/cmake-3.20.0.tar.gz
+tar -zvxf cmake-3.20.0.tar.gz
+cd cmake-3.20.0
+./bootstrap
+make -j8
+
+# add path
+export PATH=$PATH:$CUDA_INSTALL_PATH/bin:~/cmake-3.20.0/bin
+```
+
 注意有个 BUG，` Could NOT find OpenSSL,`，`apt-get install libssl-dev` 即可
 
 ### 1.1.2 gcc
@@ -44,6 +64,8 @@ CUTLASS may be optionally compiled and linked with
 
 
 ## 1.2 Build
+
+2023-03-16 15:31:43，编译的逻辑是吧多个 cutlass 算子都链接到 cutlass_profiler 文件中。
 
 之后就可以 build 了。这里用 Turing 架构
 
@@ -272,6 +294,12 @@ Operator: an object performing a computation on matrix or tensor objects. May be
 
 Tile: partitions of a tensor that have constant extents and layout known at compile time
 
+## 3.5 align 含义
+
+`cutlass_tensorop_f16_s884gemm_f16_64x64_32x2_tn_align8.cu`
+
+In the case of this Cutlass file, the "align8" suffix indicates that the matrix data is aligned to an 8-byte boundary. This can help improve performance when the matrix multiplication algorithm accesses the matrix data.
+
 ## 3.5 CUTLASS Profiler :star:
 
 The CUTLASS Profiler is a command-line driven test and profiling environment for CUTLASS computations defined in the CUTLASS Instance Library. The CUTLASS Profiler is capable of executing each GEMM, Sparse Gemm, Conv2d, and Conv3d kernel.
@@ -416,5 +444,66 @@ cuBLASLt, a lightweight library dedicated to GEMM
 The cuBLASXt API of cuBLAS exposes a multi-GPU capable Host interface 
 
 cuBLASXT 似乎可以调用多个 GPU，比如有 4 A10 in QZ Server，code 限制只用两个 GPU。通过 cuBLASXT 执行 FP32 gemm，TFLOPS 应该不具备参考性了。
+
+# 3. 深入理解其 makefile 以及 cmake
+
+## 3.1 .s 文件
+
+```makefile
+cd /home/data2/Workspace/huwm/share/work/cutlass/build && $(MAKE) $(MAKESILENT) -f tools/library/CMakeFiles/cutlass_library_objs.dir/build.make tools/library/CMakeFiles/cutlass_library_objs.dir/generated/trmm/cutlass_tensorop_z884trmm_128x64_8x3_tn_rs_u_un_align1.cu.s
+```
+
+.s 文件就是 assembly code. 
+
+## 3.2 Makefile 中这个 rule 的意义
+
+这里 rule 的作用是什么
+
+```makefile
+tools/profiler/CMakeFiles/cutlass_profiler.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/data2/Workspace/huwm/share/work/cutlass/build/CMakeFiles 50
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/profiler/CMakeFiles/cutlass_profiler.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/data2/Workspace/huwm/share/work/cutlass/build/CMakeFiles 0
+.PHONY : tools/profiler/CMakeFiles/cutlass_profiler.dir/rule
+```
+
+## 3.3 .d 文件
+
+> The .d file is a dependency file that specifies the dependencies of the source file
+
+列出源文件的依赖关系，是一个可读的文本文件。
+
+## 3.4 make cutlass_profiler and test_unit
+
+cutlass 提供了两种 target，理解为 test_unit 是用于测试程序的正确性，而 cutalss_profiler 内置了评估性能的代码。
+
+# BUG
+2022
+#### 12.12
+
+```shell
+CMake Error at CMakeLists.txt:31 (cutlass_example_add_executable):
+  Unknown CMake command "cutlass_example_add_executable".
+```
+原因：可能是 gcc 版本问题，官方说的是 gcc7.3+，用的是 gcc5.5。
+
+切换到 gcc7.5.0 没有解决这个问题。
+
+#### 3.14
+
+2023.3.14 继续解决这个问题。
+
+2023-03-14 15:49:24，似乎是编译 example 的方式不对，根据一个模板，使用以下方式来编译
+
+```shell
+# 根目录下编译整个 projec
+$ mkdir build && cd build
+$ cmake ..
+$ make 00_basic_gemm
+
+# 00_basic_gemm bin 会生成在 cutlass/build/examples/00_basic_gemm 目录下
+```
+
+# Reference
 
 参考：https://github.com/sxzhang1993/Run-cutlass-with-gpgpu-sim

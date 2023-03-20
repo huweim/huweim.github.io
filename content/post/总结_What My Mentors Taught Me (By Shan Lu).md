@@ -4,8 +4,8 @@ date: 2022-08-27T23:57:17+08:00
 lastmod: 2022-08-27T23:57:17+08:00
 draft: false
 author: "Cory"
-tags: ["PhD"]
-categories: ["总结"]
+tags: ["Tips"]
+categories: ["科研"]
 ---
 
 # 0. 前言

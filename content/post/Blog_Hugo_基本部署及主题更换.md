@@ -4,7 +4,7 @@ date: 2021-07-24T16:28:22+08:00
 lastmod: 2022-04-19T12:18:11+08:00
 draft: false
 tags: ["Hugo"]
-categories: ["博客搭建"]
+categories: ["工具"]
 ---
 
 # 0. 前言

@@ -5,7 +5,7 @@ lastmod: 2022-04-19 09:01:09
 draft: false
 author: "Cory"
 tags: ["LeetCode"]
-categories: ["总结"]
+categories: ["知识"]
 ---
 
 #### 关键字检索

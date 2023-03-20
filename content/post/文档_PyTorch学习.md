@@ -5,7 +5,7 @@ lastmod: 2022-08-11T16:05:35+08:00
 draft: false
 author: "Cory"
 tags: ["PyTorch"]
-categories: ["工具"]
+categories: ["编程"]
 ---
 
 ## 1.2 Tensor

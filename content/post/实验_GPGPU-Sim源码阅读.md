@@ -6,7 +6,7 @@ draft: false
 author: "Cory"
 keywords: [""]
 tags: ["GPGPU-Sim"]
-categories: ["实验"]
+categories: ["编程"]
 ---
 
 # Shader.cc

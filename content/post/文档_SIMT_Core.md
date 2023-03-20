@@ -3,7 +3,7 @@ title: "SIMT_Core"
 date: 2021-09-04T19:04:57+08:00
 draft: false
 tags: ["官方文档", "GPGPU-Sim"]
-categories: ["文档"]
+categories: ["知识"]
 ---
 
 # 0. 前言

@@ -5,7 +5,7 @@ lastmod: 2022-04-19T18:10:17+08:00
 draft: false
 author: "Cory"
 tags: ["Hugo"]
-categories: ["博客搭建"]
+categories: ["工具"]
 ---
 
 # 0. 前言

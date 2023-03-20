@@ -2,8 +2,8 @@
 title: "读田渊栋博士《博士五年总结系列》"
 date: 2021-03-12T16:54:33+08:00
 draft: false
-tags: ["PhD"]
-categories: ["总结"]
+tags: ["Tips"]
+categories: ["科研"]
 ---
 
 # 读田渊栋博士《博士五年总结系列》

@@ -3,8 +3,8 @@ title: "搭建GPGPU-Sim实验环境"
 date: 2021-09-27T22:54:06+08:00
 lastmod: 2022-04-19T09:45:02+08:00
 draft: false
-tags: ["GPGPU-Sim", "环境搭建"]
-categories: ["实验"]
+tags: ["GPGPU-Sim", "Docker"]
+categories: ["编程"]
 ---
 
 # 服务器

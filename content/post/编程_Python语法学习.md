@@ -5,7 +5,7 @@ lastmod: 2022-09-14T11:15:41+08:00
 draft: false
 author: "Cory"
 tags: ["Python"]
-categories: ["工具"]
+categories: ["编程"]
 ---
 
 ##### 函数

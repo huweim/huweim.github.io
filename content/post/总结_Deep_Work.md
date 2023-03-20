@@ -5,7 +5,7 @@ lastmod:
 draft: false
 author: "Cory"
 tags: ["时间管理"]
-categories: ["总结"]
+categories: ["知识"]
 ---
 
 # 0. 前言

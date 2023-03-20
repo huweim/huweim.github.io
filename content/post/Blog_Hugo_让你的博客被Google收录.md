@@ -5,7 +5,7 @@ lastmod:
 draft: false
 author: "Cory"
 tags: ["Hugo"]
-categories: ["博客搭建"]
+categories: ["工具"]
 ---
 
 

@@ -4,8 +4,8 @@ date: 2021-11-14T22:07:35+08:00
 lastmod: 2022-11-26T16:18:17+08:00
 draft: false
 author: "Cory"
-tags: [""]
-categories: ["CUDA"]
+tags: ["CUDA", "gcc"]
+categories: ["编程"]
 ---
 
 # 0. 前言

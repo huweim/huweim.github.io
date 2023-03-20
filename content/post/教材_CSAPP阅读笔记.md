@@ -5,7 +5,7 @@ lastmod: 2022-04-19T18:34:28+08:00
 draft: false
 author: "Cory"
 tags: ["CSAPP"]
-categories: ["教材"]
+categories: ["知识"]
 ---
 
 # 0. 前言

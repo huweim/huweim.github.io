@@ -4,8 +4,8 @@ date: 2022-09-26T02:42:41+08:00
 lastmod: 2022-09-26T02:42:41+08:00
 draft: false
 author: "Cory"
-tags: ["科研"]
-categories: ["总结"]
+tags: ["Tips"]
+categories: ["科研"]
 ---
 
 # Having Effective Meetings Between Advisors and Students

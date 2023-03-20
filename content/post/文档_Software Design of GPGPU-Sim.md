@@ -4,8 +4,8 @@ date: 2021-11-14T20:35:44+08:00
 lastmod: 
 draft: false
 author: "Cory"
-tags: ["gpgpu-sim", "官方文档"]
-categories: ["文档"]
+tags: ["GPGPU-Sim", "文档"]
+categories: ["知识"]
 ---
 
 4 Software Design of GPGPU-Sim

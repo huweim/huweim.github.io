@@ -4,8 +4,8 @@ date: 2021-11-14T20:42:52+08:00
 lastmod: 
 draft: false
 author: "Cory"
-tags: ["GPGPU-Sim", "warp"]
-categories: ["总结"]
+tags: ["GPGPU-Sim", "Warp Scheduling"]
+categories: ["编程"]
 ---
 
 # CTA Scheduling

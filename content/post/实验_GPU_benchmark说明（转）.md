@@ -4,8 +4,8 @@ date: 2021-11-14T20:34:48+08:00
 lastmod: 
 draft: false
 author: "Cory"
-tags: ["gpgpu-sim"]
-categories: ["实验"]
+tags: ["GPGPU-Sim"]
+categories: ["知识"]
 ---
 
 # Introduction

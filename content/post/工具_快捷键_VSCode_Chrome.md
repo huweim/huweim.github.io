@@ -4,7 +4,7 @@ date: 2022-06-10T15:27:08+08:00
 lastmod: 2022-06-10 15:27:58
 draft: false
 author: "Cory"
-tags: ["VSCode"]
+tags: ["VSCode", "Chrome"]
 categories: ["工具"]
 ---
 

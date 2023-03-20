@@ -5,8 +5,8 @@ lastmod: 2021-09-28T15:44:35+08:00
 draft: false
 author: "Cory"
 keywords: ["SIMT Core源码"]
-tags: ["官方文档", "GPGPU-Sim"]
-categories: ["文档"]
+tags: ["文档", "GPGPU-Sim"]
+categories: ["知识"]
 ---
 
 GPGPU-sim - Performance Simulation Engine

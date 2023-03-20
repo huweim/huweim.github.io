@@ -3,7 +3,7 @@ title: "Hugo About页面制作"
 date: 2021-07-24T19:19:09+08:00
 draft: false
 tags: ["Hugo"]
-categories: ["博客搭建"]
+categories: ["工具"]
 ---
 
 # 前言

@@ -4,8 +4,8 @@ date: 2022-04-19T20:29:07+08:00
 lastmod: 2022-04-19T20:29:07+08:00
 draft: false
 author: "Cory"
-tags: ["Python"]
-categories: ["可视化"]
+tags: ["Python", "matplotlib"]
+categories: ["编程"]
 ---
 
 #### plt.hist()

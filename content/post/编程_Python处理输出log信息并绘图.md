@@ -4,8 +4,8 @@ date: 2021-12-08T09:05:41+08:00
 lastmod: 2021-12-08 09:06:13
 draft: false
 author: "Cory"
-tags: ["Python", "可视化"]
-categories: ["工具"]
+tags: ["Python"]
+categories: ["编程"]
 ---
 
 # 0. 前言

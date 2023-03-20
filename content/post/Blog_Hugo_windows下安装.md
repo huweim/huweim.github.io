@@ -3,7 +3,7 @@ title: "Hugo Windows下安装"
 date: 2021-07-24T16:33:34+08:00
 draft: false
 tags: ["Hugo"]
-categories: ["博客搭建"]
+categories: ["工具"]
 ---
 
 # Installing on Windows

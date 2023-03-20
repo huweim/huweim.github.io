@@ -6,7 +6,7 @@ draft: false
 author: "Cory"
 keywords: ["文章写作规范"]
 tags: ["Hugo"]
-categories: ["博客搭建"]
+categories: ["工具"]
 ---
 
 # 0. 前言

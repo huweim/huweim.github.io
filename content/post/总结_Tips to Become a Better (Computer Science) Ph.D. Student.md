@@ -4,8 +4,8 @@ date: 2022-08-28T00:04:17+08:00
 lastmod: 2022-08-28T00:04:17+08:00
 draft: false
 author: "Cory"
-tags: ["PhD"]
-categories: ["总结"]
+tags: ["Tips"]
+categories: ["科研"]
 ---
 
 转载北大本科生，本科在梁云老师那里实习，现在是 princeton phd

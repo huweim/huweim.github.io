@@ -2,8 +2,8 @@
 title: "GPGPU-Sim 运行机制"
 date: 2021-09-28T13:39:14+08:00
 draft: false
-tags: ["GPGPU-Sim", "编译"]
-categories: ["实验"]
+tags: ["GPGPU-Sim"]
+categories: ["编程"]
 ---
 
 # 0. 前言
