@@ -1,7 +1,7 @@
 ---
 title: "GPGPU-Sim中的CTA & warp scheduling"
 date: 2021-11-14T20:42:52+08:00
-lastmod: 
+lastmod: 2023-03-21T20:42:52+08:00
 draft: false
 author: "Cory"
 tags: ["GPGPU-Sim", "Warp Scheduling"]
@@ -32,7 +32,7 @@ When each thread finishes, the SIMT core calls `register_cta_thread_exit(...)` t
 
 + A new front-end that models instruction caches and separates the **warp scheduling (issue) stage** from the fetch and decode stage
 
-##### Flow
+### 1.1 Flow
 
 `shader_core_ctx::issue()` call `scheduler_unit::cycle()`。
 
@@ -53,17 +53,17 @@ In function `scheduler_unit::cycle()` , call `order_warps()` to sort warps accor
     + call `do_on_warp_issued(warp_id, issued, iter);`
   + checked++
 
-##### scheduler_size()
+### 1.2 scheduler_size()
 
 scheduler.size 就是2，代表一个 core 中 warp scheduler 的数量
 
-##### lrr 特征
+### 1.3 lrr 特征
 
 + 单双数 round-robin 1-3-5-7-9, 2-4-6-8-10
 
 Why? there are two schedulers per SM, an even and odd scheduler that concurrently execute even and odd warps.
 
-##### gto 特征
+### 1.4 gto 特征
 
 贪心，没有 stall 的话会看到连续的 warp id 相同
 
@@ -75,11 +75,11 @@ warp id:24 OP:8
 warp id:24 OP:1
 ```
 
-### 1.2 构造 scheduler
+### 1.5 构造 scheduler
 
 根据 warp scheduling policy 构造 scheduler。config 文件传入调度策略，`shader_core_ctx::create_schedulers()` 根据传入的字符构造对应的 scheduler 类。
 
-#### 1.3.1 class scheduler_unit
+#### 1.5.1 class scheduler_unit
 
 ##### I. std::vector< shd_warp_t* > m_next_cycle_prioritized_warps
 

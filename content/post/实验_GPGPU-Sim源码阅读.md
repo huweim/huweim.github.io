@@ -1,7 +1,7 @@
 ---
 title: "GPGPU-Sim源码阅读"
 date: 2021-09-28T15:51:46+08:00
-lastmod: 2021-10-23T10:02:46+08:00
+lastmod: 2023-03-21T10:02:46+08:00
 draft: false
 author: "Cory"
 keywords: [""]
@@ -9,7 +9,7 @@ tags: ["GPGPU-Sim"]
 categories: ["编程"]
 ---
 
-# Shader.cc
+# 1. Shader.cc
 
 shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等
 
@@ -19,7 +19,7 @@ num_shaer 就是 n_simt_clusters*n_simt_cores_per_cluster，也就是 SIMT Core 
 
 tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值
 
-### shader_core_ctx::decode 函数
+## 1.1 shader_core_ctx::decode 函数
 
 检查 fetch buffer 中的指令是否有效，如有效则进入循环。获得当前指令的 pc，并取指令。
 
@@ -29,7 +29,7 @@ tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值
 
 每个 warp 有两个 ibuffer slot, 也就是 ibuffer_fill 中的0和1
 
-##### ifetch_buffer_t(address_type pc, unsigned nbytes, unsigned warp_id)
+### 1.1.1 ifetch_buffer_t(address_type pc, unsigned nbytes, unsigned warp_id)
 
 是一个结构体，包含 m_valid, m_pc, m_nbytes, m_warp_id
 
@@ -39,7 +39,7 @@ tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值
 
 理解为用于使得 fetch and decode 可以流水线执行的一个结构体
 
-### shader_core_ctx::fetch 函数
+## 1.2 hader_core_ctx::fetch 函数
 
 访问内存 (L1 Cache or memory)，获取指令的 pc, size, warp_id
 
@@ -49,11 +49,21 @@ tw_get_oracle_CPL_counter 计算 warp 的 CPL counter 值
 
 > 第3层中的第1个 if 语句检查 warp 是否已经完成执行，第3层中的第2个 if 语句检查当前 warp 对应的 entry 是否已经存储了有效的指令
 
-### issue_warp 函数
+**2021-11-30 09:51:16**
+
+Fetch 是轮询进行的，从上一次 fetch warp 开始，一个接一个往后询问，直到遇到一个warp
+
++ 单个 warp 未完成执行，`!m_warp[warp_id].functional_done()`
++ 没有处于 miss pending，`!m_warp[warp_id].imiss_pending()`，I-cache miss 时设置为 miss pending 状态
++ ibuffer 为空，`m_warp[warp_id].ibuffer_empty()`
+
+那么就进行内存访问，`m_L1I->access`
+
+### 1.2.1 issue_warp 函数
 
 free 掉相应的 I-Buffer
 
-### scheduler_unit::cycle()
+## 1.3 scheduler_unit::cycle()
 
 In function `scheduler_unit::cycle()` , call `order_warps()` to sort warps according to their priority. 
 
@@ -81,11 +91,17 @@ In function `scheduler_unit::cycle()` , call `order_warps()` to sort warps accor
 
 ---
 
-##### scheduler_size()
+### 1.3.1 scheduler_size()
 
 scheduler.size 就是2，代表一个 core 中 warp scheduler 的数量
 
-## 关于类
+# 1.4 simt_core_cluster::core_cycle()
+
+m_core_sim_order 大小为1
+
+m_shader_config->n_simt_clusters 大小为15
+
+# 2. 关于类
 
 阅读一个类，应该先观察他还包含哪些子类，继承自哪个类，从全局上把握他的作用
 
@@ -98,7 +114,7 @@ class opndcoll_rfu_t
 + class collector_unit_t
 + dispatch_unit_t
 
-## 地址信息
+# 3. 地址信息
 
 src/abstract_hardware_model.h
 
@@ -125,9 +141,9 @@ std::vector<per_thread_info> m_per_scalar_thread;
 + :heavy_check_mark: 匹配。前两个 kernel (都是 create matrix)  `gpgpu_n_param_mem_insn + gpgpu_n_store_insn = number of memaddr`
 + 不过要注意 Memory Access Statistics 的信息应该是总和而非单一 kernel
 
-# Tracing
+# 4. Tracing
 
-## 4个 Cycle() 函数调用关系
+## 4.1 4个 Cycle() 函数调用关系
 
 4个 cycle() 函数
 
@@ -135,7 +151,7 @@ shader_core_ctx::cycle() 在 issue 中调用 scheduler_unit::cycle(), 这两个�
 
 ldst_unit::cycle() 负责各个 memory 的时钟建模，包括 shared memory, L1 latebcy queue, constant menory, texture memory
 
-##### shader_core_ctx::cycle()
+### 4.1.1 shader_core_ctx::cycle()
 
 - SIMT Core Cluster clock domain = frequency of the pipeline stages in a core clock (i.e. the rate at which `simt_core_cluster::core_cycle()` is called)
   - `simt_core_cluster::core_cycle()` will call `shader_core_ctx::cycle()`
@@ -172,7 +188,7 @@ shader_core_ctx::cycle()
 |-- fetch();
 ```
 
-##### scheduler_unit::cycle()
+### 4.1.2 scheduler_unit::cycle()
 
 ```c++
 |-- order_warps();
@@ -208,7 +224,7 @@ else if(valid){
 
 执行这个 issue_warp 的时候需要的源操作数的寄存器已经拿到了 (判断 has_free()才会进入这个条件语句)
 
-##### ldst_unit::cycle()
+### 4.1.3 ldst_unit::cycle()
 
 ```c++
 ldst_unit::cycle()
@@ -237,7 +253,7 @@ m_src_op 中装的就是32个 源操作数寄存器，去哪个位置找 寄存�
 
 dispatch() 后会 reset m_src_op, 
 
-##### pipelined_simd_unit::cycle()
+### 4.1.4 pipelined_simd_unit::cycle()
 
 用于模拟流水线，移动寄存器的 value..
 
@@ -254,32 +270,32 @@ if (active_insts_in_pipeline) {
 }
 ```
 
-## 文档中 Cycle() 的介绍
+## 4.2 文档中 Cycle() 的介绍
 
-##### simt_core_cluster::core_cycle()
+### 4.2.1 simt_core_cluster::core_cycle()
 
 `simt_core_cluster::core_cycle()` 方法只是按顺序 循环调用 (cycles) 每个 SIMT core. 
 
 `simt_core_cluster::icnt_cycle()` 方法将内存请求从 interconnection network push 到 SIMT Core Cluster's response FIFO. 它也将 FIFO 中的请求出队，送到合适的 core's instruction cache or LDST unit. 这些与前面描述的硬件块密切对应。
 
-##### shader_core_ctx::cycle()
+### 4.2.2 shader_core_ctx::cycle()
 
 + 每个 core cycle, 调用 `shader_core_ctx::cycle()` 来模拟 SIMT Core 的一个 cycle。
 + operand collector 被建模为主流水线中的一个 stage, 通过函数 `shader_core_ctx::cycle()` 执行
 
-##### scheduler_unit::cycle()
+### 4.2.3 scheduler_unit::cycle()
 
 + 在 `scheduler_unit::cycle()` 中，函数 `shader_core_ctx::issue_warp()` 将指令发送到执行单元
 + 调用 `func_exec_inst()` 执行指令
 + 调用 `simt_stack::update()` 更新 SIMT Stack
 
-##### ldst_unit::cycle()
+### 4.2.4 ldst_unit::cycle()
 
 + ·ldst_unit::cycle()· 处理来自 interconnect 的内存响应（存储在 m_response_fifo 中），填充 cache (`m_L1D->fill()`) 并将存储标记为完成。
 + 该函数还 cycle caches，以便它们可以将 missed data 的请求发送到 interconnect
 + 对每种类型的 L1 内存的 cache accesses 分别在 `shared cycle()`、`constant cycle()`、`texture cycle() `和 `memory cycle()` 中完成 (在 `ldst_unit::cycle()` 函数中调用)
 
-##### gpgpu_sim::cycle()
+### 4.2.5 gpgpu_sim::cycle()
 
 + `gpgpu sim::cycle()` 方法为 gpgpu - sim 中的所有架构组件的时钟，包括 Memory Partition 的队列，DRAM channel 和 L2 cache bank.
 + 对 `memory_partition_unit::dram_cycle()` 的调用将内存请求从 L2->dram queue 移动到 dram channele，从 dram channel 移动到 dram->L2 queue，并 cycles 片外 GDDR3 dram 内存。
@@ -291,12 +307,13 @@ if (active_insts_in_pipeline) {
 
 所以可以看到，这个函数应该是调用了每个组件的 cycle(), 以此来建模整个 GPGPU-Sim cycle
 
-##### memory_partition_unit::cache_cycle()
+### 4.2.6 memory_partition_unit::cache_cycle()
 
 + 在 `memory_partition_unit::cache_cycle()` 中，调用 `mem_fetch *mf = m_L2cache->next_access();` 为在 filled MSHR entry 中等待的内存请求产生 replies. 
 + L2 产生的由于 read miss 的 fill 请求将从 L2's miss queu 中弹出，并通过调用 `m_L2cache->cycle();` 将其push into L2->dram queue
 
-##### dram_t::cycle()
+### 4.2.7 dram_t::cycle()
 
 + The function `dram_t::cycle()` represents a DRAM cycle
 + 每个周期，DRAM从请求队列中弹出一个请求，然后调用调度器函数，让调度器根据调度策略选择一个需要服务的请求。
+

@@ -1,20 +1,13 @@
 ---
 title: "PyTorch 学习"
 date: 2022-07-28T16:05:35+08:00
-lastmod: 2022-08-11T16:05:35+08:00
+lastmod: 2023-03-21T16:05:35+08:00
 draft: false
 author: "Cory"
 tags: ["PyTorch"]
 categories: ["编程"]
 ---
 
-## 1.2 Tensor
-
-张量，多维数组。
-
-数据类型需要注意一下
-
-> 关于 dtype，PyTorch 提供了 9 种数据类型，共分为 3 大类：float (16-bit, 32-bit, 64-bit)、integer (unsigned-8-bit ,8-bit, 16-bit, 32-bit, 64-bit)、Boolean。模型参数和数据用的最多的类型是 float-32-bit。label 常用的类型是 integer-64-bit。
 
 # 1. Python 模块
 
@@ -44,6 +37,13 @@ parser.add_argument('--train', default=False, action='store_true',
 + `python -u -m ...`，没有这个开关，则参数存储为 False
 ### 1.1.2 parser.parse_args()
 
+## 1.2 Tensor
+
+张量，多维数组。
+
+数据类型需要注意一下
+
+> 关于 dtype，PyTorch 提供了 9 种数据类型，共分为 3 大类：float (16-bit, 32-bit, 64-bit)、integer (unsigned-8-bit ,8-bit, 16-bit, 32-bit, 64-bit)、Boolean。模型参数和数据用的最多的类型是 float-32-bit。label 常用的类型是 integer-64-bit。
 
 # 2. torch
 
@@ -192,6 +192,10 @@ This criterion combines LogSoftmax and NLLLoss in one single class.
 
 ## 2.2 Tensor
 
+Tensor 和 Numpy 中的 ndarrays 类似，但 Tensor 可以使用 GPU 进行加速计算。Tensor 可能是深度学习编程中，所有数据操作的基础单元。
+
+> 可以用 GPU 加速计算，这一点要记住 
+
 `Tensor` is a multi-dimensional matrix containing elements of a single data type
 
 可以用 list 作为参数来构造 tensor 
@@ -204,6 +208,137 @@ tensor([[ 1.0000, -1.0000],
 tensor([[ 1,  2,  3],
         [ 4,  5,  6]])
 ```
+
+### 2.2.1 view
+
+```python
+# to one-dimension
+grad_output = grad_output.view(-1)
+
+# shape 是一个 list，存放了 tensor 'data' 的整个维度信息
+shape = data.shape
+# 按 data 的第一维展开，最终得到一个二维的 tensor。最终的数据，第一个维度是 data.shape[0]，和原来的第一个维度相同，第二个维度是后续所有元素的展开的总和
+data = data.view(data.shape[0], -1)
+
+# 示例
+>>> x = torch.randn(4, 4)
+>>> x.size()
+torch.Size([4, 4])
+>>> y = x.view(16)
+>>> y.size()
+torch.Size([16])
+>>> z = x.view(-1, 8)  # the size -1 is inferred from other dimensions
+>>> z.size()
+torch.Size([2, 8])
+```
+
+### 2.2.2 常用操作
+
+#### 2.2.2.2 索引
+
+**获取某一维度的长度**
+
+```python
+# input 是一个 size = 1 的 tuple
+# input[0] 是一个 tensor, input[0] 的 size: 
+# 获取 tensor 第 1 个维度的 length
+input[0].size(0)
+# 获取 tensor 第 2 个维度的 length
+input[0].size(1)
+```
+
+
+#### 2.2.2.2 获取某 value of index in tensor
+
+主要是用这个 nonzero
+
+```python
+t = torch.Tensor([1, 2, 3])
+print ((t == 2).nonzero(as_tuple=True)[0])
+```
+
+#### 2.2.2.3 tensor 排序
+
+tensor.sort()
+
+2022-09-12 23:37:09，有一些坑，注意返回的是一个 tuple，所以要注意接收的形式。
+
+```python
+grad_output_sorted, grad_output_indices = torch.sort(grad_output)
+grad_output_sorted = grad_output_sorted.double()    # avoid RuntimeError: Found dtype Double but expected Float
+```
+
+#### 2.2.2.4 获取 tensor 中某 percentile
+
+tensorflow 好像是支持 tfp.stats.percentile，直接获取 Finding p% of smallest tensor values
+
+直接用 `np.percentile(tensor, )`
+
+#### 2.2.2.5 torch.where() 
+
+快速地移除 tensor 中不满足某条件的 element
+
+比如，我们把值大于 0.5 的值置为0
+
+```python
+>>> x = torch.randn(3, 2)
+>>> y = torch.ones(3, 2)
+>>> x
+tensor([[-0.4620,  0.3139],
+        [ 0.3898, -0.7197],
+        [ 0.0478, -0.1657]])
+>>> torch.where(x > 0, x, y)
+tensor([[ 1.0000,  0.3139],
+        [ 0.3898,  1.0000],
+        [ 0.0478,  1.0000]])
+```
+
+实际
+```python
+grad_output_sorted = torch.where(grad_output_sorted > max_75, 0., grad_output_sorted)
+grad_output_sorted = torch.where(grad_output_sorted < min_75, 0., grad_output_sorted)
+```
+
+#### 2.2.2.6 torch.cat( )
+
+删除掉 Tensor 中指定 value 的元素，比如 
+
+```python
+# remove i-th element
+i = 2
+T = torch.tensor([1,2,3,4,5])
+T = torch.cat([T[0:i], T[i+1:-1]])
+```
+
+#### 2.2.2.X 综合
+
+综上，有一个需求。对于一个一维 Tensor，消除掉其前25%的值，得到剩下75%的tensor
+
+```python
+
+```
+### 2.2.3 Function
+
+#### 2.2.3.1 tensor.data, tensor.detach()
+
+detach()和data生成的都是无梯度的纯tensor,并且通过同一个tensor数据操作，是共享一块数据内存。主要目的是让其独立于计算图之外
+
+#### 2.2.3.2 tensor.max, tensor.abs, tensor.unsqueeze, tensor.dim, tensor.shape
+
+tensor 原本是 (64, 128, 768)，经过 `view` 将其二维化，第二维等于原本最后一个维度的 size，也就是 768。`max(1)` 表示返回第二个维度的最大值，也就是 768 个元素中的最大值，最后得到的 tensor size 就是 (64*128)，然后通过 `unsqueeze` 转换为 (64\*128, 1) dimension
+
+```python
+x_max, _ = tensor.view(-1, tensor.shape[tensor.dim() - 1]).abs().max(1)
+x_max = x_max.unsqueeze(1) 
+```
+
+#### 2.2.3.3 torcn.dot. torch.mv, torch.mm
+
+torch.dot: 向量点积
+
+torch.mv: 矩阵-向量积
+
+torch.mm: 矩阵-矩阵乘法
 
 ## 2.3 autograd
 
@@ -374,7 +509,23 @@ obj 是保存的对象，f 是输出路径。还有 2 种方式
 + 固定 feature extractor 的参数，通常有 2 种做法
   + 固定 conv 层的预训练参数。可以设置 `requires_grad = False` 或者 `lr = 0`
   + 通过 `params_group` 给 feature extractor 设置一个较小的 lr
-  
+
+## 2.8 Function
+
+### 2.8.1 torch.topk()
+
+**作用：** 取一个 tensor 的 topk 元素（降序后的前 k 个大小的元素值及索引）
+
+```python
+
+K = torch.numel(data) // data.shape[0] * 4 // 256
+            _, index = torch.topk(data.abs(), K, dim = -1, largest = True, sorted = False)
+```
+
+### 2.8.2 torch.numel
+
+返回 tensor 中的元素总数量
+
 # 3. pytorch 分布式训练
 
 ```python
@@ -422,6 +573,44 @@ dist.init_process_group(backend='nccl')
 
 `--dataset=imagenet` 要放到 `main.py` 的后面，这个方法相当于用调整参数的形式来达到目的。不太有通用性，相当于专门改了一个 `launch.json` 文件。
 
+## 3.2 几种并行的方式
+
+转载自 https://zhuanlan.zhihu.com/p/430383324
+### 3.2.1 Data Parallelism
+
+模型在forward和backward的中间计算过程都会有中间状态，这些中间状态通常占用的空间是和batch size成正比的。
+
+> 也就是梯度等信息吧
+
+方法是将大的 batch size 切分都多个 GPU 上；不过这种方式主要切分的是 batch size 正比的部分中间状态。但是对于parameter, optimizer state等batch size无关的空间开销是无能为力的。
+
+<div align=left>
+<img src = ./Img/distributed_train_dp.png width = "80%">
+<div>
+
+**什么是 parameter？**
+
+parameter: 模型可以根据数据可以自动学习出的变量，应该就是参数。比如，深度学习的权重，偏差等
+
+hyperparameter: 就是用来确定模型的一些参数，超参数不同，模型是不同的(这个模型不同的意思就是有微小的区别，比如假设都是CNN模型，如果层数不同，模型不一样，虽然都是CNN模型哈。)，超参数一般就是根据经验确定的变量。在深度学习中，超参数有：**学习速率，迭代次数，层数，每层神经元的个数** 等等。
+
+### 3.2.2 Model Parallelism
+
+把模型本身进行切分，使得每个 GPU 卡只需要存储模型的一部分。
+
+MP在一些应用场景（比如上面说的ResNet例子）在计算一个minibatch时，硬件是依次激活的，其他硬件都在等待，硬件的利用率会非常的低。
+
+> 简单地说，就是并行比较差
+
+### 3.2.3 Pipeline Parallelism
+
+前面提到了MP一个比较大的问题是GPU利用率低。当没有计算到某个GPU上的模型分片时，这个GPU常常是闲着的。PP一定程度上解决了这个问题。
+
+PP的思想也比较简单，使用了经典的Pipeline思想。在模型计算流水线上，每个GPU只负责模型的一个分片，计算完就交给下一个GPU完成下一个模型分片的计算。当下个GPU在计算时，上一个GPU开始算下一个minibatch属于它的模型分片。
+
+> 经典的流水线设计思想
+
+
 # 4. Hook
 
 这个功能被广泛用于可视化神经网络中间层的 feature、gradient，从而诊断神经网络中可能出现的问题，分析网络有效性。
@@ -458,6 +647,8 @@ output = model(input)
 通常，pytorch 只提供了网络整体的输入和输出，对于夹在网络中间的模块，很难获得他的输入输出。除非设计网络时，在 forward 函数的返回值中包含中间 module 的输出。总而言之别的方法都比较麻烦，pytorch 设计好了 register_forward_hook 和 register_backward_hook。
 
 相比针对 tensor 的 register_hook，这个 forward hook 没有返回值，也就是不能改变输入，只能打印。
+
+**注意**，在 forward hook 中，input 是 x，而不包括 W 和 b。
 
 代码实例，讲的非常清晰，来自[博客](https://cloud.tencent.com/developer/article/1475430)
 ```python
@@ -600,6 +791,22 @@ for idx in range(len(total_grad_in)):
 ```python
 @classmethod
 def convert_sync_batchnorm(cls, module, process_group=None):
+```
+
+# 5. AutoDiff
+
+> 深度学习框架通过自动计算导数，即自动微分（automatic differentiation）来加快求导。 实际中，根据我们设计的模型，系统会构建一个计算图（computational graph）， 来跟踪计算是哪些数据通过哪些操作组合起来产生输出。 自动微分使系统能够随后反向传播梯度。 这里，反向传播（backpropagate）意味着跟踪整个计算图，填充关于每个参数的偏导数。
+
+by https://zh-v2.d2l.ai/chapter_preliminaries/autograd.html
+
+# 6. 只使用一个 GPU
+
+## 6.1 文件中 
+
+注意这个必须放在 ~~`import torch` 之前~~ 放在所有访问GPU的代码之前
+```python
+import os 
+os.environ['CUDA_VISIBLE_DEVICES'] = "0"
 ```
 
 # 问题

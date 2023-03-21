@@ -81,6 +81,15 @@ name = "Archives"
 url = "/archives"
 weight = 4
 
+# 从 git 中读取上一次修改时间
+[frontmatter]
+  lastmod = ['lastmod', ':git', ':fileModTime', 'date', 'publishDate']
+
+[markup]
+  [markup.tableOfContents]
+    endLevel = 5
+    ordered = false
+    startLevel = 1
 
 [params]
   since = "2020"            # Site creation time          # 站点建立时间

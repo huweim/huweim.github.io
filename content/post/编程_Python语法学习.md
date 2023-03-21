@@ -8,13 +8,7 @@ tags: ["Python"]
 categories: ["编程"]
 ---
 
-##### 函数
 
-`def forward(self, x: torch.Tensor) -> torch.Tensor:`，箭头 `->` 后面表示返回值
-
-尝试在 class 内部调用成员函数，报了错。调用 class 内部成员函数要加上前缀 `self.`，否则会被当成外部函数
-
-**Python 不支持函数重载**
 
 # 1. Attribute
 
@@ -64,6 +58,18 @@ print(txt2)
 print(txt3)
 # My name is John, I'm 36
 ```
+
+2022-11-24 16:58:29，这个在输出处理 log 信息时会经常用过。之前一直用的是 +，学习一下 f string。上面的 format 组合可以等价于下面的写法：
+
+```python
+fname = "John"
+age = 36
+txt1 = f"My name is {fname}, I'm {age}"
+# or
+txt1 = F"My name is {fname}, I'm {age}"
+```
+
+甚至无需使用 `str(index)` 这种写法了。
 ### 1.1.2 实际使用时的一些需求
 
 #### 1.1.2.1 list 转 string
@@ -203,6 +209,21 @@ False
 
 **切片**，和 list 类似
 
+### 1.4 转 list
+
+```python
+# 对于 dict，直接放入 list function 就是将其 key 转为 list
+x = list({'apple':'123', 'banana':'1233', 'cherry':'1231243'})
+y = list({'apple':'123', 'banana':'1233', 'cherry':'1231243'}.keys())
+
+print(x)
+print(y)
+
+# output
+['apple', 'banana', 'cherry']
+['apple', 'banana', 'cherry']
+```
+
 ## 1.4 dict
 
 ### 1.4.1 判断 key/value 是否存在
@@ -274,6 +295,21 @@ The difference between a NumPy array and a tensor is that the tensors are backed
 
 **是的**
 
+### 1.6.2 operation / 操作
+
+#### 1.6.2.1 插入 append / insert
+```python
+bins = 2.0 ** (np.arange(-4, 4))
+
+# 插入到数组末端
+
+
+# 插入到数组开头，或者任意 index
+index = 0
+element = 1 
+bins = np.insert(bins, 0, 0)
+```
+
 ## 1.X 其他特性
 
 ### 1.X.1 generator 
@@ -281,6 +317,7 @@ The difference between a NumPy array and a tensor is that the tensors are backed
 暂时没有用过，先挖个坑
 
 # 2. 数据类型，变量，语法
+
 ## 2.1 data type
 python 支持的 data type 应该足够满足日常使用了。
 
@@ -323,6 +360,16 @@ int_ = int(str_)
 
 在函数内读写全局变量时，需要使用 global 关键字
 
+## 2.5 下划线 _ 的使用
+
+3.9 16:21
+
++ `_var` prefix single 下划线. 表示变量 `_var` 仅供内部使用。python 并没有强制的 private 属性，而是用这样一种社区规定，表示这个变量并不是公共接口，但是外部仍然可以访问到这个变量
+    + 同样，如果是函数，那么表明这是一个私有函数
++ `var_` suffix single 下划线. 变量名字被关键字占用，用一个下划线来解决命名冲突，比如`class_`
++ `__var` prefix double. 这个有点抽象，没太理解
++ `__var__` prefix and suffix double. 表示类中的私有变量，并且不会被解释器所修改
+
 # 3. File 操作
 
 ## 3.1 文件读写
@@ -364,7 +411,15 @@ path_ = os.path.dirname(__file__) # 获得当前文件所在目录的绝对路�
 
 # 4. 函数
 
-## 4.1 一些特性
+
+
+## 4.1 特性
+
+`def forward(self, x: torch.Tensor) -> torch.Tensor:`，箭头 `->` 后面表示返回值
+
+尝试在 class 内部调用成员函数，报了错。调用 class 内部成员函数要加上前缀 `self.`，否则会被当成外部函数
+
+**Python 不支持函数重载**
 
 ### 4.1.1 别名和引用
 
@@ -634,7 +689,7 @@ class Cat(Animal):
 
 # 6. module / 模块
 
-## 6.1 获取模块中的元素 / 遍历模块
+## 6.1 获取模块中的元素 
 
 定义了一个模块 `coda_int.py` 用来装需要绘图的所有 list，一个接一个输入名字过于繁琐，尝试获取模块的中对象来自动遍历。 
 
@@ -645,6 +700,21 @@ class Cat(Animal):
 for key, value in cola_int.__dict__.items():
     if not key.startswith('__'):
         print(value['max'])
+```
+
+# 7. os
+
+#### 指定 GPU 运行
+
+命令行
+```python
+CUDA_VISIBLE_DEVICES=0 python -u -m torch.distributed.launch --nproc_per_node=1 --master_port 46666 main.py --dataset=imagenet --model=inception_v3 --epoch=2 --mode=int --wbit=4 --abit=4 --batch_size=160 --lr=5e-05 --train --dataset_path=/home/cguo/imagenet-raw-data/ > ./log/inception_v3_Int.log 2>&1
+```
+
+python 文件
+```
+import os
+os.environ["CUDA_VISIBLE_DEVICES"] = "2"
 ```
 # Debug
 

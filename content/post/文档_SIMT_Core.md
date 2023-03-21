@@ -1,6 +1,7 @@
 ---
 title: "SIMT_Core"
 date: 2021-09-04T19:04:57+08:00
+lastmod: 2023-03-21T10:02:46+08:00
 draft: false
 tags: ["官方文档", "GPGPU-Sim"]
 categories: ["知识"]
@@ -11,15 +12,19 @@ categories: ["知识"]
 搞懂 SIMT Core 对于理解 GPGPU 的指令 fetch、指令发射、内存访问、数据传输等步骤非常重要，按照 GPGPU-Sim 的官方文档进行一个简单的梳理
 
 SIMT Core 的微架构模型中有几个比较重要的硬件单元，接下来会一一介绍他们的作用，
+<div align=left>
+<img src="./Img/Simt-core.png" style="zoom:50%;" />
+<div>
 
-<img src="./Img/Simt-core.png" align=left style="zoom:50%;" />
+<div align=left>
+<img src="./Img/Fig3.1.png" style="zoom:50%;" />
+<div>
 
-<img src="./Img/Fig3.1.png" align=left style="zoom:50%;" />
+**000 放一个硬件概念对应表**
 
-# 000 放一个硬件概念对应表
-
-<img src="Img/SWHWCorr.jpg" align=left style="zoom:50%;" />
-
+<div align=left>
+<img src="Img/SWHWCorr.jpg" style="zoom:50%;" />
+<div>
 # 1. Front End
 
 + Instruction cache access
@@ -32,7 +37,7 @@ SIMT Core 的微架构模型中有几个比较重要的硬件单元，接下来�
 
 这里介绍整个指令 Fetch and Decode 阶段，涉及到的硬件单元主要是 Fetch, I-Cache, Decode, I-Buffer, ScoreBoard
 
-##### I. Fetch
+### 1.1.1 Fetch
 
 Fetch 单元是一个调度器，作用
 
@@ -44,7 +49,7 @@ Fetch 单元是一个调度器，作用
 
 当 Fetch 取到一个 warp 的指令，I-Buffer 中对应的 entry 有效位置为1， 直到该 Warp 的所有指令均执行完毕。
 
-##### II. Decode, I-Buffer
+### 1.1.2 Decode, I-Buffer
 
 一条指令从 instruction cache fetch 出来后会进行解码，然后存入 instruction buffer (I-Buffer)。每个 warp 有两个 I-Buffer entry, I-Buffer entry 的信息如下
 
@@ -56,7 +61,7 @@ Fetch 单元是一个调度器，作用
 
 Decode 单元一次解码2条指令，解码后的指令 fill 到 I-Buffer 中
 
-##### III. I-Cache
+### 1.1.3 I-Cache
 
 指令 cache 是 read-only, non-blocking set-associative cache, 可以使用 FIFO 或是 LRU 替换策略，以及 on-miss 或是 on-fill 分配策略。对 I-Cache 的请求会导致3种状态, hit, miss or reservation fail. 
 
@@ -114,8 +119,9 @@ Scoreboard 算法检查 WAW 和 RAW 依赖。在发射阶段会保留 warp 写�
 # 2. Register Access and the Operand Collector
 
 许多 NVIDIA 的专利描述了一种称为 Operand Collector 的结构。Operand Collector 是一个缓冲区的集合，其仲裁逻辑用于提供寄存器文件的外观 (appearance?)，寄存器文件使用多 bank 但端口 RAMs. 这个设计能够节省能量和面积，对于吞吐量的提升很重要。AMD 也使用 banked 寄存器文件，但是是由编译器来保证访问没有 bank conflict.
-
-<img src="./Img/Operandcollector.png" align=left style="zoom:70%;" />
+<div align=left>
+<img src="Img/Operandcollector.png" width="50%">
+</div>
 
 指令解码后，一种称为 Collector Unit 的硬件单元被分配用于缓冲指令的源操作数 (source poerands)
 
@@ -137,8 +143,9 @@ GPGPU-Sim v3.x 建模了两种 ALU 函数单元
 两种单元都是流水线化以及 SIMD 类型。SP 单元通常每周期执行一个 warp 指令，SFU 可能是几个周期执行一个 warp 指令。比如 sine 指令的执行需要4个周期，倒数指令需要2个周期。不同类型的指令有不同的执行延迟。
 
 > 可以看到 Fermi 架构中，一个 SM 有32个 SP, 也就是图中的 CUDA Core, 有4个 SFU, 16个 LDST Unit 用于处理内存指令。这个数量是按实际使用中不同类型指令的大概比例决定的。
-
-<img src="./Img/Fermi.png" align=left style="zoom:25%;" />
+<div align=left>
+<img src="Img/Fermi.png" width="30%">
+</div>
 
 每个 SIMT Core 都有 SP 和 SFU 单元。每个单元都有来自 operand collector 的独立发射端口。这两个单元 (SP, SFU) 共享同一个连接到公共回写阶段的输出管道寄存器。在 operand collector 的输出处有一个结果总线分配器，以确保单元永远不会因为共享回写而停滞。每条指令在发出到任何一个单元之前，都需要在结果总线中分配一个 cycle slot。注意内存流水线有它自己的写回阶段，不由这个结果总线分配器管理。
 
@@ -177,8 +184,9 @@ GPGPU-Sim支持CUDA中的各种内存空间，在PTX中可见。在这个模型�
 private, per-SIMT core, non-blocking, 为 local and global memory access 提供服务。L1 Cache 没有划分为 bank，每个 SIMT core cycle 可以为2个 coalesced memory request 提供服务 (如上所说)。一个传入的内存请求不能跨越两条 L1 data cache line。 (也就是1个 SIMT core cycle 支持2次 access) 还要注意 L1 data cache 不是一致的 (不具备 cache coherence)
 
 > In Figure 8, 32 consecutive threads access 32 consecutive words. The memory access is sequential and aligned, and is therefore coalesced.
-
-<img src="./Img/coalesced.png" align=left style="zoom:50%;" />
+<div align=left>
+<img src="Img/coalesced.png" width="50%">
+</div>
 
 内存访问连续且对齐，只需一次访存操作，取到32个线程需要的数据，就是 coalesced
 
@@ -206,7 +214,7 @@ MSHR entry 记录 cache block address, block offset, associated register
 
 > MSHR相当于一个大小固定的数组，用于存放所请求数据还没返回到L1缓存中的miss请求。当数据返回到L1缓存中后，即从MSHR中删除所对应的miss请求。
 
-发生内存访问 miss 后，如果 cache line 没有 pending request (等待请求?)，那么 cache line 就会发送 fill request，将其插入到 cache，对应的 MSHR entry 会标记为 filled 状态。每周期响应 filled MSHR entry 的一个请求。当 filled MSHR entry 中的所有 request 都被响应，MSHR entry is freed.
+发生内存访问 miss 后，如果 cache line 没有 pending request (等待请求?)，那么 cache line 就会发送 fill request。当 fill response 回来后，将其插入到 cache，对应的 MSHR entry 会标记为 filled 状态。每周期响应 filled MSHR entry 的一个请求。当 filled MSHR entry 中的所有 request 都被响应，MSHR entry is freed.
 
 ## 4.2 Texture Cache
 
@@ -219,8 +227,9 @@ texture memory 大多数访问都有 空间局部性，效果最好的是 16KB�
 对常量和参数内存的访问通过 L1 constant cache 运行。这个 cache 是用一个 tag array 实现的，就像 L1 data cache ，只是它不能被写入。
 
 # 5. Thread Block / CTA / Work Group Scheduling
-
-<img src="Img/SWHWCorr.jpg" align=left style="zoom:50%;" />
+<div align=left>
+<img src="Img/SWHWCorr.jpg" width="50%">
+</div>
 
 Thread Block, CTA 是 CUDA 中的术语，Work Group 是 OpenCl 中的术语，一次会发射一个 block 到 SIMT core。每个 SIMT clock cycle, block 发射机制会以轮询机制挑选 block 发射到 SIMT Core Clusters. 对于每个被选择的 SIMT Core Clusters, 如果 SIMT core 上有足够的空闲资源，那么将从选定的 kernel 向该 SIMT core 发出单个 block。
 
@@ -230,13 +239,8 @@ Thread Block, CTA 是 CUDA 中的术语，Work Group 是 OpenCl 中的术语，�
 
 > 这部分内容是 CUDA 编程中的细节
 
-# Reference
 
-http://gpgpu-sim.org/manual/index.php/Main_Page
-
-https://zhuanlan.zhihu.com/p/97131966
-
-# 4. Interconnection Network
+# 6. Interconnection Network
 
 SIMT Core Cluster 之间不会和对方直接通信，因此在 interconnection network 中没有 coherence 通道，只有4种 packet types
 
@@ -247,3 +251,11 @@ SIMT Core Cluster 之间不会和对方直接通信，因此在 interconnection 
 -Read-replys
 
 -Write-acknowledges sent from Memory Partition to SIMT Core Clusters
+
+# Reference
+
+http://gpgpu-sim.org/manual/index.php/Main_Page
+
+https://zhuanlan.zhihu.com/p/97131966
+
+
