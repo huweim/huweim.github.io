@@ -1,20 +1,20 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Cory</title><link>https://huweim.github.io/</link><description>Recent content on Cory</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Fri, 13 Jan 2023 14:49:52 +0800</lastBuildDate><atom:link href="https://huweim.github.io/index.xml" rel="self" type="application/rss+xml"/><item><title>About</title><link>https://huweim.github.io/about/</link><pubDate>Thu, 08 Jul 2021 17:46:31 +0800</pubDate><guid>https://huweim.github.io/about/</guid><description>&lt;p>oh man, I love computer science and coding.&lt;/p>
 &lt;p>一个计算机体系结构方向的学生，喜欢体系结构，喜欢编程，喜欢篮球。目前的课题主要关注 GPU/GPGPU。&lt;/p>
-&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>Xxxxx</title><link>https://huweim.github.io/posts/xxxxx/</link><pubDate>Fri, 13 Jan 2023 14:49:52 +0800</pubDate><guid>https://huweim.github.io/posts/xxxxx/</guid><description/></item><item><title>Xx</title><link>https://huweim.github.io/posts/xx/</link><pubDate>Fri, 13 Jan 2023 14:25:14 +0800</pubDate><guid>https://huweim.github.io/posts/xx/</guid><description/></item><item><title>（转载）Having Effective Meetings Between Advisors and Students</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_having-effective-meetings-between-advisors-and-students/</link><pubDate>Mon, 26 Sep 2022 02:42:41 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_having-effective-meetings-between-advisors-and-students/</guid><description>&lt;h1 id="having-effective-meetings-between-advisors-and-students">Having Effective Meetings Between Advisors and Students&lt;/h1>
-&lt;blockquote>
-&lt;p>by Mingyu Gao on Nov 2, 2020 | Tags: Academia, Advice, Students&lt;/p>
+&lt;p>不确定自己是否喜欢折腾，是否喜欢新鲜事物，是否擅长编程。希望在一步一步探索中找到自己真正感兴趣的事情，或者确定这就是自己真正感兴趣的事情。&lt;/p></description></item><item><title>Xxxxx</title><link>https://huweim.github.io/posts/xxxxx/</link><pubDate>Fri, 13 Jan 2023 14:49:52 +0800</pubDate><guid>https://huweim.github.io/posts/xxxxx/</guid><description/></item><item><title>Xx</title><link>https://huweim.github.io/posts/xx/</link><pubDate>Fri, 13 Jan 2023 14:25:14 +0800</pubDate><guid>https://huweim.github.io/posts/xx/</guid><description/></item><item><title>（转载）Having Effective Meetings Between Advisors and Students</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_having-effective-meetings-between-advisors-and-students/</link><pubDate>Mon, 26 Sep 2022 02:42:41 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_having-effective-meetings-between-advisors-and-students/</guid><description>&lt;blockquote>
+&lt;p>Title: Having Effective Meetings Between Advisors and Students
+by Mingyu Gao on Nov 2, 2020 | Tags: Academia, Advice, Students&lt;/p>
 &lt;/blockquote>
-&lt;p>链接：https://www.sigarch.org/having-effective-meetings-between-advisors-and-students/#undefined&lt;/p>
-&lt;p>来自高鸣宇老师，以下是翻译：&lt;/p>
+&lt;p>原文链接：https://www.sigarch.org/having-effective-meetings-between-advisors-and-students/#undefined&lt;/p>
+&lt;p>来自高鸣宇老师在 sigarch 上发表的博客，以下是翻译：&lt;/p>
 &lt;p>导师和学生之间的有效合作和交流是学术成功的关键。不幸的是，在大多数情况下，导师只能提供一周一次或者两周一次，而非日常的一对一 meeting。这意味着学生一个月也无法和导师交流几次。因此如何优化会议，实现学生和导师之间的有效交流就很值得思考。&lt;/p>
 &lt;p>实际上，对我来说现在有很多重要的课题。过去一年半内，我们组扩张到了 8 位研究生（包括下一年即将入学的学生）和一些本科生，以及 gap-year 实习生。几乎每个人都有自己的独立课题，需要时间开会和讨论。每周都会有这样的一次会议，每次会议的时间限制在 30-45 分钟。在这种情况下，交流的有效性十分重要。&lt;/p>
 &lt;p>我站在导师和学生这两个角色的视角思考了这件事，我会基于最近的经验分享一些建议，希望这个一手的建议对于新的研究生和导师有用。&lt;/p>
-&lt;h5 id="在开始的时候建立合适的风格">在开始的时候建立合适的风格&lt;/h5>
+&lt;h1 id="1-在开始的时候建立合适的风格">1. 在开始的时候建立合适的风格&lt;/h1>
 &lt;p>在给出具体的建议之前，我想强调每个人有不同的偏好和工作风格。下面的建议不适用于所有人。因此了解彼此是很重要的，在师生关系开始的时候设置好清晰的期望。比如，学生可能会想知道导师的风格是怎样的，项目的里程碑和论文 deadline 可以预见一年内的节奏。导师也需要认知到学生有多独立，学生一周会在哪些时候工作，会工作多久。直接对话并不是一个坏主意，而不是一直观察并且慢慢适应。&lt;/p>
 &lt;blockquote>
 &lt;p>这个可以理解为前期的沟通，这也十分重要。适应彼此的节奏。&lt;/p>
 &lt;/blockquote>
-&lt;h5 id="专注于长期路线图和脚下的路">专注于长期路线图和脚下的路&lt;/h5>
+&lt;h1 id="2-专注于长期路线图和脚下的路">2. 专注于长期路线图和脚下的路&lt;/h1>
 &lt;p>很多低年级学生喜欢准备很长很细节的进展报告，描述他们上周做过的所有事情。因为他们担心到时会觉得他们做的太少了。我认为这是不够的。为了从宝贵的时间中获得更多的信息，学生应该 &lt;strong>花更多的时间来寻求他们下一步应该做什么的建议&lt;/strong>。&lt;/p>
 &lt;blockquote>
 &lt;p>我完全同意这一点，实际上我在 meeting 的早期也是这么做的。描述了一些工作，询问下一步应该做 A 好一点还是做 B 好一点。但是有的时候投入的时间不足，自己都没怎么思考，也没什么进度，那肯定也就没有 &lt;strong>带着问题&lt;/strong> 去开会。这样的话可能只会觉得水过去就好了，浪费了宝贵的开会时间。&lt;/p>
@@ -25,24 +25,25 @@
 &lt;/blockquote>
 &lt;p>有两种形式的讨论比较通用。在项目早期，快速地根据精炼的总结，和 high level 的预期来建立 &lt;strong>overall research roadmap&lt;/strong> 是非常重要的。低年级学生可能会提出一个有前途的想法，但是通常不会预见所有的设计问题和全部潜力。导师有助于彻底地分析挑战和机会，更好地找到期望的关键贡献。在投入阶段，应该把更多的时间花在 &lt;strong>immediate next steps&lt;/strong>，也就是下周应该关注什么。比如诸多事情里面优先级最高的，如何调整以处理实验中不好的结果，为了让这个工作更完整还需要补充什么探索。&lt;/p>
 &lt;p>在这样的会议之后，学生对于接下来做什么应该有清晰的蓝图，不管是对于最终的文章，还是对于下次会议前的工作。在会议之后总结一个 to do list 总是有所帮助的，它可以作为便于查询的一次记录，下次会议之前也可以检查进度。&lt;/p>
-&lt;h5 id="在线下写作中保存细节">在线下写作中保存细节&lt;/h5>
+&lt;h1 id="3-在线下写作中保存细节">3. 在线下写作中保存细节&lt;/h1>
 &lt;p>如果会议都是关于 high level 的想法，我们什么时候应该讨论同样重要的底层细节，例如定理证明、模型细节、工作进展描述和具体案例研究？我的建议是把他们全部保存下来。换句话说，学生应该 &lt;strong>write detailed and comprehensive documents&lt;/strong>，包括这次会议中所有重要的，支撑 high level 观点的细节。导师可以在会议前后查阅这份文档。&lt;/p>
 &lt;p>我想强调的是这份文章需要 &lt;strong>尽可能地详细&lt;/strong>，这个和仅仅总结要点的，简明的会议 slide 不同。一眼看上去，这似乎非常低效，因为写作是非常耗时的。但是相比其优点，这都是值得的。&lt;/p>
 &lt;blockquote>
-&lt;p>目前参与项目已经接近 3 个月，在其中几次会议时会记下很多东西和细节，但是在过去一两个月之后，很多东西已经忘记了。一个研究项目的周期是很长的，因此这件事情确实也是有必要做的。&lt;/p>
+&lt;p>目前参与了接近 3 个月 intern，在其中几次会议时会记下很多东西和细节，但是在过去一两个月之后，很多东西已经忘记了。一个研究项目的周期是很长的，因此这件事情确实也是有必要做的。&lt;/p>
 &lt;/blockquote>
 &lt;p>首先，当你开始写下这件事情的时候，作为学生，有机会组织整个 idea，回顾整个设计。有些时候总是会忘记一些事情，除非把他们都写下来，并且详尽地检查。其次，对老师来说，可以用充足的，线下的时间来仔细地浏览所有细节，而不是在背靠背的会议上，顶着紧凑的时间压力来做这些事情。第三点，对学生来说也是练习写作的好机会。如果你发现难以用文字清晰地解释完整的设计细节，总是将通过直接交谈来表达，那你应该记住，你是没有机会和文章审稿人交谈的。最后，这些内部文档的段落和图片很可能被重复使用，或者直接拷贝到最终的文章中。总之，你的时间没有被浪费。&lt;/p>
 &lt;blockquote>
-&lt;p>不知道有哪种工具适于这种 &lt;strong>内部文档&lt;/strong>，这个听起来是一个大家都能看到的，前期的 paper manuscript，应该有详细的图片和阐述。格式可能都接近于 paper 了，这个倒是可以请教一下老师们。&lt;/p>
+&lt;p>不知道有哪种工具适于这种 &lt;strong>内部文档&lt;/strong>，这个听起来是一个大家都能看到的，前期的 paper manuscript，应该有详细的图片和阐述。格式可能都接近于 paper 了，这个倒是可以请教一下老师们。
+2023-03-21 11:15:15，谷歌文档和腾讯文档应该都能做&lt;/p>
 &lt;/blockquote>
-&lt;h5 id="学会做深度的分析">学会做深度的分析&lt;/h5>
+&lt;h1 id="4-学会做深度的分析">4. 学会做深度的分析&lt;/h1>
 &lt;p>学生应该掌握的另一个技能是自己处理简单的问题，节约会议的时间，用这个时间来解决更重要和更困难的问题。这意味着学生应该学习如何独立地进行深度分析，以解决遇到的问题，或者至少收集足够的数据细节和证据，用于下一次会议的讨论。&lt;/p>
 &lt;p>一个例子是，当实验结果和初试期望不符时。与其等到下一次会议才报告给导师，不如通过分析数据主动找出合理的原因。一个技巧是 &lt;strong>zoom in to the next level of details&lt;/strong>，或者 &lt;strong>always measure one level deeper&lt;/strong>。例如，当网络数据包的时延呈现长尾（long tail）时，可以在 tail 中选择几个有代表性的数据包，检查它们的路由是否规律（从所有数据包进入到单个数据包），或者检查它们是否存在沿这些路径的常见热点（hotspot）（从整个路径（routes）进入到单个链接（link））。&lt;/p>
 &lt;blockquote>
 &lt;p>首先，道理就是很简单的要自己主动。但是行动起来并不容易。并且，这并不是一个简单的按钮，“行动”或者“不行动”，通常，人会在几种状态中切换。有的时候是不想去推进这个课题，由于遇到了一些阻力，可能是没有找到充足的论文支撑，可能是受到了导师的批评，可能是 peer pressure，可能是审稿人的质疑，可能是程序的 bug。这是一个螺旋推进的过程，要不断地调整自己的状态，周期性地审视。&lt;/p>
 &lt;p>根据高老师举的例子，理解为做更加底层/细粒度的分析。&lt;/p>
 &lt;/blockquote>
-&lt;h5 id="寻求帮助">寻求帮助&lt;/h5>
+&lt;h1 id="5-寻求帮助">5. 寻求帮助&lt;/h1>
 &lt;p>reach out for help&lt;/p>
 &lt;p>最后的建议，同样也是最重要的，就是 &lt;strong>actively seek help when needed&lt;/strong>。从来没有人能够独自做所有事情。在你尝试了你能想到的一切方法后（比如那些前人的建议），是时候和你的同门交流，或者直接向导师寻求帮助。承认你遇到了问题，这个场景并不会羞耻或者尴尬。&lt;strong>你不必等到下一次会议&lt;/strong>。发送一封短邮件，或者直接去导师的办公室，简单交谈 5 分钟。或许导师的一两个词就是一盏明灯，让你有更多进展，而不是被卡在原地。生活和研究总是有起有落。请记住，你并不孤单，导师在这里提供帮助和支持。&lt;/p>
 &lt;blockquote>
@@ -78,11 +79,7 @@
 &lt;h2 id="5-结论">5. 结论&lt;/h2>
 &lt;p>总结一下作者结论部分的内容。&lt;/p>
 &lt;h2 id="6-总结">6. 总结&lt;/h2>
-&lt;p>⭐ 这部分是用自己的话总结，也是对自己的锻炼。阐述这篇文章解决的问题，他们的效果如何，他们和之前看的一些 &lt;strong>文章/方法/解决方案&lt;/strong> 相比如何。如果对小领域有了一些了解，还可以写下自己的 “主观” 评价，他们对于实际的 模型/硬件/框架 是否有作用，文章图片画的如何，文章结构如何，写作怎么样，有哪些可以学习的地方，工作量怎么样，有哪些地方比较 confuse，有哪些可以借鉴的地方，如果是你在设计实验，你会怎么做。&lt;/p></description></item><item><title>Python 语法学习</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</link><pubDate>Wed, 14 Sep 2022 11:15:41 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h5 id="函数">函数&lt;/h5>
-&lt;p>&lt;code>def forward(self, x: torch.Tensor) -&amp;gt; torch.Tensor:&lt;/code>，箭头 &lt;code>-&amp;gt;&lt;/code> 后面表示返回值&lt;/p>
-&lt;p>尝试在 class 内部调用成员函数，报了错。调用 class 内部成员函数要加上前缀 &lt;code>self.&lt;/code>，否则会被当成外部函数&lt;/p>
-&lt;p>&lt;strong>Python 不支持函数重载&lt;/strong>&lt;/p>
-&lt;h1 id="1-attribute">1. Attribute&lt;/h1>
+&lt;p>⭐ 这部分是用自己的话总结，也是对自己的锻炼。阐述这篇文章解决的问题，他们的效果如何，他们和之前看的一些 &lt;strong>文章/方法/解决方案&lt;/strong> 相比如何。如果对小领域有了一些了解，还可以写下自己的 “主观” 评价，他们对于实际的 模型/硬件/框架 是否有作用，文章图片画的如何，文章结构如何，写作怎么样，有哪些可以学习的地方，工作量怎么样，有哪些地方比较 confuse，有哪些可以借鉴的地方，如果是你在设计实验，你会怎么做。&lt;/p></description></item><item><title>Python 语法学习</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</link><pubDate>Wed, 14 Sep 2022 11:15:41 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h1 id="1-attribute">1. Attribute&lt;/h1>
 &lt;h2 id="11-string">1.1 string&lt;/h2>
 &lt;p>用 for 循环实现了 list 中的元素转为 string，目的是用来索引。for 感觉比较麻烦，不易读也不优雅，有没有更好的方法？&lt;/p>
 &lt;h3 id="111-operation">1.1.1 Operation&lt;/h3>
@@ -114,7 +111,14 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># My name is John, I&amp;#39;m 36&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(txt3)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># My name is John, I&amp;#39;m 36&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="112-实际使用时的一些需求">1.1.2 实际使用时的一些需求&lt;/h3>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>2022-11-24 16:58:29，这个在输出处理 log 信息时会经常用过。之前一直用的是 +，学习一下 f string。上面的 format 组合可以等价于下面的写法：&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>fname &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;John&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>age &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">36&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>txt1 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">f&lt;/span>&lt;span style="color:#e6db74">&amp;#34;My name is &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>fname&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">, I&amp;#39;m &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>age&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># or&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>txt1 &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">F&lt;/span>&lt;span style="color:#e6db74">&amp;#34;My name is &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>fname&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">, I&amp;#39;m &lt;/span>&lt;span style="color:#e6db74">{&lt;/span>age&lt;span style="color:#e6db74">}&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>甚至无需使用 &lt;code>str(index)&lt;/code> 这种写法了。&lt;/p>
+&lt;h3 id="112-实际使用时的一些需求">1.1.2 实际使用时的一些需求&lt;/h3>
 &lt;h4 id="1121-list-转-string">1.1.2.1 list 转 string&lt;/h4>
 &lt;p>&lt;strong>list item 是 string 类型，join&lt;/strong>&lt;/p>
 &lt;p>join, return values are strings&lt;/p>
@@ -210,7 +214,18 @@
 &lt;p>&lt;strong>只有一个元素的 tuple 为了消除歧义&lt;/strong>，会表示为 &lt;code>t = (1, )&lt;/code>；这一点和我打印出来的结果是一致的，一开始还困惑为什么有个 &lt;code>,&lt;/code>&lt;/p>
 &lt;h3 id="132-操作">1.3.2 操作&lt;/h3>
 &lt;p>&lt;strong>切片&lt;/strong>，和 list 类似&lt;/p>
-&lt;h2 id="14-dict">1.4 dict&lt;/h2>
+&lt;h3 id="14-转-list">1.4 转 list&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 对于 dict，直接放入 list function 就是将其 key 转为 list&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x &lt;span style="color:#f92672">=&lt;/span> list({&lt;span style="color:#e6db74">&amp;#39;apple&amp;#39;&lt;/span>:&lt;span style="color:#e6db74">&amp;#39;123&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;banana&amp;#39;&lt;/span>:&lt;span style="color:#e6db74">&amp;#39;1233&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;cherry&amp;#39;&lt;/span>:&lt;span style="color:#e6db74">&amp;#39;1231243&amp;#39;&lt;/span>})
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>y &lt;span style="color:#f92672">=&lt;/span> list({&lt;span style="color:#e6db74">&amp;#39;apple&amp;#39;&lt;/span>:&lt;span style="color:#e6db74">&amp;#39;123&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;banana&amp;#39;&lt;/span>:&lt;span style="color:#e6db74">&amp;#39;1233&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;cherry&amp;#39;&lt;/span>:&lt;span style="color:#e6db74">&amp;#39;1231243&amp;#39;&lt;/span>}&lt;span style="color:#f92672">.&lt;/span>keys())
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(x)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(y)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># output&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#e6db74">&amp;#39;apple&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;banana&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;cherry&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>[&lt;span style="color:#e6db74">&amp;#39;apple&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;banana&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;cherry&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="14-dict">1.4 dict&lt;/h2>
 &lt;h3 id="141-判断-keyvalue-是否存在">1.4.1 判断 key/value 是否存在&lt;/h3>
 &lt;p>&lt;strong>key&lt;/strong>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>dict_tmp&lt;span style="color:#f92672">.&lt;/span>has_key()
@@ -254,7 +269,18 @@
 &lt;p>总的来说，&lt;strong>Tensors are like arrays&lt;/strong>, both are data structures that are used to store data that can be indexed individually.&lt;/p>
 &lt;p>&lt;strong>综上，tensor 是否是 array-like?&lt;/strong>&lt;/p>
 &lt;p>&lt;strong>是的&lt;/strong>&lt;/p>
-&lt;h2 id="1x-其他特性">1.X 其他特性&lt;/h2>
+&lt;h3 id="162-operation--操作">1.6.2 operation / 操作&lt;/h3>
+&lt;h4 id="1621-插入-append--insert">1.6.2.1 插入 append / insert&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>bins &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">2.0&lt;/span> &lt;span style="color:#f92672">**&lt;/span> (np&lt;span style="color:#f92672">.&lt;/span>arange(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 插入到数组末端&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 插入到数组开头，或者任意 index&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>index &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>element &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>bins &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>insert(bins, &lt;span style="color:#ae81ff">0&lt;/span>, &lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="1x-其他特性">1.X 其他特性&lt;/h2>
 &lt;h3 id="1x1-generator">1.X.1 generator&lt;/h3>
 &lt;p>暂时没有用过，先挖个坑&lt;/p>
 &lt;h1 id="2-数据类型变量语法">2. 数据类型，变量，语法&lt;/h1>
@@ -280,6 +306,18 @@
 &lt;p>在函数内部创建变量时，默认是局部的&lt;/p>
 &lt;p>在函数外部定义变量时，默认是全局的，此时无需使用 global 关键字；在函数外使用 global 没有作用。&lt;/p>
 &lt;p>在函数内读写全局变量时，需要使用 global 关键字&lt;/p>
+&lt;h2 id="25-下划线-_-的使用">2.5 下划线 _ 的使用&lt;/h2>
+&lt;p>3.9 16:21&lt;/p>
+&lt;ul>
+&lt;li>&lt;code>_var&lt;/code> prefix single 下划线. 表示变量 &lt;code>_var&lt;/code> 仅供内部使用。python 并没有强制的 private 属性，而是用这样一种社区规定，表示这个变量并不是公共接口，但是外部仍然可以访问到这个变量
+&lt;ul>
+&lt;li>同样，如果是函数，那么表明这是一个私有函数&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>&lt;code>var_&lt;/code> suffix single 下划线. 变量名字被关键字占用，用一个下划线来解决命名冲突，比如&lt;code>class_&lt;/code>&lt;/li>
+&lt;li>&lt;code>__var&lt;/code> prefix double. 这个有点抽象，没太理解&lt;/li>
+&lt;li>&lt;code>__var__&lt;/code> prefix and suffix double. 表示类中的私有变量，并且不会被解释器所修改&lt;/li>
+&lt;/ul>
 &lt;h1 id="3-file-操作">3. File 操作&lt;/h1>
 &lt;h2 id="31-文件读写">3.1 文件读写&lt;/h2>
 &lt;p>read, open, write&lt;/p>
@@ -304,7 +342,10 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>path_ &lt;span style="color:#f92672">=&lt;/span> os.path.abspath&lt;span style="color:#f92672">(&lt;/span>__ file __&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#75715e"># 获取当前文件的绝对路径, /nvme/wmhu/shader_docker/cutlass-gpgpu-sim/data_analyze.py&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>path_ &lt;span style="color:#f92672">=&lt;/span> os.path.dirname&lt;span style="color:#f92672">(&lt;/span>__file__&lt;span style="color:#f92672">)&lt;/span> &lt;span style="color:#75715e"># 获得当前文件所在目录的绝对路径, /nvme/wmhu/shader_docker/cutlass-gpgpu-sim&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="4-函数">4. 函数&lt;/h1>
-&lt;h2 id="41-一些特性">4.1 一些特性&lt;/h2>
+&lt;h2 id="41-特性">4.1 特性&lt;/h2>
+&lt;p>&lt;code>def forward(self, x: torch.Tensor) -&amp;gt; torch.Tensor:&lt;/code>，箭头 &lt;code>-&amp;gt;&lt;/code> 后面表示返回值&lt;/p>
+&lt;p>尝试在 class 内部调用成员函数，报了错。调用 class 内部成员函数要加上前缀 &lt;code>self.&lt;/code>，否则会被当成外部函数&lt;/p>
+&lt;p>&lt;strong>Python 不支持函数重载&lt;/strong>&lt;/p>
 &lt;h3 id="411-别名和引用">4.1.1 别名和引用&lt;/h3>
 &lt;p>Python 中可以把函数名赋值给一个对象&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> a &lt;span style="color:#f92672">=&lt;/span> abs
@@ -483,14 +524,21 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">class&lt;/span> &lt;span style="color:#a6e22e">Cat&lt;/span>(Animal):
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">pass&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="6-module--模块">6. module / 模块&lt;/h1>
-&lt;h2 id="61-获取模块中的元素--遍历模块">6.1 获取模块中的元素 / 遍历模块&lt;/h2>
+&lt;h2 id="61-获取模块中的元素">6.1 获取模块中的元素&lt;/h2>
 &lt;p>定义了一个模块 &lt;code>coda_int.py&lt;/code> 用来装需要绘图的所有 list，一个接一个输入名字过于繁琐，尝试获取模块的中对象来自动遍历。&lt;/p>
 &lt;h3 id="611-遍历模块">6.1.1 遍历模块&lt;/h3>
 &lt;p>2022-09-14 11:13:48 搞定。用 &lt;code>if not key.startswith('__')&lt;/code> 来过滤掉一些自带的方法，剩下的就是 &lt;code>cola_int&lt;/code> 这个 module 中的 list。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> key, value &lt;span style="color:#f92672">in&lt;/span> cola_int&lt;span style="color:#f92672">.&lt;/span>__dict__&lt;span style="color:#f92672">.&lt;/span>items():
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">if&lt;/span> &lt;span style="color:#f92672">not&lt;/span> key&lt;span style="color:#f92672">.&lt;/span>startswith(&lt;span style="color:#e6db74">&amp;#39;__&amp;#39;&lt;/span>):
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> print(value[&lt;span style="color:#e6db74">&amp;#39;max&amp;#39;&lt;/span>])
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="debug">Debug&lt;/h1>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="7-os">7. os&lt;/h1>
+&lt;h4 id="指定-gpu-运行">指定 GPU 运行&lt;/h4>
+&lt;p>命令行&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>CUDA_VISIBLE_DEVICES&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span> python &lt;span style="color:#f92672">-&lt;/span>u &lt;span style="color:#f92672">-&lt;/span>m torch&lt;span style="color:#f92672">.&lt;/span>distributed&lt;span style="color:#f92672">.&lt;/span>launch &lt;span style="color:#f92672">--&lt;/span>nproc_per_node&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#f92672">--&lt;/span>master_port &lt;span style="color:#ae81ff">46666&lt;/span> main&lt;span style="color:#f92672">.&lt;/span>py &lt;span style="color:#f92672">--&lt;/span>dataset&lt;span style="color:#f92672">=&lt;/span>imagenet &lt;span style="color:#f92672">--&lt;/span>model&lt;span style="color:#f92672">=&lt;/span>inception_v3 &lt;span style="color:#f92672">--&lt;/span>epoch&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span> &lt;span style="color:#f92672">--&lt;/span>mode&lt;span style="color:#f92672">=&lt;/span>int &lt;span style="color:#f92672">--&lt;/span>wbit&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">--&lt;/span>abit&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">--&lt;/span>batch_size&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">160&lt;/span> &lt;span style="color:#f92672">--&lt;/span>lr&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">5e-05&lt;/span> &lt;span style="color:#f92672">--&lt;/span>train &lt;span style="color:#f92672">--&lt;/span>dataset_path&lt;span style="color:#f92672">=/&lt;/span>home&lt;span style="color:#f92672">/&lt;/span>cguo&lt;span style="color:#f92672">/&lt;/span>imagenet&lt;span style="color:#f92672">-&lt;/span>raw&lt;span style="color:#f92672">-&lt;/span>data&lt;span style="color:#f92672">/&lt;/span> &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#f92672">./&lt;/span>log&lt;span style="color:#f92672">/&lt;/span>inception_v3_Int&lt;span style="color:#f92672">.&lt;/span>log &lt;span style="color:#ae81ff">2&lt;/span>&lt;span style="color:#f92672">&amp;gt;&amp;amp;&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>python 文件&lt;/p>
+&lt;pre tabindex="0">&lt;code>import os
+os.environ[&amp;#34;CUDA_VISIBLE_DEVICES&amp;#34;] = &amp;#34;2&amp;#34;
+&lt;/code>&lt;/pre>&lt;h1 id="debug">Debug&lt;/h1>
 &lt;blockquote>
 &lt;p>用Python开发程序，完全可以一边在文本编辑器里写代码，一边开一个交互式命令窗口，在写代码的过程中，把部分代码粘到命令行去验证，事半功倍！前提是得有个27&amp;rsquo;的超大显示器！&lt;/p>
 &lt;/blockquote>
@@ -502,17 +550,12 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意 sum_stat.values() 返回的是 dict_keys 对象而不是 list，不支持 index 索引，可以使用&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>tot_stat[model_name &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#34;_&amp;#34;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> mode] &lt;span style="color:#f92672">=&lt;/span> list(sum_stat&lt;span style="color:#f92672">.&lt;/span>values())[len_ &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">5&lt;/span>:]
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="reference">Reference&lt;/h1>
-&lt;p>&lt;a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017024645952992">https://www.liaoxuefeng.com/wiki/1016959663602400/1017024645952992&lt;/a>&lt;/p></description></item><item><title>Tips to Become a Better (Computer Science) Ph.D. Student (By Ziyang Xu)</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-to-become-a-better-computer-science-ph.d.-student/</link><pubDate>Sun, 28 Aug 2022 00:04:17 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-to-become-a-better-computer-science-ph.d.-student/</guid><description>&lt;p>转载北大本科生，本科在梁云老师那里实习，现在是 princeton phd&lt;/p>
-&lt;p>Other amazing blogs out there:&lt;/p>
-&lt;ul>
-&lt;li>&lt;a href="http://www.pgbovine.net/PhD-memoir.htm">The Ph.D. Grind&lt;/a>&lt;/li>
-&lt;li>&lt;a href="http://www.ifs.tuwien.ac.at/~silvia/research-tips/">Tips: How to Do Research&lt;/a>&lt;/li>
-&lt;li>&lt;a href="http://www.cs.unc.edu/~azuma/hitch4.html">So long, and thanks for the Ph.D.!&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.math.waikato.ac.nz/~seano/grad-school-advice.html">Graduate School Survival Guide&lt;/a>&lt;/li>
-&lt;li>&lt;a href="https://www.sigarch.org/tips-for-a-new-computer-architecture-phd-student/">Tips for a New Computer Architecture PhD Student&lt;/a>&lt;/li>
-&lt;/ul>
-&lt;h2 id="5-topics">5 Topics&lt;/h2>
-&lt;h3 id="research--course">Research &amp;gt; Course&lt;/h3>
+&lt;p>&lt;a href="https://www.liaoxuefeng.com/wiki/1016959663602400/1017024645952992">https://www.liaoxuefeng.com/wiki/1016959663602400/1017024645952992&lt;/a>&lt;/p></description></item><item><title>Tips to Become a Better (Computer Science) Ph.D. Student (By Ziyang Xu)</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-to-become-a-better-computer-science-ph.d.-student/</link><pubDate>Sun, 28 Aug 2022 00:04:17 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-to-become-a-better-computer-science-ph.d.-student/</guid><description>&lt;blockquote>
+&lt;p>&lt;a href="https://www.cs.princeton.edu/~ziyangx/graduate-advice/">https://www.cs.princeton.edu/~ziyangx/graduate-advice/&lt;/a>
+&lt;strong>作者信息&lt;/strong>： 转载自北大本科生 Ziyang Xu，本科在梁云那里实习，现在是 princeton 4th year phd，导师是 Greg Chan&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="1-5-topics">1. 5 Topics&lt;/h1>
+&lt;h1 id="11-research--course">1.1 Research &amp;gt; Course&lt;/h1>
 &lt;p>Young Ph.D. students tend to spend too much time on courses. However, research outweighs courses.&lt;/p>
 &lt;p>&lt;strong>Take courses with a grain of salt&lt;/strong>&lt;/p>
 &lt;p>Courses are not as important as they seem to be. The priority of a Ph.D. student is to do research – the earlier you start your research, the better off you’ll be in the long run.&lt;/p>
@@ -523,27 +566,27 @@
 &lt;blockquote>
 &lt;p>低年级的 phd 容易迷失在课程中，但是这也完全可以理解。我自己研一的时候由于不适应节奏，感觉几乎所有时间都是花在课程上的。科研比课程重要，我相信大多数人都知道，只是去调整，去适应还需要花费一点时间。&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="be-professional">Be professional&lt;/h3>
+&lt;h2 id="12-be-professional">1.2 Be professional&lt;/h2>
 &lt;p>Treat your Ph.D. as a job. You get paid (albeit not much) for being a Ph.D. candidate, so make your work worth the money. This professional mindset should also be apparent to your advisor. Some advisors take on a more hands-off approach, for instance letting you work from home, but this is no reason for slacking; you should be responsible for your research schedule, such as reminding your advisor of plans from previous group meetings. Your status is not that of a student but rather that of a peer in the research community.&lt;/p>
 &lt;blockquote>
 &lt;p>个人理解举几个具体一点的例子吧，比如 meeting 之类的做好 PPT，有什么事情快速回复和确认，不要看到了之后想着做完了再回复；做不出来的东西也要及时反馈；有时间观念&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="read-a-lot-and-read-broadly">Read a lot and read broadly&lt;/h3>
+&lt;h2 id="13-read-a-lot-and-read-broadly">1.3 Read a lot and read broadly&lt;/h2>
 &lt;p>Though it can be very daunting starting out, reading papers is an essential part of the Ph.D. life. Previously, you may have read papers when it was necessary for a class or a project. However, you should put reading papers in your daily routine. Doing so allows you to draw inspiration from a sea of knowledge and prevents yourself from reinventing the wheel. Besides, it’s a great way to be productive on a slow day.&lt;/p>
-&lt;h3 id="make-a-plan-to-read">Make a plan to read&lt;/h3>
+&lt;p>&lt;strong>Make a plan to read&lt;/strong>&lt;/p>
 &lt;p>When scheduling your day, assign one period just for reading papers. You can read one paper in depth or compare several papers; regardless of your choice, allotting time to this task is the key.&lt;/p>
-&lt;h3 id="read-broadly">Read broadly&lt;/h3>
+&lt;p>&lt;strong>Read broadly&lt;/strong>&lt;/p>
 &lt;p>Reading papers from different subfields of computer science is a great way to learn the jargon, the method, and the mindset of researchers in each field. This can be the first step towards discovering opportunities for collaboration.&lt;/p>
 &lt;blockquote>
 &lt;p>很惭愧还没有养成每天固定阅读的习惯，我觉得这个必须在入学前做好。&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="fail-fast">Fail fast&lt;/h3>
+&lt;h2 id="14-fail-fast">1.4 Fail fast&lt;/h2>
 &lt;p>It is not uncommon for a Ph.D. student to spend several years building a system that turns out to be fundamentally flawed or not as applicable as expected. Don’t worry! There is nothing wrong with failing, and perhaps we should even expect failure to be part of the journey. But we should aim to fail early in order to have time to work on another project (and graduate!).&lt;/p>
 &lt;p>&lt;strong>Perform a limit study&lt;/strong>&lt;/p>
 &lt;p>Perform a quick limit study before sticking with a project. A limit study includes in-depth analyses of implicit assumptions we make when coming up with an idea, a related works search, and the potential of the work if everything goes well. A great limit study can itself be a publishable paper. An example can be found &lt;a href="https://homes.cs.washington.edu/~luisceze/publications/fortuna-iiswc2010.pdf">&lt;strong>here&lt;/strong>&lt;/a>.&lt;/p>
 &lt;p>&lt;strong>Hacky implementation can be useful&lt;/strong>&lt;/p>
 &lt;p>Being a researcher, your work is to develop proof-of-concepts. Nevertheless, you need to demonstrate that your concept is sound for the simplest of cases before continuing to the full-blown system. Hack in the minimum set to show that your idea is possible while resisting the temptation to build a robust infrastructure – if your idea fails, you will know to stop earlier.&lt;/p>
-&lt;h3 id="impact-humankind">Impact humankind&lt;/h3>
+&lt;h2 id="15-impact-humankind">1.5 Impact humankind&lt;/h2>
 &lt;p>Impacting humankind may sound too ambitious, but it should be the ultimate reason why we embark on this journey.&lt;/p>
 &lt;p>&lt;strong>Choose an impactful research topic&lt;/strong>&lt;/p>
 &lt;p>In terms of how our Ph.D. research could impact human knowledge, I would like to refer to &lt;a href="http://matt.might.net/articles/phd-school-in-pictures/">&lt;strong>The Illustrated Guide to a Ph.D.&lt;/strong>&lt;/a> by Matt Might. All we will do in five years is pushing the boundary of human knowledge by a minute margin. Choose a topic that you are able to contribute to, feel passionate about, and can explain the importance of to a layman in a 3-min talk.&lt;/p>
@@ -553,32 +596,40 @@
 &lt;blockquote>
 &lt;p>做有影响力的课题&lt;/p>
 &lt;/blockquote>
-&lt;h2 id="5-tips">5 Tips&lt;/h2>
-&lt;h3 id="dont-give-up-on-your-research-topic-easily">Don’t give up on your research topic easily&lt;/h3>
+&lt;h1 id="2-5-tips">2. 5 Tips&lt;/h1>
+&lt;h2 id="21-dont-give-up-on-your-research-topic-easily">2.1 Don’t give up on your research topic easily&lt;/h2>
 &lt;p>At some point, we will get bored with our research topic and find something else interesting. Think twice before switching topics. You must differentiate between your project heading nowhere and you getting tired of being stuck.&lt;/p>
 &lt;blockquote>
 &lt;p>这是显然的，不过如何选课题也要慎重。目前自己还暂时没有去自主选择一个课题，但是毫无疑问，当你真正开始做这个事的时候，可能是需要投入时间最多的时候。这极大可能决定了之后6-9个月的努力是否有效。&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="aim-for-top-tier-conferences">Aim for top-tier conferences&lt;/h3>
+&lt;h2 id="22-aim-for-top-tier-conferences">2.2 Aim for top-tier conferences&lt;/h2>
 &lt;p>You should focus on publishing at only top-tier conferences. Don’t consider second-tier venues unless the work has been rejected several times by top-tier conferences. This can prevent you from doing incremental work to make your publication list look better.&lt;/p>
 &lt;blockquote>
 &lt;p>当你做好准备，并且有合适的老师指导的时候，确实可以把这个当做研究的动机，只瞄准顶级会议，加油。&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="use-existing-resources-in-your-group">Use existing resources in your group&lt;/h3>
+&lt;h2 id="23-use-existing-resources-in-your-group">2.3 Use existing resources in your group&lt;/h2>
 &lt;p>For many fields in computer science, a mature infrastructure requires several years of development by multiple graduate students. Think about how to make use of the infrastructure and resources in the group to boost your research progress.&lt;/p>
 &lt;blockquote>
 &lt;p>这个其实就很好理解，组里面做硬件很强的学长，以及发过顶会的学长，各个方向的，都是非常宝贵资源。&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="you-are-powerful">You are powerful&lt;/h3>
+&lt;h2 id="24-you-are-powerful">2.4 You are powerful&lt;/h2>
 &lt;p>Even though we are just junior graduate students, we can have a massive impact on ourselves, our group, and even our department. For example, if there is no reading group for your field in your department, start one!&lt;/p>
 &lt;blockquote>
 &lt;p>心态调整好&lt;/p>
 &lt;/blockquote>
-&lt;h3 id="focus-on-publishing">Focus on publishing&lt;/h3>
+&lt;h2 id="25-focus-on-publishing">2.5 Focus on publishing&lt;/h2>
 &lt;p>Needless to say, publications are essential since those are what people look at once we graduate.&lt;/p>
 &lt;blockquote>
 &lt;p>pub 是一名 phd 唯一要做的事情&lt;/p>
-&lt;/blockquote></description></item><item><title>Tips for a New Computer Architecture PhD Student (By Swapnil Haria)</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-for-a-new-computer-architecture-phd-student/</link><pubDate>Sat, 27 Aug 2022 23:57:17 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-for-a-new-computer-architecture-phd-student/</guid><description>&lt;p>原文网址：https://www.sigarch.org/tips-for-a-new-computer-architecture-phd-student/&lt;/p>
+&lt;/blockquote>
+&lt;h1 id="3-other-amazing-blogs-out-there">3. Other amazing blogs out there:&lt;/h1>
+&lt;ul>
+&lt;li>&lt;a href="http://www.pgbovine.net/PhD-memoir.htm">The Ph.D. Grind&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.ifs.tuwien.ac.at/~silvia/research-tips/">Tips: How to Do Research&lt;/a>&lt;/li>
+&lt;li>&lt;a href="http://www.cs.unc.edu/~azuma/hitch4.html">So long, and thanks for the Ph.D.!&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.math.waikato.ac.nz/~seano/grad-school-advice.html">Graduate School Survival Guide&lt;/a>&lt;/li>
+&lt;li>&lt;a href="https://www.sigarch.org/tips-for-a-new-computer-architecture-phd-student/">Tips for a New Computer Architecture PhD Student&lt;/a>&lt;/li>
+&lt;/ul></description></item><item><title>Tips for a New Computer Architecture PhD Student (By Swapnil Haria)</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-for-a-new-computer-architecture-phd-student/</link><pubDate>Sat, 27 Aug 2022 23:57:17 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_tips-for-a-new-computer-architecture-phd-student/</guid><description>&lt;p>原文网址：https://www.sigarch.org/tips-for-a-new-computer-architecture-phd-student/&lt;/p>
 &lt;p>作者在 2019 年是 UWM 5 年级 phd，导师是 Mark Hill，毕业后去了 Google 做一名软件开发工程师。&lt;/p>
 &lt;p>原文&lt;/p>
 &lt;p>I have been fortunate enough to have many helpful senior students and two wonderful advisors to learn from throughout my PhD. Now as a senior PhD student myself, I have identified some lessons that proved most valuable as well as common mistakes made by younger graduate students. While these may be common knowledge, I am documenting these tips here to pass on some of our collectively learned lessons to future graduate students.&lt;/p>
@@ -719,13 +770,7 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &amp;lt;/&lt;span style="color:#f92672">nav&lt;/span>&amp;gt;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&amp;lt;/&lt;span style="color:#f92672">div&lt;/span>&amp;gt;
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>{{- end }}
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>PyTorch 学习</title><link>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</link><pubDate>Thu, 28 Jul 2022 16:05:35 +0800</pubDate><guid>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h2 id="12-tensor">1.2 Tensor&lt;/h2>
-&lt;p>张量，多维数组。&lt;/p>
-&lt;p>数据类型需要注意一下&lt;/p>
-&lt;blockquote>
-&lt;p>关于 dtype，PyTorch 提供了 9 种数据类型，共分为 3 大类：float (16-bit, 32-bit, 64-bit)、integer (unsigned-8-bit ,8-bit, 16-bit, 32-bit, 64-bit)、Boolean。模型参数和数据用的最多的类型是 float-32-bit。label 常用的类型是 integer-64-bit。&lt;/p>
-&lt;/blockquote>
-&lt;h1 id="1-python-模块">1. Python 模块&lt;/h1>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item><item><title>PyTorch 学习</title><link>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</link><pubDate>Thu, 28 Jul 2022 16:05:35 +0800</pubDate><guid>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h1 id="1-python-模块">1. Python 模块&lt;/h1>
 &lt;h2 id="11-parser-模块">1.1 parser 模块&lt;/h2>
 &lt;h3 id="111-parseradd_argument">1.1.1 parser.add_argument()&lt;/h3>
 &lt;p>在命令行给代码赋值，不需要反复在 python 中修改代码。&lt;/p>
@@ -747,6 +792,12 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;li>&lt;code>python -u -m ...&lt;/code>，没有这个开关，则参数存储为 False&lt;/li>
 &lt;/ul>
 &lt;h3 id="112-parserparse_args">1.1.2 parser.parse_args()&lt;/h3>
+&lt;h2 id="12-tensor">1.2 Tensor&lt;/h2>
+&lt;p>张量，多维数组。&lt;/p>
+&lt;p>数据类型需要注意一下&lt;/p>
+&lt;blockquote>
+&lt;p>关于 dtype，PyTorch 提供了 9 种数据类型，共分为 3 大类：float (16-bit, 32-bit, 64-bit)、integer (unsigned-8-bit ,8-bit, 16-bit, 32-bit, 64-bit)、Boolean。模型参数和数据用的最多的类型是 float-32-bit。label 常用的类型是 integer-64-bit。&lt;/p>
+&lt;/blockquote>
 &lt;h1 id="2-torch">2. torch&lt;/h1>
 &lt;p>有很多方便的数学操作，同理，先了解有这个东西，需要用到时看具体的用法。包括 torch.rand(), torch.range(), torch.chunk(), torch.normal(), torch.add()&lt;/p>
 &lt;p>pytorch 主要分为五大模块&lt;/p>
@@ -860,6 +911,10 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;h3 id="214-crossentropyloss">2.1.4 CrossEntropyLoss&lt;/h3>
 &lt;p>This criterion combines LogSoftmax and NLLLoss in one single class.&lt;/p>
 &lt;h2 id="22-tensor">2.2 Tensor&lt;/h2>
+&lt;p>Tensor 和 Numpy 中的 ndarrays 类似，但 Tensor 可以使用 GPU 进行加速计算。Tensor 可能是深度学习编程中，所有数据操作的基础单元。&lt;/p>
+&lt;blockquote>
+&lt;p>可以用 GPU 加速计算，这一点要记住&lt;/p>
+&lt;/blockquote>
 &lt;p>&lt;code>Tensor&lt;/code> is a multi-dimensional matrix containing elements of a single data type&lt;/p>
 &lt;p>可以用 list 作为参数来构造 tensor&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>tensor([[&lt;span style="color:#ae81ff">1.&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1.&lt;/span>], [&lt;span style="color:#ae81ff">1.&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1.&lt;/span>]])
@@ -868,7 +923,82 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>tensor(np&lt;span style="color:#f92672">.&lt;/span>array([[&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>], [&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>]]))
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tensor([[ &lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>],
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [ &lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">5&lt;/span>, &lt;span style="color:#ae81ff">6&lt;/span>]])
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="23-autograd">2.3 autograd&lt;/h2>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="221-view">2.2.1 view&lt;/h3>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># to one-dimension&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>grad_output &lt;span style="color:#f92672">=&lt;/span> grad_output&lt;span style="color:#f92672">.&lt;/span>view(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># shape 是一个 list，存放了 tensor &amp;#39;data&amp;#39; 的整个维度信息&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>shape &lt;span style="color:#f92672">=&lt;/span> data&lt;span style="color:#f92672">.&lt;/span>shape
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 按 data 的第一维展开，最终得到一个二维的 tensor。最终的数据，第一个维度是 data.shape[0]，和原来的第一个维度相同，第二个维度是后续所有元素的展开的总和&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>data &lt;span style="color:#f92672">=&lt;/span> data&lt;span style="color:#f92672">.&lt;/span>view(data&lt;span style="color:#f92672">.&lt;/span>shape[&lt;span style="color:#ae81ff">0&lt;/span>], &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 示例&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> x &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>randn(&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> x&lt;span style="color:#f92672">.&lt;/span>size()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>torch&lt;span style="color:#f92672">.&lt;/span>Size([&lt;span style="color:#ae81ff">4&lt;/span>, &lt;span style="color:#ae81ff">4&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> y &lt;span style="color:#f92672">=&lt;/span> x&lt;span style="color:#f92672">.&lt;/span>view(&lt;span style="color:#ae81ff">16&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> y&lt;span style="color:#f92672">.&lt;/span>size()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>torch&lt;span style="color:#f92672">.&lt;/span>Size([&lt;span style="color:#ae81ff">16&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> z &lt;span style="color:#f92672">=&lt;/span> x&lt;span style="color:#f92672">.&lt;/span>view(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">8&lt;/span>) &lt;span style="color:#75715e"># the size -1 is inferred from other dimensions&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> z&lt;span style="color:#f92672">.&lt;/span>size()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>torch&lt;span style="color:#f92672">.&lt;/span>Size([&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">8&lt;/span>])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="222-常用操作">2.2.2 常用操作&lt;/h3>
+&lt;h4 id="2222-索引">2.2.2.2 索引&lt;/h4>
+&lt;p>&lt;strong>获取某一维度的长度&lt;/strong>&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># input 是一个 size = 1 的 tuple&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># input[0] 是一个 tensor, input[0] 的 size: &lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 获取 tensor 第 1 个维度的 length&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>input[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>size(&lt;span style="color:#ae81ff">0&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 获取 tensor 第 2 个维度的 length&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>input[&lt;span style="color:#ae81ff">0&lt;/span>]&lt;span style="color:#f92672">.&lt;/span>size(&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="2222-获取某-value-of-index-in-tensor">2.2.2.2 获取某 value of index in tensor&lt;/h4>
+&lt;p>主要是用这个 nonzero&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>t &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>Tensor([&lt;span style="color:#ae81ff">1&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">3&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print ((t &lt;span style="color:#f92672">==&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>)&lt;span style="color:#f92672">.&lt;/span>nonzero(as_tuple&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>)[&lt;span style="color:#ae81ff">0&lt;/span>])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="2223-tensor-排序">2.2.2.3 tensor 排序&lt;/h4>
+&lt;p>tensor.sort()&lt;/p>
+&lt;p>2022-09-12 23:37:09，有一些坑，注意返回的是一个 tuple，所以要注意接收的形式。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>grad_output_sorted, grad_output_indices &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>sort(grad_output)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>grad_output_sorted &lt;span style="color:#f92672">=&lt;/span> grad_output_sorted&lt;span style="color:#f92672">.&lt;/span>double() &lt;span style="color:#75715e"># avoid RuntimeError: Found dtype Double but expected Float&lt;/span>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="2224-获取-tensor-中某-percentile">2.2.2.4 获取 tensor 中某 percentile&lt;/h4>
+&lt;p>tensorflow 好像是支持 tfp.stats.percentile，直接获取 Finding p% of smallest tensor values&lt;/p>
+&lt;p>直接用 &lt;code>np.percentile(tensor, )&lt;/code>&lt;/p>
+&lt;h4 id="2225-torchwhere">2.2.2.5 torch.where()&lt;/h4>
+&lt;p>快速地移除 tensor 中不满足某条件的 element&lt;/p>
+&lt;p>比如，我们把值大于 0.5 的值置为0&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> x &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>randn(&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> y &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>ones(&lt;span style="color:#ae81ff">3&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> x
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tensor([[&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">0.4620&lt;/span>, &lt;span style="color:#ae81ff">0.3139&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [ &lt;span style="color:#ae81ff">0.3898&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">0.7197&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [ &lt;span style="color:#ae81ff">0.0478&lt;/span>, &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">0.1657&lt;/span>]])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">&amp;gt;&amp;gt;&amp;gt;&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>where(x &lt;span style="color:#f92672">&amp;gt;&lt;/span> &lt;span style="color:#ae81ff">0&lt;/span>, x, y)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>tensor([[ &lt;span style="color:#ae81ff">1.0000&lt;/span>, &lt;span style="color:#ae81ff">0.3139&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [ &lt;span style="color:#ae81ff">0.3898&lt;/span>, &lt;span style="color:#ae81ff">1.0000&lt;/span>],
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> [ &lt;span style="color:#ae81ff">0.0478&lt;/span>, &lt;span style="color:#ae81ff">1.0000&lt;/span>]])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>实际&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>grad_output_sorted &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>where(grad_output_sorted &lt;span style="color:#f92672">&amp;gt;&lt;/span> max_75, &lt;span style="color:#ae81ff">0.&lt;/span>, grad_output_sorted)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>grad_output_sorted &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>where(grad_output_sorted &lt;span style="color:#f92672">&amp;lt;&lt;/span> min_75, &lt;span style="color:#ae81ff">0.&lt;/span>, grad_output_sorted)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="2226-torchcat-">2.2.2.6 torch.cat( )&lt;/h4>
+&lt;p>删除掉 Tensor 中指定 value 的元素，比如&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># remove i-th element&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>i &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#ae81ff">2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>T &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>tensor([&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">2&lt;/span>,&lt;span style="color:#ae81ff">3&lt;/span>,&lt;span style="color:#ae81ff">4&lt;/span>,&lt;span style="color:#ae81ff">5&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>T &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>cat([T[&lt;span style="color:#ae81ff">0&lt;/span>:i], T[i&lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>:&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>]])
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="222x-综合">2.2.2.X 综合&lt;/h4>
+&lt;p>综上，有一个需求。对于一个一维 Tensor，消除掉其前25%的值，得到剩下75%的tensor&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="223-function">2.2.3 Function&lt;/h3>
+&lt;h4 id="2231-tensordata-tensordetach">2.2.3.1 tensor.data, tensor.detach()&lt;/h4>
+&lt;p>detach()和data生成的都是无梯度的纯tensor,并且通过同一个tensor数据操作，是共享一块数据内存。主要目的是让其独立于计算图之外&lt;/p>
+&lt;h4 id="2232-tensormax-tensorabs-tensorunsqueeze-tensordim-tensorshape">2.2.3.2 tensor.max, tensor.abs, tensor.unsqueeze, tensor.dim, tensor.shape&lt;/h4>
+&lt;p>tensor 原本是 (64, 128, 768)，经过 &lt;code>view&lt;/code> 将其二维化，第二维等于原本最后一个维度的 size，也就是 768。&lt;code>max(1)&lt;/code> 表示返回第二个维度的最大值，也就是 768 个元素中的最大值，最后得到的 tensor size 就是 (64*128)，然后通过 &lt;code>unsqueeze&lt;/code> 转换为 (64*128, 1) dimension&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>x_max, _ &lt;span style="color:#f92672">=&lt;/span> tensor&lt;span style="color:#f92672">.&lt;/span>view(&lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, tensor&lt;span style="color:#f92672">.&lt;/span>shape[tensor&lt;span style="color:#f92672">.&lt;/span>dim() &lt;span style="color:#f92672">-&lt;/span> &lt;span style="color:#ae81ff">1&lt;/span>])&lt;span style="color:#f92672">.&lt;/span>abs()&lt;span style="color:#f92672">.&lt;/span>max(&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>x_max &lt;span style="color:#f92672">=&lt;/span> x_max&lt;span style="color:#f92672">.&lt;/span>unsqueeze(&lt;span style="color:#ae81ff">1&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="2233-torcndot-torchmv-torchmm">2.2.3.3 torcn.dot. torch.mv, torch.mm&lt;/h4>
+&lt;p>torch.dot: 向量点积&lt;/p>
+&lt;p>torch.mv: 矩阵-向量积&lt;/p>
+&lt;p>torch.mm: 矩阵-矩阵乘法&lt;/p>
+&lt;h2 id="23-autograd">2.3 autograd&lt;/h2>
 &lt;p>weight 更新依赖于梯度的计算，在 pytorch 中搭建好 forward 计算图，利用 &lt;code>torch.autograd&lt;/code> 自动求导得到所有 gradient of tensor&lt;/p>
 &lt;h2 id="24-data-模块">2.4 data 模块&lt;/h2>
 &lt;p>数据模块可以细分为 4 个部分&lt;/p>
@@ -1000,6 +1130,14 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
+&lt;h2 id="28-function">2.8 Function&lt;/h2>
+&lt;h3 id="281-torchtopk">2.8.1 torch.topk()&lt;/h3>
+&lt;p>&lt;strong>作用：&lt;/strong> 取一个 tensor 的 topk 元素（降序后的前 k 个大小的元素值及索引）&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>K &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>numel(data) &lt;span style="color:#f92672">//&lt;/span> data&lt;span style="color:#f92672">.&lt;/span>shape[&lt;span style="color:#ae81ff">0&lt;/span>] &lt;span style="color:#f92672">*&lt;/span> &lt;span style="color:#ae81ff">4&lt;/span> &lt;span style="color:#f92672">//&lt;/span> &lt;span style="color:#ae81ff">256&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> _, index &lt;span style="color:#f92672">=&lt;/span> torch&lt;span style="color:#f92672">.&lt;/span>topk(data&lt;span style="color:#f92672">.&lt;/span>abs(), K, dim &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#f92672">-&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span>, largest &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">True&lt;/span>, sorted &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#66d9ef">False&lt;/span>)
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="282-torchnumel">2.8.2 torch.numel&lt;/h3>
+&lt;p>返回 tensor 中的元素总数量&lt;/p>
 &lt;h1 id="3-pytorch-分布式训练">3. pytorch 分布式训练&lt;/h1>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>dist&lt;span style="color:#f92672">.&lt;/span>init_process_group(backend&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;nccl&amp;#39;&lt;/span>)
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># backend是后台利用nccl进行通信&lt;/span>
@@ -1036,6 +1174,30 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>}
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>注意 &lt;code>nproc_per_node&lt;/code> 是 Python 自带的参数，因此可以写到里面，对于 &lt;code>--dataset=imagenet&lt;/code> 会有报错。&lt;/p>
 &lt;p>&lt;code>--dataset=imagenet&lt;/code> 要放到 &lt;code>main.py&lt;/code> 的后面，这个方法相当于用调整参数的形式来达到目的。不太有通用性，相当于专门改了一个 &lt;code>launch.json&lt;/code> 文件。&lt;/p>
+&lt;h2 id="32-几种并行的方式">3.2 几种并行的方式&lt;/h2>
+&lt;p>转载自 &lt;a href="https://zhuanlan.zhihu.com/p/430383324">https://zhuanlan.zhihu.com/p/430383324&lt;/a>&lt;/p>
+&lt;h3 id="321-data-parallelism">3.2.1 Data Parallelism&lt;/h3>
+&lt;p>模型在forward和backward的中间计算过程都会有中间状态，这些中间状态通常占用的空间是和batch size成正比的。&lt;/p>
+&lt;blockquote>
+&lt;p>也就是梯度等信息吧&lt;/p>
+&lt;/blockquote>
+&lt;p>方法是将大的 batch size 切分都多个 GPU 上；不过这种方式主要切分的是 batch size 正比的部分中间状态。但是对于parameter, optimizer state等batch size无关的空间开销是无能为力的。&lt;/p>
+&lt;!-- raw HTML omitted -->
+&lt;p>&lt;strong>什么是 parameter？&lt;/strong>&lt;/p>
+&lt;p>parameter: 模型可以根据数据可以自动学习出的变量，应该就是参数。比如，深度学习的权重，偏差等&lt;/p>
+&lt;p>hyperparameter: 就是用来确定模型的一些参数，超参数不同，模型是不同的(这个模型不同的意思就是有微小的区别，比如假设都是CNN模型，如果层数不同，模型不一样，虽然都是CNN模型哈。)，超参数一般就是根据经验确定的变量。在深度学习中，超参数有：&lt;strong>学习速率，迭代次数，层数，每层神经元的个数&lt;/strong> 等等。&lt;/p>
+&lt;h3 id="322-model-parallelism">3.2.2 Model Parallelism&lt;/h3>
+&lt;p>把模型本身进行切分，使得每个 GPU 卡只需要存储模型的一部分。&lt;/p>
+&lt;p>MP在一些应用场景（比如上面说的ResNet例子）在计算一个minibatch时，硬件是依次激活的，其他硬件都在等待，硬件的利用率会非常的低。&lt;/p>
+&lt;blockquote>
+&lt;p>简单地说，就是并行比较差&lt;/p>
+&lt;/blockquote>
+&lt;h3 id="323-pipeline-parallelism">3.2.3 Pipeline Parallelism&lt;/h3>
+&lt;p>前面提到了MP一个比较大的问题是GPU利用率低。当没有计算到某个GPU上的模型分片时，这个GPU常常是闲着的。PP一定程度上解决了这个问题。&lt;/p>
+&lt;p>PP的思想也比较简单，使用了经典的Pipeline思想。在模型计算流水线上，每个GPU只负责模型的一个分片，计算完就交给下一个GPU完成下一个模型分片的计算。当下个GPU在计算时，上一个GPU开始算下一个minibatch属于它的模型分片。&lt;/p>
+&lt;blockquote>
+&lt;p>经典的流水线设计思想&lt;/p>
+&lt;/blockquote>
 &lt;h1 id="4-hook">4. Hook&lt;/h1>
 &lt;p>这个功能被广泛用于可视化神经网络中间层的 feature、gradient，从而诊断神经网络中可能出现的问题，分析网络有效性。&lt;/p>
 &lt;p>视频：https://www.youtube.com/watch?v=syLFCVYua6Q&lt;/p>
@@ -1058,6 +1220,7 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;p>&lt;strong>作用&lt;/strong>：获取中间层的 feature map&lt;/p>
 &lt;p>通常，pytorch 只提供了网络整体的输入和输出，对于夹在网络中间的模块，很难获得他的输入输出。除非设计网络时，在 forward 函数的返回值中包含中间 module 的输出。总而言之别的方法都比较麻烦，pytorch 设计好了 register_forward_hook 和 register_backward_hook。&lt;/p>
 &lt;p>相比针对 tensor 的 register_hook，这个 forward hook 没有返回值，也就是不能改变输入，只能打印。&lt;/p>
+&lt;p>&lt;strong>注意&lt;/strong>，在 forward hook 中，input 是 x，而不包括 W 和 b。&lt;/p>
 &lt;p>代码实例，讲的非常清晰，来自&lt;a href="https://cloud.tencent.com/developer/article/1475430">博客&lt;/a>&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>Class Model(nn&lt;span style="color:#f92672">.&lt;/span>Module):
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">def&lt;/span> __init__(self):
@@ -1189,6 +1352,16 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;p>想给初始类再新添功能，不需要改初始类，只要在下一个类内部新写一个方法，方法用@classmethod装饰一下即可。、&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">@classmethod&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">convert_sync_batchnorm&lt;/span>(cls, module, process_group&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">None&lt;/span>):
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="5-autodiff">5. AutoDiff&lt;/h1>
+&lt;blockquote>
+&lt;p>深度学习框架通过自动计算导数，即自动微分（automatic differentiation）来加快求导。 实际中，根据我们设计的模型，系统会构建一个计算图（computational graph）， 来跟踪计算是哪些数据通过哪些操作组合起来产生输出。 自动微分使系统能够随后反向传播梯度。 这里，反向传播（backpropagate）意味着跟踪整个计算图，填充关于每个参数的偏导数。&lt;/p>
+&lt;/blockquote>
+&lt;p>by &lt;a href="https://zh-v2.d2l.ai/chapter_preliminaries/autograd.html">https://zh-v2.d2l.ai/chapter_preliminaries/autograd.html&lt;/a>&lt;/p>
+&lt;h1 id="6-只使用一个-gpu">6. 只使用一个 GPU&lt;/h1>
+&lt;h2 id="61-文件中">6.1 文件中&lt;/h2>
+&lt;p>注意这个必须放在 &lt;del>&lt;code>import torch&lt;/code> 之前&lt;/del> 放在所有访问GPU的代码之前&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> os
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>os&lt;span style="color:#f92672">.&lt;/span>environ[&lt;span style="color:#e6db74">&amp;#39;CUDA_VISIBLE_DEVICES&amp;#39;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;0&amp;#34;&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="问题">问题&lt;/h1>
 &lt;ul>
 &lt;li>Debug 的时候怎么看 tensor 变量的参数？&lt;/li>
@@ -1197,14 +1370,14 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/265394674">https://zhuanlan.zhihu.com/p/265394674&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-nn/">https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-nn/&lt;/a> pytorch 中文文档&lt;/p>
 &lt;p>&lt;a href="https://cloud.tencent.com/developer/article/1475430#">https://cloud.tencent.com/developer/article/1475430#&lt;/a>&lt;/p></description></item><item><title>国内硕博如何提升自己的英语</title><link>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</link><pubDate>Sat, 16 Jul 2022 16:39:35 +0800</pubDate><guid>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</guid><description>&lt;p>这个是最近（2022-07-16 16:09:15）我一直在思考的问题。因为之后可能会选择在国内度过自己的博士生涯。目前的英语水平可以说是完全不够的。并不是说 paper 看多了，英语水平就上去了。听说读写是耦合在一起的，没有国外的英文环境，就需要有意识地去提升自己的英语水平。&lt;/p>
-&lt;h5 id="一些建议">一些建议&lt;/h5>
+&lt;h1 id="1-一些建议">1. 一些建议&lt;/h1>
 &lt;p>即使到了国外，可能也很难通过和外国人交朋友来提升自己的英文水平，英语提升还是需要刻意去练习的。&lt;/p>
 &lt;ul>
 &lt;li>可以根据自己的喜好，坚持地去阅读或者听一些东西，比如电视新闻评论，转播的篮球比赛，电视剧，TED 演讲等等。一个是选择自己喜欢的东西，做起来没有额外的开销，另一个是要 &lt;strong>坚持&lt;/strong>，自己的学习就非常零散。&lt;/li>
 &lt;li>读自己写的东西，也就是读出声音。&lt;/li>
 &lt;/ul>
-&lt;h5 id="施一公如何提高科研写作能力">施一公：如何提高科研写作能力&lt;/h5>
-&lt;p>&lt;strong>他是怎么做的&lt;/strong>？&lt;/p>
+&lt;h1 id="2-施一公如何提高科研写作能力">2. 施一公：如何提高科研写作能力&lt;/h1>
+&lt;h2 id="21-他是怎么做的">2.1 &lt;strong>他是怎么做的&lt;/strong>？&lt;/h2>
 &lt;ul>
 &lt;li>每天花 45 分钟读《华盛顿邮报》。他每天早上安排完第一批实验后，会在十点左右花一个小时阅读《华盛顿邮报》，主要看新闻版
 &lt;ul>
@@ -1213,7 +1386,7 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;/li>
 &lt;li>阅读变多了，他常常会有自己动笔去写的冲动。《巴尔的摩太阳报》也刊登了他的信刊。&lt;/li>
 &lt;/ul>
-&lt;p>&lt;strong>一些经历&lt;/strong>&lt;/p>
+&lt;h2 id="22-一些经历">2.2 &lt;strong>一些经历&lt;/strong>&lt;/h2>
 &lt;ul>
 &lt;li>他在 1994 年写完论文之后感觉很差，自己都不愿意再读第二遍，就交给了老板。（我自己也感觉自己写的是一坨屎，不想再看）&lt;/li>
 &lt;li>他的老板花了 4 个小时把文章的整体写完了，只缺少 method 和 reference，并且根本没用施一公的初稿
@@ -1223,7 +1396,7 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;/ul>
 &lt;/li>
 &lt;/ul>
-&lt;p>&lt;strong>总结&lt;/strong>&lt;/p>
+&lt;h2 id="23-总结">2.3 &lt;strong>总结&lt;/strong>&lt;/h2>
 &lt;ul>
 &lt;li>保持阅读英文文章的习惯，每天 30-60 分钟。从英文报纸，英文新闻开始，逐渐转为专业的杂志&lt;/li>
 &lt;li>写科研论文，最重要的是逻辑。必须先讨论出一套清晰的思路，根据思路作图（也就是逻辑 flow，或者结构），然后再动笔开始写&lt;/li>
@@ -1237,7 +1410,7 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;li>第一稿写完后，给自己不超过一天的休息时间，开始改第二稿。修改时还是逻辑为主，每句话都要推敲，要学会同义替换（thesaurus），避免过多重复。第二稿非常关键，往后可能不会大改了。&lt;/li>
 &lt;li>第二稿以后的修改，关注具体的字句，逻辑基本定型。投稿前，整体读一遍。一篇文章不会因为个别语法错误被拒，但一定会因为逻辑混乱被拒。&lt;/li>
 &lt;/ul>
-&lt;h5 id="可行的方案">可行的方案&lt;/h5>
+&lt;h1 id="3-可行的方案">3. 可行的方案&lt;/h1>
 &lt;p>实际上，最难的部分还是每天坚持，下面列一些可行的方案。阅读 paper 自然不用说，这个是自然的。但是除了阅读 paper 以外，也应该坚持阅读一些新闻杂志。&lt;/p>
 &lt;ul>
 &lt;li>观看 &lt;strong>LinusTechTips&lt;/strong> 频道的视频。这是一个科技频道，每个视频 10 分钟左右，也是自己感兴趣的方向。（听，读）&lt;/li>
@@ -2189,34 +2362,58 @@ ML：&lt;/p>
 &lt;h1 id="3-如何找到研究想法">3. 如何找到研究想法&lt;/h1>
 &lt;h2 id="31-打补丁">3.1 打补丁&lt;/h2>
 &lt;p>在原作者想法的基础上，做一些加减法。比如他用了新的 loss，用了两个（我能不能用 3 个？做数据增强，我能不能做？），用故事把你的补丁串联起来。&lt;/p>
-&lt;p>如果一篇文章已经是打补丁的论文，可能难以找到机会。如果脑洞比较大的工作，可以做更多尝试。比如 iPAWs 已经是 16 年的文章，follow 的人有但不是特别多，回头来看可能不是一个特别好的选择。&lt;/p></description></item><item><title>Matplotlib</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_matplotlib/</link><pubDate>Tue, 19 Apr 2022 20:29:07 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_matplotlib/</guid><description>&lt;h4 id="plthist">plt.hist()&lt;/h4>
+&lt;p>如果一篇文章已经是打补丁的论文，可能难以找到机会。如果脑洞比较大的工作，可以做更多尝试。比如 iPAWs 已经是 16 年的文章，follow 的人有但不是特别多，回头来看可能不是一个特别好的选择。&lt;/p></description></item><item><title>Matplotlib</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_matplotlib/</link><pubDate>Tue, 19 Apr 2022 20:29:07 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_matplotlib/</guid><description>&lt;h1 id="1-plot">1. plot&lt;/h1>
+&lt;h2 id="11-hist">1.1 hist&lt;/h2>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>data &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#ae81ff">0&lt;/span>,&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">2&lt;/span>,&lt;span style="color:#ae81ff">5&lt;/span>,&lt;span style="color:#ae81ff">6&lt;/span>,&lt;span style="color:#ae81ff">5&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">7&lt;/span>,&lt;span style="color:#ae81ff">64&lt;/span>,&lt;span style="color:#ae81ff">66&lt;/span>,&lt;span style="color:#ae81ff">5&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>]
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>hist(data, bins&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>, label&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;weight&amp;#34;&lt;/span>)
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="参数">参数&lt;/h5>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="111-参数">1.1.1 参数&lt;/h3>
 &lt;!-- raw HTML omitted -->
 &lt;ul>
 &lt;li>bins，直方图的 bucket，bins = 3 表示将区间分为 3 buckets。数值范围是 0-66，那么大概分为 0-22，23-45，45-67 三个 bucket，然后根据 &lt;code>data&lt;/code> 中的情况，往这几个 bucket 投票/计数。&lt;/li>
 &lt;li>range，x 轴的显示范围&lt;/li>
 &lt;/ul>
-&lt;h4 id="pltplot">plt.plot()&lt;/h4>
-&lt;h5 id="ylabel">y.label()&lt;/h5>
+&lt;h2 id="12-通用设置">1.2 通用设置&lt;/h2>
+&lt;h3 id="121-label-设置">1.2.1 label 设置&lt;/h3>
 &lt;p>给出y轴的名称&lt;/p>
 &lt;p>论文中时常需要设置 y 轴参数&lt;/p>
 &lt;p>plt.legend() 显示 label&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>legend(loc&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;upper right&amp;#39;&lt;/span>, ncol&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>, fontsize&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">30&lt;/span>)
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>ncol 设置行列如何排布，有时候需要排成一排，有时候需要排成一列&lt;/p>
-&lt;h5 id="pltxticks-pltyticks">plt.xticks(), plt.yticks()&lt;/h5>
+&lt;h3 id="122-坐标轴刻度-scale">1.2.2 坐标轴刻度 scale&lt;/h3>
+&lt;h4 id="1221-pltxticks-pltyticks">1.2.2.1 plt.xticks(), plt.yticks()&lt;/h4>
 &lt;p>关于刻度的一些设置&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>xticks(locs, [labels], &lt;span style="color:#f92672">**&lt;/span>kwargs) &lt;span style="color:#75715e"># Set locations and labels&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>yticks(np&lt;span style="color:#f92672">.&lt;/span>arange(&lt;span style="color:#ae81ff">0.5&lt;/span>, &lt;span style="color:#ae81ff">1.3&lt;/span>, step&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0.05&lt;/span>),family&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;Arial&amp;#39;&lt;/span>, weight&lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;normal&amp;#39;&lt;/span>, size&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">20&lt;/span>)
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>np.arange(0.5, 1.3, step=0.05) 设置刻度的范围和步长&lt;/p>
 &lt;p>不显示 y 轴刻度&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>yticks([])
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="pltylim05-13">plt.ylim((0.5, 1.3))&lt;/h5>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="1222-pltylim05-13">1.2.2.2 plt.ylim((0.5, 1.3))&lt;/h4>
 &lt;p>设置坐标轴范围，为 0.5-1.3&lt;/p>
-&lt;h5 id="plttitle">plt.title()&lt;/h5>
+&lt;h4 id="1223-pltxscale-pltyscale-对数坐标轴">1.2.2.3 plt.xscale, plt.yscale 对数坐标轴&lt;/h4>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">def&lt;/span> &lt;span style="color:#a6e22e">draw&lt;/span>():
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> draw_max &lt;span style="color:#f92672">=&lt;/span> resnet18_base&lt;span style="color:#f92672">.&lt;/span>layer4_bb2_Conv2d_2[&lt;span style="color:#e6db74">&amp;#39;max&amp;#39;&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> x &lt;span style="color:#f92672">=&lt;/span> np&lt;span style="color:#f92672">.&lt;/span>arange(&lt;span style="color:#ae81ff">0&lt;/span>, len(draw_max))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>plot(x, draw_max, color&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;r&amp;#39;&lt;/span>, label&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;max&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>legend()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>xscale(&lt;span style="color:#e6db74">&amp;#39;log&amp;#39;&lt;/span>) &lt;span style="color:#75715e"># 默认 base is 10&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>yscale(&lt;span style="color:#e6db74">&amp;#39;log&amp;#39;&lt;/span>, base&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">2&lt;/span>) &lt;span style="color:#75715e"># 可以手动设置为 2&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>savefig(&lt;span style="color:#e6db74">&amp;#39;../img/fig_conv.png&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>close()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>对于 y 轴对数化比较简单。如果是对于 hist，x 轴想要使用 log 坐标轴，需要调整参数 bins&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>ylabel(&lt;span style="color:#e6db74">&amp;#39;number&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>xlabel(&lt;span style="color:#e6db74">&amp;#39;value&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>hist( tmp_channel_list[i] , bins&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">20&lt;/span>, color&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;green&amp;#39;&lt;/span>,label&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;activation channel&amp;#34;&lt;/span>, density&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>legend()
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>title(&lt;span style="color:#e6db74">&amp;#39;Activation Distribution&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>str_index &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#39;ep&amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> str(epoch_idx) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#39;_it&amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> str(iteration_idx) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#39;_l&amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> str(index) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#39;_c&amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> str(i) &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#39;_&amp;#39;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># plt.yscale(&amp;#39;log&amp;#39;, base=2)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># plt.xscale(&amp;#39;log&amp;#39;, base=2)&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>savefig(&lt;span style="color:#e6db74">&amp;#39;/nvme/wmhu/work/ant_extension/ant_quantization/ImageNet/distri/img/&amp;#39;&lt;/span> &lt;span style="color:#f92672">+&lt;/span> args&lt;span style="color:#f92672">.&lt;/span>model &lt;span style="color:#f92672">+&lt;/span> &lt;span style="color:#e6db74">&amp;#39;/chan_img/fig_&amp;#39;&lt;/span>&lt;span style="color:#f92672">+&lt;/span> str_index &lt;span style="color:#f92672">+&lt;/span>&lt;span style="color:#e6db74">&amp;#39;.png&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>close()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="123-其他">1.2.3 其他&lt;/h3>
+&lt;h4 id="1231-plttitle">1.2.3.1 plt.title()&lt;/h4>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>title(filename, {&lt;span style="color:#e6db74">&amp;#39;family&amp;#39;&lt;/span> : &lt;span style="color:#e6db74">&amp;#39;Arial&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;weight&amp;#39;&lt;/span> : &lt;span style="color:#e6db74">&amp;#39;normal&amp;#39;&lt;/span>, &lt;span style="color:#e6db74">&amp;#39;size&amp;#39;&lt;/span> : &lt;span style="color:#ae81ff">20&lt;/span>})
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h5 id="pltsubplot">plt.subplot()&lt;/h5>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h4 id="1232-pltsubplot">1.2.3.2 plt.subplot()&lt;/h4>
 &lt;p>这个是画图的时候比较常用的&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span> &lt;span style="color:#75715e"># 分成2x2，占用第一个，即第一行第一列的子图&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> plt&lt;span style="color:#f92672">.&lt;/span>subplot(&lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">2&lt;/span>, &lt;span style="color:#ae81ff">1&lt;/span>)
@@ -2232,17 +2429,29 @@ ML：&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> show_graph_alex(filename)
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>效果&lt;/p>
 &lt;!-- raw HTML omitted -->
-&lt;h5 id="pltlegend">plt.legend()&lt;/h5>
 &lt;p>参数 &lt;code>ncol&lt;/code> 设置列数，可以把他们排成一行&lt;/p>
-&lt;h5 id="pltgrid">plt.grid&lt;/h5>
+&lt;h4 id="1233-pltgrid">1.2.3.3 plt.grid&lt;/h4>
 &lt;p>如何把网格放在最底层？zorder 似乎没有效果。虽然警告了 &lt;code>zorder unknown word&lt;/code>，但是设置之后还是 work 了。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>grid(visible&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>, which&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;major&amp;#39;&lt;/span>, axis&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;y&amp;#39;&lt;/span>, linestyle&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;--&amp;#39;&lt;/span>, zorder&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">0&lt;/span>)
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>zorder 设置值比 bar 更小，就可以放在最底层了&lt;/p>
-&lt;h5 id="pltbar-绘制直方图和叠加直方图">plt.bar() 绘制直方图和叠加直方图&lt;/h5>
+&lt;h4 id="1234-pltbar-绘制直方图和叠加直方图">1.2.3.4 plt.bar() 绘制直方图和叠加直方图&lt;/h4>
 &lt;p>叠加直方图这次没做，不过不是很难，大概是给 bar 指定一个起始位置&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>bar(x_length &lt;span style="color:#f92672">+&lt;/span> bar_width,y_8,width&lt;span style="color:#f92672">=&lt;/span>bar_width,label&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;8 entry&amp;#34;&lt;/span>, color&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;darkorange&amp;#39;&lt;/span>, edgecolor&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;black&amp;#39;&lt;/span>, zorder&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>)
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>加上边框 edgecolor 会好看很多。&lt;/p>
-&lt;h5 id="pltsubplots_adjustbottom035">plt.subplots_adjust(bottom=0.35)&lt;/h5>
+&lt;h4 id="1235-pltsubplots_adjustbottom035">1.2.3.5 plt.subplots_adjust(bottom=0.35)&lt;/h4>
 &lt;p>提前设置好 top, bottom, 各种空白等参数，让打出来的图片可以直接使用&lt;/p>
-&lt;h5 id="color-参数">color 参数&lt;/h5>
-&lt;!-- raw HTML omitted --></description></item></channel></rss>
+&lt;h4 id="1236-color-参数">1.2.3.6 color 参数&lt;/h4>
+&lt;!-- raw HTML omitted -->
+&lt;h4 id="1237-在服务器上使用-matplotlib--savefig">1.2.3.7 在服务器上使用 matplotlib / savefig&lt;/h4>
+&lt;p>这里特指的是没有图形界面的服务器，需要将图片保存下来查看，而不能直接生成图片。&lt;/p>
+&lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> matplotlib
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>matplotlib&lt;span style="color:#f92672">.&lt;/span>use(&lt;span style="color:#e6db74">&amp;#39;Agg&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 在 plt 之前添加上述两行代码&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#f92672">import&lt;/span> matplotlib.pyplot &lt;span style="color:#66d9ef">as&lt;/span> plt
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 设置保存图片的位置&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>savefig(&lt;span style="color:#e6db74">&amp;#39;/home/wmhu/share/figure/fig1.png&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 如果需要绘制多个图片，记得在每一个 savefig 下面接一个 close ，不然会重叠&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>close()
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div></description></item></channel></rss>
