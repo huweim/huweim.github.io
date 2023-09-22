@@ -330,8 +330,8 @@ by Mingyu Gao on Nov 2, 2020 | Tags: Academia, Advice, Students&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>f&lt;span style="color:#f92672">.&lt;/span>close()
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>实际使用&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#66d9ef">for&lt;/span> i, line &lt;span style="color:#f92672">in&lt;/span> enumerate(open(get_file_path() &lt;span style="color:#f92672">+&lt;/span> file)):
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> match &lt;span style="color:#f92672">in&lt;/span> re&lt;span style="color:#f92672">.&lt;/span>finditer(pattern_cycle, line):
-&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> tmp &lt;span style="color:#f92672">=&lt;/span> list(match&lt;span style="color:#f92672">.&lt;/span>group(&lt;span style="color:#ae81ff">1&lt;/span>))
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">for&lt;/span> &lt;span style="color:#66d9ef">match&lt;/span> &lt;span style="color:#f92672">in&lt;/span> re&lt;span style="color:#f92672">.&lt;/span>finditer(pattern_cycle, line):
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> tmp &lt;span style="color:#f92672">=&lt;/span> list(&lt;span style="color:#66d9ef">match&lt;/span>&lt;span style="color:#f92672">.&lt;/span>group(&lt;span style="color:#ae81ff">1&lt;/span>))
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> tmp &lt;span style="color:#f92672">=&lt;/span> float(&lt;span style="color:#e6db74">&amp;#39;&amp;#39;&lt;/span>&lt;span style="color:#f92672">.&lt;/span>join(tmp))
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> res_data[&lt;span style="color:#e6db74">&amp;#34;cycle&amp;#34;&lt;/span>] &lt;span style="color:#f92672">=&lt;/span> tmp
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="32-文件目录操作">3.2 文件目录操作&lt;/h2>
