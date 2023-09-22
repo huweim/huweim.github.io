@@ -1,7 +1,7 @@
 ---
 title: "cmake 目录结构和使用"
 date: 2022-05-09T22:17:43+08:00
-lastmod: 2023-03-20T22:36:43+08:00
+lastmod: 2023-03-23T14:17:43+08:00
 draft: false
 author: "Cory"
 tags: ["cmake"]
@@ -40,9 +40,13 @@ export PATH=$PATH:$CUDA_INSTALL_PATH/bin:~/cmake-3.24.0/bin
 
 cmake 命令不区分大小写，但是变量区分大小写。
 
-# 1. cmake 目录
+# 1. 简介
 
-## 1.1 目录结构
+## 1.1 带有 cmake 的项目
+
+介绍最基本的，带有 cmake 的项目的整体结构
+
+### 1.1.1 目录结构
 
 ```shell
 |-- bin  #存放可执行文件
@@ -71,15 +75,14 @@ cmake 命令不区分大小写，但是变量区分大小写。
 
 **src**: 这个 example 包含了 2 models，main.cpp 依赖于 2 基础 models，另外，注意到他们都包含 `CMakeLists.txt` 文件
 
-## 1.2 理解 CMakeLists.txt
+
+## 1.1.2 理解 CMakeLists.txt
 
 注意 cmake 文件中不区分大小写
 
 > In a CMake-based project, each directory containing C++ source code should contain a CMakeLists.txt file. This file describes the rules for building the code in that directory.
 
 2023-03-16 14:19:11，每个 dir 下都要有一个 CMakeLists.txt
-
-### 1.2.1 Baseline
 
 最基础的包含以下一些信息，
 ```shell
@@ -97,15 +100,15 @@ add_executable (gemm gemm.cxx)
 include_directories (include)
 ```
 
-# 2. cmake 编译过程
-## 2.1 build, 编译并运行
+## 1.2 cmake 编译过程
+### 1.2.1 build, 编译并运行
 
 build 目录用于存放编译生成的文件，一般的编译过程：
 ```shell
 $ mkdir build && cd build
 $ cmake .. -DCUTLASS_NVCC_ARCHS=75  # compile for NVIDIA Turing GPU architecture
 ```
-## 2.2 问题，可执行程序在哪个目录生成？ 
+### 1.2.2 问题，可执行程序在哪个目录生成？ 
 
 看起来似乎是和 Makefile 文件同一目录，而 cutlass 中，执行 make 操作之后，会对程序进行编译，然后直接运行。由于在 sim 上运行需要把 gpgpusim.config 放到程序运行的目录下，所以我们需要知道是在哪个目录运行的。
 
@@ -118,21 +121,21 @@ set(EXECUTABLE_OUTPUT_PATH path)
 
 如果都没设置呢？从简单的程序来看，在 `build` 目录下 `cmake .. XXXX`，在 `build` 目录下生成 Makefile，执行 `make & make install`，可执行程序就在当前（`build`） 目录下。
 
-## 2.3 cmake 文件变量赋值
+### 1.2.3 cmake 文件变量赋值
 
 cutlass 编译 example 报错，不确定问题是不是出在变量的传递。
 
 2023-03-14 15:49:24，似乎是编译 example 的方式不对。
 
-## 2.4 制定 cuda 编译器
+### 1.2.4 制定 cuda 编译器
 
 使用 CMAKE_CUDA_COMPILER 这个内建变量可以做到。
 
 可以通过命令 `cmake -DCMAKE_CUDA_COMPILER="xxx"` 来修改
 
-# 3. 命令行参数
+# 2. 命令行参数，编译选项 command line option
 
-## 3.1 -D
+## 2.1 -D
 
 原来 -D 是一个传参选项，怪不得在 CMakeList 里面直接搜索 -DCUTLASS_NVCC_ARCHS，没有找到这个命令。
 
@@ -151,7 +154,40 @@ set(CUTLASS_LIBRARY_KERNELS "" CACHE STRING "Comma delimited list of kernel name
 cmake . -B build -DTCNN_CUDA_ARCHITECTURES="75"
 ```
 
-## 3.2 添加编译选项
+## 2.3 cmake_progress_start
+
+## 2.4 -B 指定构建目录的路径 -S 指定源代码目录
+
+`/home/wmhu/cmake-3.24.0/bin/cmake -S/home/wmhu/work/tiny-cuda-nn -B/home/wmhu/work/tiny-cuda-nn/build --check-build-system CMakeFiles/Makefile.cmake 0`
+
+`--check-build-system` 选项用于检查构建系统是否可用，以及检查是否需要重新构建
+
+0 是一个可选的参数，用于设置生成Makefile时的调试级别。
+
+# 3. Command 命令
+
+有点像函数，但是英文是 command
+
+## 3.1 set 系列
+
+### 3.1.1 Set Normal Value
+
+`set (<variable> <value>... [PARENT_SCOPE])`
+`set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")`
+
+
+> If the PARENT_SCOPE option is given the variable will be set in the scope above the current scope. Each new directory or function() command creates a new scope. A scope can also be created with the block() command.
+
+目前还没有太明白 scope 的概念。
+### 3.1.2 Set Cache Entry
+
+`set(<variable> <value>... CACHE <type> <docstring> [FORCE])`
+
+`FORCE` option to overwrite existing entries
+
+## 3.2 add 系列
+
+### 3.2.1 添加编译选项 add_compilie_options
 对于 C/C++ 代码，一般来说，编译选项命名为 FLAG。可以通过 `add_compilie_options` 命令设置编译选项，也可以通过 `set` 命令修改 `CMAKE_CXX_FLAGS` 或者 `CMAKE_C_FLAGS`。
 
 + `add_compile_options` 添加的选项是针对所有编译器，包括 C 和 C++
@@ -170,37 +206,13 @@ add_compile_options(<option> ...)
 # 例子
 add_compile_options(-Wall -Wextra -pedantic -Werror -g)
 ```
-
-## 3.3 cmake_progress_start
-
-
-
-# 4. Command 命令
-
-## 4.1 set
-
-### 4.1.1 Set Normal Value
-
-`set (<variable> <value>... [PARENT_SCOPE])`
-`set(CMAKE_CXX_FLAGS "-std=c++11 ${CMAKE_CXX_FLAGS}")`
-
-
-> If the PARENT_SCOPE option is given the variable will be set in the scope above the current scope. Each new directory or function() command creates a new scope. A scope can also be created with the block() command.
-
-目前还没有太明白 scope 的概念。
-### 4.1.2 Set Cache Entry
-
-`set(<variable> <value>... CACHE <type> <docstring> [FORCE])`
-
-`FORCE` option to overwrite existing entries
-
-## 4.2 message
+## 3.3 message
 
 这个函数的功能是打印
 
 `message(STATUS "Obtained CUDA architectures from CMake variable TCNN_CUDA_ARCHITECTURES=${TCNN_CUDA_ARCHITECTURES}")`
 
-## 4.3 function
+## 3.4 function
 
 ```cmake
 function(<name> [<arg1> ...])
@@ -212,7 +224,7 @@ NOTE: A function opens a new scope: see set(var PARENT_SCOPE) for details.
 
 function 伴随 scope 的概念，或许可以用局部变量和全局变量去理解。
 
-## 4.4 list
+## 3.5 list
 
 list 有很多子命令，包括 `APPEND`, `INSERT` 等，用于修改变量。
 
@@ -224,8 +236,18 @@ else()
 	list(APPEND CUDA_NVCC_FLAGS "-Xcompiler=-fno-strict-aliasing")
 	list(APPEND CUDA_NVCC_FLAGS "-Xcudafe=--diag_suppress=unrecognized_gcc_pragma")
 ```
+# 4. 属性 Property
 
-# 5. Object file and link
+在 CMake 中，Properties（属性）是一种用于设置目标属性的机制。一个目标可以有多个属性，每个属性有一个名称和一个值。
+
+例如，一个目标可以有一个名为“CXX_STANDARD”的属性，其值为“11”。属性可以影响编译和链接过程中的行为，包括编译器和链接器选项、编译器和链接器特性，以及构建目标的方式。可以使用 set_target_properties() 命令来设置目标属性。
+
+```cmake
+set_target_properties(MyTarget PROPERTIES CXX_STANDARD 11)
+```
+# 5. 模块和包管理 module, package
+
+# Object file and link
 
 在目录 `mlp_learning_an_image.dir` 生成 `.o` 文件之后，同一个目录下有 `link.txt` 文件，这个文件就是用来进行链接的。
 

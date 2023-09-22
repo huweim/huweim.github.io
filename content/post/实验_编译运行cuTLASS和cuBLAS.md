@@ -112,7 +112,9 @@ $ nsys profile --stats=true ./turing_tensorop_gemm
 
 猜测是根据 cmake 中生成的接口文件，生成 `cutlass_profiler` 能够运行/调用的目标文件。
 
-`make cutlass_profiler -j16` 这一步之后才能使用 `./tools/profiler/cutlass_profiler --kernels=cutlass_tensorop_i8816gemm_s8_256x128_64x2_tn_align16` 来运行。
+> 2023-03-23 14:19:09，以上的猜测基本没有问题。generated 目录下的 .cu 文件应该只是给出一个配置的实例，其对应的 kernel 已经全部编译到 `/tools/profiler/cutlass_profiler` 这个 bin 文件中。
+
+`make cutlass_profiler -j16` 之后，使用 `./tools/profiler/cutlass_profiler --kernels=cutlass_tensorop_i8816gemm_s8_256x128_64x2_tn_align16` 来运行。
 
 ### 1.2.3 Test in real GPU
 
@@ -129,6 +131,8 @@ $ ./tools/profiler/cutlass_profiler --kernels=cutlass_simt_sgemm_128x128_8x2_nn_
 
 ## 1.3 Build and run the CUTLASS Profiler
 
+> 2023-03-23 14:22:54，要注意的是，实际上 1.2 描述的就是 build profiler 的过程
+
 From the `build/` directory created above, compile the the CUTLASS Profiler. 主要是 build `build/tool/profiler` 目录。 :heavy_check_mark:
 
 ```shell
@@ -140,6 +144,8 @@ Then execute the CUTLASS Profiler computing GEMM, execute the following command.
 这一步果然不行，cudaGetDeviceProperties() failed for given device，找不到 device
 
 2022-05-08 14:41:46，:heavy_check_mark:，在工作站上就可以用 gpgpu-sim 运行，很奇怪，明明都是同一个 Docker 环境，只是自己电脑没有 GPU 而已
+
+运行给出的输出信息如下，给出了可以自己设置的 option，也给出了性能（GFLOPS）
 
 ```shell
 $ ./tools/profiler/cutlass_profiler --kernels=sgemm --m=4352 --n=4096 --k=4096
@@ -168,7 +174,9 @@ $ ./tools/profiler/cutlass_profiler --kernels=sgemm --m=4352 --n=4096 --k=4096
 ```
 
 ## 1.4 Build and run CUTLASS Unit Tests
-### 1.4.1 Workspace
+
+### 1.4.1 自己的 Workspace
+
 From the `build/` directory created above, simply build the target `test_unit` to compile and run all unit tests. :x:
 
 这一步失败，看起来是 gcc 版本的问题。换了 gcc 版本，还是直接崩掉。
@@ -191,12 +199,17 @@ $
 $ make test_unit_gemm_warp -j
 ```
 ### 1.4.2 工作站
+
 **工作站：** 还是找不到 gpgpusim.config，这个应该找到对应的执行目录，把 config 文件复制过去即可。`cp ~/gpgpu-sim_distribution/configs/tested-cfgs/SM75_RTX2060/* ~/cutlass/build/test/unit/gemm/warp/CMakeFiles/test_unit_gemm_warp.dir/`
 
 2022-05-09 15:31:59，猜测是在 `/cutlass/build/test/unit/gemm/warp` 目录下执行，把 gpgpusim.config 文件复制过去。:heavy_check_mark:
 
 可以成功运行，新的问题是之前遇到的一个问题，wmma 指令的 align syntax 错误。
+
 ## 1.5 Profiler 和 Test Unit 的执行有什么区别？
+
+2023-03-23 14:25:03，结合文档的说明和个人的理解。单元测试就是测试功能正确性，保证矩阵的计算不出错，在单元测试情况下矩阵的 size，data type 可以多样一点。
+性能测试的话自己手动设置的东西就比较多，粒度更细，同时会给出性能的报告。
 
 ## 1.6 gemm 运行参数
 
@@ -229,22 +242,28 @@ $ ./tools/profiler/cutlass_profiler --kernels=cutlass_tensorop_s*gemm_f16_*_nt_a
 ```shell
 $ ./tools/profiler/cutlass_profiler --kernels=cutlass_tensorop_s*gemm_f16_*_nt_align8 --m=3456 --n=4096 --k=4096 --A=f32:column --B=f32:column --C=f32:column > ~/output/tensor_op3.log.lrr &
 ```
-# 2. examples
+# 2. cutlass examples
 
 使用官方 README.md 编译会因为没有 Device 而失败，那么换一个思路，尝试利用 cmake 编译运行 examples 中提供的文件。
 
+> 2023-03-23 14:27:07，在学习了 cmake 之后，可以查看 `build` 目录中生成的 `Makefile` 文件。Makefile 文件中提供了每个 example 的 target，可以编译生成对应的 bin 文件。
+
 ## 2.1 cmake 编译流程
 
-+ 编写CMakeLists.txt
-+ 通过cmake生成Makefile
-+ make编译
++ 编写 CMakeLists.txt
++ 通过 cmake 生成 Makefile
++ make 编译
 
 cuTLASS 在 `example` 目录下提供了 CMakeLists.txt。用法
 + 进入 example 目录，新建 build 文件夹；`$ mkdir build; cd build`
-+ `cmake ../`; cmake会在找到上级目录找到CMakeLists.txt，生成makefile和一些其它文件
-+ 在makefile所在目录，调用make命令，会根据makefile对程序进行编译生成。
++ `cmake ../`; cmake会在找到上级目录找到 CMakeLists.txt，生成 makefile 和一些其它文件
++ 在 makefile 所在目录，调用 make 命令，会根据 makefile 对程序进行编译生成。
 
+> 2023-03-23 14:28:43，这里要注意并不是进入到每个目录去单独编译，而是 `build` 根目录下已经提供了这个接口和 target，每个 example 中的 Makefile 文件可能是更加具体的实现，但是在根目录下调用即可。
+> 
 # 3. Documentation
+
+check 官方文档
 
 ## 3.2 Functionality
 
@@ -376,7 +395,61 @@ The device-wide GEMM API is embodied by the following operators
 
 ```
 
+# 5. CUTLASS in detail 
+
+通过 cutlass 深入理解其 makefile 以及 cmake；同时，比较深入地 trace GEMM kernel 函数，目的是对应 SASS 去看。
+
+## 5.1 Makefile and cmake in detail
+### 5.1.1 .s 文件
+
+```makefile
+cd /home/data2/Workspace/huwm/share/work/cutlass/build && $(MAKE) $(MAKESILENT) -f tools/library/CMakeFiles/cutlass_library_objs.dir/build.make tools/library/CMakeFiles/cutlass_library_objs.dir/generated/trmm/cutlass_tensorop_z884trmm_128x64_8x3_tn_rs_u_un_align1.cu.s
+```
+
+.s 文件就是 assembly code. 
+
+### 5.1.2 Makefile 中这个 rule 的意义
+
+这里 rule 的作用是什么
+
+```makefile
+tools/profiler/CMakeFiles/cutlass_profiler.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/data2/Workspace/huwm/share/work/cutlass/build/CMakeFiles 50
+	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/profiler/CMakeFiles/cutlass_profiler.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /home/data2/Workspace/huwm/share/work/cutlass/build/CMakeFiles 0
+.PHONY : tools/profiler/CMakeFiles/cutlass_profiler.dir/rule
+```
+
+### 5.1.3 .d 文件
+
+> The .d file is a dependency file that specifies the dependencies of the source file
+
+列出源文件的依赖关系，是一个可读的文本文件。
+
+### 5.1.4 make cutlass_profiler and test_unit
+
+cutlass 提供了两种 target，理解为 test_unit 是用于测试程序的正确性，而 cutalss_profiler 内置了评估性能的代码。
+
+### 5.1.5 tiny-cuda-nn link 所有 .o 文件
+
+都在 `build/CMakeFiles/tiny-cuda-nn.dir/build.make` 中，`libtiny-cuda-nn.a:` target，这个 target 中，列出了所有的依赖文件
+
+## 5.2 GEMM iteration
+
+2023-03-22 15:45:45，终于找到了 cutlass 的 real loop
+
+`void gemm_iters` in `cutlass/gemm/threadblock/mma_pipelined.h`，在这个 kernel function 中，最终会调用 `warp_mma()`，这又是一个操作符重载的对象，通过对象本身直接调用其 `operator` 函数。
+
+`warp_mma()` 调用的就是 `cutlass/gemm/warp/mma_tensor_op.h` 中的 `void operator()` 函数
+
+### 5.2.1 mma_pipelined.h void gemm_iters()
+
+SASS 指令中的 `.L_5` 部分就是这个函数中 `for (int warp_mma_k = 0; warp_mma_k < Base::kWarpGemmIterations; ++warp_mma_k)` 的循环展开。
+
 ---
+
+# cuBLAS
+
 接下来是编译运行 cuBLAS 的过程
 
 # 1. NVIDIA Samples
@@ -389,7 +462,7 @@ https://github.com/NVIDIA/cuda-samples/ 在 library 目录中有提供调用 cub
 
 文档中说 cublas 会自动调用 tensor core
 
-
+> 2023-03-23 14:30:21，可以通过 nsys 调用 Nsight 工具来查看具体的 kernel 信息，也可以使用 `cuobjdump -sass` 得到 SASS 指令，通过指令的信息来判断。
 
 # 2. Documentation
 
@@ -445,37 +518,8 @@ The cuBLASXt API of cuBLAS exposes a multi-GPU capable Host interface
 
 cuBLASXT 似乎可以调用多个 GPU，比如有 4 A10 in QZ Server，code 限制只用两个 GPU。通过 cuBLASXT 执行 FP32 gemm，TFLOPS 应该不具备参考性了。
 
-# 3. 深入理解其 makefile 以及 cmake
 
-## 3.1 .s 文件
 
-```makefile
-cd /home/data2/Workspace/huwm/share/work/cutlass/build && $(MAKE) $(MAKESILENT) -f tools/library/CMakeFiles/cutlass_library_objs.dir/build.make tools/library/CMakeFiles/cutlass_library_objs.dir/generated/trmm/cutlass_tensorop_z884trmm_128x64_8x3_tn_rs_u_un_align1.cu.s
-```
-
-.s 文件就是 assembly code. 
-
-## 3.2 Makefile 中这个 rule 的意义
-
-这里 rule 的作用是什么
-
-```makefile
-tools/profiler/CMakeFiles/cutlass_profiler.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/data2/Workspace/huwm/share/work/cutlass/build/CMakeFiles 50
-	$(MAKE) $(MAKESILENT) -f CMakeFiles/Makefile2 tools/profiler/CMakeFiles/cutlass_profiler.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /home/data2/Workspace/huwm/share/work/cutlass/build/CMakeFiles 0
-.PHONY : tools/profiler/CMakeFiles/cutlass_profiler.dir/rule
-```
-
-## 3.3 .d 文件
-
-> The .d file is a dependency file that specifies the dependencies of the source file
-
-列出源文件的依赖关系，是一个可读的文本文件。
-
-## 3.4 make cutlass_profiler and test_unit
-
-cutlass 提供了两种 target，理解为 test_unit 是用于测试程序的正确性，而 cutalss_profiler 内置了评估性能的代码。
 
 # BUG
 2022

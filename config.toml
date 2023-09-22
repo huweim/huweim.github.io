@@ -21,7 +21,7 @@ defaultContentLanguage = "en"           # Default language to use
   languageCode = "en"
 
 [author]                  # essential                     # 必需
-  name = "Cory"
+  name = "Weiming Hu"
 
 [sitemap]                 # essential                     # 必需
   changefreq = "weekly"
@@ -97,7 +97,7 @@ weight = 4
   rssFullContent = true     # if false, Rss feed instead of the summary
 
   # site info (optional)                                  # 站点信息（可选，不需要的可以直接注释掉）
-  logoTitle = "Cory"        # default: the title value    # 默认值: 上面设置的title值
+  logoTitle = "Weiming Hu"        # default: the title value    # 默认值: 上面设置的title值
   keywords = ["Hugo", "theme","jane"]
   description = "Hugo theme jane example site."
   

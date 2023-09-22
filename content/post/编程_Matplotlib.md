@@ -25,6 +25,8 @@ plt.hist(data, bins=3, label="weight")
 + bins，直方图的 bucket，bins = 3 表示将区间分为 3 buckets。数值范围是 0-66，那么大概分为 0-22，23-45，45-67 三个 bucket，然后根据 `data` 中的情况，往这几个 bucket 投票/计数。
 + range，x 轴的显示范围
 
+
+
 ## 1.2 通用设置
 ### 1.2.1 label 设置
 
