@@ -1,7 +1,7 @@
 ---
 title: "编译运行 CUTLASS 和 cuBLAS"
 date: 2022-05-09T22:17:43+08:00
-lastmod: 2023-03-20T22:42:21+08:00
+lastmod: 2024-03-26T22:42:21+08:00
 draft: false
 author: "Cory"
 tags: ["CUTLASS", "CUDA"]
@@ -532,6 +532,8 @@ CMake Error at CMakeLists.txt:31 (cutlass_example_add_executable):
 原因：可能是 gcc 版本问题，官方说的是 gcc7.3+，用的是 gcc5.5。
 
 切换到 gcc7.5.0 没有解决这个问题。
+
+2024-03-26 17:45:54，总结一下这个问题。使用 cmake 编译 cutlass 要处在主目录下，我自己是进入到 example 的子目录去了。在主目录编译之后，在 build 中可以找到 example 的 makefile 等文件。
 
 #### 3.14
 
