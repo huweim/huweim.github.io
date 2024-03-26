@@ -64,7 +64,7 @@
 &lt;li>command：make 需要执行的命令（任意的 shell 命令）。可以有多条命令，每一条命令占一行。&lt;/li>
 &lt;li>recipe：a series of commands that are executed to create or update a target&lt;/li>
 &lt;/ul>
-&lt;p>❗ Notion：我们的目标和依赖文件之间要使用冒号分隔开，命令的开始一定要使用&lt;code>Tab&lt;/code>键。&lt;/p>
+&lt;p>&amp;#x2757; Notion：我们的目标和依赖文件之间要使用冒号分隔开，命令的开始一定要使用&lt;code>Tab&lt;/code>键。&lt;/p>
 &lt;ul>
 &lt;li>使用了空格就会报错&lt;/li>
 &lt;li>&lt;code>Makefile:2: *** 缺失分隔符。 停止。&lt;/code>&lt;/li>
@@ -78,10 +78,10 @@
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>实际情况中一行规则是肯定不够用的&lt;/p>
 &lt;h2 id="13-变量">1.3 变量&lt;/h2>
 &lt;h3 id="131-变量定义">1.3.1 变量定义&lt;/h3>
-&lt;p>基本语法❗&lt;/p>
+&lt;p>基本语法&amp;#x2757;&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-makefile" data-lang="makefile">&lt;span style="display:flex;">&lt;span>变量的名称 &lt;span style="color:#f92672">=&lt;/span> 值列表
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>变量的名称可以由大小写字母、阿拉伯数字和下划线构成。&lt;/p>
-&lt;p>❗等号左右的空白符没有明确的要求，因为在执行 make 的时候多余的空白符会被自动的删除。&lt;/p>
+&lt;p>&amp;#x2757;等号左右的空白符没有明确的要求，因为在执行 make 的时候多余的空白符会被自动的删除。&lt;/p>
 &lt;blockquote>
 &lt;p>2022-11-25 19:54:29。shell 赋值的话，在 &lt;code>=&lt;/code> 两边不能留有空白。&lt;/p>
 &lt;/blockquote>
@@ -174,19 +174,19 @@
 &lt;/tbody>
 &lt;/table>
 &lt;h4 id="1331-case-1">1.3.3.1 Case 1&lt;/h4>
-&lt;p>测试可用 ⬇️&lt;/p>
+&lt;p>测试可用 &amp;#x2b07;&amp;#xfe0f;&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-makefile" data-lang="makefile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">test&lt;/span>&lt;span style="color:#f92672">:&lt;/span>*.c gcc -o $@ $^
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>这个实例可以说明我们的通配符不仅可以使用在规则的命令中，还可以使用在规则中。用来表示生所有的以 .c 结尾的文件。&lt;/p>
 &lt;ul>
 &lt;li>表示所有以 .c 结尾的文件同时编译，生成 test 文件&lt;/li>
 &lt;/ul>
 &lt;h4 id="1332-case-2">1.3.3.2 Case 2&lt;/h4>
-&lt;p>⚠️ 讲述变量和通配符不要混用&lt;/p>
+&lt;p>&amp;#x26a0;&amp;#xfe0f; 讲述变量和通配符不要混用&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-makefile" data-lang="makefile">&lt;span style="display:flex;">&lt;span>OBJ&lt;span style="color:#f92672">=&lt;/span>*.c
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">test&lt;/span>&lt;span style="color:#f92672">:&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>OBJ&lt;span style="color:#66d9ef">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> gcc -o $@ $^
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>⭐我们去执行这个命令的时候会出现错误，提示我们没有 &amp;ldquo;*.c&amp;rdquo; 文件，实例中我们相要表示的是当前目录下所有的 &amp;ldquo;.c&amp;rdquo; 文件，但是我们在使用的时候并没有展开，而是直接识别成了一个文件。文件名是 &amp;ldquo;*.c&amp;rdquo;。&lt;/p>
-&lt;p>🅿️ 不过自己测试的时候可以成功编译，这可能是 makefile 自己做了优化&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&amp;#x2b50;我们去执行这个命令的时候会出现错误，提示我们没有 &amp;ldquo;*.c&amp;rdquo; 文件，实例中我们相要表示的是当前目录下所有的 &amp;ldquo;.c&amp;rdquo; 文件，但是我们在使用的时候并没有展开，而是直接识别成了一个文件。文件名是 &amp;ldquo;*.c&amp;rdquo;。&lt;/p>
+&lt;p>&amp;#x1f17f;&amp;#xfe0f; 不过自己测试的时候可以成功编译，这可能是 makefile 自己做了优化&lt;/p>
 &lt;h3 id="134-wildcard-函数">1.3.4 wildcard 函数&lt;/h3>
 &lt;p>如果我们就是相要通过引用变量的话，我们要使用一个函数 &amp;ldquo;wildcard&amp;rdquo;，这个函数在我们引用变量的时候，会帮我们展开。我们把上面的代码修改一下就可以使用了。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-makefile" data-lang="makefile">&lt;span style="display:flex;">&lt;span>OBJ&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>wildcard *.c&lt;span style="color:#66d9ef">)&lt;/span>test:&lt;span style="color:#66d9ef">$(&lt;/span>OBJ&lt;span style="color:#66d9ef">)&lt;/span> gcc -o $@ $^
@@ -199,7 +199,7 @@
 &lt;h3 id="141-第一版">1.4.1 第一版&lt;/h3>
 &lt;p>测试过，可以 work&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-makefile" data-lang="makefile">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">main &lt;/span>&lt;span style="color:#f92672">:&lt;/span> main.c fun1.c fun2.c gcc -o main main.c fun1.c fun2.c
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>❗ 缺点&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&amp;#x2757; 缺点&lt;/p>
 &lt;ul>
 &lt;li>对于简单代码还好，而对于大型项目，具有成千上万代码来说，仅用一行规则是完全不够的，即使够的话也需要写很长的一条规则&lt;/li>
 &lt;li>任何文件只要稍微做了修改就需要整个项目完整的重要编译
@@ -224,8 +224,8 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> gcc -c fun1.c -o fun1.o
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">fun2.o &lt;/span>&lt;span style="color:#f92672">:&lt;/span> fun2.c
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> gcc -c fun2.c -o fun2.o
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>⚠️ 注意不要加多余的空格，(gcc) 命令的开始一定要使用&lt;code>Tab&lt;/code>键，不能是空格&lt;/p>
-&lt;p>❗ 缺点&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&amp;#x26a0;&amp;#xfe0f; 注意不要加多余的空格，(gcc) 命令的开始一定要使用&lt;code>Tab&lt;/code>键，不能是空格&lt;/p>
+&lt;p>&amp;#x2757; 缺点&lt;/p>
 &lt;ul>
 &lt;li>里面存在一些重复的内容，可以考虑用变量代替；&lt;/li>
 &lt;li>后面三条规则非常类似，可以考虑用一条模式规则代替。
@@ -251,7 +251,7 @@
 &lt;li>&lt;code>$@&lt;/code>：目标；&lt;/li>
 &lt;li>&lt;code>$^&lt;/code>：所有不重复的依赖文件，以空格分开&lt;/li>
 &lt;/ul>
-&lt;p>直接复制过来的源码是有问题的，需要手动调整一下 Tab。⬇️ 是可以使用的。&lt;/p>
+&lt;p>直接复制过来的源码是有问题的，需要手动调整一下 Tab。&amp;#x2b07;&amp;#xfe0f; 是可以使用的。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-makefile" data-lang="makefile">&lt;span style="display:flex;">&lt;span>obj &lt;span style="color:#f92672">=&lt;/span> main.o fun1.o fun2.o
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>target &lt;span style="color:#f92672">=&lt;/span> app
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>CC &lt;span style="color:#f92672">=&lt;/span> gcc
@@ -259,7 +259,7 @@
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">$(&lt;/span>CC&lt;span style="color:#66d9ef">)&lt;/span> &lt;span style="color:#66d9ef">$(&lt;/span>obj&lt;span style="color:#66d9ef">)&lt;/span> -o &lt;span style="color:#66d9ef">$(&lt;/span>target&lt;span style="color:#66d9ef">)&lt;/span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#a6e22e">%.o&lt;/span>&lt;span style="color:#f92672">:&lt;/span> %.c
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> &lt;span style="color:#66d9ef">$(&lt;/span>CC&lt;span style="color:#66d9ef">)&lt;/span> -c $&amp;lt; -o $@ &lt;span style="color:#75715e">#这个 百分号% 就类似于数据库中的匹配 所有以 .o 结尾的是 target 以 .c 结尾的是 prerequisites&lt;/span>
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>❗ 缺点&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>&amp;#x2757; 缺点&lt;/p>
 &lt;ul>
 &lt;li>obj对应的文件需要一个个输入，工作量大；&lt;/li>
 &lt;li>文件数目比较少时还好，文件数目一旦很多的话，obj将很长；&lt;/li>
@@ -411,7 +411,7 @@
 &lt;p>总结一下，make用来执行Makefile，cmake用来执行CMakeLists.txt，qmake用来处理*.pro工程文件。Makefile的抽象层次最低，cmake和qmake在Linux等环境下最后还是会生成一个Makefile。cmake和qmake支持跨平台，cmake的做法是生成指定编译器的工程文件，而qmake完全自成体系。&lt;/p>
 &lt;h2 id="02-个人理解">0.2 个人理解&lt;/h2>
 &lt;ul>
-&lt;li>⭐ ​具体使用时，Linux下，小工程可手动写Makefile，
+&lt;li>&amp;#x2b50; ​具体使用时，Linux下，小工程可手动写Makefile，
 &lt;ul>
 &lt;li>所以学会自己手写 Makefile 对于一些测试工作也是比较重要的&lt;/li>
 &lt;/ul>
@@ -1201,7 +1201,7 @@ by Mingyu Gao on Nov 2, 2020 | Tags: Academia, Advice, Students&lt;/p>
 &lt;h2 id="5-结论">5. 结论&lt;/h2>
 &lt;p>总结一下作者结论部分的内容。&lt;/p>
 &lt;h2 id="6-总结">6. 总结&lt;/h2>
-&lt;p>⭐ 这部分是用自己的话总结，也是对自己的锻炼。阐述这篇文章解决的问题，他们的效果如何，他们和之前看的一些 &lt;strong>文章/方法/解决方案&lt;/strong> 相比如何。如果对小领域有了一些了解，还可以写下自己的 “主观” 评价，他们对于实际的 模型/硬件/框架 是否有作用，文章图片画的如何，文章结构如何，写作怎么样，有哪些可以学习的地方，工作量怎么样，有哪些地方比较 confuse，有哪些可以借鉴的地方，如果是你在设计实验，你会怎么做。&lt;/p></description></item><item><title>Python 语法学习</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</link><pubDate>Wed, 14 Sep 2022 11:15:41 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h1 id="1-attribute">1. Attribute&lt;/h1>
+&lt;p>&amp;#x2b50; 这部分是用自己的话总结，也是对自己的锻炼。阐述这篇文章解决的问题，他们的效果如何，他们和之前看的一些 &lt;strong>文章/方法/解决方案&lt;/strong> 相比如何。如果对小领域有了一些了解，还可以写下自己的 “主观” 评价，他们对于实际的 模型/硬件/框架 是否有作用，文章图片画的如何，文章结构如何，写作怎么样，有哪些可以学习的地方，工作量怎么样，有哪些地方比较 confuse，有哪些可以借鉴的地方，如果是你在设计实验，你会怎么做。&lt;/p></description></item><item><title>Python 语法学习</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</link><pubDate>Wed, 14 Sep 2022 11:15:41 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h1 id="1-attribute">1. Attribute&lt;/h1>
 &lt;h2 id="11-string">1.1 string&lt;/h2>
 &lt;p>用 for 循环实现了 list 中的元素转为 string，目的是用来索引。for 感觉比较麻烦，不易读也不优雅，有没有更好的方法？&lt;/p>
 &lt;h3 id="111-operation">1.1.1 Operation&lt;/h3>
@@ -1842,7 +1842,7 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;p>&lt;strong>My first ASPLOS paper as a faculty&lt;/strong>&lt;/p>
 &lt;p>Mark 作为同事仍然在帮助他修改 paper。Mark 从 introduction 中没有读到他的 passion，希望他重新想一下，重新构思这个 story。&lt;/p>
 &lt;p>Mark 说他确实有不错的 idea，但是写的不行。&lt;/p>
-&lt;p>⭐ Mark 提了一个建议。画一个 2-dimension 图片，以前的 paper 是专注于 Effects 这个维度，我们的工作和他们不一样在哪？This paper 专注于 Causes 这个维度。&lt;/p>
+&lt;p>&amp;#x2b50; Mark 提了一个建议。画一个 2-dimension 图片，以前的 paper 是专注于 Effects 这个维度，我们的工作和他们不一样在哪？This paper 专注于 Causes 这个维度。&lt;/p>
 &lt;!-- raw HTML omitted -->
 &lt;p>Mark 说我来告诉你你的 introduction 每个 paragraph 应该写什么，应该怎么写。而且不能是大概，每一个词都必须要想清楚。&lt;/p>
 &lt;blockquote>
@@ -2182,7 +2182,7 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;p>batch_size = 128，训练数据行数为 $|x| = 1024$，代表每次网络模型的迭代使用了 128 个样本，128 个样本来自 $x$，可能是无序抽样，也可能是有序抽样。
 每个 epoch 包含 1024/128 iterations&lt;/p>
 &lt;/blockquote>
-&lt;p>⭐ 注意，第一个 epoch 结束之后，weight 是没有 reset 的，也就是说第二个 epoch 仍然接着更新 weight。&lt;/p>
+&lt;p>&amp;#x2b50; 注意，第一个 epoch 结束之后，weight 是没有 reset 的，也就是说第二个 epoch 仍然接着更新 weight。&lt;/p>
 &lt;blockquote>
 &lt;p>epoch，背诵词典次数多了，就记牢了。当然，也有可能背傻了（过拟合）&lt;/p>
 &lt;/blockquote>
@@ -2491,7 +2491,7 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;h1 id="reference">Reference&lt;/h1>
 &lt;p>&lt;a href="https://zhuanlan.zhihu.com/p/265394674">https://zhuanlan.zhihu.com/p/265394674&lt;/a>&lt;/p>
 &lt;p>&lt;a href="https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-nn/">https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-nn/&lt;/a> pytorch 中文文档&lt;/p>
-&lt;p>&lt;a href="https://cloud.tencent.com/developer/article/1475430#">https://cloud.tencent.com/developer/article/1475430#&lt;/a>&lt;/p></description></item><item><title>国内硕博如何提升自己的英语</title><link>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</link><pubDate>Sat, 16 Jul 2022 16:39:35 +0800</pubDate><guid>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</guid><description>&lt;p>这个是最近（2022-07-16 16:09:15）我一直在思考的问题。因为之后可能会选择在国内度过自己的博士生涯。目前的英语水平可以说是完全不够的。并不是说 paper 看多了，英语水平就上去了。听说读写是耦合在一起的，没有国外的英文环境，就需要有意识地去提升自己的英语水平。&lt;/p>
+&lt;p>&lt;a href="https://cloud.tencent.com/developer/article/1475430">https://cloud.tencent.com/developer/article/1475430#&lt;/a>&lt;/p></description></item><item><title>国内硕博如何提升自己的英语</title><link>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</link><pubDate>Sat, 16 Jul 2022 16:39:35 +0800</pubDate><guid>https://huweim.github.io/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/</guid><description>&lt;p>这个是最近（2022-07-16 16:09:15）我一直在思考的问题。因为之后可能会选择在国内度过自己的博士生涯。目前的英语水平可以说是完全不够的。并不是说 paper 看多了，英语水平就上去了。听说读写是耦合在一起的，没有国外的英文环境，就需要有意识地去提升自己的英语水平。&lt;/p>
 &lt;h1 id="1-一些建议">1. 一些建议&lt;/h1>
 &lt;p>即使到了国外，可能也很难通过和外国人交朋友来提升自己的英文水平，英语提升还是需要刻意去练习的。&lt;/p>
 &lt;ul>
@@ -2546,7 +2546,7 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;/ul></description></item><item><title>VSCode, Chrome 常用快捷键</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</link><pubDate>Fri, 10 Jun 2022 15:27:08 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</guid><description>&lt;h1 id="1-vscode">1. VSCode&lt;/h1>
 &lt;p>&lt;strong>目前生疏但是需要常用的&lt;/strong> 2022-06-10 15:14:48&lt;/p>
 &lt;ul>
-&lt;li>⭐ 选择所有当前选中的字符（可以理解为全局版的 Ctrl + D）: Ctrl + Shift + L&lt;/li>
+&lt;li>&amp;#x2b50; 选择所有当前选中的字符（可以理解为全局版的 Ctrl + D）: Ctrl + Shift + L&lt;/li>
 &lt;li>在选中行末尾插入光标：Alt + Shift + i&lt;/li>
 &lt;li>在右侧打开 Markdown 预览：Ctrl + K, V&lt;/li>
 &lt;li>查看定义：Alt + F12；只是小窗查看，比较方便，注意跳转和查看的区别&lt;/li>
@@ -2563,7 +2563,7 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;p>选中当前单词 Ctrl + D，多次按的话可以批量更改变量&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>⭐ 选择所有当前选中的字符（可以理解为全局版的 Ctrl + D）: Ctrl + Shift + L&lt;/p>
+&lt;p>&amp;#x2b50; 选择所有当前选中的字符（可以理解为全局版的 Ctrl + D）: Ctrl + Shift + L&lt;/p>
 &lt;/li>
 &lt;li>
 &lt;p>选择所有出现的当前单词：Ctrl + F2；不用选中，光标放在单词上即可，相当于先 Ctrl + D 然后 Ctrl + Shift + L&lt;/p>
@@ -2599,7 +2599,7 @@ I thank Prof. Mark Hill, Lena Olson and Prof. Jason Lowe-Power for help improvin
 &lt;p>向右切换标签：Ctrl + Shift + Tab / Ctrl + PgUp&lt;/p>
 &lt;/li>
 &lt;li>
-&lt;p>按单词跳转 ⭐ Ctrl + 方向键&lt;/p>
+&lt;p>按单词跳转 &amp;#x2b50; Ctrl + 方向键&lt;/p>
 &lt;/li>
 &lt;/ul>
 &lt;blockquote>
@@ -2755,7 +2755,7 @@ Pipeline Parallelism：这是去年（SOSP19 PipeDream）才出现的概念，�
 &lt;li>训练数据的规模是很大的。如何为ML设计一个专用的文件系统（类似大数据界的HDFS）或者数据库来加速读数据呢？ 类似的工作有管理ML model的ModelDB.&lt;/li>
 &lt;li>在ML framework中，以及Parameter Server中，需要用一个KV storage system来存储参数。可不可以针对ML的场景优化这个KV存储系统呢？ 关于这个可以参考neopenx大神的blog。&lt;/li>
 &lt;/ol>
-&lt;h1 id="2-深度学习模型压缩加速-">2. 深度学习模型压缩/加速 ⭐&lt;/h1>
+&lt;h1 id="2-深度学习模型压缩加速-star">2. 深度学习模型压缩/加速 &amp;#x2b50;&lt;/h1>
 &lt;p>这方面和architecture结合比较紧密。CS229有这一节，也可以参考NIPS19上的这个talk。&lt;/p>
 &lt;p>对DL model进行压缩主要考虑两个角度：减少计算量（例如conv层的计算量） / 内存占用（NN的参数数量）。不仅要考虑ML上的metric，也要考虑system层面的performance（例如latency / throughput / 功耗。有时候这些比ML模型的accuracy还重要）。具体的方式大概有以下几种：&lt;/p>
 &lt;ol>
@@ -2767,12 +2767,12 @@ Low Bit Precision Arithmetic -&amp;gt; Weights and activations are stored and co
 Quantized（量化） Weight Encoding -&amp;gt; Weights are quantized and stored using dictionary encodings.
 很多相关的工作是在ML的角度来压缩模型的（也就是Arch Compression，特别是针对CNN和RNN。比如很著名的MobileNet）。这里我们先(kan)略(bu)过(dong)，来看从System的角度是如何加速的。&lt;/li>
 &lt;/ol>
-&lt;h2 id="21-通过quantized量化降低计算精度要求-">2.1 通过Quantized（量化）降低计算精度要求 ⭐⭐&lt;/h2>
+&lt;h2 id="21-通过quantized量化降低计算精度要求-starstar">2.1 通过Quantized（量化）降低计算精度要求 &amp;#x2b50;&amp;#x2b50;&lt;/h2>
 &lt;p>量化的含义是将卷积层（the weights and / or activations of a CNN）通常要用到的32位浮点数用更低位的数来表示，如int32, int16, int8等等，来降低资源占用（float32无论是计算还是存储都是很吃资源的..）。量化之后无疑会损失一部分精度，但神经网络对噪声并不是特别敏感，因此控制好量化的程度之后对ML任务的影响可以很小。&lt;/p>
 &lt;p>一种常用的量化方法是train in floating point and then quantize the resulting weights，训练时还是用float32（因为要涉及到反向传播和梯度下降，全是int就很难搞了..），但在inference的阶段就可以加速啦。一个直观的方法是事先找好一般网络参数的min / max值，然后将训练好的网络参数乘一个scala factor来映射到[MIN_INT, MAX_INT]区间内的整数存起来。在inference时先按int来计算，最后结果再转换回float32。这一过程中其实加速了大量的卷积计算。比如这篇paper就实现了float32到int8的量化。&lt;/p>
 &lt;p>混合精度计算：上面讲的方法是用在inference阶段的，其实在模型训练时也可以用类似的方法来加速，只不过再用int就不大行了。一种比较新的方法是用float16（也就是俗称的半精度），fp16占用空间是单精度(fp32)的一半，双精度(double，也就是fp64)的1/4。&lt;/p>
 &lt;p>量化的具体实现方法可以参考这里。NVIDIA专门推出了针对inference阶段量化加速的工具包TensorRT&lt;/p>
-&lt;h2 id="22-新硬件--dl-acclerator-">2.2 新硬件 / DL Acclerator ⭐⭐&lt;/h2>
+&lt;h2 id="22-新硬件--dl-acclerator-starstar">2.2 新硬件 / DL Acclerator &amp;#x2b50;&amp;#x2b50;&lt;/h2>
 &lt;p>在纯硬件方面针对DL workload的工作也有很多，这里来看几个parallel相关的技术。最近Data-Level Parallelism不仅在深度学习中，在其他一些领域（比如数据库）也有了越来越多的应用。&lt;/p>
 &lt;p>CPU：尽管GPU已经成了深度学习计算的标配，有时候仍然是需要CPU运算的。例如要在手机等辣鸡设备上进行inference。&lt;/p>
 &lt;p>SIMD：SIMD的含义是同一条指令在多个数据流上操作，和在向量处理器中一样。在具体实现中（例如SSE指令集）是把一个128位SSE寄存器（这是新增加的SIMD专用寄存器，和早期借用FPU寄存器的MMX不同。在SSE指令集中是增加了8个这种寄存器）划分成4个块，同时存放4个float32单精度浮点数，4个块可以同时进行运算（有多个运算单元，作用于不同的地址），这样就提高了并行度。后来的SSE2 / SSE3 / SSE4 / AVX指令集在此基础上又增加对float64 / 更多运算的支持，以及扩展了SIMD专用寄存器的位数，但本质上还是一样的。　　另外，SIMD带来的并行和超标量处理器的并行性（一个周期issue多个指令，用于instruction level parallelism）不是一个概念。非超标量处理器也可以SIMD，而超标量处理器可以更并行issue多个SIMD操作。&lt;/p>
@@ -2780,7 +2780,7 @@ Quantized（量化） Weight Encoding -&amp;gt; Weights are quantized and stored
 &lt;p>GPU：GPU的本质可以看做SIMT（Single Instruction Multiple Threads）。&lt;/p>
 &lt;ul>
 &lt;li>GPU集群：DL框架一般都支持GPU和分布式训练，已经可以在GPU集群环境下运行了，但实际上还存在一些问题导致分布式场景下资源的使用率提不上去：1). CPU和GPU之间memcpy开销太大、2). 参数通信开销太大、3). 显存不够用、4). GPU很难虚拟化(多任务共享)、5).需要针对ML workload的更好的集群调度策略。 对于1和3其实也可以用前面提到的神经网络压缩、模型并行等方法解决； 对于2一个解决方案是尽量让计算和通信在时间上重叠起来，参考ATC17的Poseidon； MSR对于5做了很多工作，一方面是对大规模GPU集群上的真实日志数据进行分析，得出了一些经验（发表在ATC19）。另一方面是设计一些更好的scheduling策略，例如OSDI2018的Gandiva（针对DL workload自身的特点来提高GPU集群使用率）和NSDI2019的Tiresias； 对于4目前还没啥很好的解决方案，但可以通过一些软调度方案来模拟。&lt;/li>
-&lt;li>这学期8205课上会有GPGPU的topic，到时候再补充 ⭐⭐⭐&lt;/li>
+&lt;li>这学期8205课上会有GPGPU的topic，到时候再补充 &amp;#x2b50;&amp;#x2b50;&amp;#x2b50;&lt;/li>
 &lt;/ul>
 &lt;p>系统结构：这个和纯计算关系不是很大，可能暂时和ML加速也没啥关系（事实上目前在计算机网络研究中用的还多一些）&amp;hellip;&amp;hellip;但对于优化整体性能会有帮助&lt;/p>
 &lt;ul>
@@ -3093,10 +3093,10 @@ ML：&lt;/p>
 &lt;h2 id="12-提交谷歌搜索">1.2 提交谷歌搜索&lt;/h2>
 &lt;p>进入Google Web Master Search Console，登录之后提交你的博客网址&lt;/p>
 &lt;p>提交后需要通过 DNS 记录验证域名所有权，Github DNS 服务器配置教程：https://docs.github.com/cn/enterprise-server@3.2/admin/configuration/configuring-network-settings/configuring-dns-nameservers&lt;/p>
-&lt;p>❌ 1.2.1 ssh 链接到 GitHub Enterprise Server instance，不使用域名验证方法，使用上传 html 文件的方法&lt;/p>
+&lt;p>&amp;#x274c; 1.2.1 ssh 链接到 GitHub Enterprise Server instance，不使用域名验证方法，使用上传 html 文件的方法&lt;/p>
 &lt;h2 id="13-上传-html-文件">1.3 上传 html 文件&lt;/h2>
 &lt;h3 id="131-放在-content">1.3.1 放在 content&lt;/h3>
-&lt;p>将下载的 html 文件放置在 &lt;code>content&lt;/code> 目录下，开启服务后，&lt;code>http://localhost:1313/googlead4e3c06724927ae/&lt;/code> 能够索引到即可，然后 push to Github. ❌&lt;/p>
+&lt;p>将下载的 html 文件放置在 &lt;code>content&lt;/code> 目录下，开启服务后，&lt;code>http://localhost:1313/googlead4e3c06724927ae/&lt;/code> 能够索引到即可，然后 push to Github. &amp;#x274c;&lt;/p>
 &lt;h3 id="132-放在-themelayouts">1.3.2 放在 theme/layouts&lt;/h3>
 &lt;p>放在 content 目录下不行，检索不到后缀 .html，比如 &lt;code>http://localhost:1313/googlead4e3c06724927ae.html/&lt;/code> 就索引不到了。折腾了半个小时，发现应该放在 &lt;code>themes\jane\layouts&lt;/code> 目录下，因为发现 &lt;code>http://localhost:1313/index.html&lt;/code> 才能够有效地索引，那么对于 &lt;code>googlead4e3c06724927ae.html&lt;/code> 也是一样的道理。&lt;/p>
 &lt;p>不过仍然找不到，不是说复制到&lt;code>themes\jane\layouts&lt;/code> 目录下就能索引到，比如我复制了一个 &lt;code>404.html&lt;/code>，改名为 &lt;code>40411.html&lt;/code>，是无法直接找到的。&lt;/p>
@@ -3104,7 +3104,7 @@ ML：&lt;/p>
 &lt;p>知识：static这个文件夹有一个特性就是可以将里面的文件复制到public文件夹里面。我们可以将我们自定义的页面放到这个目录下，因为它不是hugo生成的，所以不会被覆盖。&lt;/p>
 &lt;p>首先在根目录下的 &lt;code>static&lt;/code> 下创建一个目录，目录名是你的页面名（googlead4e3c06724927ae.html）。然后在这个目录下创建 &lt;code>index.html&lt;/code>，把 &lt;code>googlead4e3c06724927ae.html&lt;/code> 中的内容复制到 &lt;code>index.html&lt;/code>，目的就达到了。这样，访问 &lt;code>http://localhost:1313/googlead4e3c06724927ae.html/&lt;/code> 页面时加载的就是 &lt;code>googlead4e3c06724927ae.html&lt;/code> 的内容。&lt;/p>
 &lt;p>2022-05-09 11:13:15，这一方法验证成功。&lt;/p>
-&lt;p>&lt;img src="./Img/Verify.png" alt="">&lt;/p>
+&lt;p>&lt;img src="./Img/Verify.png">&lt;/p>
 &lt;h2 id="14-等待">1.4 等待&lt;/h2>
 &lt;p>提交博客之后，需要等待一段时间才能在Google上搜到，因为Google需要时间来处理我们的请求、抓取相应网页并将其编入索引。&lt;/p>
 &lt;h1 id="reference">Reference&lt;/h1>
@@ -3197,11 +3197,11 @@ ML：&lt;/p>
 &lt;blockquote>
 &lt;p>2023-03-23 14:22:54，要注意的是，实际上 1.2 描述的就是 build profiler 的过程&lt;/p>
 &lt;/blockquote>
-&lt;p>From the &lt;code>build/&lt;/code> directory created above, compile the the CUTLASS Profiler. 主要是 build &lt;code>build/tool/profiler&lt;/code> 目录。 ✔️&lt;/p>
+&lt;p>From the &lt;code>build/&lt;/code> directory created above, compile the the CUTLASS Profiler. 主要是 build &lt;code>build/tool/profiler&lt;/code> 目录。 &amp;#x2714;&amp;#xfe0f;&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ make cutlass_profiler -j12
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Then execute the CUTLASS Profiler computing GEMM, execute the following command. ❌&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>Then execute the CUTLASS Profiler computing GEMM, execute the following command. &amp;#x274c;&lt;/p>
 &lt;p>这一步果然不行，cudaGetDeviceProperties() failed for given device，找不到 device&lt;/p>
-&lt;p>2022-05-08 14:41:46，✔️，在工作站上就可以用 gpgpu-sim 运行，很奇怪，明明都是同一个 Docker 环境，只是自己电脑没有 GPU 而已&lt;/p>
+&lt;p>2022-05-08 14:41:46，&amp;#x2714;&amp;#xfe0f;，在工作站上就可以用 gpgpu-sim 运行，很奇怪，明明都是同一个 Docker 环境，只是自己电脑没有 GPU 而已&lt;/p>
 &lt;p>运行给出的输出信息如下，给出了可以自己设置的 option，也给出了性能（GFLOPS）&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ./tools/profiler/cutlass_profiler --kernels&lt;span style="color:#f92672">=&lt;/span>sgemm --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4352&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>4096
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
@@ -3228,7 +3228,7 @@ ML：&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Math: 13854.9 GFLOP/s
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h2 id="14-build-and-run-cutlass-unit-tests">1.4 Build and run CUTLASS Unit Tests&lt;/h2>
 &lt;h3 id="141-自己的-workspace">1.4.1 自己的 Workspace&lt;/h3>
-&lt;p>From the &lt;code>build/&lt;/code> directory created above, simply build the target &lt;code>test_unit&lt;/code> to compile and run all unit tests. ❌&lt;/p>
+&lt;p>From the &lt;code>build/&lt;/code> directory created above, simply build the target &lt;code>test_unit&lt;/code> to compile and run all unit tests. &amp;#x274c;&lt;/p>
 &lt;p>这一步失败，看起来是 gcc 版本的问题。换了 gcc 版本，还是直接崩掉。&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ make test_unit -j
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>...
@@ -3242,7 +3242,7 @@ ML：&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ make test_unit_gemm_warp -j
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h3 id="142-工作站">1.4.2 工作站&lt;/h3>
 &lt;p>&lt;strong>工作站：&lt;/strong> 还是找不到 gpgpusim.config，这个应该找到对应的执行目录，把 config 文件复制过去即可。&lt;code>cp ~/gpgpu-sim_distribution/configs/tested-cfgs/SM75_RTX2060/* ~/cutlass/build/test/unit/gemm/warp/CMakeFiles/test_unit_gemm_warp.dir/&lt;/code>&lt;/p>
-&lt;p>2022-05-09 15:31:59，猜测是在 &lt;code>/cutlass/build/test/unit/gemm/warp&lt;/code> 目录下执行，把 gpgpusim.config 文件复制过去。✔️&lt;/p>
+&lt;p>2022-05-09 15:31:59，猜测是在 &lt;code>/cutlass/build/test/unit/gemm/warp&lt;/code> 目录下执行，把 gpgpusim.config 文件复制过去。&amp;#x2714;&amp;#xfe0f;&lt;/p>
 &lt;p>可以成功运行，新的问题是之前遇到的一个问题，wmma 指令的 align syntax 错误。&lt;/p>
 &lt;h2 id="15-profiler-和-test-unit-的执行有什么区别">1.5 Profiler 和 Test Unit 的执行有什么区别？&lt;/h2>
 &lt;p>2023-03-23 14:25:03，结合文档的说明和个人的理解。单元测试就是测试功能正确性，保证矩阵的计算不出错，在单元测试情况下矩阵的 size，data type 可以多样一点。
@@ -3262,7 +3262,7 @@ ML：&lt;/p>
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --profiling-iterations&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">1&lt;/span> &lt;span style="color:#ae81ff">\
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --providers&lt;span style="color:#f92672">=&lt;/span>cutlass &lt;span style="color:#ae81ff">\
 &lt;/span>&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#ae81ff">&lt;/span> --output&lt;span style="color:#f92672">=&lt;/span>functional-test.csv
-&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>尝试修改 data type，是否有 i8? 这个语句执行结束后生成了一堆 .csv 文件，包括 conv2d, conv3d, gemm, rank_k, rank_2k，难道是一次执行了这么多程序？而且没有成功跑起来 ❌&lt;/p>
+&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>尝试修改 data type，是否有 i8? 这个语句执行结束后生成了一堆 .csv 文件，包括 conv2d, conv3d, gemm, rank_k, rank_2k，难道是一次执行了这么多程序？而且没有成功跑起来 &amp;#x274c;&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ./tools/profiler/cutlass_profiler --kernels&lt;span style="color:#f92672">=&lt;/span>cutlass_tensorop_s*gemm_f16_*_nt_align8 --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3456&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --A&lt;span style="color:#f92672">=&lt;/span>i8:column --B&lt;span style="color:#f92672">=&lt;/span>i8:column --C&lt;span style="color:#f92672">=&lt;/span>i8:column --output&lt;span style="color:#f92672">=&lt;/span>test.csv &amp;gt; ~/output/tensor_op3.log.lrr &amp;amp;
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>去掉 output 选项，data type 改成 f32&lt;/p>
 &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ./tools/profiler/cutlass_profiler --kernels&lt;span style="color:#f92672">=&lt;/span>cutlass_tensorop_s*gemm_f16_*_nt_align8 --m&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3456&lt;/span> --n&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --k&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">4096&lt;/span> --A&lt;span style="color:#f92672">=&lt;/span>f32:column --B&lt;span style="color:#f92672">=&lt;/span>f32:column --C&lt;span style="color:#f92672">=&lt;/span>f32:column &amp;gt; ~/output/tensor_op3.log.lrr &amp;amp;
@@ -3315,14 +3315,14 @@ ML：&lt;/p>
 &lt;h2 id="35-align-含义">3.5 align 含义&lt;/h2>
 &lt;p>&lt;code>cutlass_tensorop_f16_s884gemm_f16_64x64_32x2_tn_align8.cu&lt;/code>&lt;/p>
 &lt;p>In the case of this Cutlass file, the &amp;ldquo;align8&amp;rdquo; suffix indicates that the matrix data is aligned to an 8-byte boundary. This can help improve performance when the matrix multiplication algorithm accesses the matrix data.&lt;/p>
-&lt;h2 id="35-cutlass-profiler-">3.5 CUTLASS Profiler ⭐&lt;/h2>
+&lt;h2 id="35-cutlass-profiler-star">3.5 CUTLASS Profiler &amp;#x2b50;&lt;/h2>
 &lt;p>The CUTLASS Profiler is a command-line driven test and profiling environment for CUTLASS computations defined in the CUTLASS Instance Library. The CUTLASS Profiler is capable of executing each GEMM, Sparse Gemm, Conv2d, and Conv3d kernel.&lt;/p>
 &lt;p>&lt;code>cutlass_profiler&lt;/code> 就是一个封装好的脚本，运行各类程序&lt;/p>
 &lt;p>进入到目录 &lt;code>build/tools/profiler&lt;/code>，运行 &lt;code>cutlass_profiler --help&lt;/code> 可以查看一些有用的信息，直接 &lt;code>cutlass_profiler --help&lt;/code> 找不到 cutlass_profiler；用 &lt;code>./cutlass_profiler --help&lt;/code> 就开始跑程序了，有点不知道怎么用这个 &amp;ndash;help。&lt;/p>
 &lt;p>2022-05-09 20:22:30，还是用 &lt;code>./cutlass_profiler --help&lt;/code> 就可以跑，不过神奇的是这是用 gpgpu-sim 跑得，最后会把需要的信息 print 在屏幕上。&lt;/p>
 &lt;h3 id="351-gemm">3.5.1 GEMM&lt;/h3>
 &lt;p>The CUTLASS Profiler is capable of executing GEMM and Sparse GEMM problems.&lt;/p>
-&lt;h4 id="3511-gemm-arguments-">3.5.1.1 GEMM Arguments ⭐&lt;/h4>
+&lt;h4 id="3511-gemm-arguments-star">3.5.1.1 GEMM Arguments &amp;#x2b50;&lt;/h4>
 &lt;p>The complete set of arguments available to each operation may be viewed by specifying the operation name in addition to &amp;ndash;help. The argument flags and their aliases usable for GEMM appear as follows.&lt;/p>
 &lt;p>可以通过 option &lt;code>--help&lt;/code> 查看完整的 operation，他这里给出的例子是 &lt;code>./tools/profiler/cutlass_profiler --operation=gemm --help&lt;/code>，所以还是得执行这个脚本吧。&lt;/p>
 &lt;!-- raw HTML omitted -->
@@ -3435,6 +3435,7 @@ ML：&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> Unknown CMake command &lt;span style="color:#e6db74">&amp;#34;cutlass_example_add_executable&amp;#34;&lt;/span>.
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;p>原因：可能是 gcc 版本问题，官方说的是 gcc7.3+，用的是 gcc5.5。&lt;/p>
 &lt;p>切换到 gcc7.5.0 没有解决这个问题。&lt;/p>
+&lt;p>2024-03-26 17:45:54，总结一下这个问题。使用 cmake 编译 cutlass 要处在主目录下，我自己是进入到 example 的子目录去了。在主目录编译之后，在 build 中可以找到 example 的 makefile 等文件。&lt;/p>
 &lt;h4 id="314">3.14&lt;/h4>
 &lt;p>2023.3.14 继续解决这个问题。&lt;/p>
 &lt;p>2023-03-14 15:49:24，似乎是编译 example 的方式不对，根据一个模板，使用以下方式来编译&lt;/p>
