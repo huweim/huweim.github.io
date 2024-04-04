@@ -3446,10 +3446,7 @@ ML：&lt;/p>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
 &lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># 00_basic_gemm bin 会生成在 cutlass/build/examples/00_basic_gemm 目录下&lt;/span>
 &lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>&lt;h1 id="reference">Reference&lt;/h1>
-&lt;p>参考：https://github.com/sxzhang1993/Run-cutlass-with-gpgpu-sim&lt;/p></description></item><item><title>关于 Deep Work</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</link><pubDate>Sun, 08 May 2022 20:56:54 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
-&lt;p>Why read? 最近同步推进的任务比较多，包括雅思/托福，LeetCode刷题（不能说不找实习就荒废掉了），自己lead的课题（可以先读paper慢开始，但是对本人提升很重要），科研实习的课题（这个必须定时有反馈，留下不错的印象），公司的一些活儿（按时完成且上心），锻炼（荒废了一段时间但是必须），AICS 课程（好在这个和目前的研究有了相关性）。&lt;/p>
-&lt;p>因此，需要进行详细而且比较严格的时间管理，才能同时做好这么多事情。&lt;/p>
-&lt;h2 id="01-知乎">0.1 知乎&lt;/h2>
+&lt;p>参考：https://github.com/sxzhang1993/Run-cutlass-with-gpgpu-sim&lt;/p></description></item><item><title>关于 Deep Work</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</link><pubDate>Sun, 08 May 2022 20:56:54 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_deep_work/</guid><description>&lt;h2 id="01-知乎">0.1 知乎&lt;/h2>
 &lt;p>知乎一位作者写的自我观察非常好，在我需要去完成论文的那段时间，我也是进入了这样一种状态。这个任务必须去交付（DDL 4.14），而且需要交互（修改之后给娄老师，并且完成娄老师交代的改动），是一种紧张，紧凑的任务，但是不觉得效率很高，写初稿反而磕磕盼盼，但是事后来看，在一段比较短的时间内（4.4-4.13）产出了一篇有结构的初稿并且慢慢完善并投稿。而现在，你需要记住、重拾这种状态，并把他融入到你的日常工作中。&lt;/p>
 &lt;blockquote>
 &lt;p>我观察到自己真正非常高效地推进困难任务，产出自己想要的结果往往发生在连续的长时间的工作中，并且我的心理状态是这样的：我一定要在这个任务上有重大突破或者完成它，不然饭也先别吃了，于是我往往会在同一个任务上从下午一点工作到六七点，或者从下午五点工作到晚上十点十一点，碰到问题就解决问题，没有头绪就尝试各种可能推进任务的可能性。别看这一下子时间花的挺长，产生的结果和进展常常令我感到惊讶。以我常规的工作方式（如每天固定投入1-2小时），往往拖了一两周都毫无进展的困难任务，我一整个下午就解决了。这样的情况发生了很多次，并且反差如此的强烈，于是我打算将这个现象思考清楚，总结出其中的原因。我很自然地联想到了Cal Newport的《Deep Work》，隐隐感觉和他提出的“深度工作”的这个概念有关。当然在总结他书中的观点之前，我会想梳理一下自己的思考。&lt;/p>
