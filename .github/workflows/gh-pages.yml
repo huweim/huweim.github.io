@@ -15,10 +15,10 @@ jobs:
           submodules: true  # Fetch Hugo themes (true OR recursive)
           fetch-depth: 0    # Fetch all history for .GitInfo and .Lastmod
           
-      - name: Setup Node.js # To install Dart Sass
-        uses: actions/setup-node@v3
-        with:
-          node-version: 18
+      # - name: Setup Node.js # To install Dart Sass
+      #   uses: actions/setup-node@v3
+      #   with:
+      #     node-version: 18
       - name: Install Dart Sass
         run: sudo snap install dart-sass
 
