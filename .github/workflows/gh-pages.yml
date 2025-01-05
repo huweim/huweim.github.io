@@ -19,12 +19,9 @@ jobs:
         uses: actions/setup-node@v3
         with:
           node-version: 18
-      - name: Install Dart Sass # Drat Sass
-        run: npm install -g sass
+      - name: Install Dart Sass
+        run: sudo snap install dart-sass
 
-      - name: Fix Dart Sass permissions
-        run: chmod 755 $(which sass)
-        
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
