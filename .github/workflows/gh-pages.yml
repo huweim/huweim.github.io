@@ -22,21 +22,10 @@ jobs:
       - name: Install Dart Sass # Drat Sass
         run: npm install -g sass
 
-      - name: Install Hugo Manually
-        run: |
-          wget https://github.com/gohugoio/hugo/archive/refs/tags/v0.139.5.tar.gz
-          tar -zxvf v0.139.5.tar.gz
-          cd hugo-0.139.5
-          sudo apt update
-          sudo apt install golang-go -y
-          go install --tags extended
-          sudo mv $HOME/go/bin/hugo /usr/local/bin/
-          hugo version
-          
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
-          hugo-version: '0.139.5'
+          hugo-version: 'v0.139.5'
           extended: true
 
       - name: Build
