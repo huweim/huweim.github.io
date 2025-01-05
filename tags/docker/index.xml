@@ -1,1 +1,25 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Cory</title><link>https://huweim.github.io/tags/docker/</link><description>Recent content in Docker on Cory</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 26 Nov 2022 16:20:58 +0000</lastBuildDate><atom:link href="https://huweim.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>搭建GPGPU-Sim实验环境</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E6%90%AD%E5%BB%BAsim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Cdocker/</link><pubDate>Mon, 27 Sep 2021 22:54:06 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E6%90%AD%E5%BB%BAsim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Cdocker/</guid><description>服务器 0. 前言 第一个思路是 服务器OS-&amp;gt;Docker Container-&amp;gt;Ubuntu中运行GPGPU-Sim。 Docker Container update Docker Image-&amp;gt;Docker Imag</description></item><item><title>Docker 常用的命令</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Fri, 17 Sep 2021 16:25:25 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>0. 前言 最近需要使用到 Docker, 记一下笔记和常用的操作。主要是参考菜鸟教程和阮一峰老师的教程。 1. 启动Docker服务 # service 命令的用法 $ sudo service docker start # systemctl 命令的</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Docker on Weiming Hu</title><link>https://huweim.github.io/tags/docker/</link><description>Recent content in Docker on Weiming Hu</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 26 Nov 2022 16:20:58 +0000</lastBuildDate><atom:link href="https://huweim.github.io/tags/docker/index.xml" rel="self" type="application/rss+xml"/><item><title>搭建GPGPU-Sim实验环境</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E6%90%AD%E5%BB%BAsim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Cdocker/</link><pubDate>Mon, 27 Sep 2021 22:54:06 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E6%90%AD%E5%BB%BAsim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Cdocker/</guid><description>&lt;h1 id="服务器">服务器&lt;/h1>
+&lt;h2 id="0-前言">0. 前言&lt;/h2>
+&lt;p>第一个思路是&lt;/p>
+&lt;ul>
+&lt;li>服务器OS-&amp;gt;Docker Container-&amp;gt;Ubuntu中运行GPGPU-Sim。&lt;/li>
+&lt;li>Docker Container update Docker Image-&amp;gt;Docker Image-&amp;gt;XXX.tar-&amp;gt;复制到你的电脑Windows-&amp;gt;复制到你的虚拟机Ubuntu-&amp;gt;XXX.tar-&amp;gt;Docker Image-&amp;gt;Docker Container-&amp;gt;Ubuntu中运行GPGPU-Sim-&amp;gt;修改GPGPU-Sim&lt;/li>
+&lt;li>然后同样使用上述过程移植到服务器，运行&lt;/li>
+&lt;/ul>
+&lt;p>这样是有问题的。首先这个过程没有意义，如果这样在你自己的虚拟机里面运行Docker, 那么仍然是命令行界面，和在服务器上运行的区别在哪？&lt;/p></description></item><item><title>Docker 常用的命令</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Fri, 17 Sep 2021 16:25:25 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>最近需要使用到 Docker, 记一下笔记和常用的操作。主要是参考菜鸟教程和阮一峰老师的教程。&lt;/p>
+&lt;h1 id="1-启动docker服务">1. 启动Docker服务&lt;/h1>
+&lt;div class="highlight-container">
+
+ &lt;button class="copy-code-btn outline">Copy&lt;/button>
+
+ 
+ &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># service 命令的用法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ sudo service docker start
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># systemctl 命令的用法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ sudo systemctl start docker&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h1 id="2-image">2. Image&lt;/h1>
+&lt;h2 id="21-本地-image-管理">2.1 本地 image 管理&lt;/h2>
+&lt;p>&lt;strong>Docker 把应用程序及其依赖，打包在 image 文件里面。&lt;/strong> 只有通过这个文件，才能生成 Docker 容器。&lt;/p></description></item></channel></rss>

@@ -1,1 +1,15 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Cory</title><link>https://huweim.github.io/tags/linux/</link><description>Recent content in Linux on Cory</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Wed, 16 Mar 2022 08:44:28 +0000</lastBuildDate><atom:link href="https://huweim.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux任务调度</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</link><pubDate>Mon, 29 Nov 2021 23:00:09 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</guid><description>0. 前言 记录一下 Linux 中 fg、bg、jobs、&amp;amp;、ctrl + z 等相关指令对任务进程的操作。 也正好借此机会学习一下进程（process）的概</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Linux on Weiming Hu</title><link>https://huweim.github.io/tags/linux/</link><description>Recent content in Linux on Weiming Hu</description><generator>Hugo</generator><language>en</language><lastBuildDate>Wed, 16 Mar 2022 08:44:28 +0000</lastBuildDate><atom:link href="https://huweim.github.io/tags/linux/index.xml" rel="self" type="application/rss+xml"/><item><title>Linux任务调度</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</link><pubDate>Mon, 29 Nov 2021 23:00:09 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>记录一下 &lt;code>Linux&lt;/code> 中 &lt;code>fg&lt;/code>、&lt;code>bg&lt;/code>、&lt;code>jobs&lt;/code>、&lt;code>&amp;amp;&lt;/code>、&lt;code>ctrl + z&lt;/code> 等相关指令对任务进程的操作。&lt;/p>
+&lt;p>也正好借此机会学习一下进程（process）的概念&lt;/p>
+&lt;h1 id="1-process">1. Process&lt;/h1>
+&lt;h2 id="10-进程类型">1.0 进程类型&lt;/h2>
+&lt;ul>
+&lt;li>前台进程（交互式进程）
+&lt;ul>
+&lt;li>这些进程由终端会话初始化和控制。换句话说，需要有一个连接到系统中的用户来启动这样的进程；它们不是作为系统功能/服务的一部分自动启动。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>后台进程&lt;/li>
+&lt;/ul>
+&lt;h2 id="11-并发执行">1.1 并发执行&lt;/h2>
+&lt;p>To run commands concurrently you can use the &lt;code>&amp;amp;&lt;/code> command separator&lt;/p></description></item></channel></rss>

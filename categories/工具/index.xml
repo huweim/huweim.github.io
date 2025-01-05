@@ -1,1 +1,103 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>工具 on Cory</title><link>https://huweim.github.io/categories/%E5%B7%A5%E5%85%B7/</link><description>Recent content in 工具 on Cory</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 04 Apr 2024 10:26:48 +0000</lastBuildDate><atom:link href="https://huweim.github.io/categories/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo 文章页面添加固定目录栏</title><link>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%9B%AE%E5%BD%95/</link><pubDate>Sun, 14 Aug 2022 19:33:17 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%9B%AE%E5%BD%95/</guid><description>0. 前言 阅读博客文章时有一个固定的目录会舒服很多，现在就来探索一下怎么添加这个功能。 1. 固定目录 以主题 jane 为例，在文件 theme/jane/layouts/post/single.html 中存放着如何显示 post。</description></item><item><title>VSCode, Chrome 常用快捷键</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</link><pubDate>Fri, 10 Jun 2022 15:27:08 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</guid><description>1. VSCode 目前生疏但是需要常用的 2022-06-10 15:14:48 &amp;#x2b50; 选择所有当前选中的字符（可以理解为全局版的 Ctrl + D）: Ctrl + Shift + L 在选中行末尾插入光标：Alt + Shift + i 在右侧打开</description></item><item><title>Hugo_让你的博客被Google收录</title><link>https://huweim.github.io/post/blog_hugo_%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%A2%ABgoogle%E6%94%B6%E5%BD%95/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%A2%ABgoogle%E6%94%B6%E5%BD%95/</guid><description>1. Step 网站在没有提交搜索引擎收录之前，直接搜索你网站的内容是搜不到的，因为搜索引擎不会去检索你的Github仓库。下面的解决方法 1.1 Check 是否被谷歌</description></item><item><title>Hugo 文章扉页设置</title><link>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E6%89%89%E9%A1%B5%E8%AE%BE%E7%BD%AE/</link><pubDate>Tue, 19 Apr 2022 18:10:17 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E6%89%89%E9%A1%B5%E8%AE%BE%E7%BD%AE/</guid><description>0. 前言 描述如何设置和自定义一篇 post 的页面内容和标签 这个在英文中的描述应该是 扉页 front matter 1、原型 原型是创建新页面内容（运行hugo new命令）时使用</description></item><item><title>Hugo 目录结构</title><link>https://huweim.github.io/post/blog_hugo_%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</link><pubDate>Tue, 19 Apr 2022 18:10:17 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</guid><description>0. 前言 配置博客的代码高亮 1. 目录结构 其中，config.toml 是网站的配置文件，Hugo还可使用 config.yaml 或者 config.json 进行配置。 content 目录中存放所有的网站内容</description></item><item><title>tmux: Linux 下终端复用</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</link><pubDate>Wed, 16 Mar 2022 08:56:32 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</guid><description>0. 前言 个人理解：最重要的思想感觉是将 session 和终端分离，这样的话退出终端时不会中断 session 以及里面的任务，session 还是在后台运行。最重要的是，下次</description></item><item><title>Vim 中常用的操作</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_vim%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Wed, 16 Mar 2022 08:54:13 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_vim%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>Vim 中常用的操作 复制、删除中，定位的逻辑都是对应的，找最后一行 G，找第一行 1G，找行首 0，找行尾 $ 复制/粘贴 复制当前行之后的内容，yG 复制第一</description></item><item><title>Linux任务调度</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</link><pubDate>Mon, 29 Nov 2021 23:00:09 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</guid><description>0. 前言 记录一下 Linux 中 fg、bg、jobs、&amp;amp;、ctrl + z 等相关指令对任务进程的操作。 也正好借此机会学习一下进程（process）的概</description></item><item><title>Hugo 文章写作格式</title><link>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/</link><pubDate>Fri, 08 Oct 2021 12:13:07 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/</guid><description>0. 前言 记录一下文章写作和 扉页标签的内容，文章完全转载自 博客 本文是 Hugo 使用记录的第二篇，介绍关于文章写作的一些问题，包括分类管理、排版技巧、特殊</description></item><item><title>Hugo 归档页面制作</title><link>https://huweim.github.io/post/blog_hugo_%E5%BD%92%E6%A1%A3%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</link><pubDate>Fri, 08 Oct 2021 12:09:11 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E5%BD%92%E6%A1%A3%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</guid><description>0. 前言 最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。 本文记录添加 archives 页面的过程</description></item><item><title>Docker 常用的命令</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Fri, 17 Sep 2021 16:25:25 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>0. 前言 最近需要使用到 Docker, 记一下笔记和常用的操作。主要是参考菜鸟教程和阮一峰老师的教程。 1. 启动Docker服务 # service 命令的用法 $ sudo service docker start # systemctl 命令的</description></item><item><title>Hugo About页面制作</title><link>https://huweim.github.io/post/blog_hugo_about%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</link><pubDate>Sat, 24 Jul 2021 19:19:09 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_about%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</guid><description>前言 最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。 本文记录添加 about 页面的过程。</description></item><item><title>Hugo Windows下安装</title><link>https://huweim.github.io/post/blog_hugo_windows%E4%B8%8B%E5%AE%89%E8%A3%85/</link><pubDate>Sat, 24 Jul 2021 16:33:34 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_windows%E4%B8%8B%E5%AE%89%E8%A3%85/</guid><description>Installing on Windows 假设 你知道如何打开一个命令提示窗口。 你运行的是一个现代64位的 Windows。 你的网站地址是 example.com。 你将使用 D:\Hugo\Sites 作为网站</description></item><item><title>Hugo 基本部署及主题更换</title><link>https://huweim.github.io/post/blog_hugo_%E5%9F%BA%E6%9C%AC%E9%83%A8%E7%BD%B2%E5%8F%8A%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2/</link><pubDate>Sat, 24 Jul 2021 16:28:22 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E5%9F%BA%E6%9C%AC%E9%83%A8%E7%BD%B2%E5%8F%8A%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2/</guid><description>0. 前言 记录一下从0开始的部署，之前3月弄的没有记笔记，7月就忘记了，还是 要好好整理好好记录。 假设现在已经安装好了 Hugo 环境，我使用的是 windows 下安装。</description></item><item><title>Git中常用的操作</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_git%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Mon, 08 Mar 2021 19:12:40 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_git%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>Git中常用的操作 几个概念 工作区 (Workspace): 通俗地理解就是本地的环境，一般来说代码就是在工作区打开和编辑的。 暂存区 (stage, index): 这个信息存放在 .git 目录下的 index 文件里</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>工具 on Weiming Hu</title><link>https://huweim.github.io/categories/%E5%B7%A5%E5%85%B7/</link><description>Recent content in 工具 on Weiming Hu</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 05 Jan 2025 07:12:32 +0000</lastBuildDate><atom:link href="https://huweim.github.io/categories/%E5%B7%A5%E5%85%B7/index.xml" rel="self" type="application/rss+xml"/><item><title>Hugo 文章页面添加固定目录栏</title><link>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%9B%AE%E5%BD%95/</link><pubDate>Sun, 14 Aug 2022 19:33:17 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%9B%AE%E5%BD%95/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>阅读博客文章时有一个固定的目录会舒服很多，现在就来探索一下怎么添加这个功能。&lt;/p>
+&lt;h1 id="1-固定目录">1. 固定目录&lt;/h1>
+&lt;p>以主题 &lt;code>jane&lt;/code> 为例，在文件 &lt;code>theme/jane/layouts/post/single.html&lt;/code> 中存放着如何显示 post。根据文件中的代码，关于 table of content 的设定存放在 &lt;code>theme/jane/layouts/partials/post/toc.html&lt;/code>&lt;/p></description></item><item><title>VSCode, Chrome 常用快捷键</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</link><pubDate>Fri, 10 Jun 2022 15:27:08 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</guid><description>&lt;h1 id="1-vscode">1. VSCode&lt;/h1>
+&lt;p>&lt;strong>目前生疏但是需要常用的&lt;/strong> 2022-06-10 15:14:48&lt;/p>
+&lt;ul>
+&lt;li>&amp;#x2b50; 选择所有当前选中的字符（可以理解为全局版的 Ctrl + D）: Ctrl + Shift + L&lt;/li>
+&lt;li>在选中行末尾插入光标：Alt + Shift + i&lt;/li>
+&lt;li>在右侧打开 Markdown 预览：Ctrl + K, V&lt;/li>
+&lt;li>查看定义：Alt + F12；只是小窗查看，比较方便，注意跳转和查看的区别&lt;/li>
+&lt;li>重新打开最后关闭的标签页：Ctrl + Shift + T&lt;/li>
+&lt;li>向左切换标签：Ctrl + Tab / Ctrl + PgDn&lt;/li>
+&lt;li>向右切换标签：Ctrl + Shift + Tab / Ctrl + PgUp&lt;/li>
+&lt;/ul>
+&lt;blockquote>
+&lt;p>快捷键的意义不在于记住每一个键位，而是你需要知道某个操作是可以通过快捷键达到的。当你需要多次重复这个操作时，可以去查找这个快捷键。&lt;/p></description></item><item><title>Hugo_让你的博客被Google收录</title><link>https://huweim.github.io/post/blog_hugo_%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%A2%ABgoogle%E6%94%B6%E5%BD%95/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E8%AE%A9%E4%BD%A0%E7%9A%84%E5%8D%9A%E5%AE%A2%E8%A2%ABgoogle%E6%94%B6%E5%BD%95/</guid><description>&lt;h1 id="1-step">1. Step&lt;/h1>
+&lt;p>网站在没有提交搜索引擎收录之前，直接搜索你网站的内容是搜不到的，因为搜索引擎不会去检索你的Github仓库。下面的解决方法&lt;/p>
+&lt;h2 id="11-check-是否被谷歌收录">1.1 Check 是否被谷歌收录&lt;/h2>
+&lt;p>打开谷歌搜索，在搜索框中输入&lt;/p></description></item><item><title>Hugo 文章扉页设置</title><link>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E6%89%89%E9%A1%B5%E8%AE%BE%E7%BD%AE/</link><pubDate>Tue, 19 Apr 2022 18:10:17 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E6%89%89%E9%A1%B5%E8%AE%BE%E7%BD%AE/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>描述如何设置和自定义一篇 post 的页面内容和标签&lt;/p>
+&lt;p>这个在英文中的描述应该是 扉页 front matter&lt;/p>
+&lt;h1 id="1原型">1、原型&lt;/h1>
+&lt;p>原型是创建新页面内容（运行&lt;code>hugo new&lt;/code>命令）时使用的模板，预先配置格式：例如md文件的&lt;strong>扉页&lt;/strong>（ front matter）、其它格式等。原型文件应该存放在&lt;strong>archetypes&lt;/strong>目录内。&lt;/p></description></item><item><title>Hugo 目录结构</title><link>https://huweim.github.io/post/blog_hugo_%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</link><pubDate>Tue, 19 Apr 2022 18:10:17 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>配置博客的代码高亮&lt;/p>
+&lt;h1 id="1-目录结构">1. 目录结构&lt;/h1>
+&lt;p>其中，&lt;code>config.toml&lt;/code> 是网站的配置文件，Hugo还可使用 &lt;code>config.yaml&lt;/code> 或者 &lt;code>config.json&lt;/code> 进行配置。&lt;/p>
+&lt;p>&lt;code>content&lt;/code> 目录中存放所有的网站内容，可在此目录中建立其他子目录，即为子模块。&lt;/p></description></item><item><title>tmux: Linux 下终端复用</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</link><pubDate>Wed, 16 Mar 2022 08:56:32 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%B8%8B%E7%BB%88%E7%AB%AF%E5%A4%8D%E7%94%A8_tmux/</guid><description>&lt;h2 id="0-前言">0. 前言&lt;/h2>
+&lt;p>个人理解：最重要的思想感觉是将 session 和终端分离，这样的话退出终端时不会中断 session 以及里面的任务，session 还是在后台运行。最重要的是，下次进入终端时可以连接 session，使得可以还原上一次退出时的状态，且后台任务不会中断。&lt;/p></description></item><item><title>Vim 中常用的操作</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_vim%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Wed, 16 Mar 2022 08:54:13 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_vim%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>&lt;p>&lt;strong>Vim 中常用的操作&lt;/strong>&lt;/p>
+&lt;p>复制、删除中，定位的逻辑都是对应的，找最后一行 G，找第一行 1G，找行首 0，找行尾 $&lt;/p>
+&lt;h4 id="复制粘贴">复制/粘贴&lt;/h4>
+&lt;p>复制&lt;strong>当前行&lt;/strong>之后的内容，&lt;code>yG&lt;/code>&lt;/p>
+&lt;p>复制第一行到当前行，&lt;code>y1G&lt;/code>&lt;/p></description></item><item><title>Linux任务调度</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</link><pubDate>Mon, 29 Nov 2021 23:00:09 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_linux%E4%BB%BB%E5%8A%A1%E8%B0%83%E5%BA%A6/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>记录一下 &lt;code>Linux&lt;/code> 中 &lt;code>fg&lt;/code>、&lt;code>bg&lt;/code>、&lt;code>jobs&lt;/code>、&lt;code>&amp;amp;&lt;/code>、&lt;code>ctrl + z&lt;/code> 等相关指令对任务进程的操作。&lt;/p>
+&lt;p>也正好借此机会学习一下进程（process）的概念&lt;/p>
+&lt;h1 id="1-process">1. Process&lt;/h1>
+&lt;h2 id="10-进程类型">1.0 进程类型&lt;/h2>
+&lt;ul>
+&lt;li>前台进程（交互式进程）
+&lt;ul>
+&lt;li>这些进程由终端会话初始化和控制。换句话说，需要有一个连接到系统中的用户来启动这样的进程；它们不是作为系统功能/服务的一部分自动启动。&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>后台进程&lt;/li>
+&lt;/ul>
+&lt;h2 id="11-并发执行">1.1 并发执行&lt;/h2>
+&lt;p>To run commands concurrently you can use the &lt;code>&amp;amp;&lt;/code> command separator&lt;/p></description></item><item><title>Hugo 文章写作格式</title><link>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/</link><pubDate>Fri, 08 Oct 2021 12:13:07 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E6%96%87%E7%AB%A0%E5%86%99%E4%BD%9C%E8%A7%84%E8%8C%83/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>记录一下文章写作和 扉页标签的内容，文章完全转载自 &lt;a href="https://shuzang.github.io/2019/hugo-blog-article-write/#3-%E6%8E%92%E7%89%88%E9%A3%8E%E6%A0%BC%E8%A7%84%E8%8C%83">博客&lt;/a>&lt;/p>
+&lt;hr>
+&lt;p>本文是 Hugo 使用记录的第二篇，介绍关于文章写作的一些问题，包括分类管理、排版技巧、特殊语法等，所有语法基于 LoveIt 主题。&lt;/p></description></item><item><title>Hugo 归档页面制作</title><link>https://huweim.github.io/post/blog_hugo_%E5%BD%92%E6%A1%A3%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</link><pubDate>Fri, 08 Oct 2021 12:09:11 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E5%BD%92%E6%A1%A3%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。&lt;/p>
+&lt;p>本文记录添加 archives 页面的过程。目前使用的 Hugo 主题 Ink 需要自己添加归档页面&lt;/p></description></item><item><title>Docker 常用的命令</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Fri, 17 Sep 2021 16:25:25 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_docker%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>最近需要使用到 Docker, 记一下笔记和常用的操作。主要是参考菜鸟教程和阮一峰老师的教程。&lt;/p>
+&lt;h1 id="1-启动docker服务">1. 启动Docker服务&lt;/h1>
+&lt;div class="highlight-container">
+
+ &lt;button class="copy-code-btn outline">Copy&lt;/button>
+
+ 
+ &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-bash" data-lang="bash">&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># service 命令的用法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ sudo service docker start
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># systemctl 命令的用法&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ sudo systemctl start docker&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h1 id="2-image">2. Image&lt;/h1>
+&lt;h2 id="21-本地-image-管理">2.1 本地 image 管理&lt;/h2>
+&lt;p>&lt;strong>Docker 把应用程序及其依赖，打包在 image 文件里面。&lt;/strong> 只有通过这个文件，才能生成 Docker 容器。&lt;/p></description></item><item><title>Hugo About页面制作</title><link>https://huweim.github.io/post/blog_hugo_about%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</link><pubDate>Sat, 24 Jul 2021 19:19:09 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_about%E9%A1%B5%E9%9D%A2%E5%88%B6%E4%BD%9C/</guid><description>&lt;h1 id="前言">前言&lt;/h1>
+&lt;p>最近在学习使用 hugo 制作自己的博客，把制作过程的记录下来。我想博客应该会是之后的学习工作中会频繁使用和交互的东西。&lt;/p>
+&lt;p>本文记录添加 about 页面的过程。&lt;/p>
+&lt;p>注：这个是使用 markdown 进行添加，并非制作 html 页面。Hugo 主题基于 Ink&lt;/p></description></item><item><title>Hugo Windows下安装</title><link>https://huweim.github.io/post/blog_hugo_windows%E4%B8%8B%E5%AE%89%E8%A3%85/</link><pubDate>Sat, 24 Jul 2021 16:33:34 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_windows%E4%B8%8B%E5%AE%89%E8%A3%85/</guid><description>&lt;h1 id="installing-on-windows">Installing on Windows&lt;/h1>
+&lt;h2 id="假设">假设&lt;/h2>
+&lt;ol>
+&lt;li>你知道如何打开一个命令提示窗口。&lt;/li>
+&lt;li>你运行的是一个现代64位的 Windows。&lt;/li>
+&lt;li>你的网站地址是 &lt;code>example.com&lt;/code>。&lt;/li>
+&lt;li>你将使用 &lt;code>D:\Hugo\Sites&lt;/code> 作为网站的起点。&lt;/li>
+&lt;li>你将使用 &lt;code>D:\Hugo\bin&lt;/code> 存储可执行文件。&lt;/li>
+&lt;/ol>
+&lt;h2 id="设置你的文件夹">设置你的文件夹&lt;/h2>
+&lt;p>你将需要一个存储 Hugo 可执行文件、博客内容（你创建的的那些文件），以及生成文件（Hugo 为你创建的 HTML）的地方。&lt;/p></description></item><item><title>Hugo 基本部署及主题更换</title><link>https://huweim.github.io/post/blog_hugo_%E5%9F%BA%E6%9C%AC%E9%83%A8%E7%BD%B2%E5%8F%8A%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2/</link><pubDate>Sat, 24 Jul 2021 16:28:22 +0800</pubDate><guid>https://huweim.github.io/post/blog_hugo_%E5%9F%BA%E6%9C%AC%E9%83%A8%E7%BD%B2%E5%8F%8A%E4%B8%BB%E9%A2%98%E6%9B%B4%E6%8D%A2/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>记录一下从0开始的部署，之前3月弄的没有记笔记，7月就忘记了，还是 要好好整理好好记录。&lt;/p>
+&lt;p>假设现在已经安装好了 Hugo 环境，我使用的是 windows 下安装。&lt;/p>
+&lt;h2 id="11-添加主题">1.1 添加主题&lt;/h2>
+&lt;p>有很多 Hugo Theme 可以选择&lt;/p></description></item><item><title>Git中常用的操作</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_git%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Mon, 08 Mar 2021 19:12:40 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_git%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>&lt;p>Git中常用的操作&lt;/p>
+&lt;h1 id="几个概念">几个概念&lt;/h1>
+&lt;p>工作区 (Workspace): 通俗地理解就是本地的环境，一般来说代码就是在工作区打开和编辑的。&lt;/p>
+&lt;p>暂存区 (stage, index): 这个信息存放在 &lt;code>.git&lt;/code> 目录下的 &lt;code>index&lt;/code> 文件里面&lt;/p>
+&lt;p>远端&lt;/p>
+&lt;h1 id="0-配置-ssh">0. 配置 ssh&lt;/h1>
+&lt;h2 id="01-generate">0.1 Generate&lt;/h2>
+&lt;div class="highlight-container">
+
+ &lt;button class="copy-code-btn outline">Copy&lt;/button>
+
+ 
+ &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ssh-keygen -t rsa -C &lt;span style="color:#e6db74">&amp;#34;506834968@qq.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#一直 Enter 即可&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ eval &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>ssh-agent -s&lt;span style="color:#66d9ef">)&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ ssh-add ~/.ssh/id_rsa&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h2 id="02-在-github-中添加-ssh">0.2 在 Github 中添加 SSH&lt;/h2>
+&lt;p>把 ~/.ssh/id_rsa.pub 中的内容复制到 Github 新生成的密钥&lt;/p></description></item></channel></rss>

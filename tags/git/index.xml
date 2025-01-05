@@ -1,1 +1,20 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Cory</title><link>https://huweim.github.io/tags/git/</link><description>Recent content in Git on Cory</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Sat, 26 Nov 2022 16:21:28 +0000</lastBuildDate><atom:link href="https://huweim.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git中常用的操作</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_git%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Mon, 08 Mar 2021 19:12:40 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_git%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>Git中常用的操作 几个概念 工作区 (Workspace): 通俗地理解就是本地的环境，一般来说代码就是在工作区打开和编辑的。 暂存区 (stage, index): 这个信息存放在 .git 目录下的 index 文件里</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>Git on Weiming Hu</title><link>https://huweim.github.io/tags/git/</link><description>Recent content in Git on Weiming Hu</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sat, 26 Nov 2022 16:21:28 +0000</lastBuildDate><atom:link href="https://huweim.github.io/tags/git/index.xml" rel="self" type="application/rss+xml"/><item><title>Git中常用的操作</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_git%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</link><pubDate>Mon, 08 Mar 2021 19:12:40 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_git%E4%B8%AD%E5%B8%B8%E7%94%A8%E7%9A%84%E6%93%8D%E4%BD%9C/</guid><description>&lt;p>Git中常用的操作&lt;/p>
+&lt;h1 id="几个概念">几个概念&lt;/h1>
+&lt;p>工作区 (Workspace): 通俗地理解就是本地的环境，一般来说代码就是在工作区打开和编辑的。&lt;/p>
+&lt;p>暂存区 (stage, index): 这个信息存放在 &lt;code>.git&lt;/code> 目录下的 &lt;code>index&lt;/code> 文件里面&lt;/p>
+&lt;p>远端&lt;/p>
+&lt;h1 id="0-配置-ssh">0. 配置 ssh&lt;/h1>
+&lt;h2 id="01-generate">0.1 Generate&lt;/h2>
+&lt;div class="highlight-container">
+
+ &lt;button class="copy-code-btn outline">Copy&lt;/button>
+
+ 
+ &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-shell" data-lang="shell">&lt;span style="display:flex;">&lt;span>$ ssh-keygen -t rsa -C &lt;span style="color:#e6db74">&amp;#34;506834968@qq.com&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">#一直 Enter 即可&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ eval &lt;span style="color:#e6db74">&amp;#34;&lt;/span>&lt;span style="color:#66d9ef">$(&lt;/span>ssh-agent -s&lt;span style="color:#66d9ef">)&lt;/span>&lt;span style="color:#e6db74">&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>$ ssh-add ~/.ssh/id_rsa&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h2 id="02-在-github-中添加-ssh">0.2 在 Github 中添加 SSH&lt;/h2>
+&lt;p>把 ~/.ssh/id_rsa.pub 中的内容复制到 Github 新生成的密钥&lt;/p></description></item></channel></rss>

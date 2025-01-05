@@ -1,1 +1,202 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>编程 on Cory</title><link>https://huweim.github.io/categories/%E7%BC%96%E7%A8%8B/</link><description>Recent content in 编程 on Cory</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 04 Apr 2024 10:26:48 +0000</lastBuildDate><atom:link href="https://huweim.github.io/categories/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>Makefile学习和实践</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_makefile%E5%AD%A6%E4%B9%A0%E5%92%8C%E5%AE%9E%E8%B7%B5/</link><pubDate>Thu, 23 Mar 2023 11:00:42 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_makefile%E5%AD%A6%E4%B9%A0%E5%92%8C%E5%AE%9E%E8%B7%B5/</guid><description>1. 简介和基础知识 C语言中文网 http://c.biancheng.net/view/7096.html 1.1 Makefile文件是什么？ 1.1.1 Definition Makefile是什么？ 用于描述编译规则的工程文件 即哪些文件先编译，哪些文件</description></item><item><title>自己动手部署transformer模型 by huggingface</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_%E8%87%AA%E5%B7%B1%E5%8A%A8%E6%89%8B%E9%83%A8%E7%BD%B2transformer%E6%A8%A1%E5%9E%8B_huggingface/</link><pubDate>Sun, 23 Oct 2022 11:00:17 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_%E8%87%AA%E5%B7%B1%E5%8A%A8%E6%89%8B%E9%83%A8%E7%BD%B2transformer%E6%A8%A1%E5%9E%8B_huggingface/</guid><description>0. 前言 这部分内容还是很重要的，预计会设计常见的 pytorch 模型部署方法，理解框架中，每个模块在做什么。另外，这也是工程上必备的技能。 0.1 模型及下载地址 Model</description></item><item><title>Python 语法学习</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</link><pubDate>Wed, 14 Sep 2022 11:15:41 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</guid><description>1. Attribute 1.1 string 用 for 循环实现了 list 中的元素转为 string，目的是用来索引。for 感觉比较麻烦，不易读也不优雅，有没有更好的方法？ 1.1.1 Operation 1.1.1.1 slice b = &amp;#34;Hello, World!&amp;#34; print(b[2:5]) #</description></item><item><title>PyTorch 学习</title><link>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</link><pubDate>Thu, 28 Jul 2022 16:05:35 +0800</pubDate><guid>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</guid><description>1. Python 模块 1.1 parser 模块 1.1.1 parser.add_argument() 在命令行给代码赋值，不需要反复在 python 中修改代码。 parser.add_argument(&amp;#39;--file-dir&amp;#39;,type=str, required=True,help=&amp;#34;Input file directory&amp;#34;) ## 实例 parser.add_argument(&amp;#39;--dataset&amp;#39;, default=&amp;#39;cifar10&amp;#39;, type=str, help=&amp;#39;dataset name&amp;#39;) parser.add_argument(&amp;#39;--dataset_path&amp;#39;, default=&amp;#39;/state/partition/imagenet-raw-data&amp;#39;, type=str, help=&amp;#39;dataset path&amp;#39;) parser.add_argument(&amp;#39;--model&amp;#39;, default=&amp;#39;resnet18&amp;#39;, type=str, help=&amp;#39;model name&amp;#39;) parser.add_argument(&amp;#39;--train&amp;#39;, default=False, action=&amp;#39;store_true&amp;#39;, help=&amp;#39;train&amp;#39;) action: -train 设置成一个开关， 如</description></item><item><title>cmake 目录结构和使用</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_cmake-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%92%8C%E4%BD%BF%E7%94%A8/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_cmake-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%92%8C%E4%BD%BF%E7%94%A8/</guid><description>0. 前言 cuTLASS 使用到了 cmake，之前没有接触过，先学习一下他的目录结构和编译过程。 2023-03-16 11:25:11，在学习一个工具时，Getting Started 或许是最</description></item><item><title>编译运行 CUTLASS 和 cuBLAS</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Ccutlass%E5%92%8Ccublas/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Ccutlass%E5%92%8Ccublas/</guid><description>0. 前言 内容包括根据官方文档运行 CUTLASS 的实例，过程中遇到的一些问题，在 GPGPU-Sim 上运行 CUTLASS，阅读官方 doc 的笔记。 包括根据官方文档运行 cuBLAS 的实例，过程</description></item><item><title>Matplotlib</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_matplotlib/</link><pubDate>Tue, 19 Apr 2022 20:29:07 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_matplotlib/</guid><description>1. plot 1.1 hist data = [0,1,2,5,6,5,8,7,64,66,5,8,8,8,8,8] plt.hist(data, bins=3, label=&amp;#34;weight&amp;#34;) 1.1.1 参数 bins，直方图的 bucket，bins = 3 表示将区间分为 3 buckets。数值范围是 0-66，那么大概分为 0-2</description></item><item><title>编译运行ISPASS2009、Rodinia、Parboil</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cbenchmarkispassrodiniaparboil/</link><pubDate>Wed, 08 Dec 2021 09:45:02 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cbenchmarkispassrodiniaparboil/</guid><description>ISPASS Ubuntu20.04下使用GPGPU-Sim运行ISPASS2009benchmark 0. 前言 之前介绍了安装，现在就尝试跑一下 ISPASS'09 的那篇经典</description></item><item><title>Python处理输出log信息并绘图</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E5%A4%84%E7%90%86%E8%BE%93%E5%87%BAlog%E4%BF%A1%E6%81%AF%E5%B9%B6%E7%BB%98%E5%9B%BE/</link><pubDate>Wed, 08 Dec 2021 09:05:41 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E5%A4%84%E7%90%86%E8%BE%93%E5%87%BAlog%E4%BF%A1%E6%81%AF%E5%B9%B6%E7%BB%98%E5%9B%BE/</guid><description>0. 前言 修改 GPGPU-Sim 并跑 benchmark，如果一次用12个benchmark，3种调度算法，那么一次会生成36个 output log。需要使用 python 脚本可视化这些</description></item><item><title>Ubuntu多版本CUDA,GCC切换</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcudagcc%E5%88%87%E6%8D%A2/</link><pubDate>Sun, 14 Nov 2021 22:07:35 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcudagcc%E5%88%87%E6%8D%A2/</guid><description>0. 前言 2022-11-25 20:05:01。笔记写得比较早，大概是21年用 gpgpusim 那段时间写的，补一下前言。 在使用 gpgpusim 的时候，切换 gcc, CUDA 版本是非常常见的场景。由于这些操</description></item><item><title>GPGPU-Sim中的CTA &amp; warp scheduling</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_gpgpu-sim%E4%B8%AD%E7%9A%84cta--warp-scheduling/</link><pubDate>Sun, 14 Nov 2021 20:42:52 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_gpgpu-sim%E4%B8%AD%E7%9A%84cta--warp-scheduling/</guid><description>CTA Scheduling CTA/Thread Block/Work Group 调度发生在 shader_core_ctx::issue_block2core(...)，shader_core_config::m</description></item><item><title>GPGPU-Sim源码阅读</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</link><pubDate>Tue, 28 Sep 2021 15:51:46 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</guid><description>1. Shader.cc shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等 m_stats 也就是 shader_core_stats 类型的变量 num_shaer 就是 n_simt_clust</description></item><item><title>GPGPU-Sim 运行机制</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpgpu-sim-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</link><pubDate>Tue, 28 Sep 2021 13:39:14 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpgpu-sim-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</guid><description>0. 前言 在 GPGPU-Sim 跑一些比较大的 benchmark, 或者想要同时跑很多组 benchmark 的时候，在自己的电脑上跑，或者在虚拟机上运行的话速度肯定达不到要求，会成为工作中瓶颈。因此了</description></item><item><title>搭建GPGPU-Sim实验环境</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E6%90%AD%E5%BB%BAsim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Cdocker/</link><pubDate>Mon, 27 Sep 2021 22:54:06 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E6%90%AD%E5%BB%BAsim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Cdocker/</guid><description>服务器 0. 前言 第一个思路是 服务器OS-&amp;gt;Docker Container-&amp;gt;Ubuntu中运行GPGPU-Sim。 Docker Container update Docker Image-&amp;gt;Docker Imag</description></item><item><title>CUDA_set_gridDim</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_cuda_set_griddim/</link><pubDate>Tue, 17 Aug 2021 14:12:38 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_cuda_set_griddim/</guid><description>0. 前言 在一个 CUDA 课程的考试中由于这个地方的理解问题导致没有成功 pass，应该如何设置 BlockNum 呢？ 1. 参数 compute capability, CC 这个也就是计算架构，对应于具体的 NVIDIA 显卡型</description></item><item><title>（转载）CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_cuda_driver-nvcc-cuda-cudatoolkitcudnn%E6%B5%85%E6%9E%90/</link><pubDate>Sun, 25 Jul 2021 11:00:17 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_cuda_driver-nvcc-cuda-cudatoolkitcudnn%E6%B5%85%E6%9E%90/</guid><description>0. 前言 文章转载自知乎答主 marsggbo，当做笔记记录一下这些 CUDA 中经常接触的内容。 在使用深度学习框架的过程中一定会经常碰到这些东西，虽然an</description></item><item><title>Ubuntu 20.04 下安装运行 GPGPU-Sim</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_ubuntu-20.04-%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C-gpgpu-sim/</link><pubDate>Mon, 10 May 2021 15:17:51 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_ubuntu-20.04-%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C-gpgpu-sim/</guid><description>0. 前言 最近因为课程 Project 需要使用 GPGPU-Sim 复现一篇 paper，在之后的课题中可能也会用到这个模拟器。所以收集了相关资料以搭建 GPGPU-Sim 的环境并运行 Demo。GP</description></item><item><title>MPI Intro and Practice</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</link><pubDate>Tue, 09 Mar 2021 22:36:19 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</guid><description>MPI Intro and Practice Intro Definition wiki: Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures. Feature an interface, not a programming language Main model of HPC a cross-language communication protocol Functions Communication Point-to-point communication Send Recv Collective communication Broadcast, scatter/ gather, all to all, reduce, scan, barrier</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>编程 on Weiming Hu</title><link>https://huweim.github.io/categories/%E7%BC%96%E7%A8%8B/</link><description>Recent content in 编程 on Weiming Hu</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 05 Jan 2025 07:12:32 +0000</lastBuildDate><atom:link href="https://huweim.github.io/categories/%E7%BC%96%E7%A8%8B/index.xml" rel="self" type="application/rss+xml"/><item><title>Makefile学习和实践</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_makefile%E5%AD%A6%E4%B9%A0%E5%92%8C%E5%AE%9E%E8%B7%B5/</link><pubDate>Thu, 23 Mar 2023 11:00:42 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_makefile%E5%AD%A6%E4%B9%A0%E5%92%8C%E5%AE%9E%E8%B7%B5/</guid><description>&lt;h1 id="1-简介和基础知识">1. 简介和基础知识&lt;/h1>
+&lt;p>C语言中文网 &lt;a href="http://c.biancheng.net/view/7096.html">http://c.biancheng.net/view/7096.html&lt;/a>&lt;/p>
+&lt;h2 id="11-makefile文件是什么">1.1 Makefile文件是什么？&lt;/h2>
+&lt;h3 id="111-definition">1.1.1 Definition&lt;/h3>
+&lt;p>Makefile是什么？&lt;/p>
+&lt;ul>
+&lt;li>用于描述编译规则的工程文件
+&lt;ul>
+&lt;li>即哪些文件先编译，哪些文件无需编译&lt;/li>
+&lt;li>使得项目的编译自动化，不需要每次都手动输入一堆源文件和参数。&lt;/li>
+&lt;li>可以理解为一个脚本语言，类似 Shell, Perl, Python&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;p>Windows 下的集成开发环境（IDE）已经内置了 Makefile，或者说会自动生成 Makefile，无需手写&lt;/p></description></item><item><title>自己动手部署transformer模型 by huggingface</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_%E8%87%AA%E5%B7%B1%E5%8A%A8%E6%89%8B%E9%83%A8%E7%BD%B2transformer%E6%A8%A1%E5%9E%8B_huggingface/</link><pubDate>Sun, 23 Oct 2022 11:00:17 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_%E8%87%AA%E5%B7%B1%E5%8A%A8%E6%89%8B%E9%83%A8%E7%BD%B2transformer%E6%A8%A1%E5%9E%8B_huggingface/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>这部分内容还是很重要的，预计会设计常见的 pytorch 模型部署方法，理解框架中，每个模块在做什么。另外，这也是工程上必备的技能。&lt;/p>
+&lt;h2 id="01-模型及下载地址">0.1 模型及下载地址&lt;/h2>
+&lt;table>
+ &lt;thead>
+ &lt;tr>
+ &lt;th>Model&lt;/th>
+ &lt;th>Repo&lt;/th>
+ &lt;th>Paper&lt;/th>
+ &lt;/tr>
+ &lt;/thead>
+ &lt;tbody>
+ &lt;tr>
+ &lt;td>ResNet (18: 12M; 50: 26M; 152: 60M)&lt;/td>
+ &lt;td>&lt;a href="https://github.com/pytorch/vision/blob/main/torchvision/models/resnet.py">https://github.com/pytorch/vision/blob/main/torchvision/models/resnet.py&lt;/a>&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>BERT (110 / 330M)&lt;/td>
+ &lt;td>&lt;a href="https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT">https://github.com/NVIDIA/DeepLearningExamples/tree/master/PyTorch/LanguageModeling/BERT&lt;/a>&lt;/td>
+ &lt;td>&lt;a href="https://arxiv.org/abs/1810.04805">https://arxiv.org/abs/1810.04805&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>GPT-2 (1.5B)&lt;/td>
+ &lt;td>&lt;a href="https://github.com/openai/gpt-2">https://github.com/openai/gpt-2&lt;/a>&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>OPT (125 / 350M; 1.3 / 2.7 / 6.7 / 13 / 30 / 66 / 175B)&lt;/td>
+ &lt;td>&lt;a href="https://github.com/facebookresearch/metaseq">https://github.com/facebookresearch/metaseq&lt;/a>&lt;/td>
+ &lt;td>&lt;a href="https://arxiv.org/pdf/2205.01068.pdf">https://arxiv.org/pdf/2205.01068.pdf&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>BLOOM (560M; 1.1 / 1.7 / 3 / 7.1 / 176B)&lt;/td>
+ &lt;td>&lt;a href="https://huggingface.co/docs/transformers/model_doc/bloom">https://huggingface.co/docs/transformers/model_doc/bloom&lt;/a>&lt;/td>
+ &lt;td>&lt;/td>
+ &lt;/tr>
+ &lt;tr>
+ &lt;td>T5 (60 / 220 / 770M; 3 / 11B)&lt;/td>
+ &lt;td>&lt;a href="https://github.com/google-research/text-to-text-transfer-transformer#released-model-checkpoints">https://github.com/google-research/text-to-text-transfer-transformer#released-model-checkpoints&lt;/a>&lt;/td>
+ &lt;td>&lt;a href="https://jmlr.org/papers/volume21/20-074/20-074.pdf">https://jmlr.org/papers/volume21/20-074/20-074.pdf&lt;/a>&lt;/td>
+ &lt;/tr>
+ &lt;/tbody>
+&lt;/table>
+&lt;h2 id="02-模型下载方法">0.2 模型下载方法&lt;/h2>
+&lt;p>2023-07-08 20:10:12，重新回顾 22 年关于大模型研究的工作。从 chatgpt 爆火之后，大模型应用的框架变得火热，语言模型的社区也变得火热起来。准备在 ant_ext 工作中加入一些新的模型的评估，但是期智连接 huggingface 的网络老是抽风，导致试图从 huggingface 下载模型时出现错误。现在总结一些其他的下载方法。&lt;/p></description></item><item><title>Python 语法学习</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</link><pubDate>Wed, 14 Sep 2022 11:15:41 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E8%AF%AD%E6%B3%95%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h1 id="1-attribute">1. Attribute&lt;/h1>
+&lt;h2 id="11-string">1.1 string&lt;/h2>
+&lt;p>用 for 循环实现了 list 中的元素转为 string，目的是用来索引。for 感觉比较麻烦，不易读也不优雅，有没有更好的方法？&lt;/p>
+&lt;h3 id="111-operation">1.1.1 Operation&lt;/h3>
+&lt;h4 id="1111-slice">1.1.1.1 slice&lt;/h4>
+&lt;div class="highlight-container">
+
+ &lt;button class="copy-code-btn outline">Copy&lt;/button>
+
+ 
+ &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>b &lt;span style="color:#f92672">=&lt;/span> &lt;span style="color:#e6db74">&amp;#34;Hello, World!&amp;#34;&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(b[&lt;span style="color:#ae81ff">2&lt;/span>:&lt;span style="color:#ae81ff">5&lt;/span>])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># llo&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>print(b[&lt;span style="color:#ae81ff">2&lt;/span>:])
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># llo, World! &lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h4 id="1112-replace">1.1.1.2 replace&lt;/h4>
+&lt;div class="highlight-container">
+
+ &lt;button class="copy-code-btn outline">Copy&lt;/button>
+
+ 
+ &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>string&lt;span style="color:#f92672">.&lt;/span>replace(oldvalue, newvalue, count)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e"># replaces a specified phrase with another specified phrase.&lt;/span>&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h4 id="1113-split">1.1.1.3 Split&lt;/h4>
+&lt;p>The split() method splits a string into a list&lt;/p></description></item><item><title>PyTorch 学习</title><link>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</link><pubDate>Thu, 28 Jul 2022 16:05:35 +0800</pubDate><guid>https://huweim.github.io/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/</guid><description>&lt;h1 id="1-python-模块">1. Python 模块&lt;/h1>
+&lt;h2 id="11-parser-模块">1.1 parser 模块&lt;/h2>
+&lt;h3 id="111-parseradd_argument">1.1.1 parser.add_argument()&lt;/h3>
+&lt;p>在命令行给代码赋值，不需要反复在 python 中修改代码。&lt;/p>
+&lt;div class="highlight-container">
+
+ &lt;button class="copy-code-btn outline">Copy&lt;/button>
+
+ 
+ &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parser&lt;span style="color:#f92672">.&lt;/span>add_argument(&lt;span style="color:#e6db74">&amp;#39;--file-dir&amp;#39;&lt;/span>,type&lt;span style="color:#f92672">=&lt;/span>str, required&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">True&lt;/span>,help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;Input file directory&amp;#34;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>&lt;span style="color:#75715e">## 实例&lt;/span>
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parser&lt;span style="color:#f92672">.&lt;/span>add_argument(&lt;span style="color:#e6db74">&amp;#39;--dataset&amp;#39;&lt;/span>, default&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;cifar10&amp;#39;&lt;/span>, type&lt;span style="color:#f92672">=&lt;/span>str, 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;dataset name&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parser&lt;span style="color:#f92672">.&lt;/span>add_argument(&lt;span style="color:#e6db74">&amp;#39;--dataset_path&amp;#39;&lt;/span>, default&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;/state/partition/imagenet-raw-data&amp;#39;&lt;/span>, type&lt;span style="color:#f92672">=&lt;/span>str, 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;dataset path&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parser&lt;span style="color:#f92672">.&lt;/span>add_argument(&lt;span style="color:#e6db74">&amp;#39;--model&amp;#39;&lt;/span>, default&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;resnet18&amp;#39;&lt;/span>, type&lt;span style="color:#f92672">=&lt;/span>str, 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;model name&amp;#39;&lt;/span>)
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>parser&lt;span style="color:#f92672">.&lt;/span>add_argument(&lt;span style="color:#e6db74">&amp;#39;--train&amp;#39;&lt;/span>, default&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#66d9ef">False&lt;/span>, action&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;store_true&amp;#39;&lt;/span>, 
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span> help&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#39;train&amp;#39;&lt;/span>)&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;p>&lt;code>action&lt;/code>: &lt;code>-train&lt;/code> 设置成一个开关，&lt;/p></description></item><item><title>cmake 目录结构和使用</title><link>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_cmake-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%92%8C%E4%BD%BF%E7%94%A8/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E5%B7%A5%E5%85%B7_cmake-%E7%9B%AE%E5%BD%95%E7%BB%93%E6%9E%84%E5%92%8C%E4%BD%BF%E7%94%A8/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>cuTLASS 使用到了 cmake，之前没有接触过，先学习一下他的目录结构和编译过程。&lt;/p>
+&lt;p>2023-03-16 11:25:11，在学习一个工具时，Getting Started 或许是最快的入门方式。&lt;/p></description></item><item><title>编译运行 CUTLASS 和 cuBLAS</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Ccutlass%E5%92%8Ccublas/</link><pubDate>Mon, 09 May 2022 22:17:43 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Ccutlass%E5%92%8Ccublas/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>内容包括根据官方文档运行 CUTLASS 的实例，过程中遇到的一些问题，在 GPGPU-Sim 上运行 CUTLASS，阅读官方 doc 的笔记。&lt;/p>
+&lt;p>包括根据官方文档运行 cuBLAS 的实例，过程中遇到的问题。&lt;/p></description></item><item><title>Matplotlib</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_matplotlib/</link><pubDate>Tue, 19 Apr 2022 20:29:07 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_matplotlib/</guid><description>&lt;h1 id="1-plot">1. plot&lt;/h1>
+&lt;h2 id="11-hist">1.1 hist&lt;/h2>
+&lt;div class="highlight-container">
+
+ &lt;button class="copy-code-btn outline">Copy&lt;/button>
+
+ 
+ &lt;div class="highlight">&lt;pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;">&lt;code class="language-python" data-lang="python">&lt;span style="display:flex;">&lt;span>data &lt;span style="color:#f92672">=&lt;/span> [&lt;span style="color:#ae81ff">0&lt;/span>,&lt;span style="color:#ae81ff">1&lt;/span>,&lt;span style="color:#ae81ff">2&lt;/span>,&lt;span style="color:#ae81ff">5&lt;/span>,&lt;span style="color:#ae81ff">6&lt;/span>,&lt;span style="color:#ae81ff">5&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">7&lt;/span>,&lt;span style="color:#ae81ff">64&lt;/span>,&lt;span style="color:#ae81ff">66&lt;/span>,&lt;span style="color:#ae81ff">5&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>,&lt;span style="color:#ae81ff">8&lt;/span>]
+&lt;/span>&lt;/span>&lt;span style="display:flex;">&lt;span>plt&lt;span style="color:#f92672">.&lt;/span>hist(data, bins&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#ae81ff">3&lt;/span>, label&lt;span style="color:#f92672">=&lt;/span>&lt;span style="color:#e6db74">&amp;#34;weight&amp;#34;&lt;/span>)	&lt;/span>&lt;/span>&lt;/code>&lt;/pre>&lt;/div>
+&lt;/div>
+&lt;h3 id="111-参数">1.1.1 参数&lt;/h3>
+&lt;!-- raw HTML omitted -->
+&lt;ul>
+&lt;li>bins，直方图的 bucket，bins = 3 表示将区间分为 3 buckets。数值范围是 0-66，那么大概分为 0-22，23-45，45-67 三个 bucket，然后根据 &lt;code>data&lt;/code> 中的情况，往这几个 bucket 投票/计数。&lt;/li>
+&lt;li>range，x 轴的显示范围&lt;/li>
+&lt;/ul>
+&lt;h2 id="12-通用设置">1.2 通用设置&lt;/h2>
+&lt;h3 id="121-label-设置">1.2.1 label 设置&lt;/h3>
+&lt;p>给出y轴的名称&lt;/p></description></item><item><title>编译运行ISPASS2009、Rodinia、Parboil</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cbenchmarkispassrodiniaparboil/</link><pubDate>Wed, 08 Dec 2021 09:45:02 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cbenchmarkispassrodiniaparboil/</guid><description>&lt;h1 id="ispass">ISPASS&lt;/h1>
+&lt;p>Ubuntu20.04下使用GPGPU-Sim运行ISPASS2009benchmark&lt;/p>
+&lt;h2 id="0-前言">0. 前言&lt;/h2>
+&lt;p>之前介绍了安装，现在就尝试跑一下 ISPASS'09 的那篇经典 paper，Analyzing CUDA workloads using a detailed GPU simulator 上的几个 benchamrk. 这篇文章1.现在已经870次引用了，很多工作都使用了其中的 benchmark&lt;/p></description></item><item><title>Python处理输出log信息并绘图</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E5%A4%84%E7%90%86%E8%BE%93%E5%87%BAlog%E4%BF%A1%E6%81%AF%E5%B9%B6%E7%BB%98%E5%9B%BE/</link><pubDate>Wed, 08 Dec 2021 09:05:41 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_python%E5%A4%84%E7%90%86%E8%BE%93%E5%87%BAlog%E4%BF%A1%E6%81%AF%E5%B9%B6%E7%BB%98%E5%9B%BE/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>修改 GPGPU-Sim 并跑 benchmark，如果一次用12个benchmark，3种调度算法，那么一次会生成36个 output log。需要使用 python 脚本可视化这些数据来进行 high level 的分析，因此自己写了一个脚本进行输出数据的可视化工作。&lt;/p></description></item><item><title>Ubuntu多版本CUDA,GCC切换</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcudagcc%E5%88%87%E6%8D%A2/</link><pubDate>Sun, 14 Nov 2021 22:07:35 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_ubuntu%E5%A4%9A%E7%89%88%E6%9C%ACcudagcc%E5%88%87%E6%8D%A2/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>2022-11-25 20:05:01。笔记写得比较早，大概是21年用 gpgpusim 那段时间写的，补一下前言。&lt;/p>
+&lt;p>在使用 gpgpusim 的时候，切换 gcc, CUDA 版本是非常常见的场景。由于这些操作涉及到有系统文件夹的修改，涉及到 sudo 权限，所以最好在 Docker 环境下配置 gpgpusim 开发环境。&lt;/p></description></item><item><title>GPGPU-Sim中的CTA &amp; warp scheduling</title><link>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_gpgpu-sim%E4%B8%AD%E7%9A%84cta--warp-scheduling/</link><pubDate>Sun, 14 Nov 2021 20:42:52 +0800</pubDate><guid>https://huweim.github.io/post/%E6%80%BB%E7%BB%93_gpgpu-sim%E4%B8%AD%E7%9A%84cta--warp-scheduling/</guid><description>&lt;h1 id="cta-scheduling">CTA Scheduling&lt;/h1>
+&lt;p>CTA/Thread Block/Work Group&lt;/p>
+&lt;p>调度发生在 &lt;code>shader_core_ctx::issue_block2core(...)&lt;/code>，&lt;code>shader_core_config::max_cta(...)&lt;/code> 计算 core 中能容纳的 max CTA。这个取决于各硬件资源的短板，在报告中能看到是被什么限制了。&lt;/p></description></item><item><title>GPGPU-Sim源码阅读</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</link><pubDate>Tue, 28 Sep 2021 15:51:46 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpgpu-sim%E6%BA%90%E7%A0%81%E9%98%85%E8%AF%BB/</guid><description>&lt;h1 id="1-shadercc">1. Shader.cc&lt;/h1>
+&lt;p>shader_core_stats 类型含有非常多的数据统计，包括 cycle 数，m_num_decoded_insn, m_num_FPdecoded_insn, m_num_loadqueued_insn, m_num_INTdecoded_insn 等等&lt;/p>
+&lt;p>m_stats 也就是 shader_core_stats 类型的变量&lt;/p>
+&lt;p>num_shaer 就是 n_simt_clusters*n_simt_cores_per_cluster，也就是 SIMT Core 的数量&lt;/p></description></item><item><title>GPGPU-Sim 运行机制</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpgpu-sim-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</link><pubDate>Tue, 28 Sep 2021 13:39:14 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_gpgpu-sim-%E8%BF%90%E8%A1%8C%E6%9C%BA%E5%88%B6/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>在 GPGPU-Sim 跑一些比较大的 benchmark, 或者想要同时跑很多组 benchmark 的时候，在自己的电脑上跑，或者在虚拟机上运行的话速度肯定达不到要求，会成为工作中瓶颈。因此了解一下如何在服务器上跑 simulation, 以及如何提高运行 benchmark 的速度。&lt;/p></description></item><item><title>搭建GPGPU-Sim实验环境</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E6%90%AD%E5%BB%BAsim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Cdocker/</link><pubDate>Mon, 27 Sep 2021 22:54:06 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_%E6%90%AD%E5%BB%BAsim%E5%AE%9E%E9%AA%8C%E7%8E%AF%E5%A2%83%E6%9C%8D%E5%8A%A1%E5%99%A8%E5%92%8Cdocker/</guid><description>&lt;h1 id="服务器">服务器&lt;/h1>
+&lt;h2 id="0-前言">0. 前言&lt;/h2>
+&lt;p>第一个思路是&lt;/p>
+&lt;ul>
+&lt;li>服务器OS-&amp;gt;Docker Container-&amp;gt;Ubuntu中运行GPGPU-Sim。&lt;/li>
+&lt;li>Docker Container update Docker Image-&amp;gt;Docker Image-&amp;gt;XXX.tar-&amp;gt;复制到你的电脑Windows-&amp;gt;复制到你的虚拟机Ubuntu-&amp;gt;XXX.tar-&amp;gt;Docker Image-&amp;gt;Docker Container-&amp;gt;Ubuntu中运行GPGPU-Sim-&amp;gt;修改GPGPU-Sim&lt;/li>
+&lt;li>然后同样使用上述过程移植到服务器，运行&lt;/li>
+&lt;/ul>
+&lt;p>这样是有问题的。首先这个过程没有意义，如果这样在你自己的虚拟机里面运行Docker, 那么仍然是命令行界面，和在服务器上运行的区别在哪？&lt;/p></description></item><item><title>CUDA_set_gridDim</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_cuda_set_griddim/</link><pubDate>Tue, 17 Aug 2021 14:12:38 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_cuda_set_griddim/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>在一个 CUDA 课程的考试中由于这个地方的理解问题导致没有成功 pass，应该如何设置 BlockNum 呢？&lt;/p>
+&lt;h1 id="1-参数">1. 参数&lt;/h1>
+&lt;ul>
+&lt;li>compute capability, CC&lt;/li>
+&lt;/ul>
+&lt;p>这个也就是计算架构，对应于具体的 NVIDIA 显卡型号，可以在编译时作为 option 输入&lt;/p></description></item><item><title>（转载）CUDA_driver, nvcc, cuda, cudatoolkit,cudnn浅析</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_cuda_driver-nvcc-cuda-cudatoolkitcudnn%E6%B5%85%E6%9E%90/</link><pubDate>Sun, 25 Jul 2021 11:00:17 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_cuda_driver-nvcc-cuda-cudatoolkitcudnn%E6%B5%85%E6%9E%90/</guid><description>&lt;h1 id="0-前言">0. 前言&lt;/h1>
+&lt;p>文章转载自知乎答主 &lt;a href="https://www.zhihu.com/people/hexin_marsggbo">marsggbo&lt;/a>，当做笔记记录一下这些 CUDA 中经常接触的内容。&lt;/p>
+&lt;p>在使用深度学习框架的过程中一定会经常碰到这些东西，虽然anaconda有时会帮助我们自动地解决这些设置，但是有些特殊的库却还是需要我们手动配置环境，但是我对标题上的这些名词其实并不十分清楚，所以老是被网上的教程绕得云里雾里，所以觉得有必要写下一篇文章当做笔记供之后参考。&lt;/p></description></item><item><title>Ubuntu 20.04 下安装运行 GPGPU-Sim</title><link>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_ubuntu-20.04-%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C-gpgpu-sim/</link><pubDate>Mon, 10 May 2021 15:17:51 +0800</pubDate><guid>https://huweim.github.io/post/%E5%AE%9E%E9%AA%8C_ubuntu-20.04-%E4%B8%8B%E5%AE%89%E8%A3%85%E8%BF%90%E8%A1%8C-gpgpu-sim/</guid><description>&lt;h3 id="0-前言">&lt;strong>0. 前言&lt;/strong>&lt;/h3>
+&lt;p>最近因为课程 Project 需要使用 GPGPU-Sim 复现一篇 paper，在之后的课题中可能也会用到这个模拟器。所以收集了相关资料以搭建 GPGPU-Sim 的环境并运行 Demo。GPGPU-Sim 的参考资料实在是不多，主要参考了&lt;a href="http://gpgpu-sim.org/manual/index.php/Main_Page">官方文档&lt;/a>、&lt;a href="https://github.com/gpgpu-sim/gpgpu-sim_distribution">Github 中 README 文件&lt;/a>，还有一些相关的 Blog。&lt;/p></description></item><item><title>MPI Intro and Practice</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</link><pubDate>Tue, 09 Mar 2021 22:36:19 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</guid><description>&lt;h1 id="mpi-intro-and-practice">MPI Intro and Practice&lt;/h1>
+&lt;h3 id="intro">Intro&lt;/h3>
+&lt;h5 id="definition">Definition&lt;/h5>
+&lt;p>wiki:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Message Passing Interface&lt;/strong> (&lt;strong>MPI&lt;/strong>) is a standardized and portable message-passing standard&lt;/li>
+&lt;li>designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.&lt;/li>
+&lt;/ul>
+&lt;h5 id="feature">Feature&lt;/h5>
+&lt;ul>
+&lt;li>an interface, not a programming language&lt;/li>
+&lt;li>Main model of HPC&lt;/li>
+&lt;li>a cross-language communication protocol&lt;/li>
+&lt;/ul>
+&lt;h5 id="functions">Functions&lt;/h5>
+&lt;ul>
+&lt;li>Communication
+&lt;ul>
+&lt;li>Point-to-point communication
+&lt;ul>
+&lt;li>Send&lt;/li>
+&lt;li>Recv&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Collective communication
+&lt;ul>
+&lt;li>Broadcast, scatter/ gather, all to all, reduce, scan, barrier&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Almost all parallel programs can be described using the message passing model.&lt;/li>
+&lt;/ul>
+&lt;h5 id="concept">Concept&lt;/h5>
+&lt;ul>
+&lt;li>Communicator:
+&lt;ul>
+&lt;li>Def: Communicator objects connect groups of processes in the MPI session.&lt;/li>
+&lt;li>Each communicator gives each contained process an independent identifier(id, called &lt;code>rank&lt;/code>) and arranges its contained processes in an ordered topology.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="set-up-in-ubuntu-2004">Set up in Ubuntu 20.04&lt;/h3>
+&lt;p>在这个阶段，简单地通过网络的教程进行 library or software 的安装是不现实的，还是得从根本上学会去解决问题，去看源文档(doc)的说明。&lt;/p></description></item></channel></rss>

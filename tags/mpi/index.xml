@@ -1,1 +1,44 @@
-<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MPI on Cory</title><link>https://huweim.github.io/tags/mpi/</link><description>Recent content in MPI on Cory</description><generator>Hugo -- gohugo.io</generator><language>en</language><lastBuildDate>Thu, 04 Apr 2024 10:26:48 +0000</lastBuildDate><atom:link href="https://huweim.github.io/tags/mpi/index.xml" rel="self" type="application/rss+xml"/><item><title>MPI Intro and Practice</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</link><pubDate>Tue, 09 Mar 2021 22:36:19 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</guid><description>MPI Intro and Practice Intro Definition wiki: Message Passing Interface (MPI) is a standardized and portable message-passing standard designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures. Feature an interface, not a programming language Main model of HPC a cross-language communication protocol Functions Communication Point-to-point communication Send Recv Collective communication Broadcast, scatter/ gather, all to all, reduce, scan, barrier</description></item></channel></rss>
+<?xml version="1.0" encoding="utf-8" standalone="yes"?><rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom"><channel><title>MPI on Weiming Hu</title><link>https://huweim.github.io/tags/mpi/</link><description>Recent content in MPI on Weiming Hu</description><generator>Hugo</generator><language>en</language><lastBuildDate>Sun, 05 Jan 2025 07:12:32 +0000</lastBuildDate><atom:link href="https://huweim.github.io/tags/mpi/index.xml" rel="self" type="application/rss+xml"/><item><title>MPI Intro and Practice</title><link>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</link><pubDate>Tue, 09 Mar 2021 22:36:19 +0800</pubDate><guid>https://huweim.github.io/post/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</guid><description>&lt;h1 id="mpi-intro-and-practice">MPI Intro and Practice&lt;/h1>
+&lt;h3 id="intro">Intro&lt;/h3>
+&lt;h5 id="definition">Definition&lt;/h5>
+&lt;p>wiki:&lt;/p>
+&lt;ul>
+&lt;li>&lt;strong>Message Passing Interface&lt;/strong> (&lt;strong>MPI&lt;/strong>) is a standardized and portable message-passing standard&lt;/li>
+&lt;li>designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.&lt;/li>
+&lt;/ul>
+&lt;h5 id="feature">Feature&lt;/h5>
+&lt;ul>
+&lt;li>an interface, not a programming language&lt;/li>
+&lt;li>Main model of HPC&lt;/li>
+&lt;li>a cross-language communication protocol&lt;/li>
+&lt;/ul>
+&lt;h5 id="functions">Functions&lt;/h5>
+&lt;ul>
+&lt;li>Communication
+&lt;ul>
+&lt;li>Point-to-point communication
+&lt;ul>
+&lt;li>Send&lt;/li>
+&lt;li>Recv&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Collective communication
+&lt;ul>
+&lt;li>Broadcast, scatter/ gather, all to all, reduce, scan, barrier&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;li>Almost all parallel programs can be described using the message passing model.&lt;/li>
+&lt;/ul>
+&lt;h5 id="concept">Concept&lt;/h5>
+&lt;ul>
+&lt;li>Communicator:
+&lt;ul>
+&lt;li>Def: Communicator objects connect groups of processes in the MPI session.&lt;/li>
+&lt;li>Each communicator gives each contained process an independent identifier(id, called &lt;code>rank&lt;/code>) and arranges its contained processes in an ordered topology.&lt;/li>
+&lt;/ul>
+&lt;/li>
+&lt;/ul>
+&lt;h3 id="set-up-in-ubuntu-2004">Set up in Ubuntu 20.04&lt;/h3>
+&lt;p>在这个阶段，简单地通过网络的教程进行 library or software 的安装是不现实的，还是得从根本上学会去解决问题，去看源文档(doc)的说明。&lt;/p></description></item></channel></rss>
