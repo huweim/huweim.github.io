@@ -23,11 +23,11 @@ jobs:
         run: npm install -g sass
 
       - name: Install Hugo Manually
-      run: |
-        wget https://github.com/gohugoio/hugo/releases/download/v0.139.5/hugo_extended_0.139.5_Linux-64bit.tar.gz
-        tar -zxvf hugo_extended_0.139.5_Linux-64bit.tar.gz
-        sudo mv hugo /usr/local/bin/
-        hugo version
+        run: |
+          wget https://github.com/gohugoio/hugo/releases/download/v0.139.5/hugo_extended_0.139.5_Linux-64bit.tar.gz
+          tar -zxvf hugo_extended_0.139.5_Linux-64bit.tar.gz
+          sudo mv hugo /usr/local/bin/
+          hugo version
       - name: Setup Hugo
         uses: peaceiris/actions-hugo@v3
         with:
