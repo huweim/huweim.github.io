@@ -1,0 +1,1523 @@
+<!DOCTYPE html>
+<html lang="en" itemscope itemtype="http://schema.org/WebPage" data-theme="light">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script>
+  <meta charset="utf-8" />
+  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+  <title>
+    
+    PyTorch 学习 - Weiming Hu
+    </title>
+  
+
+
+<meta name="renderer" content="webkit" />
+<meta name="viewport" content="width=device-width, initial-scale=1, user-scalable=yes" />
+
+
+<meta name="MobileOptimized" content="width" />
+<meta name="HandheldFriendly" content="true" />
+
+
+<meta name="applicable-device" content="pc,mobile">
+<meta name="color-scheme" content="light dark" />
+<meta name="msapplication-navbutton-color" content="#f8f5ec">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="#f8f5ec">
+
+<meta name="mobile-web-app-capable" content="yes">
+
+
+<meta name="generator" content="Hugo 0.140.2" />
+
+
+<link rel="canonical" href="http://localhost:1313/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/" />
+
+
+
+
+<meta name="author" content="Cory" />
+<meta name="description" content="1. Python 模块 1.1 parser 模块 1.1.1 parser.add_argument() 在命令行给代码赋值，不需要反复在 python 中修改代码。
+Copy parser.add_argument(&#39;--file-dir&#39;,type=str, required=True,help=&#34;Input file directory&#34;) ## 实例 parser.add_argument(&#39;--dataset&#39;, default=&#39;cifar10&#39;, type=str, help=&#39;dataset name&#39;) parser.add_argument(&#39;--dataset_path&#39;, default=&#39;/state/partition/imagenet-raw-data&#39;, type=str, help=&#39;dataset path&#39;) parser.add_argument(&#39;--model&#39;, default=&#39;resnet18&#39;, type=str, help=&#39;model name&#39;) parser.add_argument(&#39;--train&#39;, default=False, action=&#39;store_true&#39;, help=&#39;train&#39;) action: -train 设置成一个开关，
+" />
+
+
+
+
+
+  
+
+
+
+
+
+
+<meta name="keywords" content="PyTorch" />
+
+
+<meta property="og:url" content="http://localhost:1313/post/%E6%96%87%E6%A1%A3_pytorch%E5%AD%A6%E4%B9%A0/">
+  <meta property="og:site_name" content="Weiming Hu">
+  <meta property="og:title" content="PyTorch 学习">
+  <meta property="og:description" content="1. Python 模块 1.1 parser 模块 1.1.1 parser.add_argument() 在命令行给代码赋值，不需要反复在 python 中修改代码。
+Copy parser.add_argument(&#39;--file-dir&#39;,type=str, required=True,help=&#34;Input file directory&#34;) ## 实例 parser.add_argument(&#39;--dataset&#39;, default=&#39;cifar10&#39;, type=str, help=&#39;dataset name&#39;) parser.add_argument(&#39;--dataset_path&#39;, default=&#39;/state/partition/imagenet-raw-data&#39;, type=str, help=&#39;dataset path&#39;) parser.add_argument(&#39;--model&#39;, default=&#39;resnet18&#39;, type=str, help=&#39;model name&#39;) parser.add_argument(&#39;--train&#39;, default=False, action=&#39;store_true&#39;, help=&#39;train&#39;) action: -train 设置成一个开关，">
+  <meta property="og:locale" content="en">
+  <meta property="og:type" content="article">
+    <meta property="article:section" content="post">
+    <meta property="article:published_time" content="2022-07-28T16:05:35+08:00">
+    <meta property="article:modified_time" content="2023-03-21T16:05:35+08:00">
+    <meta property="article:tag" content="PyTorch">
+
+  <meta itemprop="name" content="PyTorch 学习">
+  <meta itemprop="description" content="1. Python 模块 1.1 parser 模块 1.1.1 parser.add_argument() 在命令行给代码赋值，不需要反复在 python 中修改代码。
+Copy parser.add_argument(&#39;--file-dir&#39;,type=str, required=True,help=&#34;Input file directory&#34;) ## 实例 parser.add_argument(&#39;--dataset&#39;, default=&#39;cifar10&#39;, type=str, help=&#39;dataset name&#39;) parser.add_argument(&#39;--dataset_path&#39;, default=&#39;/state/partition/imagenet-raw-data&#39;, type=str, help=&#39;dataset path&#39;) parser.add_argument(&#39;--model&#39;, default=&#39;resnet18&#39;, type=str, help=&#39;model name&#39;) parser.add_argument(&#39;--train&#39;, default=False, action=&#39;store_true&#39;, help=&#39;train&#39;) action: -train 设置成一个开关，">
+  <meta itemprop="datePublished" content="2022-07-28T16:05:35+08:00">
+  <meta itemprop="dateModified" content="2023-03-21T16:05:35+08:00">
+  <meta itemprop="wordCount" content="7344">
+  <meta itemprop="keywords" content="PyTorch">
+  <meta name="twitter:card" content="summary">
+  <meta name="twitter:title" content="PyTorch 学习">
+  <meta name="twitter:description" content="1. Python 模块 1.1 parser 模块 1.1.1 parser.add_argument() 在命令行给代码赋值，不需要反复在 python 中修改代码。
+Copy parser.add_argument(&#39;--file-dir&#39;,type=str, required=True,help=&#34;Input file directory&#34;) ## 实例 parser.add_argument(&#39;--dataset&#39;, default=&#39;cifar10&#39;, type=str, help=&#39;dataset name&#39;) parser.add_argument(&#39;--dataset_path&#39;, default=&#39;/state/partition/imagenet-raw-data&#39;, type=str, help=&#39;dataset path&#39;) parser.add_argument(&#39;--model&#39;, default=&#39;resnet18&#39;, type=str, help=&#39;model name&#39;) parser.add_argument(&#39;--train&#39;, default=False, action=&#39;store_true&#39;, help=&#39;train&#39;) action: -train 设置成一个开关，">
+
+<link rel="icon" href="/favicon.ico" />
+
+
+
+
+
+
+
+
+
+
+
+<link rel="stylesheet" href="/css/style.min.de488e0d4b09a0b9f6412192239661fda9bb9ea66e49d8f210bf0786a4e36acb.css" integrity="sha256-3kiODUsJoLn2QSGSI5Zh/am7nqZuSdjyEL8HhqTjass=" media="screen"
+  crossorigin="anonymous">
+
+
+
+
+
+<!--[if lte IE 9]>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/classlist/1.1.20170427/classList.min.js"></script>
+<![endif]-->
+
+<!--[if lt IE 9]>
+  <script src="https://cdn.jsdelivr.net/npm/html5shiv@3.7.3/dist/html5shiv.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/respond.js@1.4.2/dest/respond.min.js"></script>
+<![endif]-->
+
+
+
+
+
+<script>
+  (function () {
+    var savedTheme = localStorage.getItem('theme') || 'light';
+    document.documentElement.setAttribute('data-theme', savedTheme);
+  })();
+</script>
+
+
+</head>
+
+<body>
+  <div id="back-to-top"></div>
+
+  <header class="site-header">
+    
+<div class="desktop-header">
+  <div class="desktop-header-logo">
+    <a href="/" class="logo">
+      
+      Weiming Hu
+      
+    </a>
+  </div>
+
+  <nav class="desktop-navbar">
+    <ul id="menu" class="menu">
+      
+      
+      <li class="menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/">Home</a>
+        
+
+        
+
+      </li>
+      
+      <li class="menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/post">All posts</a>
+        
+
+        
+
+      </li>
+      
+      <li class="menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/categories/">Categories</a>
+        
+
+        
+
+      </li>
+      
+      <li class="menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/archives">Archives</a>
+        
+
+        
+
+      </li>
+      
+      <li class="menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/tags">Tags</a>
+        
+
+        
+
+      </li>
+      
+      <li class="menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/about/">About</a>
+        
+
+        
+
+      </li>
+      
+
+      
+      
+
+      
+
+      <li class="menu-item">
+        <a class="theme-toggle menu-item-link" href="javascript:void(0);">
+
+          
+<svg aria-hidden="true" class="lucide lucide-sun hi-svg-inline theme-icon-light" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+          
+<svg aria-hidden="true" class="lucide lucide-moon hi-svg-inline theme-icon-dark" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+        </a>
+      </li>
+
+      <li class="menu-item">
+        <a class="menu-item-link" href="http://localhost:1313/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+          title="rss" target="_blank">
+          
+<svg aria-hidden="true" class="lucide lucide-rss hi-svg-inline icon--rss" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+        </a>
+        
+      </li>
+    </ul>
+  </nav>
+</div>
+
+    
+
+<div class="mobile-header">
+  <div id="mobile-navbar" class="mobile-navbar">
+    <div id="mobile-navbar-icon" class="mobile-navbar-icon">
+      
+<svg aria-hidden="true" class="lucide lucide-menu hi-svg-inline icon--menu" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><line x1="4" x2="20" y1="12" y2="12"/><line x1="4" x2="20" y1="6" y2="6"/><line x1="4" x2="20" y1="18" y2="18"/></svg>
+    </div>
+    <div class="mobile-navbar-logo">
+      <a href="/" class="logo">Weiming Hu</a>
+    </div>
+  </div>
+
+  <div id="mobile-menu-close-modal" class="mobile-menu-close-modal"></div>
+  <nav id="mobile-menu" class="mobile-menu">
+    <ul class="mobile-menu-list">
+      <li class="mobile-menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/">Home</a>
+        
+        
+      </li><li class="mobile-menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/post">All posts</a>
+        
+        
+      </li><li class="mobile-menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/categories/">Categories</a>
+        
+        
+      </li><li class="mobile-menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/archives">Archives</a>
+        
+        
+      </li><li class="mobile-menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/tags">Tags</a>
+        
+        
+      </li><li class="mobile-menu-item">
+        
+        
+        
+        <a class="menu-item-link" href="http://localhost:1313/about/">About</a>
+        
+        
+      </li>
+      
+
+      
+
+      <li class="mobile-menu-item">
+        <a class="theme-toggle menu-item-link" href="javascript:void(0);">
+
+          
+<svg aria-hidden="true" class="lucide lucide-sun hi-svg-inline theme-icon-light" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+
+          
+<svg aria-hidden="true" class="lucide lucide-moon hi-svg-inline theme-icon-dark" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+
+        </a>
+      </li>
+
+      <li class="mobile-menu-item">
+        <a class="menu-item-link" href="http://localhost:1313/index.xml" rel="noopener alternate" type="application/rss&#43;xml"
+          title="rss" target="_blank">
+          
+<svg aria-hidden="true" class="lucide lucide-rss hi-svg-inline icon--rss" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+        </a>
+        
+      </li>
+    </ul>
+  </nav>
+</div>
+
+  </header>
+
+  
+
+  
+
+
+
+  <main id="main" class="main pico container">
+    <div class="content-wrapper">
+  <aside class="sidebar">
+  </aside>
+  <div id="content" class="content">
+    <article class="post">
+      
+      <header class="post-header">
+        <h1 class="post-title">PyTorch 学习</h1>
+        
+
+
+
+        <div class="post-meta-list">
+  <div class="post-meta-item post-meta-author">
+    
+<svg aria-hidden="true" class="lucide lucide-user-round-pen hi-svg-inline" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M2 21a8 8 0 0 1 10.821-7.487"/><path d="M21.378 16.626a1 1 0 0 0-3.004-3.004l-4.01 4.012a2 2 0 0 0-.506.854l-.837 2.87a.5.5 0 0 0 .62.62l2.87-.837a2 2 0 0 0 .854-.506z"/><circle cx="10" cy="8" r="5"/></svg>
+    Cory
+    
+  </div>
+
+  <div class="post-meta-item post-meta-time">
+    
+<svg aria-hidden="true" class="lucide lucide-calendar-days hi-svg-inline" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/><path d="M8 14h.01"/><path d="M12 14h.01"/><path d="M16 14h.01"/><path d="M8 18h.01"/><path d="M12 18h.01"/><path d="M16 18h.01"/></svg>
+    <time datetime=" 2022-07-28">
+      2022-07-28
+    </time>
+
+
+    
+    <span class="post-meta-item post-meta-lastmod">
+      (LastMod:
+      2023-03-21)
+    </span>
+    
+
+  </div>
+
+
+  <div class="post-meta__right">
+    <span class="post-meta-more">
+      7344 words -
+      15 min read
+      </span>
+
+    <div class="post-meta-item post-meta-category">
+      
+        
+          
+        <a href="http://localhost:1313/categories/%E7%BC%96%E7%A8%8B/">编程</a>
+    </div>
+
+
+    
+    
+
+
+    
+    
+  </div>
+</div>
+
+      </header>
+
+      
+      <div class="post-content">
+        <h1 id="1-python-模块">1. Python 模块</h1>
+<h2 id="11-parser-模块">1.1 parser 模块</h2>
+<h3 id="111-parseradd_argument">1.1.1 parser.add_argument()</h3>
+<p>在命令行给代码赋值，不需要反复在 python 中修改代码。</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--file-dir&#39;</span>,type<span style="color:#f92672">=</span>str, required<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>,help<span style="color:#f92672">=</span><span style="color:#e6db74">&#34;Input file directory&#34;</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e">## 实例</span>
+</span></span><span style="display:flex;"><span>parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--dataset&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;cifar10&#39;</span>, type<span style="color:#f92672">=</span>str, 
+</span></span><span style="display:flex;"><span>                    help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;dataset name&#39;</span>)
+</span></span><span style="display:flex;"><span>parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--dataset_path&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;/state/partition/imagenet-raw-data&#39;</span>, type<span style="color:#f92672">=</span>str, 
+</span></span><span style="display:flex;"><span>                    help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;dataset path&#39;</span>)
+</span></span><span style="display:flex;"><span>parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--model&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;resnet18&#39;</span>, type<span style="color:#f92672">=</span>str, 
+</span></span><span style="display:flex;"><span>                    help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;model name&#39;</span>)
+</span></span><span style="display:flex;"><span>parser<span style="color:#f92672">.</span>add_argument(<span style="color:#e6db74">&#39;--train&#39;</span>, default<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, action<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;store_true&#39;</span>, 
+</span></span><span style="display:flex;"><span>                    help<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;train&#39;</span>)</span></span></code></pre></div>
+</div>
+<p><code>action</code>: <code>-train</code> 设置成一个开关，</p>
+<ul>
+<li>如果使用了 <code>python -u -m --train ...</code>，就会把参数 <code>--train</code> 设置为 True</li>
+<li><code>python -u -m ...</code>，没有这个开关，则参数存储为 False</li>
+</ul>
+<h3 id="112-parserparse_args">1.1.2 parser.parse_args()</h3>
+<h2 id="12-tensor">1.2 Tensor</h2>
+<p>张量，多维数组。</p>
+<p>数据类型需要注意一下</p>
+<blockquote>
+<p>关于 dtype，PyTorch 提供了 9 种数据类型，共分为 3 大类：float (16-bit, 32-bit, 64-bit)、integer (unsigned-8-bit ,8-bit, 16-bit, 32-bit, 64-bit)、Boolean。模型参数和数据用的最多的类型是 float-32-bit。label 常用的类型是 integer-64-bit。</p>
+</blockquote>
+<h1 id="2-torch">2. torch</h1>
+<p>有很多方便的数学操作，同理，先了解有这个东西，需要用到时看具体的用法。包括 torch.rand(), torch.range(), torch.chunk(), torch.normal(), torch.add()</p>
+<p>pytorch 主要分为五大模块</p>
+<ul>
+<li>dataset</li>
+<li>model</li>
+<li>loss funtion</li>
+<li>optimizer</li>
+<li>迭代训练</li>
+</ul>
+<h2 id="21-nn">2.1 nn</h2>
+<p><code>torch.nn</code> 主要包含 4 个模块</p>
+<ul>
+<li>nn.Parameter, Tensor 子类，表示可学习的参数，如 weights, bias</li>
+<li>nn.Modules, 所有模型的基类，用于管理网络的属性</li>
+<li>nn.functional, 函数具体实现，如 conv, pool, 激活函数</li>
+<li>nn,init, 网络参数初始化方法</li>
+</ul>
+<h3 id="211-nnmodule">2.1.1 nn.Module</h3>
+<p>class torch.nn.Module 是所有网络的基类（Base class for all neural network modules），每个模型都应该继承这个类，参考lab1的网络模型</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Net</span>(nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        super(Net, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>conv1 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">5</span>, bias<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>pool <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>MaxPool2d(<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">2</span>) <span style="color:#75715e"># run after each conv (hence the 5x5 FC layer)</span>
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>conv2 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Conv2d(<span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">16</span>, <span style="color:#ae81ff">5</span>, bias<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(<span style="color:#ae81ff">16</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">120</span>, bias<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc2 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(<span style="color:#ae81ff">120</span>, <span style="color:#ae81ff">84</span>, bias<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc3 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(<span style="color:#ae81ff">84</span>, <span style="color:#ae81ff">10</span>, bias<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x: torch<span style="color:#f92672">.</span>Tensor) <span style="color:#f92672">-&gt;</span> torch<span style="color:#f92672">.</span>Tensor:
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>pool(F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>conv1(x)))
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>pool(F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>conv2(x)))
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">16</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span> <span style="color:#f92672">*</span> <span style="color:#ae81ff">5</span>)  
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>fc1(x)) <span style="color:#75715e">#输入是列向量</span>
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> F<span style="color:#f92672">.</span>relu(self<span style="color:#f92672">.</span>fc2(x))
+</span></span><span style="display:flex;"><span>        x <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc3(x)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> x
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>net <span style="color:#f92672">=</span> Net()<span style="color:#f92672">.</span>to(device)</span></span></code></pre></div>
+</div>
+<p>一般在 model.py 文件中定义 NN model，再举一个 ViT 的例子</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">ViT</span>(nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;&#34;&#34;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    Args:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        name (str): Model name, e.g. &#39;B_16&#39;
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        pretrained (bool): Load pretrained weights
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        in_channels (int): Number of channels in input data
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        num_classes (int): Number of classes, default 1000
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    References:
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">        [1] https://openreview.net/forum?id=YicbFdNTTy
+</span></span></span><span style="display:flex;"><span><span style="color:#e6db74">    &#34;&#34;&#34;</span>
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(
+</span></span><span style="display:flex;"><span>        self, 
+</span></span><span style="display:flex;"><span>        name: Optional[str] <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>, 
+</span></span><span style="display:flex;"><span>        pretrained: bool <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>, 
+</span></span><span style="display:flex;"><span>        patches: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">16</span>,
+</span></span><span style="display:flex;"><span>        dim: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">768</span>,
+</span></span><span style="display:flex;"><span>        ff_dim: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">3072</span>,
+</span></span><span style="display:flex;"><span>        num_heads: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>,
+</span></span><span style="display:flex;"><span>        num_layers: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">12</span>,
+</span></span><span style="display:flex;"><span>        attention_dropout_rate: float <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.0</span>,
+</span></span><span style="display:flex;"><span>        dropout_rate: float <span style="color:#f92672">=</span> <span style="color:#ae81ff">0.1</span>,
+</span></span><span style="display:flex;"><span>        representation_size: Optional[int] <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>        load_repr_layer: bool <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>,
+</span></span><span style="display:flex;"><span>        classifier: str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;token&#39;</span>,
+</span></span><span style="display:flex;"><span>        positional_embedding: str <span style="color:#f92672">=</span> <span style="color:#e6db74">&#39;1d&#39;</span>,
+</span></span><span style="display:flex;"><span>        in_channels: int <span style="color:#f92672">=</span> <span style="color:#ae81ff">3</span>, 
+</span></span><span style="display:flex;"><span>        image_size: Optional[int] <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>        num_classes: Optional[int] <span style="color:#f92672">=</span> <span style="color:#66d9ef">None</span>,
+</span></span><span style="display:flex;"><span>    ):
+</span></span><span style="display:flex;"><span>        super()<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span></span></span></code></pre></div>
+</div>
+<h4 id="2111-一些子函数">2.1.1.1 一些子函数</h4>
+<p>2022-08-06 22:31:40</p>
+<p>named_ 系列</p>
+<p><strong>model.named_parameters()</strong>，返回两个变量，比如赋值给 name(e.g. <code>name</code> -&gt; <code>stage_1.0.conv_b.weight</code>) 和 param (e.g. <code>param.requires_grad</code> -&gt; <code>False</code>)</p>
+<h3 id="212-nnlayer">2.1.2 nn.Layer</h3>
+<p><strong>model.named_modules()</strong>，返回所有模块的迭代器。打印的话会输出模型的结构，如同 <code>print(model)</code></p>
+<p><strong>model.named_children</strong>，named_modules 的子集，返回子模块的迭代器</p>
+<p><strong>model.children()</strong>，返回下一级模块的迭代器</p>
+<blockquote>
+<p>所以这个只是访问到一级，如果下一级是一个 Sequential，那么就还得继续迭代，这个时候用 .modules() 可能会更好</p>
+</blockquote>
+<p><strong>model.modules()</strong>，Returns an iterator over all modules in the network</p>
+<p>model.named_modules() 会有冗余的返回，这种情况下需要结合一些函数来过滤。</p>
+<p>nn 还包含了很多 layer，比如 <code>nn.Conv2d</code>, <code>nn.MaxPool1d</code>, <code>nn.ReLU</code></p>
+<h3 id="213-model-的创建">2.1.3 model 的创建</h3>
+<p>主要是 2 个要素，构建子模块和拼接子模块，把子模块理解为 layer，构建子模块就是 <code>__init__</code>，拼接子模块就是 <code>forward()</code></p>
+<ul>
+<li>调用 <code>model = ViT(model_name, pretrained=True)</code> 创建模型时，会调用 <code>__init__()</code> 方法创建模型的子模块</li>
+<li>训练时调用 <code>outputs = net(inputs)</code> 时，会进入 <code>module.py</code> 的 <code>call()</code> 函数中</li>
+<li>在 <code>__call__</code> 中调用 <code>result = self.forward(*input, **kwargs)</code> 函数，进入到模型的 <code>forward()</code> 函数中，进行前向传播</li>
+</ul>
+<h4 id="2131-model-实例">2.1.3.1 model() 实例</h4>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>model <span style="color:#f92672">=</span> quantize_model(model)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>outputs <span style="color:#f92672">=</span> model(inputs)
+</span></span><span style="display:flex;"><span>loss <span style="color:#f92672">=</span> criterion(outputs, targets)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">...</span></span></span></code></pre></div>
+</div>
+<p>在 <code>outputs = model(inputs)</code> 语句中会进入到 <code>class Conv2dQuantizer(nn.Module)</code> 的 forward 函数，<code>super(Conv2dQuantizer, self).__init__()</code> 是继承父类的构造函数 <code>__init__()</code>，从而使得 Conv2dQuantizer 中包含了父类</p>
+<h4 id="2132-modeleval">2.1.3.2 model.eval()</h4>
+<p>作用：不启动 BatchNormalization 和 Dropout，保证 BN 和 Dropout 不发生变化，pytorch 框架会自动把 BN 和 Dropout 固定住，不会取平均值，而是用训练好的值，不然的话，一旦 test 的 batch_size 过小，很容易就会被 BN 层导致生成图片颜色失真极大。</p>
+<p>Reference: <a href="https://zhuanlan.zhihu.com/p/357075502">https://zhuanlan.zhihu.com/p/357075502</a></p>
+<h4 id="2133-torchno_grad">2.1.3.3 torch.no_grad()</h4>
+<p>tensor 有一个参数是 <code>requires_grad</code>，如果设置为 True，则反向传播时该 tensor 会自动求导，默认为 False，反向传播时不求导，可以极大地节约显存或者内存。</p>
+<p><code>with torch.no_grad</code> 的作用：所有计算得出的 tensor 的 requires_grad 都自动设置为 False</p>
+<h3 id="214-crossentropyloss">2.1.4 CrossEntropyLoss</h3>
+<p>This criterion combines LogSoftmax and NLLLoss in one single class.</p>
+<h2 id="22-tensor">2.2 Tensor</h2>
+<p>Tensor 和 Numpy 中的 ndarrays 类似，但 Tensor 可以使用 GPU 进行加速计算。Tensor 可能是深度学习编程中，所有数据操作的基础单元。</p>
+<blockquote>
+<p>可以用 GPU 加速计算，这一点要记住</p>
+</blockquote>
+<p><code>Tensor</code> is a multi-dimensional matrix containing elements of a single data type</p>
+<p>可以用 list 作为参数来构造 tensor</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> torch<span style="color:#f92672">.</span>tensor([[<span style="color:#ae81ff">1.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>], [<span style="color:#ae81ff">1.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1.</span>]])
+</span></span><span style="display:flex;"><span>tensor([[ <span style="color:#ae81ff">1.0000</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0000</span>],
+</span></span><span style="display:flex;"><span>        [ <span style="color:#ae81ff">1.0000</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">1.0000</span>]])
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> torch<span style="color:#f92672">.</span>tensor(np<span style="color:#f92672">.</span>array([[<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>], [<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>]]))
+</span></span><span style="display:flex;"><span>tensor([[ <span style="color:#ae81ff">1</span>,  <span style="color:#ae81ff">2</span>,  <span style="color:#ae81ff">3</span>],
+</span></span><span style="display:flex;"><span>        [ <span style="color:#ae81ff">4</span>,  <span style="color:#ae81ff">5</span>,  <span style="color:#ae81ff">6</span>]])</span></span></code></pre></div>
+</div>
+<h3 id="221-view">2.2.1 view</h3>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># to one-dimension</span>
+</span></span><span style="display:flex;"><span>grad_output <span style="color:#f92672">=</span> grad_output<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># shape 是一个 list，存放了 tensor &#39;data&#39; 的整个维度信息</span>
+</span></span><span style="display:flex;"><span>shape <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>shape
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 按 data 的第一维展开，最终得到一个二维的 tensor。最终的数据，第一个维度是 data.shape[0]，和原来的第一个维度相同，第二个维度是后续所有元素的展开的总和</span>
+</span></span><span style="display:flex;"><span>data <span style="color:#f92672">=</span> data<span style="color:#f92672">.</span>view(data<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>], <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 示例</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> x<span style="color:#f92672">.</span>size()
+</span></span><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>Size([<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">4</span>])
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> y <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>view(<span style="color:#ae81ff">16</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> y<span style="color:#f92672">.</span>size()
+</span></span><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>Size([<span style="color:#ae81ff">16</span>])
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> z <span style="color:#f92672">=</span> x<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">8</span>)  <span style="color:#75715e"># the size -1 is inferred from other dimensions</span>
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> z<span style="color:#f92672">.</span>size()
+</span></span><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>Size([<span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">8</span>])</span></span></code></pre></div>
+</div>
+<h3 id="222-常用操作">2.2.2 常用操作</h3>
+<h4 id="2222-索引">2.2.2.2 索引</h4>
+<p><strong>获取某一维度的长度</strong></p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># input 是一个 size = 1 的 tuple</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># input[0] 是一个 tensor, input[0] 的 size: </span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 获取 tensor 第 1 个维度的 length</span>
+</span></span><span style="display:flex;"><span>input[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>size(<span style="color:#ae81ff">0</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 获取 tensor 第 2 个维度的 length</span>
+</span></span><span style="display:flex;"><span>input[<span style="color:#ae81ff">0</span>]<span style="color:#f92672">.</span>size(<span style="color:#ae81ff">1</span>)</span></span></code></pre></div>
+</div>
+<h4 id="2222-获取某-value-of-index-in-tensor">2.2.2.2 获取某 value of index in tensor</h4>
+<p>主要是用这个 nonzero</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>t <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>Tensor([<span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>])
+</span></span><span style="display:flex;"><span>print ((t <span style="color:#f92672">==</span> <span style="color:#ae81ff">2</span>)<span style="color:#f92672">.</span>nonzero(as_tuple<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>)[<span style="color:#ae81ff">0</span>])</span></span></code></pre></div>
+</div>
+<h4 id="2223-tensor-排序">2.2.2.3 tensor 排序</h4>
+<p>tensor.sort()</p>
+<p>2022-09-12 23:37:09，有一些坑，注意返回的是一个 tuple，所以要注意接收的形式。</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>grad_output_sorted, grad_output_indices <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>sort(grad_output)
+</span></span><span style="display:flex;"><span>grad_output_sorted <span style="color:#f92672">=</span> grad_output_sorted<span style="color:#f92672">.</span>double()    <span style="color:#75715e"># avoid RuntimeError: Found dtype Double but expected Float</span></span></span></code></pre></div>
+</div>
+<h4 id="2224-获取-tensor-中某-percentile">2.2.2.4 获取 tensor 中某 percentile</h4>
+<p>tensorflow 好像是支持 tfp.stats.percentile，直接获取 Finding p% of smallest tensor values</p>
+<p>直接用 <code>np.percentile(tensor, )</code></p>
+<h4 id="2225-torchwhere">2.2.2.5 torch.where()</h4>
+<p>快速地移除 tensor 中不满足某条件的 element</p>
+<p>比如，我们把值大于 0.5 的值置为0</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>randn(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> y <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>ones(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">2</span>)
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> x
+</span></span><span style="display:flex;"><span>tensor([[<span style="color:#f92672">-</span><span style="color:#ae81ff">0.4620</span>,  <span style="color:#ae81ff">0.3139</span>],
+</span></span><span style="display:flex;"><span>        [ <span style="color:#ae81ff">0.3898</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.7197</span>],
+</span></span><span style="display:flex;"><span>        [ <span style="color:#ae81ff">0.0478</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">0.1657</span>]])
+</span></span><span style="display:flex;"><span><span style="color:#f92672">&gt;&gt;&gt;</span> torch<span style="color:#f92672">.</span>where(x <span style="color:#f92672">&gt;</span> <span style="color:#ae81ff">0</span>, x, y)
+</span></span><span style="display:flex;"><span>tensor([[ <span style="color:#ae81ff">1.0000</span>,  <span style="color:#ae81ff">0.3139</span>],
+</span></span><span style="display:flex;"><span>        [ <span style="color:#ae81ff">0.3898</span>,  <span style="color:#ae81ff">1.0000</span>],
+</span></span><span style="display:flex;"><span>        [ <span style="color:#ae81ff">0.0478</span>,  <span style="color:#ae81ff">1.0000</span>]])</span></span></code></pre></div>
+</div>
+<p>实际</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>grad_output_sorted <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>where(grad_output_sorted <span style="color:#f92672">&gt;</span> max_75, <span style="color:#ae81ff">0.</span>, grad_output_sorted)
+</span></span><span style="display:flex;"><span>grad_output_sorted <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>where(grad_output_sorted <span style="color:#f92672">&lt;</span> min_75, <span style="color:#ae81ff">0.</span>, grad_output_sorted)</span></span></code></pre></div>
+</div>
+<h4 id="2226-torchcat-">2.2.2.6 torch.cat( )</h4>
+<p>删除掉 Tensor 中指定 value 的元素，比如</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#75715e"># remove i-th element</span>
+</span></span><span style="display:flex;"><span>i <span style="color:#f92672">=</span> <span style="color:#ae81ff">2</span>
+</span></span><span style="display:flex;"><span>T <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>tensor([<span style="color:#ae81ff">1</span>,<span style="color:#ae81ff">2</span>,<span style="color:#ae81ff">3</span>,<span style="color:#ae81ff">4</span>,<span style="color:#ae81ff">5</span>])
+</span></span><span style="display:flex;"><span>T <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>cat([T[<span style="color:#ae81ff">0</span>:i], T[i<span style="color:#f92672">+</span><span style="color:#ae81ff">1</span>:<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>]])</span></span></code></pre></div>
+</div>
+<h4 id="222x-综合">2.2.2.X 综合</h4>
+<p>综上，有一个需求。对于一个一维 Tensor，消除掉其前25%的值，得到剩下75%的tensor</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"></code></pre></div>
+</div>
+<h3 id="223-function">2.2.3 Function</h3>
+<h4 id="2231-tensordata-tensordetach">2.2.3.1 tensor.data, tensor.detach()</h4>
+<p>detach()和data生成的都是无梯度的纯tensor,并且通过同一个tensor数据操作，是共享一块数据内存。主要目的是让其独立于计算图之外</p>
+<h4 id="2232-tensormax-tensorabs-tensorunsqueeze-tensordim-tensorshape">2.2.3.2 tensor.max, tensor.abs, tensor.unsqueeze, tensor.dim, tensor.shape</h4>
+<p>tensor 原本是 (64, 128, 768)，经过 <code>view</code> 将其二维化，第二维等于原本最后一个维度的 size，也就是 768。<code>max(1)</code> 表示返回第二个维度的最大值，也就是 768 个元素中的最大值，最后得到的 tensor size 就是 (64*128)，然后通过 <code>unsqueeze</code> 转换为 (64*128, 1) dimension</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x_max, _ <span style="color:#f92672">=</span> tensor<span style="color:#f92672">.</span>view(<span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, tensor<span style="color:#f92672">.</span>shape[tensor<span style="color:#f92672">.</span>dim() <span style="color:#f92672">-</span> <span style="color:#ae81ff">1</span>])<span style="color:#f92672">.</span>abs()<span style="color:#f92672">.</span>max(<span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>x_max <span style="color:#f92672">=</span> x_max<span style="color:#f92672">.</span>unsqueeze(<span style="color:#ae81ff">1</span>) </span></span></code></pre></div>
+</div>
+<h4 id="2233-torcndot-torchmv-torchmm">2.2.3.3 torcn.dot. torch.mv, torch.mm</h4>
+<p>torch.dot: 向量点积</p>
+<p>torch.mv: 矩阵-向量积</p>
+<p>torch.mm: 矩阵-矩阵乘法</p>
+<h2 id="23-autograd">2.3 autograd</h2>
+<p>weight 更新依赖于梯度的计算，在 pytorch 中搭建好 forward 计算图，利用 <code>torch.autograd</code> 自动求导得到所有 gradient of tensor</p>
+<h2 id="24-data-模块">2.4 data 模块</h2>
+<p>数据模块可以细分为 4 个部分</p>
+<ul>
+<li>数据收集：样本，label</li>
+<li>数据划分：train set, valid set, test set</li>
+<li>数据读取：pytorch dataloader 模块，dataloader 包括 sampler, dataset
+<ul>
+<li>sampler: 生成索引(index)</li>
+<li>dataset: 根据生成的索引(index)读取样本以及标签(label)</li>
+</ul>
+</li>
+<li>数据预处理：对应于 pytorch transforms</li>
+</ul>
+<h3 id="241-dataloader">2.4.1 DataLoader</h3>
+<p><code>torch.utils.data.DataLoader()</code>, 构建可迭代的数据装载器</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>utils<span style="color:#f92672">.</span>data<span style="color:#f92672">.</span>DataLoader(dataset, batch_size<span style="color:#f92672">=</span><span style="color:#ae81ff">1</span>, shuffle<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, sampler<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, batch_sampler<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, num_workers<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, collate_fn<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, pin_memory<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, drop_last<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, timeout<span style="color:#f92672">=</span><span style="color:#ae81ff">0</span>, worker_init_fn<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>, multiprocessing_context<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>)</span></span></code></pre></div>
+</div>
+<ul>
+<li>dataset: torchvision.datasets 类，决定数据从哪里读取，如何读取，以及是否下载，是否训练，给出一个例子</li>
+</ul>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>cifar100_test <span style="color:#f92672">=</span> torchvision<span style="color:#f92672">.</span>datasets<span style="color:#f92672">.</span>CIFAR100(root<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;./data&#39;</span>, train<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>, download<span style="color:#f92672">=</span><span style="color:#66d9ef">True</span>, transform<span style="color:#f92672">=</span>transform_test)</span></span></code></pre></div>
+</div>
+<ul>
+<li>num_works: 是否多进程读取，指定读取的进程数量</li>
+<li>shuffle: 每个 epoch 是否乱序</li>
+<li>sampler: 指定一个 <code>torch.utils.data.distributed.DistributedSampler</code> 类型</li>
+</ul>
+<p><strong>其他名词</strong></p>
+<ul>
+<li>Epoch: 所有训练样本都已经输入到模型中，称为一个 epoch</li>
+<li>Iteration: a batch of 样本已经输入到模型中</li>
+<li>Batchsize: 批大小，决定一个 iteration 有多少样本，也决定了一个 Epoch 有多少个 Iteration</li>
+</ul>
+<h4 id="2411-nvidiadali">2.4.1.1 NVIDIA.DALI</h4>
+<p>2022-07-28 21:24:17 了解到这玩意儿</p>
+<h3 id="242-dataset">2.4.2 DataSet</h3>
+<p><code>torch.utils.data.Dataset</code>, 抽象类，所有自定义大的 DataSet 都需要继承该类。</p>
+<p>在Dataset 的初始化函数中会调用 <code>get_img_info()</code> 方法。</p>
+<h3 id="242-torchvision">2.4.2 torchvision</h3>
+<p>计算机视觉工具包，有 3 个主要的模块</p>
+<ul>
+<li><code>torchvision.transforms</code>, 包括常用的图像预处理方法</li>
+<li><code>torchvision.datasets</code>, 包括常用的 dataset, e.g. MNIST, CIFAR-10, ImageNet</li>
+<li><code>torchvision.models</code>, 常用的 pre-trained models, e.g. AlexNet, VGG, ResNet, GoogleNet</li>
+</ul>
+<p>data 的数量和分布对模型训练的结果起决定性的作用，需要对 data 进行 pre-process 和数据增强。目的是增加数据的多样性，提高模型的泛化能力。</p>
+<h3 id="243-batch-size">2.4.3 Batch Size</h3>
+<p>2022-08-09 18:24:56，学习一下梯度，训练，和 batch size 的关系。</p>
+<p>通过举例来学习，比如目前使用的网络，batch_size = 128，训练数据行数为 $|x| = 1024$，代表每次网络模型的迭代使用了 128 个样本，128 个样本来自 $x$，可能是无序抽样，也可能是有序抽样。</p>
+<p>每个 epoch 包含 1024/128 iterations</p>
+<blockquote>
+<p>同一个 epoch，我用第一个 batch 完成了一次前向反向，接下来的第二次 iteration，换了一个 batch，但是 weight 已经更新过了
+这个就是之前卡住我的点，要理解这一点。训练是为了让 weight 收敛。</p>
+</blockquote>
+<h4 id="2431-epoch-bach-iteration">2.4.3.1 epoch, bach, iteration</h4>
+<p>epoch: 把所有训练数据丢进网络的周期</p>
+<p>batch_size: 一次迭代的数据量；这个从一些说法中，看起来是图片的张数</p>
+<p>iteration: 完成所有训练数据的迭代，所需要的次数。</p>
+<blockquote>
+<p>batch_size = 128，训练数据行数为 $|x| = 1024$，代表每次网络模型的迭代使用了 128 个样本，128 个样本来自 $x$，可能是无序抽样，也可能是有序抽样。
+每个 epoch 包含 1024/128 iterations</p>
+</blockquote>
+<p>&#x2b50; 注意，第一个 epoch 结束之后，weight 是没有 reset 的，也就是说第二个 epoch 仍然接着更新 weight。</p>
+<blockquote>
+<p>epoch，背诵词典次数多了，就记牢了。当然，也有可能背傻了（过拟合）</p>
+</blockquote>
+<h2 id="25-模型训练">2.5 模型训练</h2>
+<h3 id="251-损失函数">2.5.1 损失函数</h3>
+<p>Loss Function, 衡量模型输出与真实标签之间的差异，也就是 <strong>一个</strong> 样本的 output 和真实标签（label）的差异</p>
+<p>Cost Function, 计算整个样本集的 output 和真实标签（label）的差异</p>
+<p>pytorch 中的损失函数也是继承于 <code>nn.Module</code></p>
+<h3 id="252-optimizer">2.5.2 optimizer</h3>
+<p>PyTorch 中的优化器是用于管理并更新模型中 <strong>可学习参数的值</strong>，使得模型输出更加接近真实标签。</p>
+<h4 id="2521-属性">2.5.2.1 属性</h4>
+<ul>
+<li>defaults: 优化器的超参数，如 weight_decay, momentum</li>
+<li>state: 参数的缓存，如 momentum 中需要用到前几次的梯度，缓存在这个变量中</li>
+<li>param_groups: 管理的参数组，是一个 list，其中每个元素是 dict，包括 momentum, lr, weight_decay, params</li>
+<li>_step_count: 记录更新次数，在学习率调整中使用</li>
+</ul>
+<h4 id="2522-optimizer-方法">2.5.2.2 optimizer 方法</h4>
+<ul>
+<li>zero_grad(): 清空所管理参数的梯度。因为 pytorch 张量的梯度不会自动清零，因此每次反向传播之后都需要清空梯度</li>
+<li>step(): 执行一步梯度更新</li>
+<li>add_param_group(): 添加参数组</li>
+<li>state_dict(): 获取优化器当前状态</li>
+<li>load_state_dict(): 加载状态信息的 dict</li>
+</ul>
+<h4 id="2523-learning-rate">2.5.2.3 learning rate</h4>
+<p>learning rate, 影响 loss function 收敛的重要因素，控制了梯度下降更新的步伐</p>
+<h2 id="26-regularization-正则化">2.6 Regularization 正则化</h2>
+<p>正则化是一种减少方差的策略</p>
+<h3 id="261-weight-decay">2.6.1 weight decay</h3>
+<p>weight decay 是优化器中的一个参数，在执行 <code>optim_wdecay_step()</code> 时，会计算 weight decay 后的梯度</p>
+<h3 id="262-dropout">2.6.2 Dropout</h3>
+<p>一种抑制过拟合的方法。理解为放缩数据</p>
+<h3 id="263-normalization">2.6.3 Normalization</h3>
+<p>Batch Normalization, 经过 normalization 后的数据服从 $N(0, 1)$ 分布，有如下优点</p>
+<ul>
+<li>可以使用更大的 lr，加速模型收敛</li>
+<li>可以不用精心设计 weight 初始化</li>
+<li>可以不用 dropout 或者较小的 dropout</li>
+<li>可以不用 L2 或者较小的 weight decay</li>
+<li>可以不用 LRN (Local Response Normalization)</li>
+</ul>
+<h2 id="27-model-相关的操作">2.7 Model 相关的操作</h2>
+<h3 id="271-torchsave">2.7.1 torch.save</h3>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>torch<span style="color:#f92672">.</span>save(obj, f, pickle_module, pickle_protocol<span style="color:#f92672">=</span><span style="color:#ae81ff">2</span>, _use_new_zipfile_serialization<span style="color:#f92672">=</span><span style="color:#66d9ef">False</span>)</span></span></code></pre></div>
+</div>
+<p>obj 是保存的对象，f 是输出路径。还有 2 种方式</p>
+<ul>
+<li>保存整个 Module, <code>torch.savev(net, path)</code> 这种方法比较耗时，保存的文件比较大</li>
+<li>只保存模型的参数，<code>torch.savev(state_sict, path)</code>，推荐，保存的文件比较小</li>
+</ul>
+<h3 id="272-torchload">2.7.2 torch.load</h3>
+<p>对应于 save</p>
+<h3 id="273-fine-tuning">2.7.3 Fine-tuning</h3>
+<p>一种迁移学习的方法，比如在人脸识别应用中，ImageNet 作为 source domain，人脸数据作为 target domain。通常 source domain 比 target domain 大很多，可以利用 ImageNet 训练好的网络应用到人脸识别中。</p>
+<p><strong>理解</strong>
+对于一个模型，可以分为流程在前面的 feature extractor （conv 层） 和后面的 classifier。fine-tune 通常不改变 feature extractor 的 weight，也就是冻结 conv 层；改变最后一个 fc layer 的输出来适应目标任务，训练后面 classifier 的 weight。</p>
+<p>通常 target domain 的数据比较小，不足以训练全部参数，容易导致过拟合，因此不改变 feature extractor 的 weight。</p>
+<p><strong>Step</strong></p>
+<ul>
+<li>获取 pre-trained model 参数</li>
+<li><code>load_state_dict()</code> 把参数加载到模型中</li>
+<li>修改输出层</li>
+<li>固定 feature extractor 的参数，通常有 2 种做法
+<ul>
+<li>固定 conv 层的预训练参数。可以设置 <code>requires_grad = False</code> 或者 <code>lr = 0</code></li>
+<li>通过 <code>params_group</code> 给 feature extractor 设置一个较小的 lr</li>
+</ul>
+</li>
+</ul>
+<h2 id="28-function">2.8 Function</h2>
+<h3 id="281-torchtopk">2.8.1 torch.topk()</h3>
+<p><strong>作用：</strong> 取一个 tensor 的 topk 元素（降序后的前 k 个大小的元素值及索引）</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>K <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>numel(data) <span style="color:#f92672">//</span> data<span style="color:#f92672">.</span>shape[<span style="color:#ae81ff">0</span>] <span style="color:#f92672">*</span> <span style="color:#ae81ff">4</span> <span style="color:#f92672">//</span> <span style="color:#ae81ff">256</span>
+</span></span><span style="display:flex;"><span>            _, index <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>topk(data<span style="color:#f92672">.</span>abs(), K, dim <span style="color:#f92672">=</span> <span style="color:#f92672">-</span><span style="color:#ae81ff">1</span>, largest <span style="color:#f92672">=</span> <span style="color:#66d9ef">True</span>, sorted <span style="color:#f92672">=</span> <span style="color:#66d9ef">False</span>)</span></span></code></pre></div>
+</div>
+<h3 id="282-torchnumel">2.8.2 torch.numel</h3>
+<p>返回 tensor 中的元素总数量</p>
+<h1 id="3-pytorch-分布式训练">3. pytorch 分布式训练</h1>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>dist<span style="color:#f92672">.</span>init_process_group(backend<span style="color:#f92672">=</span><span style="color:#e6db74">&#39;nccl&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># backend是后台利用nccl进行通信</span></span></span></code></pre></div>
+</div>
+<p>调试时报错，如何在调试分布式训练的模型</p>
+<h2 id="31-debug-分布式训练的模型">3.1 debug 分布式训练的模型</h2>
+<p>修改 python <code>launch.json</code> 文件，把 program 换成 torch.distribution 的 launch.py</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>{
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">//</span> Use IntelliSense to learn about possible attributes<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">//</span> Hover to view descriptions of existing attributes<span style="color:#f92672">.</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#f92672">//</span> For more information, visit: https:<span style="color:#f92672">//</span>go<span style="color:#f92672">.</span>microsoft<span style="color:#f92672">.</span>com<span style="color:#f92672">/</span>fwlink<span style="color:#f92672">/</span><span style="color:#960050;background-color:#1e0010">?</span>linkid<span style="color:#f92672">=</span><span style="color:#ae81ff">830387</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;version&#34;</span>: <span style="color:#e6db74">&#34;0.2.0&#34;</span>,
+</span></span><span style="display:flex;"><span>    <span style="color:#e6db74">&#34;configurations&#34;</span>: [
+</span></span><span style="display:flex;"><span>        {
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;name&#34;</span>: <span style="color:#e6db74">&#34;Python: Current File&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;type&#34;</span>: <span style="color:#e6db74">&#34;python&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;request&#34;</span>: <span style="color:#e6db74">&#34;launch&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;program&#34;</span>: <span style="color:#e6db74">&#34;/nvme/wmhu/anaconda3/envs/ant/lib/python3.8/site-packages/torch/distributed/launch.py&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;console&#34;</span>: <span style="color:#e6db74">&#34;integratedTerminal&#34;</span>,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;justMyCode&#34;</span>: true,
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;args&#34;</span>: [
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;--nproc_per_node=1&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;/nvme/wmhu/work/ANT/ImageNet/main.py&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;--dataset=imagenet&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;--model=vit_b_16&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;--dataset_path=/nvme/imagenet&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;--epoch=4&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;--mode=int&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;--wbit=4&#34;</span>,
+</span></span><span style="display:flex;"><span>                <span style="color:#e6db74">&#34;--abit=4&#34;</span>
+</span></span><span style="display:flex;"><span>            ],
+</span></span><span style="display:flex;"><span>            <span style="color:#e6db74">&#34;env&#34;</span>:{<span style="color:#e6db74">&#34;CUDA_VISIBLE_DIVICES&#34;</span>:<span style="color:#e6db74">&#34;0&#34;</span>},
+</span></span><span style="display:flex;"><span>        }
+</span></span><span style="display:flex;"><span>    ]
+</span></span><span style="display:flex;"><span>}</span></span></code></pre></div>
+</div>
+<p>注意 <code>nproc_per_node</code> 是 Python 自带的参数，因此可以写到里面，对于 <code>--dataset=imagenet</code> 会有报错。</p>
+<p><code>--dataset=imagenet</code> 要放到 <code>main.py</code> 的后面，这个方法相当于用调整参数的形式来达到目的。不太有通用性，相当于专门改了一个 <code>launch.json</code> 文件。</p>
+<h2 id="32-几种并行的方式">3.2 几种并行的方式</h2>
+<p>转载自 <a href="https://zhuanlan.zhihu.com/p/430383324">https://zhuanlan.zhihu.com/p/430383324</a></p>
+<h3 id="321-data-parallelism">3.2.1 Data Parallelism</h3>
+<p>模型在forward和backward的中间计算过程都会有中间状态，这些中间状态通常占用的空间是和batch size成正比的。</p>
+<blockquote>
+<p>也就是梯度等信息吧</p>
+</blockquote>
+<p>方法是将大的 batch size 切分都多个 GPU 上；不过这种方式主要切分的是 batch size 正比的部分中间状态。但是对于parameter, optimizer state等batch size无关的空间开销是无能为力的。</p>
+<!-- raw HTML omitted -->
+<p><strong>什么是 parameter？</strong></p>
+<p>parameter: 模型可以根据数据可以自动学习出的变量，应该就是参数。比如，深度学习的权重，偏差等</p>
+<p>hyperparameter: 就是用来确定模型的一些参数，超参数不同，模型是不同的(这个模型不同的意思就是有微小的区别，比如假设都是CNN模型，如果层数不同，模型不一样，虽然都是CNN模型哈。)，超参数一般就是根据经验确定的变量。在深度学习中，超参数有：<strong>学习速率，迭代次数，层数，每层神经元的个数</strong> 等等。</p>
+<h3 id="322-model-parallelism">3.2.2 Model Parallelism</h3>
+<p>把模型本身进行切分，使得每个 GPU 卡只需要存储模型的一部分。</p>
+<p>MP在一些应用场景（比如上面说的ResNet例子）在计算一个minibatch时，硬件是依次激活的，其他硬件都在等待，硬件的利用率会非常的低。</p>
+<blockquote>
+<p>简单地说，就是并行比较差</p>
+</blockquote>
+<h3 id="323-pipeline-parallelism">3.2.3 Pipeline Parallelism</h3>
+<p>前面提到了MP一个比较大的问题是GPU利用率低。当没有计算到某个GPU上的模型分片时，这个GPU常常是闲着的。PP一定程度上解决了这个问题。</p>
+<p>PP的思想也比较简单，使用了经典的Pipeline思想。在模型计算流水线上，每个GPU只负责模型的一个分片，计算完就交给下一个GPU完成下一个模型分片的计算。当下个GPU在计算时，上一个GPU开始算下一个minibatch属于它的模型分片。</p>
+<blockquote>
+<p>经典的流水线设计思想</p>
+</blockquote>
+<h1 id="4-hook">4. Hook</h1>
+<p>这个功能被广泛用于可视化神经网络中间层的 feature、gradient，从而诊断神经网络中可能出现的问题，分析网络有效性。</p>
+<p>视频：https://www.youtube.com/watch?v=syLFCVYua6Q</p>
+<p>pytorch 计算图似乎只会保留叶子节点的梯度，舍弃中间的梯度</p>
+<blockquote>
+<p>简而言之，register_hook的作用是，反向传播时，除了完成原有的反传，额外多完成一些任务。你可以定义一个中间变量的hook，将它的grad值打印出来，当然你也可以定义一个全局列表，将每次的grad值添加到里面去。</p>
+</blockquote>
+<p>什么是中间变量：有的博客里有提到，似乎是没有直接指定数值，而是通过计算得到的变量。比如下面的 z 就是中间变量。z 的梯度是不会保存的</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>Tensor([<span style="color:#ae81ff">0</span>, <span style="color:#ae81ff">1</span>, <span style="color:#ae81ff">2</span>, <span style="color:#ae81ff">3</span>])<span style="color:#f92672">.</span>requires_grad_()
+</span></span><span style="display:flex;"><span>y <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>Tensor([<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">5</span>, <span style="color:#ae81ff">6</span>, <span style="color:#ae81ff">7</span>])<span style="color:#f92672">.</span>requires_grad_()
+</span></span><span style="display:flex;"><span>z <span style="color:#f92672">=</span> x <span style="color:#f92672">+</span> y       <span style="color:#75715e"># 中间变量</span></span></span></code></pre></div>
+</div>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>output <span style="color:#f92672">=</span> model(input)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 此时会做几件事，一个是调用 forward 方法计算结果，一个是判断有没有注册 forward_hook，有的话就将 forward 的输入及结果作为 hook 的实参</span></span></span></code></pre></div>
+</div>
+<h2 id="41-register_hook">4.1 register_hook</h2>
+<p><code>z.register_hook(hook_fn)</code>，这个 hook_fn 是一个用户自定义函数，返回 Tensor （如果需要对 grad 进行修改）或者 None（用于直接打印，不修改），所以直接用 lambda 函数即可，<code>z.register_hook(lambda grad: print(grad))</code></p>
+<blockquote>
+<p>个人理解下来，register_hook 可以实现保留中间变量梯度的功能，而且不像 <code>retain_grad</code> 那样会带来很大的开销</p>
+</blockquote>
+<h3 id="411-register_forward_hook">4.1.1 register_forward_hook</h3>
+<p><strong>作用</strong>：获取中间层的 feature map</p>
+<p>通常，pytorch 只提供了网络整体的输入和输出，对于夹在网络中间的模块，很难获得他的输入输出。除非设计网络时，在 forward 函数的返回值中包含中间 module 的输出。总而言之别的方法都比较麻烦，pytorch 设计好了 register_forward_hook 和 register_backward_hook。</p>
+<p>相比针对 tensor 的 register_hook，这个 forward hook 没有返回值，也就是不能改变输入，只能打印。</p>
+<p><strong>注意</strong>，在 forward hook 中，input 是 x，而不包括 W 和 b。</p>
+<p>代码实例，讲的非常清晰，来自<a href="https://cloud.tencent.com/developer/article/1475430">博客</a></p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span>Class Model(nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        <span style="color:#f92672">...</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 全局变量，用于存储中间层的 feature</span>
+</span></span><span style="display:flex;"><span>total_feature_out <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>total_feature_in <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> Model()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 定义 forward hook function</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hook_fn_forward</span>(module, input, output):
+</span></span><span style="display:flex;"><span>    print(module) <span style="color:#75715e"># 用于区分模块</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;input&#39;</span>, input) <span style="color:#75715e"># 首先打印出来</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;output&#39;</span>, output)
+</span></span><span style="display:flex;"><span>    total_feature_out<span style="color:#f92672">.</span>append(output) <span style="color:#75715e"># 然后分别存入全局 list 中</span>
+</span></span><span style="display:flex;"><span>    total_feature_in<span style="color:#f92672">.</span>append(input)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 给每个 module 都装上 hook</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name, module <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>named_children():
+</span></span><span style="display:flex;"><span>    module<span style="color:#f92672">.</span>register_forward_hook(hook_fn_forward)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 前向传播和回传</span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>Tensor([[<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>]])<span style="color:#f92672">.</span>requires_grad_() 
+</span></span><span style="display:flex;"><span>o <span style="color:#f92672">=</span> model(x)
+</span></span><span style="display:flex;"><span>o<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;==========Saved inputs and outputs==========&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> idx <span style="color:#f92672">in</span> range(len(total_feature_in)):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;input: &#39;</span>, total_feature_out[idx])
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;output: &#39;</span>, total_feature_out[idx])</span></span></code></pre></div>
+</div>
+<h3 id="412-register_backward_hook">4.1.2 register_backward_hook()</h3>
+<h4 id="4121-使用方法和示例">4.1.2.1 使用方法和示例</h4>
+<p><strong>作用</strong>：用于获取梯度</p>
+<p><strong>使用</strong>：<code>module.register_backward_hook(hook_fn)</code>, <code>hook_fn(module, grad_input, grad_output) -&gt; Tensor or None</code></p>
+<p>如果有多个输入或者输出，grad_input, grad_output 可以是 tuple 类型。比如对于线性模块，grad_input 是一个三元组，分别是 $g_{bias}$, $g_x$, $g_W$，对 bias 的导数，对 x 的导数以及对 weight 的导数。</p>
+<p>直接看代码，这个代码是可以直接跑的，不得不说写的确实很好。</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> torch
+</span></span><span style="display:flex;"><span><span style="color:#f92672">from</span> torch <span style="color:#f92672">import</span> nn
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">class</span> <span style="color:#a6e22e">Model</span>(nn<span style="color:#f92672">.</span>Module):
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> __init__(self):
+</span></span><span style="display:flex;"><span>        super(Model, self)<span style="color:#f92672">.</span>__init__()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc1 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(<span style="color:#ae81ff">3</span>, <span style="color:#ae81ff">4</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>relu1 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>ReLU()
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>fc2 <span style="color:#f92672">=</span> nn<span style="color:#f92672">.</span>Linear(<span style="color:#ae81ff">4</span>, <span style="color:#ae81ff">1</span>)
+</span></span><span style="display:flex;"><span>        self<span style="color:#f92672">.</span>initialize()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">initialize</span>(self):
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">with</span> torch<span style="color:#f92672">.</span>no_grad():
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>fc1<span style="color:#f92672">.</span>weight <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Parameter(
+</span></span><span style="display:flex;"><span>                torch<span style="color:#f92672">.</span>Tensor([[<span style="color:#ae81ff">1.</span>, <span style="color:#ae81ff">2.</span>, <span style="color:#ae81ff">3.</span>],
+</span></span><span style="display:flex;"><span>                              [<span style="color:#f92672">-</span><span style="color:#ae81ff">4.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">5.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">6.</span>],
+</span></span><span style="display:flex;"><span>                              [<span style="color:#ae81ff">7.</span>, <span style="color:#ae81ff">8.</span>, <span style="color:#ae81ff">9.</span>],
+</span></span><span style="display:flex;"><span>                              [<span style="color:#f92672">-</span><span style="color:#ae81ff">10.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">11.</span>, <span style="color:#f92672">-</span><span style="color:#ae81ff">12.</span>]]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>fc1<span style="color:#f92672">.</span>bias <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Parameter(torch<span style="color:#f92672">.</span>Tensor([<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">2.0</span>, <span style="color:#ae81ff">3.0</span>, <span style="color:#ae81ff">4.0</span>]))
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>fc2<span style="color:#f92672">.</span>weight <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Parameter(torch<span style="color:#f92672">.</span>Tensor([[<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">2.0</span>, <span style="color:#ae81ff">3.0</span>, <span style="color:#ae81ff">4.0</span>]]))
+</span></span><span style="display:flex;"><span>            self<span style="color:#f92672">.</span>fc2<span style="color:#f92672">.</span>bias <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>nn<span style="color:#f92672">.</span>Parameter(torch<span style="color:#f92672">.</span>Tensor([<span style="color:#ae81ff">1.0</span>]))
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>    <span style="color:#66d9ef">def</span> <span style="color:#a6e22e">forward</span>(self, x):
+</span></span><span style="display:flex;"><span>        o <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc1(x)
+</span></span><span style="display:flex;"><span>        o <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>relu1(o)
+</span></span><span style="display:flex;"><span>        o <span style="color:#f92672">=</span> self<span style="color:#f92672">.</span>fc2(o)
+</span></span><span style="display:flex;"><span>        <span style="color:#66d9ef">return</span> o
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 全局变量，用于存储中间层的 feature</span>
+</span></span><span style="display:flex;"><span>total_grad_out <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>total_grad_in <span style="color:#f92672">=</span> []
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>model <span style="color:#f92672">=</span> Model()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 定义 forward hook function</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">hook_fn_backward</span>(module, grad_input, grad_output):
+</span></span><span style="display:flex;"><span>    print(module) <span style="color:#75715e"># 用于区分模块</span>
+</span></span><span style="display:flex;"><span>    <span style="color:#75715e"># 为了符合反向传播顺序，先打印 grad_output</span>
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;grad_output&#39;</span>, grad_output)
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;grad_input&#39;</span>, grad_input) 
+</span></span><span style="display:flex;"><span>    total_grad_out<span style="color:#f92672">.</span>append(grad_output) 
+</span></span><span style="display:flex;"><span>    total_grad_in<span style="color:#f92672">.</span>append(grad_input)
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 给每个 module 都装上 hook</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> name, module <span style="color:#f92672">in</span> model<span style="color:#f92672">.</span>named_children():
+</span></span><span style="display:flex;"><span>    module<span style="color:#f92672">.</span>register_backward_hook(hook_fn_backward)
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 前向传播和回传</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 这里的 requires_grad 很重要，如果不加，backward hook</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 执行到第一层，对 x 的导数将为 None，某英文博客作者这里疏忽了</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 此外再强调一遍 x 的维度，一定不能写成 torch.Tensor([1.0, 1.0, 1.0]).requires_grad_()</span>
+</span></span><span style="display:flex;"><span><span style="color:#75715e"># 否则 backward hook 会出问题。</span>
+</span></span><span style="display:flex;"><span>x <span style="color:#f92672">=</span> torch<span style="color:#f92672">.</span>Tensor([[<span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>, <span style="color:#ae81ff">1.0</span>]])<span style="color:#f92672">.</span>requires_grad_()
+</span></span><span style="display:flex;"><span>o <span style="color:#f92672">=</span> model(x)
+</span></span><span style="display:flex;"><span>o<span style="color:#f92672">.</span>backward()
+</span></span><span style="display:flex;"><span>
+</span></span><span style="display:flex;"><span>print(<span style="color:#e6db74">&#39;==========Saved inputs and outputs==========&#39;</span>)
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">for</span> idx <span style="color:#f92672">in</span> range(len(total_grad_in)):
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;input: &#39;</span>, total_grad_in[idx])
+</span></span><span style="display:flex;"><span>    print(<span style="color:#e6db74">&#39;output: &#39;</span>, total_grad_out[idx])</span></span></code></pre></div>
+</div>
+<p><strong>注意</strong>，作者提到“register_backward_hook只能操作简单模块，而不能操作包含多个子模块的复杂模块。如果对复杂模块用了 backward hook，那么我们只能得到该模块最后一次简单操作的梯度信息。”不太确定什么是简单模块，不太确定诸如 resnet18 这样的网络是不是简单模块。</p>
+<p>2022-08-06 23:14:22，这个地方应该是想说，用 for loop 遍历 model.named_children() 是有必要的，否则直接 <code>model = Model()model.register_backward_hook(hook_fn_backward)</code> 会有问题。</p>
+<h4 id="4122-注意事项">4.1.2.2 注意事项</h4>
+<p><strong>形状</strong></p>
+<ul>
+<li>
+<p>在卷积层中，weight 的梯度和 weight 的形状相同</p>
+</li>
+<li>
+<p>在全连接层中，weight 的梯度的形状是 weight 形状的转秩（观察上文中代码的输出可以验证）</p>
+</li>
+</ul>
+<p><strong>grad_input tuple 中各梯度的顺序</strong></p>
+<ul>
+<li>
+<p>在卷积层中，bias 的梯度位于tuple 的末尾：grad_input = (对feature的导数，对权重 W 的导数，对 bias 的导数)</p>
+</li>
+<li>
+<p>在全连接层中，bias 的梯度位于 tuple 的开头：grad_input=(对 bias 的导数，对 feature 的导数，对 W 的导数)</p>
+</li>
+</ul>
+<p><strong>当 batchsize &gt; 1 时，对 bias 的梯度处理不同</strong></p>
+<ul>
+<li>
+<p>在卷积层，对 bias 的梯度为整个 batch 的数据在 bias 上的梯度之和：grad_input = (对feature的导数，对权重 W 的导数，对 bias 的导数)</p>
+</li>
+<li>
+<p>在全连接层，对 bias 的梯度是分开的，bach 中每条数据，对应一个 bias 的梯度：grad_input = ((data1 对 bias 的导数，data2 对 bias 的导数 &hellip;)，对 feature 的导数，对 W 的导数)</p>
+</li>
+</ul>
+<h1 id="misc">Misc</h1>
+<p>@classmethod 用法</p>
+<p>想给初始类再新添功能，不需要改初始类，只要在下一个类内部新写一个方法，方法用@classmethod装饰一下即可。、</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#a6e22e">@classmethod</span>
+</span></span><span style="display:flex;"><span><span style="color:#66d9ef">def</span> <span style="color:#a6e22e">convert_sync_batchnorm</span>(cls, module, process_group<span style="color:#f92672">=</span><span style="color:#66d9ef">None</span>):</span></span></code></pre></div>
+</div>
+<h1 id="5-autodiff">5. AutoDiff</h1>
+<blockquote>
+<p>深度学习框架通过自动计算导数，即自动微分（automatic differentiation）来加快求导。 实际中，根据我们设计的模型，系统会构建一个计算图（computational graph）， 来跟踪计算是哪些数据通过哪些操作组合起来产生输出。 自动微分使系统能够随后反向传播梯度。 这里，反向传播（backpropagate）意味着跟踪整个计算图，填充关于每个参数的偏导数。</p>
+</blockquote>
+<p>by <a href="https://zh-v2.d2l.ai/chapter_preliminaries/autograd.html">https://zh-v2.d2l.ai/chapter_preliminaries/autograd.html</a></p>
+<h1 id="6-只使用一个-gpu">6. 只使用一个 GPU</h1>
+<h2 id="61-文件中">6.1 文件中</h2>
+<p>注意这个必须放在 <del><code>import torch</code> 之前</del> 放在所有访问GPU的代码之前</p>
+<div class="highlight-container">
+
+  <button class="copy-code-btn outline">Copy</button>
+
+  
+  <div class="highlight"><pre tabindex="0" style="color:#f8f8f2;background-color:#272822;-moz-tab-size:4;-o-tab-size:4;tab-size:4;"><code class="language-python" data-lang="python"><span style="display:flex;"><span><span style="color:#f92672">import</span> os 
+</span></span><span style="display:flex;"><span>os<span style="color:#f92672">.</span>environ[<span style="color:#e6db74">&#39;CUDA_VISIBLE_DEVICES&#39;</span>] <span style="color:#f92672">=</span> <span style="color:#e6db74">&#34;0&#34;</span></span></span></code></pre></div>
+</div>
+<h1 id="问题">问题</h1>
+<ul>
+<li>Debug 的时候怎么看 tensor 变量的参数？</li>
+</ul>
+<h1 id="reference">Reference</h1>
+<p><a href="https://zhuanlan.zhihu.com/p/265394674">https://zhuanlan.zhihu.com/p/265394674</a></p>
+<p><a href="https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-nn/">https://pytorch-cn.readthedocs.io/zh/latest/package_references/torch-nn/</a>  pytorch 中文文档</p>
+<p><a href="https://cloud.tencent.com/developer/article/1475430">https://cloud.tencent.com/developer/article/1475430#</a></p>
+
+      </div>
+
+      
+      
+<div class="post-copyright">
+  <p class="copyright-item">
+    <span class="item-title">Author</span>
+    <span class="item-content">Cory</span>
+  </p>
+  <p class="copyright-item">
+    <span class="item-title">LastMod</span>
+    <span class="item-content">
+      2023-03-21
+      
+    </span>
+  </p>
+  
+  <p class="copyright-item">
+    <span class="item-title">License</span>
+    <span class="item-content"><a rel="license noopener" href="https://creativecommons.org/licenses/by-nc-nd/4.0/" target="_blank">CC BY-NC-ND 4.0</a></span>
+  </p>
+</div>
+
+
+
+      
+      
+
+
+      <footer class="post-footer">
+        <div class="post-tags">
+          <a href="http://localhost:1313/tags/pytorch/">PyTorch</a>
+          
+        </div>
+
+
+        
+        <nav class="post-nav">
+          
+          <a class="prev" href="/post/blog_hugo_%E6%96%87%E7%AB%A0%E9%A1%B5%E9%9D%A2%E6%B7%BB%E5%8A%A0%E5%9B%BA%E5%AE%9A%E7%9B%AE%E5%BD%95/">
+            
+            <i class="iconfont">
+              
+<svg aria-hidden="true" class="lucide lucide-chevron-left hi-svg-inline" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="m15 18-6-6 6-6"/></svg>
+            </i>
+            <span class="prev-text nav-default">Hugo 文章页面添加固定目录栏</span>
+            <span class="prev-text nav-mobile">Prev</span>
+          </a>
+          
+          <a class="next" href="/post/%E5%8D%9A%E5%AE%A2_%E5%9B%BD%E5%86%85%E5%8D%9A%E5%A3%AB%E5%A6%82%E4%BD%95%E6%8F%90%E5%8D%87%E8%87%AA%E5%B7%B1%E7%9A%84%E8%8B%B1%E8%AF%AD/">
+            <span class="next-text nav-default">国内硕博如何提升自己的英语</span>
+            <span class="prev-text nav-mobile">Next</span>
+            
+            <i class="iconfont">
+              
+<svg aria-hidden="true" class="lucide lucide-chevron-right hi-svg-inline" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="m9 18 6-6-6-6"/></svg>
+            </i>
+          </a>
+        </nav>
+      </footer>
+    </article>
+
+    
+    
+    
+    
+
+
+    
+    
+
+  
+
+  
+  
+
+  
+  
+
+  
+
+  
+
+    
+
+  
+
+  
+
+
+  </div>
+
+  
+  <nav class="toc" id="toc">
+    <div class="toc-title">Table of Contents</div>
+    <div class="toc-content custom-scrollbar">
+      <nav id="TableOfContents">
+  <ul>
+    <li><a href="#1-python-模块">1. Python 模块</a>
+      <ul>
+        <li><a href="#11-parser-模块">1.1 parser 模块</a>
+          <ul>
+            <li><a href="#111-parseradd_argument">1.1.1 parser.add_argument()</a></li>
+            <li><a href="#112-parserparse_args">1.1.2 parser.parse_args()</a></li>
+          </ul>
+        </li>
+        <li><a href="#12-tensor">1.2 Tensor</a></li>
+      </ul>
+    </li>
+    <li><a href="#2-torch">2. torch</a>
+      <ul>
+        <li><a href="#21-nn">2.1 nn</a>
+          <ul>
+            <li><a href="#211-nnmodule">2.1.1 nn.Module</a>
+              <ul>
+                <li><a href="#2111-一些子函数">2.1.1.1 一些子函数</a></li>
+              </ul>
+            </li>
+            <li><a href="#212-nnlayer">2.1.2 nn.Layer</a></li>
+            <li><a href="#213-model-的创建">2.1.3 model 的创建</a>
+              <ul>
+                <li><a href="#2131-model-实例">2.1.3.1 model() 实例</a></li>
+                <li><a href="#2132-modeleval">2.1.3.2 model.eval()</a></li>
+                <li><a href="#2133-torchno_grad">2.1.3.3 torch.no_grad()</a></li>
+              </ul>
+            </li>
+            <li><a href="#214-crossentropyloss">2.1.4 CrossEntropyLoss</a></li>
+          </ul>
+        </li>
+        <li><a href="#22-tensor">2.2 Tensor</a>
+          <ul>
+            <li><a href="#221-view">2.2.1 view</a></li>
+            <li><a href="#222-常用操作">2.2.2 常用操作</a>
+              <ul>
+                <li><a href="#2222-索引">2.2.2.2 索引</a></li>
+                <li><a href="#2222-获取某-value-of-index-in-tensor">2.2.2.2 获取某 value of index in tensor</a></li>
+                <li><a href="#2223-tensor-排序">2.2.2.3 tensor 排序</a></li>
+                <li><a href="#2224-获取-tensor-中某-percentile">2.2.2.4 获取 tensor 中某 percentile</a></li>
+                <li><a href="#2225-torchwhere">2.2.2.5 torch.where()</a></li>
+                <li><a href="#2226-torchcat-">2.2.2.6 torch.cat( )</a></li>
+                <li><a href="#222x-综合">2.2.2.X 综合</a></li>
+              </ul>
+            </li>
+            <li><a href="#223-function">2.2.3 Function</a>
+              <ul>
+                <li><a href="#2231-tensordata-tensordetach">2.2.3.1 tensor.data, tensor.detach()</a></li>
+                <li><a href="#2232-tensormax-tensorabs-tensorunsqueeze-tensordim-tensorshape">2.2.3.2 tensor.max, tensor.abs, tensor.unsqueeze, tensor.dim, tensor.shape</a></li>
+                <li><a href="#2233-torcndot-torchmv-torchmm">2.2.3.3 torcn.dot. torch.mv, torch.mm</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#23-autograd">2.3 autograd</a></li>
+        <li><a href="#24-data-模块">2.4 data 模块</a>
+          <ul>
+            <li><a href="#241-dataloader">2.4.1 DataLoader</a>
+              <ul>
+                <li><a href="#2411-nvidiadali">2.4.1.1 NVIDIA.DALI</a></li>
+              </ul>
+            </li>
+            <li><a href="#242-dataset">2.4.2 DataSet</a></li>
+            <li><a href="#242-torchvision">2.4.2 torchvision</a></li>
+            <li><a href="#243-batch-size">2.4.3 Batch Size</a>
+              <ul>
+                <li><a href="#2431-epoch-bach-iteration">2.4.3.1 epoch, bach, iteration</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#25-模型训练">2.5 模型训练</a>
+          <ul>
+            <li><a href="#251-损失函数">2.5.1 损失函数</a></li>
+            <li><a href="#252-optimizer">2.5.2 optimizer</a>
+              <ul>
+                <li><a href="#2521-属性">2.5.2.1 属性</a></li>
+                <li><a href="#2522-optimizer-方法">2.5.2.2 optimizer 方法</a></li>
+                <li><a href="#2523-learning-rate">2.5.2.3 learning rate</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+        <li><a href="#26-regularization-正则化">2.6 Regularization 正则化</a>
+          <ul>
+            <li><a href="#261-weight-decay">2.6.1 weight decay</a></li>
+            <li><a href="#262-dropout">2.6.2 Dropout</a></li>
+            <li><a href="#263-normalization">2.6.3 Normalization</a></li>
+          </ul>
+        </li>
+        <li><a href="#27-model-相关的操作">2.7 Model 相关的操作</a>
+          <ul>
+            <li><a href="#271-torchsave">2.7.1 torch.save</a></li>
+            <li><a href="#272-torchload">2.7.2 torch.load</a></li>
+            <li><a href="#273-fine-tuning">2.7.3 Fine-tuning</a></li>
+          </ul>
+        </li>
+        <li><a href="#28-function">2.8 Function</a>
+          <ul>
+            <li><a href="#281-torchtopk">2.8.1 torch.topk()</a></li>
+            <li><a href="#282-torchnumel">2.8.2 torch.numel</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#3-pytorch-分布式训练">3. pytorch 分布式训练</a>
+      <ul>
+        <li><a href="#31-debug-分布式训练的模型">3.1 debug 分布式训练的模型</a></li>
+        <li><a href="#32-几种并行的方式">3.2 几种并行的方式</a>
+          <ul>
+            <li><a href="#321-data-parallelism">3.2.1 Data Parallelism</a></li>
+            <li><a href="#322-model-parallelism">3.2.2 Model Parallelism</a></li>
+            <li><a href="#323-pipeline-parallelism">3.2.3 Pipeline Parallelism</a></li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#4-hook">4. Hook</a>
+      <ul>
+        <li><a href="#41-register_hook">4.1 register_hook</a>
+          <ul>
+            <li><a href="#411-register_forward_hook">4.1.1 register_forward_hook</a></li>
+            <li><a href="#412-register_backward_hook">4.1.2 register_backward_hook()</a>
+              <ul>
+                <li><a href="#4121-使用方法和示例">4.1.2.1 使用方法和示例</a></li>
+                <li><a href="#4122-注意事项">4.1.2.2 注意事项</a></li>
+              </ul>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </li>
+    <li><a href="#misc">Misc</a></li>
+    <li><a href="#5-autodiff">5. AutoDiff</a></li>
+    <li><a href="#6-只使用一个-gpu">6. 只使用一个 GPU</a>
+      <ul>
+        <li><a href="#61-文件中">6.1 文件中</a></li>
+      </ul>
+    </li>
+    <li><a href="#问题">问题</a></li>
+    <li><a href="#reference">Reference</a></li>
+  </ul>
+</nav>
+    </div>
+  </nav>
+
+
+</div>
+  </main>
+
+  <footer id="footer" class="site-footer">
+    <div class="social-icon-links">
+  
+
+
+<a href="mailto:huwm1@shanghaitech.edu.cn" rel="me noopener" class="social-icon-link" title="email" >
+  
+<svg aria-hidden="true" class="icon hi-svg-inline" fill="currentColor" height="1em" version="1.1" viewBox="0 0 1451 1024" width="1em" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <path d="M664.781909 681.472759 0 97.881301C0 3.997201 71.046997 0 71.046997 0L474.477909 0 961.649408 0 1361.641813 0C1361.641813 0 1432.688811 3.997201 1432.688811 97.881301L771.345323 681.472759C771.345323 681.472759 764.482731 685.154773 753.594283 688.65053L753.594283 688.664858C741.602731 693.493018 729.424896 695.068979 718.077952 694.839748 706.731093 695.068979 694.553173 693.493018 682.561621 688.664858L682.561621 688.65053C671.644501 685.140446 664.781909 681.472759 664.781909 681.472759L664.781909 681.472759ZM718.063616 811.603883C693.779541 811.016482 658.879232 802.205449 619.10784 767.734955 542.989056 701.759633 0 212.052267 0 212.052267L0 942.809523C0 942.809523 0 1024 83.726336 1024L682.532949 1024 753.579947 1024 1348.948139 1024C1432.688811 1024 1432.688811 942.809523 1432.688811 942.809523L1432.688811 212.052267C1432.688811 212.052267 893.138176 701.759633 817.019477 767.734955 777.248 802.205449 742.347691 811.03081 718.063616 811.603883L718.063616 811.603883Z"></path>
+</svg>
+
+</a>
+<a href="http://localhost:1313" rel="me noopener" class="social-icon-link" title="linkedin"  target="_blank" >
+  
+<svg aria-hidden="true" class="icon hi-svg-inline" fill="currentColor" height="1em" version="1.1" viewBox="0 0 1024 1024" width="1em" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <path d="M872.405333 872.618667h-151.637333v-237.610667c0-56.661333-1.152-129.578667-79.018667-129.578667-79.061333 0-91.136 61.653333-91.136 125.397334v241.792H398.976V384h145.664v66.602667h1.962667c20.352-38.4 69.845333-78.933333 143.786666-78.933334 153.642667 0 182.058667 101.12 182.058667 232.746667v268.202667zM227.712 317.141333a87.978667 87.978667 0 0 1-88.021333-88.106666 88.064 88.064 0 1 1 88.021333 88.106666z m76.032 555.477334H151.68V384h152.064v488.618667zM948.266667 0H75.562667C33.792 0 0 33.024 0 73.770667v876.458666C0 991.018667 33.792 1024 75.562667 1024h872.576C989.866667 1024 1024 991.018667 1024 950.229333V73.770667C1024 33.024 989.866667 0 948.138667 0h0.128z"></path>
+</svg>
+
+</a>
+<a href="https://github.com/huweim" rel="me noopener" class="social-icon-link" title="github"  target="_blank" >
+  
+<svg aria-hidden="true" class="icon hi-svg-inline" fill="currentColor" height="1em" version="1.1" viewBox="0 0 1024 1024" width="1em" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <path d="M512 12.672c-282.88 0-512 229.248-512 512 0 226.261333 146.688 418.133333 350.08 485.76 25.6 4.821333 34.986667-11.008 34.986667-24.618667 0-12.16-0.426667-44.373333-0.64-87.04-142.421333 30.890667-172.458667-68.693333-172.458667-68.693333C188.672 770.986667 155.008 755.2 155.008 755.2c-46.378667-31.744 3.584-31.104 3.584-31.104 51.413333 3.584 78.421333 52.736 78.421333 52.736 45.653333 78.293333 119.850667 55.68 149.12 42.581333 4.608-33.109333 17.792-55.68 32.426667-68.48-113.706667-12.8-233.216-56.832-233.216-253.013333 0-55.893333 19.84-101.546667 52.693333-137.386667-5.76-12.928-23.04-64.981333 4.48-135.509333 0 0 42.88-13.738667 140.8 52.48 40.96-11.392 84.48-17.024 128-17.28 43.52 0.256 87.04 5.888 128 17.28 97.28-66.218667 140.16-52.48 140.16-52.48 27.52 70.528 10.24 122.581333 5.12 135.509333 32.64 35.84 52.48 81.493333 52.48 137.386667 0 196.693333-119.68 240-233.6 252.586667 17.92 15.36 34.56 46.762667 34.56 94.72 0 68.522667-0.64 123.562667-0.64 140.202666 0 13.44 8.96 29.44 35.2 24.32C877.44 942.592 1024 750.592 1024 524.672c0-282.752-229.248-512-512-512"></path>
+</svg>
+
+</a>
+<a href="https://www.zhihu.com/people/hu-wei-ming-31-86" rel="me noopener" class="social-icon-link" title="zhihu"  target="_blank" >
+  
+<svg aria-hidden="true" class="icon hi-svg-inline" fill="currentColor" height="1em" version="1.1" viewBox="0 0 1024 1024" width="1em" xlink="http://www.w3.org/1999/xlink" xmlns="http://www.w3.org/2000/svg">
+  <path d="M351.791182 562.469462l192.945407 0c0-45.367257-21.3871-71.939449-21.3871-71.939449L355.897709 490.530013c3.977591-82.182744 7.541767-187.659007 8.816806-226.835262l159.282726 0c0 0-0.86367-67.402109-18.578124-67.402109s-279.979646 0-279.979646 0 16.850783-88.141456 39.318494-127.053698c0 0-83.60514-4.510734-112.121614 106.962104S81.344656 355.077018 76.80834 367.390461c-4.536316 12.313443 24.62791 5.832845 36.941354 0 12.313443-5.832845 68.050885-25.924439 84.252893-103.69571l86.570681 0c1.165546 49.28652 4.596691 200.335724 3.515057 226.835262L109.86113 490.530013c-25.275663 18.147312-33.701566 71.939449-33.701566 71.939449L279.868105 562.469462c-8.497535 56.255235-23.417339 128.763642-44.275389 167.210279-33.05279 60.921511-50.55235 116.65793-169.802314 212.576513 0 0-19.442818 14.257725 40.829917 9.073656 60.273758-5.185093 117.305683-20.739347 156.840094-99.807147 20.553105-41.107233 41.805128-93.250824 58.386782-146.138358l-0.055259 0.185218 167.855986 193.263655c0 0 22.035876-51.847855 5.832845-108.880803L371.045711 650.610918l-42.1244 31.157627-0.045025 0.151449c11.69946-41.020252 20.11206-81.5749 22.726607-116.858498C351.665315 564.212152 351.72876 563.345412 351.791182 562.469462z"></path>
+  <path d="M584.918753 182.033893l0 668.840094 70.318532 0 28.807093 80.512708 121.875768-80.512708 153.600307 0L959.520453 182.033893 584.918753 182.033893zM887.150192 778.934538l-79.837326 0-99.578949 65.782216-23.537066-65.782216-24.855084 0L659.341766 256.673847l227.807403 0L887.149169 778.934538z"></path>
+</svg>
+
+</a>
+
+
+<a href="http://localhost:1313/index.xml" rel="noopener alternate" type="application/rss&#43;xml" class="social-icon-link" title="rss"
+  target="_blank">
+  
+<svg aria-hidden="true" class="lucide lucide-rss hi-svg-inline" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M4 11a9 9 0 0 1 9 9"/><path d="M4 4a16 16 0 0 1 16 16"/><circle cx="5" cy="19" r="1"/></svg>
+</a>
+
+</div>
+
+<div class="copyright">
+  <span class="power-by">
+    Powered by <a class="hexo-link" href="https://gohugo.io">Hugo</a>
+  </span>
+  <span class="division">|</span>
+  <span class="theme-info">
+    Theme - <a class="theme-link" href="https://github.com/xianmin/hugo-theme-jane">Jane</a>
+  </span>
+
+  <span class="copyright-year">
+    &copy;
+    
+    2020 -
+    2026
+    <span class="heart">
+      
+      <i class="iconfont">
+        
+<svg aria-hidden="true" class="lucide lucide-heart hi-svg-inline" fill="none" height="1em" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" viewBox="0 0 24 24" width="1em" xmlns="http://www.w3.org/2000/svg"><path d="M19 14c1.49-1.46 3-3.21 3-5.5A5.5 5.5 0 0 0 16.5 3c-1.76 0-3 .5-4.5 2-1.5-1.5-2.74-2-4.5-2A5.5 5.5 0 0 0 2 8.5c0 2.3 1.5 4.05 3 5.5l7 7Z"/></svg>
+      </i>
+    </span><span class="author">
+      Weiming Hu
+      
+    </span></span>
+
+  
+  
+
+  
+</div>
+
+  </footer>
+
+  
+
+
+
+
+<script type="text/javascript" src="/js/main.8d61071a726409eb8c2f59ab3296b9d3d22ec8f94e49ced12608ba3c0e17eeec.js" integrity="sha256-jWEHGnJkCeuML1mrMpa509IuyPlOSc7RJgi6PA4X7uw=" crossorigin="anonymous"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+  
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe.min.js"></script>
+    <script type="text/javascript" src="/lib/photoswipe/photoswipe-ui-default.min.js"></script>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</body>
+
+</html>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>Benchmark on Weiming Hu</title>
+    <link>http://localhost:1313/tags/benchmark/</link>
+    <description>Recent content in Benchmark on Weiming Hu</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Tue, 19 Apr 2022 09:45:02 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/benchmark/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>编译运行ISPASS2009、Rodinia、Parboil</title>
+      <link>http://localhost:1313/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cbenchmarkispassrodiniaparboil/</link>
+      <pubDate>Wed, 08 Dec 2021 09:45:02 +0800</pubDate>
+      <guid>http://localhost:1313/post/%E5%AE%9E%E9%AA%8C_%E7%BC%96%E8%AF%91%E8%BF%90%E8%A1%8Cbenchmarkispassrodiniaparboil/</guid>
+      <description>&lt;h1 id=&#34;ispass&#34;&gt;ISPASS&lt;/h1&gt;&#xA;&lt;p&gt;Ubuntu20.04下使用GPGPU-Sim运行ISPASS2009benchmark&lt;/p&gt;&#xA;&lt;h2 id=&#34;0-前言&#34;&gt;0. 前言&lt;/h2&gt;&#xA;&lt;p&gt;之前介绍了安装，现在就尝试跑一下 ISPASS&#39;09 的那篇经典 paper，Analyzing CUDA workloads using a detailed GPU simulator 上的几个 benchamrk. 这篇文章1.现在已经870次引用了，很多工作都使用了其中的 benchmark&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

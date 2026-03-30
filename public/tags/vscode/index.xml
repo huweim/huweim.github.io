@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>VSCode on Weiming Hu</title>
+    <link>http://localhost:1313/tags/vscode/</link>
+    <description>Recent content in VSCode on Weiming Hu</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Fri, 10 Jun 2022 15:27:58 +0000</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/vscode/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>VSCode, Chrome 常用快捷键</title>
+      <link>http://localhost:1313/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</link>
+      <pubDate>Fri, 10 Jun 2022 15:27:08 +0800</pubDate>
+      <guid>http://localhost:1313/post/%E5%B7%A5%E5%85%B7_%E5%BF%AB%E6%8D%B7%E9%94%AE_vscode_chrome/</guid>
+      <description>&lt;h1 id=&#34;1-vscode&#34;&gt;1. VSCode&lt;/h1&gt;&#xA;&lt;p&gt;&lt;strong&gt;目前生疏但是需要常用的&lt;/strong&gt; 2022-06-10 15:14:48&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&amp;#x2b50; 选择所有当前选中的字符（可以理解为全局版的 Ctrl + D）: Ctrl + Shift + L&lt;/li&gt;&#xA;&lt;li&gt;在选中行末尾插入光标：Alt + Shift + i&lt;/li&gt;&#xA;&lt;li&gt;在右侧打开 Markdown 预览：Ctrl + K, V&lt;/li&gt;&#xA;&lt;li&gt;查看定义：Alt + F12；只是小窗查看，比较方便，注意跳转和查看的区别&lt;/li&gt;&#xA;&lt;li&gt;重新打开最后关闭的标签页：Ctrl + Shift + T&lt;/li&gt;&#xA;&lt;li&gt;向左切换标签：Ctrl + Tab / Ctrl + PgDn&lt;/li&gt;&#xA;&lt;li&gt;向右切换标签：Ctrl + Shift + Tab / Ctrl + PgUp&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;blockquote&gt;&#xA;&lt;p&gt;快捷键的意义不在于记住每一个键位，而是你需要知道某个操作是可以通过快捷键达到的。当你需要多次重复这个操作时，可以去查找这个快捷键。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>

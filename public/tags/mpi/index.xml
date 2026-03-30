@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
+  <channel>
+    <title>MPI on Weiming Hu</title>
+    <link>http://localhost:1313/tags/mpi/</link>
+    <description>Recent content in MPI on Weiming Hu</description>
+    <generator>Hugo</generator>
+    <language>en</language>
+    <lastBuildDate>Mon, 16 Dec 2024 21:42:09 +0800</lastBuildDate>
+    <atom:link href="http://localhost:1313/tags/mpi/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>MPI Intro and Practice</title>
+      <link>http://localhost:1313/post/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</link>
+      <pubDate>Tue, 09 Mar 2021 22:36:19 +0800</pubDate>
+      <guid>http://localhost:1313/post/%E7%BC%96%E7%A8%8B_mpi_intro_and_practice/</guid>
+      <description>&lt;h1 id=&#34;mpi-intro-and-practice&#34;&gt;MPI Intro and Practice&lt;/h1&gt;&#xA;&lt;h3 id=&#34;intro&#34;&gt;Intro&lt;/h3&gt;&#xA;&lt;h5 id=&#34;definition&#34;&gt;Definition&lt;/h5&gt;&#xA;&lt;p&gt;wiki:&lt;/p&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;&lt;strong&gt;Message Passing Interface&lt;/strong&gt; (&lt;strong&gt;MPI&lt;/strong&gt;) is a standardized and portable message-passing standard&lt;/li&gt;&#xA;&lt;li&gt;designed by a group of researchers from academia and industry to function on a wide variety of parallel computing architectures.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h5 id=&#34;feature&#34;&gt;Feature&lt;/h5&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;an interface, not a programming language&lt;/li&gt;&#xA;&lt;li&gt;Main model of HPC&lt;/li&gt;&#xA;&lt;li&gt;a cross-language communication protocol&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h5 id=&#34;functions&#34;&gt;Functions&lt;/h5&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Communication&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Point-to-point communication&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Send&lt;/li&gt;&#xA;&lt;li&gt;Recv&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Collective communication&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Broadcast, scatter/ gather, all to all, reduce, scan, barrier&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;li&gt;Almost all parallel programs can be described using the message passing model.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h5 id=&#34;concept&#34;&gt;Concept&lt;/h5&gt;&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Communicator:&#xA;&lt;ul&gt;&#xA;&lt;li&gt;Def: Communicator objects connect groups of processes in the MPI session.&lt;/li&gt;&#xA;&lt;li&gt;Each communicator gives each contained process an independent identifier(id, called &lt;code&gt;rank&lt;/code&gt;) and arranges its contained processes in an ordered topology.&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;/li&gt;&#xA;&lt;/ul&gt;&#xA;&lt;h3 id=&#34;set-up-in-ubuntu-2004&#34;&gt;Set up in Ubuntu 20.04&lt;/h3&gt;&#xA;&lt;p&gt;在这个阶段，简单地通过网络的教程进行 library or software 的安装是不现实的，还是得从根本上学会去解决问题，去看源文档(doc)的说明。&lt;/p&gt;</description>
+    </item>
+  </channel>
+</rss>
